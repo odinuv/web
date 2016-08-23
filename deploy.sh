@@ -13,6 +13,7 @@ else
 fi
 echo $lastCommit
 
+cd _site
 filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
     echo "No files to update"
