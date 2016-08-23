@@ -25,10 +25,7 @@ else
         then
             echo "Uploading $f"
             curl --ftp-create-dirs -T $f -u $FTP_USER:$FTP_PASS $FTP_TARGET/$f
-            if [ $? -eq 0 ]
-            then
-              echo "Successfully uploade file"
-            else
+            if [ $? -neq 0 ]
               echo "Could not upload file" >&2
               exit 1
             fi
