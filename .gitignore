@@ -1,2 +1,4 @@
-/.sass-cache
-/.vscode
+_site
+.idea
+.sass-cache
+.vscode

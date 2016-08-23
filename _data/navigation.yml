@@ -1,0 +1,70 @@
+items:
+
+  - url: /en/
+    title: Introduction
+    items:
+      - url: /en/apv/
+        title: The Making of a Web Application
+        items:
+          - url: /en/apv/walkthrough/
+            title: Walkthrough
+            items:
+              - url: /en/apv/walkthrough/html/
+                title: HTML
+
+              - url: /en/apv/walkthrough/html-forms/
+                title: HTML Forms
+
+              - url: /en/apv/walkthrough/dynamic-page/
+                title: Dynamic Page
+                items:
+                  - url: /en/apv/walkthrough/dynamic-page/control/
+                    title: Control Structures
+
+                  - url: /en/apv/walkthrough/dynamic-page/array/
+                    title: Arrays
+
+                  - url: /en/apv/walkthrough/dynamic-page/objects/
+                    title: Functions & Classes & Objects
+
+              - url: /en/apv/walkthrough/templates/
+                title: Templates
+
+              - url: /en/apv/walkthrough/templates-layout/
+                title: Template Layouts
+
+              - url: /en/apv/walkthrough/database/
+                title: Database & SQL
+
+              - url: /en/apv/walkthrough/backend/
+                title: Database Backend
+
+              - url: /en/apv/walkthrough/backend-select/
+                title: Database -- Selecting and filtering
+
+              - url: /en/apv/walkthrough/backend-insert/
+                title: Database -- Inserting
+
+              - url: /en/apv/walkthrough/backend-update/
+                title: Database -- Updating
+  
+          - url: /en/apv/articles/
+            title: Articles
+            items: 
+              - url: /en/apv/articles/programming/
+                title: Inroduction to Programming
+
+              - url: /en/apv/articles/web/
+                title: Web
+
+              - url: /en/apv/articles/html/
+                title: HTML
+
+          - url: /en/apv/slides/
+            title: Slides
+            items:
+              - url: /en/apv/slides/web-internet/
+                title: Internet and Web Service
+
+              - url: /en/apv/slides/html/
+                title: Web Standards
