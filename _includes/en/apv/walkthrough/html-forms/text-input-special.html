@@ -1,0 +1,21 @@
+<form method='post' action='todo'>
+    <ul>
+        <li>
+            <label>Email: 
+            <input type='email' name='inputEmail'></label>
+        </li>
+        <li>
+            <label>URL: 
+            <input type='url' name='inputUrl'></label>
+        </li>
+        <li>
+            <label>Input with more validation: 
+            <input type='text' minlength='1' maxlength='4'></label>
+        </li>        
+        <li>
+            <label>Input with pattern (number followed by three upercase letters): 
+            <input type='text' pattern='[0-9][A-Z]{2,3}'></label>
+        </li>
+    </ul>
+    <button type='submit'>Submit</button>
+</form>

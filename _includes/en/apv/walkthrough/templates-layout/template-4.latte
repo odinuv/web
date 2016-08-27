@@ -1,0 +1,20 @@
+{extends 'layout-4.latte'}
+
+{block title}
+	<h1>{$pageTitle}</h1>
+{/block}
+
+{block content}
+	<h2>Flintstones</h2>
+	<ul>
+	{foreach $flintstones as $role => $name}
+		<li>{$role|capitalize} is <strong n:tag-if="$showBold">{$name}</strong></li>
+	{/foreach}
+	</ul>
+	<h2>Rubbles</h2>
+	<ul>
+	{foreach $rubbles as $role => $name}
+		<li>{$role|capitalize} is <strong n:tag-if="$showBold">{$name}</strong></li>
+	{/foreach}
+	</ul>
+{/block}
