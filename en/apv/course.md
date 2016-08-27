@@ -1,6 +1,6 @@
 ---
-title: APV Course outline
-permalink: /en/apv/course-outline/
+title: APV Course
+permalink: /en/apv/course/
 ---
 
 * TOC

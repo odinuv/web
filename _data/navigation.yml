@@ -6,8 +6,8 @@ items:
       - url: /en/apv/
         title: The Making of a Web Application
         items:
-          - url: /en/apv/course-outline/
-            title: Course Outline
+          - url: /en/apv/course/
+            title: APV Course
 
           - url: /en/apv/walkthrough/
             title: Walkthrough
