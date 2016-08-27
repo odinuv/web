@@ -11,6 +11,9 @@ This web book is an introduction to development of a web applications. It consis
 web application step by step and [**Articles**](/en/apv/articles/), which explain the
 details of all the used technologies.
 
+[Course outline](/en/apv/course/)
+
+{% comment %}
 ## Goals
 My goals are:
 - Show you how web applications can be made (using SQL, PHP, Javascript).
@@ -60,3 +63,4 @@ confident that you can correct the issue as well, please send a
 [pull request](https://help.github.com/articles/using-pull-requests/). If you feel for
 a larger contribution, or you want to discuss something about the book, join us at [Slack](todo).
 
+{% endcomment %}
