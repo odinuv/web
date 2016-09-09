@@ -78,6 +78,7 @@ body {
 
 .reveal strong,
 .reveal b {
+  color: #e7ad52; 
   font-weight: bold; }
 
 .reveal em {
@@ -203,7 +204,7 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #e7ad52;
+  color: #e7ad52; 
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
