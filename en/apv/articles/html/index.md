@@ -351,7 +351,7 @@ XHTML syntax) and finally it is current - developed from 2007, standardized in 2
 W3C is now working on minor revision.
 XHTML is now dead last standard 1.0 from 2000, version 1.1 and 2.0 never completed)
 
-![Various HTML related Standards](/en/apv/slides/html/html-standards.png)
+![Various HTML related Standards](/en/apv/slides/html/html-standards.svg)
 
 HTML5 also brought in new features:
 
@@ -464,4 +464,28 @@ To prevent this, make sure that your HTML pages are valid by checking them with
 [HTML Validator](https://validator.w3.org/). This checks the document against all the 
 rules outlined in [HTML specification](https://www.w3.org/html/). A valid HTML document has
 a really good chance that it will display the same in all available web browser.
-To ease the validation process, you should probably install a [some browser extension](todo).
+To ease the validation process, you should probably install [some browser extension](todo).
+
+## Summary
+In this article I described the principle of HTML language. Contrary to popular belief, HTML
+is not just a text document with some tags. It is a document with hierarchial structure
+of document elements. You should be aware of the basic properties of HTML language and 
+its relations to other languages and standards. You should be also aware of the features 
+available in HTML5.
+
+### New Concepts and Terms
+- hypertext
+- rendering
+- element
+- entities
+- attributes
+- tags
+- children
+- root
+- HTML
+- XHTML
+- XML
+- DOCTYPE
+- validation
+- block element
+- line element
