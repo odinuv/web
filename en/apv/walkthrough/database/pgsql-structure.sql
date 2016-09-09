@@ -466,6 +466,12 @@ CREATE INDEX fki_meeting ON meeting USING btree (id_location);
 ALTER TABLE ONLY contact
     ADD CONSTRAINT contact_id_contact_type_fkey FOREIGN KEY (id_contact_type) REFERENCES contact_type(id_contact_type);
 
+--
+-- Name: contact_id_person_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+--
+
+ALTER TABLE ONLY contact
+    ADD CONSTRAINT contact_id_person_fkey FOREIGN KEY (id_person) REFERENCES person(id_person);
 
 --
 -- Name: meeting_id_location_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
