@@ -55,7 +55,7 @@
   </head>
 
   <body>
-  
+  	<a href='/en/apv/slides/' style='text-decoration:none'>&#9664;</a>
     <div class="reveal">
       <div class="slides">
         {{ content }}
@@ -70,8 +70,10 @@
       Reveal.initialize({
         controls: true,
         progress: true,
+        /* history: false, TODO: temporary! */
         history: true,
         center: true,
+        help: true,
         {%if page.transition %}
           transition: '{{page.transition}}',
         {% else %}

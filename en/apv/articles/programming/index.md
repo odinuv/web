@@ -1,6 +1,6 @@
 ---
 title: Programming
-permalink: /en/apv/topics/articles/
+permalink: /en/apv/articles/programming/
 ---
 
 * TOC
