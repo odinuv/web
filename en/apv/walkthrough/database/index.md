@@ -78,7 +78,7 @@ It is shown in the following graphic, which shows each table, the columns in the
 their data types. It also shows relationships between tables (which we won't use much in this
 chapter). The design of database structure is called **Database Schema**. Keep it handy.
 
-![Database schema](/en/apv/walkthrough/database/schema.png)
+![Database schema](/en/apv/schema.svg)
 
 As we are working with [relational database system](todo), all data are stored in tables.
 Each table has **columns** (with some name and datatype -- as defined in the database schema)
@@ -89,7 +89,7 @@ called **records**.
 In SQL, the [keywords](todo-zakladniclanekoprogramovani) are usually written ALL CAPS, this 
 is just a convention to improve readability. It has no effect on the query itself. SQL statements
 are delimited by semicolon `;`. Because in most cases, only a single SQL statement is used, the 
-semicolon at the and of it may safely omitted.  
+semicolon at the and of it may safely omitted (it is a delimiter, not terminator).  
 
 ### INSERT
 The general syntax of the INSERT command is:
@@ -114,6 +114,8 @@ Let's insert some data into the `location` table:
 INSERT INTO location (name, city, street_name) VALUES ('La Tour Eiffel', 'Paris', 'Avenue Gustave Eiffel')
 {% endhighlight %}
 
+The order of inserted values must match the order of column names, this (obviously?) means that 
+there must be same number of items in the column list and value list.  
 Try to run the query yourself in Adminer:
 
 ![Screenshot -- Run SQL query](/en/apv/walkthrough/database/run-query.png)
@@ -127,6 +129,70 @@ You should see the result
 
 Click on **select** next to the `location` table to verify, that the row really got inserted into the table.
 That's -- once you know the structure of the destination table, writing an SQL INSERT statement is easy.
+Notice that there are two keywords used at the beginning of the query `INSERT INTO`. If you have some 
+programming background, this may look unusual to you. It is supposed to improve the readability ot the
+SQL query. In SQL it is quite common, so you better get used to it.
+
+THe list of the columns is not required, so the above query may also be shortened to:
+
+{% highlight sql %}
+INSERT INTO location VALUES (DEFAULT, 'Paris', 'Avenue Gustave Eiffel', NULL, NULL, NULL, 'La Tour Eiffel')
+{% endhighlight %}
+
+I highly discourage you from using this form of INSERT query in your application. It breaks as 
+soon as you make some modifications to the table. Also just from reading it, it is very hard 
+to understand what gets inserted where. It is better to be **explicit and verbose**.
+
+#### DEFAULT and NULL
+They keyword `DEFAULT` means that a default value of the column should be used (in the above case,
+it is a [sequence](todo) value -- `nextval('location_id_location_seq'::regclass)`). The keyword
+`NULL` means that no value will be inserted into that column. 
+
+If you don't list a column in the 
+INSERT query, then it is the same as if you listed it with the `DEFAULT` keyword. 
+Then it depends on the definition of the column:
+
+- If the column has a default value, than that value is inserted.
+- If the column has not a default value then:
+    - If the column allows NULLs, no value is inserted (NULL).
+    - If the column requires a value (defined as `NOT NULL`), an error is raised -- a required value 
+    for the table column was not provided in the INSERT query
+
+#### Working with Dates
+Although dates are printed as string, the database server stores them in a 
+[timestamp format](todo). When inserting a date, you must make sure 
+that the server understands it correctly by either:
+
+- Supplying the date in the format expected by the server (usually `YYYY-MM-DD`).
+- Explicitly converting the date with conversion function.
+
+The first option depends on the configuration of the database server, but
+it is fairly common, that this query works:
+
+{% highlight sql %}
+INSERT INTO person (first_name, last_name, nickname, birth_day)
+VALUES ('John', 'Doe', 'Johnnie', '2010-12-24')
+{% endhighlight %}
+
+Using a conversion function is safer, but slightly more complicated. There are
+a lot of differences between various database servers. However, the general principle 
+is that you supply date in an arbitrary format and a description of that format:
+
+{% highlight sql %}
+INSERT INTO person (first_name, last_name, nickname, birth_day)
+VALUES ('John', 'Doe', 'Johnnie', TO_TIMESTAMP('24.12.2010', 'DD.MM.YYYY'),)
+{% endhighlight %}
+
+In the above query, I used the [TO_TIMESTAMP function](todo) of the PostgreSQL
+database server. The first argument to the function is the date (in any format).
+The second argument to that function is the description of the format 
+with a [formatting string](todo). This way you tell the server that the date 
+starts with two digits representing a date and followed by a dot. 
+
+{. :note}
+The date conversion functions are specific to each database server. While they share
+the same principle, they may have different names and parameters. Always consult the
+manual of the database server you are using (look for section 'Date conversion functions').
 
 ### UPDATE
 The general syntax of the UPDATE command is:
@@ -155,8 +221,39 @@ context. There is no `==` in SQL.
 Search condition can be composed of multiple statements joined using boolean operators `AND`, `OR` and `NOT`.
 Notice that you can reference a column in both the search condition and in assignment (`name` in the 
 above example). Also the new value of the column may be an expression, so it's valid to write e.g.:
-`... SET age = age + 1 ...`. Important: the `WHERE` condition is not required, if you forget it, **all
-rows in the table will be updated**. Also notice that `NULL`s need to be [treated specially](todo). 
+`... SET age = age + 1 ...`. 
+
+#### Search condition
+Important: the `WHERE` condition is not required, if you forget it, 
+**all rows in the table will be updated**. Also notice that `NULL`s need to be [treated specially](todo). 
+Typically you use [key columns](todo) in the search condition to update a single record. Be careful
+about this -- if you are using a [compound key](todo), then all columns of that key must be used
+in the condition. Consider this query:
+
+{% highlight sql %}
+UPDATE person SET height = '135' WHERE first_name = 'John' and last_name = 'Doe'
+{% endhighlight %}
+
+There is a compound key on columns `first_name`, `last_name`, `nickname` defined on
+the `persons` table (`UNIQUE (first_name, last_name, nickname)`). This guarantees that
+the combination of first name, last name and nickname of a person is unique 
+(in your database that is). However the combination of `first_name` and `last_name`
+is **not guaranteed** to be unique and therefore the query **may** update more than 
+one person and therefore it is **wrong**. There are two correct options: 
+
+{% highlight sql %}
+UPDATE person SET height = '135' 
+WHERE first_name = 'John' and last_name = 'Doe' AND nickname = 'Johnnie'
+{% endhighlight %}
+
+{% highlight sql %}
+UPDATE person SET height = '135' WHERE id_person='42'
+{% endhighlight %}
+
+{: .note}
+Either of the above two solutions is fine, but any other solutions are wrong. When
+you are modifying data in database, you must **make sure** that there is no possibility
+of changing unwanted rows.
 
 ### DELETE
 The general syntax of the DELETE command is:
@@ -275,14 +372,6 @@ UPDATE person SET first_name = 'Carl', last_name = 'Oshiro' WHERE
 UPDATE person SET first_name = 'Carl', last_name = 'Oshiro' WHERE 
     WHERE first_name = 'Karl' AND last_name = 'Oshiro' AND nickname = 'hiromi'
 {% endhighlight %}
-
-{: .note}
-Either of the above two solutions is fine, but any other solutions are wrong. When
-you are modifying data in database, you must make sure that there is no possibility
-of changing unwanted rows. Since only there are two [keys](todo) in the table
-`person` -- one on column `id_person` and one on combination of 
-columns `first_name`, `last_name`, `nickname`, 
-you can use either of them, but not anything else.
 
 ## Task -- Remove a value
 Remove the value of `height` for *Carl Sohiro*.

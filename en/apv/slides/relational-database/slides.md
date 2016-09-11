@@ -18,12 +18,12 @@ permalink: /en/apv/slides/relational-database/
 <section markdown='1'>
 ## Relation -- Definition
 - Relation -- **Set** of [**tuples**](https://en.wikipedia.org/wiki/Tuple).
-- **Tuple** is a set of **attributes** (a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, ..., a<sub>k</sub>).
+- **Tuple** is a list of **attributes** (a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, ..., a<sub>k</sub>).
 - Attribute has a **name**, **value** and **domain**. 
 - a<sub>n</sub> -- **value** of the n-th attribute in the tuple, a<sub>i</sub> in D<sub>i</sub>.
 - D<sub>n</sub> -- **domain** of the n-th attribute (a set of values allowed for 
 the attribute).
-- a<sub>n</sub> -- **name** of the n-th attribute.
+- A<sub>n</sub> -- **name** of the n-th attribute.
 - `PERSON(ID: INTEGER, AGE: AGE_INTEGER, NAME: STRING)`
 - Do not confuse *Relations* with *relationships*!
 </section>
