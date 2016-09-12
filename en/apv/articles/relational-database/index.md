@@ -7,61 +7,94 @@ permalink: /en/apv/articles/relational-database/
 {:toc}
 
 In the [previous article](todo), I described different types of relational
-database systems.
+database systems. In this article I will concentrate on relational
+database systems (RDBS). More specifically a **SQL ACID OLTP row-storage relational**
+database system as this is a typical type of database system used in transactional
+applications.
 
-**SQL ACID relational OLTP row-storage**
-## Relational Database Systems (RDBS)
-- Typical and most common example of **ACID** database systems.
-- Data are modeled using relations (look like tables).
-- Quite old (around 1970).
-- Forms a basis for the SQL langauge.
-- Relational database system store **entities** / **records** / **rows**.
-</section>
+## Relational algebra
+Relational database systems are build on principles of 
+[relational algebra](https://en.wikipedia.org/wiki/Relational_algebra).
+Relational algebra is a field of mathematics which allows modeling structures of
+arbitrary data using **relations**. It is quite an old tool (roughly 1970),
+which means that it is very well understood. Relational algebra also defines
+the principles and basic properties of the SQL language, which I will describe 
+in the [next article](todo).
 
-<section markdown='1'>
-## Relation -- Definition
-- Relation -- **Set** of [**tuples**](https://en.wikipedia.org/wiki/Tuple).
-- **Tuple** is a set of **attributes** (a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, ..., a<sub>k</sub>).
-- Attribute has a **name**, **value** and **domain**. 
-- a<sub>n</sub> -- **value** of the n-th attribute in the tuple, a<sub>i</sub> in D<sub>i</sub>.
-- D<sub>n</sub> -- **domain** of the n-th attribute (a set of values allowed for 
-the attribute).
-- a<sub>n</sub> -- **name** of the n-th attribute.
-- `PERSON(ID: INTEGER, AGE: AGE_INTEGER, NAME: STRING)`
-- Do not confuse *Relations* with *relationships*!
-</section>
+**Relation** is 
+[**Set**](https://en.wikipedia.org/wiki/Set_(mathematics)) of [**tuples**](https://en.wikipedia.org/wiki/Tuple). 
+**Tuple** is a list of **attributes** (a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, ..., a<sub>k</sub>).
+Each attribute has a **name**, **value** and **domain**. 
+a<sub>n</sub> marks the **value** of the n-th attribute in the tuple, a<sub>i</sub> in D<sub>i</sub>.
 
-<section markdown='1'>
-## Relation
-- Relations are usually written down using tables.
-- Relational schema -- names and headers of tables; 
-    - definition of tables form (not data).
-- Attribute -- table column.
-- Relation element (tuple) -- table row.
-- Name of attribute -- name of table column.
-- Attribute domain -- data type of the table column.
-- In practice, the terms: relation, schema, tables are used interchangeably.
-    - They do not mean the same however! 
-</section>
+For example: A relation `person` is a set of tuples with three attributes with the 
+following names: `id`, `first_name`, `last_name`, `age`.
+The relation contains the items with the following attribute values:
 
-<section markdown='1'>
+- id, first\_name, last\_name, age
+- 1, John, Doe, 42
+- 2, Jenny, Doe, 24
+
+The **domain** (D<sub>n</sub>) of the of the n-th attribute represents a set of values allowed for
+that attribute. This is like data type but narrower. For example the domains for the attributes can be
+
+- id -- INTEGER
+- first_name -- STRING
+- last_name -- STRING
+- age -- AGE_INTEGER 
+
+While AGE_INTEGER is no valid data type, it would represent a domain with somewhat limited integer. 
+Valid integers for humans are age probably somewhere in the interval 1..130. Therefore attribute domain
+can be seen as data type with some additional constraints. The above relation would be formally written
+as `PERSON(ID: INTEGER, AGE: AGE_INTEGER, NAME: STRING)`.
+
+Once you know what relation is, you can start mentally working with data. Using the above `person` 
+relation you can describe some persons. Each person has the same attributes and therefore constitutes
+a [**record**](https://en.wikipedia.org/wiki/Record_(computer_science)) 
+(not *world record*, nor *sound*, but an *entry*). Each record represents some 
+[**entity**](https://en.wikipedia.org/wiki/Entity) in the
+real world (some existing person). Each record can be stored as a **row** in the table:
+
+| id | first_name | last_name |
+|----|------------|-----------|
+| 1  | John       | Doe       |
+| 2  | Jenny      | Doe       |
+
+This means that the **relational databases** typically are [row-oriented databases](todo) (but
+they don't have to be). It also means that the terms **row**, **entity**, **record** are 
+often used interchangeably because the ultimately refer to the same thing.
+
+As you can see right above, it is possible to write relations down using
+**tables**. This means that a:
+
+- *relation element (tuple)* becomes *table row*
+- *relation attribute* becomes *table column*
+- *name of attribute* becomes *name of table column*  
+- *attribute domain* becomes *column domain*
+
+The definitions of all relations (e.g. `PERSON(ID: INTEGER, AGE: AGE_INTEGER, NAME: STRING)`) used in a 
+single project are called **relational schema**.  The relational schema is therefore represented
+by the table headers of all used tables (plus the domains and some other things, which are not visible
+in the tables). In practice, the the terms **table** and **relation** (and **schema**) are used
+interchangeably. However they do not mean the same! It is particularly important to notice that 
+not every table is a relation. Apart from the obvious requirements (such as that the table must be
+orthogonal), an important distinction is that a relation is a set, which means that each of its elements (tuples) 
+must be unique. 
+
 ![Relation -- Table](/en/apv/slides/relational-database/relation.svg)
 
-</section>
+{: .note}
+Do not confuse *Relations* with *relationships*. Relation in relational database is a set of tuples.  
 
-<section markdown='1'>
 ## Relational algebra
-- description of data structure using algebra and logic
-- simple and proven approach
-- allows working with the data model before anything is implemented
-    - saves a lot of time
-- build upon set operation:
-    - product, union, intersection, difference
-- basis for the SQL language        
-</section>
+Relational algebra is a set of operations which can be performed on relations. Because relations 
+are sets, [standard set operations](https://en.wikipedia.org/wiki/Set_(mathematics)#Basic_operations)
+are included in it. Relational algebra allows you to create a model of your data and
+to work with that model before you actually implement the application. This is a good thing because
+it saves a lot of time spent in writing wrong application code. Relational algebra is the 
+basis of SQL language. SQL language offers much more features, but the core is relational algebra features.    
+The most important operations of relational algebra are:
 
-<section markdown='1'>
-## RA -- Operations
 - Standard *set operations*:
     - compatible attributes (columns):
         - union,
@@ -73,15 +106,20 @@ the attribute).
     - selection / restriction,
     - Θ-join (theta-join),
     - natural join.
-</section>
 
-<section markdown='1'>
-## RA -- Set Operations
-
+### Set Operations
+The following example shows two relations (R1 and R2) with attributed `color` and `style`. Then it 
+shows the results of the **union** (∪), difference (−) and intersection (∩) operations
+(these are standard set operations, so you should be somewhat familiar with them). 
+  
 <table>
-    {%include /en/apv/slides/relations.html %}
+    {%include /en/apv/articles/relations.html %}
     <tr>
         <td>R1&nbsp;∪&nbsp;R2</td>
+        <td>R1&nbsp;−&nbsp;R2</td>
+        <td>R1&nbsp;∩&nbsp;R2</td>
+    </tr>
+    <tr>
         <td>
             <table>
                 <tr>
@@ -106,7 +144,6 @@ the attribute).
                 </tr>
             </table>
         </td>
-        <td>R1&nbsp;−&nbsp;R2</td>
         <td>
             <table>
                 <tr>
@@ -123,19 +160,6 @@ the attribute).
                 </tr>
             </table>
         </td>
-    </tr>
-</table>
-
-</section>
-
-
-<section markdown='1'>
-## RA -- Set Operations
-
-<table>
-    {%include /en/apv/slides/relations.html %}
-    <tr>
-        <td>R1&nbsp;∩&nbsp;R2</td>
         <td>
             <table>
                 <tr>
@@ -149,70 +173,70 @@ the attribute).
             </table>
         </td>
         <td></td>
+        <td></td>        
+    </tr>
+</table>
+
+The Following example defines the same two relations (R1 and R2) with attributed `color` and `style`
+are shows the results of:
+
+- projection -- An operation of relational algebra, which allows to select only some 
+**attributes** of the relation. 
+- selection / restriction -- An operation of relational algebra, which allows to select
+only some **tuples** (records) of the relation. 
+ 
+<table>
+    {%include /en/apv/articles/relations.html %}
+    <tr>
+        <td>Projection: R1[Color]</td>
+        <td>Projection: R1[Color, Style]</td>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <th>Color</th>
+                </tr>
+                <tr>
+                    <td><span style='color:white'>white</span></td>
+                </tr>
+                <tr>
+                    <td><span style='color:green'>green</span></td>
+                </tr>
+                <tr>
+                    <td><span style='color:red'>red</span></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <th>Color</th>
+                    <th>Style</th>        
+                </tr>
+                <tr>
+                    <td><span style='color:white'>white</span></td>
+                    <td style='font-weight: bold'>bold</td>
+                </tr>
+                <tr>
+                    <td><span style='color:green'>green</span></td>
+                    <td style='font-style: italic'>italic</td>
+                </tr>
+                <tr>
+                    <td><span style='color:red'>red</span></td>
+                    <td style='text-decoration: underline'>underline</td>
+                </tr>
+            </table>
+        </td>
         <td></td>
     </tr>
-</table>
-</section>
-
-<section markdown='1'>
-## RA -- Projection
-<table>
-    {%include /en/apv/slides/relations.html %}
     <tr>
-        <td colspan='2'>R1[Color]</td>
-        <td colspan='2'>R1[Color, Style]</td>
+        <td>Selection: R1[(Color = white) ∨ (Color = red)]</td>
+        <td>Both: (R1[Color = green])[Style]</td>
+        <td></td>
     </tr>
     <tr>
-        <td colspan='2'>
-            <table>
-                <tr>
-                    <th>Color</th>
-                </tr>
-                <tr>
-                    <td><span style='color:white'>white</span></td>
-                </tr>
-                <tr>
-                    <td><span style='color:green'>green</span></td>
-                </tr>
-                <tr>
-                    <td><span style='color:red'>red</span></td>
-                </tr>
-            </table>
-        </td>
-        <td colspan='2'>
-            <table>
-                <tr>
-                    <th>Color</th>
-                    <th>Style</th>        
-                </tr>
-                <tr>
-                    <td><span style='color:white'>white</span></td>
-                    <td style='font-weight: bold'>bold</td>
-                </tr>
-                <tr>
-                    <td><span style='color:green'>green</span></td>
-                    <td style='font-style: italic'>italic</td>
-                </tr>
-                <tr>
-                    <td><span style='color:red'>red</span></td>
-                    <td style='text-decoration: underline'>underline</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-</section>
-
-<section markdown='1'>
-## RA -- Restriction / Selection
-<table>
-    {%include /en/apv/slides/relations.html %}
-    <tr>
-        <td colspan='2'>R1[(Color = white) ∨ (Color = red)]</td>
-        <td colspan='2'>(R1[Color = green])[Style]</td>
-    </tr>
-    <tr>
-        <td colspan='2'>
+        <td>
             <table>
                 <tr>
                     <th>Color</th>
@@ -228,7 +252,7 @@ the attribute).
                 </tr>
             </table>
         </td>
-        <td colspan='2'>
+        <td>
             <table>
                 <tr>
                     <th>Style</th>        
@@ -240,10 +264,27 @@ the attribute).
         </td>
     </tr>
 </table>
-</section>
 
-<section markdown='1'>
-<table style='margin-top:-35px'>
+In the last example I want to show you the Θ-join (theta-join) operation. It allows connecting two 
+different relations together, so relation R1 now has attributes `color1` and `style`, while 
+relation R2 has attributes `color2`, `size`, `font`. To connect two relations together, you must
+provide a condition on which the rows are assigned to each other. In the following example, the 
+condition is `color1 = color2` which means that output table will have:
+
+- **all columns** from both relations,
+- only the **combinations** of rows for which the condition is true.
+
+You may have also noticed that i skipped **cartesian product** operation. A cartesian product 
+of two sets is a set which contains all combinations of all elements from both sets 
+-- in case of relations it would contain:  
+
+- **all columns** from both relations,
+- **all combinations** of rows from both relations.
+
+As you can see, a *join is a subset of the cartesian product* of the the two joined sets.
+An example of joining relations R1 and R2:
+
+<table>
     <tr>
         <td>R1</td>
         <td>
@@ -342,231 +383,265 @@ the attribute).
         </td>
     </tr>
 </table>
-</section>
 
-<section markdown='1'>
+If you would like to implement the above join operation in procedural code (e.g. PHP), it would look something 
+like this:
+
+{% highlight php %}
+$result = [];
+foreach ($r1 as $row_r1) {
+    foreach ($r2 as $row_r2) {
+        if ($r1.color1 == $r2.color2) {
+            $result[] = [
+                $r1.color1,
+                $r1.style,
+                $r2.color2,
+                $r2.size,
+                $r2.font
+            ];
+        }
+    }
+}
+{% endhighlight %}
+
 ## Key
-- Relation is a **set** of tuples -- tuples must be **unique**.
-- **Key** is a minimal set of attributes which uniquely identify every entity (tuple) - e.g person:
-    - first name + last name + date of birth (compound key);
-    - SSN (social security number) (simple key);
-    - person number (simple key).
-    - How good are they?
-- In applications it is safest to use **artificial keys**:
-    - also called **dumb keys** -- have no meaning.
-- Key is the core *integrity constraint**.
-- **Weak entity** -- has only foreign key (e.g. `person-meeting`).    
-</section>
+Per the [relation definition](todo), it is a **set** of *tuples*. A set contains each element 
+at most once, so that means that the sets must be unique. And because it is impractical to
+rely on chance and luck, there must be a way to ensure uniqueness of each tuple -- **key**.
 
-<section markdown='1'>
-## Key cont.
-- There may be multiple keys in a table:
-    - PERSON(ID, SSN, FIRST_NAME, LAST_NAME, PASSPORT_NO, DATE_OF_BIRTH),
-    - ID,
-    - SSN,
-    - PASSPORT_NO,
-    - FIRST_NAME + LAST_NAME + DATE_OF_BIRTH,
-    - but not SSN + PASSPORT_NO!
-- One of the keys should be marked as **primary key**.
-- The selection of **primary key** is an **implementation detail**.
-    - It should be smallest and quickest for machines.
-</section>
+**Key** is a minimal set of attributes which uniquely identify every entity (tuple). A *minimal set*
+means the each relation attribute can be used at most once (quite logical, is it?) and that
+there should be no unnecessary attributes -- i.e. attributes which do not add anything to the 
+uniqueness of the key. Because the value of key is unique, it is **identifying** for each tuple.  
+For example person relation can have for example the following keys:
+    - last name (simple key),
+    - first name + last name (compound key),
+    - first name + last name + date of birth (compound key),
+    - SSN (social security number) (simple key),
+    - person number (simple key),
+    - passport number (simple key),
+    - and many others.
 
-<section markdown='1'>
+A compound key is a key composed of multiple columns. It then means that the identifier is a 
+**combination** of values of all the columns in the key and that combination (not the individual values)
+must be unique.
+
+Now if you think about the above keys, you're probably thinking that using only last_name as 
+and **identifier** is plain stupid, because there can be multiple persons with the same last name and 
+it is not at all unique. Yes, but the same applies to all other keys as well, although it is not
+that obvious. For example using passport number is only good as long as you are using it 
+within **a single country**, there is no guarantee that passport number is worldwide unique, so
+a `passport number + country` would be a better option. But then you run into another issues -- no one
+is required to have a passport, what is more there are quite a lot of people who have multiple 
+passports (each for different country). In the end, none of the mentioned keys is perfect, though some 
+of them are better and some are worse.
+
+The only perfect keys are those physically connected with the entity -- in case of persons it can be for
+example DNA or fingerprint. In case of artificial things it can be some number imprinted into the thing.
+
+However having those physical keys used in applications is often very impractical. Security concerns aside,
+if you would use your DNA to create an e-shop account and then you'd like to have another one for your
+company? How would you transfer an account to somebody else? 
+
+### Data Model
+Questions like these bring us to the whole concept of **data model**. Although I used it several times 
+in this article already, I haven't explained it yet. The single most important feature about any
+[model](https://en.wikipedia.org/wiki/Model) is that it is **simplified**. Therefore *data models* do 
+describe some data in a simplified (and generalized) way. This is incredibly important because the
+real world is infinitely complex, so you must simplify so that your applications are not 
+infinitely complex too. There is a whole other [article article about data modelling](todo), but
+for it is important for you to understand that the data model (including the relations, and their keys)
+should only be as good as **necessary**.
+
+In other words, if you are making an address book applications, you need a key to distinguish (identify)
+the persons in the address book (so a nickname is pretty good identifier). If you are making an e-shop, 
+than you only need to distinguish the accounts of the e-shop (so an email is pretty good identifier). 
+Therefore you really ought to name the entity properly -- `account`. While this (hopefully) sounds natural
+now, it is very important to understand the consequences of choosing a key.
+
+### Key Types
+You have already seen that keys can be **simple** (one column) or **compound** (multiple columns).
+In application development everyone prefers simple keys, because for compound keys, you must 
+always use all parts of the key (because the parts themselves are not identifying) and that is 
+a lot of extra typing.  
+
+Because of all the trouble with keys, it is safest to use **artificial keys** in application
+development. It is still important to define the natural keys as well, because the user works 
+with them. But your application should have its own simple key to identify records. This is usually
+a number assigned to each record when it is created. Artificial keys are sometimes called 
+*dumb keys* because they have no meaning (no relationship to the actual data). 
+
+Artificial keys should never be displayed to
+the end-user, because then they start being natural (as is the case with passport number, SSN, license
+plate, and many other originally artificial identifiers). There are some exceptions to this rule.
+A notable exception are things which are supposed to be anonymous, e.g. results of anonymous 
+questionnaire. To identify each response you need to generate a key for it and make that key
+available to the end-user, because there is by design no natural way to identify that response.
+
+A relation can contain as many keys as you want. Typically a table has at least two keys --
+one artificial for the need of the application and one natural for the needs of the user.
+For example a relation `USER(id, login, password, email, first_name, last_name)` can have
+keys on columns `id`, `login` and `email`. This means that:
+
+- The application can reliably reference the user by `id` (which will never change).
+- The end-user can change his login or email (and it won't break anything, because the 
+application does not rely on it).
+- The end-user is identified by his username to other users of the application 
+(he can keep his email private).
+- The end-user may login to the the application by providing either his `email` 
+or `username` (both are identifying).
+
+The above relation should however never contain a compound key on columns
+`email` and `first_name` because if the email is unique, the `first_name`
+does not add any new information to it. Such key would not be a *minimal set* 
+of attributes.  
+
+If a table has multiple keys (which is common) one of the keys should be marked
+as **primary key**. This has nothing to do with relational algebra, but all
+relational databases use it to internally organize the stored data. The choice 
+of primary key is an implementation detail which allows the database server
+to optimize data storage and access. Usually the automatically generated key
+(a sequence of integers) is used. 
+
+Apart from *primary key* relational database systems allow you to define 
+a **unique key**. There is a great deal of confusion about this, because 
+*unique key* is a [pleonasm](https://en.wikipedia.org/wiki/Pleonasm), because
+every key is unique. In fact the *unique key* is simply any other key
+than the primary one, so it is a normal key.
+
+### Generating Key
+Values of artificial keys have to be generated when a row is inserted into a 
+relation (table). The simplest solution is to use **auto increment** or
+]**sequence**](todo) (which very similar, but still slightly different approaches to
+the same thing) to generate a progression of integers usually starting from 1.
+This approach is also used in the our [example database](todo) because it is a typical
+approach to obtain simple artificial identifier (**ID**). Keep in mind that it is not at all important
+if the sequence of numbers is continuos or has gaps, it is also not important how large
+the ID numbers are. The only important property is that they **mustn't repeat**.
+
+Another approach is to use GUIDs. A 
+[GUID (Globally Unique Identifier)](https://en.wikipedia.org/wiki/Globally_unique_identifier) is 
+usually an identifier randomly generated using a sophisticated algorithm which makes
+sure that there is very low chance that two same numbers will be generated at the same time.
+GUID is used in applications where it is impossible to use one central authority to generate
+the simple sequence of numbers. This approach is used in large distributed systems or in 
+cases where part of the table cannot be always connected to another part. E.g. assume you
+have two physical tables which represent a single relation. When you want to insert data
+into that relation you cannot reliably create a sequence of numbers -- you can check the
+other table for the largest number (if possible), but by the time you receive the response from 
+the remote system, the number could have already changed. There is an extended example
+in [separate article about keys](todo).
+
 ## Foreign Key
-- Represents **relationships** between **relations** (entities).
-- Foreign key is **referential integrity constraint**.
-- Attribute of one relation (R2) on which a Foreign Key is defined must have either:
-    - A value of an attribute of another relation (R1) (preferably key)
-    - Empty value (NULL)
-- R1 -- master / parent relation
-- R2 -- detail / dependent relation
-</section>
+Foreign key is quite special, it represents **relationships** between **entities** 
+(relations). Foreign key represents a **referential integrity constraint**. So far 
+I have only briefly mentioned that a data model can contain multiple relations. If
+it does (which is almost always), there needs to be a way to define that some
+relations are linked together. 
 
-<section markdown='1'>
-## Foreign Key -- Example
-- `CONTACTS(ID_CONTACT, ID_PERSON, ID_CONTACT_TYPE, CONTACT)`
-- There are foreign keys on ID_PERSON and ID_CONTACT_TYPE columns:
-    - `FOREIGN KEY (id_contact_type) REFERENCES contact_type(id_contact_type)`
-    - `FOREIGN KEY (id_person) REFERENCES person(id_person)`
-- Master table is `person` and `contact_type`.     
-</section>
+To define a foreign key an attribute of one relation (R2) on which the foreign Key is 
+defined must have either:
+    - a value of an attribute of another relation (R1) (preferably key),
+    - empty value (`NULL`).
 
-<section markdown='1'>
+Relation R1 is then called **master** (**parent**) relation and 
+R2 is called **detail** (**dependent**) relation. Notice that the referenced relation (R1)
+is master. This is because the *origin* of the key is there. Notice that
+there is a condition hidden in the foreign key definition above: If an attribute
+value of a record in one relation is the same as an attribute value of a record
+ in anther relation, those two records are related. Can you remember where 
+ a similar condition was used?
+
+{: .solution}
+It is the condition as in [*join*](todo). Foreign keys are very often used as 
+join conditions. 
+
+For example in the [example database](todo), there are relations `person` and
+`contact`. `contact` contains individual values for different persons (email address, 
+phone number, etc.), these must be assigned to some person to make sense.
+Therefore the `contact` relation has the attribute `id_person` which is a *reference*
+to the `id_person` column in the `person` table. The `person` table is the master table
+and the `contact` relation is the detail table (provides contact details to persons).
+
+All foreign keys in the relation `CONTACTS(ID_CONTACT, ID_PERSON, ID_CONTACT_TYPE, CONTACT)` are:
+
+- `FOREIGN KEY (id_contact_type) REFERENCES contact_type(id_contact_type)` on `id_contact_type` 
+column, master table is `contact_type`.
+- `FOREIGN KEY (id_person) REFERENCES person(id_person)` on `id_person` column, master
+table is `person`.
+
+It is possible to have an entity (relation) which has only foreign keys and has 
+no own keys. Such entity is called **Weak entity**. In the [example database](todo) is is 
+the `person-meeting` entity. The `person-meeting` entity represents an attendance of 
+person on a meeting (why this is a separate table is describe in [article about 
+database design](todo)). The identifier of the attendance is the combination of 
+meeting (`id_meeting`) and person (`id_person`) which must be unique (no person can
+attend the same meeting twice). So this is the primary (and only) key of the relation. 
+Because it is composed of only foreign keys, the entity is weak. This somewhat corresponds
+to that you would not probably intuitively consider an *attendance* as an entity. 
+
 ## SQL Language
-- SQL is **programming language** which can be used to communicate
-with (relational) database system.
-- SQL is based on relational algebra, but has many extensions.
-- SQL is most often used to:
+SQL is a **programming language** which is used to communicate with (relational) 
+database systems. SQL is most often used to:
+
     - Query the state of database (aka retrieve data);
     - Send requests for database state change (aka modify data);
     - Define database schema (aka create tables).
-</section>
 
-<section markdown='1'>
-## SQL Requirements / Properties
-- Data are stored in form of tables (which should be relations).
-- Sender (= application) does not care about the physical data storage.
-- Order of anything is not guaranteed or assumed:
-    - columns are identified by name,
-    - rows are identified by key.
-- Declarative language:
-    - Define **What** should be done, not **how**.
-    - No assignment, conditions, loops.
-    - SQL interpreter generates and executed the procedure.
-</section>
+SQL is a declarative language, this means that you define **What** should be 
+done, not **how**. It means that it has no such things as assignment, condition or 
+loop, which you probably seen in together programing languages. Also, in SQL the 
+source code is split into **SQL queries**. Each query represents a single 
+action (get data, update data, etc.) you want to execute on the database server.
 
-<section markdown='1'>
-## SQL Language
-- First prototype: **Sequel** (1974)
-- Old, but actively developed language:
-    - ISO & ANSI standards: 1986--2011,
-    - 8 versions so far.
-- The standard deals with the interpreter, it is not really good place to learn SQL.
-- Real-world implementations are behind:
-    - SQL-92 is available almost everywhere,
-    - SQL-1999 is available in top vendors.
-- A lot of dialects and derivatives.    
-</section>
+The database server contains an interpreter of the SQL language, which 
+converts the SQL queries to procedural code and executes them. This has 
+the advantage that the sender (= your application) does not care how the data 
+are physically stored and organized. The advantage is that it makes working
+with database much simpler as you don't need to worry about many of the
+implementation details. The disadvantage of this you cannot rely on 
+the implementation details. For example the order of columns or rows 
+in database is not guaranteed and can change even between individual queries. 
 
-<section markdown='1'>
-## SQL Language -- naming conventions
-- **Database objects** -- tables, columns, keys.
-- Anything is allowed in name, but must be quoted (`"`).
-- To avoid quotes (across different vendors):
-    - use no special characters (allowed: `a-z`, `0-9`, `_`),
-    - use underscores for delimiters (`id_person`),
-    - use either all lower-case or all upper-case,
-    - keep it reasonably short (less than approx 30 characters).
-- Try to avoid langauge keywords (SQL has many of them). 
-</section>
-
-<section markdown='1'>
-## General naming conventions
-- Think twice about each name.
-- The name should be as specific as possible.
-    - What does `item` represent?
-    - Would `product` be better?
-- Use no abbreviations (except for `id`).
-    - If you must, use known abbreviations.
-    - What does `prsn_fn` mean?    
-- Avoid repetition:
-    - e.g. column `person_name` in table `persons`;
-    - except for columns with keys (`id_person`).
-</section>
-
-<section markdown='1'>
-## SQL -- Introduction
-- Forget procedural programming, SQL is something completely different.
-- Using SQL, you define **what** should be done.
-    - This is surprisingly more difficult then defining **how** something should be done.
-- Nested database objects are accessed with `.` convention:
-    - `schema.table.column`,
-    - e.g. `my_project.persons.id_person`
-    - Schema rarely changes during application run, so it is omitted.
-    - Omitting table name is discouraged except for very single queries.
-</section>
-
-<section markdown='1'>
-## SQL -- Data types
-- Each database system has different data types, but there are some common:
-    - character / character varying / varchar -- a string limited by some length,
-    - text / longtext / (whatever)text -- a string virtually unlimited (cell size over 1GB),
-    - number / numeric / decimal -- a decimal number with some range (digits, todo),
-    - int / integer -- a whole number,
-    - datetime / timestamp -- a time value.
-</section>
-
-<section markdown='1'>
-## SQL -- Syntax Conventions
-- Functions and keywords are written in UPPERCASE.
-- *Italics* mark placeholder:
-    - `DELETE FROM *table*`
-- `[ ]` -- optional part.
-- `{ }` -- set of elements.
-- `|` -- exclusive selection.
-</section>
-
-<section markdown='1'>
-## SQL -- Syntax Conventions Examples
-- `[ LEFT | RIGHT ] JOIN` represents:
-    - `LEFT JOIN`
-    - `RIGHT JOIN`
-    - `JOIN`
-- `a { = | < | > } b` represents:
-    - `a = b`
-    - `a < b`
-    - `a > b`
-</section>
-
-<section markdown='1'>
-## SQL Commands
-- Define structure of data (database schema) -- DDL (data definition language):
-    - `CREATE (SCHEMA | TABLE | COLUMN | INDEX )`
-    - `ALTER (SCHEMA | TABLE | COLUMN | INDEX )`
-    - `DROP (SCHEMA | TABLE | COLUMN | INDEX )`
-- Manipulate with data -- DML (data manipulation language):
-    - `INSERT`, `SELECT`, `UPDATE`, `DELETE`
-- In certain areas, there can be considerable differences between different database servers!
-</section>
-
-<section markdown='1'>
-## SQL Commands and Tables
-- SQL command results are:
-    - `SELECT` command returns results in a table,
-    - other commands return only true/false.
-- Tables can be:
-    - physical -- defined in database schema
-    - virtual:
-        - persistent -- **views** (external schema)
-        - volatile -- result of a `SELECT` query
-</section>
-        
-<section markdown='1'>
-## Database Views
-- View is a database object which looks like a table.
-- View is defined by a `SELECT` query.
-- View is usually only for reading and does not contain the actual copy of the data.
-    - I.e. it is updated as the underlying tables (used in the defining query) are updated.
-- View (or any `SELECT` query) does not have to be a relation!
-- Views are used:
-    - for same reasons as functions in procedural programming,
-    - to define user sections of the database schema. 
-</section>
-
-<section markdown='1'>
-## Checkpoint
-- Why you shouldn't display the value of dumb (artificial) key to end-user?
-- If one relation has X rows and another relation has Y rows, how many rows can have a theta-join of those relations?
-- And how about an intersection?
-- Does every relation need to have a key?
-- How about a table?
-- What is difference between a relation and a (database) table?
-- What is dot `.` used for in SQL?
-- Must every relation have a foreign key?
-- Is is possible to write union in SQL language? 
-</section>
-
-
-In thi
-
-slajdy z relational-database a 05-sql-join.pptx
+SQL is quite an old language, it is based on the prototype **Sequel** language (1974). 
+It was first (ISO & ANSI) standardized in 1986 and it is still actively developed
+(last standard version is from 2011). The database server implementations are
+quite behind the standards so currently most database servers support 
+SQL-92 or SQL-1999 versions. SQL has a lot of dialects and derivatives so
+each database vendor offers features not supported somewhere else. There is a lot 
+of confusion about this and there are migration tools which allow you to
+move your application from one database vendor to another database vendor.
 
 ## Summary
-In this article, you learned the basic concepts required for working with data. Also you should
-know why databases are bei
-
-Podmínka WHERE je sice nepovinná, ale nejčastěji se aktualizace aplikuje s podmínkou WHERE, která obsahuje konkrétní hodnotu klíče, neboli nejčastěji se aktualizuje jeden záznam v tabulce. Hromadné aktualizace jsou sice možné, ale poměrně vzácné. Z toho vyplývá obrovská výhoda umělých (dumb) klíčů – zjednodušují práci s aktualizačními dotazy, protože u složených klíčů se neustále musí uvádět všechny složky klíče (složený klíč identifikuje každou kombinaci složek jako unikátní). Proto se tedy v tabulkách obvykle používají alespoň dva klíče – jeden je jednoduchý a umělý pro vnitřní potřebu aplikace, druhý je obvykle složený (vychází z reality) a je pro potřebu uživatele. 
-
-Název tabulky je vhodné psát vždy když se v části FROM vyskytuje více tabulek. A to i tehdy pokud to není vysloveně nutné (tabulky nemají shodné sloupce). Pokud jsou totiž názvy tabulek uvedeny, tak je SQL dotaz odolný vůči změnám v DB, tedy pokud se přidá do nějaké tabulky sloupec, jehož název je náhodou stejný jako název sloupce v jiné tabulce, pak výsledek SQL dotazu nezmění. Pokud by však názvy tabulek nebyly uvedeny, mohlo by se stát, že najednou začne vracet obsah jiné tabulky (té, ve které byl vytvořen nový sloupec). Jinými slovy, uvedením tabulky zjednodušujete údržbu aplikace, protože při změnách v aplikaci se toho míň pokazí.
-
-Obecně je opět výhodnější vybírat jen ty sloupce, které jsou v aplikaci potřeba a vyhnout se používání *. V případě SELECTu sice obvykle nemůže dojít k funkčním problémům, ale může dojít k výkonovým problémům. Pokud by se například do tabulky osob přidalo pole s fotkou osoby, tak by každý dotaz, který pracuje s osobami a který používá * místo seznamu sloupců z databáze přenesl (zbytečně) několik MB fotek. 
-Výsledek dotazu, který vybere všechna místa na kterých se koná nějaká schůzka je tabulka, ale není relace. Protože definice relace říká, že relace je množina tak to znamená, že relace nesmí obsahovat stejné prvky. Výsledek dotazu 'SELECT misto FROM schuzky;' by tedy nemělo být možné uložit do databáze (nelze z něj vytvořit relaci s klíčem), je však možné z něj vytvořit pohled. Naproti tomu výsledkem posledního dotazu je relace, protože neobsahuje duplicitní řádky.
-Klíčové slovo ALL znamená, že do řádku jsou zahrnuty i duplicity, což je výchozí stav, není tedy nutné jej uvádět. Smysl to může mít v rámci dokumentace kódu pro zdůraznění toho, že zpracování aplikace trvá na tom, aby ve výsledku duplicity byly.
-
-Pro spojování tabulek je obecně možné použít dva přístupy (nebo jejich kombinaci) jednak je to operátor JOIN a jednak je to vnořený dotaz. Vnořený dotaz (poddotaz) je možné používat protože výsledkem dotazu je tabulka a v části FROM v SELECT dotazu se očekává také tabulka. Definice struktury SELECTu tedy je rekurzivní a rekurzi dobře podporuje.
+In this article I have described the principles of relational algebra. There 
+is much more to it -- there are other operations then the ones i described, 
+there are mathematical proofs that it is working, etc. Relational algebra is 
+something which you don't really need when creating a database application.
+But the core principles of the SQL language are relational operations and that is
+one of the reasons I wrote this article -- if you understand the principles,
+you can use any relational database server with just a few looks in the manual. 
 
 ### New Concepts and Terms
--
--
-
+- relation
+- tuple
+- set 
+- attribute
+- table
+- domain
+- relational algebra
+- union
+- difference
+- intersection 
+- cartesian product
+- projection
+- selection / restriction
+- join
+- simple key
+- compound key
+- data model
+- artificial key
+- auto-generated key
+- primary key
+- foreign key
+- master -- detail
+- SQL language

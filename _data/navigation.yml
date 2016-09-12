@@ -43,13 +43,13 @@ items:
                 title: Database Backend
 
               - url: /en/apv/walkthrough/backend-select/
-                title: Database -- Selecting and filtering
+                title: Database – Selecting and filtering
 
               - url: /en/apv/walkthrough/backend-insert/
-                title: Database -- Inserting
+                title: Database – Inserting
 
               - url: /en/apv/walkthrough/backend-update/
-                title: Database -- Updating
+                title: Database – Updating
 
           - url: /en/apv/articles/
             title: Articles
@@ -63,6 +63,12 @@ items:
               - url: /en/apv/articles/html/
                 title: HTML
 
+              - url: /en/apv/articles/database/
+                title: Database Systems
+
+              - url: /en/apv/articles/sql/
+                title: SQL Language
+
           - url: /en/apv/slides/
             title: Slides
             items:
@@ -71,3 +77,12 @@ items:
 
               - url: /en/apv/slides/html/
                 title: Web Standards
+
+              - url: /en/apv/slides/database-systems/
+                title: Database Systems
+
+              - url: /en/apv/slides/relational-database/
+                title: Relational Databases
+
+              - url: /en/apv/slides/sql-join/
+                title: SQL Join
