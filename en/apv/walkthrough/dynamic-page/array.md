@@ -13,7 +13,7 @@ In PHP, this is simplified as there are only arrays.
 An array is a collection of elements, each element has a value and an **index** (or **key**) through which it
 is accessed in the array. This means that **keys must by unique**. Because PHP is dynamically
 typed language, each value and key can
-be of different type. There are two types of arrays:
+be of different type. There are two types of arrays in PHP:
 
 - **ordinal** (indexes are e.g. integers)
 - non-ordinal -- **associative** (indexes are e.g. strings)
@@ -35,13 +35,16 @@ In this case, the indexes are generated automatically starting with zero.
 {% include /en/apv/walkthrough/dynamic-page/array-1.php %}
 {% endhighlight %}
 
+Sometimes you may encounter older PHP syntax which did not use square brackets ``$flinstones = array("Fred", "...");``.
+
 Alternative definition -- item by item:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/array-1a.php %}
 {% endhighlight %}
 
-You can combine both ap[roaches freely. Both of them will print:
+Empty square brackets mean that the value will be assigned as last element of that array.
+You can combine both approaches freely. Both of them will print:
 
     Array ( [0] => Fred [1] => Wilma [2] => Pebbles )
 
@@ -121,6 +124,17 @@ then use the second index `child` to access the value in the `flintstones` array
 When defining an array, you may use implicit array keys and write `$array[] = 'value'`, but when
 reading a value from array, the must **always** be used. Writing `echo $array[]` is not allowed.
 
+### Removing elements from array
+Sometimes you may wish to remove an element. This can be done using ``unset()`` function:
+
+{% highlight php %}
+{% include /en/apv/walkthrough/dynamic-page/array-2c.php %}
+{% endhighlight %}
+
+This operation is not very common because PHP scripts are executed for a very short time (just to
+produce HTML page for browser) and then the memory used by the script is cleared automatically.
+We usually want just to print a snapshot of a database state during that short period. 
+
 ### Traversing Arrays
 When you need to traverse the entire array, you need a loop. As mentioned above `for` loop can be
 used only with ordinal arrays, `foreach` loop can be used with any type of array.
@@ -197,7 +211,7 @@ This is how the form should look like for user John Doe:
 
 This is how the form should look like for unknown user:
 
-![Screenshot -- Form for logged user](/en/apv/walkthrough/dynamic-page/form-5a.png)
+![Screenshot -- Form for logged user](/en/apv/walkthrough/dynamic-page/form-5b.png)
 
 {: .solution}
 {% highlight php %}
@@ -228,7 +242,9 @@ $currentUser = [
 
 
 ## Summary
-You should now be able to work with arrays. This means you should be able to define an array ()
+You should now be able to work with arrays. This means you should be able to define
+an array, add elements and print them. Arrays are very important because results 
+of database querries are stored in them. This means that we will work with them a lot.  
 
 ### New Concepts and Terms
 - Conditionals -- if, else, ifelse, switch, case
