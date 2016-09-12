@@ -1,7 +1,7 @@
 ---
 layout: slides
 title: SQL Basics
-description: Introduction to SQL, Joining tables in database. 
+description: Introduction to SQL, Joining tables in database.
 theme: black
 transition: slide
 permalink: /en/apv/slides/sql-join/
@@ -15,7 +15,7 @@ permalink: /en/apv/slides/sql-join/
     - Syntax is fairly complicated and highly dependent on the specific database system.
     - Check the manual for details.
     - No need to learn this thing!
-- Proper tools are able to generate the `CREATE` commands from visual database design.     
+- Proper tools are able to generate the `CREATE` commands from visual database design.
 </section>
 
 <section markdown='1'>
@@ -26,26 +26,26 @@ permalink: /en/apv/slides/sql-join/
 
 <section markdown='1'>
 ## Insert data
-- SQL command INSERT INTO [ (*column_list*) ] VALUES (*value_list*) 
+- SQL command INSERT INTO [ (*column_list*) ] VALUES (*value_list*)
 - `INSERT INTO persons (first_name, last_name, nickname) VALUES ('John', 'Doe', 'Johnny')`
 - Columns not listed are inserted with default values (usually `NULL`).
 - If default value is `NULL`, and the column is `NOT NULL` then a value must be provided.
 - In application code, all columns should be listed.
-- Automatically generated primary key (auto_increment, serial) is almost never inserted. 
+- Automatically generated primary key (auto_increment, serial) is almost never inserted.
 </section>
 
 <section markdown='1'>
 ## Insert -- examples
 {% highlight sql %}
-INSERT INTO person (id_person, first_name, 
-    last_name, nickname, birth_day, gender, 
-    height, id_location) 
-VALUES (DEFAULT, 'John', 'Doe', 'Johnny', 
+INSERT INTO person (id_person, first_name,
+    last_name, nickname, birth_day, gender,
+    height, id_location)
+VALUES (DEFAULT, 'John', 'Doe', 'Johnny',
     NULL, 'male', DEFAULT, NULL)
 {% endhighlight %}
 
 {% highlight sql %}
-INSERT INTO person 
+INSERT INTO person
 VALUES (DEFAULT, 'John', 'Doe', 'Johnny')
 {% endhighlight %}
 </section>
@@ -56,16 +56,16 @@ VALUES (DEFAULT, 'John', 'Doe', 'Johnny')
 - Insert date -- PostgreSQL (first) vs. MySQL (second):
 
 {% highlight sql %}
-INSERT INTO person (first_name, last_name, 
-    nickname, birth_day) 
-VALUES ('John', 'Doe', 'Johnny', 
+INSERT INTO person (first_name, last_name,
+    nickname, birth_day)
+VALUES ('John', 'Doe', 'Johnny',
     TO_TIMESTAMP('5.1.1984', 'DD.MM.YYYY'))
 {% endhighlight %}
 
 {% highlight sql %}
-INSERT INTO person (first_name, last_name, 
-    nickname, birth_day) 
-VALUES ('John', 'Doe', 'Johnny', 
+INSERT INTO person (first_name, last_name,
+    nickname, birth_day)
+VALUES ('John', 'Doe', 'Johnny',
     STR_TO_DATE('5.1.1984', '%d.%m.%Y'))
 {% endhighlight %}
 </section>
@@ -78,25 +78,25 @@ VALUES ('John', 'Doe', 'Johnny',
     - `UPDATE person SET birth_day=NULL`
 - `WHERE` condition usually contains key.
     - If compound, then all parts must be provided!
-- To remove a value set it to `NULL`.    
+- To remove a value set it to `NULL`.
 </section>
 
 <section markdown='1'>
 ## Update Examples
 {% highlight sql %}
-UPDATE person SET nickname = 'EthyHethy' 
+UPDATE person SET nickname = 'EthyHethy'
 WHERE id_person = '1'
 {% endhighlight %}
 
 {% highlight sql %}
-UPDATE person SET nickname = 'EthyHethy' 
-WHERE first_name = 'Ethyl' 
+UPDATE person SET nickname = 'EthyHethy'
+WHERE first_name = 'Ethyl'
     AND last_name = 'Herren' AND nickname='Ethy'
 {% endhighlight %}
 </section>
 
 <section markdown='1'>
-## Deleting Data 
+## Deleting Data
 - SQL command `DELETE FROM *table* WHERE *search_condition*`
 - `DELETE FROM persons WHERE id_person = 42`
 - If the search condition is missing, **all rows in the table will be deleted**.
@@ -122,11 +122,11 @@ WHERE first_name = 'Ethyl'
 
 {: .highlight}
 <pre>
-SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ... 
-FROM <em>table_expression</em> 
-    [ WHERE <em>search_condition</em> ] 
-    [ GROUP BY <em>column_expression</em> [, ... ] ] 
-    [ HAVING <em>search_condition</em> ] 
+SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
+FROM <em>table_expression</em>
+    [ WHERE <em>search_condition</em> ]
+    [ GROUP BY <em>column_expression</em> [, ... ] ]
+    [ HAVING <em>search_condition</em> ]
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
@@ -140,7 +140,7 @@ FROM <em>table_expression</em>
     - sometimes a SQL query is also allowed.
 - `SELECT ... FROM` -- projection from relational algebra
 - `WHERE` -- restriction from relational algebra
-- `SELECT * FROM persons` -- all columns and all rows from table `persons` 
+- `SELECT * FROM persons` -- all columns and all rows from table `persons`
 - `SELECT id_person, first_name, last_name FROM persons WHERE height > 190`
 </section>
 
@@ -149,11 +149,11 @@ FROM <em>table_expression</em>
 
 {: .highlight}
 <pre>
-<strong>SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...</strong> 
-FROM <em>table_expression</em> 
-    [ WHERE <em>search_condition</em> ] 
-    [ GROUP BY <em>column_expression</em> [, ... ] ] 
-    [ HAVING <em>search_condition</em> ] 
+<strong>SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...</strong>
+FROM <em>table_expression</em>
+    [ WHERE <em>search_condition</em> ]
+    [ GROUP BY <em>column_expression</em> [, ... ] ]
+    [ HAVING <em>search_condition</em> ]
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
@@ -174,7 +174,6 @@ FROM ...
 ## SELECT -- Examples
 - Variants of the same query:
     - `SELECT meeting.id_meeting, meeting.start, meeting.description, meeting.duration, meeting.id_location FROM meeting`
-    - `SELECT id_meetings, start, description, duration, id_location FROM meeting`
     - `SELECT meeting.* FROM meeting`
     - `SELECT * FROM meeting`
 - Select all places where some meeting occurs:
@@ -189,11 +188,11 @@ FROM ...
 
 {: .highlight}
 <pre>
-SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ... 
-<strong>FROM <em>table_expression</em></strong> 
-    [ WHERE <em>search_condition</em> ] 
-    [ GROUP BY <em>column_expression</em> [, ... ] ] 
-    [ HAVING <em>search_condition</em> ] 
+SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
+<strong>FROM <em>table_expression</em></strong>
+    [ WHERE <em>search_condition</em> ]
+    [ GROUP BY <em>column_expression</em> [, ... ] ]
+    [ HAVING <em>search_condition</em> ]
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
@@ -216,11 +215,11 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 
 {: .highlight}
 <pre>
-... FROM 
-*table* [AS *alias*] 
-	[ LEFT | RIGHT | INNER ] JOIN 
-*table* [AS *alias*]
-	ON *join_condition* 
+... FROM
+<em>table</em> [AS <em>alias</em>]
+	[ LEFT | RIGHT | INNER ] JOIN
+<em>table</em> [AS <em>alias</em>]
+	ON <em>join_condition</em>
 [ WHERE ...
 </pre>
 
@@ -232,7 +231,7 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 
 <section markdown='1'>
 ## INNER JOIN Operator
-- It is possible to join tables with Cartesian Product, but `JOIN` is more flexible.
+- Can join with Cartesian Product, `JOIN` is more flexible.
 - `SELECT * FROM persons INNER JOIN contact ON persons.id_person = contact.id_person`
 - Selects rows from both tables which satisfy the join condition (1:1 or 1:1..N).
 - Selects all persons which have some contact.
@@ -248,7 +247,7 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
     - Selects **all rows from left** table and rows satisfying the condition from the right table (1:0..1 or 1:0..N).
     - Selects all persons and if the persons has contacts, lists the contacts too.
 - *SELECT * FROM person RIGHT JOIN contact ON person.id_person = contact.id_person*
-    - Selects **all rows from the right** table and rows satisfying the condition from the left table.      
+    - Selects **all rows from the right** table and rows satisfying the condition from the left table.
     - Selects all contacts and lists person with each contact (same as INNER JOIN in this case).
 </section>
 
@@ -265,11 +264,35 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 <section markdown='1'>
 ## JOIN Examples
 - Equivalent queries:
-    - `SELECT * FROM contact LEFT JOIN contact_type ON contact.id_contanct_type = contact_type.id_contact_type`
-    - `SELECT * FROM contact_type RIGHT JOIN contact ON contact.id_contanct_type = contact_type.id_contact_type`
+{% highlight sql %}
+SELECT * FROM
+    contact LEFT JOIN contact_type
+    ON contact.id_contact_type =
+        contact_type.id_contact_type
+{% endhighlight %}
+
+{% highlight sql %}
+SELECT * FROM
+    contact_type RIGHT JOIN contact
+    ON contact.id_contact_type =
+        contact_type.id_contact_type
+{% endhighlight %}
+
+</section>
+
+<section markdown='1'>
+## JOIN Examples
 - Equivalent queries:
-    - `SELECT * FROM contact INNER JOIN contact_type ON contact.id_contact_type = contact_type.id_contact_type`
-    - `SELECT * FROM contact NATURAL JOIN contact_type`
+{% highlight sql %}
+SELECT * FROM
+    contact INNER JOIN contact_type
+    ON contact.id_contact_type =
+        contact_type.id_contact_type
+{% endhighlight %}
+
+{% highlight sql %}
+SELECT * FROM contact NATURAL JOIN contact_type
+{% endhighlight %}
 </section>
 
 <section markdown='1'>
@@ -279,7 +302,7 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 - Join condition is usually equality between two columns.
     - One of them usually has foreign key.
 - Join condition can be more exotic (AND / OR, inequality)
-- Join connects tables -- relations, views, other joins, selects
+- Join connects tables -- relations, views, other joins, selects.
 </section>
 
 <section markdown='1'>
@@ -287,11 +310,11 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 
 {: .highlight}
 <pre>
-SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ... 
-FROM <em>table_expression</em> 
+SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
+FROM <em>table_expression</em>
     <strong>[ WHERE <em>search_condition</em> ]</strong>
-    [ GROUP BY <em>column_expression</em> [, ... ] ] 
-    [ HAVING <em>search_condition</em> ] 
+    [ GROUP BY <em>column_expression</em> [, ... ] ]
+    [ HAVING <em>search_condition</em> ]
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
@@ -303,9 +326,11 @@ FROM <em>table_expression</em>
 {: .highlight}
 <pre>
 WHERE  {
-<em>column_expression</em> [NOT] { = | <> | < | <= | > | >= } <em>column_expression</em> | 
+<em>column_expression</em>
+    [NOT] { = | <> | < | <= | > | >= } <em>column_expression</em> |
 	{ ALL | ANY | SOME } pod-dotaz |
-<em>column_expression</em> [NOT] IN ( { <em>set_of_values</em> | <em>sub-query</sub> } ) |
+<em>column_expression</em>
+    [NOT] IN ( { <em>set_of_values</em> | <em>sub-query</em> } ) |
 <em>column_expression</em> [NOT] LIKE <em>pattern</em> |
 	[ { AND | OR } …]
 </pre>
@@ -313,7 +338,7 @@ WHERE  {
 
 <section markdown='1'>
 ## WHERE Clause
-`LIKE` pattern can contain:
+- `LIKE` pattern can contain:
     - underscore `_` -- placeholder for a single character:
         - `'Ju_y'` matches 'July', 'Judy'
     - percent `%` -- placeholder for 0 or more characters:
@@ -323,9 +348,10 @@ WHERE  {
     - `WHERE first_name NOT LIKE 'J%'`
 
 {% highlight sql %}
-SELECT first_name, last_name FROM person 
-WHERE (first_name LIKE 'P%') OR (first_name LIKE 'L%')
-{% endhighlight %}     
+SELECT first_name, last_name FROM person
+WHERE (first_name LIKE 'P%')
+    OR (first_name LIKE 'L%')
+{% endhighlight %}
 </section>
 
 <section markdown='1'>
@@ -336,7 +362,7 @@ WHERE (first_name LIKE 'P%') OR (first_name LIKE 'L%')
 - In either case it shouldn't have duplicates.
 
 {% highlight sql %}
-SELECT first_name, last_name FROM person 
+SELECT first_name, last_name FROM person
 WHERE first_name IN ('Judy', 'July')
 {% endhighlight %}
 </section>
@@ -344,7 +370,7 @@ WHERE first_name IN ('Judy', 'July')
 <section markdown='1'>
 ## IN Operator
 {% highlight sql %}
-SELECT first_name, last_name FROM person 
+SELECT first_name, last_name FROM person
 WHERE id_location IN (
     SELECT id_location FROM location
     WHERE country = 'United Kingdom'
@@ -357,25 +383,27 @@ WHERE id_location IN (
 
 {: .highlight}
 <pre>
-SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ... 
-FROM <em>table_expression</em> 
+SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
+FROM <em>table_expression</em>
     [ WHERE <em>search_condition</em> ]
-    [ GROUP BY <em>column_expression</em> [, ... ] ] 
-    [ HAVING <em>search_condition</em> ] 
+    [ GROUP BY <em>column_expression</em> [, ... ] ]
+    [ HAVING <em>search_condition</em> ]
     <strong>[ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]</strong>
 </pre>
 </section>
 
 <section markdown='1'>
+## ORDER BY Clause
+
 - Ordering can be done by multiple criteria, modifiers apply to each criteria:
-    - `ASC` -- ascending (A-Z, oldest-newest) -- default ordering, 
+    - `ASC` -- ascending (A-Z, oldest-newest) -- default ordering,
     - `DESC` -- descending (Z-A, newest-oldest).
 
 {% highlight sql %}
 SELECT * FROM person
 ORDER BY last_name DESC, nickname DESC
-{% endhighlight %} 
+{% endhighlight %}
 </section>
 
 <section markdown='1'>
