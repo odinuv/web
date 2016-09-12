@@ -17,11 +17,11 @@ code get executed. Important control flow constructs:
 In PHP conditional statements are written using **if** -- **else** [reserved words](todo).
 
 {% highlight php %}
-{% include /en/apv/walkthrough/dynamic-page/ifelse-2.php %}
+{% include /en/apv/walkthrough/dynamic-page/ifelse-1.php %}
 {% endhighlight %}
 
-The condition itself always must always be in parentheses. Multiple conditions
-can be join using [boolean operators](todo) `&&` and `||` (there are
+The condition itself must always be in parentheses. Multiple conditions
+can be joined using [boolean operators](todo) `&&` and `||` (there are
 [other confusing boolean operators](todo) in PHP), negation is
 written using `!`.
 
@@ -36,7 +36,7 @@ You can write either `elseif` or `else if`, there is no difference.
 The above example can be rewritten using `switch` -- `case` statements:
 
 {% highlight php %}
-{% include /en/apv/walkthrough/dynamic-page/ifelse-2.php %}
+{% include /en/apv/walkthrough/dynamic-page/ifelse-3.php %}
 {% endhighlight %}
 
 Note that it is important to put `break` in each branch, which terminates the
@@ -58,7 +58,7 @@ The condition will **always be true** (regardless of the actual value of $number
 This is because the value of assignment is the assigned value, so the condition
 (after evaluating the part in parentheses) will be `if (4) {`. Now the [boolean type conversion](todo)
 kicks in and converts `4` to boolean, and according to the [rules](todo) `4` is not false, so it is true.
-That's unexpected and somewhat dangerous, good [development tools] will warn you about this.
+That's unexpected and somewhat dangerous, good [development tools](todo) will warn you about this.
 
 Sometimes this is prevented by writing conditions in reverse order `if (4 == $numberOfWheels)`. Because in
 this case, using a single `=` -- `if (4 = $numberOfWheels)` will cause compilation error (you cannot assign

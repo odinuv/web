@@ -92,7 +92,7 @@ actually clicked will be send by the browser. Buttons are used without the `labe
 ### Basic Text Input
 As shown above, the text input is created by specifying `type='text'` attribute. Use the
 text input for input of an arbitrary text. Name of the
-form control is defined by the `name` attribute. The input element has not content, so there
+form control is defined by the `name` attribute. The input element has no content, so there
 is no end tag for `input` element. Other useful attributes are:
 
 - `value` -- for providing default value of the input
@@ -241,7 +241,7 @@ Now try to create the following form. I used a [list](todo) for arranging the
 form controls in rows. Also make sure to verify the form by using
 `<form method='post' action='todo'>` and submitting the form.
 
-![Screenshot - Form](/en/apv/walkthrough/html-forms/form-1.png)
+![Screenshot - Form](/en/apv/walkthrough/html-forms/form-2.png)
 
 {: .solution}
 {% highlight html %}
@@ -253,7 +253,7 @@ Now try to create the following form. Here I used a [table](todo) for arranging 
 form controls in rows. Also make sure to verify the form by using
 `<form method='post' action='todo'>` and submitting the form.
 
-![Screenshot - Form](/en/apv/walkthrough/html-forms/form-2.png)
+![Screenshot - Form](/en/apv/walkthrough/html-forms/form-1.png)
 
 {: .solution}
 {% highlight html %}

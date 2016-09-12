@@ -15,6 +15,8 @@ details of all the used technologies.
 
 ## Goals
 My goals are:
+
+
 - Show you how web applications can be made (using SQL, PHP, Javascript).
 - Teach you enough programming so that you can put together a web application.
 - Teach you something about [software engineering](/en/apv/articles/programming/#software-engineering).
@@ -24,6 +26,8 @@ My goals are:
 - Have an [opensource book](todo).
 
 My goals are **not**:
+
+
 - Teach you [Computer Science](/en/apv/articles/programming/#computer-science).
 - Make an excellent (PHP, JavaScript, SQL, ...) programmer out of you. That needs much more practice, but this
 may be a good start).

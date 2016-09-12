@@ -134,7 +134,7 @@ Strings in double quotes allow two more features over single-quoted strings:
 - use variables directly without concatenation.
 - use special whitespace characters (`\n`, `\t`),
 
-With direct variable use, You can then simply the above example into:
+With direct variable use, You can then simply rewrite the above example into:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/variables-3.php %}
@@ -162,7 +162,7 @@ In the above example, I intentionally mixed different types quotes and concatena
 would write things in a more consistent matter.
 
 ### Task 1 -- Contact form
-Try to create a contact form like this (review the [HTML form elements](todo) if necessary):
+Try to create a contact form like this using PHP echo command (review the [HTML form elements](todo) if necessary):
 
 ![Screenshot -- Introduction page](/en/apv/walkthrough/dynamic-page/form-1.png)
 
@@ -172,7 +172,7 @@ Try to create a contact form like this (review the [HTML form elements](todo) if
 {% endhighlight %}
 
 ### Task 2 -- Using variables
-Now define the number of columns and rows of the textarea as PHP variables.
+Now define the number of columns and rows of the textarea as PHP variables and output them for the browser.
 
 {: .solution}
 {% highlight php %}
@@ -206,14 +206,14 @@ Hint: You'll also need to use some [HTML entities](todo).
 {% endhighlight %}
 
 There are many different solutions to the above, so your solution does not have to look the same
-as my solution. Make sure to verify your solution using HTML validator, and check that
+as my solution. Make sure to verify your solution using [HTML validator](todo), and check that
 the message in the text area has the correct whitespace.
 
 ## Summary
 You should now be able to create simple PHP scripts which output a HTML page. You should be
 familiar with PHP variables and know about the dynamic type system. Be sure to exercise
 different approaches to writing and concatenating strings, because all of them are widely used.
-Before continuing further, make sure you are not confused by the quotes all around the place
+Before continuing further, make sure you are not confused by the quotes all around the place.
 
 ### New Concepts and Terms
 - Backend

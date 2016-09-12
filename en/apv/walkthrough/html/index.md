@@ -159,7 +159,7 @@ We used:
 
 Note that the `img` element does not have any content (content is defined by the `src` attribute)
 so instead of writing start and end tags `<img src='...'></img>`, it is written with
-just the start tag `<img src='...'>`. This can get a [lot more complicated](todo).
+just the start tag `<img src='...' />`. This can get a [lot more complicated](todo).
 
 The page does not look like the nice best page in the world, but it will get much better, once you
 get to [layout and styles](todo) because HTML language does not have the means to format and
