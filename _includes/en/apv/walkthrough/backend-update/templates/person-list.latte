@@ -1,11 +1,11 @@
 {extends layout.latte}
 
 {block content}
-	<form method='get'>
+	<form method="get">
 		<label>Search for first name, last name or nickname:
-			<input type='text' name='keyword'>
+			<input type="text" name="keyword">
 		</label>
-		<button type='submit' name='search' value='search' required>Search</button>
+		<button type="submit" name="search" value="search" required>Search</button>
 	</form>
 	<p>You searched for '{$keyword}'</p>
 	<table>
@@ -22,7 +22,7 @@
 			<td>{$person['last_name']}</td>
 			<td>{$person['nickname']}</td>
 			<td>{$person['age']}</td>
-			<td><a href='person-update-3.php?id={$person['id_person']}'>Edit</a></td>
+			<td><a href="person-update-3.php?id={$person['id_person']}">Edit</a></td>
 		</tr>
 		{/foreach}
 	</table>
