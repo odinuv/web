@@ -103,6 +103,9 @@ You probably noticed that the templates for adding and updating person are almos
 probably will be so, because even if we add another properties (database columns) for persons,
 it is very likely that they will have to be added to both forms.
 
+Be careful here because you cannot reuse the entire template - the ``form`` has different ``action``
+attribute and the ID parameter needs to passed along with the data in the edit form using hidden input.
+Only those inputs which are used to fill person information can be placed into separate template.
 
 TODO
 

@@ -12,7 +12,7 @@ There is no new technology necessary for this, all you need is [SQL INSERT](todo
 [working with HTML forms](todo). Yet there are some things, which are worth deeper explanation. 
 
 ## Getting started
-We will a page for inserting new persons in the database. Let's start with the HTML form.
+We will create a page for inserting new persons in the database. Let's start with the HTML form.
 
 `templates/person-add.latte`:
 

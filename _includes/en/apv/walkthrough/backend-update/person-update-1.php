@@ -14,7 +14,7 @@ if (!empty($_POST['save'])) {
 	} else {
 		// everything filled
 		try {
-			$stmt = db->prepare(
+			$stmt = $db->prepare(
 				"UPDATE person SET first_name = :first_name, last_name = :last_name, 
 				nickname = :nickname, birth_day = :birth_day, gender = :birth_day
 				WHERE person_id = :person_id"

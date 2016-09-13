@@ -55,7 +55,7 @@ the importance of knowing what [control names and values are](todo).
 It is also important to know, that the entire script is stateless, the same 
 way [HTTP protocol is](todo). This means that the `$_POST` array is filled
 *only for a single execution*. Test the above example and see for yourself, that
-the content of `$_POST` array is only filled only what you just entered
+the content of `$_POST` array is only filled whit what you just entered
 (or nothing, if you did not send the form and just loaded the page).
 
 The `GET` method behaves slightly different in that it changes the URL of the script. This 
@@ -109,14 +109,14 @@ user has entered some non-empty string.
 Now we need to prepare two SQL queries to list the users. The query to list all users is pretty simple, 
 e.g.:
 
-{% highlight php %}
+{% highlight sql %}
 SELECT first_name, last_name, nickname, AGE(birth_day) FROM person 
 ORDER BY last_name, first_name
 {% endhighlight %}
 
 The query for searching is slightly more complicated, to search e.g. for 'bill' we can use:
 
-{% highlight php %}
+{% highlight sql %}
 SELECT first_name, last_name, nickname, AGE(birth_day) FROM person
 WHERE (first_name ILIKE '%bill%') OR (last_name ILIKE '%bill%') OR (nickname ILIKE '%bill%')
 ORDER BY last_name, first_name

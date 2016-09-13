@@ -271,7 +271,7 @@ In this chapter, you learned how to use SQL queries from within a PHP script.
 Non-parametric queries are quite simple (just call the `query` function). Parametric
 queries are more complicated (`prepare`, `bindValue`, `execute` function calls).
 Using proper error control adds further complexity to the script. However the error control
-is very important, otherwise the application will [misbehave in](todo) case an error condition occurs.
+is very important, otherwise the application will [misbehave](todo) in case an error condition occurs.
 Because the entire application code is now becoming a bit complex, it is really important that
 you are able to separate the code into individual parts and test each part individually.
 

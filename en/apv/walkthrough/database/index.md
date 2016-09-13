@@ -32,20 +32,20 @@ which are useful for testing your application. First you need to import the data
 then you can start playing with it using the [SQL language](todo).
 
 ### Import Database
-I prepared files that you can import database, there are two files, first one contains
+I prepared files that you can import into the database, there are two files, first one contains
 definition of what tables do exist in the database and second one contains sample data.
 Download both files (use 'Save Link As') and import both files using the procedure
 outlined below. 
 
 - [Structure of database](/en/apv/walkthrough/database/pgsql-structure.sql) 
-- [Sample Data](/en/apv/walkthrough/database/pgsql-data.sql) 
+- [Sample data](/en/apv/walkthrough/database/pgsql-data.sql) 
 
 To import the file using the [Adminer](todo) client. Click on **Import**, select the 
 file you downloaded, and click **Execute**. Repeat the process for both files:
 
 ![Screenshot -- Import data](/en/apv/walkthrough/database/adminer-import-1.png)   
 
-Once you have the both the structure of the database and the data imported, you
+Once you have the structure of the database and the data imported, you
 should see, content in the Adminer
 
 ![Screenshot -- Imported data](/en/apv/walkthrough/database/adminer-import-2.png)
@@ -118,7 +118,7 @@ The order of inserted values must match the order of column names, this (obvious
 there must be same number of items in the column list and value list.  
 Try to run the query yourself in Adminer:
 
-![Screenshot -- Run SQL query](/en/apv/walkthrough/database/run-query.png)
+![Screenshot -- Run SQL query](/en/apv/walkthrough/database/adminer-run-query.png)
 
 Important: Unlike in HTML and PHP, in SQL, strings must always be enclosed in single 
 quotes `'`. Double quotes are **not allowed**. 
@@ -133,7 +133,7 @@ Notice that there are two keywords used at the beginning of the query `INSERT IN
 programming background, this may look unusual to you. It is supposed to improve the readability ot the
 SQL query. In SQL it is quite common, so you better get used to it.
 
-THe list of the columns is not required, so the above query may also be shortened to:
+The list of the columns is not required, so the above query may also be shortened to:
 
 {% highlight sql %}
 INSERT INTO location VALUES (DEFAULT, 'Paris', 'Avenue Gustave Eiffel', NULL, NULL, NULL, 'La Tour Eiffel')
@@ -271,6 +271,9 @@ Let's delete the row, we just inserted:
 {% highlight sql %}
 DELETE FROM location WHERE id_location > 50
 {% endhighlight %}
+
+I used the larger than ``>`` operator to delete any location inserted after the initial import.
+You will usually use equals ``=`` operator.
  
 ### SELECT
 The general syntax of a *simple* SELECT command is:
@@ -309,7 +312,10 @@ SELECT * FROM location WHERE city IN ('Praha', 'Paris', 'Bremen')
 {% endhighlight %}
 
 The set can be either enumerated as in the above example or it can be defined by another
-[`SELECT` query](todo). Ordering of the results is possible by multiple criteria:
+[`SELECT` query](todo). To exclude set values from the result use ``column NOT IN (...)`` variant
+(also with ``NULL`` value use ``column IS NOT NULL``).
+
+Ordering of the results is possible by multiple criteria:
 
 {% highlight sql %}
 SELECT * FROM location ORDER BY city 
@@ -339,12 +345,12 @@ SELECT * FROM location ORDER BY city DESC, street_name DESC
 
 
 ## Task -- Insert
-Insert a person named *Karl Oshiro*, with nickname *hiromi*, gender = 1 and height = 180.
+Insert a person named *Karl Oshiro*, with nickname *hiromi*, gender = 'male' and height = 180.
 
 {: .solution}
 {% highlight sql %}
 INSERT INTO person (first_name, last_name, nickname, gender, height) VALUES 
-    ('Karl', 'Oshiro', 'hiromi', 1, 180)
+    ('Karl', 'Oshiro', 'hiromi', 'male', 180)
 {% endhighlight %}
 
 ## Task -- Select
@@ -359,7 +365,7 @@ SELECT id_person FROM person
 
 ## Task -- Update
 Change the name of the *Karl Oshiro* you just inserted to *Carl Sohiro*, make sure 
-to update only a single row.
+to update only a single row - find the right ID in your database.
 
 {: .solution}
 {% highlight sql %}
@@ -451,9 +457,13 @@ SELECT * FROM person
 {% endhighlight %}
 
 ## Summary
-You should now know how to work with relational database. There is [much more to come], but
+You should now know how to work with relational database. There is [much more to come](todo), but
 so far, you should be able to `SELECT`, `INSERT`, `UPDATE` and `DELETE` data. This is 
-sufficient to create a reasonably working web application. 
+sufficient to create a reasonably working web application. Just note that some techniques were
+not revealed to you yet - be patient and read on! If you do not know how to do something
+(find ID of inserted row, limit the amount of returned results, calculate number of entries...)
+do not try to come up with your own solution, database systems are widely used for many years
+and there are tools and procedures how to do these things correctly.
 You should be familiar with general syntax of SQL statements, the common key words, and 
 SQL specific operators (`LIKE`, `IN`). Do not be afraid to experiment with your database
 you can always delete it (and import it again) by using the SQL queries:
