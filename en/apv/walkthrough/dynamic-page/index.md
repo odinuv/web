@@ -209,9 +209,45 @@ There are many different solutions to the above, so your solution does not have 
 as my solution. Make sure to verify your solution using [HTML validator](todo), and check that
 the message in the text area has the correct whitespace.
 
+## Divide and conquer
+You can find yourself in a situation when you have two similar pages which share e.g. common header
+and/or footer part. And now you are thinking about updating both of them - you have to open both PHP
+files and make same changes in the same part of code. To avoid duplication of code you can use the
+``require`` command which finds file by specified paths and "includes" it as if the source code of that
+included file was written instead of that command:
+
+File ``commonHeader.php``:
+{% highlight php %}
+{% include /en/apv/walkthrough/dynamic-page/require-1.php %}
+{% endhighlight %}
+
+File ``page1.php``:
+{% highlight php %}
+{% include /en/apv/walkthrough/dynamic-page/require-2.php %}
+{% endhighlight %}
+
+File ``page2.php``:
+{% highlight php %}
+{% include /en/apv/walkthrough/dynamic-page/require-3.php %}
+{% endhighlight %}
+
+This is not the best example because included file requires you to define variable ``$pageTitle`` beforehand.
+But I wanted to demonstrate the behaviour of included source code. Usually the role is opposite - you include
+the file to use something from it. Important thing is that such concept allows you to divide the logic and **reuse**
+your code. In next chapters you will learn about functions and classes where it is more natural to use ``require``
+command to load libraries of reusable functions.
+
+Remakrs:
+
+
+- There is also an ``include`` command, which does not cause critical error when referenced file is not found.
+- Moreover, there are ``include_once`` and ``require_once`` commands which ingore multiple inclusion of same file.
+- More advanced PHP systems support automatic loading based on namespaces and class names.
+
 ## Summary
 You should now be able to create simple PHP scripts which output a HTML page. You should be
-familiar with PHP variables and know about the dynamic type system. Be sure to exercise
+familiar with PHP variables and know about the dynamic type system. You should be able to divide
+script into multiple files using ``require`` and avoid code duplications. Be sure to exercise
 different approaches to writing and concatenating strings, because all of them are widely used.
 Before continuing further, make sure you are not confused by the quotes all around the place.
 
@@ -223,3 +259,4 @@ Before continuing further, make sure you are not confused by the quotes all arou
 - Escaping
 - Variables
 - Dynamic Types
+- ``require`` command
