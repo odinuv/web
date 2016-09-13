@@ -55,12 +55,29 @@ In the above example, the function `makeMoo` now creates a string by
 concatenating (with the `.` operator) the individual *Moo*s and returns
 that string. The result string is printed when the function is called `echo makeMoo(10);`
 
+### Function parameters
+There is a bit more you can do with function's parameters. For example you can have a default
+values for them when you know that some function will be frequently called with particular values:
+
+{% highlight php %}
+{% include /en/apv/walkthrough/dynamic-page/functions-4.php %}
+{% endhighlight %}
+
+Or you can set a mandatory data-type for function parameter - this functionality was extended in PHP7
+to also support scalar data-types, previous PHP versions could watch for classes and arrays only.
+This is useful when you write code which is used by other programmers - you do not have to write that much lines of
+code to check what your function got from outside world. A good [IDE](todo) can also take advantage of supplied information.
+
+{% highlight php %}
+{% include /en/apv/walkthrough/dynamic-page/functions-5.php %}
+{% endhighlight %}
+
 ## Classes
 **Classes** are templates for **Objects**. Objects are structures which can contain
-**fields** with values (similar to [arrays](todo)) and functions. In other words we say that
-Objects are **instances** of classes. Functions in classes and objects are called **methods**.
-*Fields* and *methods* are Class and Object **members**.
-Let's see an example:
+**fields** (also called properties or attributes) with values (similar to associative
+[arrays](todo)) and functions. In other words we say that Objects are **instances** of
+classes. Functions in classes and objects are called **methods**.
+*Fields* and *methods* are Class and Object **members**. Let's see an example:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/classes-1.php %}
