@@ -169,6 +169,20 @@ E.g. never use a second `h2` or third level `h3` heading instead of first level 
 the looks of the document. Adjusting font size and many other things is done through
 [Style Sheets](todo), which we will get to later.
 
+### Publishing your page
+A webpage needs to be placed on a webserver. That is a computer which is constantly connected to the Internet.
+This computer has usually a hostname (something like www.myawesomepage.com) so you and others do not have to
+remember the IP address of that machine. Other people (visitors) can connect co that computer and download your page and
+referenced files (images and other stuff) when you upload it - remember to upload new versions.
+You can usually upload your page by using an [FTP](todo) client or [SSH](todo) client.
+
+You definitely noticed that web servers open some default page when you visit them (you do not have to write filename into
+your browser's address bar - www.myawesomepage.com/file.html). Such behaviour is achieved by naming convention - that default
+file is usually named ``index.html`` or ``index.php``.
+
+Important note is that server is another computer which usually runs some Linux OS. This means that absolute paths are
+different and case sensitive - when creating a web page locally on your PC, use **relative paths** and be precise with **case of letters**.
+
 ## Summary
 You should now be able to describe structure of any text document using HTML language. The document is
 still formatted poorly, we will get to that later. The documents you produce now are formated with some

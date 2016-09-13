@@ -20,7 +20,7 @@ valid HTML page.
 
 ## Templating Engines
 A template engine is a library which processes a HTML page with **macros**
-(snippets of template language) and produces a valid HTML page.z\
+(snippets of template language) and produces a valid HTML page.
 There are many templating engines available for PHP, some of the popular engines
 are: *Smarty*, *Latte*, *Twig*. All of them (and many others) can be used as
 parts of their respective [frameworks](todo) or standalone. In the following

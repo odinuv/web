@@ -51,7 +51,7 @@ And a template file `layout-1.latte` like this:
 
 The template now starts with the line `{extends 'layout-1.latte'}`, which tells the
 template engine to start processing from the layout template `layout-1.latte`. This
-template contains the usual HTML header and `{include content}`. This defines a
+template contains the usual HTML header and `{include content}`. This defines
 a **block** named `content`. It's the responsibility of the template `template-3.latte` to
 fill the block with some meaning. In `template.latte`, you can see that the actual HTML
 code is wrapped inside `{block content}{/block}` macro. This defines the actual content
@@ -91,6 +91,8 @@ The `hr` (Horizontal Ruler) HTML element produces horizontal separator. It has a
 ## Task -- Create a template layout
 Take the two application parts -- [the person form](todo) and the [contact from](todo) we have
 created in previous chapters, and create a template layout for them.
+
+[//]: # (TODO hiding of soulution does not work)
 
 {: .solution}
 Hint: You will need five files -- PHP script for contact form; template for contact form;
@@ -173,7 +175,7 @@ If you are concerned, that the footer is not shared between both layouts, you ca
 a more complicated structure of parent layout and child layouts (again by using `extends` and
 `include`). Personally I would say that at this moment, it is not necessary and does not have
 much advantage. On the other hand -- you might ask, what is the point of creating a
-`login-layout.latte` if there is only one page using. That is correct and using a simple template
+`login-layout.latte` if there is only one page using it. That is correct and using a simple template
 without layout would be also an acceptable solution. I'm counting on making a logout page
 in the future, which will use the `login-layout.latte`.
 
@@ -187,6 +189,10 @@ On the other hand, you probably noticed, that your application now contains much
 (and it may be difficult to orient in them) and that the pages are not any more self-contained
 -- i.e. they become only snippets of HTML code. This requires a bit of training and getting used to,
 because now the application code is slightly more abstract than it was in the beginning.
+
+For small application the overhead of repeated code might be smaller than the overhead of well
+structured code. As your application grows the overhead of repeated code would increase but
+the overhead of structured code remains constant.
 
 You should now be familiar with the reasons for using layout templates. You should be able to
 create and use a simple page layout with multiple blocks. You should be familiar with the
