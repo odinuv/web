@@ -72,7 +72,7 @@ you are requesting all columns from a table in application, you make:
 - the application inefficient (what if there is a column containing a person photograph?),
 - prone to errors which arise from database changes.
 
-Image that you select data from two tables like `SELECT meeting.\*, person.\* FROM ...`. The
+Image that you select data from two tables like `SELECT meeting.*, person.* FROM ...`. The
 column named `description` will contain the meeting description. When you then add a `description`
 column to the `person` table, that column will override the first one (you will have two
 columns with the same name) and the query will suddenly start to return person description! Such errors
@@ -104,7 +104,7 @@ table, i.e. the query:
 SELECT DISTINCT city, street_name FROM location ORDER BY city;
 {% endhighlight %}
 
-Will unique **combinations** of `city` and `street_name`, therefore it will return
+Will return unique **combinations** of `city` and `street_name`, therefore it will return
 some cities duplicate. The result will be a relation. It is important to be aware of
 when you may receive duplicates in the query results because they may change the results
 of joins slightly unexpectedly.
@@ -181,7 +181,7 @@ you again need to add that condition:
 {% highlight sql %}
 SELECT * FROM
     person, location
-    WHERE person.id\_location = location.id\_person
+    WHERE person.id_location = location.id_person
 {% endhighlight %}
 
 Now the result is exactly the same as the one you obtained with the `JOIN` operator.
@@ -261,7 +261,7 @@ SELECT * FROM
 {% endhighlight %}
 
 The above query will give you all locations irrespective of whether some person is using
-them. If will always give you all locations even if they are not used anywhere. Outer
+them. It will always give you all locations even if they are not used anywhere. Outer
 join is typically used when there is something optional (relations 0..1:1:N or 1..1:0..N).
 It does not make sense to use it in cases where the relationship is required because it
 cannot add anything not already returned by `INNER JOIN`.
@@ -274,7 +274,7 @@ type of join:
 - list all employees enrolled in a course (inner join)
 - list all licenses (including unused ones) and the employee they are assigned (outer join)
 - list all occupied meeting rooms (inner join)
-- list all customer who bought something and their contact address (inner join and outer join)
+- list all customers who bought something and their contact address (inner join and outer join)
 
 ### JOIN Types
 The below diagram shows all the useful join types:
@@ -310,7 +310,7 @@ SELECT * FROM
     ON person.id_location = location.id_location
 {% endhighlight %}
 
-The `USING` statement allows you to simplify a very common type join condition. It does
+The `USING` statement allows you to simplify a very common type of join condition. It does
 in no way affect the way the tables are joined. You can use it with any of the above modifiers.
 The only difference is that the resulting table will contain only a single column `id_location`.
 
@@ -459,7 +459,7 @@ In this article I have described how joining tables works in SQL. Join is used t
 obtain data from multiple tables and merge their column sets together.
 Join is a very important part of the SQL language, no real application can do without it.
 I have also shown the `UNION` statement which can merge data from two compatible
-tables together. Union is use much less then join.
+tables together. Union is used much less than join.
 
 Technically, joins are not too complicated. The complex thing about joining tables is that you
 have to analyze and understand what the application requires and choose the appropriate
