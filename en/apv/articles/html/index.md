@@ -98,13 +98,13 @@ There are two primary reasons for using entities. Either you need to write a cha
 which has special meaning in HTML. e.g writing this is incorrect: 
 
 {% highlight html %}
-<p>Three is smaller then five: 3 < 5</p>
+<p>Three is smaller than five: 3 < 5</p>
 {% endhighlight %}
 
 Because the `<` character denotes start of tag in HTML, you should write:
 
 {% highlight html %}
-<p>Three is smaller then five: 3 &lt; 5</p>
+<p>Three is smaller than five: 3 &lt; 5</p>
 {% endhighlight %}
 
 Other reason for using entities is that you need to write a

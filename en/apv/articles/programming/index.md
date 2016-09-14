@@ -37,7 +37,7 @@ the most suitable for the assignment.
 *Computer Science* is the theoretical foundation of it all. Computer Science is the theoretical foundation of all
 the technologies used. It defines how each of the technology behaves, and why it behaves that way. Learning
 computer science involves study of various fields of mathematics (set theory, graph theory, etc.) and logic.
-Knowing parts of Computer Science is very useful for a Software Engineer as she than knows what are the basic
+Knowing parts of Computer Science is very useful for a Software Engineer as she then knows what are the basic
 inherent properties of technologies she is using.
 
 ## Programming for Dummies

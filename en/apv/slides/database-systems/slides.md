@@ -169,7 +169,7 @@ permalink: /en/apv/slides/database-systems/
     - relational implementation of database structure;
     - data results in form of objects;
     - supports class hierarchy, inheritance and encapsulation;
-    - supposedly faster then converting from RDBS;
+    - supposedly faster than converting from RDBS;
     - supports multi-valued attributes.
 - Instead of records, objects are returned.
 - Pure object databases do also exist.
@@ -210,7 +210,7 @@ are running sequentially.
 - What is direct outcome of redundant data in information system?
 - Is is possible to run two transactions at once in ACID database?
 - Is information system only software?
-- Are data better then information?
+- Are data better than information?
 - How are information transmitted?
 - Does every database system have to use SQL langauge?
 - Should accounting use ACID or BASE database ?

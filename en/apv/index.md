@@ -32,7 +32,7 @@ My goals are **not**:
 - Make an excellent (PHP, JavaScript, SQL, ...) programmer out of you. That needs much more practice, but this
 may be a good start).
 - Show you all the technical details.
-- Make an [UX, Software Architect, Testing, ...) expert out of you (that reading need much more then reading a single book,
+- Make an [UX, Software Architect, Testing, ...) expert out of you (that reading need much more than reading a single book,
 but this may be a good start).
 
 ## Who? Why?

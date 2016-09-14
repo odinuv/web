@@ -455,7 +455,7 @@ should only be as good as **necessary**.
 
 In other words, if you are making an address book applications, you need a key to distinguish (identify)
 the persons in the address book (so a nickname is pretty good identifier). If you are making an e-shop, 
-than you only need to distinguish the accounts of the e-shop (so an email is pretty good identifier). 
+then you only need to distinguish the accounts of the e-shop (so an email is pretty good identifier). 
 Therefore you really ought to name the entity properly -- `account`. While this (hopefully) sounds natural
 now, it is very important to understand the consequences of choosing a key.
 

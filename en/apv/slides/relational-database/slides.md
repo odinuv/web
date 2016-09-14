@@ -456,7 +456,7 @@ with (relational) database system.
 ## SQL -- Introduction
 - Forget procedural programming, SQL is something completely different.
 - Using SQL, you define **what** should be done.
-    - This is surprisingly more difficult then defining **how** something should be done.
+    - This is surprisingly more difficult than defining **how** something should be done.
 - Nested database objects are accessed with `.` convention:
     - `schema.table.column`,
     - e.g. `my_project.persons.id_person`

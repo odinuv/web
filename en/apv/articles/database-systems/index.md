@@ -274,7 +274,7 @@ fill the gap between object oriented application code and relational database st
 It retrieves data from database in form of objects. Some databases are using a relational 
 database underneath, some are using proprietary object storage. 
 Object databases support object oriented features such as class hierarchy, inheritance 
-and encapsulation. They should be faster then converting from RDBS.
+and encapsulation. They should be faster than converting from RDBS.
 While there are some object oriented databases actively developed, but it is hard to see any 
 rapid boom or expansion.
 
