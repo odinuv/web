@@ -53,7 +53,7 @@ computer science field dealing with these
 concepts -- [Information theory](https://en.wikipedia.org/wiki/Information_theory).
 
 For now it is necessary for you to understand the difference between *data* and
-*information*. Keep in mind that there is no clear between them. Also notice, 
+*information*. Keep in mind that there is no clear ??TODO?? between them. Also notice, 
 that in essence there is really no way to store or transmit
 information. Because it is what you make of the data in your head.  
 
@@ -62,7 +62,7 @@ A **Database** is a structure for storing data. The word *structure* is importan
 database must be organized. A litter bin contains a lot of data, but they are not organized
 and it is very hard to obtain any information from them. Files on your computer
 can be considered as a database, A paper file may be a database too. The level of 
-structure can very, e.g. consider the sentence: 
+structure can vary, e.g. consider the sentence: 
 
     The minimum monthly profit of our company over past 20 years was $42K.
 
@@ -186,7 +186,7 @@ about the [second approach later](todo). A centralized data storage ensures that
 one true master version. All applications then connect to single database. This does not need 
 to be physically a single machine, but logically it must be one point of (write) access.
 
-A centralized Database system ensures that all data are stored and managed on one place. The 
+A centralized Database system ensures that all data are stored and managed in one place. The 
 physical data files have set structure, hidden to outside world. The database system ensures
 that data may be accessed only using the database system interface and that the structure of the 
 database is maintained. Apart from that the database system takes care of 
@@ -229,6 +229,7 @@ and describe data. Output of a data model is *database schema* -- declaration of
 the **database structure** (database template).
 
 To avoid confusion, keep in mind that:
+
 - *Database* is something which can hold data.
 - *Database schema* is description of database structure.
 
@@ -251,7 +252,8 @@ but [HTML DOM](https://en.wikipedia.org/wiki/Document_Object_Model) isn't)
 [Network database model](https://en.wikipedia.org/wiki/Network_model) is extended hierarchical model. Each
 record (vertex) can be connected to any number of different vertices. Nicely handles relations 1:N, M:N and 
 cyclic relations. It is very universal and flexible, but it has hardly an usable implementations. Considered as 
-Network model with limitations: 
+Network model with limitations:
+ 
 - file system (links not ignored)
 - [HTML DOM](https://en.wikipedia.org/wiki/Document_Object_Model) (Document Object Model)
 
@@ -324,7 +326,7 @@ The shop records would state that the mobile was on stock, yet it actually was n
 
 Speaking of multiple customers, what happens if two customers come into the shop at the same time? 
 The shopkeeper obviously serves one first and lets the other one wait. He serves them in *sequence*.
-What if there are two shopkeepers and two customer at the same time wanting the same mobile phone?
+What if there are two shopkeepers and two customers at the same time wanting the same mobile phone?
 Well, one of the shopkeepers will grab the box with the mobile phone first. The other one will have 
 to turn his customer down. Therefore to the outside world, it would again seem that the customers
 were served in *sequence*. This is what the *Isolation* property means.

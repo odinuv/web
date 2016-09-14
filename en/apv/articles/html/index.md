@@ -38,7 +38,7 @@ structural elements of the document, such as:
 - navigation
 - forms
 
-The HTML document is [parsed](todo) (together with [styles]) by an interpreter build in the web browser.
+The HTML document is [parsed](todo) (together with [styles](todo)) by an interpreter build in the web browser.
 Then it is **rendered** by the browser [rendering engine](todo) on the users' screen. During rendering, the
 browser figures out where each part of the document should be displayed, how big it should be
 and how it should look and then draws some lines and points on the screen.  
@@ -88,7 +88,7 @@ The above example contains attribute with:
 
 ### Entities 
 Apart from elements, HTML can also contain **entities** which are placeholders for 
-special characters -- for example `&gt;` (greater), they begin with ampersand `&`, end with semicolon `;`.
+special characters -- for example `&gt;` (greater than), they begin with ampersand `&`, end with semicolon `;`.
 Entities may be encoded as either:
 
   - Symbolic [character name](http://www.w3.org/TR/html5/named-character-references.html) -- `&gt;` (greater)
@@ -145,7 +145,7 @@ first item of the list</p></li><li><p>second item of the list</p></li>
 {% endhighlight %}
 
 In the beginning I said, that a HTML document is hierarchial structure of 
-HTML elements. In the above example, you can see that `<html>` is
+HTML elements (tree structure). In the above example, you can see that `<html>` is
 **root** element, other elements `<body>` and `<head>` are its **children**.
 The element `<head>` is a **sibling** to `<body>`. The `<body>` element
 has children `<p>` and `<ul>`. It is very important to recognize this 
@@ -169,7 +169,8 @@ cannot be inserted in the middle of a line. *Inline elements*
 are parts of line. Inline elements may be inserted in inline elements 
 or block elements. Block elements may be inserted only inside block elements
 The exception to this rule is the `a` (link) element, which is 
-line element, but block elements may be inserted into it.
+line element, but block elements may be inserted into it (be careful not to insert any
+other active element e.g. ``input`` into ``a``).
 
 All HTML elements have the following 
 [common attributes](http://www.w3.org/TR/html5/elements.html#global-attributes):
@@ -226,6 +227,15 @@ children:
  - `link` -- definition of related files (external style, fonts, etc.)
  - `script` -- Javascript code or link to Javascript code 
 
+### Encoding
+It is important to save the page in correct encoding during creation, it has to be the
+same encoding which you declare in ``<head>`` section. It is not enough to
+put ``<meta charset='utf-8' />`` into ``<head>`` and store the page in ASCII format (or
+any other format which your editor is currently set to). The web brorser will display some
+characters in a wrong way unless you tell your editor or IDE to save the file in correct
+encoding. It is the responsibility of the page's author to make his text editor store
+files in correct encoding.
+
 ## HTML Standards
 The standardization organization for all web related standards is [W3C -- WWW Consortium](https://www.w3.org/)
 Current HTML version is [HTML5](https://www.w3.org/TR/html5/) finally standardized in 2014.
@@ -273,7 +283,6 @@ below are equivalent and valid:
             <li><P>second item of the list
         </UL>
 {% endhighlight %}
-</section>
 
 As you can see, in HTML lots of code is optional, this was intentional so that 
 the language behave *smartly* (e.g. when you end a list, it's clear that the 
@@ -293,6 +302,8 @@ It does not define any interpretation nor any rendering of the data.
 However XML looks similar to HTML because they have the same ancestor (SGML). It 
 contains *elements*, *attributes*, *entities* and *comments* just like HTML does.
 But it has simplified writing rules: 
+
+
  - required header: <?xml version="1.0"?>
  - tag names are lower-case
  - attribute values must be in quotes, value is required
@@ -336,7 +347,7 @@ elements were not exactly the same; the existing pages were broken
 in XML parser (because it is not able to recover in case of error
 and simply fails to process the page). Therefore the agile browsers
 started to interpret XHTML documents with HTML parser (to which they
-seemed malformed as well). An even grater confusion 
+seemed malformed as well). An even greater confusion 
 occurred, because it was unclear how the browsers interpret different 
 documents. To end it all, W3C finally agreed to start all over
 with HTML5.
@@ -353,11 +364,13 @@ XHTML is now dead last standard 1.0 from 2000, version 1.1 and 2.0 never complet
 
 ![Various HTML related Standards](/en/apv/slides/html/html-standards.svg)
 
+[//]: <> (TODO obrazek neni, nekde sem ho tusim videl, ale ted nevim)
+
 HTML5 also brought in new features:
 
 - extend semantic elements (`article`, `nav`, `footer`, `menu`, `figure`, …)
 - improved user interaction
- - inserting objects into page (video, vector graphics, math)
+ - inserting objects into page (video, audio, vector graphics, math)
  - improved form elements (date input, number input, …)
  - validation of forms (different data types, regular expressions, …)
  - spread forms (form elements without containment)
@@ -374,6 +387,8 @@ test your page against all available browsers to verify that the page
 is rendered correctly.
 
 ![Graph -- Browser Share](/en/apv/slides/html/browsers.png)
+
+[//]: <> (TODO obrazek neni, nedat radsi odkaz na nejakou zivou statisktiku? at to stale neni potreba aktualizovat napr. gs.statcounter.com)
  
 Luckily there are in fact not so many browsers as it seems. The important (from HTML point
 of view) part of web browser is its rendering (layout) engine and there are only few of those
@@ -392,7 +407,7 @@ version of MS Office)
 - [Presto](https://en.wikipedia.org/wiki/Presto_(layout_engine)) (dead) -- used in old Opera browsers up to version 12 and mobiles.
 
 There are other [rendering engines](https://en.wikipedia.org/wiki/Comparison_of_web_browser_engines) with 
-either negligible marketplace or with use only in legacy applications. This leaves you with 
+either negligible marketshare or with use only in legacy applications. This leaves you with 
 three to five browsers to test your web pages against (in case you are interested in full compatibility).
 The most being *Blink*, *Gecko* and *EdgeHTML*. You can leave out WebKit, because it shares much of it code base
 with Blink and you may add *Trident* to verify compatibility with Internet Explorer.
@@ -421,9 +436,9 @@ name (sorted alphabetically):
 - `<strong>` -- **Strong** emphasis (*line element*)
 - `<p>` -- **P**aragraph (*block element*)
 - `<table>` -- well, a **table** (*block element*)
+- `<tr>` -- **T**able **R**ow
 - `<th>` -- **T**able **H**ead (table header cell)
 - `<td>` -- **T**able **D**ata (ordinary table cell)
-- `<tr>` -- **T**able **R**ow
 - `<img>` -- **Im**a**g**e (*line element*)
 - `<ol>` -- **O**rdered **L**ist (*block element*)
 - `<ul>` -- **U**nordered **L**ist (enumeration) (*block element*)

@@ -63,7 +63,7 @@ items:
               - url: /en/apv/articles/html/
                 title: HTML
 
-              - url: /en/apv/articles/database/
+              - url: /en/apv/articles/database-systems/
                 title: Database Systems
 
               - url: /en/apv/articles/sql-join/

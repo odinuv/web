@@ -27,7 +27,7 @@ way anyone (with a little effort) can build a brick wall.
 ### Software Engineering
 *Software Engineering* (as any other engineering) deals with how the **programming code should be organized** and
 what development processes should be applied. Software development includes a great deal of 
-[Project management] and it is something you learn best by studying
+[Project management](todo) and it is something you learn best by studying
 rules and standards and by learning from (preferably other peoples') failed projects. Software engineering guides
 programmers in writing their code in a similar manner in which architectural plans guide masons. Software 
 engineering requires a broad understanding of many technologies and approaches so that you can choose 
@@ -169,7 +169,7 @@ working with [boolean values](todo).
 #### Expressions and Statements
 Expressions are language constructs which yield a value (can be **evaluated**). For example, in the above
 case `4 + 5` is and expression, which yields a value `9`. Expressions can be 
-*simple* or *compound*. Compound expressions should should use parentheses to explicitly determine
+*simple* or *compound*. Compound expressions should use parentheses to explicitly determine
 the order of evaluation. E.g. 
 
 {% highlight php %}
@@ -200,7 +200,7 @@ Functions and Classes are language tools which help you organize the source
 code more efficiently, reduce repetition and generally make things
 less tangled and confusing. Each language has many built in functions.
 
-#### keywords
+#### Keywords
 Keywords are *reserved words* of the langauge. They have some special meaning in the
 language itself and do something special. E.g. in the above examples, the keyword
 `if` marks the beginning of a conditional statement. The keyword `echo` prints
@@ -208,7 +208,7 @@ a text on the screen.
 
 ### Type System
 The source code must strictly conform to the defined syntax of the chosen language.  
-Apart from the syntax, there are other rules, one the very important is *Type System*.
+Apart from the syntax, there are other rules, very important one is *Type System*.
 The values used in programming language can have different **data type**. Types are specific
 to each langauge, but there are some commonly used:
 
@@ -259,7 +259,7 @@ It is very important to understand that the source code is executed so that each
 statement is executed sequentially -- usually only one statement is written per line (for readability), 
 therefore, the source code is executed line-by-line (unless control-flow structures change the 
 program flow). This in essence describes how computer programs are made to run.
-Perhaps you wonder what is the difference between a *program* and an *application**. Well the
+Perhaps you wonder what is the difference between a *program* and an *application*. Well the
 best I'm aware of is that an application is a program, which has
 [*user interface*](https://en.wikipedia.org/wiki/User_interface). So unless you are working
 on some low level programs (e.g. [device drivers](https://en.wikipedia.org/wiki/Device_driver)), you're 
