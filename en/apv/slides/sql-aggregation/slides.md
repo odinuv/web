@@ -4,7 +4,7 @@ title: SQL Aggregation
 description: Aggregation functions in SQL, grouping and sub-queries. 
 theme: black
 transition: slide
-permalink: /en/apv/slides/sql-join/
+permalink: /en/apv/slides/sql-aggregation/
 ---
 
 <section markdown='1'>

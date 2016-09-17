@@ -23,7 +23,7 @@ databases it is good to know how to work with existing ones.
 The [example database](/en/apv/walkthrough/database/#database-schema) has the following schema:
 
 {: .image-popup}
-![Database Schema](/en/apv/sample-database.svg)
+![Database Schema](/en/apv/schema.svg)
 
 There are eight tables in the schema, each table has its columns and their data types
 listed in the schema. The schema also shows [keys](/en/apv/articles/relational-database/#key):
@@ -159,7 +159,7 @@ with NULL yield NULL, e.g.:
 This has some important consequences, e.g. when you have a `person` table: 
 
 |height|
---------
+|------|
 |10    |
 |5     |
 |0     |
@@ -173,7 +173,7 @@ SELECT AVG(height) FROM person
 Will return `5`.
 
 |height|
---------
+|------|
 |10    |
 |5     |
 |NULL  |
@@ -358,6 +358,7 @@ type of join:
 ### JOIN Types
 The below diagram shows all the useful join types:
 
+{: .image-popup}
 ![Join types Venn diagram](/en/apv/articles/sql-join/join-types.svg)
 
 The INNER join is an intersection of LEFT and RIGHT join. It contains only the rows

@@ -81,6 +81,7 @@ not every table is a relation. Apart from the obvious requirements (such as that
 orthogonal), an important distinction is that a relation is a set, which means that each of its elements (tuples) 
 must be unique. 
 
+{: .image-popup}
 ![Relation -- Table](/en/apv/slides/relational-database/relation.svg)
 
 {: .note}
@@ -406,7 +407,8 @@ foreach ($r1 as $row_r1) {
 {% endhighlight %}
 
 ## Key
-Per the [relation definition](todo), it is a **set** of *tuples*. A set contains each element 
+Per the [relation definition](/en/apv/articles/relational-database/#relational-algebra), it 
+is a **set** of *tuples*. A set contains each element 
 at most once, so that means that the sets must be unique. And because it is impractical to
 rely on chance and luck, there must be a way to ensure uniqueness of each tuple -- **key**.
 
@@ -513,9 +515,10 @@ than the primary one, so it is a normal key.
 ### Generating Key
 Values of artificial keys have to be generated when a row is inserted into a 
 relation (table). The simplest solution is to use **auto increment** or
-]**sequence**](todo) (which very similar, but still slightly different approaches to
+[**sequence**](todo) (which very similar, but still slightly different approaches to
 the same thing) to generate a progression of integers usually starting from 1.
-This approach is also used in the our [example database](todo) because it is a typical
+This approach is also used in the 
+our [example database](/en/apv/walkthrough/database/#database-schema) because it is a typical
 approach to obtain simple artificial identifier (**ID**). Keep in mind that it is not at all important
 if the sequence of numbers is continuos or has gaps, it is also not important how large
 the ID numbers are. The only important property is that they **mustn't repeat**.

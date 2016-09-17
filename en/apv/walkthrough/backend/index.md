@@ -63,7 +63,7 @@ also its result. One way to obtain the result is calling the
 The `fetchAll` function returns a [two-dimensional array](/en/apv/walkthrough/dynamic-page/array/). It returns an array
 of result table (`person`) rows. Each row is an array indexed by column keys, values 
 are table cells. Therefore the following code will print `first_name` of the 
-second person (as ordered by `first_name`). We used the [`print_r` function](http://php.net/manual/en/function.print-r.php) to
+second person (as ordered by `first_name`). I used the [`print_r` function](http://php.net/manual/en/function.print-r.php) to
 print the complete array (it's not beautiful, but it shall be good enough at the moment).
 
 {% highlight php %}
@@ -88,9 +88,10 @@ then **execute** the statement:
 {% endhighlight %}
 
 In the above query, I used a placeholder name `:name` (placeholder must start with colon `:`). 
-Then I bind value to it using the [`bindValue`](todo) method of the `$stmt` [`PDOStatement`](todo) 
-object. Last, I (`execute`)[todo] the statement. Then the result can be printed as in
-the previous example. 
+Then I bind value to it using the [`bindValue`](http://php.net/manual/en/pdostatement.bindvalue.php) 
+method of the `$stmt` [`PDOStatement`](http://php.net/manual/en/class.pdostatement.php) 
+object. Last, I (`execute`)[http://php.net/manual/en/pdostatement.execute.php] the statement. 
+Then the result can be printed as in the previous example. 
 
 {: .note}
 If you are tempted to use the `$personName` variable directly within the SQL query string,
@@ -98,7 +99,7 @@ in the `query` method, don't do it! Such approach would introduce [SQL injection
 
 ### Inserting Data
 Let's insert a new row in the `location` table. The principle remains the same as in the 
-above example with prepared statement. You just need to use the [`INSERT`](todo) statement and
+above example with prepared statement. You just need to use the [`INSERT`](/en/apv/walkthrough/database/#insert) statement and
 provide the right parameters to it: 
 
 {% highlight php %}
@@ -133,7 +134,8 @@ whenever an error occurs in an operations.
 Second, I wrapped the whole code in a `try -- catch` statement. As the name suggest, the code
 inside `try -- catch` is executed normally unless an exception occurs. Whenever an exception
 occurs, the rest of the `try` code is skipped and the `catch` code is executed.
-In the `catch` code I catch exceptions of class [`PDOException`](todo) -- those are exceptions
+In the `catch` code I catch exceptions of class [`PDOException`](http://php.net/manual/en/class.pdoexception.php) -- those 
+are exceptions
 thrown by the PDO database driver. The method `getMessage` of the exception object returns the
 actual error message returned by the database.
 
@@ -187,7 +189,8 @@ SELECT first_name, last_name, nickname, AGE(birth_day) AS age, height
 {% endhighlight %}
 
 {: .note}
-I used an [alias](todo) in the SQL query to define a name of the computed column. It is important to know
+I used an [alias](/en/apv/articles/sql-join/#null) in the SQL query to define a 
+name of the computed column. It is important to know
  the column name, because we need to reference it in the PHP script.      
 
 ## Task -- Print Data in HTML
