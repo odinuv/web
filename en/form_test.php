@@ -5,9 +5,8 @@
 		<title>Form Test</title>
 	</head>
 	<body>
-		<p>Následující tabulka zobrazuje všechna nezpracovaná data, která přišla odeslaným
-		formulářem (HTTP metodou POST). Prohlížeč odesílá z formuláře pouze jména a hodnoty
-		formulářových prvků.
+		<p>The following tables shows the raw data received by a HTTP POST request (HTML form with method='post').
+		The browser sends only names and values of form elements. 
 		</p>
 
 <?php

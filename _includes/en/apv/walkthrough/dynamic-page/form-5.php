@@ -43,7 +43,7 @@ echo "<!DOCTYPE html>
             echo "<h2>Hello " . $currentUser['firstName'] . " " . $currentUser['lastName'] . "</h2>";
         }
         echo "
-    	<form method='post' action='todo'>
+    	<form method='post' action='http://odinuv.cz/en/form_test.php'>
     		<ul>
     			<li>
     				<label>First name:

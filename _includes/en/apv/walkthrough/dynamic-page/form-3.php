@@ -13,7 +13,7 @@ echo "<!DOCTYPE html>
     </head>
     <body>
         <h1>$pageTitle</h1>
-    	<form method='post' action='todo'>
+    	<form method='post' action='http://odinuv.cz/en/form_test.php'>
     		<ul>
     			<li>
     				<label>E-mail address:
