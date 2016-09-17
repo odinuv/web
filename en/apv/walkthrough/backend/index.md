@@ -94,6 +94,11 @@ object. Last, I (`execute`)[http://php.net/manual/en/pdostatement.execute.php] t
 Then the result can be printed as in the previous example. 
 
 {: .note}
+Parameters in SQL queries are **not** placed inside quotes. They will be added automatically
+when the query gets executed. In PHP, the value of the parameter needs to be quoted as
+any other string.  
+
+{: .note}
 If you are tempted to use the `$personName` variable directly within the SQL query string,
 in the `query` method, don't do it! Such approach would introduce [SQL injection vulnerability](todo). 
 

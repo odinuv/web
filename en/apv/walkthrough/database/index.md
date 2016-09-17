@@ -125,7 +125,8 @@ Try to run the query yourself in Adminer:
 ![Screenshot -- Run SQL query](/en/apv/walkthrough/database/adminer-run-query.png)
 
 Important: Unlike in HTML and PHP, in SQL, strings must always be enclosed in single 
-quotes `'`. Double quotes are **not allowed**. 
+quotes `'`. Double quotes are **not allowed** for string values. Actually double quotes
+are used to quote column and table names.
 
 You should see the result
 
@@ -320,6 +321,7 @@ The set can be either enumerated as in the above example or it can be defined by
 [`SELECT` query](/en/apv/articles/sql-aggregation/). To exclude set values from the result use ``column NOT IN (...)`` variant
 (also with ``NULL`` value use ``column IS NOT NULL``).
 
+#### ORDER BY
 Ordering of the results is possible by multiple criteria:
 
 {% highlight sql %}
@@ -348,6 +350,9 @@ Will not fully reverse the table, but the following query will:
 SELECT * FROM location ORDER BY city DESC, street_name DESC 
 {% endhighlight %}
 
+Important: If you omit the `ORDER BY` statement, the rows in the result are
+ordered randomly. You should therefore use defined ordering for every SELECT 
+whose result is displayed to the end-user.  
 
 ## Task -- Insert
 Insert a person named *Karl Oshiro*, with nickname *hiromi*, gender = 'male' and height = 180.

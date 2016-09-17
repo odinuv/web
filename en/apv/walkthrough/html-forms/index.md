@@ -110,6 +110,11 @@ is no end tag for `input` element. Other useful attributes are:
 
 {% include /en/apv/walkthrough/html-forms/text-input.html %}
 
+You can create a password input (input is hidden by asterisks) by specifying
+`type='password'`. Apart from blocking the visible input, it behaves the same
+as the text input. Note that the contents of the password input are visible
+in the source of the HTML page though.  
+
 ### Number Input
 The input for entering a number is created by specifying `type='number'` or `type='range'` attribute.
 Name of the form control is defined by the `name` attribute. Other useful attributes are:

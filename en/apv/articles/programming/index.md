@@ -192,8 +192,17 @@ if ($what > 0) {
 }    
 {% endhighlight %}
 
-In the above example, the second line will be executed only if condition `5 > 0` is 
-true (in case the content of the variable is bigger than zero).
+An `if` condition can have multiple **branches**:
+
+{% highlight php %}
+$what = 5
+if ($what > 0) {
+    echo "5 is bigger than 0";
+} else {
+    echo "5 is smaller than 0";    
+}    
+{% endhighlight %}
+
 
 #### Functions, classes and objects
 Functions and Classes are language tools which help you organize the source

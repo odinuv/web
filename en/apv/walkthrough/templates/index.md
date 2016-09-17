@@ -92,6 +92,14 @@ In the PHP code, I need to define all the variables: `$flintstones`, `$rubbles`,
 `$showBold` in an associative array. I took the liberty to shorten the name of the
 variable `$templateVariables` to just `$tplVars`.
 
+You can put comments in the templates as well:
+
+{% highlight html %}
+{* this is a comment *}
+{% endhighlight %}
+
+Contrary to comments in HTML, comments in templates will not be contained in the resulting page.
+
 ## Task -- Contact form
 Let's convert the [contact form](todo) we did in previous chapter.
 

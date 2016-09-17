@@ -23,12 +23,13 @@ permalink: /en/apv/slides/sql-aggregation/
 {% highlight sql %}
 SELECT person.nickname, contact.contact
 FROM 
-	(person JOIN contact 
-		ON person.id_person = contact.id_person
-	) JOIN contact_type 
-		ON contact.id_contact_type = contact_type.id_contact_type
+  (person JOIN contact 
+    ON person.id_person = contact.id_person
+  ) JOIN contact_type 
+	ON contact.id_contact_type = 
+      contact_type.id_contact_type
 WHERE 
-	contact_type.name LIKE '%mail'
+  contact_type.name LIKE '%mail'
 {% endhighlight %}
 </section>
 
@@ -37,15 +38,15 @@ WHERE
 {% highlight sql %}
 SELECT person.nickname, contact_email.contact
 FROM 
-    person JOIN (
-        SELECT contact, id_person FROM 
-            contact JOIN (
-		        SELECT id_contact_type FROM 
-                    contact_type
-                WHERE name LIKE '%mail') AS type_email 
-            ON contact.id_contact_type = type_email.id_contact_type
-    ) AS contact_email
-    ON person.id_person = contact_email.id_person
+  person JOIN (
+    SELECT contact, id_person FROM 
+      contact JOIN (
+        SELECT id_contact_type FROM 
+          contact_type
+        WHERE name LIKE '%mail') AS type_email 
+      ON contact.id_contact_type = type_email.id_contact_type
+  ) AS contact_email
+  ON person.id_person = contact_email.id_person
 {% endhighlight %}
 </section>
 
@@ -53,11 +54,11 @@ FROM
 ## Example -- Query 3
 {% highlight sql %}
 SELECT person.nickname FROM person 
-WHERE person.id_person IN (
+  WHERE person.id_person IN (
 	SELECT DISTINCT id_person FROM contact 
 	WHERE id_contact_type IN (
-		SELECT id_contact_type FROM contact_type 
-		WHERE name LIKE '%mail'
+	  SELECT id_contact_type FROM contact_type 
+	  WHERE name LIKE '%mail'
 	)
 )
 {% endhighlight %}
@@ -65,18 +66,20 @@ WHERE person.id_person IN (
 
 <section markdown='1'>
 ## Example -- Query 4
+{% highlight sql %}
 SELECT person.nickname
 FROM person 
 WHERE EXISTS (
-	SELECT 1 FROM 
-		contact 
-	WHERE EXISTS (
-			SELECT 1 FROM 
-				contact_type
-			WHERE name LIKE '%mail' AND
-				contact.id_contact_type = contact_type.id_contact_type 
-	) AND person.id_person = contact.id_person
+  SELECT 1 FROM 
+    contact 
+  WHERE EXISTS (
+    SELECT 1 FROM 
+      contact_type
+    WHERE name LIKE '%mail' AND
+      contact.id_contact_type = contact_type.id_contact_type 
+  ) AND person.id_person = contact.id_person
 )
+{% endhighlight %}
 </section>
 
 <section markdown='1'>
@@ -94,9 +97,11 @@ WHERE EXISTS (
 ## Another Example -- Query 1A
 
 {% highlight sql %}
-SELECT person.first_name, person.last_name, location.city
+SELECT person.first_name, person.last_name, 
+  location.city
 FROM 
-    person JOIN location ON person.id_location = location.id_location
+  person JOIN location 
+    ON person.id_location = location.id_location
 WHERE city = 'Brno'
 {% endhighlight %}
 
@@ -107,13 +112,14 @@ WHERE city = 'Brno'
 ## Example -- Query 1B
 
 {% highlight sql %}
-SELECT person.first_name, person.last_name, location_brno.city
-	FROM person
-		JOIN (
-			SELECT city, id_location 
-		FROM location
-			WHERE city = 'Brno'
-		) AS location_brno
+SELECT person.first_name, person.last_name, 
+  location_brno.city
+FROM person
+  JOIN (
+    SELECT city, id_location 
+	  FROM location
+	  WHERE city = 'Brno'
+  ) AS location_brno
 ON person.id_location = location_brno.id_location
 {% endhighlight %}
 
@@ -125,9 +131,11 @@ ON person.id_location = location_brno.id_location
 ## Example -- Query 2A
 
 {% highlight sql %}
-SELECT person.first_name, person.last_name, location.city
+SELECT person.first_name, person.last_name, 
+  location.city
 FROM 
-    person LEFT JOIN location ON person.id_location = location.id_location
+  person LEFT JOIN location 
+  ON person.id_location = location.id_location
 WHERE (city = 'Brno') OR (city IS NULL)
 {% endhighlight %}
 
@@ -139,13 +147,14 @@ WHERE (city = 'Brno') OR (city IS NULL)
 ## Example -- Query 2B
 
 {% highlight sql %}
-SELECT person.first_name, person.last_name, location_brno.city
-	FROM person
-		LEFT JOIN (
-			SELECT city, id_location 
-		FROM location
-			WHERE city = 'Brno'
-		) AS location_brno
+SELECT person.first_name, person.last_name, 
+  location_brno.city
+FROM person
+  LEFT JOIN (
+    SELECT city, id_location 
+  FROM location
+    WHERE city = 'Brno'
+  ) AS location_brno
 ON person.id_location = location_brno.id_location
 {% endhighlight %}
 
@@ -176,7 +185,7 @@ ON person.id_location = location_brno.id_location
 
 <section markdown='1'>
 ## Aggregation functions
-- Commonly used built-in functions: COUNT, SUM, MAX, MIN, AVG.
+- Commonly used functions: COUNT, SUM, MAX, MIN, AVG.
 - Argument is a column (or column_expression).
 - Examples:
     - `SELECT COUNT(*) FROM person` -- number of **rows** in the `person` table (49).
@@ -234,11 +243,12 @@ FROM <em>table_expression</em>
     - How many times does `id_person = X` occur in the table?
     - Multiple rows of original table are merged into one. 
 
-| id_person | COUNT |
+| id\_person | COUNT |
 |-----------|-------|
 | 1         | 3     |
 | 2         | 2     |
 | 6         | 1     |
+
 </section>
 
 <section markdown='1'>
@@ -260,8 +270,8 @@ GROUP BY person.id_person
 
 {% highlight sql %}
 SELECT person.id_person, COUNT(contact.id_contact) 
-    FROM person LEFT JOIN contact
-    ON person.id_person = contact.id_person
+  FROM person LEFT JOIN contact
+  ON person.id_person = contact.id_person
 WHERE contact.id_contact_type = '4' 
 GROUP BY person.id_person
 {% endhighlight %}
@@ -271,12 +281,13 @@ GROUP BY person.id_person
 ## Correction -- All persons (sub-query)
 
 {% highlight sql %}
-SELECT person.id_person, COUNT(contact_email.id_contact) 
-    FROM person LEFT JOIN 
-        (SELECT id_contact, id_person FROM contact 
-        WHERE contact.id_contact_type = '4'
-        ) AS contact_email
-    ON person.id_person = contact_email.id_person  
+SELECT person.id_person, 
+  COUNT(contact_email.id_contact) 
+FROM person LEFT JOIN 
+    (SELECT id_contact, id_person FROM contact 
+    WHERE contact.id_contact_type = '4'
+    ) AS contact_email
+  ON person.id_person = contact_email.id_person  
 GROUP BY person.id_person
 {% endhighlight %}
 </section>
@@ -286,8 +297,9 @@ GROUP BY person.id_person
 
 {% highlight sql %}
 SELECT person.id_person, COUNT(contact.id_contact) 
-    FROM person LEFT JOIN contact
-    ON person.id_person = contact.id_person AND contact.id_contact_type = '4' 
+  FROM person LEFT JOIN contact
+  ON person.id_person = contact.id_person 
+    AND contact.id_contact_type = '4' 
 GROUP BY person.id_person
 {% endhighlight %}
 </section>
@@ -298,9 +310,10 @@ GROUP BY person.id_person
 - `contact.contact` makes no sense here:
 
 {% highlight sql %}
-SELECT person.id_person, COUNT(contact.id_contact), person.first_name, contact.contact
-    FROM person LEFT JOIN contact
-    ON person.id_person = contact.id_person  
+SELECT person.id_person, COUNT(contact.id_contact), 
+  person.first_name, contact.contact
+FROM person LEFT JOIN contact
+  ON person.id_person = contact.id_person  
 GROUP BY person.id_person
 {% endhighlight %}
 </section>
@@ -337,13 +350,17 @@ HAVING COUNT(contact.id_contact) > 1
 ## SQL Summary
 - SQL is rich and very complicated language.
 - It has many features, but CRUD are the most important ones.
+- JOINs, aggregation and basic sub-queries are essential.
+- JOIN must be used whenever you need to display data from multiple tables.
+- Reading and Debugging SQL queries must be done hierarchically.
+</section>
+
+<section markdown='1'>
+## SQL Summary
 - Selecting the **right data** is complex, you need to understand the requirement.
     - Nothing will help you with that.
     - SQL is not procedural language, you cannot do something and the fix it. You 
     need to be precise and perfect in implementation.
-- Reading and Debugging SQL queries must be done hierarchically.
-- JOINs, aggregation and basic sub-queries are essential.
-- JOIN must be used whenever you need to display data from multiple tables.
 - If a SQL query does not return anything, it does not mean it is wrong (and vice versa) 
 </section>
 

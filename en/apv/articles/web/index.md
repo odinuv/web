@@ -192,7 +192,10 @@ designed to provide linked text documents (web pages). WWW Service uses the prot
 (Hyper Text Transfer Protocol) for all communications. HTTP protocol is one of the protocols in
 [TCP/IP protocol suite](todo). WWW service and HTTP protocol are closely tied together, because 
 HTTP describes the way in which WWW client and server communicates. A WWW service client is
-a Web Browser. 
+an **User Agent** -- commonly a **Web Browser**. The difference between a User Agent and a Web
+Browser is that a User Agent is more general. Other User Agents apart from Web Browsers are for example automated 
+[Web Robots](https://en.wikipedia.org/wiki/Internet_bot) or 
+[Screen Readers](https://en.wikipedia.org/wiki/Screen_reader).  
 
 Web pages are created using HTML language (Hyper-Text Markup Language). A hypertext is a text
 connected with other documents through links (see how it nicely fits together with the 
