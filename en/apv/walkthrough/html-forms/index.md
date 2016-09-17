@@ -3,9 +3,13 @@ title: Forms
 permalink: /en/apv/walkthrough/html-forms/
 ---
 
+* TOC
+{:toc}
+
 Apart from [describing structure](/en/apv/walkthrough/html/) of text documents, the HTML language can
 be used to create forms. However, HTML is not capable of processing those forms, so
-another [part of the technology stack](todo) must be used for that. So again, this
+another [part of the technology stack](/en/apv/walkthrough/dynamic-page/) must be 
+used for that. So again, this
 will be slightly boring, because you can't do much with HTML forms alone.
 
 Form elements must be contained in `form` element, otherwise they won't work. This
@@ -52,7 +56,8 @@ There are two methods to associate a label with an input. Either the `input` ele
 {% endhighlight %}
 
 ### Name and Value
-When [processing HTML forms](todo), the browser only sends the server **name** and **value** pairs for
+When [processing HTML forms](/en/apv/walkthrough/dynamic-page/), the browser only 
+sends the server **name** and **value** pairs for
 each form control. This means that is quite important to know what is the `name` and `value` of each
 element and how they produce the **name** -- **value** pairs. To test what is received on a server for each
 form, you can submit any of the below forms and a [simple script](todo) will print to

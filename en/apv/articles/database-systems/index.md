@@ -9,7 +9,9 @@ permalink: /en/apv/articles/database-systems/
 In this article I will try to generally describe the field of database systems.
 What are they, what are they good for, etc. This article does not have
 practical examples inside, because it is supposed to give you general overview of 
-the domain. There is a followup hands-on [article about SQL](todo). 
+the domain. There is a followup article 
+[about relational databases](/en/apv/articles/relational-database/) and a 
+hands-on [article about SQL](/en/apv/articles/sql-join/). 
 
 ## Introduction
 Before you start working with database systems (DBS), you should be aware of what **data** is.
@@ -27,7 +29,7 @@ Consider these statements:
 - The minimum monthly profit of our company over past 20 years was $42K.
 
 See how, by adding more and more context, I add more information which you can get from
-the data *42*. (I also secretly added another piece of data *20*. Notice that the added 
+the data *42*. (I also secretly added another piece of data -- *20*). Notice that the added 
 context can also radically change the **presumed** meaning of the statement! Now consider
 this statement:
 
@@ -53,7 +55,7 @@ computer science field dealing with these
 concepts -- [Information theory](https://en.wikipedia.org/wiki/Information_theory).
 
 For now it is necessary for you to understand the difference between *data* and
-*information*. Keep in mind that there is no clear ??TODO?? between them. Also notice, 
+*information*. Keep in mind that there is no clear line between them. Also notice, 
 that in essence there is really no way to store or transmit
 information. Because it is what you make of the data in your head.  
 
@@ -213,7 +215,7 @@ very complex read queries (with possibly hundreds of joined tables) and no
 or very few data updates. DWH databases retrieve data from OLTP databases.
 3. Other -- Fallback category for all other databases for text processing, image processing, predictions, etc.
 
-Each database type may use different technologies, but [SQL language](todo) or something similar to it is used 
+Each database type may use different technologies, but [SQL language](/en/apv/articles/sql-join/) or something similar to it is used 
 in most of them. SQL is a standardized programming language which is used as 
 an interface to many database systems. Applications communicate with the database system
 by sending *queries* -- pieces of SQL code. Basic operations with data and database queries are 
@@ -264,8 +266,9 @@ and connections.
 
 ### Relational Model
 [Relational model](https://en.wikipedia.org/wiki/Relational_model) describes data with 
-[relations](todo). It gave birth to the relational algebra and SQL language. As is it still
-the most versatile database model, I will concentrate on it in a [separate article](todo).
+[relations](/en/apv/articles/relational-database/#relational-algebra). It gave birth to the 
+relational algebra and SQL language. As is it still
+the most versatile database model, I will concentrate on it in a [separate article](/en/apv/articles/relational-database/).
 Relational Database Systems (RDBS) are the most commonly used database type in information systems. 
 
 ### Object (Object-Relation) Model
@@ -388,7 +391,8 @@ databases commonly have very high compression ratios, excellent performance for 
 performance for data modification queries. They are suitable for data warehouses.
 - [Key-value storage](https://en.wikipedia.org/wiki/Key-value_database) is used by non-relational database 
 systems and usually by NoSQL database systems. Records are stored simply as key-value pairs in a form similar to 
-[associative arrays](todo). Key-value databases are used mainly when the structure of the data cannot be fixed. A good
+[associative arrays](http://odinuv.cz/en/apv/walkthrough/dynamic-page/array/). Key-value databases 
+are used mainly when the structure of the data cannot be fixed. A good
 example is [Windows Registry](https://en.wikipedia.org/wiki/Windows_Registry) which contains configurations for 
 different applications (which are obviously different). By the way, Windows registry is also a hierarchical database.
 - [Document storage](https://en.wikipedia.org/wiki/Document-oriented_database) is a variant of key-value database in 
@@ -409,7 +413,7 @@ categories. Therefore do not look for any definitive list of what database syste
 To simplify things, I will focus only on **SQL ACID relational OLTP row-storage** databases in the rest of this book. 
 because that is the starting point of many applications and it also the easiest and most proven concept.
 Even if you later switch into other technologies you should have notion about this basic type of database.
-I will deal with SQL langauge in more detail in the [next article](todo).
+I will deal with SQL langauge in more detail in the [next article](/en/apv/articles/sql-join/).
 
 ### New Concepts and Terms
 - data

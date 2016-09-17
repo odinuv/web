@@ -1,5 +1,5 @@
 ---
-title: SQL -- Joining data
+title: SQL – Joining data
 permalink: /en/apv/articles/sql-join/
 ---
 
@@ -20,12 +20,13 @@ I explain how to create the schema. But before you start designing your own
 databases it is good to know how to work with existing ones.
 
 ### Reading the Database Schema
-The [example database](todo) has the following schema:
+The [example database](/en/apv/walkthrough/database/#database-schema) has the following schema:
 
+{: .image-popup}
 ![Database Schema](/en/apv/sample-database.svg)
 
 There are eight tables in the schema, each table has its columns and their data types
-listed in the schema. The schema also shows [keys](todo):
+listed in the schema. The schema also shows [keys](/en/apv/articles/relational-database/#key):
 
 - column marked with `PK` is part of Primary Key,
 - column marked with `FK` is part of Foreign Key,
@@ -36,6 +37,7 @@ these provide further details about the defined foreign keys. The relationship e
 represent **cardinality** of the relationship -- how many records of the relation may
 reference how many other rows. A bar means *one*, a circle means *zero* and a foot means *N*. Examples:
 
+{: .image-popup}
 ![ERD Legend](/en/apv/articles/sql-join/erd-legend.svg)
 
 From that you can see for example that:
@@ -54,19 +56,13 @@ meetings (a location does not have to be used in any meeting at all);
 - an attendance must be assigned to one person.
 
 ## Selecting Data
-I assume, you now know how to [select data from a single table](todo). When joining multiple
+I assume, you now know how to [select data from a single table](/en/apv/walkthrough/database/#select). When joining multiple
 tables together, it is important to follow some good practices. First it is good practice to
 be explicit about column names and use dot notation to specify **fully qualified column names**.
 So instead of `SELECT description FROM ...` use `SELECT meeting.description FROM ...`, otherwise
 you will run into weird errors in case you join tables which happen to have same columns.
 
-Next, learn to spot when you need [aliases](todo). For example you need them when writing
-`SELECT meeting.description, relation.description FROM ... ` because in query *result*, the
-column name is never fully qualified - i.e. you will have two columns named `description`.
-Therefore use `SELECT meeting.description AS meeting_description, relation.description FROM ... `
-(or rename both columns to avoid confusion).
-
-Last but not least, avoid using `*`, at least in the SQL queries used in your application. When
+Also, avoid using `*`, at least in the SQL queries used in your application. When
 you are requesting all columns from a table in application, you make:
 
 - the application inefficient (what if there is a column containing a person photograph?),
@@ -77,6 +73,27 @@ column named `description` will contain the meeting description. When you then a
 column to the `person` table, that column will override the first one (you will have two
 columns with the same name) and the query will suddenly start to return person description! Such errors
 are very treacherous so it is best to avoid them in the first place.
+
+### Aliases
+Alias allows you to rename a table or a column within a query. E.g. to rename a column you would 
+write:
+
+{% highlight sql %}
+SELECT id_contact_type AS id, name FROM contact_type 
+{% endhighlight %}
+
+The above query will return a table with columns `id` and `name`. The keyword `AS` can be 
+omitted, so the below query is also valid:  
+
+{% highlight sql %}
+SELECT id_contact_type id, name FROM contact_type 
+{% endhighlight %}
+
+Learn to spot when you need aliases. For example you need them when writing
+`SELECT meeting.description, relation.description FROM ... ` because in query *result*, the
+column name is never fully qualified - i.e. you will have two columns named `description`.
+Therefore use `SELECT meeting.description AS meeting_description, relation.description FROM ... `
+(or rename both columns to avoid confusion).
 
 ### Relation vs. Table
 All results of SELECT queries are returned as tables. However not all of them are relations,
@@ -109,12 +126,74 @@ some cities duplicate. The result will be a relation. It is important to be awar
 when you may receive duplicates in the query results because they may change the results
 of joins slightly unexpectedly.
 
+### NULL
+NULL is a SQL keyword which marks a missing value. It is somewhat similar to a 
+[null pointer](https://en.wikipedia.org/wiki/Null_pointer). Because it has no value, it 
+requires some care when comparing it. For example the below query will return no rows:
+
+{% highlight sql %}
+SELECT * FROM person WHERE height = NULL
+{% endhighlight %}
+
+As will the below one: 
+
+{% highlight sql %}
+SELECT * FROM person WHERE height != NULL
+{% endhighlight %}
+
+Only the below query will really return persons without height:
+
+{% highlight sql %}
+SELECT * FROM person WHERE height IS NULL
+{% endhighlight %}
+
+I.e. it means that `NULL = NULL` is neither true, nor false. Also there are some things you
+need to be aware of when counting with NULLs. You must not confuse NULL with 0. All expressions 
+with NULL yield NULL, e.g.:
+
+- 3 + 0 -> 0
+- 3 + NULL -> NULL
+- 3 / 0 -> ERROR: division by zero   
+- 3 / NULL -> NULL
+
+This has some important consequences, e.g. when you have a `person` table: 
+
+|height|
+--------
+|10    |
+|5     |
+|0     |
+
+A query:
+
+{% highlight sql %}
+SELECT AVG(height) FROM person
+{% endhighlight %}
+
+Will return `5`.
+
+|height|
+--------
+|10    |
+|5     |
+|NULL  |
+
+{% highlight sql %}
+SELECT AVG(height) FROM person
+{% endhighlight %}
+
+Will return `7.5`. This means that for example for person height, you cannot replace 
+an unknown value with 0. As you can see in the above example, doing so will return wrong
+results for e.g *average person height*. Therefore it is very important to use nul values 
+where needed.  
+
 ## Joining Tables
-The principle of joining tables comes from [Θ-join operator in relational algebra](todo).
+The principle of joining tables comes from 
+[Θ-join operator in relational algebra](/en/apv/articles/relational-database/#set-operations).
 To join two tables together, you need to provide a condition which will be used to
 match individual records. The result of the join will contain all columns of the
 two source tables. Usually the join condition is the condition defined
-in a [foreign key](todo), although it can really be any condition.
+in a [foreign key](/en/apv/articles/relational-database/#foreign-key), although it can really be any condition.
 
 All tables used in the query must be specified in the `FROM` clause:
 

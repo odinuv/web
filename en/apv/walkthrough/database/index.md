@@ -14,22 +14,23 @@ complete mess.
 So far it's probably still a bit boring, because the data that the application displays
 are still somewhat hardcoded in the PHP script. We would like to make the application
 interactive, so that a user can permanently store and retrieve some arbitrary data.
-The answer to this is that we need a [database server](todo).
+The answer to this is that we need a [database server](/en/apv/articles/database-systems/).
 
-In this walkthrough I will be using a [relational database](todo), which means that
-all of the data are organized into [tables](todo). Specifically, I will be using
-[PostgreSQL database](todo), which again is a rather arbitrary choice, because for
+In this walkthrough I will be using a [relational database](/en/apv/articles/relational-database/), which means that
+all of the data are organized into [tables](/en/apv/articles/sql-join/#relation-vs-table). Specifically, I will be using
+[PostgreSQL database](https://www.postgresql.org/docs/9.5/static/), which again is a rather arbitrary choice, because for
 what we need, any relation database could be used.
 
 ## Getting started
-Before you get started, you need a [database server](todo) and credentials to it.
+Before you get started, you need a [database server](tools todo) and credentials to it.
 You also need an access to some kind of administration interface, preferably
 a graphical one, so that you don't get completely lost at the beginning.
 
 To get you started as quickly as possible, I prepared a sample database for you.
 It contains the structure of the [project](todo) and also some sample data, 
 which are useful for testing your application. First you need to import the database,
-then you can start playing with it using the [SQL language](todo).
+then you can start playing with it using the 
+[SQL language](/en/apv/walkthrough/database/#sql-language).
 
 ### Import Database
 I prepared files that you can import into the database, there are two files, first one contains
@@ -52,7 +53,7 @@ should see, content in the Adminer
 
 ### SQL Language
 SQL is a language which is used for communicating with most of the widely used database servers.
-If you have been following this Walkthrough from the [beginning](todo), then this is
+If you have been following this Walkthrough from the [beginning](/en/apv/walkthrough/html/), then this is
 fourth language you have learned so far (after HTML, PHP, Latte Macro Language).
 
 SQL language has only four everyday-use commands (there are dozens of others, which are
@@ -79,9 +80,10 @@ It is shown in the following graphic, which shows each table, the columns in the
 their data types. It also shows relationships between tables (which we won't use much in this
 chapter). The design of database structure is called **Database Schema**. Keep it handy.
 
+{: .image-popup}
 ![Database schema](/en/apv/schema.svg)
 
-As we are working with [relational database system](todo), all data are stored in tables.
+As we are working with [relational database system](/en/apv/articles/relational-database/), all data are stored in tables.
 Each table has **columns** (with some name and datatype -- as defined in the database schema)
 and **rows** which contain the actual data. Most operations in SQL work on full rows -- sometimes
 called **records**.
@@ -119,6 +121,7 @@ The order of inserted values must match the order of column names, this (obvious
 there must be same number of items in the column list and value list.  
 Try to run the query yourself in Adminer:
 
+{: .image-popup}
 ![Screenshot -- Run SQL query](/en/apv/walkthrough/database/adminer-run-query.png)
 
 Important: Unlike in HTML and PHP, in SQL, strings must always be enclosed in single 
@@ -293,7 +296,8 @@ if you omit the `WHERE` statement altogether, all rows of a table will be return
 SELECT * FROM location WHERE id_location > 40 
 {% endhighlight %}
 
-There are some [useful features](todo) which you can use in the `WHERE` clause. You should
+There are some [useful features](https://www.postgresql.org/docs/9.5/static/functions-comparisons.html) 
+which you can use in the `WHERE` clause. You should
 definitely be aware of the existence of `LIKE` and `IN` operators.
 
 `LIKE` operator is useful for selecting string by a partial match. Use the percent sign `%` as
@@ -313,7 +317,7 @@ SELECT * FROM location WHERE city IN ('Praha', 'Paris', 'Bremen')
 {% endhighlight %}
 
 The set can be either enumerated as in the above example or it can be defined by another
-[`SELECT` query](todo). To exclude set values from the result use ``column NOT IN (...)`` variant
+[`SELECT` query](/en/apv/articles/sql-aggregation/). To exclude set values from the result use ``column NOT IN (...)`` variant
 (also with ``NULL`` value use ``column IS NOT NULL``).
 
 Ordering of the results is possible by multiple criteria:
@@ -458,7 +462,7 @@ SELECT * FROM person
 {% endhighlight %}
 
 ## Summary
-You should now know how to work with relational database. There is [much more to come](todo), but
+You should now know how to work with relational database. There is [much more to come](/en/apv/articles/sql-join/), but
 so far, you should be able to `SELECT`, `INSERT`, `UPDATE` and `DELETE` data. This is 
 sufficient to create a reasonably working web application. Just note that some techniques were
 not revealed to you yet - be patient and read on! If you do not know how to do something

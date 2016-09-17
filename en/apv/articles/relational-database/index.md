@@ -6,7 +6,7 @@ permalink: /en/apv/articles/relational-database/
 * TOC
 {:toc}
 
-In the [previous article](todo), I described different types of relational
+In the [previous article](/en/apv/articles/database-systems/), I described different types of 
 database systems. In this article I will concentrate on relational
 database systems (RDBS). More specifically a **SQL ACID OLTP row-storage relational**
 database system as this is a typical type of database system used in transactional
@@ -19,7 +19,7 @@ Relational algebra is a field of mathematics which allows modeling structures of
 arbitrary data using **relations**. It is quite an old tool (roughly 1970),
 which means that it is very well understood. Relational algebra also defines
 the principles and basic properties of the SQL language, which I will describe 
-in the [next article](todo).
+in the [next article](/en/apv/articles/sql-join/).
 
 **Relation** is 
 [**Set**](https://en.wikipedia.org/wiki/Set_(mathematics)) of [**tuples**](https://en.wikipedia.org/wiki/Tuple). 
@@ -86,7 +86,7 @@ must be unique.
 {: .note}
 Do not confuse *Relations* with *relationships*. Relation in relational database is a set of tuples.  
 
-## Relational algebra
+### Operations
 Relational algebra is a set of operations which can be performed on relations. Because relations 
 are sets, [standard set operations](https://en.wikipedia.org/wiki/Set_(mathematics)#Basic_operations)
 are included in it. Relational algebra allows you to create a model of your data and
@@ -177,6 +177,7 @@ shows the results of the **union** (∪), difference (−) and intersection (∩
     </tr>
 </table>
 
+### Relational Operations
 The Following example defines the same two relations (R1 and R2) with attributed `color` and `style`
 are shows the results of:
 

@@ -6,9 +6,10 @@ permalink: /en/apv/walkthrough/html/
 * TOC
 {:toc}
 
-A static [web page](todo) is a page which must be modified by the page developer. For example, this site 
+A static [web page](/en/apv/articles/web/#www-service) is a page which must be modified by the 
+page developer. For example, this site 
 is a static page. Static pages are generally boring, but they are a necessary step to get into the fun
-stuff -- [dynamic pages](todo). In this chapter, you will learn to write 
+stuff -- [dynamic pages](http://odinuv.cz/en/apv/walkthrough/dynamic-page/). In this chapter, you will learn to write 
 [HTML documents](/en/apv/articles/html/).
 
 ## Getting started
@@ -159,7 +160,8 @@ We used:
 
 Note that the `img` element does not have any content (content is defined by the `src` attribute)
 so instead of writing start and end tags `<img src='...'></img>`, it is written with
-just the start tag `<img src='...' />`. This can get a [lot more complicated](todo).
+just the start tag `<img src='...' />`. This can get a 
+[lot more complicated](http://odinuv.cz/en/apv/articles/html/#html-elements----tags).
 
 The page does not look like the nice best page in the world, but it will get much better, once you
 get to [layout and styles](todo) because HTML language does not have the means to format and
@@ -177,7 +179,7 @@ referenced files (images and other stuff) when you upload it - remember to uploa
 You can usually upload your page by using an [FTP](todo) client or [SSH](todo) client.
 
 You definitely noticed that web servers open some default page when you visit them (you do not have to write filename into
-your browser's address bar - www.myawesomepage.com/file.html). Such behaviour is achieved by naming convention - that default
+your browser's address bar - www.myawesomepage.com/file.html). Such behavior is achieved by naming convention - that default
 file is usually named ``index.html`` or ``index.php``.
 
 Important note is that server is another computer which usually runs some Linux OS. This means that absolute paths are

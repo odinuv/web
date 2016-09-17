@@ -15,7 +15,8 @@ you can copy and paste and pretend you've written it all. Sorry about that :) Ho
 walkthrough contains everything you need to know and use to build the final solution (whatever that would be).
 
 The walkthrough revolves around a web application for managing contacts and meetings. As there are
-thousands of solutions to this, I have prepared a [database schema](todo) which I will use 
+thousands of solutions to this, I have prepared a 
+[database schema](/en/apv/walkthrough/database/#database-schema) which I will use 
 through the examples and exercises (nothing prevents you from changing it). 
 
 ## Requirements

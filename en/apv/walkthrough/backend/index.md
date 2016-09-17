@@ -6,38 +6,40 @@ permalink: /en/apv/walkthrough/backend/
 * TOC
 {:toc}
 
-In previous chapters, you learned how to create [PHP scripts](todo), and
-in the latest chapter also how to [work with database using SQL language](todo).
+In previous chapters, you learned how to create [PHP scripts](/en/apv/walkthrough/dynamic-page/), and
+in the latest chapter also how to 
+[work with database using SQL language](/en/apv/walkthrough/database/).
 In this chapter, you'll learn how to work with database from within a 
 PHP script. This is a very important step in connecting all the 
 [technologies in the stack](todo) together.
 
 ## Getting Started
 Before you start, you need to have working credentials to a database, and
-you should have the [sample database](todo) imported. Also you should be 
-familiar with [creating and running PHP script](todo).
+you should have the [sample database](/en/apv/walkthrough/database/#database-schema) imported. Also you should be 
+familiar with [creating and running PHP script](/en/apv/walkthrough/dynamic-page/#getting-started).
 
 To create an application which communicates with a database system, you 
 always need some kind of library. Database libraries are specific to 
 the application language (PHP, Java, C++) an database (PostgreSQL, MySQL, ...),
 so there are hundreds of them.
 
-For PHP, there is a very good built-in library -- [PDO (PHP Database Objects)](todo), 
+For PHP, there is a very good built-in library -- [PDO (PHP Database Objects)](http://php.net/manual/en/class.pdo.php), 
 which is capable of communicating with multiple databases (including PostgreSQL and MySQL).
 
 ### Connecting to database
-To connect to the database, you need to write a [DSN](todo) connection string. This is 
+To connect to the database, you need to write a [DSN](http://php.net/manual/en/pdo.construct.php) connection string. This is 
 done usually once, so it is not at all important to remember this. For PostgreSQL you should
 use: 
 
     pgsql:host=SERVER_NAME;dbname=DATABASE_NAME
 
 The *pgsql* is [driver name](http://php.net/manual/en/ref.pdo-pgsql.connection.php).
-For the [prepared PostgreSQL server](todo), the connection string would be e.g.:
+For the [prepared PostgreSQL server](http://php.net/manual/en/ref.pdo-pgsql.connection.php), the 
+connection string would be e.g.:
 
     pgsql:host=akela.mendelu.cz;dbname=xpopelka 
 
-To create a database connection, create a new instance of the [`PDO` class](todo).
+To create a database connection, create a new instance of the [`PDO` class](http://php.net/manual/en/class.pdo.php).
 Provide the *DSN connection string*, *database username* and *password* in the constructor.
 
 {% highlight php %}
@@ -48,18 +50,20 @@ $db = new PDO('pgsql:host=akela.mendelu.cz;dbname=xpopelka', 'xpopelka', 'passwo
 
 ### Selecting Data
 To select data from database, use the `query` method of the `PDO` connection object.
-Supply a SQL [`SELECT`](todo) query as a string to the function. The function will
-return a [`PDOStatement` object](todo). The `PDOStatement` represents an SQL query and
-also its result. One way to obtain the result is calling the [`fetchAll` function](todo). 
+Supply a SQL [`SELECT`](/en/apv/walkthrough/database/#select) query as a string to the function. The function will
+return a [`PDOStatement` object](http://php.net/manual/en/class.pdostatement.php). The `PDOStatement` 
+represents an SQL query and
+also its result. One way to obtain the result is calling the 
+[`fetchAll` function](http://php.net/manual/en/pdostatement.fetchall.php). 
 
 {% highlight php %}
 {% include /en/apv/walkthrough/backend/select-simple.php %}
 {% endhighlight %}
 
-The `fetchAll` function returns a [two-dimensional array](todo). It returns an array
+The `fetchAll` function returns a [two-dimensional array](/en/apv/walkthrough/dynamic-page/array/). It returns an array
 of result table (`person`) rows. Each row is an array indexed by column keys, values 
 are table cells. Therefore the following code will print `first_name` of the 
-second person (as ordered by `first_name`). We used the [`print_r` function](todo) to
+second person (as ordered by `first_name`). We used the [`print_r` function](http://php.net/manual/en/function.print-r.php) to
 print the complete array (it's not beautiful, but it shall be good enough at the moment).
 
 {% highlight php %}
