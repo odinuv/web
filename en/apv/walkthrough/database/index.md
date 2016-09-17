@@ -73,6 +73,7 @@ code as in PHP, we only write queries. An SQL query is self-contained piece of c
 -- instructing the database server to do something (e.g. delete some data). The query may 
 contain other statements inside.
 
+#### Database Schema
 When working with database, it is really important to know the structure of the database.
 It is shown in the following graphic, which shows each table, the columns in the table and
 their data types. It also shows relationships between tables (which we won't use much in this
@@ -86,7 +87,7 @@ and **rows** which contain the actual data. Most operations in SQL work on full 
 called **records**.
 
 {: .note}
-In SQL, the [keywords](todo-zakladniclanekoprogramovani) are usually written ALL CAPS, this 
+In SQL, the [keywords](/en/apv/articles/programming/#keywords) are usually written ALL CAPS, this 
 is just a convention to improve readability. It has no effect on the query itself. SQL statements
 are delimited by semicolon `;`. Because in most cases, only a single SQL statement is used, the 
 semicolon at the and of it may safely omitted (it is a delimiter, not terminator).  

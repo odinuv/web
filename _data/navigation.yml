@@ -1,8 +1,8 @@
 items:
 
-  - url: /en/
-    title: Introduction
-    items:
+#  - url: /en/
+#    title: Introduction
+#    items:
       - url: /en/apv/
         title: The Making of a Web Application
         items:
@@ -65,6 +65,9 @@ items:
 
               - url: /en/apv/articles/database-systems/
                 title: Database Systems
+
+              - url: /en/apv/articles/relational-database/
+                title: Relational Databases
 
               - url: /en/apv/articles/sql-join/
                 title: SQL Language Basics

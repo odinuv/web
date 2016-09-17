@@ -16,14 +16,13 @@ details of all the used technologies.
 ## Goals
 My goals are:
 
-
 - Show you how web applications can be made (using SQL, PHP, Javascript).
 - Teach you enough programming so that you can put together a web application.
 - Teach you something about [software engineering](/en/apv/articles/programming/#software-engineering).
 - Show you how stuff works and **why** it works that way.
 - Explain the principles which last for a long time.
 - Show you how things should be done properly (aka professionally).
-- Have an [opensource book](todo).
+- Have an [opensource book](https://github.com/ujpef/site).
 
 My goals are **not**:
 
@@ -57,11 +56,12 @@ you to [Google them](http://lmgtfy.com/) for yourself. Many of the technical det
 along the way, but they are not really important. Also this book concentrates on showing you how things
 should be done properly, so that you produce professional and reliable applications.
 
-*Who am I?* Main author of this is [Odin](todo), [still teaching](http://is.mendelu.cz/lide/clovek.pl?id=22586)
-at [Mendel University in Brno](http://mendelu.cz/en/) and [working elsewhere](https://linkedin.com/in/odinuv).
+*Who am I?* Main authors of this are [Odin](https://github.com/odinuv), [still teaching](http://is.mendelu.cz/lide/clovek.pl?id=22586)
+at [Mendel University in Brno](http://mendelu.cz/en/) and [working elsewhere](https://linkedin.com/in/odinuv)
+and [Jiri Lysek](http://is.mendelu.cz/lide/clovek.pl?id=54010).
 
 ## Contributing
-If you find errors or weak spots in the book, please open an issue on [Github repository](todo). If you feel
+If you find errors or weak spots in the book, please open an issue on [Github repository](https://github.com/ujpef/site/issues). If you feel
 confident that you can correct the issue as well, please send a
 [pull request](https://help.github.com/articles/using-pull-requests/). If you feel for
 a larger contribution, or you want to discuss something about the book, join us at [Slack](todo).
