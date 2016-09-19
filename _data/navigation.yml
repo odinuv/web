@@ -47,6 +47,9 @@ items:
 
               - url: /en/apv/walkthrough/backend-insert/
                 title: Database – Inserting
+                items:
+                - url: /en/apv/walkthrough/backend-insert/advanced/
+                  title: Advanced inserts
 
               - url: /en/apv/walkthrough/backend-update/
                 title: Database – Updating
