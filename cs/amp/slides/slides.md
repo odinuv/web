@@ -172,7 +172,7 @@ Jak se nesklouznout k bastardním metodikám.
 </section>
 
 <section markdown='1'>
-## AMP
+## AMP Co
 - Aplikace Task Manager 
     - Task Management – plánování úkolů, sledování dokončenosti, plánování projektu
     - Další drobné funkce – sledování emailů, grafy
@@ -183,6 +183,16 @@ Jak se nesklouznout k bastardním metodikám.
     - Bakalářská – 100 hodin
     - Magisterská – 150 hodin
     - Sledování hodin (nahlásit předem)
+</section>
+
+<section markdown='1'>
+## AMP Jak
+- Cvičení, Přednášky
+- Daily standup
+- Sprint
+- Úkoly
+- Slack
+- TimeTracking
 </section>
 
 <section markdown='1'>
