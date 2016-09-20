@@ -266,23 +266,10 @@ GROUP BY person.id_person
 </section>
 
 <section markdown='1'>
-## Correction -- Count Only Values
-
-{% highlight sql %}
-SELECT person.id_person, COUNT(contact.id_contact) 
-  FROM person LEFT JOIN contact
-  ON person.id_person = contact.id_person
-WHERE contact.id_contact_type = '4' 
-GROUP BY person.id_person
-{% endhighlight %}
-</section>
-
-<section markdown='1'>
 ## Correction -- All persons (sub-query)
 
 {% highlight sql %}
-SELECT person.id_person, 
-  COUNT(contact_email.id_contact) 
+SELECT person.id_person, COUNT(*) 
 FROM person LEFT JOIN 
     (SELECT id_contact, id_person FROM contact 
     WHERE contact.id_contact_type = '4'
@@ -296,13 +283,29 @@ GROUP BY person.id_person
 ## Correction -- All persons (join condition)
 
 {% highlight sql %}
-SELECT person.id_person, COUNT(contact.id_contact) 
+SELECT person.id_person, COUNT(*) 
   FROM person LEFT JOIN contact
   ON person.id_person = contact.id_person 
     AND contact.id_contact_type = '4' 
 GROUP BY person.id_person
 {% endhighlight %}
 </section>
+
+<section markdown='1'>
+## Correction -- Count Only Values
+
+{% highlight sql %}
+SELECT person.id_person, 
+  COUNT(contact.id_contact) 
+FROM person LEFT JOIN 
+    (SELECT id_contact, id_person FROM contact 
+    WHERE contact.id_contact_type = '4'
+    ) AS contact_email
+  ON person.id_person = contact_email.id_person  
+GROUP BY person.id_person
+{% endhighlight %}
+</section>
+
 
 <section markdown='1'>
 - Column *XY* must appear in the GROUP BY clause or be used in an aggregate function.
