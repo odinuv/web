@@ -100,12 +100,20 @@ rows are inserted in their tables or no row is inserted at all after transaction
 {% endhighlight %}
 
 ## Task -- Play around with transactions
+Take the first PHP script and finish is so that it inserts data into `location` and `person` table, or create your
+own one with full working forms. Make sure to use the version with transactions. Then try to break 
+the second `INSERT` command (just make an error in SQL command spelling, e.g. `IxSERT` instead of 
+`INSERT`). Observe changes in the database. Then add the transaction commands (`begin`, `commit`, `rollback`) 
+and again observe what changes are made to database. Do you notice the change of behavior? 
+Can you explain why it changed? 
 
-- Make a PHP script which inserts data into `location` and `person` table -- start without transactions.
-- Then try to break the second `INSERT` command (just make an error in SQL command spelling, e.g. `IxSERT` instead
-  of `INSERT`). You should still be able to see new address rows to appear in the database after script execution.
-- Now try to add transaction commands to your script -- there should be no new rows at all.
-- Fix the typo in second `INSERT` -- you should see both address and person row added now.
+{: .solution}
+If you run the the script without transaction commands, the first insert succeeds and the location
+will be inserted into the `location` table. It will remain there even if the other insert fails.
+When you add transaction commands, the behavior will change. If the first INSERT fails, and 
+raises an exception, the script will jump to `catch` statement and issue the `rollback` command. 
+This will roll back all SQL commands from the beginning of the transaction -- in this case the
+insert into the `location` table. Therefore the database will not contain the orphaned location record.
 
 ## Summary
 In this chapter I demonstrated how to insert multiple records which have some dependence among them. This requires
