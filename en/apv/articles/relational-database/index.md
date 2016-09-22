@@ -60,7 +60,8 @@ real world (some existing person). Each record can be stored as a **row** in the
 | 1  | John       | Doe       |
 | 2  | Jenny      | Doe       |
 
-This means that the **relational databases** typically are [row-oriented databases](todo) (but
+This means that the **relational databases** typically 
+are [row-oriented databases](/en/apv/articles/database-systems/#storage) (but
 they don't have to be). It also means that the terms **row**, **entity**, **record** are 
 often used interchangeably because the ultimately refer to the same thing.
 
@@ -533,8 +534,8 @@ cases where part of the table cannot be always connected to another part. E.g. a
 have two physical tables which represent a single relation. When you want to insert data
 into that relation you cannot reliably create a sequence of numbers -- you can check the
 other table for the largest number (if possible), but by the time you receive the response from 
-the remote system, the number could have already changed. There is an extended example
-in [separate article about keys](todo).
+the remote system, the number could have already changed. There is an example
+in [separate article about inserting](/en/apv/walkthrough/backend-insert/advanced/).
 
 ## Foreign Key
 Foreign key is quite special, it represents **relationships** between **entities** 
@@ -557,10 +558,10 @@ value of a record in one relation is the same as an attribute value of a record
  a similar condition was used?
 
 {: .solution}
-It is the condition as in [*join*](todo). Foreign keys are very often used as 
+It is the condition as in [*join*](/en/apv/articles/sql-join/#joining-tables). Foreign keys are very often used as 
 join conditions. 
 
-For example in the [example database](todo), there are relations `person` and
+For example in the [example database](/en/apv/walkthrough/database/#database-schema), there are relations `person` and
 `contact`. `contact` contains individual values for different persons (email address, 
 phone number, etc.), these must be assigned to some person to make sense.
 Therefore the `contact` relation has the attribute `id_person` which is a *reference*
@@ -575,7 +576,8 @@ column, master table is `contact_type`.
 table is `person`.
 
 It is possible to have an entity (relation) which has only foreign keys and has 
-no own keys. Such entity is called **Weak entity**. In the [example database](todo) is is 
+no own keys. Such entity is called **Weak entity**. In 
+the [example database](/en/apv/walkthrough/database/#database-schema) is is 
 the `person-meeting` entity. The `person-meeting` entity represents an attendance of 
 person on a meeting (why this is a separate table is describe in [article about 
 database design](todo)). The identifier of the attendance is the combination of 

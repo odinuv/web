@@ -1,8 +1,4 @@
 items:
-
-#  - url: /en/
-#    title: Introduction
-#    items:
       - url: /en/apv/
         title: The Making of a Web Application
         items:
@@ -81,7 +77,7 @@ items:
           - url: /en/apv/slides/
             title: Slides
             items:
-              - url: /en/apv/slides/web-internet/
+              - url: /en/apv/slides/web/
                 title: Internet and Web Service
 
               - url: /en/apv/slides/html/

@@ -1,6 +1,6 @@
 ---
 title: Introduction
-permalink: /
+permalink: /en/
 ---
 
 You can continue to:

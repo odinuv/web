@@ -12,7 +12,7 @@ concentrate more on what HTML is and what is important in it.
 
 ## HTML essentials
 A web page must be created using HTML (Hyper Text Markup Language) as that is the language which is understood by
-[Web Browsers](todo).
+[Web Browsers](/en/apv/articles/web/#www-service).
 **HyperText** is document which has links to other parts of the same document or 
 other documents. Although this may seem normal now, it is quite a revolutionary idea,
 because until HyperText was invented, text documents were read in a linear fashion. 
@@ -21,7 +21,8 @@ HTML is the most used format of Web pages (documents provided by the WWW service
 It is standardized by [W3C -- WWW Consortium](https://www.w3.org/), latest
 HTML version is [HTML5](https://www.w3.org/TR/html5/) finally standardized in 2014.
 
-HTML is not a [programming language](todo), there are no variables, conditions, assignments, 
+HTML is not a [programming language](/en/apv/articles/programming/#programming-for-dummies), 
+there are no variables, conditions, assignments, 
 etc. This makes learning HTML much easier than learning a programming language 
 (although it may look cryptic from the beginning). 
 HTML language is designed to describe structure of a 
@@ -38,8 +39,11 @@ structural elements of the document, such as:
 - navigation
 - forms
 
-The HTML document is [parsed](todo) (together with [styles](todo)) by an interpreter build in the web browser.
-Then it is **rendered** by the browser [rendering engine](todo) on the users' screen. During rendering, the
+The HTML document is [parsed](http://odinuv.cz/en/apv/articles/programming/#source-code) 
+(together with [styles](todo)) by an interpreter build in the web browser.
+Then it is **rendered** by the 
+browser [rendering engine](http://odinuv.cz/en/apv/articles/html/#rendering-engines) on 
+the users' screen. During rendering, the
 browser figures out where each part of the document should be displayed, how big it should be
 and how it should look and then draws some lines and points on the screen.  
 
@@ -342,7 +346,7 @@ And one of them was XHTML language. XHTML langauge is an XML application
 of HTML langauge. Which means that it has simple parser (as XML does) 
 is faster and contains the same elements as HTML.
 
-Unfortunately a [number of errors arisen with this concept](todo). E.g the 
+Unfortunately a [number of errors arisen with this concept](https://en.wikipedia.org/wiki/XHTML#Criticism). E.g the 
 elements were not exactly the same; the existing pages were broken 
 in XML parser (because it is not able to recover in case of error
 and simply fails to process the page). Therefore the agile browsers
@@ -362,9 +366,8 @@ XHTML syntax) and finally it is current - developed from 2007, standardized in 2
 W3C is now working on minor revision.
 XHTML is now dead last standard 1.0 from 2000, version 1.1 and 2.0 never completed)
 
-![Various HTML related Standards](/en/apv/slides/html/html-standards.svg)
-
-[//]: <> (TODO obrazek neni, nekde sem ho tusim videl, ale ted nevim)
+{: .image-popup}
+![Various HTML related Standards](/en/apv/articles/html/html-standards.svg)
 
 HTML5 also brought in new features:
 
@@ -386,10 +389,10 @@ Although there are some clearly major browsers, it would still be very difficult
 test your page against all available browsers to verify that the page
 is rendered correctly.
 
-![Graph -- Browser Share](/en/apv/slides/html/browsers.png)
+{: .image-popup}
+![Graph -- Browser Share](/en/apv/articles/html/browsers.png)
 
-[//]: <> (TODO obrazek neni, nedat radsi odkaz na nejakou zivou statisktiku? at to stale neni potreba aktualizovat napr. gs.statcounter.com)
- 
+You can look at most current stats at [StatCounter](http://gs.statcounter.com/).
 Luckily there are in fact not so many browsers as it seems. The important (from HTML point
 of view) part of web browser is its rendering (layout) engine and there are only few of those
 (sorted by current market-share):
@@ -443,7 +446,7 @@ name (sorted alphabetically):
 - `<ol>` -- **O**rdered **L**ist (*block element*)
 - `<ul>` -- **U**nordered **L**ist (enumeration) (*block element*)
 - `<li>` -- **L**ist **I**tem (*block element*)
-- `<div>` -- **Div**ision (a [generic paragraph](todo)) (*block element*)
+- `<div>` -- **Div**ision (a [generic paragraph](https://www.w3.org/TR/html5/grouping-content.html#the-div-element)) (*block element*)
 - `<span>` -- span [(meaning range)](http://www.merriam-webster.com/dictionary/span) A generic part of line (*line element*)
 
 Any element can have **attributes**. Attributes are some additional information about the
@@ -456,7 +459,8 @@ must contain additional information -- the link target.
 
 Attributes must be written in the *opening tag*, they are written in form `name='value'`, each
 attribute can be specified only once. In the above example the attribute name is `href` (meaning
-[**h**ypertext **ref**erence](todo)) and the value is the actual [URL link](todo) (https://youtube.com/).
+[**h**ypertext **ref**erence](https://www.w3.org/TR/2014/REC-html5-20141028/links.html#links)) 
+and the value is the actual [URL link](https://url.spec.whatwg.org/) (https://youtube.com/).
 The order of attributes in a tag is arbitrary.
 
 Note: you can use either single quotes `'` or double quotes `"` around attribute value, there is
@@ -465,7 +469,8 @@ no difference.
 ### Common Attributes
 There is a number of common attributes, it's really good to know about:
 
-- `id` -- A unique identifier of the HTML element within the document (used, e.g in [forms](todo)).
+- `id` -- A unique identifier of the HTML element within the document (used, 
+e.g in [forms](http://localhost:4000/en/apv/walkthrough/html-forms/)).
 - `class` -- An arbitrary class of the HTML element, used mainly for [CSS styles](todo)).
 - `title` -- An arbitrary text which is shown when a user hovers over a HTML element.
 

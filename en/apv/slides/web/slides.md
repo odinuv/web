@@ -9,12 +9,12 @@ permalink: /en/apv/slides/web/
 <section markdown='1'>
 ## Engineering
 - Basic principles of Engineering:
- - Reproducibility (do the same thing more than once),
- - Measurability (define what is *same*),
- - Portability (as a result of the above),
- - Standardization (formal or industrial),
- - Documentation (what else is need for reproducibility),
- - Organization (no randomness).
+  - **Reproducibility** (do the same thing more than once),
+  - Measurability (define what is *same*),
+  - Portability (as a result of the above),
+  - Standardization (formal or industrial),
+  - Documentation (what else is need for reproducibility),
+  - Organization (no randomness).
 - Apply those principles in Software Engineering.
 
 </section>
@@ -23,12 +23,12 @@ permalink: /en/apv/slides/web/
 ## Computer networks
 - Systems for transmitting data between computers
 - Layered architecture (different approaches):
- - Physical level -- hardware, wires, wireless
- - Logical level:
-  - Network organization and topology
-  - Addressing and communication protocols
- - Application level:
-  - Services and applications offered to end-users
+  - Physical level -- hardware, wires, wireless
+  - Logical level:
+    - Network organization and topology
+    - Addressing and communication protocols
+  - Application level:
+    - Services and applications offered to end-users
 
 </section>
 

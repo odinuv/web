@@ -65,7 +65,7 @@ and takes care of a lot of the dirty work for us. The operating system understan
 such as 'save a file' or 'show this text on the screen', etc. and makes it possible to use 
 [high-level programming language](https://en.wikipedia.org/wiki/High-level_programming_language).
 
-## Source Code
+### Source Code
 Source code is a simple text document, which contains the instruction for the operating system (and
 subsequently the processor) to perform. 
 In a high-level language, the source code must be translated into more low-level instructions the OS and the processor

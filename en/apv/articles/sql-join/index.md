@@ -6,11 +6,11 @@ permalink: /en/apv/articles/sql-join/
 * TOC
 {:toc}
 
-In the previous article I described [the principles of relational database](todo).
+In the previous article I described [the principles of relational database](/en/apv/articles/relational-database/).
 This leads to SQL language which is build upon them and is used by many
 database systems worldwide. In this article I will describe in more details how
 individual relations (tables) are connected (joined) together. I assume, that
-you have some basic experience with SQL in [querying individual tables](todo).
+you have some basic experience with SQL in [querying individual tables](/en/apv/walkthrough/database/#select).
 
 ## Introduction
 When working with database, and especially when working with multiple tables,
@@ -236,7 +236,7 @@ SELECT * FROM
 
 The join will return only the rows for which the join condition is true.
 
-## Cross JOIN
+### Cross JOIN
 The join condition corresponds to foreign key `FOREIGN KEY (id_location) REFERENCES location(id_location)`
 which is defined in the `person` table. This sort of makes sure that the result makes sense.
 In case you want to join tables between where there is no foreign key, or you want to make some more
@@ -276,7 +276,7 @@ Which ultimately leads to gross errors where the join conditions becomes overrid
 search condition and the query returns rows which makes no sense at all. So you should avoid
 using cross joins.
 
-## INNER JOIN
+### INNER JOIN
 The join I described above is an **inner join** -- it returns the matching rows from both
 tables. It is the default type of join, but if you want to be explicit (which I strongly suggest),
 you write it as:
@@ -289,7 +289,7 @@ SELECT * FROM
 
 This is exactly the same as the query not using the `INNER` keyword.
 
-## OUTER JOIN
+### OUTER JOIN
 An outer join allows you to select matching rows from both tables **plus** some not matching rows.
 This is useful in cases where some parts of the relation is optional. For example, let's say you want
 to list all persons and their addresses. If you use `INNER` join, it will give you only those persons
@@ -371,7 +371,7 @@ full outer join is rarely used, it simply is not often required in applications.
 You may also come across the term *equijoin*. That is no other type of join, it is simply
 a join which uses equality as the join condition. Most joins are equijoins.
 
-## USING
+### USING
 There is an alternative shorter way to write the JOIN statement provided that the
 join condition uses the two columns with the same name. You can write:
 
@@ -394,7 +394,7 @@ The `USING` statement allows you to simplify a very common type of join conditio
 in no way affect the way the tables are joined. You can use it with any of the above modifiers.
 The only difference is that the resulting table will contain only a single column `id_location`.
 
-## NATURAL Join
+### NATURAL Join
 You may also encounter a `NATURAL` join. Natural join is designed for the same purpose as the
 `USING` statement, but it takes it one step further -- it automatically assumes that the
 join condition is equality of all columns with same names. So this:
@@ -437,7 +437,7 @@ So it will probably return no rows at all. And this is very likely something you
 Therefore I suggest that you don't use NATURAL join and always be explicit about the columns you
 want to use in your condition.
 
-## Joining more than two tables
+### Joining more than two tables
 A single `JOIN` operator can join only two tables. If you want join more than two tables you simply take
 advantage of the rule that *a result of join is a table* as well. If you want to select
 all `person`s with all their `contact`s and their `contact_type`s, you would use:
@@ -459,7 +459,7 @@ similar to `5 + 8 + 13`.
 
 ## UNION
 Union really has nothing to do with join. But since I mentioned intersection and union operations in the
-[join types section](todo), let's see what SQL UNION operator does.
+[join types section](/en/apv/articles/sql-join/#join-types), let's see what SQL UNION operator does.
 `UNION` in SQL does normal [union of sets](https://en.wikipedia.org/wiki/Union_(set_theory)). This
 means that it operates on two sets of **same elements**. Remember that join operates on two
 different tables with different attributes and merges those attributes together. The `UNION` operation
@@ -524,7 +524,8 @@ FROM
 WHERE relation.id_person1 = '21' OR relation.id_person2 = '21'
 {% endhighlight %}
 
-The above query is quite interesting because it is a query, where you must use [aliases](todo) on
+The above query is quite interesting because it is a query, where you must use 
+[aliases](/en/apv/articles/sql-join/#aliases) on
 both tables and columns. It also shows joining more than two tables together and it also
 shows that nothing prevents you from joining the same table more times. In the above query
 I first join table `person` to `relation` on column `id_person`. Then I again join table
