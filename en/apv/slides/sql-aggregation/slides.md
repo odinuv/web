@@ -341,7 +341,7 @@ FROM <em>table_expression</em>
 
 {% highlight sql %}
 SELECT person.id_person, COUNT(contact.id_contact) 
-    FROM person LEFT JOIN contact
+    FROM person JOIN contact
     ON person.id_person = contact.id_person
 WHERE contact.id_contact_type = '4' 
 GROUP BY person.id_person
