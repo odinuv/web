@@ -41,14 +41,16 @@ outlined below.
 - [Structure of database](/en/apv/walkthrough/database/pgsql-structure.sql) 
 - [Sample data](/en/apv/walkthrough/database/pgsql-data.sql) 
 
-To import the file using the [Adminer](todo) client. Click on **Import**, select the 
+To import the file using the [Adminer](https://www.adminer.org/) client. Click on **Import**, select the 
 file you downloaded, and click **Execute**. Repeat the process for both files:
 
+{: .image-popup}
 ![Screenshot -- Import data](/en/apv/walkthrough/database/adminer-import-1.png)   
 
 Once you have the structure of the database and the data imported, you
 should see, content in the Adminer
 
+{: .image-popup}
 ![Screenshot -- Imported data](/en/apv/walkthrough/database/adminer-import-2.png)
 
 ### SQL Language
@@ -106,8 +108,9 @@ When you look at the schema, you should see that the `location` table has column
 `id_location`, `city`, `street_name`, `street_number`, `zip`, `country`, `location`, `latitude`, `longitude`.
 The column types of `latitude` and `longitude` is `numeric` which is a decimal number (GPS coordinates) and
 the type of `id_location` and `street_number` is `integer`. All other columns have type `character varying` which 
-is another name for `string`. All of the columns except `id_location` allow [`NULL`s](todo) and
-the column `id_location` has [default value](todo), which means that the all of the columns are optional.
+is another name for `string`. All of the columns except `id_location` allow 
+[`NULL`s](/en/apv/articles/sql-join/#null) and
+the column `id_location` has default value, which means that the all of the columns are optional.
 Columns with [automatically generated IDs](todo) -- such as `id_location` in this table -- are 
 almost never inserted.
 
@@ -188,10 +191,12 @@ INSERT INTO person (first_name, last_name, nickname, birth_day)
 VALUES ('John', 'Doe', 'Johnnie', TO_TIMESTAMP('24.12.2010', 'DD.MM.YYYY'),)
 {% endhighlight %}
 
-In the above query, I used the [TO_TIMESTAMP function](todo) of the PostgreSQL
+In the above query, I used the 
+[TO_TIMESTAMP function](https://www.postgresql.org/docs/9.5/static/functions-formatting.html) of the PostgreSQL
 database server. The first argument to the function is the date (in any format).
-The second argument to that function is the description of the format 
-with a [formatting string](todo). This way you tell the server that the date 
+The second argument to that function is the description of the format with a 
+[formatting string](https://www.postgresql.org/docs/9.5/static/functions-formatting.html#FUNCTIONS-FORMATTING-DATETIME-TABLE). 
+This way you tell the server that the date 
 starts with two digits representing a date and followed by a dot. 
 
 {. :note}
@@ -230,9 +235,12 @@ above example). Also the new value of the column may be an expression, so it's v
 
 #### Search condition
 Important: the `WHERE` condition is not required, if you forget it, 
-**all rows in the table will be updated**. Also notice that `NULL`s need to be [treated specially](todo). 
-Typically you use [key columns](todo) in the search condition to update a single record. Be careful
-about this -- if you are using a [compound key](todo), then all columns of that key must be used
+**all rows in the table will be updated**. Also notice that `NULL`s need to be 
+[treated specially](/en/apv/articles/sql-join/#null). 
+Typically you use [key columns](/en/apv/articles/relational-database/#key) in the search 
+condition to update a single record. Be careful
+about this -- if you are using a [compound key](/en/apv/articles/relational-database/#key-types), 
+then all columns of that key must be used
 in the condition. Consider this query:
 
 {% highlight sql %}

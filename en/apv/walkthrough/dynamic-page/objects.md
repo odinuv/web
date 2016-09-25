@@ -19,7 +19,7 @@ You have already met some functions in the previous examples -- e.g.:
 - `print_r` -- function to print an array
 - `count` -- function to return number of elements in an array
 
-These are built-in [PHP functions](todo). PHP has many built-in functions, I will
+These are built-in [PHP functions](http://php.net/manual/en/funcref.php). PHP has many built-in functions, I will
 show some of the very useful ones along the way. Apart from those
 you can define your own functions. Here I define a function `makeMoo`,
 which -- well -- makes Moo!:
@@ -75,7 +75,8 @@ code to check what your function got from outside world. A good [IDE](todo) can 
 ## Classes
 **Classes** are templates for **Objects**. Objects are structures which can contain
 **fields** (also called properties or attributes) with values (similar to associative
-[arrays](todo)) and functions. In other words we say that Objects are **instances** of
+[arrays](/en/apv/walkthrough/dynamic-page/array/)) and functions. In other words we 
+say that Objects are **instances** of
 classes. Functions in classes and objects are called **methods**.
 *Fields* and *methods* are Class and Object **members**. Let's see an example:
 
@@ -89,10 +90,12 @@ the Cow class -- a cow `$betty`. Once I have the cow object, I can call the `mak
 method to make Betty do *Moo*.
 
 Notice, that you need to use `->` operator to access object members. Each class member
-has **visibility** -- which can be either: *public*, *protected*, *private*.
-*Private* members are accessible only from within the object itself.
-*Protected* members are also accessible from [*derived classes*](todo).
-*Public* members are also accessible from outside of the object.
+has **visibility** -- which can be either: *public*, *protected*, *private*:
+
+- *Private* members are accessible only from within the object itself.
+- *Protected* members are also accessible from 
+[*derived classes*](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)).
+- *Public* members are also accessible from outside of the object.
 
 Let's make a more complicated class:
 
@@ -112,11 +115,12 @@ The special variable `$this` refers to the current object and can be used only
 inside object methods. The point of using private members is that their values
 cannot be changed inadvertently.
 
-### Namespaces
-If you have looked at the list of built-in [PHP functions and classes](todo) you may have wondered
+## Namespaces
+If you have looked at the list of built-in [PHP functions and classes](http://php.net/manual/en/funcref.php) 
+you may have wondered
 what happens when you define a function or class which already exists. Well, a
 conflict happens and it becomes unclear what function you're calling. To solve this problem, PHP has
-[**namespaces**](todo). Referring to classes in namespaces is done using backslash `\` character, e.g:
+**namespaces**. Referring to classes in namespaces is done using backslash `\` character, e.g:
 
 {% highlight php %}
 $object = new \MyNameSpace\MyClass();

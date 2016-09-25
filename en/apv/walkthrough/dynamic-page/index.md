@@ -6,28 +6,32 @@ permalink: /en/apv/walkthrough/dynamic-page/
 * TOC
 {:toc}
 
-When you know the basics of [HTML](todo) and know how to create a [static HTML page](todo) you
+When you know the basics of [HTML](/en/apv/articles/html/) and know how to 
+create a [static HTML page](/en/apv/walkthrough/html/) you
 can switch to creating dynamic pages. A dynamic web page has content which is generated dynamically
-(on the fly) depending on some external input (usually user input and content stored in [database](todo)).
+(on the fly) depending on some external input (usually user input and content stored 
+in [database](/en/apv/walkthrough/database/)).
 For example, when you check your email on web, the page you see contains your current emails (stored somewhere)
 and only those you want to see (e.g. in inbox or another folder you selected).
 
 To create a dynamic page, you need another technology beyond HTML, this can be either:
 
-- anything on [web server](todo) -- backend
-- [Javascript on](todo) web client -- frontend
+- anything on [web server](todo) -- backend,
+- [Javascript on](todo) web client -- frontend.
 
-In this part I will concentrate on the web *server* approach. I choose to use [PHP language](todo) for
+In this part I will concentrate on the web *server* approach. I choose to use [PHP language](http://php.net/) for
 the server backend, this choice is rather arbitrary as it is not anyhow better or worse
-than using e.g. [Python](todo).
+than using e.g. [Python](https://www.python.org/).
 
 ## PHP Language
-PHP is an interpreted programming language, which means that there is no [compilation](todo) involved
+PHP is an interpreted programming language, which means that there is no 
+[compilation](/en/apv/articles/programming/#source-code) involved
 (or rather it's done automatically behind the scenes). Practically this means that you just write
-source code and it gets executed, which simplifies things a lot. PHP has a [C-like syntax](todo) but
+source code and it gets executed, which simplifies things a lot. PHP has a 
+[C-like syntax](https://en.wikipedia.org/wiki/C_(programming_language)) but
 otherwise it's not anyhow similar to C. PHP is a fully fledged language which allows both procedural
-and object oriented programing. It has a large library of [built in functions](todo) and
-[extensions](todo). A single file with PHP code (and `.php` extensions) is called a *PHP script*.
+and object oriented programing. It has a large library of [built in functions](http://php.net/manual/en/funcref.php) 
+and [extensions](https://pecl.php.net/). A single file with PHP code (and `.php` extensions) is called a *PHP script*.
 An application is composed of many scripts usually.
 
 ## Getting Started
@@ -78,23 +82,27 @@ echo 'Hello John O\'Reilly'; // VALID again - single quote is contained inside t
 {% endhighlight %}
 
 {: .note}
-In `echo "Hello John!";`, the `"Hello John!"` is a [string literal](todo).
+In `echo "Hello John!";`, the `"Hello John!"` is a [string literal](/en/apv/articles/programming/#literal).
 
 ### Variables
-Variables contain values which can be changed (as opposed to [constants](todo)). Variables begin with
+Variables contain values which can be changed (as opposed to 
+[constants](/en/apv/articles/programming/#constant)). Variables begin with
 by the dollar character `$`, should be [safe names](todo) and case sensitive (not always, but sometimes yes -- so,
 to simplify things let's pretend that they always are).
 
-With variables you can do standard operations with [C-like operators](todo) - `+`, `-`, `*`, `/`, `=`, `==`,
+With variables you can do standard operations with 
+[C-like operators](/en/apv/articles/programming/#operators) - `+`, `-`, `*`, `/`, `=`, `==`,
 additionally in PHP, there is a dot `.` operator which is used for concatenating strings. Operator `=`
-assigns a value to variable, operator `==` compares two values. Operator [modulo](todo) is `%`. Examples:
+assigns a value to variable, operator `==` compares two values. 
+Operator [modulo](https://en.wikipedia.org/wiki/Modulo_operation) is `%`. Examples:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/variables-1.php %}
 {% endhighlight %}
 
 The above example will print `Hi John4`. As you see, there are no *declarations* of variables. In PHP a variable is
-declared by simply assigning it a value. Because PHP is **dynamically typed language**, The [type of the variable](todo)
+declared by simply assigning it a value. Because PHP is **dynamically typed language**, The 
+[type of the variable](/en/apv/articles/programming/#type-system)
 is defined by the variable content.
 So `$count = 0` is an integer variable and `$count = 'many'` is a string variable. The type of variable
 can change, which is very practical, but can lead to some confusing behavior.
@@ -162,7 +170,8 @@ In the above example, I intentionally mixed different types quotes and concatena
 would write things in a more consistent matter.
 
 ### Task 1 -- Contact form
-Try to create a contact form like this using PHP echo command (review the [HTML form elements](todo) if necessary):
+Try to create a contact form like this using PHP echo command (review the 
+[HTML form elements](/en/apv/walkthrough/html-forms/#form-controls) if necessary):
 
 ![Screenshot -- Introduction page](/en/apv/walkthrough/dynamic-page/form-1.png)
 
@@ -196,7 +205,7 @@ Now define the page title and default textarea content as variable too and set t
     <YourName>
 
 Also add a `h1` header to the page with the same content as the page title.
-Hint: You'll also need to use some [HTML entities](todo).
+Hint: You'll also need to use some [HTML entities](/en/apv/articles/html/#entities).
 
 ![Screenshot -- Introduction page](/en/apv/walkthrough/dynamic-page/form-3.png)
 
@@ -206,7 +215,8 @@ Hint: You'll also need to use some [HTML entities](todo).
 {% endhighlight %}
 
 There are many different solutions to the above, so your solution does not have to look the same
-as my solution. Make sure to verify your solution using [HTML validator](todo), and check that
+as my solution. Make sure to verify your solution using 
+[HTML validator](/en/apv/articles/html/#validation), and check that
 the message in the text area has the correct whitespace.
 
 ## Divide and conquer

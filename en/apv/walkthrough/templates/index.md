@@ -6,9 +6,11 @@ permalink: /en/apv/walkthrough/templates/
 * TOC
 {:toc}
 
-If you look at the last [version of the contact form], you probably noticed that
+If you look at the last 
+[version of the contact form](/en/apv/walkthrough/dynamic-page/array/#task----improve-contact-form), 
+you probably noticed that
 it is becoming quite a convoluted mess of PHP and HTML (and yet it is still a very
-simple form). The solution to this problem is to use [**(HTML) templates**](todo).
+simple form). The solution to this problem is to use **(HTML) templates**.
 
 The advantage of templates is that it simplifies both the PHP and HTML code and
 that it protects your code against [Cross Site Scripting vulnerabilities](todo).
@@ -29,8 +31,8 @@ choice is rather arbitrary, as all templating engines work in very similar way, 
 almost the same features and they even have somewhat similar syntax.
 
 ### Getting Started with Latte
-First you need to obtain Latte, either by using [composer](todo) or simply by
-**downloading the library** from [Github](todo):
+First you need to obtain Latte, either by using [composer](https://getcomposer.org/) or simply by
+**downloading the library** from [Github](https://github.com/nette/latte):
 
 ![Screenshot -- Download Latte](/en/apv/walkthrough/templates/download-latte.png)
 
@@ -55,11 +57,13 @@ prints the contents of a template variable `$pageTitle`.
 Now for the PHP script -- first statement `require 'latte.php';` instructs PHP to include file
 `latte.php` in the same directory as your script. The `latte.php` is part of Latte Templating
 engine and makes sure that the library is available in your script. Next we [create
-an instance](todo) of the `Engine` class: `$latte = new Latte\Engine();`. Note that the
-class `Engine` is in [namespace](todo) `Latte\`.
-Next we create an [associative array](todo) `$templateVariables` with value `'Template engine sample'`
-assigned to the `pageTitle` key.
-On the last line, we call the `render` [function](todo) of Latte engine and pass it filename of the
+an instance](/en/apv/walkthrough/dynamic-page/objects/#classes) of the `Engine` 
+class: `$latte = new Latte\Engine();`. Note that the
+class `Engine` is in [namespace](/en/apv/walkthrough/dynamic-page/objects/#namespaces) `Latte\`.
+Next we create an [associative array](/en/apv/walkthrough/dynamic-page/array/) `$templateVariables` 
+with value `'Template engine sample'` assigned to the `pageTitle` key.
+On the last line, we call the `render` [function](/en/apv/walkthrough/dynamic-page/objects/#functions) 
+of Latte engine and pass it filename of the
 template (`template-1.latte`) and the array of $templateVariables.
 
 As you can see, **the variables used and available in the template must be passed via an associative
@@ -99,9 +103,15 @@ You can put comments in the templates as well:
 {% endhighlight %}
 
 Contrary to comments in HTML, comments in templates will not be contained in the resulting page.
+If you find passing variables between PHP script and a template confusing, have a look at 
+the following schema.   
+
+{: .image-popup}
+![Schematic of template variables](/en/apv/walkthrough/templates/code-schematic.png)
 
 ## Task -- Contact form
-Let's convert the [contact form](todo) we did in previous chapter.
+Let's convert the [contact form](/en/apv/walkthrough/dynamic-page/array/#task----improve-contact-form)
+we did in previous chapter.
 
 {: .solution}
 {% highlight php %}
@@ -119,7 +129,7 @@ Template file `form-5.latte`:
 I simplified the condition
 `if ($templateVariables['currentUser']['firstName'] != '')` to
 `if ($templateVariables['currentUser']['firstName'])` because, the
-automatic [boolean conversion](todo) allows us to do it.
+automatic [boolean conversion](/en/apv/walkthrough/dynamic-page/#boolean-conversions) allows us to do it.
 
 {: .note}
 You need to convert the entities &lt; and &gt; in the message back to to characters `<` and `>`. Now
@@ -171,7 +181,8 @@ Template file `person-form.latte`:
 ## Summary
 While using a template engine requires you to learn its' macro language, it
 does lead to a cleaner [and safer](todo) HTML and PHP code. You don't need to struggle so much
-with using [proper quotes](todo). However when using templates, don't forget that
+with using [proper quotes](/en/apv/walkthrough/dynamic-page/#working-with-strings). However 
+when using templates, don't forget that
 the variables defined inside a template are only those passed in array to the
 `render` method! Variables from the PHP script are not available in the
 template automatically. Also keep in mind that while HTML Template is very similar to
