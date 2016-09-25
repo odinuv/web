@@ -6,7 +6,8 @@ permalink: /en/apv/walkthrough/backend-update/
 * TOC
 {:toc}
 
-In the [previous chapter](todo), you learned how to insert data into database table. The important part there is to properly
+In the [previous chapter](/en/apv/walkthrough/backend-insert/), you learned how to insert data into 
+database table. The important part there is to properly
 handle optional values and implement sound form validation. Updating a record in database is quite similar. The only
 challenge is to provide the user of initial values of the edited record. Again, no new technologies are needed, it is just 
 another combination of what you learned already.

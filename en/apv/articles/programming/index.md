@@ -27,7 +27,7 @@ way anyone (with a little effort) can build a brick wall.
 ### Software Engineering
 *Software Engineering* (as any other engineering) deals with how the **programming code should be organized** and
 what development processes should be applied. Software development includes a great deal of 
-[Project management](todo) and it is something you learn best by studying
+[Project management](https://en.wikipedia.org/wiki/Project_management) and it is something you learn best by studying
 rules and standards and by learning from (preferably other peoples') failed projects. Software engineering guides
 programmers in writing their code in a similar manner in which architectural plans guide masons. Software 
 engineering requires a broad understanding of many technologies and approaches so that you can choose 
@@ -226,7 +226,7 @@ to each langauge, but there are some commonly used:
 - **float**, **real** -- Decimal number 
 - **array** -- list of values (each value can be of the above type)
 
-Depending on how the language handles types, there are [**strongly typed languages**](todo)
+Depending on how the language handles types, there are **strongly typed languages**
 and **weakly typed languages**. Because this is quite a complicated area, I will simplify it
 to just that in weakly type langauge, the values of different types are converted automatically.
 In strongly typed language, the values must be explicitly converted. Most languages used in

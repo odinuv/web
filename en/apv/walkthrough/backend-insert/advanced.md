@@ -14,8 +14,9 @@ related information into multiple tables -- there can be many reasons for that:
   (store product images in another table than products themselves)
 - record in one table can be shared by records in another tables (address can be shared
   among many persons whom happen to live in the same building)
-- another technical reasons -- mostly defined by [database normalization rules](todo) which
-  should be obeyed during the database structure design process.
+- another technical reasons -- mostly defined by 
+[database normalization rules](todo) which
+  should be obeyed during the [database structure design process](todo).
   
 Records are then connected by [foreign keys](/en/apv/articles/relational-database/#foreign-key) -- meta-information
 about relations between tables.
@@ -91,7 +92,8 @@ you think for the second `INSERT` command to fail:
 It would result into a state, in which you have the address in the database and a not the person. The user would try to
 insert the information again, but there will be an unused address record in `location` table!
 
-To prevent this and other [inconsistent states](todo) you want to enclose both queries into a [*transaction*](/en/apv/articles/database-systems#transaction).
+To prevent this and other [inconsistent states](/en/apv/articles/database-systems/#data-integrity) you 
+want to enclose both queries into a [*transaction*](/en/apv/articles/database-systems#transaction).
 Such modification will make sure, that both queries are either accepted by database system and both 
 rows are inserted in their tables or no row is inserted at all after transaction ends.
 

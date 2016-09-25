@@ -10,7 +10,9 @@ try {
     $db = new PDO('pgsql:host=localhost;dbname=apv', 'apv', 'apv');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $db->prepare("INSERT INTO location (name, city, country) VALUES (:name, :city, :country)");
+    $stmt = $db->prepare(
+        "INSERT INTO location (name, city, country) VALUES (:name, :city, :country)"
+    );
     $stmt->bindValue(':name', $location['name']);
     $stmt->bindValue(':city', $location['city']);
     $stmt->bindValue(':country', $location['country']);

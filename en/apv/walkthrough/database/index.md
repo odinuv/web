@@ -96,6 +96,32 @@ is just a convention to improve readability. It has no effect on the query itsel
 are delimited by semicolon `;`. Because in most cases, only a single SQL statement is used, the 
 semicolon at the and of it may safely omitted (it is a delimiter, not terminator).  
 
+#### Reading Database Structure
+When you have the database schema imported into your own database, you should take time to 
+explore it in more detail. The database schema pictured above gives you only a general overview
+of what structure is defined for the data. In fact the database schema defines all
+[integrity constraints](/en/apv/articles/database-systems/#data-integrity). Examine 
+the structure of the `person` table in your database: 
+
+{: .image-popup}
+![Database structure](/en/apv/walkthrough/database/adminer-structure.png)
+
+Here you can see for example that:
+
+- column `id_person` has data type `integer`,
+- column `id_person` is an [automatically generated key](todo) (Auto Increment),
+- column `id_person` has default value `nextval('person_id_person_seq')` (next value of a [sequence](todo)),
+- column `birth_day` has data type `date`,
+- column `birth_day` allows inserting `NULL`,
+- column `gender` has type `gender` (a special type defined in your database),
+- there is a simple key defined on the `id_person` column (PRIMARY key),
+- there is a compound key defined on the combination of columns `first_name, last_name, nickname` (UNIQUE),
+- there is a foreign key on the `id_location` column, so that it points to 
+the `location` table `id_location` column (`source: id_location; target: location(id_location)`).
+
+And much more. Take time to examine other tables as well so that you are acquainted with 
+database structure. 
+
 ### INSERT
 The general syntax of the INSERT command is:
 

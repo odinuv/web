@@ -519,8 +519,8 @@ email. Eventhough it uses a `LEFT JOIN` it won't select persons without email
 (they don't have any contact which would match it).  
 
 To fix this, I need to move the search condition somewhere else, and if 
-you followed [the previous example] you should be able to come with
-both solutions yourself.
+you followed [the previous example](/en/apv/articles/sql-aggregation/#example----same-approach-same-result), 
+you should be able to come with both solutions yourself.
 
 {: .solution}
 {% highlight sql %}
@@ -533,7 +533,7 @@ FROM person LEFT JOIN
 GROUP BY person.id_person
 {% endhighlight %}
 
-{. solution}
+{: .solution}
 {% highlight sql %}
 SELECT person.id_person, COUNT(*) 
   FROM person LEFT JOIN contact
@@ -573,7 +573,8 @@ GROUP BY person.id_person
 {% endhighlight %}
 
 Notice that the solution heavily depends on how the columns are defined in the database, so you must be able to
-[understand table definition](todo). Also counting (or summing) anything properly requires that you 
+[understand table definition](/en/apv/walkthrough/database/#reading-database-structure). Also counting 
+(or summing) anything properly requires that you 
 wrap your head around the aggregation principle. Hopefully the next example will help you
 with that. 
 
@@ -794,7 +795,7 @@ WHERE contact_count.count > 1
 {% endhighlight %}
 
 ## Group By Column Expression
-If you read the [definition](todo) properly, you may have noticed that 
+If you read the [definition](/en/apv/walkthrough/database/#reading-database-structure) properly, you may have noticed that 
 `GROUP BY` clause allows you to use a [column expression](https://www.postgresql.org/docs/9.5/static/sql-expressions.html) 
 (not only a column name).
 The following query takes advantage of that:

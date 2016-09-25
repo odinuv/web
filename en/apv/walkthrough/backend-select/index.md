@@ -6,24 +6,24 @@ permalink: /en/apv/walkthrough/backend-select/
 * TOC
 {:toc}
 
-In the [previous chapter](todo), you have learned how to use SQL queries from
-within PHP scripts. You also learned how to use parameters in SQL 
-queries using [prepared statements](todo). In this chapter, we will connect
+In the [previous chapter](/en/apv/walkthrough/backend/), you have learned how to use SQL queries from
+within PHP scripts. You also learned how to use parameters in SQL queries using 
+[prepared statements](/en/apv/walkthrough/backend/#selecting-data-with-parameters). In this chapter, we will connect
 it with HTML forms to build a fully interactive page which communicates with 
 database.
 
 ## Getting Started
-In this chapter, we need to get back to [HTML forms](todo) and processing them in PHP.
+In this chapter, we need to get back to [HTML forms](/en/apv/walkthrough/html-forms/) and processing them in PHP.
 For processing HTML forms, you need to be familiar with what the browser sends -- 
-the [name-value pairs](todo) for controls.
+the [name-value pairs](/en/apv/walkthrough/html-forms/#name-and-value) for controls.
 
 ### POST Values
 The name-value pairs of form controls accessible in PHP in either `$_GET` or `$_POST` variable. The `$_GET` 
 and `$_POST` variables are one of [PHP magical variables](todo). They are magical because they are automatically
 (magically) filled with values from the HTTP request. Whether the form controls are available in the 
 `$_GET` or `$_POST` variable is determined what `method` attribute is assigned to the HTML form. therefore
-having `<form method='post'>` does an [HTTP POST](todo) method and PHP will make the name-value pairs available
-in the `$_POST` variable automatically.  
+having `<form method='post'>` does an [HTTP POST](/en/apv/articles/web/#http-protocol) method and 
+PHP will make the name-value pairs available in the `$_POST` variable automatically.  
 
 To demonstrate this, we need a simple script with HTML form. PHP script:
 
@@ -50,10 +50,11 @@ you should see something like:
 
 You can see that the '$_POST' array is as an associative arrays of form controls. The indexes 
 in the array are form control names, and the values are control values. This underlines
-the importance of knowing what [control names and values are](todo).
+the importance of knowing 
+what [control names and values are](/en/apv/walkthrough/html-forms/#name-and-value).
 
 It is also important to know, that the entire script is stateless, the same 
-way [HTTP protocol is](todo). This means that the `$_POST` array is filled
+way [HTTP protocol is](/en/apv/articles/web/#http-protocol). This means that the `$_POST` array is filled
 *only for a single execution*. Test the above example and see for yourself, that
 the content of `$_POST` array is only filled whit what you just entered
 (or nothing, if you did not send the form and just loaded the page).
@@ -81,7 +82,7 @@ Let's start with making a static page first:
 {% endhighlight %}
 
 Now add a PHP script, which generates the page using template and layout template (you can
-use one [from previous chapter](todo). So the page template would be: 
+use one [from previous chapter](/en/apv/walkthrough/backend/). So the page template would be: 
 
 {% highlight html %}
 {% include /en/apv/walkthrough/backend-select/persons-list-1.latte %}
@@ -103,7 +104,8 @@ a single page. To determine if an array contains an element, we can use the `emp
 It is not correct to use the condition `if ($_GET['search'] == '')` because that would trigger a warning 
 that the `search` item is not found in the array (and thus cannot be compared to anything). Also the 
 `empty` function checks if the value of the variable evaluates to false, taking advantage of the
-[boolean conversion](todo). This means we can use it also on the `keyword` field to check whether the
+[boolean conversion](/en/apv/walkthrough/dynamic-page/#boolean-conversions). This means 
+we can use it also on the `keyword` field to check whether the
 user has entered some non-empty string.
 
 Now we need to prepare two SQL queries to list the users. The query to list all users is pretty simple, 
@@ -122,7 +124,8 @@ WHERE (first_name ILIKE '%bill%') OR (last_name ILIKE '%bill%') OR (nickname ILI
 ORDER BY last_name, first_name
 {% endhighlight %}
 
-I used the [`ILIKE` operator](todo) which provides a case-insensitive match. Also I used '%' both
+I used the [`ILIKE` operator](https://www.postgresql.org/docs/current/static/functions-matching.html) which 
+provides a case-insensitive match. Also I used '%' both
 on the beginning and at the end of the pattern so that a full-text search is achieved. The pattern
 '%bill%' would therefore match any of: 'Bill', 'billy', 'kill-bill', etc.
 To achieve the required functionality we need to either put the above SQL statements in the 
@@ -184,6 +187,7 @@ if ($keyword) {
 }
 {% endhighlight %}
 
+### Finalizing
 There are many other solutions how the above code can be written. However it is very important to maintain 
 consistency of the program behavior in that each branch of the condition changes the state of the program 
 in a same way. Notice that no matter what branch of the first condition is executed, we 
@@ -210,13 +214,16 @@ only on the client side (web browser) and is [unreliable](todo).
 One can object that the search form as it is now is too relaxed. What if the user wants to 
 search both by the first name and last name? E.g. he knows that he's looking for 
 someone named 'John Do*something*'. Your task is now to extend the search script to 
-do so. Try to find a solution without [adding more](todo) form control.
+do so. Try to find a solution without adding more form controls.
 
 {: .solution}
+<div markdown='1'>
 Let's say that the user enters 'John Do' in the search field. We can split the text by space and 
 obtain strings 'John' and 'Do'. Then we can search for them using an SQL query. To split a string
-in PHP, you can use the [`explode` function](todo). You can use the [`count` function](todo) to
+in PHP, you can use the [`explode` function](http://php.net/manual/en/function.explode.php). 
+You can use the [`count` function](http://php.net/manual/en/function.count.php) to
 count the number of items in the array.
+</div>
 
 {: .solution}
 {% highlight php %}
@@ -228,18 +235,22 @@ $last_name = $parts[1];
 {% endhighlight %}
 
 {: .solution}
+<div markdown='1'>
 You need to implement an extended logic to handle all the possible cases. It is not mandatory for the 
 end-user to enter two words. What happens when the user enters only a single word? What happens when 
 the user enters three words? What are all the possible states?
+</div>
 
 {: .solution}
+<div markdown='1'>
 - The form was not submitted -- display nothing
 - The form was submitted (user pressed the search button): 
  - User entered no keyword -- display nothing
  - User entered a single keyword -- display persons with matching first name or last name 
  - User entered two keyword -- split the keyword into words and search for user with first name matching the first 
  word and last name matching the second word
- - User entered three keywords -- display an error message 
+ - User entered three keywords -- display an error message
+</div> 
 
 Page template (notice the introduction of `$message` variable:
 
@@ -255,7 +266,8 @@ PHP script (notice that the queries have different boolean operators):
 {% endhighlight %}
 
 {: .note}
-The above script is written in slightly different style than the [previous one](todo). Here, I 
+The above script is written in slightly different style than 
+the [previous one](/en/apv/walkthrough/backend-select/#finalizing). Here, I 
 maintained the consistency of state by first initializing the `$persons` and `$message` variables
 to some default values and used the conditions to change them only when necessary. This leads 
 to more concise code, which may be harder to read as it does not explicitly enumerate all of the 
@@ -269,7 +281,7 @@ how all those criteria can be combined, which leads us to [application design](t
 In this chapter you learned how to process HTML forms in PHP script.
 You should be familiar with the structure of `$_GET` and `$_POST` variables.
 Make sure you understand the rules how HTML form controls are transformed into
-[name-value pairs](todo) and subsequently into `$_GET` and `$_POST` variables.
+[name-value pairs](/en/apv/walkthrough/html-forms/#name-and-value) and subsequently into `$_GET` and `$_POST` variables.
 This allows you to implement your own logic into of the application behavior. So from now on, most of the 
 exercises have virtually unlimited number of solutions. 
 

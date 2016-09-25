@@ -79,7 +79,7 @@ by the end-user and stored in a PHP variable):
 SELECT * FROM person WHERE first_name = 'Bill';
 {% endhighlight %}
 
-The solution is to use [**prepared statements**](todo). This means that you **prepare** a
+The solution is to use **prepared statements**. This means that you **prepare** a
 SQL statement with **placeholders**, then **bind** values to the placeholders and
 then **execute** the statement:
 
@@ -169,16 +169,18 @@ actual query. This will become more useful in future, when we need to distinguis
 errors in different parts of code. In the first `catch` I used the `exit` function to
 immediately terminate the execution of the script. 
 
-## Task -- Select Data
+## Task -- Select Pattern
 Select `first_name`, `last_name`, `age`, `height` of all persons, whose first name or last name 
 begins with **L**. Order the persons by their
 height and age (descending). Make sure to use appropriate error handling. I suggest you approach 
 the task in parts, first make a working SQL query, then add it to a PHP script.                      
 
 {: .solution}
+<div markdown='1'>
 This was a little test whether you can [search for new stuff](http://bfy.tw/7HLc) --
 Use the [AGE function](https://www.postgresql.org/docs/8.4/static/functions-datetime.html) in SQL.
-The first person should be *Leonora Nisbet*. 
+The first person should be *Leonora Nisbet*.
+</div> 
 
 {: .solution}
 {% highlight sql %}
@@ -194,14 +196,15 @@ SELECT first_name, last_name, nickname, AGE(birth_day) AS age, height
 {% endhighlight %}
 
 {: .note}
-I used an [alias](/en/apv/articles/sql-join/#null) in the SQL query to define a 
+I used an [alias](/en/apv/articles/sql-join/#aliases) in the SQL query to define a 
 name of the computed column. It is important to know
  the column name, because we need to reference it in the PHP script.      
 
 ## Task -- Print Data in HTML
 A big task lies ahead of you. Print `first_name`, `last_name`, `nickname` and 
 `age` rounded to years of all persons ordered by `last_name` and `first_name` (ascending).
-Print the persons in a HTML table, one row each. Use layout template](todo) for the HTML page. 
+Print the persons in a HTML table, one row each. Use 
+[layout template](/en/apv/walkthrough/templates-layout/) for the HTML page. 
 Again, approach the task in steps, e.g.:
 
 1. Make a static HTML page with some sample data (skip this if you are confident with templates).
@@ -212,7 +215,7 @@ format as obtained from database.
 5. Hook the SQL query into the PHP script.
 
 ### Step 1
-Consult the [HTML guide] if you are not sure.
+Consult the [HTML guide](/en/apv/walkthrough/html/) if you are not sure.
 
 {: .solution}
 {% highlight html %}
@@ -239,7 +242,8 @@ Create a PHP script, a template and a layout template.
 
 ### Step 3
 Define the persons to be displayed as an array in the PHP script, make 
-sure the array has the same form as the one [returned from database functions](todo). 
+sure the array has the same form as the one 
+[returned from database functions](/en/apv/walkthrough/backend/#selecting-data). 
 
 {: .solution}
 {% highlight php %}
@@ -283,7 +287,7 @@ In this chapter, you learned how to use SQL queries from within a PHP script.
 Non-parametric queries are quite simple (just call the `query` function). Parametric
 queries are more complicated (`prepare`, `bindValue`, `execute` function calls).
 Using proper error control adds further complexity to the script. However the error control
-is very important, otherwise the application will [misbehave](todo) in case an error condition occurs.
+is very important, otherwise the application will misbehave in case an error condition occurs.
 Because the entire application code is now becoming a bit complex, it is really important that
 you are able to separate the code into individual parts and test each part individually.
 

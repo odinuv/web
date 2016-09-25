@@ -62,7 +62,8 @@
 		<div class="container footer">
 			<div class="inside">
 				<p>
-					&copy; 2016 Odin
+					{{ site.time | date: '%Y' }} <a href='https://github.com/ujpef/site/graphs/contributors'>Authors</a>
+					<a href='{{ '/LICENSE.txt' | prepend: site.baseurl }}'>CC-BY-SA-4.0</a>
 				</p>
 			</div>
 		</div>
@@ -79,7 +80,7 @@
 		}});
 
 	  	$('.solution').click(function(e) {
-	  		$(this).children('pre, img').toggle()
+	  		$(this).children('pre, img, p, ul').toggle()
 	  	}).children().click(function(e) {
   			return false;
 		});
