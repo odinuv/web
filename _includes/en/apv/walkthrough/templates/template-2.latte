@@ -20,7 +20,9 @@
 		</ul>
 		<h2>Rubbles</h2>
 		<ul>
-			<li n:foreach="$rubbles as $role => $name">{$role|capitalize} is <strong n:tag-if="$showBold">{$name}</strong></li>
+			<li n:foreach="$rubbles as $role => $name">{$role|capitalize} is 
+				<strong n:tag-if="$showBold">{$name}</strong>
+			</li>
 		</ul>
 	</body>
 </html>

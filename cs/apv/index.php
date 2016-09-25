@@ -17,6 +17,7 @@ Tuto informaci jsem vložil 23. 9. 2016. Kdyby došlo ke změně, tak ji pošlu 
 <p>
 Databázové aplikace a webové aplikace a související technologie. Základy programování webových aplikací a databázových aplikací.
 	Lehounký úvod do vývoje aplikací a sítí. Předmět je vypisován v letním i zimním semestru.
+	<strong><a href='http://odinuv.cz/en/apv/'>Anglická verze obsahu (beta)</a></strong>
 </p>
 <h2 id='pozadavky'>Požadavky na předmět <?php blink('cs/apv/#pozadavky'); ?></h2>
 <ul>
@@ -121,7 +122,7 @@ pokud chcete známku lepší, tak musíte přidat.&ldquo;
 Druhé odevzdání je konečná verze projektu. Druhé odevzdání je povinné, bez něj nedostanete zapsanou známku. Můžete jít na zkoušku i bez hotového projektu, ale 
 budete s ním potom muset přijít znovu (známka z písemné části vám zůstane). Při druhém odevzdání by měl být projekt hotová aplikace.
 Za nalezené chyby se nestřílí, ale hlavně by odevzdaný projekt měl <strong class='warning'>vypadat jako aplikace</strong> a měl by obsahovat požadované funkce.
-To znamená, že by aplikaci mělo být schopen ovládat i člověk, který ji nevytvořil. Neměla by vypisovat ladící hlášení a měla by vypisovat uživateli srozumitelné chyby. Funkce aplikace by měly být nějakým kompletní - tzn. např. že pokud půjde osobě přidat kontaktní údaj, měl by u ní někde být vidět, a mělo by být možné ho upravit a smazat.
+To znamená, že by aplikaci mělo být schopen ovládat i člověk, který ji nevytvořil. Neměla by vypisovat ladící hlášení a měla by vypisovat uživateli srozumitelné chyby. Funkce aplikace by měly být nějakým způsobem kompletní - tzn. např. že pokud půjde osobě přidat kontaktní údaj, měl by u ní někde být vidět, a mělo by být možné ho upravit a smazat.
 </p>
 
 <?php
