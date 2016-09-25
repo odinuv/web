@@ -6,8 +6,10 @@ permalink: /en/apv/walkthrough/organize/
 * TOC
 {:toc}
 
-In the previous chapter, you learned how to process a HTML form for searching. In the next
-chapter, we'll take a look at inserting data into the database. Before we get there, 
+In the previous chapter, you learned how to process a 
+[HTML form for searching](/en/apv/walkthrough/backend-select/). In the next
+chapter, I'll take a look at [inserting data](/en/apv/walkthrough/backend-insert/) 
+into the database. Before we get there, 
 let's do a brief side step to better organization of your code, before it gets to cluttered. 
 
 ## Getting Started
@@ -16,7 +18,8 @@ are getting lost in it. If so, it is a good time to put some order in your code.
 
 ### Shared Code
 Do you remember
-[why we started to use layout templates](todo)? Let' s do the same with out PHP code, so far
+[why we started to use layout templates](/en/apv/walkthrough/templates-layout/)? Let's do the 
+same with out PHP code, so far
 all of the scripts begin with something like:
 
 {% highlight php %}
@@ -30,7 +33,8 @@ It also has the nice effect that if you need to change your database password, t
 point of change.
 
 It is important to understand how *global variables* work in PHP. In PHP a global variable is any variable
-not defined inside a [function or method](todo). Therefore most of the variables you used so far were global.
+not defined inside a [function or method](/en/apv/walkthrough/dynamic-page/objects/#functions). 
+Therefore most of the variables you used so far were global.
 Global variables are also *shared among included files*. This means that if we use variables `$db`, `$latte` and
 `$tplVars` in the `start.php` script and then include (using the `require` command) the script in another
 PHP script (e.g. `person-list.php`), the variables `$db`, `$latte` and `$tplVars` will be in initialized.  
@@ -130,8 +134,10 @@ it [replaces the default directory listing](todo). Every application should have
 with some useful content.
 
 {: .solution}
+<div markdown='1'>
 Sorry, no solution here :) This is completely up to you. If you have no idea what should be 
 on the index page, don't worry. Something will come to you later.
+</div>
 
 ## Summary
 As your application becomes more complicated, you need to organize the source code files

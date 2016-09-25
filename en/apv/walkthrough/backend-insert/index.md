@@ -6,10 +6,10 @@ permalink: /en/apv/walkthrough/backend-insert/
 * TOC
 {:toc}
 
-In previous chapters, you learned how to [work with HTML forms](todo) 
-and [how to organize your code](todo). Now we add some more code to insert data into the database.
-There is no new technology necessary for this, all you need is [SQL INSERT](todo) and
-[working with HTML forms](todo). Yet there are some things, which are worth deeper explanation. 
+In previous chapters, you learned how to [work with HTML forms](/en/apv/walkthrough/html-forms/) 
+and [how to organize your code](/en/apv/walkthrough/organize/). Now we add some more code to insert data into the database.
+There is no new technology necessary for this, all you need is [SQL INSERT](/en/apv/walkthrough/database/#insert) and
+[working with HTML forms](/en/apv/walkthrough/html-forms/). Yet there are some things, which are worth deeper explanation. 
 
 ## Getting started
 We will create a page for inserting new persons in the database. Let's start with the HTML form.
@@ -75,7 +75,11 @@ required. If the user does not fill the date input element, the PHP script will 
 string. The database server will fail to insert this, because empty string is neither valid date, nor
 a NULL (database server is more concerned about data types than PHP). Therefore we need to manually
 supply the `null` value in case `birth_day` is not filled. Luckily, PHP `null` is nicely compatible
-with database `NULL`.
+with database `NULL`. Again it is very important that you understand what values originate from 
+where and what variables are connected: 
+
+{: .image-popup}
+![Code schema -- Script for inserting data](/en/apv/walkthrough/backend-insert/code-schematic.png)
 
 ## Task -- Extend the form
 Now extend the form by adding other columns from the `person` table -- `gender` and `height`. Use proper

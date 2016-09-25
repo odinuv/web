@@ -270,9 +270,7 @@ Modify the PHP script to load the variable from database.
 
 {: .solution}
 {% highlight php %}
-SELECT first_name, last_name, nickname, date_part('years', AGE(birth_day)) AS age 
-FROM person
-ORDER BY last_name ASC, first_name ASC
+{% include /en/apv/walkthrough/backend/persons-list.php %}
 {% endhighlight %}
 
 No one is forcing you to take all the above steps separately or in the shown order. 
@@ -280,7 +278,11 @@ But **you must always be able to divide a complex task into simpler steps**. Thi
 is really important -- the scripts will become only more and more complicated and there is really 
 only one way to orientate in all the code and debug it. You have to split it into smaller pieces, 
 write and test the pieces individually. Notice how in the above steps I changed only one thing
-at a time. Some parts (like the template layout) don't need to be changed all.
+at a time. Some parts (like the template layout) don't need to be changed all. However splitting
+the code requires that you understand the connections between all the code parts:
+
+{: .image-popup}
+![Schema of variables](/en/apv/walkthrough/backend/code-schematic.png)
 
 ## Summary
 In this chapter, you learned how to use SQL queries from within a PHP script.

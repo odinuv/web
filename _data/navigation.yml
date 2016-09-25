@@ -38,6 +38,9 @@ items:
               - url: /en/apv/walkthrough/backend/
                 title: Database Backend
 
+              - url: /en/apv/walkthrough/organize/
+                title: Code Organization
+
               - url: /en/apv/walkthrough/backend-select/
                 title: Database – Selecting and filtering
 
