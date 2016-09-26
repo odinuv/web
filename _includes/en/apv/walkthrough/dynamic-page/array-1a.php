@@ -1,4 +1,4 @@
-s<?php
+<?php
 
 $flintstones[] = 'Fred';
 $flintstones[] = 'Wilma';

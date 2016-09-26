@@ -128,12 +128,16 @@ reading a value from array, the must **always** be used. Writing `echo $array[]`
 Sometimes you may wish to remove an element. This can be done using ``unset()`` function:
 
 {% highlight php %}
-{% include /en/apv/walkthrough/dynamic-page/array-2c.php %}
+{% include /en/apv/walkthrough/dynamic-page/array-8.php %}
 {% endhighlight %}
 
-This operation is not very common because PHP scripts are executed for a very short time (just to
+The above example will print:
+
+    Array ( [father] => Fred [mother] => Wilma )
+
+Removing elements from array is not very common because PHP scripts are executed for a very short time (just to
 produce HTML page for browser) and then the memory used by the script is cleared automatically.
-We usually want just to print a snapshot of a database state during that short period. 
+Use the `unset` operation only when you truly want to remove something from an array. 
 
 ### Traversing Arrays
 When you need to traverse the entire array, you need a loop. As mentioned above `for` loop can be

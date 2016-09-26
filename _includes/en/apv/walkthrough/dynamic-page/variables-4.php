@@ -20,8 +20,8 @@ $informalGreting = "Hello " . $firstName . " $lastName";
 
 echo '<p>Salutation count: ' . $count . '</p>';
 echo "<ul>";
-echo '<li>' . $colloquialGreeting . '<li>';
-echo "<li>$informalGreting<li>\n";
+echo '<li>' . $colloquialGreeting . '</li>';
+echo "<li>$informalGreting</li>\n";
 echo "</ul>\n";
 
 echo "</body>\n</html>";

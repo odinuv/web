@@ -90,7 +90,11 @@ By far the most common protocols are those from **TCP/IP** protocol suite.
 An **internet** is every **network** which uses the **TCP/IP** protocol suite. **The Internet** is the 
 largest (worldwide) of all internets. Because people have problems with using correct articles and 
 capital letters, someone invented the term *intranet*. *Intranet* is exactly the same as *internet*,
-only that it is definitely not the largest of them.
+only that it is definitely not the largest of them. Internet is a network which allows  
+organization of computers into hierarchical structure of sub-networks. This allows it to grow to 
+a world-wide size, because having a single network with millions of computers is technically impossible.
+If you want an introduction to internet structure, you can read 
+[How does the Internet work](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work).
 
 Standards of the Internet Network are published as 
 [RFC (Request for Comments)](https://en.wikipedia.org/wiki/Request_for_Comments). As the name suggest

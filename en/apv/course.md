@@ -19,7 +19,7 @@ development of web applications and database applications (relational database s
     - [Presentation slides](/en/apv/slides/web-internet/),
 - Week 2
     - Articles: [HTML](/en/apv/articles/html/)
-    - Exercises: [PHP](/en/apv/dynamic-page/)
+    - Exercises: [PHP](/en/apv/walkthrough/dynamic-page/)
     - [Presentation slides](/en/apv/slides/html/)
 - Week 3
     - Articles: [Database Systems](/en/apv/articles/database-systems/)
