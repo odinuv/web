@@ -60,7 +60,7 @@ at once in Adminer:
 {% endhighlight %}
 
 Now you can search for record with ID which was returned -- you should find a row with `city` column set to `Bucharest`.
-Notice that the two queries have to be separated by semicolon.
+Notice that these two queries have to be separated by semicolon.
 
 In PHP with PDO library you can use `lastInsertId($sequenceName)` method:
 
@@ -102,8 +102,8 @@ rows are inserted in their tables or no row is inserted at all after transaction
 {% endhighlight %}
 
 ## Task -- Play around with transactions
-Take the first PHP script and finish is so that it inserts data into `location` and `person` table, or create your
-own one with full working forms. Make sure to use the version with transactions. Then try to break 
+Take the first PHP script and complete it so that it inserts data into `location` and `person` table, or create your
+own one with full working forms. Make sure to use the version without transactions. Then try to break 
 the second `INSERT` command (just make an error in SQL command spelling, e.g. `IxSERT` instead of 
 `INSERT`). Observe changes in the database. Then add the transaction commands (`begin`, `commit`, `rollback`) 
 and again observe what changes are made to database. Do you notice the change of behavior? 
