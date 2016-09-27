@@ -60,3 +60,29 @@ development of web applications and database applications (relational database s
 - Week 12
     - Articles: [Web applications? ](todo)
     - Exercises: [Project](todo)
+
+## Project Assignment
+To pass the course you need to create a project. The project assignment is 
+described below:
+
+    Create a web application for recording persons and contacts. The main goal of the application is 
+    to record persons (friend, acquaintances), their addresses, relationships and meetings.
+    Every person can have a name, nickname, age, location and contacts. Each person can have any
+    number of contacts (mobile, Skype, Jabber, ....). A person can have more contacts of the
+    same type (e.g. two emails). Each person can have any number of relationships
+    with other persons in the database. Each relationship should have type (friend, fiend, acquaintance, spouse, ...)
+    and description. Contact and relationship types are recorded in database and can be modified by
+    the end-user. The application also records meetings between persons. Each meeting can be joined by any number of persons.
+    Each meeting should have a place and date.
+    The application must allow user friendly of entering and modifying the data. Take advantage of the proposed schema,
+    create a database and implement the entire application. 
+
+The assignment is intentionally every loosely defined. It is up to you to come up with the 
+application design, functionality and user interface. It is not an easy task, so I have designed a
+[database schema](/en/apv/walkthrough/database/#database-schema) for you.   
+
+{: .image_popup}
+![Database Schema](/en/apv/schema.svg)
+
+The database schema defines what kind of data your application should store. You can change it
+if you want to, but please do so only after you understand the [database design process](todo). 

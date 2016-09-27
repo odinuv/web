@@ -120,7 +120,7 @@ Here you can see for example that:
 the `location` table `id_location` column (`source: id_location; target: location(id_location)`).
 
 And much more. Take time to examine other tables as well so that you are acquainted with 
-database structure. 
+the database structure. 
 
 ### INSERT
 The general syntax of the INSERT command is:
