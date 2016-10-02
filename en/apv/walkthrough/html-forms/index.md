@@ -60,13 +60,15 @@ When [processing HTML forms](/en/apv/walkthrough/dynamic-page/), the browser onl
 sends the server **name** and **value** pairs for
 each form control. This means that is quite important to know what is the `name` and `value` of each
 element and how they produce the **name** -- **value** pairs. To test what is received on a server for each
-form, you can submit any of the below forms and a [simple script](todo) will print to
-you what the server sees. In your own script, you can achieve that by setting `action=todo` attribute.
+form, you can submit any of the below forms and a [simple script](http://odinuv.cz/en/form_test.php) 
+will print to you what the server sees. In your own script, you can achieve that by 
+setting `action=http://odinuv.cz/en/form_test.php` attribute.
 
 For most form controls, the `name` of the control must be unique within the `form` element. This means that
 across different forms, the form elements may be same, but inside a single form you must not use same name twice,
 because the value of one form control would overwrite the value from the other form control. A notable
-exception to this are [buttons](todo) and [radio-buttons](todo), where name does not need to be unique.
+exception to this are [buttons](/en/apv/walkthrough/html-forms/#button) 
+and [radio-buttons](/en/apv/walkthrough/html-forms/#radio-button), where name does not need to be unique.
 
 ### Common attributes
 Apart from `name` and `value`, most controls have attributes:
@@ -75,7 +77,8 @@ Apart from `name` and `value`, most controls have attributes:
 - `readonly` -- When used, the end-user cannot change the value of the control, he can
     however focus the control (enter cursor into it) and e.g. copy text from the control.
 - `disabled` -- When used, the end-user cannot interact with the control in way.
-- `id` -- A unique identifier of the HTML element, used for linking [labels](todo).
+- `id` -- A unique identifier of the HTML element, used for 
+linking [labels](/en/apv/walkthrough/html-forms/#labels).
 
 ### Button
 Button is an important part of the form, as it allows the end user to actually send a form.
@@ -172,7 +175,8 @@ the above controls, checkbox is also identified by `name` attribute. The
 web browser send the value (`1`), when the checkbox is not ticked, the
 web browser does not send anything (act as if there wasn't a checkbox in
 the form). To make the checkbox checked by default, use the
-`checked='checked'` [boolean attribute](todo). Try it in the following example:
+`checked='checked'` [boolean attribute](/en/apv/articles/html/#html-elements----tags). 
+Try it in the following example:
 
 {% highlight html %}
 {% include /en/apv/walkthrough/html-forms/checkbox.html %}
@@ -186,15 +190,15 @@ label text is clickable.
 
 ### Radio Button
 Radiobutton is suitable for choosing between few mutually exclusive values.
-For few values, it is better than [Select box](todo) because it saves the
+For few values, it is better than [Select box](/en/apv/walkthrough/html-forms/#select) because it saves the
 end-user a click. There are a couple of exceptions to the radiobutton behavior.
 First, the `name` attribute of the radio button is used to define a **radio group**.
 Radio-buttons within the same *radio group* are mutually exclusive -- this means that
 `name` should not be strictly unique. Each button in the *radio group* must have
 a unique value within that group, because the web browser will send name of the
 *radio group* with the `value` of the selected radio button. As with checkbox, to
-have a radiobutton pre-selected, use the [boolean attribute](todo) `checked='checked'`. You
-can test it in the following examples:
+have a radiobutton pre-selected, use the [boolean attribute](/en/apv/articles/html/#html-elements----tags) 
+`checked='checked'`. You can test it in the following examples:
 
 {% highlight html %}
 {% include /en/apv/walkthrough/html-forms/radiobutton.html %}
@@ -213,12 +217,14 @@ individual options. The `select` element has the `name` attribute and, the `opti
 has the `value` attribute. The content of the `select` element are `option` elements and
 the content of `option` element is the actual text of the option.
 To have an option pre-selected, you can use the `selected` attribute
-(yes, that is different to the `checked` used in [checkbox and radiobutton](todo)).
+(yes, that is different to the `checked` used 
+in [checkbox and radiobutton](/en/apv/walkthrough/html-forms/#checkbox)).
 The feel and look of the select element can be controlled by attributes:
 
 - `size` -- number of visible items. When size is equal to 1 (default), the select is displayed
 as a drop-down select.
-- `multiple` -- [boolean attribute](todo) to allow selecting of multiple elements.
+- `multiple` -- [boolean attribute](/en/apv/articles/html/#html-elements----tags) 
+to allow selecting of multiple elements.
 
 {% highlight html %}
 {% include /en/apv/walkthrough/html-forms/select.html %}
@@ -247,9 +253,9 @@ The content of the `textarea` element is one of the few places in HTML, where wh
 Inside `textarea` whitespace matters, therefore the line `You certainly want to buy it` must not be indented.
 
 ### Task -- Form in a list
-Now try to create the following form. I used a [list](todo) for arranging the
+Now try to create the following form. I used a [list](/en/apv/walkthrough/html/#task----lists) for arranging the
 form controls in rows. Also make sure to verify the form by using
-`<form method='post' action='todo'>` and submitting the form.
+`<form method='post' action='http://odinuv.cz/en/form_test.php'>` and submitting the form.
 
 ![Screenshot - Form](/en/apv/walkthrough/html-forms/form-2.png)
 
@@ -259,9 +265,10 @@ form controls in rows. Also make sure to verify the form by using
 {% endhighlight %}
 
 ### Task -- Form in a table
-Now try to create the following form. Here I used a [table](todo) for arranging the
+Now try to create the following form. Here I used a [table](/en/apv/walkthrough/html/#task----tables) 
+for arranging the
 form controls in rows. Also make sure to verify the form by using
-`<form method='post' action='todo'>` and submitting the form.
+`<form method='post' action='http://odinuv.cz/en/form_test.php'>` and submitting the form.
 
 ![Screenshot - Form](/en/apv/walkthrough/html-forms/form-1.png)
 
@@ -281,8 +288,8 @@ controls). Also keep in mind that if you have form elements outside `form` tag,
 they will be displayed as usually, but they will not be working
 (the control will not be sent to server).
 
-You can also look at full list of [HTML elements](todo) to see what
-else HTML can offer to you.
+You can also look at full list of [HTML elements](https://developer.mozilla.org/en/docs/Web/HTML/Element) 
+to see what else HTML can offer to you.
 
 ### New Concepts and Terms
 - Form

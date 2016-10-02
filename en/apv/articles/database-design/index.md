@@ -1,5 +1,5 @@
 ---
-title: HTML
+title: Database Design
 permalink: /en/apv/articles/database-design/
 ---
 
@@ -150,6 +150,7 @@ From here you should be able to draw the conceptual ERD. Try to really do it you
 you look at the solution.
 
 {: .solution}
+{: .image-popup}
 ![ERD Classic](/en/apv/articles/database-design/erd-classic.svg)
 
 The above diagram is one of infinite number of solutions. The requirements are always incomplete
@@ -165,7 +166,7 @@ person which **will be useful in the application**. Also keep in mind that the d
 is bound to change. Therefore if you are not sure about something, don't worry too much about it.
 There is always the possibility (and often the need) to change it.
 
-## Relationship Cardinality
+### Relationship Cardinality
 When you have the **entities**, **attributes** and entity **relationships**, you can move to 
 the next step. This is evaluation of **relationship cardinality**. Relationship
 cardinality (or *relationship degree* or *cardinality ratio*) describes how many
@@ -286,7 +287,7 @@ nested -- if a relation is in 3. NF, it must be in 2. NF and 1. NF too.
 If a database is normalized it has some positive properties. If a database is not normalized, 
 you must verify those properties yourself (or live without them).
 
-### First Normal Form
+#### First Normal Form
 First normal form requires that a single value (table cell) of each attribute is
 **atomic** -- which means indivisible. That means that it contains only a single value 
 and that value cannot be split into something else. Consider this `relationship` table which 
@@ -329,7 +330,7 @@ While all this may seem like nitpicking, it is very important. All these reflect
 help you understand the nature of the problem you're solving in your application. Thus they
 help you design the database structure correctly.    
 
-### Second Normal Form
+#### Second Normal Form
 Below is a modified `relationship` table recording relationships between persons. The table is
 in 1st NF, column `ssn` contains [Social Security Number](https://en.wikipedia.org/wiki/Social_Security_number). 
 The key of the table is combination of `1_ssn` and `2_ssn` because that identifies the 
@@ -391,7 +392,7 @@ deleting a relationship does not delete a person. To convert a table into 2nd NF
 split it into two tables. Splitting must not cause information loss -- it must be possible to 
 reconstruct the original information by [joining the tables](/en/apv/articles/sql-join/#joining-tables).
 
-### Third normal form
+#### Third normal form
 The definition of 3rd NF requires that *no non-key attribute transitively depends on key*. Every
 non-key attribute depends on a key (that is a [definition of the key](/en/apv/articles/relational-database/#key)). 
 I.e. if you change the value of `id` in the below table, all the other columns will change too
@@ -443,7 +444,7 @@ databases which simply have `address_line_1` and `address_line_2` fields. Which 
 not atomic, but it may be much more practical in some cases (if you use the 
 address only as a 'single value' printed on package or letter).     
 
-### Denormalization
+#### Denormalization
 This leads us to the concept of **denormalization**. It is perfectly ok to use a relational 
 database which is not normalized, provided that you know why and understand the consequences.
 

@@ -221,8 +221,9 @@ Apart from the syntax, there are other rules, very important one is *Type System
 The values used in programming language can have different **data type**. Types are specific
 to each langauge, but there are some commonly used:
 
-- **integer** -- Whole number
-- **string** -- String of characters - i.e. a text.
+- **boolean** -- A value which is either [*true* or *false*](https://en.wikipedia.org/wiki/Boolean).
+- **integer** -- Whole number.
+- **string** -- String of characters -- i.e. a text.
 - **float**, **real** -- Decimal number 
 - **array** -- list of values (each value can be of the above type)
 

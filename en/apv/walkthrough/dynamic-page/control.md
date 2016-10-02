@@ -14,15 +14,16 @@ code get executed. Important control flow constructs:
 - loops -- **for**, **foreach**, **while** (and **do-while**)
 
 ## Conditions
-In PHP conditional statements are written using **if** -- **else** [reserved words](todo).
+In PHP conditional statements are written using **if** -- **else** 
+[reserved words](/en/apv/articles/programming/#keywords).
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/ifelse-1.php %}
 {% endhighlight %}
 
 The condition itself must always be in parentheses. Multiple conditions
-can be joined using [boolean operators](todo) `&&` and `||` (there are
-[other confusing boolean operators](todo) in PHP), negation is
+can be joined using [boolean](/en/apv/articles/programming/#type-system) operators `&&` (and) 
+and `||` (or) (there are [other confusing boolean operators](todo) in PHP), negation is
 written using `!`.
 
 {% highlight php %}
@@ -32,7 +33,7 @@ written using `!`.
 {: .note}
 You can write either `elseif` or `else if`, there is no difference.
 
-### Switch - case
+### Switch -- Case
 The above example can be rewritten using `switch` -- `case` statements:
 
 {% highlight php %}
@@ -44,7 +45,7 @@ Note that it is important to put `break` in each branch, which terminates the
 The `break` at the end of `case 4` is especially tricky.
 
 ### Comparison vs. Assignment
-When comparing two values, you must use the [comparison operator](todo) `==`.
+When comparing two values, you must use the comparison operator `==`.
 If you use the assignment operator, you might run into an unexpected behavior.
 If you would write:
 
@@ -56,8 +57,10 @@ if ($numberOfWheels = 4) {
 
 The condition will **always be true** (regardless of the actual value of $numberOfWheels).
 This is because the value of assignment is the assigned value, so the condition
-(after evaluating the part in parentheses) will be `if (4) {`. Now the [boolean type conversion](todo)
-kicks in and converts `4` to boolean, and according to the [rules](todo) `4` is not false, so it is true.
+(after evaluating the part in parentheses) will be `if (4) {`. Now
+the [boolean type conversion](/en/apv/walkthrough/dynamic-page/#boolean-conversions)
+kicks in and converts `4` to boolean, and according to 
+the [rules](/en/apv/walkthrough/dynamic-page/#boolean-conversions) `4` is not false, so it is true.
 That's unexpected and somewhat dangerous, good [development tools](todo) will warn you about this.
 
 Sometimes this is prevented by writing conditions in reverse order `if (4 == $numberOfWheels)`. Because in
@@ -77,15 +80,16 @@ All three loops are equivalent, so the above will output '0123456789012345678901
 as it is the simplest of the three. `while` is used when the terminating condition must be
 evaluated before the iteration is executed. `do-while` is used when the termination condition
 can be evaluated only after the loop has executed. PHP also has a special `foreach` loop
-which we'll [attend to later](todo).
+which we'll [attend to later](/en/apv/walkthrough/dynamic-page/array/#traversing-arrays).
 
 ## Task
-Take the [contact form from the previous chapter](todo) and:
+Take the [contact form from the previous chapter](/en/apv/walkthrough/dynamic-page/#task-1----contact-form) and:
 
 - Assume that you have variable `$currentUser` with name of the currently logged user or empty string in case no one is logged.
 - If the user is logged in, display a greeting for him and hide the email input.
 - If the user is not logged in, show the email input and year of birth select box.
-- Fill year of birth select box with year from 1916 up to current year (use [`date('Y')`](todo) to obtain current year)
+- Fill year of birth select box with year from 1916 up to current year 
+(use [`date('Y')`](http://php.net/manual/en/function.date.php) to obtain current year)
 
 You will need to define the variable `$currentUser` and test it with different values. So with `$currentUser = 'John Doe';`
 the form should look like this:

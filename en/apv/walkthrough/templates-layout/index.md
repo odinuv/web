@@ -6,7 +6,7 @@ permalink: /en/apv/walkthrough/templates-layout/
 * TOC
 {:toc}
 
-Templates allow you to create HTML pages with [simplified code](todo) and
+[Templates](/en/apv/walkthrough/templates/) allow you to create HTML pages with simplified code and
 also protect your page against [Cross Site Scripting attacks](todo).
 Apart from that, template engine allows you to take advantage of
 **Template Page Layouts** (or **Template Layouts** or **Page Layouts**).
@@ -30,8 +30,8 @@ The *layout template*  contains all the shared code in form of full
 HTML page with placeholder **block**s for the specific page content which is
 included from page specific templates.
 
-I have converted the [previous Flintstones example](todo) to separate HTML code shared
-within application and HTML code specific to page:
+I have converted the [previous Flintstones example](/en/apv/walkthrough/dynamic-page/array/#multidimensional-arrays) 
+to separate HTML code shared within application and HTML code specific to page:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/templates-layout/template-3.php %}
@@ -86,17 +86,19 @@ template files. Also notice that the variables passed to the templates in the `r
 usable both in all templates (e.g. see `pageTitle` variable).
 
 {: .note}
-The `hr` (Horizontal Ruler) HTML element produces horizontal separator. It has a [unpaired tag](todo).
+The `hr` (Horizontal Ruler) HTML element produces horizontal separator. It has a 
+[unpaired tag](/en/apv/articles/html/#html-elements----tags).
 
 ## Task -- Create a template layout
-Take the two application parts -- [the person form](todo) and the [contact from](todo) we have
+Take the two application parts -- [the person form](/en/apv/walkthrough/templates/#task----person-form) 
+and the [contact from](/en/apv/walkthrough/templates/#task----contact-form) you have
 created in previous chapters, and create a template layout for them.
 
-[//]: # (TODO hiding of soulution does not work)
-
 {: .solution}
+<div markdown='1'>
 Hint: You will need five files -- PHP script for contact form; template for contact form;
 PHP script for person form; template for person form; one layout template
+</div>
 
 Person form script:
 

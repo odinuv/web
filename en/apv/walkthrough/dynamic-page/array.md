@@ -7,8 +7,11 @@ permalink: /en/apv/walkthrough/dynamic-page/array/
 {:toc}
 
 In many languages, there are different structures for containing collections
-of values -- [arrays](todo), [lists](todo), [collections](todo), [hashsets](todo), etc.
-In PHP, this is simplified as there are only arrays.
+of values -- [arrays](http://php.net/manual/en/book.array.php), 
+[lists](https://en.wikipedia.org/wiki/List_comprehension), 
+collections](https://en.wikipedia.org/wiki/Java_collections_framework), 
+[hashsets](https://en.wikipedia.org/wiki/Set_(abstract_data_type)), etc.
+In PHP, this is simplified as there are only [arrays](http://php.net/manual/en/book.array.php).
 
 An array is a collection of elements, each element has a value and an **index** (or **key**) through which it
 is accessed in the array. This means that **keys must by unique**. Because PHP is dynamically
@@ -200,14 +203,14 @@ Take the above example and change the output to a valid HTML page so that it loo
 {% endhighlight %}
 
 ## Task -- Improve contact form
-Take the [contact form](todo) from previous chapter and:
+Take the [contact form](/en/apv/walkthrough/dynamic-page/control/#task) from previous chapter and:
 
 - define the `$currentUser` variable as an associative array with keys `firstName`, `lastName`, `email`, `yearOfBirth`
 - if the user is not logged in, the array will have all the elements empty
 - modify the form to always include the elements `email`, `firstName`, `lastName`, `yearOfBirth`
 - if the user is logged in, fill all the form controls his values
 - define an array of birth years as a variable and us it when generating the `yearOfBirth` select field
-- don't forget to [preselect](todo) the `yearOfBirth` of the logged user (if any)
+- don't forget to [preselect](/en/apv/walkthrough/html-forms/#select) the `yearOfBirth` of the logged user (if any)
 
 This is how the form should look like for user John Doe:
 

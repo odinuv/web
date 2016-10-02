@@ -28,8 +28,9 @@ We will create a page for inserting new persons in the database. Let's start wit
 {% include /en/apv/walkthrough/backend-insert/person-add.php %}
 {% endhighlight %}
 
-See how [organizing you code](todo) pays off? Adding a new page to the application requires almost only writing
-the necessary HTML code. There is very little overhead now.
+See how [organizing you code](/en/apv/walkthrough/organize/) pays off? Adding a 
+new page to the application requires almost only writing the necessary HTML code. There is 
+very little overhead now.
 
 As you can see, I put the form in a table so that it is nicely arranged. If you don't like it, use 
 another template! This is the good thing about templates -- they separate the HTML code from PHP code, you 
@@ -47,7 +48,8 @@ First we need to check that the user submitted the form. If yes, then we need to
 user. All three fields are required (they are mandatory in the `person` table) and must be validated on the
 server (in PHP script) because [client side validation is insufficient](todo).
 If the user input is valid, then we can send an `INSERT` query to database, to insert the data. We
-will need a [prepared statement](todo) to pass in the values.
+will need a [prepared statement](/en/apv/walkthrough/backend/#selecting-data-with-parameters) 
+to pass in the values.
 
 {% highlight php %}
 {% include /en/apv/walkthrough/backend-insert/person-add-2.php %}
@@ -70,7 +72,8 @@ if (empty($_POST['birth_day'])) {
 }
 {% endhighlight %}
 
-In the `person` table in the database. The column `birth_day` [allows NULLs](todo), i.e. its value is not 
+In the `person` table in the database. The 
+column `birth_day` [allows NULLs](/en/apv/articles/sql-join/#null), i.e. its value is not 
 required. If the user does not fill the date input element, the PHP script will receive an empty 
 string. The database server will fail to insert this, because empty string is neither valid date, nor
 a NULL (database server is more concerned about data types than PHP). Therefore we need to manually
@@ -100,7 +103,7 @@ The condition `(empty($_POST['gender']) || ($_POST['gender'] != 'male' && $_POST
 could be also written as `(empty($_POST['gender']) || !in_array($_POST['gender'], ['male', 'female']))`.
 The condition `(empty($_POST['height']) || empty(intval($_POST['height'])))` first checks that the value 
 `$_POST['height']` is defined and non-empty. Then checks if the value converted to integer 
-(using [`intval` function](todo)) is still not empty.
+(using [`intval` function](http://php.net/manual/en/function.intval.php)) is still not empty.
 In both conditions the order of conditional expressions is important. It must always start with the check
 for empty `$_POST` field due to [partial boolean evaluation](todo).
 

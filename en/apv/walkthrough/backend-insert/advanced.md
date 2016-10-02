@@ -15,8 +15,8 @@ related information into multiple tables -- there can be many reasons for that:
 - record in one table can be shared by records in another tables (address can be shared
   among many persons whom happen to live in the same building)
 - another technical reasons -- mostly defined by 
-[database normalization rules](todo) which
-  should be obeyed during the [database structure design process](todo).
+[database normalization rules](/en/apv/articles/database-design/#database-normalization) which
+  should be obeyed during the [database structure design process](/en/apv/articles/database-design/).
   
 Records are then connected by [foreign keys](/en/apv/articles/relational-database/#foreign-key) -- meta-information
 about relations between tables.

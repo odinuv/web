@@ -77,6 +77,9 @@ items:
               - url: /en/apv/articles/sql-aggregation/
                 title: SQL Aggregation
 
+              - url: /en/apv/articles/database-design/
+                title: Database Design
+
           - url: /en/apv/slides/
             title: Slides
             items:
