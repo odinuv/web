@@ -469,7 +469,7 @@ with (relational) database system.
 - Each database system has different data types, but there are some common:
     - character / character varying / varchar -- a string limited by some length,
     - text / longtext / (whatever)text -- a string virtually unlimited (cell size over 1GB),
-    - number / numeric / decimal -- a decimal number with some range (digits, todo),
+    - number / numeric / decimal -- a decimal number with some range (precision, scale),
     - int / integer -- a whole number,
     - datetime / timestamp -- a time value.
 </section>

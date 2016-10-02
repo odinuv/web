@@ -104,3 +104,5 @@ items:
               - url: /en/apv/slides/database-design/
                 title: Database Design
 
+              - url: /en/apv/slides/database-tech/
+                title: Databases – Technical Details

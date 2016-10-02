@@ -97,6 +97,8 @@ Now start with identifying entities and their attributes. The simplest approach 
 every **noun** in the requirements description (I will ignore general terms: **data**, **database**, **goal**,
 and **application**):
 
+{: .solution}
+<div markdown='1'>
 Create a web application for recording <span class='underline'>persons</span> 
 and <span class='underline'>contacts</span>. The main goal of the 
 application is to record <span class='underline'>persons</span> (
@@ -111,7 +113,7 @@ number of <span class='underline'>contacts</span> (
 <span class='underline'>Jabber</span>, ....). A <span class='underline'>person</span> can have more 
 <span class='underline'>contacts</span> of the same <span class='underline'>type</span> (e.g. two 
 <span class='underline'>emails</span>). Each <span class='underline'>person</span> can have any 
-number of <span class='underline'>relationships</span<
+number of <span class='underline'>relationships</span>
 with other <span class='underline'>persons</span> in the database. Each 
 <span class='underline'>relationship</span> should have <span class='underline'>type</span> (
 <span class='underline'>friend</span>, <span class='underline'>fiend</span>, 
@@ -123,9 +125,11 @@ also records <span class='underline'>meetings</span> between <span class='underl
 <span class='underline'>meeting</span> can be joined by any number of 
 <span class='underline'>persons</span>. Each <span class='underline'>meeting</span> should have a 
 <span class='underline'>place</span> and <span class='underline'>date</span>.
-The application must allow user friendly of entering and modifying the data.  
+The application must allow user friendly of entering and modifying the data.
+</div>  
 
 Now you take the nouns aside and you should obtain the following list:
+
 - person (friend, acquaintance) can have a:
     - name, 
     - nickname, 
@@ -146,11 +150,10 @@ Now you take the nouns aside and you should obtain the following list:
 
 Now you can directly see **entities** and their **attributes**. If you notice an attribute
 being another entity (person can have a contact), you just stumbled upon **relationship**.
-From here you should be able to draw the conceptual ERD. Try to really do it yourself Before
+From here you should be able to draw the conceptual ERD. Try to really do it yourself before
 you look at the solution.
 
 {: .solution}
-{: .image-popup}
 ![ERD Classic](/en/apv/articles/database-design/erd-classic.svg)
 
 The above diagram is one of infinite number of solutions. The requirements are always incomplete
