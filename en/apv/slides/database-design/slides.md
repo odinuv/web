@@ -128,7 +128,7 @@ the end-user...
 - Normalization -- conversion to **normal forms** (NF)
 - There are more normal forms, but first three are most important:
     - 1. NF -- attribute values are atomic,
-    - 2. NF -- relation contains now partial functional dependencies of non-key attributes on key,
+    - 2. NF -- relation contains no partial functional dependencies of non-key attributes on key,
     - 3. NF -- no non-key attribute transitively depends on key.
 - Other normal forms are not practical.
 - Normal forms are only recommendations (violation must be justified).

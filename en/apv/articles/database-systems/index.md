@@ -210,7 +210,8 @@ These are databases which power core of every integrated information system. OLT
 on collecting data. Utilization of OLTP databases is characterized by frequent writes and updates. Select queries
 are fast and not too complex (not joining more than a couple of tables).   
 2. DWH -- [Data Warehouse](https://en.wikipedia.org/wiki/Data_warehouse). Data warehouses serve as the 
-backend for analytical (management) information systems. Typical utilization of DWH databases are
+backend for analytical (management) information systems 
+([OLAP](https://en.wikipedia.org/wiki/Online_analytical_processing)). Typical utilization of DWH databases are
 very complex read queries (with possibly hundreds of joined tables) and no 
 or very few data updates. DWH databases retrieve data from OLTP databases.
 3. Other -- Fallback category for all other databases for text processing, image processing, predictions, etc.

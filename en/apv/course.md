@@ -81,7 +81,7 @@ The assignment is intentionally every loosely defined. It is up to you to come u
 application design, functionality and user interface. It is not an easy task, so I have designed a
 [database schema](/en/apv/walkthrough/database/#database-schema) for you.   
 
-{: .image_popup}
+{: .image-popup}
 ![Database Schema](/en/apv/schema.svg)
 
 The database schema defines what kind of data your application should store. You can change it
