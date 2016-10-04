@@ -270,7 +270,7 @@ then all columns of that key must be used
 in the condition. Consider this query:
 
 {% highlight sql %}
-UPDATE person SET height = '135' WHERE first_name = 'John' and last_name = 'Doe'
+UPDATE person SET height = '135' WHERE first_name = 'John' AND last_name = 'Doe'
 {% endhighlight %}
 
 There is a compound key on columns `first_name`, `last_name`, `nickname` defined on
@@ -282,7 +282,7 @@ one person and therefore it is **wrong**. There are two correct options:
 
 {% highlight sql %}
 UPDATE person SET height = '135' 
-WHERE first_name = 'John' and last_name = 'Doe' AND nickname = 'Johnnie'
+WHERE first_name = 'John' AND last_name = 'Doe' AND nickname = 'Johnnie'
 {% endhighlight %}
 
 {% highlight sql %}
