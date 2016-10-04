@@ -14,7 +14,7 @@ But these are mostly cosmetic changes, which do not lead to completely different
 Because SQL is declarative language, there are many *conceptually different* ways
 how a task can be described. And each of these ways may or may not lead to 
 different sequence of steps executed on the data, which may or may not lead
-same results.
+to same results.
 
 Because of this, it crucial for you to understand what the SQL query is really
 doing and **why** it returns the data it returns. In this article, I will
@@ -43,7 +43,7 @@ not return a value.
 Let's say, that you want to list all persons in the database who have an email.
 
 #### Approach 1 -- Joins
-If you followed the [previous article](/en/apv/articles/sql-join/) about joins, you; should be able to write
+If you followed the [previous article](/en/apv/articles/sql-join/) about joins, you should be able to write
 it using two `JOIN`s. Try to do it yourself as an exercise:
 
 {: .solution}
@@ -63,7 +63,7 @@ ORDER BY person.nickname ASC
 {% highlight sql %}
 SELECT person.nickname, contact.contact
 FROM 
-    contact JOIN contact_type USING (id_contact_type) JOIN person USiNG (id_person) 
+    contact JOIN contact_type USING (id_contact_type) JOIN person USING (id_person) 
 WHERE 
 	contact_type.name = 'email';
 ORDER BY person.nickname    
@@ -127,7 +127,7 @@ to reference the inner query in the outer query. The outer query cannot referenc
 -- `contact_type` table is not accessible in the outer query above.
 You can see the contents of the `type_email` table above. Because I have used an INNER JOIN, the query will 
 contain *only* the rows that have the `contact.id_contact_type` value equal to those in `type_email` table 
-and since that is only one value, it is essentially same writing `contact.id_contact_type = 4`. 
+and since that is only one value, it is essentially same as writing `contact.id_contact_type = 4`. 
 Therefore the above query essentially selects all contacts that have type matching `%email`.
 
 Now that you know what the inner queries do, you can again look at the entire query:
@@ -244,7 +244,7 @@ You have already learned the first one in the [article about joins](/en/apv/arti
 The second approach with sub-queries is a lot more complicated (and abstract), but it is really
 important. There are many problems which cannot be solved without using sub-queries.
 The third approach using `IN` operator use-cases can be solved by the first two approaches, but 
-it usually much more simpler, efficient and elegant (if it can be used). So you should really learn 
+it is usually much simpler, efficient and elegant (if it can be used). So you should really learn 
 to use it, because it is really worth it. 
 The fourth approach using `EXISTS` is not really that important as its use-cases can be solved by the 
 other approaches. Besides, I don't like it. Of course, all the approaches can be freely combined,
@@ -259,7 +259,7 @@ WHERE contact.id_contact_type IN (
 )
 {% endhighlight %}
 
-If you want to display data from multiple table, you have to use `JOIN`. Therefore the last two 
+If you want to display data from multiple tables, you have to use `JOIN`. Therefore the last two 
 approaches do not allow you to select contact value. Also notice that you can
 freely combine any of the approaches together.
 
@@ -369,7 +369,7 @@ For example, there is no way to turn the query 1A into returning the
 you better rewrite the whole thing.
 
 ## Aggregation
-In SQL aggregation is an operation which merges two or rows (entities) into one.
+In SQL aggregation is an operation which merges two or more rows (entities) into one.
 It has no relation to [Aggregation in OOP](https://en.wikipedia.org/wiki/Object_composition#Aggregation). 
 Aggregation usually needs an aggregation 
 function (SUM, MAX, AVG, ...) which performs the merge. 
@@ -379,7 +379,7 @@ to gain overview / high-level information, which would otherwise be difficult to
 It is used when you are not interested in all details:
 
 - What is average age of our customer? (vs. list of all customers)
-- What are is the sum of sales on each day? (vs. list of all receipts)
+- What is the sum of sales on each day? (vs. list of all receipts)
 - What is the sum of sales on each day for each sales person? (vs. list of all receipts)
 
 Aggregation typically contains a **what** and a **how**. When a **what** can be
@@ -388,14 +388,14 @@ metric is e.g [string_agg](https://www.postgresql.org/docs/devel/static/function
 A **how** defines how that metric should be computed.
 
 - What is average age of our customer? (**metric**: average age, **how**: none)
-- What are is the sum of sales on each day? (**metric**: sum of sales, **how**: for each working day)
+- What is the sum of sales on each day? (**metric**: sum of sales, **how**: for each working day)
 - What is the sum of sales on each day for each sales person? (**metric**: sum of sales, 
     **how**: for each combination of working day and sales person)
 
 The operation or view which allows you to view the details that lead to a particular value
 of a metric is called **drill-down**. For example, if you want to know why 
 on March 19, Kate had sales of $9684, you would *drill-down* and look at the list of receipts for
-that day and that salesperson. All this lead to  
+that day and that salesperson. All this lead to
 [Business Intelligence](https://en.wikipedia.org/wiki/Business_intelligence), 
 which is far beyond the scope of this book. All I wanted to
 show now is what aggregation is used for. 
@@ -416,7 +416,7 @@ you can run the following queries on the [sample database](/en/apv/walkthrough/d
 
 Note that combining `DISTINCT` and `*` makes no sense. All of the above queries return a single 
 row -- they aggregate the **entire table**. This is not that useful, because the 
-*metric* (or *what*) is to [coarse grained](https://en.wikipedia.org/wiki/Granularity). 
+*metric* (or *what*) is too [coarse grained](https://en.wikipedia.org/wiki/Granularity). 
 To control *how* the metric is computed,
 you need grouping.     
 
@@ -489,7 +489,7 @@ particular email (which is a difficult task!) or use a different
 aggregation function (which would be a better solution in this case).
 
 Second (and hopefully this is obvious to you), you need to be aware of 
-what is unique and **where** is is unique. It is therefore important to 
+what is unique and **where** it is unique. It is therefore important to 
 know what [keys](/en/apv/articles/relational-database/#key) 
 are defined on the tables you are using. For example 
 in the `contact` table, the `id_person` column is **not unique**
@@ -637,7 +637,7 @@ be shown in the `id_person` column. You will therefore get the error:
 
 ### Solution 1
 Solution of the problem depends on what you really want to do. If you want to show
-number of contacts for each person for and contact type, you need to add the 
+number of contacts for each person and contact type, you need to add the 
 `id_person` column to the `GROUP BY` clause:
 
 {% highlight sql %}
@@ -753,7 +753,6 @@ FROM <em>table_expression</em>
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
-</section>
 
 Consider the following query, which selects number of emails (contact type 4) 
 for all persons that have an email, and returns only those persons that have 
@@ -775,7 +774,7 @@ The above query will give you:
 | 47        | Francis  | 3     |
 
 You cannot put condition `COUNT(contact.id_contact) > 1` in the `WHERE` clause 
-because the aggregation is no done there yet. Analogously, you cannot put the
+because the aggregation is not done there yet. Analogously, you cannot put the
 `contact.id_contact_type = '4'` condition to the `HAVING` clause because the
 column is not available there anymore. 
 
@@ -851,7 +850,7 @@ ORDER BY height / 10
 {% endhighlight %} 
 
 ## Summary
-In this article I have covered the some slightly advanced SQL topics -- sub-queries and aggregation.
+In this article I have covered some slightly advanced SQL topics -- sub-queries and aggregation.
 However, you have to keep in mind that joins, sub-queries and aggregation are essential 
 parts of SELECT queries. Then there is plenty of other interesting stuff which I
 completely [skipped here](https://www.postgresql.org/docs/9.5/static/sql-select.html). You need to be aware
