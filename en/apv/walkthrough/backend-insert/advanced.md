@@ -109,13 +109,16 @@ the second `INSERT` command (just make an error in SQL command spelling, e.g. `I
 and again observe what changes are made to database. Do you notice the change of behavior? 
 Can you explain why it changed? 
 
-{: .solution}
-If you run the the script without transaction commands, the first insert succeeds and the location
-will be inserted into the `location` table. It will remain there even if the other insert fails.
-When you add transaction commands, the behavior will change. If the first INSERT fails, and 
-raises an exception, the script will jump to `catch` statement and issue the `rollback` command. 
-This will roll back all SQL commands from the beginning of the transaction -- in this case the
-insert into the `location` table. Therefore the database will not contain the orphaned location record.
+<div class="solution">
+    <p>
+        If you run the the script without transaction commands, the first insert succeeds and the location
+        will be inserted into the `location` table. It will remain there even if the other insert fails.
+        When you add transaction commands, the behavior will change. If the first INSERT fails, and 
+        raises an exception, the script will jump to `catch` statement and issue the `rollback` command. 
+        This will roll back all SQL commands from the beginning of the transaction -- in this case the
+        insert into the `location` table. Therefore the database will not contain the orphaned location record.
+    </p>
+</div>
 
 ## Summary
 In this chapter I demonstrated how to insert multiple records which have some dependence among them. This requires

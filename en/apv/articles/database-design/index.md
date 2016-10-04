@@ -41,6 +41,8 @@ An alternative to ER model is e.g. [Object Oriented Model](https://en.wikipedia.
 
 ### E-R Modeling
 [E-R Modeling](https://en.wikipedia.org/wiki/Entity–relationship_model) works with the following concepts:
+
+
 - **entity** -- identifiable real world object (table record)
 - entity type -- class of real world object
 - **relationship** -- link between entities
@@ -56,7 +58,7 @@ algebra -- apart from *relation* and *algebra* :) E-R Modeling is a tool to crea
 diagrams, which nicely convert to relational databases.
 If you find E-R modelling similar to [object oriented modeling](https://en.wikipedia.org/wiki/Object-oriented_programming), 
 that is good too, because
-they are boot tools to solve the same problem -- describe and design structure of data.
+they are both tools to solve the same problem -- describe and design structure of data.
 
 {: .note}
 Do not confuse *relation* and *relationship*! While *relationship* is colloquially abbreviated
@@ -71,8 +73,8 @@ The most common representation of an E-R model is an ERD (E-R Diagram). There ar
 multiple variants - e.g. Classic (conceptual), Crow's foot, ...
 Probably the most common one is Crow's foot (which I will show you later). I will Start
 with the Classic / Conceptual diagram, because it is very useful at the beginning of
-database design and it is especially good for beginners -- it requires only Brain and 
-Pen & Paper. This means, that as you get more proficient, you can safely abandon it.
+database design and it is especially good for beginners -- it requires only brain, 
+pen and paper. This means, that as you get more proficient, you can safely abandon it.
 
 The Conceptual diagram uses the following notation:
 
@@ -81,17 +83,19 @@ The Conceptual diagram uses the following notation:
 ## Analysis Example
 Let's look at the [project assignment](/en/apv/course/#project-assignment):
 
-    Create a web application for recording persons and contacts. The main goal of the application is 
-    to record persons (friend, acquaintances), their addresses, relationships and meetings.
-    Every person can have a name, nickname, age, location and contacts. Each person can have any
-    number of contacts (mobile, Skype, Jabber, ....). A person can have more contacts of the
-    same type (e.g. two emails). Each person can have any number of relationships
-    with other persons in the database. Each relationship should have type (friend, fiend, acquaintance, spouse, ...)
-    and description. Contact and relationship types are recorded in database and can be modified by
-    the end-user. The application also records meetings between persons. Each meeting can be joined by any number of persons.
-    Each meeting should have a place and date.
-    The application must allow user friendly of entering and modifying the data. Take advantage of the proposed schema,
-    create a database and implement the entire application. 
+```
+Create a web application for recording persons and contacts. The main goal of the application is 
+to record persons (friend, acquaintances), their addresses, relationships and meetings.
+Every person can have a name, nickname, age, location and contacts. Each person can have any
+number of contacts (mobile, Skype, Jabber, ....). A person can have more contacts of the
+same type (e.g. two emails). Each person can have any number of relationships
+with other persons in the database. Each relationship should have type (friend, fiend, acquaintance, spouse, ...)
+and description. Contact and relationship types are recorded in database and can be modified by
+the end-user. The application also records meetings between persons. Each meeting can be joined by any number of persons.
+Each meeting should have a place and date.
+The application must allow user friendly of entering and modifying the data. Take advantage of the proposed schema,
+create a database and implement the entire application. 
+```
 
 Now start with identifying entities and their attributes. The simplest approach is to simply underline
 every **noun** in the requirements description (I will ignore general terms: **data**, **database**, **goal**,
@@ -303,7 +307,7 @@ records relations between two persons:
 | Tuan Brauer     | Marcel Miranda  | Davenport St., 12, Bolton | Fountain Rd 27, Stirling | 2015-10-09  |
 
 This definition of table `relationship` is not in 1. NF because the first four columns are not atomic.
-For example, it unclear what first and last name is. It is also unclear what city and street is. Nothing 
+For example, it is unclear what first and last name is. It is also unclear what city and street is. Nothing 
 prevents the end-user from entering any string into any of the fields -- in some countries and languages,
 the street number is written first, in some it is written last. Same goes with the name -- what is
 family name in **Park Geun-hye** ? These ambiguities make it impossible to **reliably** sort 
@@ -315,7 +319,7 @@ database schema. While this may sound easy, you will probably run into situation
 entirely easy to decide what is atomic and what is not.
 
 Consider for example the column `begin_date`, is is a date value, which consists of year, month and day.
-Is is atomic? Yes and no. If you consider it being a date value -- i.e. a reference to a point in 
+Is this atomic? Yes and no. If you consider it being a date value -- i.e. a reference to a point in 
 time -- it is atomic. If you consider it a string of three values (in some ambiguous format), then 
 it is not atomic. So under normal circumstances, you would consider date as being atomic and use
 a single column for it. Is it useful to represent date as three separate values? Sometimes. For example, when
@@ -448,7 +452,7 @@ not atomic, but it may be much more practical in some cases (if you use the
 address only as a 'single value' printed on package or letter).     
 
 #### Denormalization
-This leads us to the concept of **denormalization**. It is perfectly ok to use a relational 
+This leads us to the concept of **denormalization**. It is perfectly OK to use a relational 
 database which is not normalized, provided that you know why and understand the consequences.
 
 One example of this is intentional avoidance of normalization like in the case of addresses.
@@ -457,7 +461,7 @@ The risk of inconsistency is minimal, because the end-user always enters the ent
 a single value. The inconsistency is likely to happen in case someone decided to renumber 
 zip codes, which happens, but so rarely, that you can deal with it manually when it happens.
 All this means, that it is simply impractical to fully normalize addresses, because the 
-the positives are not going to outweigh the increased implementation complexity.
+positives are not going to outweigh the increased implementation complexity.
 
 Another example of using database which is not normalized are 
 [analytical databases](/en/apv/articles/database-systems/#database-systems). These databases are 
