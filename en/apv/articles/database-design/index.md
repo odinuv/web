@@ -63,8 +63,10 @@ Do not confuse *relation* and *relationship*! While *relationship* is colloquial
 to *relation*, in databases, they have to be distinguished. Can you describe the difference?
 
 {: .solution}
+<div markdown='1'>
 A relation is a set of entities, usually written down as a table. A relationship is
 a connection between entities.
+</div>
 
 ### E-R Diagram
 The most common representation of an E-R model is an ERD (E-R Diagram). There are 
@@ -76,29 +78,30 @@ Pen & Paper. This means, that as you get more proficient, you can safely abandon
 
 The Conceptual diagram uses the following notation:
 
+{: .image-popup}
 ![ERD Legend](/en/apv/articles/database-design/erd-legend.svg)
 
 ## Analysis Example
 Let's look at the [project assignment](/en/apv/course/#project-assignment):
 
-    Create a web application for recording persons and contacts. The main goal of the application is 
-    to record persons (friend, acquaintances), their addresses, relationships and meetings.
-    Every person can have a name, nickname, age, location and contacts. Each person can have any
-    number of contacts (mobile, Skype, Jabber, ....). A person can have more contacts of the
-    same type (e.g. two emails). Each person can have any number of relationships
-    with other persons in the database. Each relationship should have type (friend, fiend, acquaintance, spouse, ...)
-    and description. Contact and relationship types are recorded in database and can be modified by
-    the end-user. The application also records meetings between persons. Each meeting can be joined by any number of persons.
-    Each meeting should have a place and date.
-    The application must allow user friendly of entering and modifying the data. Take advantage of the proposed schema,
-    create a database and implement the entire application. 
+> Create a web application for recording persons and contacts. The main goal of the application is 
+> to record persons (friend, acquaintances), their addresses, relationships and meetings.
+> Every person can have a name, nickname, age, location and contacts. Each person can have any
+> number of contacts (mobile, Skype, Jabber, ....). A person can have more contacts of the
+> same type (e.g. two emails). Each person can have any number of relationships
+> with other persons in the database. Each relationship should have type (friend, fiend, acquaintance, spouse, ...)
+> and description. Contact and relationship types are recorded in database and can be modified by
+> the end-user. The application also records meetings between persons. Each meeting can be joined by any number of persons.
+> Each meeting should have a place and date.
+> The application must allow user friendly of entering and modifying the data. Take advantage of the proposed schema,
+> create a database and implement the entire application. 
 
 Now start with identifying entities and their attributes. The simplest approach is to simply underline
 every **noun** in the requirements description (I will ignore general terms: **data**, **database**, **goal**,
 and **application**):
 
 {: .solution}
-<div markdown='1'>
+<blockquote markdown='1'>
 Create a web application for recording <span class='underline'>persons</span> 
 and <span class='underline'>contacts</span>. The main goal of the 
 application is to record <span class='underline'>persons</span> (
@@ -126,7 +129,7 @@ also records <span class='underline'>meetings</span> between <span class='underl
 <span class='underline'>persons</span>. Each <span class='underline'>meeting</span> should have a 
 <span class='underline'>place</span> and <span class='underline'>date</span>.
 The application must allow user friendly of entering and modifying the data.
-</div>  
+</blockquote>  
 
 Now you take the nouns aside and you should obtain the following list:
 
@@ -150,6 +153,9 @@ Now you take the nouns aside and you should obtain the following list:
 
 Now you can directly see **entities** and their **attributes**. If you notice an attribute
 being another entity (person can have a contact), you just stumbled upon **relationship**.
+There is also a slightly 
+[more formalized](https://en.wikipedia.org/wiki/Entity–relationship_model#Mapping_natural_language) 
+approach.
 From here you should be able to draw the conceptual ERD. Try to really do it yourself before
 you look at the solution.
 
@@ -480,11 +486,13 @@ When creating a database schema, we went through the following steps:
 By following the above steps, you should transition from **conceptual model**  
 (which contains entities and relationships between them):
 
+{: .image-popup}
 ![ERD Classic](/en/apv/articles/database-design/erd-classic.svg)
 
 To a **logical model** model, from which the database schema
 can be created (**physical model**):
 
+{: .image-popup}
 ![ERD Crow's foot](/en/apv/schema.svg)
 
 The above diagram is also an ERD in so called **Crow's foot notation**. This
