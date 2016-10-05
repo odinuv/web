@@ -41,6 +41,8 @@ An alternative to ER model is e.g. [Object Oriented Model](https://en.wikipedia.
 
 ### E-R Modeling
 [E-R Modeling](https://en.wikipedia.org/wiki/Entity–relationship_model) works with the following concepts:
+
+
 - **entity** -- identifiable real world object (table record)
 - entity type -- class of real world object
 - **relationship** -- link between entities
@@ -56,7 +58,7 @@ algebra -- apart from *relation* and *algebra* :) E-R Modeling is a tool to crea
 diagrams, which nicely convert to relational databases.
 If you find E-R modelling similar to [object oriented modeling](https://en.wikipedia.org/wiki/Object-oriented_programming), 
 that is good too, because
-they are boot tools to solve the same problem -- describe and design structure of data.
+they are both tools to solve the same problem -- describe and design structure of data.
 
 {: .note}
 Do not confuse *relation* and *relationship*! While *relationship* is colloquially abbreviated
@@ -73,8 +75,8 @@ The most common representation of an E-R model is an ERD (E-R Diagram). There ar
 multiple variants - e.g. Classic (conceptual), Crow's foot, ...
 Probably the most common one is Crow's foot (which I will show you later). I will Start
 with the Classic / Conceptual diagram, because it is very useful at the beginning of
-database design and it is especially good for beginners -- it requires only Brain and 
-Pen & Paper. This means, that as you get more proficient, you can safely abandon it.
+database design and it is especially good for beginners -- it requires only brain, 
+pen and paper. This means, that as you get more proficient, you can safely abandon it.
 
 The Conceptual diagram uses the following notation:
 
@@ -153,9 +155,6 @@ Now you take the nouns aside and you should obtain the following list:
 
 Now you can directly see **entities** and their **attributes**. If you notice an attribute
 being another entity (person can have a contact), you just stumbled upon **relationship**.
-There is also a slightly 
-[more formalized](https://en.wikipedia.org/wiki/Entity–relationship_model#Mapping_natural_language) 
-approach.
 From here you should be able to draw the conceptual ERD. Try to really do it yourself before
 you look at the solution.
 
@@ -220,9 +219,11 @@ Is it possible that one car is driven by two people? Is it possible that a singl
 person can drive multiple cars? 
 
 {: .solution}
+<div markdown='1'>
 Yes, for example in the *driving school* or consider for example 
 [Abby and Brittany Hensel](https://en.wikipedia.org/wiki/Abby_and_Brittany_Hensel) or
 [remote controlled cars](https://www.youtube.com/watch?v=gPv69DM3YsE).
+</div>
 
 Remember that we are making a model of the real-world. Therefore you should 
 always select the **lowest cardinality ratio acceptable for the application**.
@@ -309,7 +310,7 @@ records relations between two persons:
 | Tuan Brauer     | Marcel Miranda  | Davenport St., 12, Bolton | Fountain Rd 27, Stirling | 2015-10-09  |
 
 This definition of table `relationship` is not in 1. NF because the first four columns are not atomic.
-For example, it unclear what first and last name is. It is also unclear what city and street is. Nothing 
+For example, it is unclear what first and last name is. It is also unclear what city and street is. Nothing 
 prevents the end-user from entering any string into any of the fields -- in some countries and languages,
 the street number is written first, in some it is written last. Same goes with the name -- what is
 family name in **Park Geun-hye** ? These ambiguities make it impossible to **reliably** sort 
@@ -321,7 +322,7 @@ database schema. While this may sound easy, you will probably run into situation
 entirely easy to decide what is atomic and what is not.
 
 Consider for example the column `begin_date`, is is a date value, which consists of year, month and day.
-Is is atomic? Yes and no. If you consider it being a date value -- i.e. a reference to a point in 
+Is this atomic? Yes and no. If you consider it being a date value -- i.e. a reference to a point in 
 time -- it is atomic. If you consider it a string of three values (in some ambiguous format), then 
 it is not atomic. So under normal circumstances, you would consider date as being atomic and use
 a single column for it. Is it useful to represent date as three separate values? Sometimes. For example, when
@@ -454,7 +455,7 @@ not atomic, but it may be much more practical in some cases (if you use the
 address only as a 'single value' printed on package or letter).     
 
 #### Denormalization
-This leads us to the concept of **denormalization**. It is perfectly ok to use a relational 
+This leads us to the concept of **denormalization**. It is perfectly OK to use a relational 
 database which is not normalized, provided that you know why and understand the consequences.
 
 One example of this is intentional avoidance of normalization like in the case of addresses.
@@ -463,7 +464,7 @@ The risk of inconsistency is minimal, because the end-user always enters the ent
 a single value. The inconsistency is likely to happen in case someone decided to renumber 
 zip codes, which happens, but so rarely, that you can deal with it manually when it happens.
 All this means, that it is simply impractical to fully normalize addresses, because the 
-the positives are not going to outweigh the increased implementation complexity.
+positives are not going to outweigh the increased implementation complexity.
 
 Another example of using database which is not normalized are 
 [analytical databases](/en/apv/articles/database-systems/#database-systems). These databases are 
@@ -499,6 +500,14 @@ The above diagram is also an ERD in so called **Crow's foot notation**. This
 notation directly displays relations (tables) and their definitions. With
 proper [design software](todo ido), the SQL queries to create tables in database can be 
 generated automatically. You can then start using the database.
+
+## Naming conventions
+Table names and column names are usually typed in lowercase. Using uppercase letters in table or
+column names cause the need to enclose their names in double quotes when typing SQL queries in
+PostgreSQL. For example: `SELECT * FROM "UserAddress"` because `SELECT * FROM UserAddress` won't work.
+An underscore character is used to divide words, because minus sign is reserved for mathematical operation.
+Therefore the easiest way is to use `user_address` as table name in this case. You can name your
+tables in singular or plural, both ways are used.
 
 ## Summary
 In this article I described the process of designing a database given a textual requirements
