@@ -502,12 +502,13 @@ proper [design software](todo ido), the SQL queries to create tables in database
 generated automatically. You can then start using the database.
 
 ## Naming conventions
-Table names and column names are usually typed in lowercase. Using uppercase letters in table or
+Table and column names are usually typed in lowercase. Using uppercase letters in table or
 column names cause the need to enclose their names in double quotes when typing SQL queries in
-PostgreSQL. For example: `SELECT * FROM "UserAddress"` because `SELECT * FROM UserAddress` won't work.
-An underscore character is used to divide words, because minus sign is reserved for mathematical operation.
-Therefore the easiest way is to use `user_address` as table name in this case. You can name your
-tables in singular or plural, both ways are used.
+PostgreSQL. For example following query `SELECT * FROM UserAddress` won't work (even if such
+table exists), you have to use double quotes: `SELECT * FROM "UserAddress"` because PostgreSQL
+converts table name to lowercase without quotes. An underscore character is used to divide words,
+because minus sign is reserved for subtraction. Therefore the easiest way is to use `user_address`
+as table name in this case. You can name your tables in singular or plural, both ways are used.
 
 ## Summary
 In this article I described the process of designing a database given a textual requirements
