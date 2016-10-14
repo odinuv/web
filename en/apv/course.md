@@ -27,7 +27,7 @@ development of web applications and database applications (relational database s
     - [Presentation slides](/en/apv/slides/database-systems/)
 - Week 4
     - Articles: [Relational Database Systems](/en/apv/articles/database-systems/)
-    - Exercises: [Latte](/en/apv/walkthrough/templates/) and [Latte Templates](/en/apv/walkthrough/templates-layouts/) 
+    - Exercises: [Latte](/en/apv/walkthrough/templates/) and [Latte Templates](/en/apv/walkthrough/templates-layout/) 
     - [Presentation slides](/en/apv/slides/relational-database/)
 - Week 5
     - Articles: [SQL Language](/en/apv/articles/sql-join/)
