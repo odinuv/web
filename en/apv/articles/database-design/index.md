@@ -65,8 +65,10 @@ Do not confuse *relation* and *relationship*! While *relationship* is colloquial
 to *relation*, in databases, they have to be distinguished. Can you describe the difference?
 
 {: .solution}
+<div markdown='1'>
 A relation is a set of entities, usually written down as a table. A relationship is
 a connection between entities.
+</div>
 
 ### E-R Diagram
 The most common representation of an E-R model is an ERD (E-R Diagram). There are 
@@ -78,31 +80,30 @@ pen and paper. This means, that as you get more proficient, you can safely aband
 
 The Conceptual diagram uses the following notation:
 
+{: .image-popup}
 ![ERD Legend](/en/apv/articles/database-design/erd-legend.svg)
 
 ## Analysis Example
 Let's look at the [project assignment](/en/apv/course/#project-assignment):
 
-```
-Create a web application for recording persons and contacts. The main goal of the application is 
-to record persons (friend, acquaintances), their addresses, relationships and meetings.
-Every person can have a name, nickname, age, location and contacts. Each person can have any
-number of contacts (mobile, Skype, Jabber, ....). A person can have more contacts of the
-same type (e.g. two emails). Each person can have any number of relationships
-with other persons in the database. Each relationship should have type (friend, fiend, acquaintance, spouse, ...)
-and description. Contact and relationship types are recorded in database and can be modified by
-the end-user. The application also records meetings between persons. Each meeting can be joined by any number of persons.
-Each meeting should have a place and date.
-The application must allow user friendly of entering and modifying the data. Take advantage of the proposed schema,
-create a database and implement the entire application. 
-```
+> Create a web application for recording persons and contacts. The main goal of the application is 
+> to record persons (friend, acquaintances), their addresses, relationships and meetings.
+> Every person can have a name, nickname, age, location and contacts. Each person can have any
+> number of contacts (mobile, Skype, Jabber, ....). A person can have more contacts of the
+> same type (e.g. two emails). Each person can have any number of relationships
+> with other persons in the database. Each relationship should have type (friend, fiend, acquaintance, spouse, ...)
+> and description. Contact and relationship types are recorded in database and can be modified by
+> the end-user. The application also records meetings between persons. Each meeting can be joined by any number of persons.
+> Each meeting should have a place and date.
+> The application must allow user friendly of entering and modifying the data. Take advantage of the proposed schema,
+> create a database and implement the entire application. 
 
 Now start with identifying entities and their attributes. The simplest approach is to simply underline
 every **noun** in the requirements description (I will ignore general terms: **data**, **database**, **goal**,
 and **application**):
 
 {: .solution}
-<div markdown='1'>
+<blockquote markdown='1'>
 Create a web application for recording <span class='underline'>persons</span> 
 and <span class='underline'>contacts</span>. The main goal of the 
 application is to record <span class='underline'>persons</span> (
@@ -130,7 +131,7 @@ also records <span class='underline'>meetings</span> between <span class='underl
 <span class='underline'>persons</span>. Each <span class='underline'>meeting</span> should have a 
 <span class='underline'>place</span> and <span class='underline'>date</span>.
 The application must allow user friendly of entering and modifying the data.
-</div>  
+</blockquote>  
 
 Now you take the nouns aside and you should obtain the following list:
 
@@ -218,9 +219,11 @@ Is it possible that one car is driven by two people? Is it possible that a singl
 person can drive multiple cars? 
 
 {: .solution}
+<div markdown='1'>
 Yes, for example in the *driving school* or consider for example 
 [Abby and Brittany Hensel](https://en.wikipedia.org/wiki/Abby_and_Brittany_Hensel) or
 [remote controlled cars](https://www.youtube.com/watch?v=gPv69DM3YsE).
+</div>
 
 Remember that we are making a model of the real-world. Therefore you should 
 always select the **lowest cardinality ratio acceptable for the application**.
@@ -484,11 +487,13 @@ When creating a database schema, we went through the following steps:
 By following the above steps, you should transition from **conceptual model**  
 (which contains entities and relationships between them):
 
+{: .image-popup}
 ![ERD Classic](/en/apv/articles/database-design/erd-classic.svg)
 
 To a **logical model** model, from which the database schema
 can be created (**physical model**):
 
+{: .image-popup}
 ![ERD Crow's foot](/en/apv/schema.svg)
 
 The above diagram is also an ERD in so called **Crow's foot notation**. This
@@ -497,12 +502,13 @@ proper [design software](todo ido), the SQL queries to create tables in database
 generated automatically. You can then start using the database.
 
 ## Naming conventions
-Table names and column names are usually typed in lowercase. Using uppercase letters in table or
-column names cause the need to enclose their names in double quotes when typing SQL querries in
-PostgreSQL. For example: `SELECT * FROM "UserAddress"` because `SELECT * FROM UserAddress` won't work.
-An underscore character is used to divide words, because minus sign is reserved for mathematical operation.
-Therefore the easiest way is to use `user_address` as table name in this case. You can name your
-tables in singular or plural, both ways are used.
+Table and column names are usually typed in lowercase. Using uppercase letters in table or
+column names cause the need to enclose their names in double quotes when typing SQL queries in
+PostgreSQL. For example following query `SELECT * FROM UserAddress` won't work (even if such
+table exists), you have to use double quotes: `SELECT * FROM "UserAddress"` because PostgreSQL
+converts table name to lowercase without quotes. An underscore character is used to divide words,
+because minus sign is reserved for subtraction. Therefore the easiest way is to use `user_address`
+as table name in this case. You can name your tables in singular or plural, both ways are used.
 
 ## Summary
 In this article I described the process of designing a database given a textual requirements
