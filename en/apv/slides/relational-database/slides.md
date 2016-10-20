@@ -461,7 +461,7 @@ with (relational) database system.
     - `schema.table.column`,
     - e.g. `my_project.persons.id_person`
     - Schema rarely changes during application run, so it is omitted.
-    - Omitting table name is discouraged except for very single queries.
+    - Omitting table name is discouraged except for very simple queries.
 </section>
 
 <section markdown='1'>
