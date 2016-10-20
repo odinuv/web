@@ -151,10 +151,10 @@ body {
   word-wrap: break-word;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
 
-.reveal {
+.reveal code {
   font-family: monospace;
 }
-.li > code {
+li > code {
   color: #e7ad52;
 }
 
