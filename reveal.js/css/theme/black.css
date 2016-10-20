@@ -82,6 +82,9 @@ body {
 .reveal b {
   color: #e7ad52;
   font-weight: bold; }
+.reval pre strong {
+  color: #333333;
+}
 
 .reveal em {
   font-style: italic; }
@@ -154,7 +157,7 @@ body {
 .reveal code {
   font-family: monospace;
 }
-li > code {
+.reveal li > code {
   color: #e7ad52;
 }
 
