@@ -19,9 +19,9 @@ permalink: /en/apv/slides/relational-database/
 ## Relation -- Definition
 - Relation -- **Set** of [**tuples**](https://en.wikipedia.org/wiki/Tuple).
 - **Tuple** is a list of **attributes** (a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, ..., a<sub>k</sub>).
-- Attribute has a **name**, **value** and **domain**. 
+- Attribute has a **name**, **value** and **domain**.
 - a<sub>n</sub> -- **value** of the n-th attribute in the tuple, a<sub>i</sub> in D<sub>i</sub>.
-- D<sub>n</sub> -- **domain** of the n-th attribute (a set of values allowed for 
+- D<sub>n</sub> -- **domain** of the n-th attribute (a set of values allowed for
 the attribute).
 - A<sub>n</sub> -- **name** of the n-th attribute.
 - `PERSON(ID: INTEGER, AGE: AGE_INTEGER, NAME: STRING)`
@@ -31,14 +31,14 @@ the attribute).
 <section markdown='1'>
 ## Relation
 - Relations are usually written down using tables.
-- Relational schema -- names and headers of tables; 
+- Relational schema -- names and headers of tables;
     - definition of tables form (not data).
 - Attribute -- table column.
 - Relation element (tuple) -- table row.
 - Name of attribute -- name of table column.
 - Attribute domain -- data type of the table column.
 - In practice, the terms: relation, schema, tables are used interchangeably.
-    - They do not mean the same however! 
+    - They do not mean the same however!
 </section>
 
 <section markdown='1'>
@@ -54,7 +54,7 @@ the attribute).
     - saves a lot of time
 - build upon set operation:
     - product, union, intersection, difference
-- basis for the SQL language        
+- basis for the SQL language
 </section>
 
 <section markdown='1'>
@@ -83,18 +83,18 @@ the attribute).
             <table>
                 <tr>
                     <th>Color</th>
-                    <th>Style</th>        
+                    <th>Style</th>
                 </tr>
                 <tr>
                     <td><span style='color:white'>white</span></td>
                     <td style='font-weight: bold'>bold</td>
                 </tr>
                 <tr>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td style='font-style: italic'>italic</td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td style='text-decoration: underline'>underline</td>
                 </tr>
                 <tr>
@@ -108,14 +108,14 @@ the attribute).
             <table>
                 <tr>
                     <th>Color</th>
-                    <th>Style</th>        
+                    <th>Style</th>
                 </tr>
                 <tr>
                     <td><span style='color:white'>white</span></td>
                     <td style='font-weight: bold'>bold</td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td style='text-decoration: underline'>underline</td>
                 </tr>
             </table>
@@ -137,10 +137,10 @@ the attribute).
             <table>
                 <tr>
                     <th>Color</th>
-                    <th>Style</th>        
+                    <th>Style</th>
                 </tr>
                 <tr>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td style='font-style: italic'>italic</td>
                 </tr>
             </table>
@@ -169,10 +169,10 @@ the attribute).
                     <td><span style='color:white'>white</span></td>
                 </tr>
                 <tr>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                 </tr>
             </table>
         </td>
@@ -180,18 +180,18 @@ the attribute).
             <table>
                 <tr>
                     <th>Color</th>
-                    <th>Style</th>        
+                    <th>Style</th>
                 </tr>
                 <tr>
                     <td><span style='color:white'>white</span></td>
                     <td style='font-weight: bold'>bold</td>
                 </tr>
                 <tr>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td style='font-style: italic'>italic</td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td style='text-decoration: underline'>underline</td>
                 </tr>
             </table>
@@ -213,14 +213,14 @@ the attribute).
             <table>
                 <tr>
                     <th>Color</th>
-                    <th>Style</th>        
+                    <th>Style</th>
                 </tr>
                 <tr>
                     <td><span style='color:white'>white</span></td>
                     <td style='font-weight: bold'>bold</td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td style='text-decoration: underline'>underline</td>
                 </tr>
             </table>
@@ -228,7 +228,7 @@ the attribute).
         <td colspan='2'>
             <table>
                 <tr>
-                    <th>Style</th>        
+                    <th>Style</th>
                 </tr>
                 <tr>
                     <td style='font-style: italic'>italic</td>
@@ -247,18 +247,18 @@ the attribute).
             <table>
                 <tr>
                     <th>Color1</th>
-                    <th>Style</th>        
+                    <th>Style</th>
                 </tr>
                 <tr>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td style='font-weight: bold'>bold</td>
                 </tr>
                 <tr>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td style='font-style: italic'>italic</td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td style='text-decoration: underline'>underline</td>
                 </tr>
             </table>
@@ -277,20 +277,20 @@ the attribute).
                     <td style='font-family: Verdana'>Verdana</td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td>24</td>
                     <td style='font-family: Palatino'>Palatino</td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td>10</td>
                     <td style='font-family: Verdana'>Verdana</td>
                 </tr>
                 <tr>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td>19</td>
                     <td style='font-family: Monaco'>Monaco</td>
-                </tr>                
+                </tr>
             </table>
         </td>
     </tr>
@@ -302,36 +302,36 @@ the attribute).
             <table>
                 <tr>
                     <th>Color</th>
-                    <th>Style</th>        
+                    <th>Style</th>
                     <th>Color2</th>
                     <th>Size</th>
                     <th>Font</th>
                 </tr>
                 <tr>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td style='font-weight: bold'>bold</td>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td>19</td>
                     <td style='font-family: Monaco'>Monaco</td>
                 </tr>
                 <tr>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td style='font-style: italic'>italic</td>
-                    <td><span style='color:green'>green</span></td>
+                    <td><span style='color:yellow'>yellow</span></td>
                     <td>19</td>
                     <td style='font-family: Monaco'>Monaco</td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td style='text-decoration: underline'>underline</td>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td>24</td>
                     <td style='font-family: Palatino'>Palatino</td>
                 </tr>
                 <tr>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td style='text-decoration: underline'>underline</td>
-                    <td><span style='color:red'>red</span></td>
+                    <td><span style='color:cyan'>cyan</span></td>
                     <td>10</td>
                     <td style='font-family: Verdana'>Verdana</td>
                 </tr>
@@ -352,7 +352,7 @@ the attribute).
 - In applications it is safest to use **artificial keys**:
     - also called **dumb keys** -- have no meaning.
 - Key is the core *integrity constraint**.
-- **Weak entity** -- has only foreign key (e.g. `person-meeting`).    
+- **Weak entity** -- has only foreign key (e.g. `person-meeting`).
 </section>
 
 <section markdown='1'>
@@ -386,7 +386,7 @@ the attribute).
 - There are foreign keys on ID_PERSON and ID_CONTACT_TYPE columns:
     - `FOREIGN KEY (id_contact_type) REFERENCES contact_type(id_contact_type)`
     - `FOREIGN KEY (id_person) REFERENCES person(id_person)`
-- Master table is `person` and `contact_type`.     
+- Master table is `person` and `contact_type`.
 </section>
 
 <section markdown='1'>
@@ -423,7 +423,7 @@ with (relational) database system.
 - Real-world implementations are behind:
     - SQL-92 is available almost everywhere,
     - SQL-1999 is available in top vendors.
-- A lot of dialects and derivatives.    
+- A lot of dialects and derivatives.
 </section>
 
 <section markdown='1'>
@@ -435,7 +435,7 @@ with (relational) database system.
     - use underscores for delimiters (`id_person`),
     - use either all lower-case or all upper-case,
     - keep it reasonably short (less than approx 30 characters).
-- Try to avoid langauge keywords (SQL has many of them). 
+- Try to avoid langauge keywords (SQL has many of them).
 </section>
 
 <section markdown='1'>
@@ -446,7 +446,7 @@ with (relational) database system.
     - Would `product` be better?
 - Use no abbreviations (except for `id`).
     - If you must, use known abbreviations.
-    - What does `prsn_fn` mean?    
+    - What does `prsn_fn` mean?
 - Avoid repetition:
     - e.g. column `person_name` in table `persons`;
     - except for columns with keys (`id_person`).
@@ -518,7 +518,7 @@ with (relational) database system.
         - persistent -- **views** (external schema)
         - volatile -- result of a `SELECT` query
 </section>
-        
+
 <section markdown='1'>
 ## Database Views
 - View is a database object which looks like a table.
@@ -528,7 +528,7 @@ with (relational) database system.
 - View (or any `SELECT` query) does not have to be a relation!
 - Views are used:
     - for same reasons as functions in procedural programming,
-    - to define user sections of the database schema. 
+    - to define user sections of the database schema.
 </section>
 
 <section markdown='1'>
@@ -541,5 +541,5 @@ with (relational) database system.
 - What is difference between a relation and a (database) table?
 - What is dot `.` used for in SQL?
 - Must every relation have a foreign key?
-- Is is possible to write union in SQL language? 
+- Is is possible to write union in SQL language?
 </section>
