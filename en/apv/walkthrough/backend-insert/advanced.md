@@ -11,11 +11,12 @@ tables with records as a result. A record in such table has given structure. Som
 related information into multiple tables -- there can be many reasons for that:
 
 - records are naturally separable by common reasoning or by application design needs
-  (store product images in another table than products themselves)
-- record in one table can be shared by records in another tables (address can be shared
-  among many persons whom happen to live in the same building)
-- another technical reasons -- mostly defined by 
-[database normalization rules](/en/apv/articles/database-design/#database-normalization) which
+  (e.g. store product images in another table than products themselves)
+- record in one table can be shared by records in another table/tables (e.g. address can be shared
+  among many persons whom happen to live in the same building or an address can be shared by a person
+  and also can be used as meeting location)
+- another technical reasons -- mostly defined by
+  [database normalization rules](/en/apv/articles/database-design/#database-normalization) which
   should be obeyed during the [database structure design process](/en/apv/articles/database-design/).
   
 Records are then connected by [foreign keys](/en/apv/articles/relational-database/#foreign-key) -- meta-information
