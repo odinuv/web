@@ -169,7 +169,7 @@ style a document. Do not attempt to style a web page using the HTML language.
 E.g. never use a second `h2` or third level `h3` heading instead of first level heading
 `h`` just to get smaller font size. The structure of the document must be used irrespective of
 the looks of the document. Adjusting font size and many other things is done through
-[Style Sheets](todo), which we will get to later.
+[Style Sheets](http://odinuv.cz/en/apv/walkthrough/css), which we will get to later.
 
 ### Publishing your page
 A webpage needs to be placed on a webserver. That is a computer which is constantly connected to the Internet.

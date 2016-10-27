@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Relative and aboslute</title>
+    <style>
+        div {
+            border: 1px solid #000000;
+        }
+        #absolute-size {
+            width: 3cm;
+            height: 3cm;
+        }
+        #relative-size {
+            /*
+                relative unit is relative to its parent - therefore we need to set position to fixed
+                (parent of fixed element is browser's window) because relative height of this div to
+                body element would cause infinite loop of resizing
+            */
+            position: fixed;
+            width: 30%;
+            height: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div id="absolute-size">
+        This one is 3cm x 3cm.
+    </div>
+    <div id="relative-size">
+        This one is 30% of window size.
+    </div>
+</body>
+</html>

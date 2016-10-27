@@ -53,6 +53,9 @@ items:
               - url: /en/apv/walkthrough/backend-update/
                 title: Database – Updating
 
+              - url: /en/apv/walkthrough/css/
+                title: CSS - Cascading Style Sheet
+
           - url: /en/apv/articles/
             title: Articles
             items:
