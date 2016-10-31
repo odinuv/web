@@ -7,28 +7,46 @@
         div {
             border: 1px solid #000000;
         }
+        #relative-container {
+            /*position: static;*/
+            position: relative;
+            border: 1px solid #00FF00;
+            height: 10cm;
+        }
         #absolute-size {
+            position: absolute;
+            right: 2cm;
+            bottom: 2cm;
             width: 3cm;
             height: 3cm;
         }
         #relative-size {
             /*
-                relative unit is relative to its parent - therefore we need to set position to fixed
-                (parent of fixed element is browser's window) because relative height of this div to
-                body element would cause infinite loop of resizing
+                size in relative unit is relative to its parent size -
+                therefore we need to set position property to fixed
+                (parent of fixed element is browser's window) because
+                relative height of this div to body element would cause
+                infinite loop of resizing
             */
             position: fixed;
+            bottom: 2cm;
+            left: 2cm;
             width: 30%;
             height: 30%;
         }
     </style>
 </head>
 <body>
-    <div id="absolute-size">
-        This one is 3cm x 3cm.
+    <div id="relative-container">
+		This one has 10cm height.
+        <div id="absolute-size">
+            This one is 3cm x 3cm in bottom right corner.
+        </div>
     </div>
     <div id="relative-size">
-        This one is 30% of window size.
+        This one is 30% of window size and always in left bottom corner.
+        <br />
+        Try to resize window.
     </div>
 </body>
 </html>
