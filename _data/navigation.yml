@@ -56,6 +56,9 @@ items:
               - url: /en/apv/walkthrough/css/
                 title: CSS - Cascading Style Sheets
 
+              - url: /en/apv/walkthrough/css/bootstrap/
+                title: CSS - Bootstrap
+
           - url: /en/apv/articles/
             title: Articles
             items:

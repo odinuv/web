@@ -286,9 +286,10 @@ You can even shorten that HEX color entry by leaving out repeating letters/numbe
 ### Unit system
 There are many CSS units to set sizes of different elements, most used ones are *px*, *em*, *rem*, *pt* and *%*.
 Basic division of CSS units is between absolute (*mm*, *cm*, *in*, *pt*) and relative units (*%*, *em*, *rem*,
-*vw*, *vh*, *vmin*, *vmax*). Calculation of element's size given  with relative unit is based on size of parent or 
+*vw*, *vh*, *vmin*, *vmax*, *ex*, *ch*). Calculation of element's size given  with relative unit is based on size of parent or 
 some or some other characteristics. Absolute unit renders same size of element on any device.
 
+Some useful relative unit explanation:
 -   *%* -- relative to parent size (for height, the parent must have defined absolute height,
     otherwise the calculations would cause infinite loop -- height of parent is based on content height)
 -   *em* -- size of parent font (you should set `<body>` font in *pt* to have at least top level font size given)
@@ -296,8 +297,9 @@ some or some other characteristics. Absolute unit renders same size of element o
 -   *vw*, *vh* -- percent of window width/height (v stands for viewport)
 -   *vmin*, *vmax* -- percent of smaller/larger dimension of viewport
 
-You can set width and height only for block elements, inline elements can only change size of font. To switch
-this behavour, you can use CSS property `display` with value `block` or `inline`.
+You can set width and height only for block elements. Inline elements can only change size of font. To switch
+this behaviour, you can use CSS property `display` with value `block` or `inline`. There is also mode called
+`inline-block` which enables inline elements to have specific width and height. 
 
 ### Positioning
 There are four types of element's position modes. The default one is *static* which places inline elements on
@@ -321,13 +323,36 @@ Try to set relative and absolute positions and different sizes for some box elem
 {% include /en/apv/walkthrough/css/relative-absolute.html %}
 {% endhighlight %}
 
+### Box-model and size
+In CSS, you can set different size for outer offset (`margin`), inner offset (`padding`) and `border`.
+By default the margin, border and padding is not included in width and height of an element. Therefore
+to calculate how much space an element will occupy on screen you have to sum of all these values for top, left,
+bottom and right side of an element plus element's width and height. 
+
+![Box model](/en/apv/walkthrough/css/box-model.svg)
+
+{: .note}
+You can set different value for `padding`, `margin` and `border` at each side of element. Remember that if
+you want to save some time writing those long CSS property names, you can put all dimensions into one definition
+in clock-wise order (top, right, bottom, left):
+
+{% highlight css %}
+    .some-element-with-padding-and-margin {
+               /* T    R    B    L */
+        padding: 10px 20px 30px 40px;
+               /* top is 10px and rest is 20px */
+        margin: 10px 20px;
+    }
+{% endhighlight %}
+
 ## Summary
 In this chapter you learned about CSS and why and how to use it. This article covers the basics,
 there is much more to know if you want to be a professional HTML coder (a person who converts
 graphical design into HTML and CSS code). Important thing is, that you can understand the CSS syntax
-and know how to connect it with HTML.
+and know how to connect it with HTML. You should be able to find basic CSS properties online and be able
+to use them.
 
-In following article we will try to use some freely available CSS styles to save some work and
+In [following chapter](/en/apv/walkthrough/css/bootstrap) we will try to use some freely available CSS styles to save some work and
 liberate ourselves from the pain that our design skills are not brilliant.
 
 ### New Concepts and Terms
