@@ -6,7 +6,7 @@ permalink: /en/apv/walkthrough/css/bootstrap/
 * TOC
 {:toc}
 
-In previous chapter I explained [CSS](/en/apv/walkthrough/css/) basics and we know that CSS is a language which
+In previous chapter I explained [CSS](/en/apv/walkthrough/css/) basics and you know that CSS is a language which
 is used to set graphical properties of HTML elements. In this part of the book I will show you a way how to save
 some work and use freely available predefined CSS styles instead of making your own (which are usually not very
 nice looking). I will also briefly introduce responsive design.
@@ -20,14 +20,15 @@ for your application without having to worry about writing too many CSS code. Yo
 appropriate widget from their [online library](http://getbootstrap.com/css/). Than you just tweak that HTML
 code to suit your needs.
 
-There is more CSS frameworks available online than Bootstrap (alternatives are [Foundation](http://foundation.zurb.com/),
+There is more CSS frameworks available online then Bootstrap (alternatives are [Foundation](http://foundation.zurb.com/),
 [HTML5 Boilerplate](https://html5boilerplate.com/), [YIU](http://yuilibrary.com/) and some others), they offer
 same or a bit different features as Bootstrap. I will use Bootstrap version 3.x here because it is best known.
 
 Linking Bootstrap to your app is simple: go to their download page and copy those few lines from "Bootstrap
 CDN" section. You can also download whole Bootstrap in zip archive if you want. You just need to link
 bootstrap.min.css, bootstrap-theme.min.css and bootstrap.min.js in your `<head>`. Do not break Bootstrap
-folder structure.
+folder structure. If you want to use Bootstrap's [JavaScript](todo) features, you should also link
+[jQuery](https://jquery.com) (also available via CDN) before bootstrap.min.js.
 
 ### Tables, forms, inputs, pagination, navigation...
 Large part of Bootstrap framework is a library of CSS definitions for basic HTML elements. You can find most
@@ -78,7 +79,7 @@ wells, pagination and universal icons. Those icons are usually used on buttons a
 
 {% highlight html %}
     <!-- button with floppy disk icon -->
-    <button type="button">
+    <button class="btn btn-primary" type="button">
         <span class="glyphicon glyphicon-disk"></span> Save
     </button>
 {% endhighlight %}
@@ -168,7 +169,10 @@ The key is to use Bootstrap responsive module correctly:
     <div class="container">
         <!-- to use responsive classes define a row -->
         <div class="row">
-            <!-- sum of columns occupied by elements for each resolution should be <= 12 -->
+            <!--
+                sum of columns occupied by elements for each
+                resolution should be <= 12
+            -->
             <p class="col-xs-6 col-sm-2">
                 This paragraph is 6 columns wide for screens under 768px width.
             </p>
@@ -180,6 +184,7 @@ The key is to use Bootstrap responsive module correctly:
 {% endhighlight %}
 
 Screen size intervals for Bootstrap responsive classes:
+
 - xs -- under 768px (excl.) -- `col-xs-*`
 - sm -- from 768px to 992px (excl.) -- `col-sm-*`
 - md -- from 992px to 1200px (excl.) -- `col-md-*`
@@ -188,7 +193,7 @@ Screen size intervals for Bootstrap responsive classes:
 ## CSS Preprocessors
 If you feel that CSS with its flat structure and lack of variables can get out of hands after some time,
 you are not alone! For this purpose CSS preprocessors were invented -- most popular preprocessors today are
-[LESS](http://lesscss.org) and [SASS](http://sass-lang.com). This is too advanced to start with, just
+[LESS](http://lesscss.org) and [Sass](http://sass-lang.com). This is too advanced to start with, just
 try to remember this information until you start to write your first big project. And also Bootstrap is
 written with Sass (it was written in LESS before).
 

@@ -239,19 +239,20 @@ cursor is over one of them.
 {% endhighlight %}
 
 ### CSS properties
-There is too many CSS properties to list here, you can find them using Google just by typing what you want to achieve.
-As the HTML language evolves, CSS also expands list of available properties. Currently there is
-CSS version 3. There can be a bit of confusion about support of newest CSS properties in different
-web browsers: new CSS properties are implemented in browsers but sometimes the authors of that
-browser want to mark some implementation as experimental -- they usually prefix such property with their's browser name.
+There is too many CSS properties to list here, you can find them using Google just by typing what
+you want to achieve. As the HTML language evolves, CSS also expands list of available properties.
+Currently there is CSS version 3. There can be a bit of confusion about support of newest CSS
+properties in different web browsers: new CSS properties are implemented in browsers but sometimes
+the authors of that browser want to mark some implementation as experimental -- they prefix
+such property with their's browser name or engine name.
 
 This example demonstrates usage of browser specific prefix:
 
 {% highlight css %}
     .shadow {
-      -webkit-box-shadow: 5px 5px 5px 5px #888; /* Safari and Chrome */
-      -moz-box-shadow: 5px 5px 5px 5px #888; /* Firefox */
-      box-shadow: 5px 5px 5px 5px #888; /* generally all browsers that support this feature */
+      -webkit-box-shadow: 5px 5px 5px 5px #888; /* old Safari and Chrome */
+      -moz-box-shadow: 5px 5px 5px 5px #888; /* old Firefox */
+      box-shadow: 5px 5px 5px 5px #888; /* all browsers that support this feature */
     }
 {% endhighlight css %}
 
@@ -290,6 +291,7 @@ Basic division of CSS units is between absolute (*mm*, *cm*, *in*, *pt*) and rel
 some or some other characteristics. Absolute unit renders same size of element on any device.
 
 Some useful relative unit explanation:
+
 -   *%* -- relative to parent size (for height, the parent must have defined absolute height,
     otherwise the calculations would cause infinite loop -- height of parent is based on content height)
 -   *em* -- size of parent font (you should set `<body>` font in *pt* to have at least top level font size given)
