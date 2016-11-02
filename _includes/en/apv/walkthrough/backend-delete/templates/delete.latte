@@ -1,0 +1,13 @@
+{extends layout.latte}
+
+{block content}
+<h1>{$pageTitle}</h1>
+
+<form action="delete.php" method="post">
+    <label>ID of a person</label>
+    <input type="number" name="id_person" />
+    <br />
+
+    <input type="submit" value="Delete a person" />
+</form>
+{/block}

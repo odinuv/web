@@ -53,6 +53,9 @@ items:
               - url: /en/apv/walkthrough/backend-update/
                 title: Database – Updating
 
+              - url: /en/apv/walkthrough/backend-delete/
+                title: Database – Delete
+
               - url: /en/apv/walkthrough/css/
                 title: CSS - Cascading Style Sheets
 

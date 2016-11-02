@@ -1,0 +1,27 @@
+{extends layout.latte}
+
+{block content}
+<table>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Nickname</th>
+        <th>Age</th>
+        <th>Delete</th>
+    </tr>
+    {foreach $persons as $person}
+    <tr>
+        <td>{$person['first_name']}</td>
+        <td>{$person['last_name']}</td>
+        <td>{$person['nickname']}</td>
+        <td>{$person['age']}</td>
+        <td>
+            <form action="delete.php" method="post">
+                <input type="hidden" name="id_person" value="{$person['id_person']}"/>
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    {/foreach}
+</table>
+{/block}
