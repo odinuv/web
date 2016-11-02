@@ -12,9 +12,9 @@ This is a new thing which opens a lot of possibilities: you know that browser is
 rendering pure HTML, displaying images, maybe you know that you can also play video and audio
 in newer browsers using appropriate HTML tags (all this is very nice, but still the browser is a bit
 stupid). Executing scripts in browser during the time when a visitor is viewing your website can
-improve his experience a lot. Just by hiding or showing some HTML elements you can substantially
-improve (or reduce) readability of our page and increase speed of browsing (visitors do not have to wait
-for server process their requests).
+improve his experience a lot. Just by hiding or showing some HTML elements or chaning some CSS
+styles you can substantially improve (or reduce) readability of our page and increase speed
+of browsing (visitors do not have to wait for server to process their requests).
 
 A lot of pages use JavaScript very heavily nowadays. Sites like YouTube, Google drive/docs, Facebook
 are built using this technology. When you transfer significant part of program logic into JavaScript,
@@ -24,7 +24,7 @@ I will not teach you how to build application entirely with JavaScript, I will s
 this language to overcome most common problems with user interface -- quickly confirm some action or
 validate a form before it is send to backend.
 
-JavaScript itself is more than a language -- it is a package of browser interface, HTML manipulation
+JavaScript itself is more than a language -- it is a package of browser interface functions, HTML manipulation
 functions and a language itself is called ECMAScript. It has versions such as HTML or CSS and it evolves.
 Current version is 6 (published in 2015).
 
@@ -34,7 +34,7 @@ to Java but it is much different. JavaScript is object oriented like Java, but d
 is not familiar at all. It has first-class functions (a function which can be stored in a variable) and
 it is dynamically typed (variable type is defined by content like in PHP). Source code written in JavaScript
 is much different to anything you probably know. I will start with some basic examples which I believe
-would not confuse yout at all; `console.log()` sends its output to developer tools (F12).
+would not confuse you at all; `console.log()` sends its output to browser's developer tools (F12).
 
 Here is a brief JavaScript demo:
 
@@ -44,7 +44,8 @@ Here is a brief JavaScript demo:
 
 {: .note}
 To try JavaScript code you do not have to write a custom HTML page, just paste this code into online
-tool such as [JSFiddle](https://jsfiddle.net) (use JavaScript editor) and click run.
+tool such as [JSFiddle](https://jsfiddle.net) (use JavaScript editor) and click run. Remember to open
+that developer tools console.
 
 In following example you can see control structures:
 
@@ -74,8 +75,10 @@ Therefore there is a big difference in placement of `<script>` tags within your 
 {% include /en/apv/walkthrough/javascript/order-of-execution.html %}
 {% endhighlight %}
 
-Web developers often want their JavaScript to load when all HTML tags are loaded into browser.
-For this an event called `onload` is used.
+Web developers often want their JavaScript to execute when all HTML tags are loaded into browser.
+To achieve this an event called `onload` is used and most JavaScript code is executed in it.
+When you use `onload` event it does not matter whether you put you `<script>` tag into `<head>` or
+just before `</body>`.
 
 ## JavaScript events
 Events are type of signals which are broadcasted to JavaScript event listeners (usually functions)
@@ -105,14 +108,15 @@ Open developer console (F12) and try to click this button:
 That weird stuff which is logged along with 'Button clicked' text is an event object describing
 what happened. Special event is `onload` which signals that whole page is loaded.
 
-You can attach events as HTML attributes like in example above or you can use programmatic approach:
+You can attach events as HTML attributes like in example above or you can use programmatic approach
+whis is much cleaner because it won't complicate your HTML code:
 
 {% highlight html %}
 {% include /en/apv/walkthrough/javascript/events.html %}
 {% endhighlight %}
 
 ## Using JavaScript to confirm user actions
-In cahpter about [delete](/en/apv/walkthrough/backend-delete) you were referred to this tutorial
+In chapter about [delete](/en/apv/walkthrough/backend-delete) you were referred to this tutorial
 for information about how to confirm user action. Here is an example how to prevent navigation
 with a confirm popup for basic `<a>` tags and for `<form>` tags:
 
@@ -157,6 +161,9 @@ It possible to write JavaScript backend scripts with [Node.js](https://nodejs.or
 really does not matter. Ratio of JavaScript executed inside visitor's browser and backend code
 can vary from 99% to 0%. But without **some** backend, you cannot create a useful web application.
 The main effect of this effort is to deliver to your users more dynamic page with better usability.
+
+Now you know that most visual effect or desktop-application-like behaviour of a website is cause
+by JavaScript.
 
 ### New Concepts and Terms
 - JavaScript

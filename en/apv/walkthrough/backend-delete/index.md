@@ -58,9 +58,9 @@ retrieve `id_person`.
 {% endhighlight %}
 
 ### Confirm delete
-Take a look at [JavaScript](/en/apv/walkthrough/javascript) article to extend your form with
-confirmation popup. It is a good idea to let user confirm deletion of important information first
-because this action cannot be undone.
+Take a look at [JavaScript](/en/apv/walkthrough/javascript#using-javascript-to-confirm-user-actions)
+article to extend your form with confirmation popup. It is a good idea to let user confirm deletion of
+important information first because this action cannot be undone.
 
 ## Deleting records which are referenced by other records
 There are [foreign keys](/en/apv/articles/relational-database/#foreign-key) between person table
