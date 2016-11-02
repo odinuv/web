@@ -46,7 +46,7 @@ OK, this works but it is not very useful. Users of your application do not under
 and they do not want to remember some ID value which they have to type into a form. They want to see
 list of persons and a nice delete button which they just click.
 
-### Task - Make a delete button 
+### Task -- Make a delete button 
 Extend your script which lists all persons with a delete button. Change that `<input type="number">`
 we used in previous example to `type="hidden"` and put this form in every row of users list.
 Pass value of `id_person` in that hidden field. Remember to extend `SELECT` SQL command to
