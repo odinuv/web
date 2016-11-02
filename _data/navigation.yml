@@ -62,6 +62,9 @@ items:
               - url: /en/apv/walkthrough/css/bootstrap/
                 title: CSS - Bootstrap
 
+              - url: /en/apv/walkthrough/javascript/
+                title: JavaScript
+
           - url: /en/apv/articles/
             title: Articles
             items:

@@ -1,0 +1,8 @@
+<a href="javascript:confirmNav('http://www.server.org/')">Server</a>
+<script type="text/javascript">
+    function confirmNav(url) {
+        if(confirm('Really navigate to ' + url + '?')) {
+            location.href = url;
+        }
+    }
+</script>

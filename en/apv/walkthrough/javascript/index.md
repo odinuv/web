@@ -39,56 +39,17 @@ would not confuse yout at all; `console.log()` sends its output to developer too
 Here is a brief JavaScript demo:
 
 {% highlight javascript %}
-    /* basic variables */
-    var stringVariable = "Hello world";
-    var numberVariable = 1.2345;
-    var boolVariable = false;
-    console.log(stringVariable, numberVariable, boolVariable);
-    
-    /* arrays */
-    var arrayVariable = [1,2,3,4,'This is an array', false, true, [10,20,30]];
-    console.log(arrayVariable);
-    
-    /* reference to a function */
-    var functionVariable = function(param) {
-        alert(param);
-    }; 
-    functionVariable("Call a function");
-    
-    /* object */
-    var objectVariable = {
-        key: "value",
-        number: 123,
-        nestedObject: {
-            boolean: false
-        },
-        method: functionVariable
-    };
-    console.log(objectVariable);
-    
-    objectVariable.method("Calling a method of object.");
+{% include /en/apv/walkthrough/javascript/basics1.js %}
 {% endhighlight %}
 
 {: .note}
 To try JavaScript code you do not have to write a custom HTML page, just paste this code into online
 tool such as [JSFiddle](https://jsfiddle.net) (use JavaScript editor) and click run.
 
-TODO: vlozit do JSFiddle?
-
 In following example you can see control structures:
 
 {% highlight javascript %}
-    var x = 5;
-    if(x < 15) {
-        console.log("x is smaller than 15");
-    } else {
-        //...
-    }
-    
-    var arr = ["a", "b", "c", "d", "e", "f"];
-    for(var i = 0; i < arr.length; i++) {
-        console.log(arr[i]);
-    }
+{% include /en/apv/walkthrough/javascript/basics2.js %}
 {% endhighlight %}
 
 ## Linking JavaScript to your HTML
@@ -97,74 +58,90 @@ The `<script>` tag can contain URL to download some script or it can directly co
 JavaScript code:
 
 {% highlight html %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>JS example</title>
-        <script type="text/javascript" src="link/to/external/file.js"></script>
-        <script type="text/javascript">
-            console.log("Some JS code right here...");
-        </script>
-    </head>
-    <body>
-        <script type="text/javascript">
-            console.log("...or even in document's body.");
-        </script>
-    </body>
-</html>
+{% include /en/apv/walkthrough/javascript/attach.html %}
 {% endhighlight %}
 
-### Order of execution
+### Order and time of execution
+As you add `<script>` tags to you HTML, you might wonder when is JS code executed.
+Basically the order is given by occurence of `<script>` tags. Big difference is between
+scripts in `<head>` and inside `<body>` as those scripts in `<head>` do not have access
+to HTML elements because those were not rendered by browser yet. On the other hand `<script>`
+tags in `<body>` have access to HTML elements in markup above itself.
 
-- script tags in head or before </body>
-- onload event
-- events attached to HTML elements
-
-## JavaScript events
+Therefore there is a big difference in placement of `<script>` tags within your HTML code:
 
 {% highlight html %}
-    <button onclick="clickButtonHandler(event)"></button>
+{% include /en/apv/walkthrough/javascript/order-of-execution.html %}
 {% endhighlight %}
 
-{% highlight javascript %}
+Web developers often want their JavaScript to load when all HTML tags are loaded into browser.
+For this an event called `onload` is used.
+
+## JavaScript events
+Events are type of signals which are broadcasted to JavaScript event listeners (usually functions)
+when some action takes place. For example a user can click a button or a timer ticks:
+
+{% highlight html %}
+    <button onclick="clickButtonHandler(event)">Click me!</button>
+{% endhighlight %}
+
+{% highlight html %}
+    <script type="text/javascript">
+        function clickButtonHandler(event) {
+            console.log('Button clicked', event);
+        }
+    </script>
+{% endhighlight %}
+
+Open developer console (F12) and try to click this button:
+
+<button onclick="clickButtonHandler(event)">Click me!</button>
+<script type="text/javascript">
     function clickButtonHandler(event) {
         console.log('Button clicked', event);
     }
+</script>
+
+That weird stuff which is logged along with 'Button clicked' text is an event object describing
+what happened. Special event is `onload` which signals that whole page is loaded.
+
+You can attach events as HTML attributes like in example above or you can use programmatic approach:
+
+{% highlight html %}
+{% include /en/apv/walkthrough/javascript/events.html %}
 {% endhighlight %}
 
 ## Using JavaScript to confirm user actions
-prevent navigation or form submission
+In cahpter about [delete](/en/apv/walkthrough/backend-delete) you were referred to this tutorial
+for information about how to confirm user action. Here is an example how to prevent navigation
+with a confirm popup for basic `<a>` tags and for `<form>` tags:
 
 {% highlight html %}
-    <a href="javascript:confirmNav('http://www.server.org/')">Server</a>
-    <script type="text/javascript">
-        function confirmNav(url) {
-            if(confirm('Really navigate to ' + url + '?')) {
-                location.href = url;
-            }
-        }
-    </script>
+{% include /en/apv/walkthrough/javascript/prevent-nav-a.html %}    
 {% endhighlight %}
 
 {% highlight html %}
-    <form onsubmit="return confirmForm()">
-    <script type="text/javascript">
-        function confirmForm(url) {
-            return confirm('Really submit form?');
-        }
-    </script>
+{% include /en/apv/walkthrough/javascript/prevent-nav-form.html %}
+{% endhighlight %}
+
+### Task -- add confirm dialog to your delete form
+
+{: .solution}
+{% highlight html %}
+{% include /en/apv/walkthrough/javascript/confirm-delete.latte %}
 {% endhighlight %}
 
 ## Form validation
+TODO
 
-## jQuery and others
+## Famous jQuery and other libraries
 If you are digging enough around web applications, you definitely heard or read about
 [jQuery](https://jquery.com). It is a library which main purpose is to help coders to achieve
-desired behaviour faster. In past it also helped to overcome differences in browsers API.
+desired behaviour faster. In past it also helped to overcome differences in browser's APIs.
 It offers many function for manipulation with HTML, events handling and communication with backend.
 It is worth trying but I think that it is not a very good idea to learn jQuery for beginners
 because you will have trouble working with pure ([vanilla](http://vanilla-js.com/) -- this page
-tries to explain that a JS library is not always needed) JavaScript.
+tries to explain that a JS library like jQuery is not always needed) JavaScript.
 Plus the importance of jQuery has declined as various browsers improved/united their API
 (e.g.: to find elements using CSS selector you can use `document.querySelector()` method
 instead of jQuery).
