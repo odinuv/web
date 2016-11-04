@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Accessing HTML attributes with JavaScript</title>
+</head>
+<body>
+    <a href="http://www.google.com">Google</a>
+    <a href="http://www.twitter.com">Twitter</a>
+    <script type="text/javascript">
+        var links = document.getElementsByTagName("a");
+        for(var i = 0; i < links.length; i++) {
+            links[i].innerHTML = links[i].href; //copy href to content
+            links[i].style.fontSize = "15pt";   //resize
+            links[i].style.color = "#FF0000";   //make red
+        }
+    </script>
+</body>
+</html>

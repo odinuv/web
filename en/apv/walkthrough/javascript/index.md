@@ -8,12 +8,12 @@ permalink: /en/apv/walkthrough/javascript/
 
 In this article I want to introduce a *client-side* programming language called JavaScript.
 *Client-side* means, that scripts written in this language are executed in a web browser (client).
-This is a new thing which opens a lot of possibilities: you know that browser is capable of
-rendering pure HTML, displaying images, maybe you know that you can also play video and audio
+This is a new thing which opens a lot of possibilities: you know that a browser is capable of
+rendering HTML with CSS, displaying images, maybe you know that you can also play video and audio
 in newer browsers using appropriate HTML tags (all this is very nice, but still the browser is a bit
 stupid). Executing scripts in browser during the time when a visitor is viewing your website can
-improve his experience a lot. Just by hiding or showing some HTML elements or chaning some CSS
-styles you can substantially improve (or reduce) readability of our page and increase speed
+improve his experience a lot. Just by hiding or showing some HTML elements or changing some CSS
+styles dynamically you can substantially improve (or reduce) readability of your page and increase speed
 of browsing (visitors do not have to wait for server to process their requests).
 
 A lot of pages use JavaScript very heavily nowadays. Sites like YouTube, Google drive/docs, Facebook
@@ -62,6 +62,27 @@ JavaScript code:
 {% include /en/apv/walkthrough/javascript/attach.html %}
 {% endhighlight %}
 
+You can use multiple function to work with HTML elements -- the easiest one is
+`dcoument.getElementById("id_of_element")` which can find and return one element using its `id`
+attribute, `document` is a global object which contains tree structure of your HTML.
+
+Other useful functions to retrieve HTML elements:
+
+- `document.getElementsByTagName("table")` -- returns collection
+- `document.getElementsByClassName("some-class")` -- returns collection
+- `document.querySelector(".some-css-selector")` -- returns first matched element
+- `document.querySelectorAll("#some-css-selector")` -- returns collection
+
+To access HTML attributes of retrieved elements just type `element.attr`
+(e.g. `console.log(link.href)`). An exception is `class` attribute which is accessed
+using `element.className`. To change styles use `element.style` object with camel case
+style name (e.g. CSS `background-color` can be accessed with `element.style.backgroundColor`).
+Another special attribute is `innerHTML` which can be used to change content of an element.
+
+{% highlight html %}
+{% include /en/apv/walkthrough/javascript/html-attributes-styles.html %}
+{% endhighlight %}
+
 ### Order and time of execution
 As you add `<script>` tags to you HTML, you might wonder when is JS code executed.
 Basically the order is given by occurence of `<script>` tags. Big difference is between
@@ -81,11 +102,12 @@ When you use `onload` event it does not matter whether you put you `<script>` ta
 just before `</body>`.
 
 ## JavaScript events
-Events are type of signals which are broadcasted to JavaScript event listeners (usually functions)
+Events are type of signals which are broadcasted to JavaScript event listeners (functions)
 when some action takes place. For example a user can click a button or a timer ticks:
 
 {% highlight html %}
-    <button onclick="clickButtonHandler(event)">Click me!</button>
+    <button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
+    <button onclick="alert('Hello!')">Click me - alert()!</button>
 {% endhighlight %}
 
 {% highlight html %}
@@ -96,14 +118,19 @@ when some action takes place. For example a user can click a button or a timer t
     </script>
 {% endhighlight %}
 
-Open developer console (F12) and try to click this button:
+Open developer console (F12) and try to click this button or the other:
 
-<button onclick="clickButtonHandler(event)">Click me!</button>
+<button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
+<button onclick="alert('Hello!')">Click me - alert()!</button>
 <script type="text/javascript">
     function clickButtonHandler(event) {
         console.log('Button clicked', event);
     }
 </script>
+
+You should see something like this:
+
+![console.log() output](console-log.png)
 
 That weird stuff which is logged along with 'Button clicked' text is an event object describing
 what happened. Special event is `onload` which signals that whole page is loaded.
@@ -128,7 +155,14 @@ with a confirm popup for basic `<a>` tags and for `<form>` tags:
 {% include /en/apv/walkthrough/javascript/prevent-nav-form.html %}
 {% endhighlight %}
 
+Notice that you have to pass that true/false value from called `confirmForm()` function using
+return keyword in `onsubmit` attribute. That attribute itself is a body of event handler function
+and has to return true or false to approve or cancel from subscription. 
+
 ### Task -- add confirm dialog to your delete form
+
+Carefully select where to place `<script>` tag -- remember that `{foreach ...}` duplicates
+all source inside of it. Try to pass person name into confirm message.
 
 {: .solution}
 {% highlight html %}
@@ -150,14 +184,14 @@ Plus the importance of jQuery has declined as various browsers improved/united t
 (e.g.: to find elements using CSS selector you can use `document.querySelector()` method
 instead of jQuery).
 
-There are also many other JS libraries or frameworks. jQuery is most used and sometimes other
-libraries (like [Bootstrap](/en/apv/walkthrough/css/bootstrap/) require you to use it).
+There are also many other JS libraries or frameworks. jQuery is used in most cases and sometimes other
+libraries (like [Bootstrap](/en/apv/walkthrough/css/bootstrap/)) require you to include it as well.
 Be careful about mixing different libraries -- some of them cannot or should not be used together.
 
 ## Summary
 Remember that JavaScript is executed inside browser. Therefore it cannot store any data on server --
 you always need some kind of backend which can communicate securely with your database.
-It possible to write JavaScript backend scripts with [Node.js](https://nodejs.org/) but it
+It is possible to write JavaScript backend scripts with [Node.js](https://nodejs.org/) but it
 really does not matter. Ratio of JavaScript executed inside visitor's browser and backend code
 can vary from 99% to 0%. But without **some** backend, you cannot create a useful web application.
 The main effect of this effort is to deliver to your users more dynamic page with better usability.

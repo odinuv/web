@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <title>JS events example</title>
 </head>
-<body>
+<body onload="console.log('this won\'t happen');">
 <script type="text/javascript">
-    //exclusively - only one event
+    //because this one overrides onload attribute
     window.onload = function() {
+        //you can attach only one event with this approach
         console.log("Executed when everything is loaded.");
     };
     //this approach allows to attach more handlers to one event
