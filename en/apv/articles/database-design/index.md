@@ -508,7 +508,8 @@ PostgreSQL. For example following query `SELECT * FROM UserAddress` won't work (
 table exists), you have to use double quotes: `SELECT * FROM "UserAddress"` because PostgreSQL
 converts table name to lowercase without quotes. An underscore character is used to divide words,
 because minus sign is reserved for subtraction. Therefore the easiest way is to use `user_address`
-as table name in this case. You can name your tables in singular or plural, both ways are used.
+as table name in this case. You can name your tables in singular or plural, 
+[both ways are used](http://stackoverflow.com/questions/338156/table-naming-dilemma-singular-vs-plural-names).
 
 ## Summary
 In this article I described the process of designing a database given a textual requirements

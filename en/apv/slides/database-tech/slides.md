@@ -362,7 +362,7 @@ CREATE TABLE contact (
 </section>
 
 <section markdown='1'>
-## Database Dictionary
+## Data Dictionary
 - The structure of every DB is stored in another DB.
 - Shared database `information_schema`: invisible, accessible, read-only. 
 - Show tables in information_schema:
@@ -379,8 +379,8 @@ CREATE TABLE contact (
     - Index files, Data files:
         - Like a contact directory (address book, phone book);
         - Speedup read, slow down writes.
-    - Different methods are used nowadays (trees).
-- Index is should be created on:
+    - Different implementations -- hash tables, trees.
+- Index should be created on:
     - Keys (usually done automatically)
     - Columns used in JOINs (should be foreign keys)
     - Columns used often in `WHERE` clauses (should be keys)
