@@ -328,7 +328,7 @@ Try to set relative and absolute positions and different sizes for some box elem
 ### Box-model and size
 In CSS, you can set different size for outer offset (`margin`), inner offset (`padding`) and `border`.
 By default the margin, border and padding is not included in width and height of an element. Therefore
-to calculate how much space an element will occupy on screen you have to sum of all these values for top, left,
+to calculate how much space an element will occupy on screen you have to sum all of these values for top, left,
 bottom and right side of an element plus element's width and height. 
 
 ![Box model](/en/apv/walkthrough/css/box-model.svg)

@@ -93,10 +93,11 @@ Try to apply Bootstrap CSS classes on your application's HTML code and make it l
 `<div class="container">` or `<div class="container-fluid">` element to enclose all your HTML content. 
 
 <div class="solution">
-    <p>
+    <p markdown="1">
         The solution is different for each of you. Although Bootstrap elements look same, the placement and
         selection of alternatives will make your app unique. You have probably a few forms and some tables in
-        your application. You should use CSS classes from Bootstrap to apply styles.
+        your application. You should use CSS classes from Bootstrap to apply styles. Try to place some 
+        elements into wells or use panels and alerts.
     </p>
 </div>
 
