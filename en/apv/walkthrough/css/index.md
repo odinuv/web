@@ -26,13 +26,13 @@ HTML elements, we can override these definitions by using our own.
 Basically a CSS file looks like this:
 
 {% highlight css %}
-    body {
-        font-family: Arial, Verdana, Helvetica, sans-serif;
-        font-size: 12pt;
-    }
-    h1 {
-        text-decoration: underline;
-    }
+body {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 12pt;
+}
+h1 {
+    text-decoration: underline;
+}
 {% endhighlight %}
 
 We have something called CSS selector (`body` or `h1` in this case) and a set of CSS properties with
@@ -41,14 +41,14 @@ and as you can see, these properties are also very specific. For example, you ca
 color and style for each side of an element:
 
 {% highlight css %}
-    input {
-        border-left-width: 3px;
-        border-left-style: dotted;
-        border-left-color: #FF0000;
-        
-        /* more compact syntax */
-        border-bottom: 3px dashed #00FF00;
-    }
+input {
+    border-left-width: 3px;
+    border-left-style: dotted;
+    border-left-color: #FF0000;
+    
+    /* more compact syntax */
+    border-bottom: 3px dashed #00FF00;
+}
 {% endhighlight %}
 
 This code should produce something like this (an input with different border styles and colors):
@@ -76,9 +76,9 @@ We need to pass our CSS definitions into the browser, there are three ways how t
     HTTP request is send by the browser to retrieve that CSS file.
 
 {% highlight html %}
-    <head>
-        <link rel="stylesheet" href="link/to/your/css/file.css" />
-    </head>
+<head>
+    <link rel="stylesheet" href="link/to/your/css/file.css" />
+</head>
 {% endhighlight %}
 
 2,  You can also place CSS definitions directly into the `<head>` with `<style>` tag (this solution saves
@@ -86,23 +86,23 @@ We need to pass our CSS definitions into the browser, there are three ways how t
     CSS file can be cached while dynamic page should not be):
     
 {% highlight html %}
-    <head>
-        <style>
-            body {
-                font-family: Arial, Verdana, Helvetica, sans-serif;
-                font-size: 12pt;
-            }
-        </style>
-    </head>
+<head>
+    <style>
+        body {
+            font-family: Arial, Verdana, Helvetica, sans-serif;
+            font-size: 12pt;
+        }
+    </style>
+</head>
 {% endhighlight %}
     
 3,  A quick (and dirty) solution for CSS testing is inline CSS with `style` attribute, but this
     should not be used frequently:
     
 {% highlight html %}
-    <body style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12pt;">
-        ...
-    </body>
+<body style="font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12pt;">
+    ...
+</body>
 {% endhighlight %}
 
 ### CSS Selectors
@@ -128,21 +128,21 @@ elements, and we want two of them to look different than the others. We can achi
 is just an identifier which a HTML coder fabricates and puts in the `class` attribute of desired element:
 
 {% highlight css %}
-    li {
-        list-style-type: disc;
-    }
-    li.different-than-others {
-        list-style-type: square;
-    }
+li {
+    list-style-type: disc;
+}
+li.different-than-others {
+    list-style-type: square;
+}
 {% endhighlight %}
 
 {% highlight html %}
-    <ul>
-        <li><a href="...">...</a></li>
-        <li><a href="...">...</a></li>
-        <li class="different-than-others"><a href="...">...</a></li>
-        <li class="different-than-others"><a href="...">...</a></li>
-    </ul>
+<ul>
+    <li><a href="...">...</a></li>
+    <li><a href="...">...</a></li>
+    <li class="different-than-others"><a href="...">...</a></li>
+    <li class="different-than-others"><a href="...">...</a></li>
+</ul>
 {% endhighlight %}
 
 Notice that there is a difference between `li.different-than-others` and `li .different-than-others`. The first
@@ -155,13 +155,13 @@ provided with `id` attribute, which has to have unique value among all other `id
 In CSS selector we simply use `#` with `id` attribute value similarly to a class `.` selector:
 
 {% highlight css %}
-    #special {
-        text-transform: uppercase;
-    }
+#special {
+    text-transform: uppercase;
+}
 {% endhighlight css %}
 
 {% highlight html %}
-    <h1 id="special">This H1 is unique</h1>
+<h1 id="special">This H1 is unique</h1>
 {% endhighlight html %}
 
 #### Attribute selectors
@@ -170,12 +170,12 @@ on HTML elements, this is useful to know because otherwise you have to pollute y
 with much more `class` attributes:
 
 {% highlight css %}
-    input[type=checkbox] {
-        /* some CSS just for checkboxes */
-    }
-    input[required] {
-        /* some CSS just for mandatory inputs */
-    }
+input[type=checkbox] {
+    /* some CSS just for checkboxes */
+}
+input[required] {
+    /* some CSS just for mandatory inputs */
+}
 {% endhighlight css %}
 
 #### Pseudoclasses
@@ -184,18 +184,18 @@ HTML elements while a mouse cursor is present over them (interesting point is, t
 do not have mouse). You can also use pseudoclasses on parent elements:
 
 {% highlight css %}
-    /* applied for all a's in lists */
-    ul li a {
-        text-decoration: none;
-    }
-    /* applied on a when mouse is over whole ul */
-    ul:hover li a {
-        color: #FF0000;
-    }
-    /* applied when mouse over particular a */
-    ul li a:hover {
-        text-decoration: underline;
-    }
+/* applied for all a's in lists */
+ul li a {
+    text-decoration: none;
+}
+/* applied on a when mouse is over whole ul */
+ul:hover li a {
+    color: #FF0000;
+}
+/* applied when mouse over particular a */
+ul li a:hover {
+    text-decoration: underline;
+}
 {% endhighlight css %}
 
 Another useful pseudoclasses:
@@ -215,12 +215,12 @@ Another useful pseudoclasses:
 More CSS selectors can be combined with commas:
 
 {% highlight css %}
-    /* applied for all headers */
-    h1, h2, h3 {
-    }
-    /* applied for some form inputs */
-    textarea, input[type=text], input[type=number], select {
-    }
+/* applied for all headers */
+h1, h2, h3 {
+}
+/* applied for some form inputs */
+textarea, input[type=text], input[type=number], select {
+}
 {% endhighlight css %}
 
 #### Task
@@ -230,12 +230,12 @@ cursor is over one of them.
 
 {: .solution}
 {% highlight css %}
-    table td>a {
-        /* some CSS definitions */
-    }
-    table td>a:hover {
-        /* some CSS definitions which apply only when mouse cursor is over that element */
-    }
+table td>a {
+    /* some CSS definitions */
+}
+table td>a:hover {
+    /* some CSS definitions which apply only when mouse cursor is over that element */
+}
 {% endhighlight %}
 
 ### CSS properties
@@ -249,11 +249,11 @@ such property with their's browser name or engine name.
 This example demonstrates usage of browser specific prefix:
 
 {% highlight css %}
-    .shadow {
-      -webkit-box-shadow: 5px 5px 5px 5px #888; /* old Safari and Chrome */
-      -moz-box-shadow: 5px 5px 5px 5px #888; /* old Firefox */
-      box-shadow: 5px 5px 5px 5px #888; /* all browsers that support this feature */
-    }
+.shadow {
+  -webkit-box-shadow: 5px 5px 5px 5px #888; /* old Safari and Chrome */
+  -moz-box-shadow: 5px 5px 5px 5px #888; /* old Firefox */
+  box-shadow: 5px 5px 5px 5px #888; /* all browsers that support this feature */
+}
 {% endhighlight css %}
 
 You can check support of different web technologies among internet browser on [http://caniuse.com/](http://caniuse.com/).
@@ -271,11 +271,11 @@ Colors are defined with their RGB components. Usually a HEX coding is used, but 
 available:
 
 {% highlight css %}
-    h1 {
-        color: #FF0000;
-        /* or */
-        color: rgb(255,0,0);        
-    }
+h1 {
+    color: #FF0000;
+    /* or */
+    color: rgb(255,0,0);        
+}
 {% endhighlight css %}
 
 HEX coding makes it simple to mix colors because it gives us 16 levels of each basic color --
@@ -339,12 +339,12 @@ you want to save some time writing those long CSS property names, you can put al
 in clock-wise order (top, right, bottom, left):
 
 {% highlight css %}
-    .some-element-with-padding-and-margin {
-               /* T    R    B    L */
-        padding: 10px 20px 30px 40px;
-               /* top is 10px and rest is 20px */
-        margin: 10px 20px;
-    }
+.some-element-with-padding-and-margin {
+           /* T    R    B    L */
+    padding: 10px 20px 30px 40px;
+           /* top is 10px and rest is 20px */
+    margin: 10px 20px;
+}
 {% endhighlight %}
 
 ## Summary

@@ -106,16 +106,16 @@ Events are type of signals which are broadcasted to JavaScript event listeners (
 when some action takes place. For example a user can click a button or a timer ticks:
 
 {% highlight html %}
-    <button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
-    <button onclick="alert('Hello!')">Click me - alert()!</button>
+<button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
+<button onclick="alert('Hello!')">Click me - alert()!</button>
 {% endhighlight %}
 
 {% highlight html %}
-    <script type="text/javascript">
-        function clickButtonHandler(event) {
-            console.log('Button clicked', event);
-        }
-    </script>
+<script type="text/javascript">
+    function clickButtonHandler(event) {
+        console.log('Button clicked', event);
+    }
+</script>
 {% endhighlight %}
 
 Open developer console (F12) and try to click this button or the other:
