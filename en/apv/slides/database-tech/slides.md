@@ -370,7 +370,7 @@ CREATE TABLE contact (
 - Show columns of a table:    
     - `SELECT * FROM information_schema.columns WHERE table_name = 'person'`
 - If unsupported, there are commands like `DESCRIBE`, `SHOW`
-- Modifications throught commands `ALTER`, `RENAME`, `DROP`, `MODIFY`, `ADD` ...
+- Modifications through commands `ALTER`, `RENAME`, `DROP`, `MODIFY`, `ADD` ...
 </section>
 
 <section markdown='1'>
@@ -423,7 +423,7 @@ $query = $em->createQuery(
     LEFT JOIN u.articles a WHERE u.username = ?1 
     GROUP BY u.id'
 );
-$query->setParameter(1, 'jwage');
+$query->setParameter(1, 'john.doe');
 {% endhighlight %}
 </section>
 

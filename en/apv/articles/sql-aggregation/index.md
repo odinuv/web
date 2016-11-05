@@ -849,6 +849,80 @@ GROUP BY height / 10
 ORDER BY height / 10
 {% endhighlight %} 
 
+## Limit number of query results
+There are two use cases for limiting number of query results -- 
+[**pagination**](https://en.wikipedia.org/wiki/Pagination#Pagination_in_web_content) 
+and showing **top x** results. Other uses
+are usually wrong, because they fail to deliver some information to end-user.
+In either case, you must **always use ORDER BY** when limiting number of rows.
+
+### Pagination
+On PostgreSQL use the keywords `LIMIT` and `OFFSET` to select a portion
+of results -- e.g. to display second page of results paged by 10 records:
+
+{% highlight sql %}
+SELECT * FROM person 
+OFFSET 20 LIMIT 10 ORDER BY last_name, first_name
+{% endhighlight %}
+
+See the [corresponding part of walkthrough](todo) for an example of implementation 
+of entire pagination in PHP. However you should be aware that
+pagination is subject to 
+[certain Criticism](http://ux.stackexchange.com/questions/36394/when-is-it-better-to-paginate-and-not-to-paginate).
+
+#### MySQL
+On MySQL server, the same results can be obtained by the following query: 
+
+{% highlight sql %}
+SELECT * FROM person 
+LIMIT 20,10 ORDER BY last_name, first_name
+{% endhighlight %}
+
+#### Oracle & MS SQL Server
+On Microsoft SQL Server and Oracle DB server, the same results can be obtained by the following query: 
+
+{% highlight sql %}
+SELECT * FROM person 
+WHERE RowNum >= 20 AND RowNum < 30 ORDER BY last_name, first_name
+{% endhighlight %}
+
+### TOP X
+Other applications of limiting the number of query results are queries 
+like "TOP 10 best customers" or "TOP 10 smallest persons". There is a certain 
+confusion about how many results should such query return. 
+There are three options (assuming top 10 smallest persons problem):
+
+- Order persons by height descending and return the first 10 rows.
+- Order heights descending and return all persons having the 10 smallest heights.
+- Order persons by height descending, get the 10th height and return all persons with height smaller or
+equal to that value.
+
+Each approach may return a different number of results (assuming 
+[sample database](/en/apv/walkthrough/database/#import-database)):  
+
+{% highlight sql %}
+SELECT * FROM person ORDER BY height LIMIT 10;
+{% endhighlight %}
+
+Return 10 rows. Out of 3 persons with height 168 (Tuan Fuchs, Gilda Summer, Alisha Householder	
+with height 168, only one is shown (randomly selected).
+
+{% highlight sql %}
+SELECT * FROM person WHERE height IN
+(SELECT height FROM person ORDER BY height LIMIT 10)
+ORDER BY height
+{% endhighlight %}
+
+The above query returns 12 rows, highest height is 168.
+
+{% highlight sql %}
+SELECT * FROM person WHERE height <= 
+    (SELECT DISTINCT height FROM person ORDER BY height OFFSET 9 LIMIT 1)
+ORDER BY height;
+{% endhighlight %}
+
+The above query return 13 rows, highest height is 169.
+
 ## Summary
 In this article I have covered some slightly advanced SQL topics -- sub-queries and aggregation.
 However, you have to keep in mind that joins, sub-queries and aggregation are essential 
@@ -875,3 +949,4 @@ leads to incredible amount of bugs.
 - HAVING
 - Aggregation function
 - IN operator 
+- LIMIT & OFFSET

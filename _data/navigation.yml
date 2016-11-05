@@ -92,6 +92,9 @@ items:
               - url: /en/apv/articles/database-design/
                 title: Database Design
 
+              - url: /en/apv/articles/database-tech/
+                title: Databases – Technical Details
+
           - url: /en/apv/slides/
             title: Slides
             items:

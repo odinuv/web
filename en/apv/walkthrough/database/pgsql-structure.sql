@@ -183,7 +183,8 @@ CREATE TABLE person (
     id_location integer,
     birth_day date,
     height integer,
-    gender gender
+    gender gender,
+    CONSTRAINT height_check CHECK ((height > 0))
 );
 
 
