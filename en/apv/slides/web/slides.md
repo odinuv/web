@@ -155,7 +155,7 @@ web pages.
   - Send request (client),
   - Send response (server),
   - Terminate connection (server).
-- Both request and responds consist of **headers** and **body**.  
+- Both request and response consist of **headers** and **body**.  
   - HTTP Transaction fulfills a single HTTP request.
 - Many HTTP transactions are required to load a single page.
 

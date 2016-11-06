@@ -118,7 +118,7 @@ the end-user...
 ## Converting Relationship cont.
 - Example `person` -- `location`: 
     - If a single person can have multiple addresses too, you need another table:
-        - `PERSON(ID_PERSON, FIRST_NAME, NICKNAME, ID_LOCATION)`
+        - `PERSON(ID_PERSON, FIRST_NAME, NICKNAME)`
         - `LOCATION(ID_LOCATION, CITY, STREET)`
         - `RESIDENCE(ID_PERSON, ID_LOCATION, BEGIN_DATE)`
 </section>
@@ -127,18 +127,18 @@ the end-user...
 ## Database Normalization
 - Normalization -- conversion to **normal forms** (NF)
 - There are more normal forms, but first three are most important:
-    - 1. NF -- attribute values are atomic,
-    - 2. NF -- relation contains no partial functional dependencies of non-key attributes on key,
-    - 3. NF -- no non-key attribute transitively depends on key.
+    - 1st NF -- attribute values are atomic,
+    - 2nd NF -- relation contains no partial functional dependencies of non-key attributes on key,
+    - 3rd NF -- no non-key attribute transitively depends on key.
 - Other normal forms are not practical.
 - Normal forms are only recommendations (violation must be justified).
 </section>
 
 <section markdown='1'>
 ## Normal Forms
-- Normal forms are nested -- if a relation is in 3. NF, it must be
- in 2. NF and 1. NF too. 
-- If a database is in 3. NF it has some positive properties.
+- Normal forms are nested -- if a relation is in 3rd NF, it must be
+ in 2nd NF and 1st NF too. 
+- If a database is in 3rd NF it has some positive properties.
 - If a database is not normalized, you must verify those properties yourself.
 
 ![Normal forms](/en/apv/articles/database-design/normal-forms.svg)
@@ -157,7 +157,7 @@ the end-user...
 
 <section markdown='1'>
 ## First Normal Form
-- This definition of table `relation` is not in 1. NF:
+- This definition of table `relation` is not in 1st NF:
     - undefined order of first name and last name,
     - impossible to sort by last name or city,
     - impossible to **reliably** select only first name,
@@ -167,20 +167,20 @@ the end-user...
 <section markdown='1'>
 ## Second Normal Form
 
-| 1. Name | 1. Surname | 1. SSN | 2. Name | 2. Surname | 2. SSN | Begin Date |
-|---------| -----------|--------|---------|------------|--------|------------|
-| Karl    | Oshiro     | 123    | Marcel  | Miranda    | 987    | 2016-01-06 |
-| Remona  | Deen       | 456    | Karl    | Oshiro     | 123    | 2015-12-20 |
-| Tuan    | Brauer     | 789    | Marcel  | Miranda    | 987    | 2015-10-09 |
+| Name1  | SName1 | SSN1 | Name2  | SName2  | SSN2 | Begin Date |
+|--------| -------|------|--------|---------|------|------------|
+| Karl   | Oshiro | 123  | Marcel | Miranda | 987  | 2016-01-06 |
+| Remona | Deen   | 456  | Karl   | Oshiro  | 123  | 2015-12-20 |
+| Tuan   | Brauer | 789  | Marcel | Miranda | 987  | 2015-10-09 |
 
 </section>
 
 <section markdown='1'>
 ## Second Normal Form 
-- This definition of table `relation` is in 1. NF and is not in 2. NF:
-    - Key is combination of `1. SSN` and `2. SSN` attributes.
+- This definition of table `relation` is in 1st NF and is not in 2nd NF:
+    - Key is combination of `SSN1` and `SSN2` attributes.
     - `Begin date` depends on the both attributes of key.
-    - `1. Name` and `1. Surname` depends only on `1. SSN` -- therefore they 
+    - `Name1` and `SName1` depends only on `SSN1` -- therefore they 
         depend only on part of the key. 
     - Table contains redundant data.
     - Insert / Update anomaly, Delete anomaly.
@@ -189,19 +189,19 @@ the end-user...
 <section markdown='1'>
 ## Second Normal Form
 
-| RELATION |        |            | | PERSON |        |         |
-|----------|--------|------------|-|--------|--------|---------|                 
-| 1. SSN   | 2. SSN | Begin Date | | SSN    | Name   | Surname |
-| 123      | 987    | 2016-01-06 | | 123    | Karl   | Oshiro  |
-| 456      | 123    | 2015-12-20 | | 456    | Remona | Deen    |
-| 789      | 987    | 2015-10-09 | | 789    | Tuan   | Brauer  |
-|          |        |            | | 987    | Marcel | Miranda |
+| RELATION |      |            | | PERSON |        |         |
+|----------|------|------------|-|--------|--------|---------|                 
+| SSN1     | SSN2 | Begin_date | | SSN    | Name   | SName   |
+| 123      | 987  | 2016-01-06 | | 123    | Karl   | Oshiro  |
+| 456      | 123  | 2015-12-20 | | 456    | Remona | Deen    |
+| 789      | 987  | 2015-10-09 | | 789    | Tuan   | Brauer  |
+|          |      |            | | 987    | Marcel | Miranda |
 
 </section>
 
 <section markdown='1'>
 ## Second Normal Form
-- This definition of table `relation` and `person` is in 2. NF (and therefore in 1. NF):
+- This definition of table `relation` and `person` is in 2nd NF (and therefore in 1st NF):
     - no data are redundant,
     - inserting relationship does not cause inserting of person,
     - deleting relationship does not delete a person,
@@ -217,7 +217,7 @@ the end-user...
 | 2  | Old Rd           | 182 | Muir of Ord | IV6 7UJ |
 | 3  | Davenport Street | 12  | Bolton      | BL1 2LT |
 
-- This definition of `address` table is not in 3. NF:
+- This definition of `address` table is not in 3rd NF:
     - `zip` attribute depends on the `city` attribute,
     - change in `city` will trigger change in `zip`,
     - `zip` transitively depends on `id`. 
@@ -233,18 +233,19 @@ the end-user...
 | 2       | Old Rd           | 182 | IV6 7UJ | | IV6 7UJ   | Muir of Ord | 
 | 3       | Davenport Street | 12  | BL1 2LT | | BL1 2LT   | Bolton      | 
 
-- Definition of `address` and `ZIP codes` table is in 3. NF:
+- Definition of `address` and `ZIP codes` table is in 3rd NF:
     - foreign key is `ZIP code`, removed redundancy of data.
+- Not really practical on the address table.    
 </section>
 
 <section markdown='1'>
-## Classic (Conceptual) ERD
+## From: Classic (Conceptual) ERD
 
 ![ERD Classic](/en/apv/articles/database-design/erd-classic.svg)
 </section>
 
 <section markdown='1'>
-## Crow's foot ERD
+## To: Crow's foot ERD
 
 ![ERD Crow's foot](/en/apv/schema.svg)
 </section>

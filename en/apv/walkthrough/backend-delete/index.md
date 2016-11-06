@@ -7,16 +7,17 @@ permalink: /en/apv/walkthrough/backend-delete/
 {:toc}
 
 This section is dedicated to teach you how to delete database entries.
-To delete something in database is permanent and cannot be undone unless you have a database
+Deleting something from database is permanent and cannot be undone unless you have a database
 backup. Be careful about what you delete.
 
-Syntax of [SQL `DELETE`](/en/apv/walkthrough/database/#delete) command is already familiar to you.
-One think you should think of is how to determine which rows to delete. Most common action
-is deletion of a single row. You know that each table should have a primary key which identifies
+The [SQL `DELETE`](/en/apv/walkthrough/database/#delete) command is already familiar to you.
+One thing you should think of is how to determine which rows to delete. Most common action
+is deletion of a single row. Each table should have a 
+[primary key](/en/apv/articles/relational-database/#key) which identifies
 each row with unique value or set of values. You should therefore use it to delete rows.
 
-I have seen students who tried to construct delete function by using `first_name` and `last_name`
-to search for person record to delete. These people did not consider that these two properties
+Be especially careful about compound keys. You cannot delete a single person by entering
+its `first_name` and `last_name`, because these two properties
 of a person can be shared among many records in database (there is unique key on `first_name`,
 `lastname` and `nickname` columns). Such way of deleting records can have unwanted side effects.
 
@@ -42,12 +43,43 @@ PHP script with `DELETE` SQL command:
 {% include /en/apv/walkthrough/backend-delete/delete.php %}
 {% endhighlight %}
 
-OK, this works but it is not very useful. Users of your application do not understand primary keys
+### Redirect After POST
+If you submit the above form and reload the page (hit F5), you will receive a message from web browser
+similar to this:
+
+![Screenshot - Browser Reload](reload.png)
+
+In the form, we used `method="post"` which means that the form is submited using [HTTP POST method](todo).
+The HTTP POST method should be used to represent user actions (e.g. deleting a person). Reloading the 
+page will send the same HTTP request -- i.e. it will repeat the action, which is what the browser
+is asking about. To avoid this annoyance, you have to **redirect after POST**: 
+
+{% highlight php %}
+{% include /en/apv/walkthrough/backend-delete/delete-2.php %}
+{% endhighlight %}
+
+In the above script, I added the line `header("Location: delete.php");`. This calls the PHP
+[`header()` function](http://php.net/manual/en/function.header.php) which sends a [HTTP header](todo).
+The [`Location` header](https://en.wikipedia.org/wiki/HTTP_location) is used to inform the browser
+that the page has moved (redirected) to a new location. In this case, the new location is the same as the old location
+(`delete.php`), but the browser still moves to the new address. During this the POST data from the 
+form are lost, because HTTP GET method is used. This means that when the user actualy sees the page, 
+the browser will be looking at the second load of that page and it will know nothing about the submitted form.
+
+The schematic below ilustrates this in a sequence of steps:
+
+{: .image-popup}
+![Graph -- Redirect after POST](/en/apv/walkthrough/backend-delete/redirect.svg)
+
+This 'trick' should be used for all forms representing actions (submitted with POST method), including
+insert and update forms.
+
+### Task -- Make a delete button
+The above script works but it is not very useful. Users of your application do not understand primary keys
 and they do not want to remember some ID value which they have to type into a form. They want to see
 list of persons and a nice delete button which they just click.
 
-### Task -- Make a delete button 
-Extend your script which lists all persons with a delete button. Change that `<input type="number">`
+Extend your script which [lists all persons](/en/apv/walkthrough/backend-select/) with a delete button. Change that `<input type="number">`
 we used in previous example to `type="hidden"` and put this form in every row of users list.
 Pass value of `id_person` in that hidden field. Remember to extend `SELECT` SQL command to
 retrieve `id_person`.
@@ -57,21 +89,21 @@ retrieve `id_person`.
 {% include /en/apv/walkthrough/backend-delete/templates/persons-list.latte %}
 {% endhighlight %}
 
-### Confirm delete
+## Next Steps
 Take a look at [JavaScript](/en/apv/walkthrough/javascript#using-javascript-to-confirm-user-actions)
 article to extend your form with confirmation popup. It is a good idea to let user confirm deletion of
 important information first because this action cannot be undone.
 
-## Deleting records which are referenced by other records
-There are [foreign keys](/en/apv/articles/relational-database/#foreign-key) between person table
+### Deleting records which are referenced by other records
+There are [foreign keys](/en/apv/articles/database-tech/#foreign-key-constraint) between person table
 and other tables (person is referenced in `relation` or `contact` tables). When you take a look
 at *Foreign keys* section of table details in Adminer, you can see that there is `NO ACTION` under
 `ON DELETE` event:
 
 ![Foreign key cascade 1](fk1.png)
  
-This means that if you try to delete a person entry, information about his contacts
-have no defined behaviour. It is not meaningful to store contact entries which do not belong to any
+This means that if you try to delete a person record, the database server has no defined
+action to do with contacts. It is not meaningful to keep contact entries which do not belong to any
 person. We should therefore set that `ON DELETE` behaviour to `CASCADE`:
 
 ![Foreign key cascade 2](fk2.png)
@@ -80,26 +112,35 @@ You should change this in every table which references `person` table, otherwise
 to delete persons with related entries in those tables.
 
 In other cases you might prefer to break relation instead of deleting related entries. It is an example
-of `location` -- `person` relationship. When we delete an address which is used by a person we
-rather set that `ON DELETE` behaviour of `id_location` foreign key in `person` table to `SET NULL` instead
+of [`location` -- `person` relationship](/en/apv/articles/database-tech/#foreign-key----set-nul-example). 
+When you delete an address which is used by a person you would
+rather set `ON DELETE` behaviour of `id_location` foreign key in `person` table to `SET NULL` instead
 of `CASCADE` to preserve a person (only from now we will not know where he lives anymore). To be able
 to do this, `id_location` column must support storing NULL value.
 
-There is also another options like `RESTRICT` or `SET DEFAULT` which are self explanatory (I hope).
+### Task -- Configure Foreign Keys
+Now configure the foreign keys in your database so that you can delete records as needed.
 
-## Delete or hide?
-Sometimes you may wish to access "deleted" information even after you remove it. It might be helpful in our
-app to just hide persons we do not want to see in person list and still be able to display such persons
-participation in meetings. To achieve this behaviour you should add a column (e.g. `deleted`, data-type of this
-column can be `datetime` with possibility of NULL value -- NULL means that a person is not deleted and
-date and time can be used to store time when that person was deleted). Then you should update your
-SQL queries which retrieve persons from database according to your needs.
+{: .solution}
+<div markdown='1'>
+If you are stuck, I suggest you configure the following tables and keys:
+
+- table `contact`, key `contact_id_person_fkey` set to `CASCADE`
+- table `meeting`, key `meeting_id_location_fkey` set to `SET NULL`
+- table `person`, key `person_id_location_fkey` set to `SET NULL`
+- table `person_meeting`, key `person_meeting_id_meeting_fkey` set to `CASCADE`
+- table `person_meeting`, key `person_meeting_id_person_fkey` set to `CASCADE`
+- table `relation`, key `relation_id_person1_fkey` set to `CASCADE`
+- table `relation`, key `relation_id_person2_fkey` set to `CASCADE` 
+</div>
 
 ## Summary
-You now know how to delete records from a database and that because of foreign keys which are used to guard
-consistency of data you need to think what to do with dependent records -- whether to delete them along
-or leave them in database while removing link to deleted record.
+You now know how to delete records from a database. You should understand how foreign keys guard the
+consistency of the data and that you need to think what to do with the dependent records -- whether to delete them along
+or leave them in database while removing link to deleted record. For a deeper explanation see
+the [corresponding article](/en/apv/article/database-tech/#integrity-constraints).
 
 ### New Concepts and Terms
 - Delete
 - Foreign keys
+- Redirect

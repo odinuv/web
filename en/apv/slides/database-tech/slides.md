@@ -66,6 +66,50 @@ permalink: /en/apv/slides/database-tech/
     - How many results should such query return?     
 </section>
 
+
+<section markdown='1'>
+## Database Structure -- Create
+
+{% highlight sql %}
+CREATE TABLE table_name ( 
+    column data_type [NOT NULL] [DEFAULT value] [PRIMARY KEY]
+    [, column data_type ...] 
+)
+{% endhighlight %}
+
+{% highlight sql %}
+CREATE TABLE contact (
+    id_contact serial PRIMARY KEY,
+    id_person integer NOT NULL REFERENCES person (id_person),
+    id_contact_type integer REFERENCES contact_type (id_contact_type),
+    contact character varying(200) NOT NULL
+)
+{% endhighlight %}
+</section>
+
+<section markdown='1'>
+## Database Structure -- Create
+- `CREATE` statements are practically used only during imports and exports.
+    - Because of different data types, it is impossible to use them for migrations.
+    - Use special tools for migrations.
+- Database System have very complex configurations:
+    - Can cause big changes in behavior;
+    - E.g. MySQL / MariaDB storage engines (MyISAM × InnoDB)
+- Different implementations of auto-increment
+</section>
+
+<section markdown='1'>
+## Data Dictionary
+- The structure of every DB is stored in another DB.
+- Shared database `information_schema`: invisible, accessible, read-only. 
+- Show tables in information_schema:
+    - `SELECT * FROM information_schema.tables WHERE table_schema = 'information_schema'`
+- Show columns of a table:    
+    - `SELECT * FROM information_schema.columns WHERE table_name = 'person'`
+- If unsupported, there are commands like `DESCRIBE`, `SHOW`
+- Modifications through commands `ALTER`, `RENAME`, `DROP`, `MODIFY`, `ADD` ...
+</section>
+
 <section markdown='1'>
 ## Data Types -- String
 - character_varying(size) / varchar(size) / nvarchar(size)
@@ -124,10 +168,10 @@ permalink: /en/apv/slides/database-tech/
 ## Data Types -- Date Types
 - `datetime` / `date` / `time`:
     - In mysql `datetime` is *sort of same* as timestamp
-- 'timestamp', 'time', 'date' cannot be used to store date / datetime interval:
+- `timestamp`, `time`, `date` cannot be used to store date / datetime interval:
     - never assume that an hour has 3600 seconds (can be from 0 up to 7200);
-    - because of leap days, seconds;
-    - because of DST;
+        - because of leap days, seconds;
+        - because of DST;
     - `interval` -- store interval of date time values.
 </section>
 
@@ -138,6 +182,8 @@ permalink: /en/apv/slides/database-tech/
    - use timestamp of the application language:
 
 {% highlight php %}
+<?php 
+...
 $db->execute(
     "UPDATE person SET birth_day = :birthDay",
     [':birthDay', time()]
@@ -215,7 +261,7 @@ WHERE first_name = 'X' AND last_name = 'Y'
     - Does not work in **concurrent environment**.
 - Obtaining the value must be **thread-safe**.
     - Hard to test -- requires multiple users in rapid succession.
-- The last insert value is tied to **database session**.
+- The last insert value is tied to **database session** (connection).
 </section>
 
 <section markdown='1'>
@@ -223,7 +269,8 @@ WHERE first_name = 'X' AND last_name = 'Y'
 - Basic ones on single table:
     - NOT NULL -- column with required value
     - `UNIQUE (KEY)`, `PRIMARY (KEY)` -- keys
-    - `CHECK` -- arbitrary rules, not supported by many systems
+    - `CHECK` -- arbitrary rules, not supported by some systems
+        - e.g. `height > 0`
 - Referential:
     - `FOREIGN KEY` -- dependency between tables
 </section>
@@ -331,49 +378,6 @@ different approaches:
 </section>
 
 <section markdown='1'>
-## Database Structure -- Create
-
-{% highlight sql %}
-CREATE TABLE table_name ( 
-    column data_type [NOT NULL] [DEFAULT value] [PRIMARY KEY]
-    [, column data_type ...] 
-)
-{% endhighlight %}
-
-{% highlight sql %}
-CREATE TABLE contact (
-    id_contact serial PRIMARY KEY,
-    id_person integer NOT NULL REFERENCES person (id_person),
-    id_contact_type integer REFERENCES contact_type (id_contact_type),
-    contact character varying(200) NOT NULL
-)
-{% endhighlight %}
-</section>
-
-<section markdown='1'>
-## Database Structure -- Create
-- `CREATE` statements are practically used only during imports and exports.
-    - Because of different data types, it is impossible to use them for migrations.
-    - Use special tools for migrations.
-- Database System have very complex configurations:
-    - Can cause big changes in behavior;
-    - E.g. MySQL / MariaDB storage engines (MyISAM × InnoDB)
-- Different implementations of auto-increment
-</section>
-
-<section markdown='1'>
-## Data Dictionary
-- The structure of every DB is stored in another DB.
-- Shared database `information_schema`: invisible, accessible, read-only. 
-- Show tables in information_schema:
-    - `SELECT * FROM information_schema.tables WHERE table_schema = 'information_schema'`
-- Show columns of a table:    
-    - `SELECT * FROM information_schema.columns WHERE table_name = 'person'`
-- If unsupported, there are commands like `DESCRIBE`, `SHOW`
-- Modifications through commands `ALTER`, `RENAME`, `DROP`, `MODIFY`, `ADD` ...
-</section>
-
-<section markdown='1'>
 ## Index
 - The most basic -- ISAM (Index Sequential Access Method):
     - Index files, Data files:
@@ -418,12 +422,14 @@ CREATE TABLE contact (
 <section markdown='1'>
 ## Things build on top of SQL cont.
 {% highlight php %}
+<?php
+...
 $query = $em->createQuery(
-    'SELECT COUNT(a.id) FROM CmsUser u 
-    LEFT JOIN u.articles a WHERE u.username = ?1 
-    GROUP BY u.id'
+    'SELECT User FROM User  
+    LEFT JOIN User.address WHERE User.address.city = ?1'
 );
-$query->setParameter(1, 'john.doe');
+$query->setParameter(1, 'Berlin');
+$users = $query->getResult();
 {% endhighlight %}
 </section>
 
@@ -438,11 +444,13 @@ $query->setParameter(1, 'john.doe');
     - In some cases it is almost necessary.
 
 {% highlight php %}
-$qb->select('u')
-   ->from('User u')
-   ->where('u.id = ?1')
-   ->orderBy('u.name', 'ASC')
-   ->setParameter(1, 100);
+<?php
+...
+$qb->select('person.*')
+   ->orderBy('person.first_name', 'ASC')
+   ->from('person')
+   ->where('person.person_id = :id')
+   ->setParameter(':id', 42);
 {% endhighlight %}
 </section>
 

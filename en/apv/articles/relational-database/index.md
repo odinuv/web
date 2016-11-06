@@ -416,8 +416,9 @@ rely on chance and luck, there must be a way to ensure uniqueness of each tuple 
 **Key** is a minimal set of attributes which uniquely identify every entity (tuple). A *minimal set*
 means the each relation attribute can be used at most once (quite logical, is it?) and that
 there should be no unnecessary attributes -- i.e. attributes which do not add anything to the 
-uniqueness of the key. Because the value of key is unique, it is **identifying** for each tuple.  
+uniqueness of the key. Because the value of the key is unique, it is **identifying** for each tuple.  
 For example person relation can have for example the following keys:
+
     - last name (simple key),
     - first name + last name (compound key),
     - first name + last name + date of birth (compound key),
