@@ -38,31 +38,18 @@ and applying them on your HTML elements will make those elements look "the Boots
 For example a button can be styled with `btn` and `btn-primary` class.
 
 {% highlight html %}
-    <button class="btn btn-primary">
-        This is a blue button.
-    </button>
-    <button class="btn btn-success">
-        This is a green button.
-    </button>
+<button class="btn btn-primary">
+    This is a blue button.
+</button>
+<button class="btn btn-success">
+    This is a green button.
+</button>
 {% endhighlight %}
 
 Another example is a table which has each other row a bit darker. This can be achieved with following CSS classes:
 
 {% highlight html %}
-    <table class="table table-striped table-hover">
-        <tr>
-            <th>Header row</th>
-        </tr>
-        <tr>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>3</td>
-        </tr>
-    </table>
+{% include /en/apv/walkthrough/css/bootstrap-table.html %}
 {% endhighlight %}
 
 That `table` or `btn` class is a set of CSS definitions common for all tables or buttons. Other classes cause the
@@ -78,25 +65,26 @@ In [components section](http://getbootstrap.com/components/) can be found more c
 wells, pagination and universal icons. Those icons are usually used on buttons and links like this:
 
 {% highlight html %}
-    <!-- button with floppy disk icon -->
-    <button class="btn btn-primary" type="button">
-        <span class="glyphicon glyphicon-disk"></span> Save
-    </button>
+<!-- button with floppy disk icon -->
+<button class="btn btn-primary" type="button">
+    <span class="glyphicon glyphicon-disk"></span> Save
+</button>
 {% endhighlight %}
 
 Take a look at navbar, it has quiet complicated HTML and uses many CSS classes, but if you work carefully and
 remove unwanted elements you can have nice navigation in your app (you can use `navbar-iverse` class to
 have black one). 
 
-## Task -- Use Bootstrap
+### Task -- Use Bootstrap
 Try to apply Bootstrap CSS classes on your application's HTML code and make it look modern. Hint: use
 `<div class="container">` or `<div class="container-fluid">` element to enclose all your HTML content. 
 
 <div class="solution">
-    <p>
+    <p markdown="1">
         The solution is different for each of you. Although Bootstrap elements look same, the placement and
         selection of alternatives will make your app unique. You have probably a few forms and some tables in
-        your application. You should use CSS classes from Bootstrap to apply styles.
+        your application. You should use CSS classes from Bootstrap to apply styles. Try to place some 
+        elements into wells or use panels and alerts.
     </p>
 </div>
 
@@ -104,7 +92,7 @@ Try to apply Bootstrap CSS classes on your application's HTML code and make it l
 You can also override basic CSS from Bootstrap. Link another CSS file in your `<head>` section. Remember to put your
 custom CSS as last `<link>` tag to override Bootstrap's CSS definitions.
 
-### Responsive design and media querries
+## Responsive design and media querries
 With growth of mobile device's market share, creators of web pages were challenged how to make a web page
 usable on a PC with large screen and also on a small handheld device? And preferably with as much shared code
 as possible. The key is to apply different CSS properties based on resolution of screen and/or other parameters
@@ -114,29 +102,7 @@ You can use *media query* to apply certain CSS properties only when some conditi
 can be to determine whether screen of visitor's device is larger than some value:
 
 {% highlight css %}
-    /* this CSS is used for all devices */
-    body {
-        background-color: #888888;
-        font-size: 12pt;
-    }
-    @media screen and (min-width: 800px) {
-        /* CSS for larger screens */
-        body {
-          padding: 4rem;
-        }
-    }
-    @media screen and (max-width: 799px) {
-        /* CSS for smaller screens */
-        body {
-          padding: 1rem;
-        }
-    }
-    @media print {
-        /* CSS for printers */
-        nav {
-            display: none;
-        }
-    }
+{% include /en/apv/walkthrough/css/media-querries.css %}
 {% endhighlight %}
 
 By defining such breakpoints we can set different CSS for different situations and the HTML code can remain
@@ -156,31 +122,16 @@ Responsive design is powerful tool, thanks to this feature you can even create m
 installed on your phone with pure [HTML, CSS and (a lot of) JavaScript](https://cordova.apache.org).
 This type of app is called *hybrid application* and its advantage is shared codebase for web and all mobile platforms.
 
-#### Using Bootstrap to make your page responsive
+### Using Bootstrap to make your page responsive
 
 Again, to define all possible scenarios and write media queries by yourself can be quiet a challenge.
-Bootstrap comes with predefined responsive behaviour: it has 12 columns and ve can define for 4 screen size
-intervals how much columns would an element occupy (e.g.: in small resolution we can make a `<p>` element
-6 columns wide and for larger resolutions we can save some space and make it only 2 columns wide).
-The key is to use Bootstrap responsive module correctly:
+Bootstrap comes with predefined responsive behaviour: it has divides the page with 12 vertical columns and we
+can define how much columns would an element occupy in 4 different screen size intervals (e.g.: in small
+screen resolution we can make a `<p>` element 6 columns wide and for larger resolutions we can save some
+space and make it only 2 columns wide). The key is to use Bootstrap responsive module correctly:
 
 {% highlight html %}
-    <!-- always use .container or .container-fluid -->
-    <div class="container">
-        <!-- to use responsive classes define a row -->
-        <div class="row">
-            <!--
-                sum of columns occupied by elements for each
-                resolution should be <= 12
-            -->
-            <p class="col-xs-6 col-sm-2">
-                This paragraph is 6 columns wide for screens under 768px width.
-            </p>
-            <p class="hidden-xs">
-                This one is even hidden for small screens.
-            </p>
-        <div>
-    </div>
+{% include /en/apv/walkthrough/css/bootstrap-responsive.html %}
 {% endhighlight %}
 
 Screen size intervals for Bootstrap responsive classes:

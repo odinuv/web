@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Form validation</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var flightPrice = 120;    //initial price of flight
+            // calculate price of flight
+            function updatePrice() {
+                var price = flightPrice;
+                //enable additional inputs
+                var baggageEnabled = $("input[name=baggage]").prop("checked");
+                $("#baggage_details").prop("disabled", !baggageEnabled);
+                if(baggageEnabled) {
+                    switch($("select[name=baggage_type]").val()) {
+                        case "1": price += 25; break;
+                        case "2": price += 35; break;
+                    }
+                    price += $("input[name=baggage_oversize]").prop("checked") ? 15 : 0;
+                }
+                $("#total").html(price);
+            }
+            //checkboxes click events
+            $("input[name=baggage], input[name=baggage_oversize]").click(function() {
+                updatePrice();
+            });
+            //change of option in baggage_type select
+            $("select[name=baggage_type]").change(function() {
+                updatePrice();
+            });
+            //call update right after this page loads
+            updatePrice();
+        });
+    </script>
+</head>
+<body>
+<h1>Flight reservation</h1>
+<form name="reservation" action="..." method="post">
+    <label>Name &amp; surname:</label>
+    <input type="text" name="name" required />
+    <input type="text" name="surname" required />
+    <br />
+    <label>Date of birth:</label>
+    <input type="date" name="birth" required />
+    <br />
+    <label>Include extra baggage:</label>
+    <input type="checkbox" name="baggage" value="1" />
+    <br />
+    <fieldset id="baggage_details" disabled>
+        <label>Weight & type</label>
+        <select name="baggage_type" required>
+            <option value="">Select...</option>
+            <option value="1">Basic (up to 15kg) + &euro;25</option>
+            <option value="2">Large (up to 25kg) + &euro;35</option>
+        </select>
+        <br />
+        <label>Include oversized baggage (up to 2m length) + &euro; 15</label>
+        <input type="checkbox" name="baggage_oversize" value="1" />
+        <br />
+    </fieldset>
+    <p>Total price &euro;<span id="total"></span></p>
+    <input type="submit" value="Confirm" />
+</form>
+</body>
+</html>

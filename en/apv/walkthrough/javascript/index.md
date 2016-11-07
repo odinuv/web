@@ -62,7 +62,7 @@ JavaScript code:
 {% include /en/apv/walkthrough/javascript/attach.html %}
 {% endhighlight %}
 
-You can use multiple function to work with HTML elements -- the easiest one is
+You can use multiple function to locate and work with HTML elements -- the easiest one is
 `dcoument.getElementById("id_of_element")` which can find and return one element using its `id`
 attribute, `document` is a global object which contains tree structure of your HTML.
 
@@ -83,9 +83,13 @@ Another special attribute is `innerHTML` which can be used to change content of 
 {% include /en/apv/walkthrough/javascript/html-attributes-styles.html %}
 {% endhighlight %}
 
+Each element can have a set of child nodes -- you can remove or ad children with `elem1.appendChild(elem2)`
+and `elem1.removeChild(elem2)` methods. To create a new element you can use `document.createElement("tag")`
+method.
+
 ### Order and time of execution
-As you add `<script>` tags to you HTML, you might wonder when is JS code executed.
-Basically the order is given by occurence of `<script>` tags. Big difference is between
+As you add `<script>` tags to you HTML, you might wonder when is JavaScript code executed.
+Basically the order is given by occurrence of `<script>` tags. Big difference is between
 scripts in `<head>` and inside `<body>` as those scripts in `<head>` do not have access
 to HTML elements because those were not rendered by browser yet. On the other hand `<script>`
 tags in `<body>` have access to HTML elements in markup above itself.
@@ -106,16 +110,16 @@ Events are type of signals which are broadcasted to JavaScript event listeners (
 when some action takes place. For example a user can click a button or a timer ticks:
 
 {% highlight html %}
-    <button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
-    <button onclick="alert('Hello!')">Click me - alert()!</button>
+<button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
+<button onclick="alert('Hello!')">Click me - alert()!</button>
 {% endhighlight %}
 
 {% highlight html %}
-    <script type="text/javascript">
-        function clickButtonHandler(event) {
-            console.log('Button clicked', event);
-        }
-    </script>
+<script type="text/javascript">
+    function clickButtonHandler(event) {
+        console.log('Button clicked', event);
+    }
+</script>
 {% endhighlight %}
 
 Open developer console (F12) and try to click this button or the other:
@@ -128,7 +132,7 @@ Open developer console (F12) and try to click this button or the other:
     }
 </script>
 
-You should see something like this:
+You should see something like this in developer console:
 
 ![console.log() output](console-log.png)
 
@@ -136,7 +140,7 @@ That weird stuff which is logged along with 'Button clicked' text is an event ob
 what happened. Special event is `onload` which signals that whole page is loaded.
 
 You can attach events as HTML attributes like in example above or you can use programmatic approach
-whis is much cleaner because it won't complicate your HTML code:
+which is much cleaner because it won't complicate your HTML code:
 
 {% highlight html %}
 {% include /en/apv/walkthrough/javascript/events.html %}
@@ -170,7 +174,30 @@ all source inside of it. Try to pass person name into confirm message.
 {% endhighlight %}
 
 ## Form validation
-TODO
+Nowadays you can use much more types of [input elements](/en/apv/walkthrough/html-forms/#advanced-text-input)
+than a few years ago. This means that many validations can be carried out by browser for you.
+You can adjust CSS styles using `:valid`, `:ivalid` or `:required` [pseudo-classes](/en/apv/walkthrough/css/#pseudoclasses)
+to visually differentiate states of inputs. Use these capabilities as much as possible. Nevertheless
+you sometimes need to switch e.g. `required` state or `enable`/`disable` some input in dependence
+of another input's value.
+
+Here is an example with dynamic form which simulates flight reservation. I used a `<fieldset>` element
+which is capable of disabling or enabling multiple inputs within it. These inputs represent optional
+baggage section of a flight reservation form:
+
+![Form validation](form-validation.png)
+
+{: .solution}
+{% highlight html %}
+{% include /en/apv/walkthrough/javascript/form-confirmation.html %}
+{% endhighlight %}
+
+I used `document.forms` which contain object with keys given by forms `name` attributes, each form is
+again an object with keys given by inputs name attributes. Keys of JavaScript object can be accessed
+using square brackets (where you can also use a variable) or you can just use dot notation `.key`.
+There is no functional difference between `document.forms.formName` and `document["forms"]["formName"]`
+or `document.forms["formName"]`. I prefer latter variant because attribute values can contain characters
+like `-` which are reserved.
 
 ## Famous jQuery and other libraries
 If you are digging enough around web applications, you definitely heard or read about
@@ -178,27 +205,43 @@ If you are digging enough around web applications, you definitely heard or read 
 desired behaviour faster. In past it also helped to overcome differences in browser's APIs.
 It offers many function for manipulation with HTML, events handling and communication with backend.
 It is worth trying but I think that it is not a very good idea to learn jQuery for beginners
-because you will have trouble working with pure ([vanilla](http://vanilla-js.com/) -- this page
-tries to explain that a JS library like jQuery is not always needed) JavaScript.
-Plus the importance of jQuery has declined as various browsers improved/united their API
-(e.g.: to find elements using CSS selector you can use `document.querySelector()` method
-instead of jQuery).
+because you will have trouble working with pure JavaScript (sometimes called
+[vanilla JavaScript](http://vanilla-js.com/) -- this page tries to explain that a JS library
+like jQuery is not always needed). The importance of jQuery and similar
+[facade](https://en.wikipedia.org/wiki/Facade_pattern) libraries has declined as various
+browsers improved/united their API (e.g.: to find elements using CSS selector you can
+use `document.querySelector()` method instead of jQuery).
+
+Here is the same example of flight reservation form with jQuery style code -- notice completely
+different style of accessing elements via CSS selector which is common in jQuery. This code
+is not much shorter than in clean JavaScript but in some cases jQuery can shorten your code
+up to one half of original.
+
+{: .solution}
+{% highlight html %}
+{% include /en/apv/walkthrough/javascript/form-confirmation-jquery.html %}
+{% endhighlight %}
 
 There are also many other JS libraries or frameworks. jQuery is used in most cases and sometimes other
 libraries (like [Bootstrap](/en/apv/walkthrough/css/bootstrap/)) require you to include it as well.
 Be careful about mixing different libraries -- some of them cannot or should not be used together.
+
+There are also many [polyfill](https://en.wikipedia.org/wiki/Polyfill) libraries which are used to
+simulate behaviour of modern browsers in the older ones. These libraries are used for backwards
+compatibility of moder web pages.
 
 ## Summary
 Remember that JavaScript is executed inside browser. Therefore it cannot store any data on server --
 you always need some kind of backend which can communicate securely with your database.
 It is possible to write JavaScript backend scripts with [Node.js](https://nodejs.org/) but it
 really does not matter. Ratio of JavaScript executed inside visitor's browser and backend code
-can vary from 99% to 0%. But without **some** backend, you cannot create a useful web application.
+can vary from 99% to 0%. But without **some** backend, you cannot create any useful web application.
 The main effect of this effort is to deliver to your users more dynamic page with better usability.
 
-Now you know that most visual effect or desktop-application-like behaviour of a website is cause
+Now you know that most visual effect or desktop-application-like behaviour of a website is caused
 by JavaScript.
 
 ### New Concepts and Terms
 - JavaScript
+- Events
 - jQuery

@@ -111,7 +111,7 @@ and again observe what changes are made to database. Do you notice the change of
 Can you explain why it changed? 
 
 <div class="solution">
-    <p>
+    <p markdown="1">
         If you run the the script without transaction commands, the first insert succeeds and the location
         will be inserted into the `location` table. It will remain there even if the other insert fails.
         When you add transaction commands, the behavior will change. If the first INSERT fails, and 
