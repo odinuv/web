@@ -198,7 +198,7 @@ ul li a:hover {
 }
 {% endhighlight css %}
 
-Another useful pseudoclasses:
+Another useful pseudo-classes:
 
 - `:link` -- unvisited link
 - `:visited` -- visited link
@@ -206,6 +206,9 @@ Another useful pseudoclasses:
 - `:focus` -- focused input
 - `:checked` -- checked input, same as `input[checked]`
 - `:disabled` -- disabled input, sames as `input[disabled]`
+- `:valid` -- valid input
+- `:invalid` -- invalid input
+- `:required` -- required input
 - `:first-child` -- first matched element in the same parent, e.g.: `li:first-child` selects first `<li>`
 - `:nth-child(2)` -- second matched element in the same parent
 - `:nth-child(even)` and `:nth-child(odd)` -- even and odd elements
