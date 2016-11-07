@@ -195,8 +195,8 @@ baggage section of a flight reservation form:
 I used `document.forms` which contain object with keys given by forms `name` attributes, each form is
 again an object with keys given by inputs name attributes. Keys of JavaScript object can be accessed
 using square brackets (where you can also use a variable) or you can just use dot notation `.key`.
-There is no functional difference between document.forms.formName and document["forms"]["formName"]
-or document.forms["formName"]. I prefer latter variant because attribute values can contain characters
+There is no functional difference between `document.forms.formName` and `document["forms"]["formName"]`
+or `document.forms["formName"]`. I prefer latter variant because attribute values can contain characters
 like `-` which are reserved.
 
 ## Famous jQuery and other libraries
