@@ -314,7 +314,7 @@ Position mode called *Relative* is used to displace an element from its default 
 used just as a container for following position mode. *Absolute* mode is used to place element on certain position
 within it's parent. The parent is either `body` tag or element with position set to anything else than *static*.
 *Fixed* is used to place element on given position in the browser window (even scrolling does not affect
-element's position - see left navigation on this site).
+element's position - navigation panels on some sites behave like this).
 
 ### Task
 Try to set relative and absolute positions and different sizes for some box elements (`<div>`s):
