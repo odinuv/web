@@ -290,8 +290,9 @@ You can even shorten that HEX color entry by leaving out repeating letters/numbe
 ### Unit system
 There are many CSS units to set sizes of different elements, most used ones are *px*, *em*, *rem*, *pt* and *%*.
 Basic division of CSS units is between absolute (*mm*, *cm*, *in*, *pt*) and relative units (*%*, *em*, *rem*,
-*vw*, *vh*, *vmin*, *vmax*, *ex*, *ch*). Calculation of element's size given  with relative unit is based on size of parent or 
-some or some other characteristics. Absolute unit renders same size of element on any device.
+*vw*, *vh*, *vmin*, *vmax*, *ex*, *ch*). Calculation of element's size given by a relative unit is based on
+size or some other characteristics of its parent. Absolute unit renders same size of element on any device.
+Pixel unit *px* is somewhere between because size of a pixel can vary with screen resolution or pixel density. 
 
 Some useful relative unit explanation:
 
@@ -304,7 +305,7 @@ Some useful relative unit explanation:
 
 You can set width and height only for block elements. Inline elements can only change size of font. To switch
 this behaviour, you can use CSS property `display` with value `block` or `inline`. There is also mode called
-`inline-block` which enables inline elements to have specific width and height. 
+`inline-block` which enables inline elements to have specific width and height and not wrap lines at their end. 
 
 ### Positioning
 There are four types of element's position modes. The default one is *static* which places inline elements on
