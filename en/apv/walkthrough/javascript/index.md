@@ -8,7 +8,7 @@ permalink: /en/apv/walkthrough/javascript/
 
 In this article I want to introduce a *client-side* programming language called JavaScript.
 *Client-side* means, that scripts written in this language are executed in a web browser (client).
-This is a new thing which opens a lot of possibilities: you know that a browser is capable of
+This is a new concept for you which opens a lot of possibilities: you know that a browser is capable of
 rendering HTML with CSS, displaying images, maybe you know that you can also play video and audio
 in newer browsers using appropriate HTML tags (all this is very nice, but still the browser is a bit
 stupid). Executing scripts in browser during the time when a visitor is viewing your website can
@@ -17,7 +17,7 @@ styles dynamically you can substantially improve (or reduce) readability of your
 of browsing (visitors do not have to wait for server to process their requests).
 
 A lot of pages use JavaScript very heavily nowadays. Sites like YouTube, Google drive/docs, Facebook
-are built using this technology. When you transfer significant part of program logic into JavaScript,
+are mostly built using this technology. When you transfer significant part of program logic into JavaScript,
 you can deliver desktop-app experience for your users.
 
 I will not teach you how to build application entirely with JavaScript, I will show you how to use
@@ -32,9 +32,10 @@ Current version is 6 (published in 2015).
 JavaScript is often misunderstood language, it has syntax similar to Java, PHP or C++; its name refers
 to Java but it is much different. JavaScript is object oriented like Java, but definition of a class
 is not familiar at all. It has first-class functions (a function which can be stored in a variable) and
-it is dynamically typed (variable type is defined by content like in PHP). Source code written in JavaScript
-is much different to anything you probably know. I will start with some basic examples which I believe
-would not confuse you at all; `console.log()` sends its output to browser's developer tools (F12).
+it is dynamically typed (variable type is defined by content like in PHP). Complex source code written
+in JavaScript is much different to anything you probably know. I will start with some basic examples
+which I believe would not confuse you at all; `console.log()` sends its output to browser's developer
+tools console (F12).
 
 Here is a brief JavaScript demo:
 
@@ -44,8 +45,8 @@ Here is a brief JavaScript demo:
 
 {: .note}
 To try JavaScript code you do not have to write a custom HTML page, just paste this code into online
-tool such as [JSFiddle](https://jsfiddle.net) (use JavaScript editor) and click run. Remember to open
-that developer tools console.
+tool such as [JSFiddle](https://jsfiddle.net) or  (use JavaScript editor) or [Plunker](https://plnkr.co/edit/) 
+and click run. Remember to open that developer tools console.
 
 In following example you can see control structures:
 
@@ -64,7 +65,7 @@ JavaScript code:
 
 You can use multiple function to locate and work with HTML elements -- the easiest one is
 `dcoument.getElementById("id_of_element")` which can find and return one element using its `id`
-attribute, `document` is a global object which contains tree structure of your HTML.
+attribute, `document` is a global object which contains tree structure of your HTML elements.
 
 Other useful functions to retrieve HTML elements:
 
@@ -84,11 +85,11 @@ Another special attribute is `innerHTML` which can be used to change content of 
 {% endhighlight %}
 
 Each element can have a set of child nodes -- you can remove or ad children with `elem1.appendChild(elem2)`
-and `elem1.removeChild(elem2)` methods. To create a new element you can use `document.createElement("tag")`
+and `elem1.removeChild(elem2)` methods. To create a new element you can use `var newElem = document.createElement("tag")`
 method.
 
 ### Order and time of execution
-As you add `<script>` tags to you HTML, you might wonder when is JavaScript code executed.
+When you add `<script>` tags to you HTML, you might wonder when is JavaScript code executed.
 Basically the order is given by occurrence of `<script>` tags. Big difference is between
 scripts in `<head>` and inside `<body>` as those scripts in `<head>` do not have access
 to HTML elements because those were not rendered by browser yet. On the other hand `<script>`
@@ -107,7 +108,7 @@ just before `</body>`.
 
 ## JavaScript events
 Events are type of signals which are broadcasted to JavaScript event listeners (functions)
-when some action takes place. For example a user can click a button or a timer ticks:
+when some action takes place. For example a user can click a button, move a mouse or a timer ticks:
 
 {% highlight html %}
 <button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
@@ -137,7 +138,8 @@ You should see something like this in developer console:
 ![console.log() output](console-log.png)
 
 That weird stuff which is logged along with 'Button clicked' text is an event object describing
-what happened. Special event is `onload` which signals that whole page is loaded.
+what happened. Special event is `onload` which signals that whole page is loaded (but it can be also
+attached to `<img>` elements).
 
 You can attach events as HTML attributes like in example above or you can use programmatic approach
 which is much cleaner because it won't complicate your HTML code:
@@ -155,6 +157,8 @@ with a confirm popup for basic `<a>` tags and for `<form>` tags:
 {% include /en/apv/walkthrough/javascript/prevent-nav-a.html %}    
 {% endhighlight %}
 
+Example above is a bit shorter in HTML code than following one which shows how to prevent form from submitting. 
+
 {% highlight html %}
 {% include /en/apv/walkthrough/javascript/prevent-nav-form.html %}
 {% endhighlight %}
@@ -163,15 +167,21 @@ Notice that you have to pass that true/false value from called `confirmForm()` f
 return keyword in `onsubmit` attribute. That attribute itself is a body of event handler function
 and has to return true or false to approve or cancel from subscription. 
 
-### Task -- add confirm dialog to your delete form
-
+### Task -- add confirm dialog to your delete person function
 Carefully select where to place `<script>` tag -- remember that `{foreach ...}` duplicates
-all source inside of it. Try to pass person name into confirm message.
+all source inside of it and you do not want multiple `<script>` tags with same function in your
+markup. Try to pass person name into confirm message. You can try to use both
+approaches (`href="javascript:..."` and `onsubmit="return ..."` -- for the first one you should
+adjust delete script to accept data from GET method).
 
 {: .solution}
 {% highlight html %}
 {% include /en/apv/walkthrough/javascript/confirm-delete.latte %}
 {% endhighlight %}
+
+{: .note}
+Remember that modifications of database records should be transmitted to server using `POST` method.
+Therefore the approach which uses `href="javascript:..."` is not a clean solution.
 
 ## Form validation
 Nowadays you can use much more types of [input elements](/en/apv/walkthrough/html-forms/#advanced-text-input)
@@ -179,25 +189,44 @@ than a few years ago. This means that many validations can be carried out by bro
 You can adjust CSS styles using `:valid`, `:ivalid` or `:required` [pseudo-classes](/en/apv/walkthrough/css/#pseudoclasses)
 to visually differentiate states of inputs. Use these capabilities as much as possible. Nevertheless
 you sometimes need to switch e.g. `required` state or `enable`/`disable` some input in dependence
-of another input's value.
+of another input's value or dynamically calculate some additional value like price.
 
 Here is an example with dynamic form which simulates flight reservation. I used a `<fieldset>` element
 which is capable of disabling or enabling multiple inputs within it. These inputs represent optional
-baggage section of a flight reservation form:
+baggage section of a flight reservation form. Based on selected options, the price of flight is adjusted
+without page reload:
 
 ![Form validation](form-validation.png)
 
 {: .solution}
 {% highlight html %}
-{% include /en/apv/walkthrough/javascript/form-confirmation.html %}
+{% include /en/apv/walkthrough/javascript/form-validation.html %}
 {% endhighlight %}
 
+{: .note}
+This approach often means duplicated logic in server and client scripts. A better solution is to call
+some backend API which can calculate the price according to selected parameters and return it in JSON or
+XML format.
+
 I used `document.forms` which contain object with keys given by forms `name` attributes, each form is
-again an object with keys given by inputs name attributes. Keys of JavaScript object can be accessed
+again an object with keys given by inputs `name` attributes. Keys of JavaScript object can be accessed
 using square brackets (where you can also use a variable) or you can just use dot notation `.key`.
 There is no functional difference between `document.forms.formName` and `document["forms"]["formName"]`
 or `document.forms["formName"]`. I prefer latter variant because attribute values can contain characters
 like `-` which are reserved.
+
+### Task -- add `required` attribute to person&address form inputs dynamically
+Do you remember when I was talking about inserting [multiple records at once](/en/apv/walkthrough/backend-insert/advanced/).
+You should have already created a form where you can insert a person and a place where he lives.
+Try to extend this form with similar JavaScript from flight reservation example and 
+add `required` attribute to some inputs that you want to be mandatory (e.g. when a user enters a
+`street_name`, he should also enter a `city` -- set `required` attribute to true for both inputs
+if `street_name` input has some letters inside).
+
+{: .solution}
+{% highlight html %}
+{% include /en/apv/walkthrough/javascript/form-validation-address.html %}
+{% endhighlight %}
 
 ## Famous jQuery and other libraries
 If you are digging enough around web applications, you definitely heard or read about
@@ -209,8 +238,11 @@ because you will have trouble working with pure JavaScript (sometimes called
 [vanilla JavaScript](http://vanilla-js.com/) -- this page tries to explain that a JS library
 like jQuery is not always needed). The importance of jQuery and similar
 [facade](https://en.wikipedia.org/wiki/Facade_pattern) libraries has declined as various
-browsers improved/united their API (e.g.: to find elements using CSS selector you can
-use `document.querySelector()` method instead of jQuery).
+browsers improved/united their APIs (e.g.: to find elements using CSS selector you can
+use `document.querySelector()` method instead of jQuery, event binding can be done by
+`element.addEventListener()` in all modern browsers instead of jQuery's `$('.selector').click(fn)`).
+Moreover, new libraries and frameworks like [React](https://facebook.github.io/react/) or
+[Angular](https://angularjs.org/) emerged since jQuery's best times. 
 
 Here is the same example of flight reservation form with jQuery style code -- notice completely
 different style of accessing elements via CSS selector which is common in jQuery. This code
@@ -219,7 +251,7 @@ up to one half of original.
 
 {: .solution}
 {% highlight html %}
-{% include /en/apv/walkthrough/javascript/form-confirmation-jquery.html %}
+{% include /en/apv/walkthrough/javascript/form-validation-jquery.html %}
 {% endhighlight %}
 
 There are also many other JS libraries or frameworks. jQuery is used in most cases and sometimes other
@@ -228,18 +260,19 @@ Be careful about mixing different libraries -- some of them cannot or should not
 
 There are also many [polyfill](https://en.wikipedia.org/wiki/Polyfill) libraries which are used to
 simulate behaviour of modern browsers in the older ones. These libraries are used for backwards
-compatibility of moder web pages.
+compatibility of modern web pages with older browsers.
 
 ## Summary
-Remember that JavaScript is executed inside browser. Therefore it cannot store any data on server --
+Remember that JavaScript is executed inside a browser. Therefore it cannot store any data on a server --
 you always need some kind of backend which can communicate securely with your database.
 It is possible to write JavaScript backend scripts with [Node.js](https://nodejs.org/) but it
 really does not matter. Ratio of JavaScript executed inside visitor's browser and backend code
-can vary from 99% to 0%. But without **some** backend, you cannot create any useful web application.
+can vary from 99% to 0%. But without **some** backend code, you cannot create any useful web application.
 The main effect of this effort is to deliver to your users more dynamic page with better usability.
 
 Now you know that most visual effect or desktop-application-like behaviour of a website is caused
-by JavaScript.
+by JavaScript. Another thing to remember is that JavaScript has vast ecosystem of libraries and frameworks
+and I am not going to get much deeper into this topic in this book.
 
 ### New Concepts and Terms
 - JavaScript

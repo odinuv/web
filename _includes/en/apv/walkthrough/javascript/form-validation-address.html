@@ -1,0 +1,28 @@
+<form name="person-address" method="post">
+    <!-- other inputs ... -->
+    <label>City</label>
+    <input name="city"/>
+    <br/>
+    <label>Street name</label>
+    <input name="street-name"/>
+    <br/>
+    <input type="submit" value="Insert"/>
+</form>
+
+<script type="text/javascript">
+    //maybe there are more events registered for load event, better use addEventListener
+    window.addEventListener("load", function () {
+        var streetInput = document.forms["person-address"]["street-name"];
+        var cityInput = document.forms["person-address"]["city"];
+        streetInput.onchange = function () {
+            if (streetInput.value) {
+                //input are mandatory if value of street is set
+                streetInput.required = true;
+                cityInput.required = true;
+            } else {
+                streetInput.required = false;
+                cityInput.required = false;
+            }
+        };
+    });
+</script>

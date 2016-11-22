@@ -1,7 +1,9 @@
 <a href="javascript:confirmNav('http://www.server.org/')">Server</a>
 <script type="text/javascript">
     function confirmNav(url) {
+        //show popup
         if(confirm('Really navigate to ' + url + '?')) {
+            //redirect browser if user response was positive
             location.href = url;
         }
     }
