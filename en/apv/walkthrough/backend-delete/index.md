@@ -86,7 +86,7 @@ retrieve `id_person`.
 
 {: .solution}
 {% highlight php %}
-{% include /en/apv/walkthrough/backend-delete/templates/persons-list.latte %}
+{% include /en/apv/walkthrough/backend-delete/templates/person-list.latte %}
 {% endhighlight %}
 
 ## Next Steps

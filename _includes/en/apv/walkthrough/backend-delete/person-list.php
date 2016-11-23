@@ -16,7 +16,7 @@ if (!empty($_GET['search'])) {
 try {
 	if ($keyword) {
 	    $stmt = $db->prepare('
-	        SELECT first_name, last_name, nickname, AGE(birth_day) FROM person
+	        SELECT id_person, first_name, last_name, nickname, AGE(birth_day) FROM person
 	        WHERE (first_name ILIKE :keyword) OR (last_name ILIKE :keyword) OR (nickname ILIKE :keyword)
 	        ORDER BY last_name, first_name
 	    ');
@@ -24,7 +24,7 @@ try {
 	    $stmt->execute();    
 	} else {
 	    $stmt = $db->query('
-	        SELECT first_name, last_name, nickname, AGE(birth_day) FROM person 
+	        SELECT id_person, first_name, last_name, nickname, AGE(birth_day) FROM person 
 	        ORDER BY last_name, first_name
 	    ');
 	}
