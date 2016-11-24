@@ -216,7 +216,10 @@ logout.php:
 
 ## Conclusion
 User authentication or even authorisation is complicated. I demonstrated one of the easiest ways how to do it --
-you can also hardcode passwords into your source code (do not do that!).
+you can also hardcode passwords into your source code (do not do that!). Keep in mind that weakest point of
+application is probably its user because people are lazy to fabricate new passwords for each website and they share
+some passwords with their family or friends. Security measures should also be designed according to the type
+of application you are developing (a bank account management application VS discussion board).
 
 Passwords are sent over the network in plain text, it is a good idea to use HTTPS for registration and login pages
 to prevent attackers to sniff the password from network traffic.
@@ -225,7 +228,7 @@ There is a lot more to explore: you probably know sites where you can persist yo
 or even weeks -- ours is forgotten as soon as the visitor closes his browser's window. That can be achieved by setting
 special attributes to cookies which hold keys to sessions. You also probably seen that some sites use global services
 like Facebook or Google to provide login functionality, which is good for users who do not want to remember too many
-passwords.
+passwords. Totally [different approach](https://jwt.io/) of authentication is used for single page applications (SPA).
 
 Remember that you are responsible for security of your application and also for the data of your users.
 
