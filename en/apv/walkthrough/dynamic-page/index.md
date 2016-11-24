@@ -16,8 +16,8 @@ and only those you want to see (e.g. in inbox or another folder you selected).
 
 To create a dynamic page, you need another technology beyond HTML, this can be either:
 
-- anything on the [web server](todo) -- backend,
-- [Javascript](todo) on the web client -- frontend.
+- anything on [web server](/en/apv/walkthrough/dynamic-page) -- backend,
+- [JavaScript](/en/apv/walkthrough/javascript/) on web client -- frontend.
 
 In this part I will concentrate on the web *server* approach. I choose to use the [PHP language](http://php.net/) for
 the server backend, this choice is rather arbitrary as it is not anyhow better or worse

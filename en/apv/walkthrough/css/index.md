@@ -218,10 +218,10 @@ Another useful pseudo-classes:
 - `:active` -- active link
 - `:focus` -- focused input
 - `:checked` -- checked input, same as `input[checked]`
-- `:disabled` -- disabled input, sames as `input[disabled]`
+- `:disabled` -- disabled input, same as `input[disabled]`
 - `:valid` -- valid input
 - `:invalid` -- invalid input
-- `:required` -- required input
+- `:required` -- required input, same as `input[required]`
 - `:first-child` -- first matched element in the same parent, e.g.: `li:first-child` selects first `<li>`
 - `:nth-child(2)` -- second matched element in the same parent
 - `:nth-child(even)` and `:nth-child(odd)` -- even and odd elements

@@ -86,7 +86,7 @@ retrieve `id_person`.
 
 {: .solution}
 {% highlight php %}
-{% include /en/apv/walkthrough/backend-delete/templates/persons-list.latte %}
+{% include /en/apv/walkthrough/backend-delete/templates/person-list.latte %}
 {% endhighlight %}
 
 ## Next Steps
@@ -138,7 +138,8 @@ If you are stuck, I suggest you configure the following tables and keys:
 You now know how to delete records from a database. You should understand how foreign keys guard the
 consistency of the data and that you need to think what to do with the dependent records -- whether to delete them along
 or leave them in database while removing link to deleted record. For a deeper explanation see
-the [corresponding article](/en/apv/article/database-tech/#integrity-constraints).
+the [corresponding article](/en/apv/article/database-tech/#integrity-constraints). You can also
+take a look at chapter about [login](/en/apv/walkthrough/login) to limit access to this functionality.
 
 ### New Concepts and Terms
 - Delete

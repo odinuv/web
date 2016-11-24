@@ -1,0 +1,17 @@
+{extends layout.latte}
+
+{block content}
+    {if $message}
+        <p>{$message}</p>
+    {/if}
+    <form action="login.php" method="post">
+        <label>Login:</label>
+        <input type="text" name="login" required />
+        <br />
+        <label>Password:</label>
+        <input type="password" name="pass" required />
+        <br />
+        <input type="submit" value="Login" />
+    </form>
+
+{/block}

@@ -65,6 +65,9 @@ items:
               - url: /en/apv/walkthrough/javascript/
                 title: JavaScript
 
+              - url: /en/apv/walkthrough/login/
+                title: Login
+
           - url: /en/apv/articles/
             title: Articles
             items:

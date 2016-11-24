@@ -154,7 +154,7 @@ permalink: /en/apv/slides/html/
         - `<meta charset='utf-8' />` (almost required)
     - `style` -- CSS styles in page,
     - `link` -- definition of related files (external style, fonts, etc.),
-    - `script` -- Javascript code or link to Javascript code.
+    - `script` -- JavaScript code or link to JavaScript code.
 
 </section>
 

@@ -3,7 +3,7 @@ require 'include/start.php';
 try {
     $db->beginTransaction();
 
-    $city = "Bucharest";
+    $city = "Bucharest";    //replace by data from $_POST
     $stmt1 = $db->prepare("INSERT INTO location (city) VALUES (:c)");
     $stmt1->bindValue(":c", $city);
     $stmt1->execute();
