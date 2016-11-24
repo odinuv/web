@@ -18,14 +18,17 @@ of user permissions because it would complicate things a lot -- such feature is 
 It is not a safe approach to store passwords in their plain-text form. Such passwords can be viewed by anybody
 who has access to your database (maybe now it is only you, but in future it can be some of your colleagues or
 even your employees). A password is always saved in hashed form (a *hash* is a result of function which outputs
-unique strings for different inputs and it is not trivial to reverse this process -- e.g. calculate original
+unique strings for different inputs and it is not trivial to reverse this process -- i.e. to calculate original
 password from hash).
 
 Examples of hash function outputs in PHP for word "cat":
 
-- [md5](http://php.net/manual/en/function.md5.php)('cat') = d077f244def8a70e5ea758bd8352fcd8
-- [sha1](http://php.net/manual/en/function.sha1.php)('cat') = 9d989e8d27dc9e0ec3389fc855f142c3d40f0c50
-- [password_hash](http://php.net/manual/en/function.password-hash.php)('cat') = $2y$10$5iA8dvLAzWzl.cepri1xxuINCQBHKNANmEfx4nT/jjCV4hWcUTW.y 
+- [md5](http://php.net/manual/en/function.md5.php)('cat') =
+  d077f244def8a70e5ea758bd8352fcd8 (always 32 characters)
+- [sha1](http://php.net/manual/en/function.sha1.php)('cat') =
+  9d989e8d27dc9e0ec3389fc855f142c3d40f0c50 (always 40 characters)
+- [password_hash](http://php.net/manual/en/function.password-hash.php)('cat') =
+  $2y$10$5iA8dvLAzWzl.cepri1xxuINCQBHKNANmEfx4nT/jjCV4hWcUTW.y (up to 255 characters according to selected hashing algorithm)
  
 <div class="note">
     <p markdown="1">
@@ -59,11 +62,16 @@ To verify a password when user tries to log-in (first fetch hash and salt from d
 {% endhighlight %}
 
 {: .note}
-The probability that concatenation of user's password and random string used as salt
+The probability that concatenation of user's password and a random string used as a salt
 will yield results in vocabulary search is very small. Yet use of sha1() or md5() functions
-is strongly discoraged because powerful CPUs can generate millions of hashes per second and
-they are capable of breaking md5 or sha1 hashes within reasonable time. Function password_hash()
-is also quiet slow (by design -- this is one of few instances when we want our algorithms to be slow).
+is strongly discouraged because powerful CPUs or GPUs can generate millions of hashes per second and
+they are capable of breaking md5 or sha1 hashes within reasonable time (days). Recommended function
+password_hash() is also quiet slow (by design -- this is one of few instances when we want our
+algorithms to be slow).
+
+{: .note}
+One of the reasons why any web application sends you a new password instead of yours when you forgot
+it is hashing. They do not store your password in plain text form.
 
 ### Task -- create a table to store user data in database
 Create a table with login or email column and a column to store password in hashed format.
@@ -84,6 +92,8 @@ account record redirect visitor to login page.
 It should have an input for login or email and two inputs for passwords (all inputs are required).
 You can use [Bootstrap](/en/apv/walkthrough/css/bootstrap) CSS styles.
 
+register.latte:
+
 {: .solution}
 {% highlight html %}
 {% include /en/apv/walkthrough/login/templates/register.latte %}
@@ -93,6 +103,8 @@ You can use [Bootstrap](/en/apv/walkthrough/css/bootstrap) CSS styles.
 Use [password_hash()](http://php.net/manual/en/function.password-hash.php) function. Read the documentation
 because this function requires actually two input parameters. Second one is algorithm which is used for password
 calculation.
+
+register.php:
 
 {: .solution}
 {% highlight php %}
@@ -116,10 +128,14 @@ obfuscate existence of user accounts (sometimes you do not wish to easily reveal
 you use email address as login). Do not bother yourself by the fact that the confirmation is displayed only when
 user sends his credentials for now. We will handle persistence of authentication flag later.
 
+login.latte:
+
 {: .solution}
 {% highlight html %}
 {% include /en/apv/walkthrough/login/templates/login.latte %}
 {% endhighlight %}
+
+login.php:
 
 {: .solution}
 {% highlight php %}
@@ -145,10 +161,14 @@ data are stored on server and cannot be modified by will of a visitor -- it has 
 Use $_SESSION variable to store authenticated user's data after login. Insert line with `session_start();` function
 into start.php script.
 
+login.php (final version):
+
 {: .solution}
 {% highlight php %}
 {% include /en/apv/walkthrough/login/login.php %}
 {% endhighlight %}
+
+extended start.php:
 
 {: .solution}
 {% highlight php %}
@@ -161,32 +181,37 @@ tries to access prohibited function without authentication, he should be redirec
 
 ### Task -- protect your application
 Write a short include-script which will verify presence of user's data in $_SESSION array and redirect to login.php
-script if no such data is found. Reqire this script to all PHP scripts where **you want user authentication to be 
+script if no such data is found. Require this script to all PHP scripts where **you want user authentication to be 
 performed** before execution of script itself. Place the require command just below the line where you require
 start.php script.
+
+protect.php:
 
 {: .solution}
 {% highlight php %}
 {% include /en/apv/walkthrough/login/include/protect.php %}
 {% endhighlight %}
 
+Here is an example how to protect [deletion](/en/apv/walkthrough/backend-delete) of persons from database with created script:
+
+{: .solution}
+{% highlight php %}
+{% include /en/apv/walkthrough/login/delete.php %}
+{% endhighlight %}
+
 ## Logout
-A logout action is usually just deletion of all user related data from $_SESSION variable on server. 
+Finally, we have to give our users an option to leave application. A logout action is usually just deletion of
+all user related data from $_SESSION variable on server. 
 
 ### Task -- Create a logout script
 Use [session_destroy()](http://php.net/manual/en/function.session-destroy.php) function. Redirect user to public
 page of your application after logout. Put logout button to your layout.latte template.
 
+logout.php:
+
 {: .solution}
 {% highlight php %}
 {% include /en/apv/walkthrough/login/logout.php %}
-{% endhighlight %}
-
-Here is an example how to protect deletion of persons from database:
-
-{: .solution}
-{% highlight php %}
-{% include /en/apv/walkthrough/login/delete.php %}
 {% endhighlight %}
 
 ## Conclusion

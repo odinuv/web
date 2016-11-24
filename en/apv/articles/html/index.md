@@ -213,8 +213,8 @@ is arbitrary. For example you may write:
 <p data-myAttribute='someValue'></p> 
 {% endhighlight %}
  
-Data attributes are useful for passing arbitrary values to Javascript. However their use
-would fall into the advanced category, so you probably won't use them soon. 
+Data attributes are useful for passing arbitrary values to [JavaScript](/en/apv/walkthrough/javascript/).
+However their use would fall into the advanced category, so you probably won't use them soon. 
 
 ## HTML Header
 The `head` element contains various information about the page itself, these are commonly 
@@ -229,7 +229,7 @@ children:
  is displayed correctly (even if the user e.g. saves the page to his local drive).  
  - `style` -- [CSS styles](todo) in page
  - `link` -- definition of related files (external style, fonts, etc.)
- - `script` -- Javascript code or link to Javascript code 
+ - `script` -- [JavaScript](/en/apv/walkthrough/javascript/) code or link to [JavaScript](/en/apv/walkthrough/javascript/) code 
 
 ### Encoding
 It is important to save the page in correct encoding during creation, it has to be the
@@ -299,7 +299,7 @@ development of *XHTML* language, but before I get to that, I need to tell you ab
 Parallel to HTML a [XML (Extensible Markup Language)](https://en.wikipedia.org/wiki/XML) was
 born. XML language is a generic language for data description, so its companions are 
 e.g. [CSV -- Comma-Separated Values](https://en.wikipedia.org/wiki/Comma-separated_values) for
-tabular data or [JSON -- Javascript Object Notation](https://en.wikipedia.org/wiki/JSON) for
+tabular data or [JSON -- JavaScript Object Notation](https://en.wikipedia.org/wiki/JSON) for
 any structured data. XML has nothing to do with HTML or structure of text documents.
 It does not define any interpretation nor any rendering of the data.
 

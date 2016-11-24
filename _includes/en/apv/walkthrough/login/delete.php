@@ -1,7 +1,7 @@
 <?php
 //start_session() is in start.php
 require 'include/start.php';
-//this script checks if there us user key $_SESSION
+//this script checks if there is a user flag in $_SESSION
 require 'include/protect.php';
 if(!empty($_POST["id_person"])) {
     try {

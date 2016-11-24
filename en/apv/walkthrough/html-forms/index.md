@@ -86,7 +86,7 @@ Button is best created with `button` element. Button should have a `type` attrib
 
 - `submit` -- Standard button for submitting a form
 - `reset` -- Button for resetting the form to default state (and make end-user angry)
-- `button` -- Button which does nothing (button must be [handled by Javascript](todo))
+- `button` -- Button which does nothing (button must be [handled by JavaScript](/en/apv/walkthrough/javascript/))
 
 Button has `name` and `value` attributes. However, if a form has multiple buttons, only the button which has been
 actually clicked will be send by the browser. Buttons are used without the `label` element.

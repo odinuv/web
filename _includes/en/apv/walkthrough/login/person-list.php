@@ -1,7 +1,5 @@
 <?php
-
 require 'include/start.php';
-
 $tplVars['pageTitle'] = 'Persons List';
 if (!empty($_GET['search'])) {
 	if (!empty($_GET['keyword'])) {
@@ -12,7 +10,6 @@ if (!empty($_GET['search'])) {
 } else {
 	$keyword = '';
 }
-
 try {
 	if ($keyword) {
 	    $stmt = $db->prepare('
@@ -31,7 +28,6 @@ try {
 } catch (PDOException $e) {
 	exit("I cannot execute the query: " . $e->getMessage());
 }
-
 $tplVars['search'] = $keyword;
 $tplVars['persons'] = $stmt->fetchAll();
 $latte->render('templates/person-list.latte', $tplVars);
