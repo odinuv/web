@@ -54,7 +54,7 @@ permalink: /en/apv/slides/web-security/
   - Unless his name is XdTg42W.
 - Password difficult to remember is bad password.
 - Complexity:
-  - good langauge = 250 000 words
+  - good language = 250 000 words
   - 8 characters (A-Za-z0-9) = 6 553 600 000 000 combinations
   - 10 characters = 10 485 760 000 000 000 combinations
 - [https://imgs.xkcd.com/comics/password_strength.png](or this)  
@@ -127,5 +127,9 @@ permalink: /en/apv/slides/web-security/
 </section>
 
 <section markdown='1'>
-
+## Escaping
+- Always on input to vulnerable phase
+  - Parameters to queries
+  - Value in HTML
+- Never escape beforehand, un-escaping is complicated     
 </section>

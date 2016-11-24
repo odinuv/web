@@ -9,10 +9,10 @@ permalink: /en/apv/slides/html/
 <section markdown='1'>
 ## HTML
 - HyperText Markup Language:
-    - **Hypertext** is document interconnected with other documents via links.
+    - **Hypertext** is a document interconnected with other documents via links.
 - The most used format of web pages (documents provided by WWW service).
-- Last version of standard -- HTML5 from 2014 -- [W3C Specification](https://www.w3.org/TR/html5/).
-- HTML is language for describing **structure of text document**.
+- The last version of the standard -- HTML5 from 2014 -- [W3C Specification](https://www.w3.org/TR/html5/).
+- HTML is language for describing the **structure of a text document**.
 - HTML is **not** a programming language.
 - HTML is interpreted by Web Browsers.
 
@@ -55,14 +55,14 @@ permalink: /en/apv/slides/html/
 ## HTML Structure 
 - **Entities** -- placeholders for special characters:
     - Begin with ampersand `&`, end with semicolon `;`,
-    - Encoded as either:
-        - Symbolic character name -- `&gt;` (greater),
-        - Numeric Unicode character code references -- `&#62;` or `&#x3E;`,
-        - [W3C Specification](http://w3c.github.io/html/syntax.html#named-character-references).
-- **Comments** -- Part of HTML code which is not interpreted:
+    - Encoded as:
+        - symbolic character name -- `&gt;` (greater) -- defined in 
+        [W3C Specification](http://w3c.github.io/html/syntax.html#named-character-references),
+        - or numeric Unicode character code reference -- `&#62;` or `&#x3E;`,            
+- **Comments** -- A part of HTML code which is not interpreted:
     - `<!--` comment may not contain two dashes `-->`,
-    - They are still visible in page source!
-- Unless you do something special, then all browsers generally do behave the same.
+    - They are still visible in the page source!
+- Unless you do something special, then all browsers generally do behave the same way.
 
 </section>
 
@@ -84,7 +84,7 @@ permalink: /en/apv/slides/html/
 </section>
 
 <section markdown='1'>
-## A Better Example
+## Better HTML Example
 {% highlight html %}
 <!DOCTYPE html>
 <html>
@@ -105,7 +105,7 @@ permalink: /en/apv/slides/html/
 
 <section markdown='1'>
 ## HTML Elements
-- **Block-level elements** elements -- P, H1, DIV, …
+- **Block-level elements** -- P, H1, DIV, …
 - **Inline elements** -- A, IMG, SPAN, …
 - Inline elements may be inserted in inline elements or block elements.
 - Block elements may be inserted only inside block elements.
@@ -117,7 +117,7 @@ permalink: /en/apv/slides/html/
 ## HTML Attributes
 - Common attributes:
     - id, class -- used for styling and scripting on client side,
-    - style -- definition of inline style,
+    - style -- definition of an inline style,
     - title -- hint which is shown on mouse-over,
     - others -- http://www.w3.org/TR/html5/elements.html#global-attributes,
     - data attributes -- arbitrary attributes without semantics.
@@ -148,7 +148,7 @@ permalink: /en/apv/slides/html/
 
 <section markdown='1'>
 ## HTML Header
-- The `head` element may contain:
+- `head` element may contain:
     - `title` -- set page title (required),
     - `meta` -- set page **metadata**, at least encoding:
         - `<meta charset='utf-8' />` (almost required)
@@ -161,14 +161,14 @@ permalink: /en/apv/slides/html/
 <section markdown='1'>
 ## HTML × XHTML × XML
 - XML (Extensible Markup Language) -- generic language for data description.
-- Looks similar to HTML -- same ancestor (SGML):
+- Looks similar to HTML -- the same ancestor (SGML):
     - contains elements, attributes, entities,
-    - does not define interpretation nor rendering of data.
+    - does not define interpretation or rendering of data.
 - Simplified rules:
     - required header: `<?xml version="1.0"?>`,
-    - tag names are lower-case, end tags required
-    - attribute values must be in quotes, value is required,
-    - empty tags may be shortened to `<element />`,
+    - tag name is lower-case, end tag is required
+    - attribute value must be in quotes, a value is required,
+    - empty tag may be shortened to `<element />`,
 - **XML Application** is an interpretation of the XML document (not a program).
 
 </section>
@@ -204,7 +204,7 @@ permalink: /en/apv/slides/html/
 <section markdown='1'>
 ## HTML × XHTML × XML
 - HTML4 has:
-    - many optional language elements (langauge was supposed to be smart),
+    - many optional language elements (the language was supposed to be smart),
     - complicated implementation of interpreter in web browser,
     - semantic elements and visual elements,
     - `<!DOCTYPE ` that specifies the DTD.
@@ -216,12 +216,12 @@ permalink: /en/apv/slides/html/
 <section markdown='1'>
 ## HTML × XHTML × XML Cont.
 - XHTML:
-    - is a XML application of HTML langauge,
+    - is a XML application of HTML language,
     - has same elements (but unfortunately not exactly),
     - has supposedly simplified *interpreter* implementation,
-    - is dead: last standard 1.0 from 2000.
+    - is dead: the last standard 1.0 from 2000.
 - HTML5:
-    - is a brand new langauge without lot of historic burden,
+    - is a brand new language without a lot of historic burden,
     - is backward compatible (allows both HTML and XHTML),
     - is developed from 2007, standardized in 2014,
     - is not based on SGML,
@@ -247,10 +247,10 @@ permalink: /en/apv/slides/html/
 
 <section markdown='1'>
 ## Styles
-- HTML describes only the **structure** of text document.
+- HTML describes only the **structure** of a text document.
     - There is no way to change the visual *rendering*.
 - To change the rendering of document, **styles** must be used.
-- CSS (Cascading Style Sheets) is language for definition of styles.
+- CSS (Cascading Style Sheets) is a language for the definition of styles.
     - CSS is not a programming language.
 - When no styles are applied, the web browser uses default styles (also called **user-agent** styles).
 
@@ -278,7 +278,7 @@ permalink: /en/apv/slides/html/
 - **Web page is not paper**.
     - Web page must adapt to (almost) infinite number of window sizes.
     - Leads to **Responsive design**.
-    - Requires good page layout in HTML as well.
+    - Requires a good page layout in HTML as well.
 
 </section>
 
@@ -326,7 +326,7 @@ permalink: /en/apv/slides/html/
 - Inside HTML page:
     - `<style type='text/css'>body {color: green}; … </style>`
     - Used for special pages.
-    - Used to optimize number of HTTP requests.
+    - Used to optimize the number of HTTP requests.
 - Inline:
     - `<body style='color: green'>…`
     - (Obviously?) without a selector. 
@@ -372,9 +372,9 @@ permalink: /en/apv/slides/html/
 
 <section markdown='1'>
 ## CSS Box Model 
-- Padding -- inside HTML element -- between content and box.
+- Padding -- inside of the HTML element -- between content and box.
 - Border -- outside of the HTML element -- around the box.
-- Margin -- outside the HTML element -- around the box.
+- Margin -- outside of the HTML element -- around the box.
 
 ![Margin & Padding](/en/apv/articles/html/margin-padding.png)
 </section>
@@ -402,7 +402,6 @@ permalink: /en/apv/slides/html/
     - by three HSL components:
         - `color: hsl(0, 100%, 50%)`, 
         - `color: hsla(0, 100%, 50%, 0.5)` (**alpha channel**).
-
 </section>
 
 <section markdown='1'>
@@ -416,7 +415,6 @@ permalink: /en/apv/slides/html/
     - SemanticUI ([semantic-ui.com](http://semantic-ui.com/)).
 - Complicated layouts use alternatives to CSS (LESS, SASS).
     - Must be compiled to CSS for web browsers.
-
 </section>
 
 <section markdown='1'>
@@ -426,18 +424,16 @@ permalink: /en/apv/slides/html/
 - [Mozilla Developer Portal](https://developer.mozilla.org/en-US/docs/Web)
 - [Google University](https://developers.google.com/university/)
 - [W3C](http://www.w3c.org)
-
 </section>
 
 <section markdown='1'>
 ## Checkpoint
-- Why mustn't the HTML start tag and end tag cross?
-- What happens if HTML documents lacks a `<!DOCTYPE`?
-- Can you have delete icon on page without using an image?
+- Why mustn't HTML start tag and end tag cross?
+- What happens if HTML document lacks a `<!DOCTYPE`?
+- Can you have a delete icon on a page without using an image?
 - What does XML and HTML have in common? 
-- Why is CSS3 not standardized yet?
+- Why CSS3 has not been standardized yet?
 - Who says that `<title>` must not occur twice in a HTML document?
 - Is it better to draw a border using CSS or use an PNG image?
 - What does HTML4 and HTML5 have in common?
-
 </section>

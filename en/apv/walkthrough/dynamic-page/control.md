@@ -7,7 +7,7 @@ permalink: /en/apv/walkthrough/dynamic-page/control/
 {:toc}
 
 **Control flow** structures are language constructs which **control** the
-**flow** of the program -- i.e. they control, what lines of source source
+**flow** of the program -- i.e. they control, what lines of the source
 code get executed. Important control flow constructs:
 
 - conditions -- **if**, **switch** (and **case**)
@@ -21,7 +21,7 @@ In PHP conditional statements are written using **if** -- **else**
 {% include /en/apv/walkthrough/dynamic-page/ifelse-1.php %}
 {% endhighlight %}
 
-The condition itself must always be in parentheses. Multiple conditions
+The condition itself must be always in parentheses. Multiple conditions
 can be joined using [boolean](/en/apv/articles/programming/#type-system) operators `&&` (and) 
 and `||` (or) (there are [other confusing boolean operators](todo) in PHP), negation is
 written using `!`.
@@ -47,7 +47,7 @@ The `break` at the end of `case 4` is especially tricky.
 ### Comparison vs. Assignment
 When comparing two values, you must use the comparison operator `==`.
 If you use the assignment operator, you might run into an unexpected behavior.
-If you would write:
+If you write:
 
 {% highlight php %}
 if ($numberOfWheels = 4) {
@@ -55,7 +55,7 @@ if ($numberOfWheels = 4) {
 }
 {% endhighlight %}
 
-The condition will **always be true** (regardless of the actual value of $numberOfWheels).
+The above condition is **always true** (regardless of the actual value of $numberOfWheels).
 This is because the value of assignment is the assigned value, so the condition
 (after evaluating the part in parentheses) will be `if (4) {`. Now
 the [boolean type conversion](/en/apv/walkthrough/dynamic-page/#boolean-conversions)
@@ -65,10 +65,10 @@ That's unexpected and somewhat dangerous, good [development tools](todo) will wa
 
 Sometimes this is prevented by writing conditions in reverse order `if (4 == $numberOfWheels)`. Because in
 this case, using a single `=` -- `if (4 = $numberOfWheels)` will cause compilation error (you cannot assign
-anything to constant number 4). Personally I find this way of writing weird.
+anything to the constant number 4). Personally I find this way of writing weird.
 
 ## Loops
-A loop executes a piece of code multiple times in so called **iterations**. An iteration
+A loop executes a piece of a code multiple times in so called **iterations**. An iteration
 is one single execution of the loop body. There are three basic loops in PHP as in C:
 
 {% highlight php %}
@@ -76,20 +76,20 @@ is one single execution of the loop body. There are three basic loops in PHP as 
 {% endhighlight %}
 
 All three loops are equivalent, so the above will output '012345678901234567890123456789'.
-`for` is used when the number of iterations is know beforehand (like in the above example),
+`for` is used when the number of iterations is known beforehand (like in the above example),
 as it is the simplest of the three. `while` is used when the terminating condition must be
 evaluated before the iteration is executed. `do-while` is used when the termination condition
-can be evaluated only after the loop has executed. PHP also has a special `foreach` loop
+can be evaluated only after the iteration is executed. PHP also has a special `foreach` loop
 which we'll [attend to later](/en/apv/walkthrough/dynamic-page/array/#traversing-arrays).
 
 ## Task
 Take the [contact form from the previous chapter](/en/apv/walkthrough/dynamic-page/#task-1----contact-form) and:
 
-- Assume that you have variable `$currentUser` with name of the currently logged user or empty string in case no one is logged.
+- Assume that you have variable the `$currentUser` with the name of the currently logged user or an empty string in case no one is logged.
 - If the user is logged in, display a greeting for him and hide the email input.
 - If the user is not logged in, show the email input and year of birth select box.
-- Fill year of birth select box with year from 1916 up to current year 
-(use [`date('Y')`](http://php.net/manual/en/function.date.php) to obtain current year)
+- Fill the year of birth select box with the year from 1916 up to the current year 
+(use [`date('Y')`](http://php.net/manual/en/function.date.php) to obtain the current year)
 
 You will need to define the variable `$currentUser` and test it with different values. So with `$currentUser = 'John Doe';`
 the form should look like this:
@@ -110,7 +110,7 @@ strings. From now on, we will be working on simplifying the code. Again, there a
 many different solutions.
 
 ## Summary
-You should now be able to control the flow of your application. This means using conditional
+Now you should be able to control the flow of your application. This means using conditional
 branching and loops.
 
 ### New Concepts and Terms

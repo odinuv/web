@@ -11,7 +11,7 @@ permalink: /en/apv/slides/relational-database/
 - Typical and most common example of **ACID** database systems.
 - Data are modeled using relations (look like tables).
 - Quite old (around 1970).
-- Forms a basis for the SQL langauge.
+- Forms a basis for the SQL language.
 - Relational database system store **entities** / **records** / **rows**.
 </section>
 
@@ -435,7 +435,7 @@ with (relational) database system.
     - use underscores for delimiters (`id_person`),
     - use either all lower-case or all upper-case,
     - keep it reasonably short (less than approx 30 characters).
-- Try to avoid langauge keywords (SQL has many of them).
+- Try to avoid language keywords (SQL has many of them).
 </section>
 
 <section markdown='1'>

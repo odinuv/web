@@ -12,31 +12,31 @@ you probably noticed that
 it is becoming quite a convoluted mess of PHP and HTML (and yet it is still a very
 simple form). The solution to this problem is to use **(HTML) templates**.
 
-The advantage of templates is that it simplifies both the PHP and HTML code and
-that it protects your code against [Cross Site Scripting vulnerabilities](todo).
+The advantage of templates is that they simplify both the PHP and HTML code and
+that they protect your code against [Cross Site Scripting vulnerabilities](todo).
 The disadvantage of templates is that you need to learn another language. HTML
 templates are called templates, because they are HTML pages with placeholders. The
 actual value of the placeholders is supplied when the template is *rendered*
-(which usually means -- sent to web browser). Only then the template becomes as
+(which usually means -- sent to a web browser). Only then the template becomes a
 valid HTML page.
 
 ## Templating Engines
-A template engine is a library which processes a HTML page with **macros**
+Template engine is a library which processes a HTML page with **macros**
 (snippets of template language) and produces a valid HTML page.
 There are many templating engines available for PHP, some of the popular engines
 are: *Smarty*, *Latte*, *Twig*. All of them (and many others) can be used as
 parts of their respective [frameworks](todo) or standalone. In the following
 examples I will stick to using standalone *Latte* templating engine. The
-choice is rather arbitrary, as all templating engines work in very similar way, have
-almost the same features and they even have somewhat similar syntax.
+choice is rather arbitrary, as all templating engines work in a very similar way, have
+almost the same features and they even have a somewhat similar syntax.
 
 ### Getting Started with Latte
-First you need to obtain Latte, either by using [composer](https://getcomposer.org/) or simply by
+First you need to obtain Latte, either by using the [Composer](https://getcomposer.org/) tool or simply by
 **downloading the library** from [Github](https://github.com/nette/latte):
 
 ![Screenshot -- Download Latte](/en/apv/walkthrough/templates/download-latte.png)
 
-You should get [latter-master](/en/apv/walkthrough/templates/latte-master.zip) and
+You should get [latte-master](/en/apv/walkthrough/templates/latte-master.zip) and
 copy the contents of the `src` folder to your script. Now create a PHP script like this:
 
 {% highlight php %}
@@ -49,13 +49,13 @@ And a template file `template-1.latte` like this:
 {% include /en/apv/walkthrough/templates/template-1.latte %}
 {% endhighlight %}
 
-Now, lets see what happened. The template looks like a standard HTML document (with file extension
+Now, let's see what has happened. The template looks like a standard HTML document (with the file extension
 `latte`), there are
 some additional features however. In the template above I used `{$pageTitle}` which
 prints the contents of a template variable `$pageTitle`.
 
-Now for the PHP script -- first statement `require 'latte.php';` instructs PHP to include file
-`latte.php` in the same directory as your script. The `latte.php` is part of Latte Templating
+Now for the PHP script -- first statement `require 'latte.php';` instructs PHP to include the file
+`latte.php` in the same directory as your script. The `latte.php` is part of the Latte Templating
 engine and makes sure that the library is available in your script. Next we [create
 an instance](/en/apv/walkthrough/dynamic-page/objects/#classes) of the `Engine` 
 class: `$latte = new Latte\Engine();`. Note that the
@@ -63,7 +63,7 @@ class `Engine` is in [namespace](/en/apv/walkthrough/dynamic-page/objects/#names
 Next we create an [associative array](/en/apv/walkthrough/dynamic-page/array/) `$templateVariables` 
 with value `'Template engine sample'` assigned to the `pageTitle` key.
 On the last line, we call the `render` [function](/en/apv/walkthrough/dynamic-page/objects/#functions) 
-of Latte engine and pass it filename of the
+of the Latte engine and pass to it the filename of the
 template (`template-1.latte`) and the array of $templateVariables.
 
 As you can see, **the variables used and available in the template must be passed via an associative
@@ -86,8 +86,8 @@ Template file `template-2.latte`:
 
 There are two options how the macros can be written in latte. In the template above, the
 flintstones array is printed using the longer syntax `{foreach}{/foreach}` and `{if}{/if}`
-which is more similar to PHP syntax. The rubbles array is printed using the shorter
-syntax `n:foreach` and `n:if`, which less disturbs the flow of the HTML code.
+which is more similar to the PHP syntax. The rubbles array is printed using the shorter
+syntax `n:foreach` and `n:if`, which disturbs the flow of the HTML code much less.
 
 The statement `{$role|capitalize}` applies the built-in Latte `capitalize`
 [filter](https://latte.nette.org/en/filters).
@@ -111,7 +111,7 @@ the following schema.
 
 ## Task -- Contact form
 Let's convert the [contact form](/en/apv/walkthrough/dynamic-page/array/#task----improve-contact-form)
-we did in previous chapter.
+we did in the previous chapter.
 
 {: .solution}
 {% highlight php %}
@@ -132,12 +132,12 @@ I simplified the condition
 automatic [boolean conversion](/en/apv/walkthrough/dynamic-page/#boolean-conversions) allows us to do it.
 
 {: .note}
-You need to convert the entities &lt; and &gt; in the message back to to characters `<` and `>`. Now
+You need to convert the entities &lt; and &gt; in the message back to the characters `<` and `>`. Now
 Latte does this conversion automatically for you.
 
 ## Task -- Person Form
 Using templates, create a form like the one below. Assume that you have a variable `$person`
-which contains the default values for form inputs. The `person` variable should be an associative
+which contains the default values for the form inputs. The `person` variable should be an associative
 array with keys `id`, `first_name`, `last_name`, `nickname`, `birth_day`, `height`.
 
 {: .solution}
@@ -179,17 +179,17 @@ Template file `person-form.latte`:
 
 
 ## Summary
-While using a template engine requires you to learn its' macro language, it
+Using a template engine requires you to learn its' macro language. However it
 does lead to a cleaner [and safer](todo) HTML and PHP code. You don't need to struggle so much
-with using [proper quotes](/en/apv/walkthrough/dynamic-page/#working-with-strings). However 
-when using templates, don't forget that
-the variables defined inside a template are only those passed in array to the
+with using [proper quotes](/en/apv/walkthrough/dynamic-page/#working-with-strings).  
+When using templates, don't forget that
+the variables defined inside a template are only those passed in an array to the
 `render` method! Variables from the PHP script are not available in the
-template automatically. Also keep in mind that while HTML Template is very similar to
+template automatically. Also keep in mind that while a HTML Template is very similar to
 a HTML page, it cannot be interpreted by the web browser, only the corresponding template
 engine is capable of processing it and producing a valid HTML page.
 
-You should now be familiar with the principle of a PHP template engine and you
+Now you should be familiar with the principle of a PHP template engine and you
 should be aware of the benefits of using a template engine.
 You should be able to use basic macros for inserting variables in a template and working
 with conditionals and loops in Latte templates (either syntax).

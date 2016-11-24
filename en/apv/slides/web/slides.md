@@ -13,7 +13,7 @@ permalink: /en/apv/slides/web/
   - Measurability (define what is *same*),
   - Portability (as a result of the above),
   - Standardization (formal or industrial),
-  - Documentation (what else is need for reproducibility),
+  - Documentation (what else is needed for reproducibility),
   - Organization (no randomness).
 - Apply those principles in Software Engineering.
 
@@ -40,19 +40,18 @@ permalink: /en/apv/slides/web/
   - Relation between entire Systems,
   - Relation between application parts, computer processes.
 - Examples:
-  - Web Browser is client to Web Server,
-  - Web Server is client to Database Server,
-  - Web Browser is server to end user,
-  - Computer is server to end user.
+  - Web Browser is a client to a Web Server,
+  - Web Server is a client to a Database Server,
+  - Web Browser is a server to an end user,
+  - Computer is a server to an end user.
 - Opposite: P2P architecture.
-
 </section>
 
 <section markdown='1'>
 ## Computer networks
 - Need a communication protocol (set of rules).
-- In applications we are not interested in physical layer.
-- A computer network from Application viewpoint:
+- In applications we are not interested in the physical layer.
+- A computer network from an application viewpoint:
 
 ![A random network schema](/en/apv/articles/web/network-schema.png)
 </section>
@@ -63,8 +62,8 @@ permalink: /en/apv/slides/web/
 - Internet is every network using TCP/IP protocol suite.
   - **The Internet** vs. **internet** vs. **intranet**
 - IP (Internet Protocol) -- Basic transmission protocol (packets). 
-- TCP (Transmission Control Protocol) -- Reliable protocol.
-- UDP (User Datagram Protocol) -- Unreliable protocol.
+- TCP (Transmission Control Protocol) -- A reliable protocol.
+- UDP (User Datagram Protocol) -- An unreliable protocol.
 - Dozens of protocols for network services (DNS, DHCP, HTTP, SMTP, SSH, …).
 - Internet standards are marked as RFC (industry standards).
 
@@ -72,27 +71,25 @@ permalink: /en/apv/slides/web/
 
 <section markdown='1'>
 ## Internet Addresses
-- Hardware address (MAC address) -- unusable in application layer:
-  - Assigned by device manufacturer,
+- Hardware address (MAC address) -- unusable in the application layer:
+  - Assigned by the device manufacturer,
   - **Reasonably** worldwide unique.
 - Logical address (IP Address) -- most important for transmission:
-  - Assigned by network administrator,
-  - Respects topology of network and can be used to find physical location of device.
+  - Assigned by the network administrator,
+  - Respects topology of the network and can be used to find the physical device location.
 - Name address (Domain Name) -- used by end-users only: 
   - Assigned through DNS (service/server/system),
-  - Must be translated (M:N) to IP Address for transmission.
-
+  - Must be translated (M:N) to an IP Address for transmission.
 </section>
 
 <section markdown='1'>
 ## Addressing hosts
 - For communication between two hosts, the logical addresses of both devices must be known.
 - Domain names must be translated to logical addresses.
-- One host may run multiple applications, to distinguish between them a **socket** must be used.
-- For communication between applications, both source and destination socket must be known.
+- One host may run multiple applications, a **socket** must be used to distinguish between them.
+- For communication between applications, both the source and destination socket must be known.
 - Socket = IP Address + Port.
-- Port is numeric identifier of the application (1-65535).
-
+- Port is a numeric identifier of the application (1-65535).
 </section>
 
 <section markdown='1'>
@@ -100,7 +97,7 @@ permalink: /en/apv/slides/web/
 - Network Services are various applications offered to the end-users of the internet network
 - Each service has a network protocol (and therefore port) assigned to it:
   - Destination ports are **well-known**, 
-  - Source ports are ephemeral.
+  - Source ports are **ephemeral**.
 </section>
 
 <section markdown='1'>
@@ -115,11 +112,11 @@ permalink: /en/apv/slides/web/
 ## Internet Address Format
 - URL (Uniform Resource Locator) is used by many services.
 - `protocol://user:password@address:port/path?query`
-  - `protocol` -- registered protocol name (required),
+  - `protocol` -- a registered protocol name (required),
   - `user` and `password` -- optional credentials (discouraged),
   - `address` -- either an IP address or name address of the destination host (required),
-  - `port` -- socket port (required),
-  - `path` -- directory to the actual requested file,
+  - `port` -- a socket port (required),
+  - `path` -- a directory to the actual requested file,
   - `query` -- `name-value` pairs optionally supplied to the requested file.
 </section>
 
@@ -138,27 +135,26 @@ web pages.
 
 <section markdown='1'>
 ## HTTP Protocol
-- HTTP is **stateless** protocol:
+- HTTP is a **stateless** protocol:
   - Communication is split into transactions,
   - Each transaction creates a new HTTP connection,
   - Together with terminating the transaction, all state information is lost:
     - Theoretically this prevents someone from logging in, but there is a way around this.
-    - Requests from a single client are isolated on the server and they are difficult to connect together.
-- HTTP is **text** protocol.
+    - Requests from a single client are isolated on the server and they are difficult to be connected together.
+- HTTP is a **text** protocol.
 
 </section>
 
 <section markdown='1'>
 ## HTTP Transaction
 - HTTP Transaction consists of:
-  - Establish connection (client),
-  - Send request (client),
-  - Send response (server),
-  - Terminate connection (server).
-- Both request and response consist of **headers** and **body**.  
+  - Establish a connection (client),
+  - Send a request (client),
+  - Send a response (server),
+  - Terminate the connection (server).
+- Both the request and the response consist of **headers** and **body**.  
   - HTTP Transaction fulfills a single HTTP request.
 - Many HTTP transactions are required to load a single page.
-
 </section>
 
 <section markdown='1'>
@@ -169,13 +165,12 @@ web pages.
 
 <section markdown='1'>
 ## Checkpoint
-- What is the difference between web and internet?
-- How many different TCP/IP protocols you use in a day?
+- What is the difference between the web and the internet?
+- How many different TCP/IP protocols you do use in a day?
 - How many HTTP request have you send during reading these slides?
-- What use is unreliable protocol?
-- Is it more important to know protocol or port?
+- What use is an unreliable protocol?
+- Is it more important to know the protocol or port?
 - Is it possible to download a page without creating a socket?
 - Can you visit a page by knowing just MAC address of the server?
 - Can a server be a client?
-
 </section>

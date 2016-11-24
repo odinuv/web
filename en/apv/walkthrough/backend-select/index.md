@@ -6,11 +6,10 @@ permalink: /en/apv/walkthrough/backend-select/
 * TOC
 {:toc}
 
-In the [previous chapter](/en/apv/walkthrough/backend/), you have learned how to use SQL queries from
-within PHP scripts. You also learned how to use parameters in SQL queries using 
+In the [previous chapter](/en/apv/walkthrough/backend/), you have learned how to use SQL queries from within
+PHP scripts. You have also learned how to use parameters in SQL queries using 
 [prepared statements](/en/apv/walkthrough/backend/#selecting-data-with-parameters). In this chapter, we will connect
-it with HTML forms to build a fully interactive page which communicates with 
-database.
+it with HTML forms to build a fully interactive page which communicates with a database.
 
 ## Getting Started
 In this chapter, we need to get back to [HTML forms](/en/apv/walkthrough/html-forms/) and processing them in PHP.
@@ -48,7 +47,7 @@ you should see something like:
 
     array ( 'someText' => 'fooBar', 'send' => 'something', )
 
-You can see that the '$_POST' array is as an associative arrays of form controls. The indexes 
+You can see that the `$_POST` array is as an associative array of form controls. The indexes 
 in the array are form control names, and the values are control values. This underlines
 the importance of knowing 
 what [control names and values are](/en/apv/walkthrough/html-forms/#name-and-value).
@@ -56,16 +55,16 @@ what [control names and values are](/en/apv/walkthrough/html-forms/#name-and-val
 It is also important to know, that the entire script is stateless, the same 
 way [HTTP protocol is](/en/apv/articles/web/#http-protocol). This means that the `$_POST` array is filled
 *only for a single execution*. Test the above example and see for yourself, that
-the content of `$_POST` array is only filled whit what you just entered
+the content of `$_POST` array is only filled with what you just entered
 (or nothing, if you did not send the form and just loaded the page).
 
-The `GET` method behaves slightly different in that it changes the URL of the script. This 
+The `GET` method behaves slightly different than the `POST` method in that it changes the URL of the script. This 
 means that the state of the form is encoded in the address of the page and therefore remains there
-until changed again. It is quite important to, decide on the [correct HTTP method to use](todo).  
+until changed again. It is quite important to decide on the [correct HTTP method to use](todo).  
 
 ### Connecting together
-Now let's make a page which lists the users in database and lets the user to search within them.
-We can list e.g. first name, last name, nickname of each person and order them by last name and 
+Now let's make a page which lists the users in the database and lets the user search within them.
+We can list e.g. first name, last name, nickname of each person and order them by the last name and 
 first name. For searching we need to create a form with one *search keyword*.
 Now let's think about what possible states the page can have and what will be displayed, for example:
 
@@ -81,8 +80,8 @@ Let's start with making a static page first:
 {% include /en/apv/walkthrough/backend-select/persons-static.html %}
 {% endhighlight %}
 
-Now add a PHP script, which generates the page using template and layout template (you can
-use one [from previous chapter](/en/apv/walkthrough/backend/). So the page template would be: 
+Now add a PHP script, which generates the page using a template and a layout template (you can
+use one [from the previous chapter](/en/apv/walkthrough/backend/). So the page template would be: 
 
 {% highlight html %}
 {% include /en/apv/walkthrough/backend-select/persons-list-1.latte %}
@@ -128,8 +127,8 @@ I used the [`ILIKE` operator](https://www.postgresql.org/docs/current/static/fun
 provides a case-insensitive match. Also I used '%' both
 on the beginning and at the end of the pattern so that a full-text search is achieved. The pattern
 '%bill%' would therefore match any of: 'Bill', 'billy', 'kill-bill', etc.
-To achieve the required functionality we need to either put the above SQL statements in the 
-prepared `if` conditions (assuming we have PDO instance in `$db` variable): 
+To achieve the required functionality you need to put the above SQL statements in the 
+prepared `if` conditions (assuming you have PDO instance in `$db` variable): 
 
 {% highlight php %}
 if (!empty($_GET['search'])) {
@@ -198,27 +197,27 @@ very important to call `execute` in the first branch of that condition, to make 
 with the output of the second branch. This approach to writing the code prevents a lot of bugs and
 weird situations. But it requires you to ask 'what should be the outcome of this piece of code' ?
 
-Let's add the condition to the PHP script together with connection to database, `try-catch` for error control
+Let's add the condition to the PHP script together with the connection to the database, `try-catch` for error control
 and printing of the results.
 
 {% highlight php %}
 {% include /en/apv/walkthrough/backend-select/persons-list-2.php %}
 {% endhighlight %}
 
-Perhaps you got the idea that I could've put added the `required` attribute to the keyword
+Perhaps you got the idea that I could've added the `required` attribute to the keyword
 form control to prevent the form from being submitted empty and simplify the PHP script. Yes, we
 can do that, but it won't simplify the PHP script, because the validation in form is
 only on the client side (web browser) and is [unreliable](todo). 
 
 ## Task -- Precise the search
 One can object that the search form as it is now is too relaxed. What if the user wants to 
-search both by the first name and last name? E.g. he knows that he's looking for 
+search both by the first name and last name? E.g. she knows that she's looking for 
 someone named 'John Do*something*'. Your task is now to extend the search script to 
 do so. Try to find a solution without adding more form controls.
 
 {: .solution}
 <div markdown='1'>
-Let's say that the user enters 'John Do' in the search field. We can split the text by space and 
+Let's say that the user enters 'John Do' in the search field. We can split the text by a space and 
 obtain strings 'John' and 'Do'. Then we can search for them using an SQL query. To split a string
 in PHP, you can use the [`explode` function](http://php.net/manual/en/function.explode.php). 
 You can use the [`count` function](http://php.net/manual/en/function.count.php) to
@@ -245,11 +244,10 @@ the user enters three words? What are all the possible states?
 <div markdown='1'>
 - The form was not submitted -- display nothing
 - The form was submitted (user pressed the search button): 
- - User entered no keyword -- display nothing
- - User entered a single keyword -- display persons with matching first name or last name 
- - User entered two keyword -- split the keyword into words and search for user with first name matching the first 
- word and last name matching the second word
- - User entered three keywords -- display an error message
+    - User entered no keyword -- display nothing
+    - User entered a single keyword -- display persons with matching first name or last name 
+    - User entered two keywords -- split the keyword into words and search for the user with the first name matching the first word and the last name matching the second word
+    - User entered three keywords -- display an error message
 </div> 
 
 Page template (notice the introduction of `$message` variable:
@@ -266,7 +264,7 @@ PHP script (notice that the queries have different boolean operators):
 {% endhighlight %}
 
 {: .note}
-The above script is written in slightly different style than 
+The above script is written in a slightly different style than 
 the [previous one](/en/apv/walkthrough/backend-select/#finalizing). Here, I 
 maintained the consistency of state by first initializing the `$persons` and `$message` variables
 to some default values and used the conditions to change them only when necessary. This leads 
@@ -275,15 +273,15 @@ possible states. This is however a more practical approach.
 
 ## Summary
 There are many more options (probably thousands!), how the above search form can be implemented.
-For example you can add searching by nickname, day of birth, height etc. There are many possibilities
-how all those criteria can be combined, which leads us to [application design](todo).   
+For example you can add searching by a nickname, day of birth, height etc. There are many possibilities
+how all those criteria can be combined, which leads us to an [application design](todo).   
 
-In this chapter you learned how to process HTML forms in PHP script.
+In this chapter you have learned how to process HTML forms in the PHP script.
 You should be familiar with the structure of `$_GET` and `$_POST` variables.
 Make sure you understand the rules how HTML form controls are transformed into
 [name-value pairs](/en/apv/walkthrough/html-forms/#name-and-value) and subsequently into `$_GET` and `$_POST` variables.
-This allows you to implement your own logic into of the application behavior. So from now on, most of the 
-exercises have virtually unlimited number of solutions. 
+This allows you to implement your own logic into the application behavior. So from now on, most of the 
+exercises have a virtually unlimited number of solutions. 
 
 ### New Concepts and Terms
 - Processing HTML forms

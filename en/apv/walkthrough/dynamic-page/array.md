@@ -14,21 +14,21 @@ collections](https://en.wikipedia.org/wiki/Java_collections_framework),
 In PHP, this is simplified as there are only [arrays](http://php.net/manual/en/book.array.php).
 
 An array is a collection of elements, each element has a value and an **index** (or **key**) through which it
-is accessed in the array. This means that **keys must by unique**. Because PHP is dynamically
+is accessed in the array. This means that **keys must by unique**. Because PHP is a dynamically
 typed language, each value and key can
-be of different type. There are two types of arrays in PHP:
+be of a different type. There are two types of arrays in PHP:
 
 - **ordinal** (indexes are e.g. integers)
 - non-ordinal -- **associative** (indexes are e.g. strings)
 
-Ordinal array has *only* indexes of [ordinal type](https://en.wikipedia.org/wiki/Ordinal_data_type) --
+An ordinal array has *only* indexes of an [ordinal type](https://en.wikipedia.org/wiki/Ordinal_data_type) --
 a type which has a clear sequence of values (e.g integer). `for` loop can be used only with ordinal
-arrays. Other types of loops (`foreach`, `while`, `do-while`) can be used with both types of array.
-`foreach` loops is especially useful for non-ordinal arrays. There is no other difference in
+arrays. Other types of loops (`foreach`, `while`, `do-while`) can be used with both types of arrays.
+`foreach` loop is especially useful for non-ordinal arrays. There is no other difference in
 working with ordinal and associative arrays.
 
 ## Creating an Array
-There are multiple options how to create an array, the following example show them along with
+There are multiple options how to create an array, the following example shows them along with
 the `print_r` function which prints out contents of an array (you cannot use normal `echo` with arrays).
 
 ### Create an Array With Implicit Indexes
@@ -38,7 +38,7 @@ In this case, the indexes are generated automatically starting with zero.
 {% include /en/apv/walkthrough/dynamic-page/array-1.php %}
 {% endhighlight %}
 
-Sometimes you may encounter older PHP syntax which did not use square brackets ``$flinstones = array("Fred", "...");``.
+Sometimes you may encounter an older PHP syntax which did not use the square brackets ``$flinstones = array("Fred", "...");``.
 
 Alternative definition -- item by item:
 
@@ -46,13 +46,13 @@ Alternative definition -- item by item:
 {% include /en/apv/walkthrough/dynamic-page/array-1a.php %}
 {% endhighlight %}
 
-Empty square brackets mean that the value will be assigned as last element of that array.
+Empty square brackets mean that the value will be assigned as the last element of that array.
 You can combine both approaches freely. Both of them will print:
 
     Array ( [0] => Fred [1] => Wilma [2] => Pebbles )
 
 ### Create an Array With Explicit Indexes
-In this case, element indexes are explicitly stated when the array is created.
+In this case, the element indexes are explicitly stated when the array is created.
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/array-2.php %}
@@ -85,7 +85,7 @@ The above will print:
     Array ( [father] => Fred [mother] => Wilma [child] => Pebbles )
 
 ### Multidimensional arrays
-Nothing prevents you assigning a whole other array as a value of an array. This way you can create
+Nothing prevents you from assigning a whole array as a value of an array. This way you can create
 so called *multidimensional array*s.
 
 Defined by individual values:
@@ -119,13 +119,13 @@ The above will print:
 
     FredBettyPebbles
 
-Notice that there is nothing special in accessing elements of multidimensional array. You
+Notice that there is nothing special in accessing elements of a multidimensional array. You
 simply use the first index `flintstones` to access the value in the array `$allOfThem` and
 then use the second index `child` to access the value in the `flintstones` array.
 
 {: .note}
 When defining an array, you may use implicit array keys and write `$array[] = 'value'`, but when
-reading a value from array, the must **always** be used. Writing `echo $array[]` is not allowed.
+reading a value from the array, the keys must **always** be used. Writing `echo $array[]` is not allowed.
 
 ### Removing elements from array
 Sometimes you may wish to remove an element. This can be done using ``unset()`` function:
@@ -143,8 +143,8 @@ produce HTML page for browser) and then the memory used by the script is cleared
 Use the `unset` operation only when you truly want to remove something from an array. 
 
 ### Traversing Arrays
-When you need to traverse the entire array, you need a loop. As mentioned above `for` loop can be
-used only with ordinal arrays, `foreach` loop can be used with any type of array.
+When you need to traverse the entire array, you need a loop. As mentioned above the `for` loop can be
+used only with ordinal arrays, the `foreach` loop can be used with any type of an array.
 
 When using a `for` loop, you often use the `count` function to return number of elements of the
 array, the below array has implicit indexes which start from 0:
@@ -203,20 +203,20 @@ Take the above example and change the output to a valid HTML page so that it loo
 {% endhighlight %}
 
 ## Task -- Improve contact form
-Take the [contact form](/en/apv/walkthrough/dynamic-page/control/#task) from previous chapter and:
+Take the [contact form](/en/apv/walkthrough/dynamic-page/control/#task) from the previous chapter and:
 
 - define the `$currentUser` variable as an associative array with keys `firstName`, `lastName`, `email`, `yearOfBirth`
 - if the user is not logged in, the array will have all the elements empty
-- modify the form to always include the elements `email`, `firstName`, `lastName`, `yearOfBirth`
-- if the user is logged in, fill all the form controls his values
-- define an array of birth years as a variable and us it when generating the `yearOfBirth` select field
+- modify the form so that it always contains the elements `email`, `firstName`, `lastName`, `yearOfBirth`
+- if the user is logged in, fill in all the form controls with his values
+- define an array of birth years as a variable and use it when generating the `yearOfBirth` select field
 - don't forget to [preselect](/en/apv/walkthrough/html-forms/#select) the `yearOfBirth` of the logged user (if any)
 
-This is how the form should look like for user John Doe:
+This is how the form should look like as viewed by user John Doe:
 
 ![Screenshot -- Form for logged user](/en/apv/walkthrough/dynamic-page/form-5a.png)
 
-This is how the form should look like for unknown user:
+This is how the form should look like for an unknown user:
 
 ![Screenshot -- Form for logged user](/en/apv/walkthrough/dynamic-page/form-5b.png)
 
@@ -247,11 +247,10 @@ $currentUser = [
 {% include /en/apv/walkthrough/dynamic-page/form-5.php %}
 {% endhighlight %}
 
-
 ## Summary
 You should now be able to work with arrays. This means you should be able to define
-an array, add elements and print them. Arrays are very important because results 
-of database querries are stored in them. This means that we will work with them a lot.  
+an array, add elements to it and print an array. Arrays are very important -- for example results 
+of database queries are stored in them. This means that we will work with them a lot.
 
 ### New Concepts and Terms
 - Conditionals -- if, else, ifelse, switch, case

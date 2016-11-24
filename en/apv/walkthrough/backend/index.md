@@ -6,20 +6,20 @@ permalink: /en/apv/walkthrough/backend/
 * TOC
 {:toc}
 
-In previous chapters, you learned how to create [PHP scripts](/en/apv/walkthrough/dynamic-page/), and
+In previous chapters, you have learned how to create [PHP scripts](/en/apv/walkthrough/dynamic-page/), and
 in the latest chapter also how to 
-[work with database using SQL language](/en/apv/walkthrough/database/).
-In this chapter, you'll learn how to work with database from within a 
+[work with a database using the SQL language](/en/apv/walkthrough/database/).
+In this chapter, you'll learn how to work with the database from within a 
 PHP script. This is a very important step in connecting all the 
 [technologies in the stack](todo) together.
 
 ## Getting Started
 Before you start, you need to have working credentials to a database, and
 you should have the [sample database](/en/apv/walkthrough/database/#database-schema) imported. Also you should be 
-familiar with [creating and running PHP script](/en/apv/walkthrough/dynamic-page/#getting-started).
+familiar with [creating and running a PHP script](/en/apv/walkthrough/dynamic-page/#getting-started).
 
 To create an application which communicates with a database system, you 
-always need some kind of library. Database libraries are specific to 
+always need some kind of a library. Database libraries are specific to 
 the application language (PHP, Java, C++) an database (PostgreSQL, MySQL, ...),
 so there are hundreds of them.
 
@@ -33,7 +33,7 @@ use:
 
     pgsql:host=SERVER_NAME;dbname=DATABASE_NAME
 
-The *pgsql* is [driver name](http://php.net/manual/en/ref.pdo-pgsql.connection.php).
+The *pgsql* is a [driver name](http://php.net/manual/en/ref.pdo-pgsql.connection.php).
 For the [prepared PostgreSQL server](http://php.net/manual/en/ref.pdo-pgsql.connection.php), the 
 connection string would be e.g.:
 
@@ -49,7 +49,7 @@ $db = new PDO('pgsql:host=akela.mendelu.cz;dbname=xpopelka', 'xpopelka', 'passwo
 {% endhighlight %}
 
 ### Selecting Data
-To select data from database, use the `query` method of the `PDO` connection object.
+To select data from the database, use the `query` method of the `PDO` connection object.
 Supply a SQL [`SELECT`](/en/apv/walkthrough/database/#select) query as a string to the function. The function will
 return a [`PDOStatement` object](http://php.net/manual/en/class.pdostatement.php). The `PDOStatement` 
 represents an SQL query and
@@ -88,7 +88,7 @@ then **execute** the statement:
 {% endhighlight %}
 
 In the above query, I used a placeholder name `:name` (placeholder must start with colon `:`). 
-Then I bind value to it using the [`bindValue`](http://php.net/manual/en/pdostatement.bindvalue.php) 
+Then I bind a value to it using the [`bindValue`](http://php.net/manual/en/pdostatement.bindvalue.php) 
 method of the `$stmt` [`PDOStatement`](http://php.net/manual/en/class.pdostatement.php) 
 object. Last, I (`execute`)[http://php.net/manual/en/pdostatement.execute.php] the statement. 
 Then the result can be printed as in the previous example. 
@@ -104,7 +104,7 @@ in the `query` method, don't do it! Such approach would introduce [SQL injection
 
 ### Inserting Data
 Let's insert a new row in the `location` table. The principle remains the same as in the 
-above example with prepared statement. You just need to use the [`INSERT`](/en/apv/walkthrough/database/#insert) statement and
+above example with the prepared statement. You just need to use the [`INSERT`](/en/apv/walkthrough/database/#insert) statement and
 provide the right parameters to it: 
 
 {% highlight php %}
@@ -112,7 +112,7 @@ provide the right parameters to it:
 {% endhighlight %}
 
 Note that there is no `fetchAll` call, because the `INSERT` statement does not return a table 
-(or anything that useful). Because working with prepared parameters can be a little bit tricky, you can
+(or anything useful). Because working with prepared parameters can be a little bit tricky, you can
 use `$stmt->debugDumpParams();` function to print the SQL statement and actual values of parameters for
 debugging purposes.  
    
@@ -120,10 +120,10 @@ debugging purposes.
 I have named the keys in the `$location` variable the same way as the SQL placeholders (`:name`, `:city`, `:country`)
 and also the same way as columns in the `location` table. This is not at all necessary, because these names
 are totally unrelated. However, it reduces a lot of confusion to use consistent naming (also saves you a lot of time inventing 
-new names). 
+new names).
 
 ### Error Control
-An important part of communicating with database is [handling errors](todo). There are 
+An important part of communicating with the database is [handling errors](todo). There are 
 [multiple options](todo), but the easiest way is to use [exceptions](todo). 
 The following example extends the previous `INSERT` example with 
 error handling.
@@ -133,14 +133,14 @@ error handling.
 {% endhighlight %}
  
 The first important part is the line `$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);`
-which makes the database driver switch into mode in which it [*throws*](todo) an exception
-whenever an error occurs in an operations.
+which makes the database driver switch into the mode in which it [*throws*](todo) an exception
+whenever an error occurs in operations.
 
 Second, I wrapped the whole code in a `try -- catch` statement. As the name suggest, the code
 inside `try -- catch` is executed normally unless an exception occurs. Whenever an exception
 occurs, the rest of the `try` code is skipped and the `catch` code is executed.
-In the `catch` code I catch exceptions of class [`PDOException`](http://php.net/manual/en/class.pdoexception.php) -- those 
-are exceptions
+In the `catch` code I catch exceptions of the [`PDOException`](http://php.net/manual/en/class.pdoexception.php) 
+class -- those are exceptions
 thrown by the PDO database driver. The method `getMessage` of the exception object returns the
 actual error message returned by the database.
 
@@ -157,7 +157,7 @@ error handling is triggered correctly.
 
 ## Task -- Select Data
 Select `first_name`, `last_name`, `nickname` of all persons. Order the persons by their
-last name and first name (ascending). Make sure to use appropriate error handling.
+last names and first names (ascending). Make sure to use appropriate error handling.
 
 {: .solution}
 {% highlight php %}
@@ -166,14 +166,14 @@ last name and first name (ascending). Make sure to use appropriate error handlin
 
 Notice that I used two try-catch blocks, one for connecting to the database and one for the
 actual query. This will become more useful in future, when we need to distinguish between 
-errors in different parts of code. In the first `catch` I used the `exit` function to
-immediately terminate the execution of the script. 
+errors in different parts of the code. In the first `catch` I used the `exit` function to
+terminate immediately the execution of the script. 
 
 ## Task -- Select Pattern
 Select `first_name`, `last_name`, `age`, `height` of all persons, whose first name or last name 
 begins with **L**. Order the persons by their
-height and age (descending). Make sure to use appropriate error handling. I suggest you approach 
-the task in parts, first make a working SQL query, then add it to a PHP script.                      
+height and age (descending). Make sure to use appropriate error handling. I suggest you to approach 
+the task in parts, first make a working SQL query, then add it to a PHP script.
 
 {: .solution}
 <div markdown='1'>
@@ -196,21 +196,21 @@ SELECT first_name, last_name, nickname, AGE(birth_day) AS age, height
 {% endhighlight %}
 
 {: .note}
-I used an [alias](/en/apv/articles/sql-join/#aliases) in the SQL query to define a 
+I used an [alias](/en/apv/articles/sql-join/#aliases) in the SQL query to define a new 
 name of the computed column. It is important to know
  the column name, because we need to reference it in the PHP script.      
 
 ## Task -- Print Data in HTML
 A big task lies ahead of you. Print `first_name`, `last_name`, `nickname` and 
 `age` rounded to years of all persons ordered by `last_name` and `first_name` (ascending).
-Print the persons in a HTML table, one row each. Use 
+Print the persons in a HTML table, one row each. Use a
 [layout template](/en/apv/walkthrough/templates-layout/) for the HTML page. 
 Again, approach the task in steps, e.g.:
 
 1. Make a static HTML page with some sample data (skip this if you are confident with templates).
 2. Make a PHP script to print the page using templates.
-3. Make the data in the script dynamic -- load them from variable, make sure the variable has same 
-format as obtained from database. 
+3. Make the data in the script dynamic -- load them from a variable, make sure the variable has the same 
+format as obtained from the database. 
 4. Write the SQL query to obtain the data you want.
 5. Hook the SQL query into the PHP script.
 
@@ -243,7 +243,7 @@ Create a PHP script, a template and a layout template.
 ### Step 3
 Define the persons to be displayed as an array in the PHP script, make 
 sure the array has the same form as the one 
-[returned from database functions](/en/apv/walkthrough/backend/#selecting-data). 
+[returned from the database functions](/en/apv/walkthrough/backend/#selecting-data). 
 
 {: .solution}
 {% highlight php %}
@@ -266,7 +266,7 @@ ORDER BY last_name ASC, first_name ASC
 {% endhighlight %}
 
 ### Step 5
-Modify the PHP script to load the variable from database. 
+Modify the PHP script to load the variable from the database. 
 
 {: .solution}
 {% highlight php %}
@@ -276,16 +276,16 @@ Modify the PHP script to load the variable from database.
 No one is forcing you to take all the above steps separately or in the shown order. 
 But **you must always be able to divide a complex task into simpler steps**. This
 is really important -- the scripts will become only more and more complicated and there is really 
-only one way to orientate in all the code and debug it. You have to split it into smaller pieces, 
+only one way to be oriented in all the code and debug it. You have to split it into smaller pieces, 
 write and test the pieces individually. Notice how in the above steps I changed only one thing
-at a time. Some parts (like the template layout) don't need to be changed all. However splitting
+at a time. Some parts (like the template layout) don't need to be changed at all. However splitting
 the code requires that you understand the connections between all the code parts:
 
 {: .image-popup}
 ![Schema of variables](/en/apv/walkthrough/backend/code-schematic.png)
 
 ## Summary
-In this chapter, you learned how to use SQL queries from within a PHP script.
+In this chapter, you have learned how to use SQL queries from within a PHP script.
 Non-parametric queries are quite simple (just call the `query` function). Parametric
 queries are more complicated (`prepare`, `bindValue`, `execute` function calls).
 Using proper error control adds further complexity to the script. However the error control

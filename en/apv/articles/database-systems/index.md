@@ -364,7 +364,7 @@ Although SQL language was indeed designed for the relational
 database model, over the years it found its way to other types of databases as well.
 The relational database model and SQL language naturally expects ACID database, but the
 SQL language may be used in BASE database as well.  
-Similarly, the SQL langauge was designed for CRUD databases, but is used in non-CRUD 
+Similarly, the SQL language was designed for CRUD databases, but is used in non-CRUD 
 databases as well.
 
 On the other hand, there are [NoSQL](https://en.wikipedia.org/wiki/NoSQL) databases which 
@@ -373,7 +373,7 @@ a hype about that SQL full of flaws, or just plain wrong and it should be abando
 This gave birth to NoSQL databases which did not use SQL for rebellious reasons. Then there are
 databases which do not use SQL because it is not suitable for them. These are mostly BASE
 databases, graph databases and some object databases. Although most of them try to use 
-some sort of query langauge. None of the alternative languages is as widespread as SQL however.
+some sort of query language. None of the alternative languages is as widespread as SQL however.
 Then there are some databases which try to workaround limitations of SQL language by 
 allowing other methods to access the data and in that case they are NOSQL meaning *Not Only SQL*. 
 Yes, it is quite confusing.
@@ -392,7 +392,7 @@ databases commonly have very high compression ratios, excellent performance for 
 performance for data modification queries. They are suitable for data warehouses.
 - [Key-value storage](https://en.wikipedia.org/wiki/Key-value_database) is used by non-relational database 
 systems and usually by NoSQL database systems. Records are stored simply as key-value pairs in a form similar to 
-[associative arrays](http://odinuv.cz/en/apv/walkthrough/dynamic-page/array/). Key-value databases 
+[associative arrays](/en/apv/walkthrough/dynamic-page/array/). Key-value databases 
 are used mainly when the structure of the data cannot be fixed. A good
 example is [Windows Registry](https://en.wikipedia.org/wiki/Windows_Registry) which contains configurations for 
 different applications (which are obviously different). By the way, Windows registry is also a hierarchical database.
@@ -407,14 +407,14 @@ In this article, you learned the basic concepts required for working with data. 
 know why databases are being used and what information systems are. I have presented multiple points of
 view on looking at database systems. According to *utilization* DBS are divided into OLTP and DWH. According to
 *data model* they can be split into Relational DBS, Graph DBS, etc. According to *principle* they can be divided into ACID and BASE. 
-According to *query langauge* they can be split into SQL and NoSQL (and perhaps NOSQL). According to *storage* they 
+According to *query language* they can be split into SQL and NoSQL (and perhaps NOSQL). According to *storage* they 
 may be divided into Row databases, Key-Value databases, etc. A single database system may sometimes fall into multiple 
 categories. Therefore do not look for any definitive list of what database system belongs to what category. 
 
 To simplify things, I will focus only on **SQL ACID relational OLTP row-storage** databases in the rest of this book. 
 because that is the starting point of many applications and it also the easiest and most proven concept.
 Even if you later switch into other technologies you should have notion about this basic type of database.
-I will deal with SQL langauge in more detail in the [next article](/en/apv/articles/sql-join/).
+I will deal with SQL language in more detail in the [next article](/en/apv/articles/sql-join/).
 
 ### New Concepts and Terms
 - data

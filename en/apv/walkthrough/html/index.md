@@ -1,19 +1,19 @@
 ---
-title: HTML 
+title: HTML
 permalink: /en/apv/walkthrough/html/
 ---
 
 * TOC
 {:toc}
 
-A static [web page](/en/apv/articles/web/#www-service) is a page which must be modified by the 
-page developer. For example, this site 
+A static [web page](/en/apv/articles/web/#www-service) is a page which must be modified by the
+page developer. For example, this site
 is a static page. Static pages are generally boring, but they are a necessary step to get into the fun
-stuff -- [dynamic pages](http://odinuv.cz/en/apv/walkthrough/dynamic-page/). In this chapter, you will learn to write 
+stuff -- [dynamic pages](/en/apv/walkthrough/dynamic-page/). In this chapter, you will learn to write
 [HTML documents](/en/apv/articles/html/).
 
 ## Getting started
-Open you [favorite editor](todo) and create a new HTML file. If the editor is nice to you, it will
+Open your [favorite editor](todo) and create a new HTML file. If the editor is nice to you, it will
 automatically create a template for you. If not, here is one:
 
 {% highlight html %}
@@ -21,7 +21,7 @@ automatically create a template for you. If not, here is one:
 {% endhighlight %}
 
 This is a minimal valid HTML document. Notice that the elements are hierarchically organized. The
-element `title` is contained **inside** the element `head`, which is contained **inside** element
+element `title` is contained **inside** the element `head`, which is contained **inside** the element
 `html`. The whitespace is mostly ignored in HTML, so the elements can be indented as they are nested
 (the indentation is not required, it just improves readability).
 
@@ -41,7 +41,7 @@ Note: there is no need to upload the page to a web site, since the page is stati
 ![Screenshot -- Page sample](/en/apv/walkthrough/html/static-1.png)
 
 ### Task -- Examine HTML
-Open web browser [Developer Tools](todo) and examine the structure of the HTML page. Can you see that
+Open the web browser [Developer Tools](todo) and examine the structure of the HTML page. Can you see that
 elements are organized hierarchically? Can you spot attributes?
 
 {: .solution}
@@ -72,9 +72,9 @@ Create a table like this in HTML:
 
 ### Task -- Playing with task cells 1
 It is sometimes necessary to have tables with joined cells. To join table cells, use
-attributes `colspan` (span a cell over columns) and `rowspan` (span a cell over rows).
+the attributes `colspan` (span a cell over columns) and `rowspan` (span a cell over rows).
 The value of the attribute is the number of cells the joined cells should occupy.
-Tip: use attribute `border` on `table` to get a clear view of table cells. Allowed attribute values are
+Tip: use the attribute `border` on `table` to get a clear view of table cells. Allowed attribute values are
 0 (no borders), 1 (borders).
 
 Given this table:
@@ -109,11 +109,11 @@ Now as an exercise, create a table like this:
 
 ### Task -- Lists
 There are two types of lists -- ordered lists (numbered) and
-un-ordered lists (enumerations). They behave the same and they can be mixed together. The
-basic rule, that applies for lists is that, everything contained in a list must be inside
+un-ordered lists (enumerations). They behave the same way and they can be mixed together. The
+basic rule, that applies for lists is that everything contained in a list must be inside
 in `li` elements.
 
-Create a ordered list with 3 items:
+Create an ordered list with 3 items:
 
 1. Good
 2. Bad
@@ -147,11 +147,13 @@ be inside an `li` element):
 ## Putting it all together
 HTML elements may be nested and combined. Now try to create an entire page like this:
 
-We used:
+![Screenshot -- Complete page](/en/apv/walkthrough/html/complete-page.png)
+
+I used:
 
 - The text from Wikipedia article at [https://en.wikipedia.org/wiki/John_Doe](https://en.wikipedia.org/wiki/John_Doe)
-- Image from [http://www.johndoe.pro/img/John_Doe.jpg](http://www.johndoe.pro/img/John_Doe.jpg)
-- HTML elements: `h1`, `h2`, `table`, `ul`, `src`, `a`, `nav` (as a container for navigation)
+- The Image from [http://www.johndoe.pro/img/John_Doe.jpg](http://www.johndoe.pro/img/John_Doe.jpg)
+- The HTML elements: `h1`, `h2`, `table`, `ul`, `src`, `a`, `nav` (as a container for navigation)
 
 {: .solution}
 {% highlight html %}
@@ -159,20 +161,20 @@ We used:
 {% endhighlight %}
 
 Note that the `img` element does not have any content (content is defined by the `src` attribute)
-so instead of writing start and end tags `<img src='...'></img>`, it is written with
-just the start tag `<img src='...' />`. This can get a 
-[lot more complicated](http://odinuv.cz/en/apv/articles/html/#html-elements----tags).
+so it is written with just the start tag `<img src='...'>`. This can get a
+[lot more complicated](/en/apv/articles/html/#html-elements----tags).
 
 The page does not look like the nice best page in the world, but it will get much better, once you
-get to [layout and styles](todo) because HTML language does not have the means to format and
+get to [layout and styles](todo) because the HTML language does not have the means to format and
 style a document. Do not attempt to style a web page using the HTML language.
-E.g. never use a second `h2` or third level `h3` heading instead of first level heading
-`h`` just to get smaller font size. The structure of the document must be used irrespective of
-the looks of the document. Adjusting font size and many other things is done through
-[Style Sheets](http://odinuv.cz/en/apv/walkthrough/css), which we will get to later.
+E.g. never use a second `h2` or third level `h3` heading instead of the first level heading
+`h`` just to get a smaller font size. The structure of the document must be used irrespective of
+the looks of the document. Adjusting the font size and many other things is done through
+[Style Sheets](/en/apv/walkthrough/css), which we will get to later.
 
 ### Publishing your page
-A webpage needs to be placed on a webserver. That is a computer which is constantly connected to the Internet.
+{% comment %}TODO move this to dev tools?{% endcomment %}
+A webpage needs to be placed on a web server. That is a computer which is constantly connected to the Internet.
 This computer has usually a hostname (something like www.myawesomepage.com) so you and others do not have to
 remember the IP address of that machine. Other people (visitors) can connect co that computer and download your page and
 referenced files (images and other stuff) when you upload it - remember to upload new versions.
@@ -186,7 +188,7 @@ Important note is that server is another computer which usually runs some Linux 
 different and case sensitive - when creating a web page locally on your PC, use **relative paths** and be precise with **case of letters**.
 
 ## Summary
-You should now be able to describe structure of any text document using HTML language. The document is
+Now you should now be able to describe the structure of any text document using the HTML language. The document is
 still formatted poorly, we will get to that later. The documents you produce now are formated with some
 default formats build into your web browser. Do not worry, that you might not be able to create complex
 pages right now, you need to know the principles and be able to create simple pages.

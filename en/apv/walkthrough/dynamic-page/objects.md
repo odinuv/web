@@ -35,7 +35,7 @@ makeMoo();
 {% endhighlight %}
 
 We can define (and immediately call) a more complicated function
-with **parameter** `$count`:
+with the **parameter** `$count`:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/functions-2.php %}
@@ -89,7 +89,7 @@ class has one class member -- the method **makeMoo**. Then I created an instance
 the Cow class -- a cow `$betty`. Once I have the cow object, I can call the `makeMoo`
 method to make Betty do *Moo*.
 
-Notice, that you need to use `->` operator to access object members. Each class member
+Notice, that you need to use the `->` operator to access object members. Each class member
 has **visibility** -- which can be either: *public*, *protected*, *private*:
 
 - *Private* members are accessible only from within the object itself.
@@ -109,7 +109,7 @@ The above class, has three members -- field `$name` and methods
 class. I've added a parameter `$name` to the constructor so when I create an
 instance of the class, I must pass a name of the cow `new Cow('Betty')`.
 
-Field `$name` is marked as private, which means that it can be accessed only from
+The field `$name` is marked as private, which means that it can be accessed only from
 within the class itself. This is done using the statement `$this->name`.
 The special variable `$this` refers to the current object and can be used only
 inside object methods. The point of using private members is that their values
@@ -120,7 +120,7 @@ If you have looked at the list of built-in [PHP functions and classes](http://ph
 you may have wondered
 what happens when you define a function or class which already exists. Well, a
 conflict happens and it becomes unclear what function you're calling. To solve this problem, PHP has
-**namespaces**. Referring to classes in namespaces is done using backslash `\` character, e.g:
+**namespaces**. Referring to classes in namespaces is done using backslash the `\` character, e.g:
 
 {% highlight php %}
 $object = new \MyNameSpace\MyClass();
@@ -133,12 +133,12 @@ $object = new \PDO();
 {% endhighlight %}
 
 Working with namespaces is a bit tricky, because it depends on whether and how your script
-uses them. You should be at least aware that namespaces exist and recognize namespaced classes.
+uses them. At least you should be aware that namespaces exist and recognize namespaced classes.
 
 ## Task -- User class
-Create class `User`, with private fields `$email`, `$firstName`, and `$lastName`. The
-fields should be set through constructor. The class should have method `printName()` to
-print full user name. Create two users: `John Doe` with email `john.doe@example.com` and
+Create the class `User`, with private fields `$email`, `$firstName`, and `$lastName`. The
+fields should be set through the constructor. The class should have the method `printName()` to
+print the full user name. Create two users: `John Doe` with email `john.doe@example.com` and
 `Jane Dona` with email `jane.dona@example.com`. Print names of both users.
 
 {% highlight php %}
@@ -146,7 +146,7 @@ print full user name. Create two users: `John Doe` with email `john.doe@example.
 {% endhighlight %}
 
 ## Summary
-You should now have basic understanding of what functions, classes and objects are.
+Now you should have basic understanding of what functions, classes and objects are.
 You should be able to call your own and built-in PHP functions. You should be able
 to define simple functions with parameters and return values. You should be able
 to create instances of classes and call methods.

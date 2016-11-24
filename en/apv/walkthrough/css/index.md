@@ -6,7 +6,9 @@ permalink: /en/apv/walkthrough/css/
 * TOC
 {:toc}
 
-You already know how to write a HTML page and also how to use Latte templating system.
+You already know how to 
+[write a HTML page](/en/apv/walkthrough/html/) and also how to 
+[use Latte templating system](/en/apv/walkthrough/templates/).
 Still you do not know, how to make your page to **not** look like it came from 1995.
 The answer is CSS -- a special syntax (yes, another language) which can define how
 HTML elements are rendered in your browser.
@@ -18,10 +20,11 @@ That is something that most programmers do not have (and that is OK, because we 
 good code). Nevertheless you need to know how to apply some CSS styles to make your application look modern.
  
 ## CSS Basics
-CSS is a syntax for definition of graphical properties for individual HTML elements -- things like color
+CSS is a language for definition of graphical properties for individual HTML elements -- things like color
 of text, size of text, background color, position, size and even effects like shadows, transparency,
-rounded corners or mouse cursor and many more. Each browser has a set of default CSS definitions for
-HTML elements, we can override these definitions by using our own.
+rounded corners or mouse cursor and [many more](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference). 
+Each browser has a set of default CSS definitions for
+HTML elements (called *user agent stylesheet*), we can override these definitions by using our own.
 
 Basically a CSS file looks like this:
 
@@ -35,7 +38,7 @@ h1 {
 }
 {% endhighlight %}
 
-We have something called CSS selector (`body` or `h1` in this case) and a set of CSS properties with
+It contains a set of  **CSS selectors** (`body` or `h1` in this case) each of them containing a set of **CSS properties** with
 values in curly braces divided by semicolons. Most CSS properties and their values are self-explaining
 and as you can see, these properties are also very specific. For example, you can set different
 color and style for each side of an element:
@@ -56,24 +59,30 @@ This code should produce something like this (an input with different border sty
 ![Screenshot -- Applied CSS](/en/apv/walkthrough/css/example-01.png)
 
 You will notice, that a CSS file grows fast for complicated designs. Pleasant advantage is, that we can define
-CSS styles for many HTML elements globally using those CSS selectors (read on).
+CSS styles for many HTML elements globally using those CSS selectors [(read on)](#css-selectors).
 
 Styles which you define for elements in upper levels of HTML structure are inherited by their
 descendants, unless these elements are told different. In case of conflict (you can set different
 values of same attribute for an element), the right CSS definition is selected by *cascading* of
 styles. In short the cascading means that more specific selectors and definitions which are defined
 last are used in case of uncertainty. You can observe these conflicts using CSS inspector in 
-developer tools (F12) of your browser:
+[developer tools](todo) (F12) of your browser:
 
 ![Screenshot -- Cascading](/en/apv/walkthrough/css/cascading.png)
 
-### Linking your CSS to HTML file
-We need to pass our CSS definitions into the browser, there are three ways how to do it:
+{: .note}
+Strikeout property values are those which are *overriden*.
 
-1,  You can place CSS definitions into separate file(s), this is
+### Linking your CSS to HTML file
+To link the style definition to our page, we need to pass our CSS definitions into the browser. 
+There are three ways how to do it:
+
+
+#### Separate file
+You can place CSS definitions into separate file(s), this is
     the best solution, because you can easily swap CSS files if you want to apply new design.
-    Notice in developer console (F12) that after we link HTML and CSS file together, a new
-    HTTP request is send by the browser to retrieve that CSS file.
+Notice in [developer console (F12)](todo) that after we link HTML and CSS file together, a new
+[HTTP request](todo) is send by the browser to retrieve that CSS file.
 
 {% highlight html %}
 <head>
@@ -81,7 +90,8 @@ We need to pass our CSS definitions into the browser, there are three ways how t
 </head>
 {% endhighlight %}
 
-2,  You can also place CSS definitions directly into the `<head>` with `<style>` tag (this solution saves
+#### Inside HTML
+You can also place CSS definitions directly into the `<head>` with `<style>` tag (this solution saves
     HTTP requests for static pages; it is however not suitable for dynamic pages because separate static
     CSS file can be cached while dynamic page should not be):
     
@@ -96,7 +106,8 @@ We need to pass our CSS definitions into the browser, there are three ways how t
 </head>
 {% endhighlight %}
     
-3,  A quick (and dirty) solution for CSS testing is inline CSS with `style` attribute, but this
+#### Inline    
+A quick (and dirty) solution for CSS testing is inline CSS with `style` attribute, but this
     should not be used frequently:
     
 {% highlight html %}
@@ -106,20 +117,21 @@ We need to pass our CSS definitions into the browser, there are three ways how t
 {% endhighlight %}
 
 ### CSS Selectors
-Selector is a powerful expression which can locate HTML elements in your page. Remind yourself that HTML is a
-tree-like structure:
+Selector is a powerful expression which can locate HTML elements in your page. Remind yourself that 
+[HTML is a tree-like](/en/apv/) structure:
 
 {: .image-popup}
 ![HTML tree](/en/apv/walkthrough/css/html.svg)
 
 In such structure we can describe location of an element by saying that it has certain sequence of parents, e.g.:
-we can select that `<a>` element in `<footer>` part of page by typing CSS selector `footer p a`. That spaces
+we can select that `<a>` element in `<footer>` part of page by typing CSS selector `footer p a`. The spaces
 between element names represent nesting deeper in the tree structure. We can also write just `footer a`, because
 there is no other `<a>` element in `<footer>` tag so there is no need to be that specific. Selectors do not need to
-list every level of HTML structure when using spaces. Most basic and general CSS selector is just the name of HTML element.
+list every level of HTML structure when using spaces. The most basic and most general CSS selector is just the
+name of HTML element.
 
 In some cases we want to emphasize that parent-child relationship with `>` operator. That means that element behind
-this operator is direct descendant of element before `>` operator. With `>` operator we need to write `footer>p>a`
+this operator is **direct descendant** of element before `>` operator. With `>` operator we need to write `footer>p>a`
 because `footer>a` would not work (tag `a` is not direct descendant of `footer`).
 
 #### Class selector
@@ -179,7 +191,8 @@ input[required] {
 {% endhighlight css %}
 
 #### Pseudoclasses
-A pseudoclass is even more specific selector. Most popular one is `:hover` which is used to style
+A pseudoclass is a special selector for features which cannot be easily recorded in the HTML code or
+described with classes. Most popular one is `:hover` which is used to style
 HTML elements while a mouse cursor is present over them (interesting point is, that some modern devices
 do not have mouse). You can also use pseudoclasses on parent elements:
 
@@ -242,7 +255,8 @@ table td>a:hover {
 {% endhighlight %}
 
 ### CSS properties
-There is too many CSS properties to list here, you can find them using Google just by typing what
+There is [too many CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) to list here, 
+you can find them using Google just by typing what
 you want to achieve. As the HTML language evolves, CSS also expands list of available properties.
 Currently there is CSS version 3. There can be a bit of confusion about support of newest CSS
 properties in different web browsers: new CSS properties are implemented in browsers but sometimes
@@ -253,13 +267,13 @@ This example demonstrates usage of browser specific prefix:
 
 {% highlight css %}
 .shadow {
-  -webkit-box-shadow: 5px 5px 5px 5px #888; /* old Safari and Chrome */
-  -moz-box-shadow: 5px 5px 5px 5px #888; /* old Firefox */
-  box-shadow: 5px 5px 5px 5px #888; /* all browsers that support this feature */
+    -webkit-box-shadow: 5px 5px 5px 5px #888; /* old Safari and Chrome */
+    -moz-box-shadow: 5px 5px 5px 5px #888; /* old Firefox */
+    box-shadow: 5px 5px 5px 5px #888; /* all browsers that support this feature */
 }
 {% endhighlight css %}
 
-You can check support of different web technologies among internet browser on [http://caniuse.com/](http://caniuse.com/).
+You can check current support of different web technologies among internet browsers on [http://caniuse.com/](http://caniuse.com/).
 
 #### Task
 Try to find and use CSS for rounded corners.
@@ -270,8 +284,8 @@ Try to find and use CSS for rounded corners.
 {% endhighlight %}
 
 ### Colors
-Colors are defined with their RGB components. Usually a HEX coding is used, but plain RGB is also
-available:
+Colors are defined with their [RGB components](https://en.wikipedia.org/wiki/RGB_color_model). 
+Usually a HEX coding is used, but plain RGB is also available:
 
 {% highlight css %}
 h1 {
