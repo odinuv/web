@@ -233,7 +233,7 @@ response (most importantly the *Content type*). A single HTTP transaction always
 **WWW resource** -- e.g. a single HTML page, a single image, etc. Therefore many HTTP transactions
 are required to transfer an entire HTML page.
 
-{% include "/en/apv/articles/http-requests.md %}
+{% include /en/apv/articles/http-requests.md %}
 {: .image-popup}
 ![HTTP Requests](/en/apv/articles/web/http-requests.png)
 
