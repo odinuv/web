@@ -6,7 +6,7 @@ permalink: /en/apv/articles/html/
 * TOC
 {:toc}
 
-If you read the [previous article](/en/apv/articles/web/), you should know, what web applications
+If you read the [previous article](/en/apv/articles/web/), you should know what web applications
 are and they are created using HTML language. In this article I'm going to 
 concentrate more on what HTML is and what is important in it. 
 
@@ -39,7 +39,7 @@ structural elements of the document, such as:
 - navigation
 - forms
 
-The HTML document is [parsed](http://odinuv.cz/en/apv/articles/programming/#source-code) 
+A HTML document is [parsed](http://odinuv.cz/en/apv/articles/programming/#source-code) 
 (together with [styles](todo)) by an interpreter build in the web browser.
 Then it is **rendered** by the 
 browser [rendering engine](http://odinuv.cz/en/apv/articles/html/#rendering-engines) on 
@@ -48,7 +48,7 @@ browser figures out where each part of the document should be displayed, how big
 and how it should look and then draws some lines and points on the screen.  
 
 ## HTML Language Structure
-HTML consists of the following parts:
+HTML language consists of the following parts:
 
 - [**elements**](https://www.w3.org/TR/html5/dom.html#elements)
 - [**attributes**](http://www.w3.org/TR/html5/index.html#attributes-1)
@@ -66,8 +66,8 @@ however that they are still visible in the page source code in Web Browser
 (use the *View source* function), so do not put any secrets in comments.
 
 ### HTML Elements
-HTML elements represent parts of the text document. A `p` element
-represents a paragraph in text, a `table` elements represents a table, etc.  
+HTML elements represent parts of a text document. A `p` element
+represents a paragraph in a text, a `table` elements represents a table, etc.  
 HTML elements are organized into a hierarchial structure. A HTML
 document is a text document in which this structure is recorded. 
 Elements are written down using **tags**:
@@ -138,6 +138,8 @@ documents are usually formatted to underline the hierarchy of elements:
 </html>
 {% endhighlight %}
 
+TODO pridat sem obrazek
+
 Note that the formatting is fully optional, so the above document is equal to the 
 below one: 
 
@@ -174,7 +176,7 @@ are parts of line. Inline elements may be inserted in inline elements
 or block elements. Block elements may be inserted only inside block elements
 The exception to this rule is the `a` (link) element, which is 
 line element, but block elements may be inserted into it (be careful not to insert any
-other active element e.g. ``input`` into ``a``).
+other active element e.g. `input` into `a`).
 
 All HTML elements have the following 
 [common attributes](http://www.w3.org/TR/html5/elements.html#global-attributes):
@@ -184,7 +186,7 @@ All HTML elements have the following
  - title -- hint which is shown on mouse-over
  - data attributes -- arbitrary attributes without semantics. 
 
-## HTML Elements -- Tags
+### Tags
 There are some oddities when writing down HTML elements:
 
 - **Empty elements** that have no body -- for example `img` element has no body, because its
@@ -223,19 +225,20 @@ page itself, so do not confuse this with actual page header (with logo, menu, et
 that goes to the `body` element. The `head` element usually contains the following 
 children:  
  - `title` -- set page title, used for example in title of the browser window (required)
- - `meta` -- set actual page **metadata** (e.g page description, author, keywords). It is 
- highly recommended to set page encoding with `<meta charset='utf-8' />`. Although web
- browsers mostly default to utf-8 encoding, you want to make sure that the page
- is displayed correctly (even if the user e.g. saves the page to his local drive).  
+ - `meta` -- set actual page **metadata** (e.g. encoding (see below), page description, author, keywords). 
  - `style` -- [CSS styles](todo) in page
  - `link` -- definition of related files (external style, fonts, etc.)
  - `script` -- [JavaScript](/en/apv/walkthrough/javascript/) code or link to [JavaScript](/en/apv/walkthrough/javascript/) code 
 
 ### Encoding
-It is important to save the page in correct encoding during creation, it has to be the
-same encoding which you declare in ``<head>`` section. It is not enough to
-put ``<meta charset='utf-8' />`` into ``<head>`` and store the page in ASCII format (or
-any other format which your editor is currently set to). The web brorser will display some
+It is highly recommended to set page encoding with `<meta charset='utf-8' />`. Although web
+browsers mostly default to utf-8 encoding, you want to make sure that the page
+is displayed correctly (even if the user e.g. saves the page to his local drive).  
+
+It is also important to save the page in correct encoding during creation, it has to be the
+same encoding which you declare in `<head>` section. It is not enough to
+put `<meta charset='utf-8' />` into `<head>` and store the page in ASCII format (or
+any other format which your editor is currently set to). The web browser will display some
 characters in a wrong way unless you tell your editor or IDE to save the file in correct
 encoding. It is the responsibility of the page's author to make his text editor store
 files in correct encoding.
@@ -303,10 +306,9 @@ tabular data or [JSON -- JavaScript Object Notation](https://en.wikipedia.org/wi
 any structured data. XML has nothing to do with HTML or structure of text documents.
 It does not define any interpretation nor any rendering of the data.
 
-However XML looks similar to HTML because they have the same ancestor (SGML). It 
+However XML looks similar to HTML4 because they have the same ancestor (SGML). It 
 contains *elements*, *attributes*, *entities* and *comments* just like HTML does.
 But it has simplified writing rules: 
-
 
  - required header: <?xml version="1.0"?>
  - tag names are lower-case
@@ -314,7 +316,7 @@ But it has simplified writing rules:
  - start tag and end tag is always required
  - empty tags may be shortened to <element />
 
-XML is a widely used language with many **XML Applications** (interpretation of a XML document, 
+XML is a widely used language with many **XML Applications** (application = interpretation of a XML document, 
 not a program), which are again defined using DTD (Document Type Definition). Example of a 
 random XML document:
 
@@ -364,6 +366,7 @@ historic burden (but some if still there) with complicated implementation of
 interpreter in web browser. But it is also backward compatible (allows both HTML and 
 XHTML syntax) and finally it is current - developed from 2007, standardized in 2014.
 W3C is now working on minor revision.
+
 XHTML is now dead last standard 1.0 from 2000, version 1.1 and 2.0 never completed)
 
 {: .image-popup}
