@@ -211,22 +211,21 @@ permalink: /en/apv/slides/html/
 - XML has:
     - faster and more effective processing than HTML,
     - simple *parser* implementation.
+    - no error recovery    
 </section>
 
 <section markdown='1'>
 ## HTML × XHTML × XML Cont.
 - XHTML:
     - is a XML application of HTML language,
-    - has same elements (but unfortunately not exactly),
     - has supposedly simplified *interpreter* implementation,
-    - is dead: the last standard 1.0 from 2000.
+    - has no error recovery if transmitted as `application/xhtml+xml`, 
 - HTML5:
     - is a brand new language without a lot of historic burden,
-    - is backward compatible (allows both HTML and XHTML),
     - is developed from 2007, standardized in 2014,
     - is not based on SGML,
     - has complicated implementation of interpreter.
-
+    - contains both HTML and XHTML markups (and HTML DOM) representations
 </section>
 
 <section markdown='1'>
