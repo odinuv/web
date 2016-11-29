@@ -68,6 +68,9 @@ items:
               - url: /en/apv/walkthrough/login/
                 title: Login
 
+              - url: /en/apv/walkthrough/pagination/
+                title: Pagination
+
           - url: /en/apv/articles/
             title: Articles
             items:
