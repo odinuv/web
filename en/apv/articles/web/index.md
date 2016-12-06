@@ -222,6 +222,7 @@ never designed for this which yields to some [technical drawbacks](todo).
 
 ## HTTP Protocol
 [HTTP protocol](https://www.w3.org/Protocols/) splits communication into transactions a HTTP Transaction consists of:
+
  - establish connection (client)
  - send request (client)
  - send response (server)

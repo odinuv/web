@@ -136,10 +136,10 @@ space and make it only 2 columns wide). The key is to use Bootstrap responsive m
 
 Screen size intervals for Bootstrap responsive classes:
 
-- xs -- under 768px (excl.) -- `col-xs-*`
-- sm -- from 768px to 992px (excl.) -- `col-sm-*`
-- md -- from 992px to 1200px (excl.) -- `col-md-*`
-- lg -- over 1200px -- `col-lg-*`
+- **xs** -- extra small -- under 768px (excl.) -- `col-xs-*`
+- **sm** -- small -- from 768px to 992px (excl.) -- `col-sm-*`
+- **md** -- medium -- from 992px to 1200px (excl.) -- `col-md-*`
+- **lg** -- large -- over 1200px -- `col-lg-*`
 
 ## CSS Preprocessors
 If you feel that CSS with its flat structure and lack of variables can get out of hands after some time,

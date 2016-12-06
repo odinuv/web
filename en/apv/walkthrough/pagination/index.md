@@ -9,9 +9,9 @@ permalink: /en/apv/walkthrough/pagination/
 Pagination is a helpful concept which is used to display large amount of records. There are two main reasons
 to paginate results:
 
-- Prevention from overloading internet browser by enormous amount of data (large HTML file = long processing).
-  Still the browser has capability (depending on the hardware) to handle much bigger amount of data than an
-  average person.
+- Prevention from overloading internet browser by enormous amount of data (large HTML file = long processing
+  and transfer). Still the browser has capability (depending on the hardware) to handle much bigger amount
+  of data than an average person.
 - Prevention from confusing the user -- each person is different, but displaying few hundreds of records
   at once can surely confuse everybody.
  
@@ -26,6 +26,8 @@ First of all you have to understand how is the pagination implemented in databas
 specify [`LIMIT` and `OFFSET`](/en/apv/articles/sql-aggregation/#pagination) clauses in the SQL query
 to fetch requested records.
 
+![Limit and offset](offset-limit.svg)
+
 This means that SQL query returns **only certain amount of results** from certain position. To display
 pagination controls you need to calculate how many pagination buttons to show, this value can be calculated
 only with knowledge of **total record count**. This ultimately means that you have to run another SQL query
@@ -34,16 +36,16 @@ with `COUNT(*)` function to fetch total count of **relevant** records.
 {: .note}
 In MySQL you can use `CALC_FOUND_ROWS` modifier right after `SELECT` clause. And than you can fetch
 amount of total rows which would be returned without `LIMIT` clause by subsequent `SELECT FOUND_ROWS()
-AS all_row_count` query. It still means that you have to run 2 queries, but it is less complicated.
+AS all_row_count` SQL query. It still means that you have to run two queries, but it is less complicated.
 
 When you know total amount of all possible results, you can calculate amount of pages according to
-selected page count. Let's say that you want certain amount of records per page, than you have to divide
+chosen page count. Let's say that you want certain amount of records per page, than you have to divide
 total amount of records by page count and round the result up, using [ceil()](http://php.net/manual/en/function.ceil.php)
 function.
 
 Take a look at an example -- you have a table with 105 rows (0--104) and you want 25 items per page:
 
-SQL querries:
+SQL queries:
 
     SELECT * FROM table WHERE col = val LIMIT 25 OFFSET 0;
     SELECT COUNT(*) AS cnt FROM table WHERE col = val;
@@ -75,15 +77,24 @@ passed into `OFFSET` clause.
 Use page number (starting from 0) as request parameter. Make current page button inactive or make it
 distinct visually in another way (so the user can tell which page is he currently browsing).
 
+File `persons-list.php`:
+
 {: .solution}
 {% highlight php %}
 {% include /en/apv/walkthrough/pagination/persons-list.php %}
 {% endhighlight %}
 
+File `persons-list.latte`:
+
 {: .solution}
 {% highlight php %}
 {% include /en/apv/walkthrough/pagination/templates/persons-list-1.latte %}
 {% endhighlight %}
+
+{: note}
+Keep in mind that when a visitor clicks on a page number, the browser reloads whole page. If the set of
+listed database records depends on another parameter (i.e. search or sorting), you have to pass also
+this additional parameter to keep consistent output.
 
 {: note}
 You can use Bootstrap's [pagination classes](http://getbootstrap.com/components/#pagination) to make
@@ -94,8 +105,10 @@ Link for first page is easy -- just set page parameter to zero. Previous and nex
 by adding or subtracting one from current page value. Last page number can be calculated by subtracting
 one from page count (because it starts from zero).
 
-Links for previous or first page should be visible only if current page is larger than zero. Similarly links
+Links for previous or first page should be visible only if current page is larger than zero. Similarly, links
 for next and last page should be visible on other pages than the last one.
+
+Updated file `persons-list.latte`:
 
 {: .solution}
 {% highlight php %}
