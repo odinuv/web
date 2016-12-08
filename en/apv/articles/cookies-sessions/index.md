@@ -6,10 +6,10 @@ permalink: /en/apv/articles/cookies-sessions/
 * TOC
 {:toc}
 
-HTTP protocol was designed stateless, the cost for this simplicity is inability to maintain any kind
-of information between subsequent HTTP requests from particular client on server's side. The server simply does
-not know, whether it has talked to certain client before or not. Yet you know, from your own experience,
-that this is possible.
+[HTTP protocol](/en/apv/articles/web/#http-protocol) was designed stateless, the cost for this simplicity is
+inability to maintain any kind of information between subsequent HTTP requests from particular client on
+server's side. The server simply does not know, whether it has talked to certain client before or not.
+Yet you know, from your own experience, that this is possible.
 
 You used a server-side storage called *session* in walkthrough article about [authentication](/en/apv/walkthrough/login)
 of users. Let's take a step back and think about how to allow server identify its clients.
@@ -44,7 +44,7 @@ search engine crawlers -- they do not support cookies and you do not want your p
 cryptic URL parameters).
 
 ## Cookies
-A cookie is a general purpose **client** side storage. You can store short strings under a named identifier.
+A cookie is a general purpose **client-side** storage. You can store short strings under a named identifier.
 You might be asking how a client-side storage is helpful to maintain state of application on a server?
 I already told you -- server decides to believe information from a client, that is all you have. The client
 is used to store its own state for server (or at least part of it).
@@ -57,7 +57,7 @@ information and pretend that he is somebody else. Saving a password into a cooki
 it can be stolen by computer viruses.
 
 ### Setting up a cookie and reading it
-A cookie is delivered to the client with HTTP headers of server's response. Visitor's internet browser
+A cookie is delivered to the client via HTTP headers of server's response. Visitor's internet browser
 stores the cookie in its cache and starts to send it in HTTP headers of its requests. It means that values
 stored in cookies can be accessed by server in following HTTP requests.
 
@@ -88,18 +88,16 @@ Visit to `cookie-read.php` script:
 ![A cookie is send to server](headers-send.png)
 
 {: .note}
-Function `setcookie()` must be called **before any other output** (`echo`s and `print`s). It is same as
+Function `setcookie()` must be called **before any other output** (`echo`s and `print`s). It is same as with
 general `header()` function because HTTP headers cannot be sent after HTTP body starts to be transmitted.
 You can also use `header()` function to set a cookie manually, but it is more complicated.
 
-### Security
-Cookies can be stolen or modified by a user or by malicious software. TODO
-
 ### Cookie parameters
 A cookie can have many parameters, most important one is duration which tells browser how long to store a
-cookie. Default behaviour is to delete cookies right after browse's window is closed. You can check out
-[`setcookie()` function](http://php.net/manual/en/function.setcookie.php) in of PHP manual.
+cookie. Default behaviour is to delete cookies right after browser's window is closed. You can check out
+[`setcookie()` function](http://php.net/manual/en/function.setcookie.php) in of PHP manual for more details.
 You can set cookie to be stored on client's drive for many days but you should not rely on it.
+Setting a path or domain of a cookie can be useful for shared hosting servers.
 
 {: .note}
 To remove cookies manually in your browser use Ctrl+Shift+Del hotkey and select deletion of cookies in
@@ -111,11 +109,15 @@ repository of client related data on a server. This is much safer because data i
 by application's code. Still you have to believe that session ID which is supplied by a random client belongs
 to him.
 
-PHP uses function [`session_start()`]() to initiate session. This function takes a look if a client supplied
-session ID using a cookie and fills special variable `$_SESSION` with data stored under session ID key.
-If there was no session ID cookie in HTTP request headers, the PHP generates one, establishes new storage
-space under that key and sends that key to client via HTTP headers. Associative array `$_SESSION` can be used
-both to read and write data into server's session repository.
+PHP uses function [`session_start()`](http://php.net/manual/en/function.session-start.php) to initiate session.
+This function takes a look if a client supplied session ID using a cookie and fills special variable `$_SESSION`
+with data stored under session ID key. If there was no session ID cookie in HTTP request headers, the PHP
+generates one, establishes new storage space under that key and sends that key to client via HTTP headers.
+Associative array `$_SESSION` can be used both to read and write data into server's session repository.
+
+Here is and image which represents session initiation:
+
+![Session storage of multiple client's data](session-init.svg)
 
 {: .note}
 Session mechanism is an extension of cookies and you do not have to use it. You can also implement
@@ -123,29 +125,43 @@ very similar functionality by yourself. If you use JavaScript frontend framework
 HTTP headers with every request to identify a client -- sessions are not recommended in [REST](https://en.wikipedia.org/wiki/Representational_state_transfer).
 You can also use another kind of client-side storage with JavaScript called [local storage](https://developer.mozilla.org/cs/docs/Web/API/Window/localStorage).
 
+The server can tell one client from another using the session ID. Remember that cookies are not shared
+among internet browsers -- that is why you can be logged into an application with Firefox and not logged in
+with Chrome. Same effect is provided by anonymous window mode of browser.
+
+![Session storage of multiple client's data](session-storage.svg)
+
+The session cookie has same parameters as any other cookie, you can specify duration of cookie using
+[`session_set_cookie_params()`](http://php.net/manual/en/function.session-set-cookie-params.php) function.
+
 {: .note}
 PHP stores session data in temporal files. If server's security is compromised somehow, session data
 can be accessed by an attacker (this can happen on shared web hosting servers). You can set your own
 session handling functions in PHP to store sessions in a database.
 Another gotcha of shared hosting is situation when server's disk drive is full and PHP cannot store
-cookie data into a file leading to a situation of inability to login for all users.
-
-### Session cookie parameters
-Almost the same as cookie but can be set up by another function. TODO
+session data into a file leading to a situation of inability to login for all users.
 
 ## What to store in session or cookie?
 A visitor can have multiple tabs or windows with your web application opened at once. Therefore it is not a
 good idea to store values which can vary between those instances (e.g. search query or page number). You
 have to carefully select what to store in session and what to pass as request parameter.
 
+Session can be used to store filled input fields with multi-page forms (e.g. e-shop checkout), information
+about currently authenticated user and his privileges, and flash messages (messages which are displayed
+once after a redirect). 
+
+You can store almost anything into a session (in reasonable amount). Cookies are much more restricted:
+a web application can store only limited amount of cookies (usually not much more than 100) and each
+cookie is limited in size (usually 4096 bytes).
+
 ## Summary
 Now you know more details about cookies and sessions. These instruments are essential for website
 developers as they allow you to store state of your application. Sometimes you will encounter users who
-had disabled storage of cookies in their browsers on purpose and your application will not run in their
-browser.
+had disabled storage of cookies in their browsers on purpose (or their environment just does not allow
+them to) and your application will not run in such conditions, there is not much you can do about this.
 
 Modern approaches to web application development (RIA and SPA) can be realised without cookies or sessions
-because state of application can be stored much more comfortably on client side. Traditional approach
+because state of application can be stored much more comfortably on client's side. Traditional approach
 requires both server and client to do their part.
 
 ### New Concepts and Terms

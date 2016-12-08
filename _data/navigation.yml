@@ -80,6 +80,9 @@ items:
               - url: /en/apv/articles/web/
                 title: Web
 
+              - url: /en/apv/articles/cookies-sessions/
+                title: Cookies and Sessions
+
               - url: /en/apv/articles/html/
                 title: HTML
 

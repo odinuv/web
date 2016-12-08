@@ -150,21 +150,21 @@ File `login.php`:
 You probably noticed that there is no way to tell if a user has authenticated in subsequent HTTP requests due to stateless
 nature of [HTTP protocol](/en/apv/articles/web/#http-protocol). To safely store login information you would probably
 want to logically connect subsequent HTTP request from one client (internet browser) and associate these requests with
-some kind of server storage. That is exactly what *sessions* are used for. A session is server side storage which is
-individual for each client. Client holds only unique key to this storage on its side (stored in [cookies](TODO)).
-Client is responsible for sending this key with every HTTP request. If the client "forgets" the key, data stored in
-session is lost. The key is actually called *session ID*.
+some kind of server storage. That is exactly what [*sessions*](/en/apv/articles/cookies-sessions#sessions) are used for. A session
+is a server-side storage which is individual for each client. Client holds only unique key to this storage on its side
+(stored in [cookies](/en/apv/articles/cookies-sessions#cookies)). Client is responsible for sending this key with every HTTP
+request. If the client "forgets" the key, data stored in session is lost. The key is actually called *session ID*.
 
-To initiate work with session storage you have to call PHP function [session_start()](http://php.net/manual/en/function.session-start.php)
-in the beginning of each of your script (before you send any output, because session_start() sends a cookie via
+To initiate work with session storage you have to call PHP function [`session_start()`](http://php.net/manual/en/function.session-start.php)
+in the beginning of each of your script (before you send any output, because `session_start()` sends a cookie via
 HTTP headers).
 
-In PHP, there is as superglobal $_SESSION array which is used to hold various data between HTTP request. These
+In PHP, there is as superglobal `$_SESSION` array which is used to hold various data between HTTP request. These
 data are stored on a server and cannot be modified by will of a visitor -- it has to be done by your application's
-code. The $_SESSION variable is initialized and eventually filled by session_start() function.
+code. The `$_SESSION` variable is initialized and eventually filled by `session_start()` function.
 
 ### Task -- store information about authenticated user
-Use $_SESSION variable to store authenticated user's data after login. Insert line with `session_start();` function
+Use `$_SESSION` variable to store authenticated user's data after login. Insert line with `session_start();` function
 into start.php script.
 
 File `login.php` (final version):
@@ -186,7 +186,7 @@ You can prevent anonymous users to access all your application's functions or ju
 tries to access prohibited function without authentication, he should be redirected to the login page.
 
 ### Task -- protect your application
-Write a short include-script which will verify presence of user's data in $_SESSION array and redirect to login.php
+Write a short include-script which will verify presence of user's data in `$_SESSION` array and redirect to login.php
 script if no such data is found. Require this script in all PHP scripts where **you want user authentication to be 
 performed** before execution of that script itself. Place the require command just below the line where you require
 start.php script.
@@ -217,13 +217,13 @@ after you start the session. Remember to handle non-existing values (for the cas
 
 ## Logout
 Finally, we have to give our users an option to leave our application. A logout action is usually just deletion of
-all user related data from $_SESSION variable on server.
+all user related data from `$_SESSION` variable on server.
  
 {: .note}
-Sometimes you wish to leave some data in the $_SESSION variable -- the contents of shopping cart, for example.
+Sometimes you wish to leave some data in the `$_SESSION` variable -- the contents of shopping cart, for example.
 
 ### Task -- Create a logout script
-Use [session_destroy()](http://php.net/manual/en/function.session-destroy.php) function. Redirect user to public
+Use [`session_destroy()`](http://php.net/manual/en/function.session-destroy.php) function. Redirect user to public
 page of your application after logout. Put logout button to your layout.latte template.
 
 File `logout.php`:
