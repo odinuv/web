@@ -4,6 +4,9 @@ items:
         items:
           - url: /en/apv/course/
             title: APV Course
+            items:
+              - url: /en/apv/course/not-a-student
+                title: For external readers
 
           - url: /en/apv/walkthrough/
             title: Walkthrough

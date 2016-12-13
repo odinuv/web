@@ -26,7 +26,6 @@ My goals are:
 
 My goals are **not**:
 
-
 - Teach you [Computer Science](/en/apv/articles/programming/#computer-science).
 - Make an excellent (PHP, JavaScript, SQL, ...) programmer out of you. That needs much more practice, but this
 may be a good start).
@@ -37,7 +36,7 @@ but this may be a good start).
 ## Who? Why?
 *Who is this for?* This book was originally written for students of
 [Application Software Programmes](http://ects-prog.mendelu.cz/en/plan6937/predmet88060) subject
-at [Mendel University](https://is.mendelu.cz/). However it is suitable for anyone
+at [Mendel University](https://is.mendelu.cz/). However it is suitable for [anyone](/en/apv/course/not-a-student)
 with interest in web application development.
 
 *Why web applications?* Because they are popular and they
