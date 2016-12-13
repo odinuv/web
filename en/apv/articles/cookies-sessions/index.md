@@ -111,6 +111,20 @@ Setting a path or domain of a cookie can be useful for shared hosting servers.
 To remove cookies manually in your browser use Ctrl+Shift+Del hotkey and select deletion of cookies in
 desired period of time.
 
+### Cookies used for tracking of users
+Companies like Google and many others which based their business on online advertising use cookies to track
+your visits to sites which participate in their advertising programme. An owner of a website (e.g. a merchant)
+places their tracking script into his website and when you visit his site, your browser sends a cookie to advertisement
+company's server along with information about merchant's visited site. The advertising company than knows which
+sites (e.g. products that merchant sells) interests you. Later, when you visit another site (e.g. someones blog)
+with a slot for an online ad, they can identify you by a cookie and place a banner for a product you visited before.
+
+Companies collect money from merchants for displaying their ads (or for clicks on them). People who let
+these companies display ads on their sites gain some small reward for each displayed ad (or click on it).
+
+Another use of cookies is identification of returning visitors for analytical processing (when a website owner
+wants to know how many unique visitors have seen his presentation and whether or not they return).
+
 ## Sessions
 The session uses client's cookie storage to save a key (*session ID*) which is used to identify one particular
 repository of client related data on a server. This is much safer because data in session can only be modified
