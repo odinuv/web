@@ -1,8 +1,6 @@
 <?php
 require 'include/start.php';
-
 $pageLimit = 10;
-
 try {
 	$page = !empty($_GET['page']) ? intval($_GET['page']) : 0;
 	//select persons with limit and offset

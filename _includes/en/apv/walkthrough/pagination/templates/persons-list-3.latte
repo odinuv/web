@@ -1,0 +1,24 @@
+{extends layout.latte}
+{block content}
+    <table>
+        {foreach $persons as $person}
+            ...
+        {/foreach}
+    </table>
+    {* isset() determines if variable exists *}
+    {if isset($pCount) && isset($pCurr)}
+    <table>
+        <tr>
+            {if $pCurr > 0}
+                ...
+            {/if}
+            {for $i = 0; $i < $pCount; $i++}
+                ...
+            {/for}
+            {if $pCurr < $pCount - 1}
+                ...
+            {/if}
+        </tr>
+    </table>
+    {/if}
+{/block}

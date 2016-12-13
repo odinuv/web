@@ -115,6 +115,15 @@ Updated file `persons-list.latte`:
 {% include /en/apv/walkthrough/pagination/templates/persons-list-2.latte %}
 {% endhighlight %}
 
+If you have search function in your person list, you have to decide if you want to paginate filtered results
+too. Because there is usually not much displayed records after applying search filter, you would probably
+want to hide pagination controles in that case:
+
+{: .solution}
+{% highlight php %}
+{% include /en/apv/walkthrough/pagination/templates/persons-list-3.latte %}
+{% endhighlight %}
+
 {: .note}
 You can also check the page parameter value for negative values. You can do this by use of mathematical
 function `max(0, intval($_GET['page']))` to avoid `if()` statement. Function `max()` returns obviously its
