@@ -22,17 +22,23 @@ about each client to tell who is who.
 
 {: .note}
 What does it even mean to "logically connect HTTP request"? It simply means, that a server can use some
-provided information about the client which a server (or your application) **decides to believe**.
+provided information about the client which a server (or your application) **decides to believe**. This
+piece of information must be **unique**, otherwise the server would mix data that it stores about different
+users together.
 
 What can you use as unique identifier? You have these options:
 
 - an IP address -- problems are non-static IP addresses and firewalls with many clients behind them. This
   means that one IP can represent many actual machines/users.
-- a GET and/or POST parameter -- this can be done, but it is a lot of work for web developer.
-- some other piece of information supplied by a client -- this is actually used and it is called a *cookie*.
+- a GET and/or POST parameter -- this can be done, but it is a lot of work for web developer. Also a user
+  cannot just copy&paste links from web browser and send them via email or instant messaging, because he would
+  also share his identity with recipients.
+- some other piece of information supplied by a client in HTTP headers -- this is actually used and it is
+  called a *cookie*.
 
 You can supply some unique key to the server using a *cookie* which is compared to some kind of server
-storage (database or file with all user keys). The server can then tell one client from another.
+storage (database or file with all user keys). The server can then tell one client from another and
+it can store different data for each client.
 
 {: .note}
 Users with disabled cookies have to rely on GET/POST parameter. You can give your application an ability
@@ -41,7 +47,8 @@ as first response to all users (everybody will see session ID parameter in all g
 from your server). If a cookie is successfully set (and returned in second HTTP request), backend stops to
 attach client identifier parameter to links and forms. This is a **lot** of work (you also have to handle
 search engine crawlers -- they do not support cookies and you do not want your page to be indexed with some
-cryptic URL parameters).
+cryptic URL parameters). The identifier you generate should also somehow depend on IP address or another "almost"
+unique information to prevent sharing of the session when user copies&pastes the link. 
 
 ## Cookies
 A cookie is a general purpose **client-side** storage. You can store short strings under a named identifier.
@@ -50,7 +57,8 @@ I already told you -- server decides to believe information from a client, that 
 is used to store its own state for server (or at least part of it).
 
 This is not quiet safe, because anyone (user or software) can access and modify cookie files created by a
-browser. Therefore it is wise to store only a key to identify user data repository on server (read on).
+browser. Therefore it is wise to store only a key to identify user data repository on server as described before
+(read about sessions below).
 
 A **bad** usage of cookie is to set ID or login of a user which is logged on. Anybody can change this
 information and pretend that he is somebody else. Saving a password into a cookie is also bad because
