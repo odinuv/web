@@ -117,7 +117,7 @@ Updated file `persons-list.latte`:
 
 If you have search function in your person list, you have to decide if you want to paginate filtered results
 too. Because there is usually not much displayed records after applying search filter, you would probably
-want to hide pagination controles in that case:
+want to hide pagination controls in that case:
 
 {: .solution}
 {% highlight php %}
