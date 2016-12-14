@@ -1,12 +1,11 @@
 ---
-title: Login 
+title: User authentication - login
 permalink: /en/apv/walkthrough/login/
 ---
 
 * TOC
 {:toc}
 
-# User authentication -- login
 This chapter is about means to protect your application from anonymous users who could deliberately
 delete random data or pollute your application with spam messages. Until now, your application was publicly 
 available to online audience without any possibility to control who is working with stored data.
