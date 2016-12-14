@@ -90,7 +90,7 @@ Good choices are [Notepad++](https://notepad-plus-plus.org/) for Windows or [Gea
 for Linux. Another choice can be [Atom](https://atom.io/) editor which is multi-platform.
 
 {: .image-popup}
-![Geany](geany.png)
+![Geany](/en/apv/course/geany.png)
 
 I recommend to install full *IDE* (Integrated Development Environment) -- a free IDE called
 [NetBeans](https://netbeans.org/) can be downloaded -- select PHP stack on download page.
@@ -102,4 +102,4 @@ If you had never worked with an IDE, do not bother yourself with this for now an
 good text editor. You can always switch to an IDE later.
 
 {: .image-popup}
-![NetBeans](netbeans.png)
+![NetBeans](/en/apv/course/netbeans.png)
