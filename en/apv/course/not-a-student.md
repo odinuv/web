@@ -1,6 +1,6 @@
 ---
 title: I am not a student - a guide for external readers
-permalink: /en/apv/course/not-a-student
+permalink: /en/apv/course/not-a-student/
 ---
 
 * TOC
