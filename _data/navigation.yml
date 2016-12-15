@@ -8,6 +8,9 @@ items:
               - url: /en/apv/course/not-a-student/
                 title: For external readers
 
+              - url: /en/apv/course/technical-support/
+                title: Technical support
+
           - url: /en/apv/walkthrough/
             title: Walkthrough
             items:
