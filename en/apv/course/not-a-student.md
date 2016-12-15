@@ -14,11 +14,11 @@ If you are not a student of [Mendel University](http://www.mendelu.cz) you will 
 your programs:
 
 - web server with PHP 5.6 or higher
-- database server
+- database server (PostgreSQL or MySQL/MariaDB)
 - web browser
 - text editor or IDE
 
-Most of tools I am going to recommend to you here are platform independent.
+Most of tools I am going to recommend to you here are platform independent and free of charge.
 
 ## Web server with PHP and a database
 This is the most complicated part for external readers -- I cannot provide you an execution environment for
@@ -60,7 +60,7 @@ If you are absolutely lost and do not know where to start, try to register a fre
 better understanding of these programs and their roles in web application development after you read this book.
 
 On Linux based systems use your package manager to download Apache, PHP and PostgreSQL. Your website should be 
-usually placed into `/var/www/html` folder. Installation of SQL server is a bit trickier because it
+usually placed into `/var/www/html` directory. Installation of SQL server is a bit trickier because it
 involves setting of user accounts -- consult manual.
 
 After you install your own Apache+PHP+DB or PHP-dev-sever+DB stack, you should be able to execute your PHP script
@@ -73,13 +73,13 @@ I also use it in this book.
 
 {: .note}
 Another option is to use embedded database system like [SQLite](https://sqlite.org/). PHP has a plugin to work
-with this type of database (just install it and/or enable it in PHP config file php.ini -- found in PHP's home folder).
+with this type of database (just install it and/or enable it in PHP config file php.ini -- found in PHP's home directory).
 You can than use PDO interface to communicate with it in your scripts and Adminer supports it too (you
 just type path to datafile instead of hostname and port). This kind of database can be used with pure PHP
 development server.
 
 ## Web browser
-Any modern web-browser is suitable. I recommend [Mozilla Firefox](https://www.mozilla.org) or
+Any modern web-browser is suitable. I recommend [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/) or
 [Google Chrome](https://www.google.com/chrome/). Important feature which your browser should have
 is some kind of developer tools with network console. This feature is usually under F12 key.
 

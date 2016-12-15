@@ -178,7 +178,8 @@ A webpage needs to be placed on a web server. That is a computer which is consta
 This computer has usually a hostname (something like www.myawesomepage.com) so you and others do not have to
 remember the IP address of that machine. Other people (visitors) can connect co that computer and download your page and
 referenced files (images and other stuff) when you upload it - remember to upload new versions.
-You can usually upload your page by using an [FTP](todo) client or [SSH](todo) client.
+You can usually upload your page by using an [FTP](/en/apv/course/technical-support/#ftp--ssh) client or
+[SSH](/en/apv/course/technical-support/#ftp--ssh) client.
 
 You definitely noticed that web servers open some default page when you visit them (you do not have to write filename into
 your browser's address bar - www.myawesomepage.com/file.html). Such behavior is achieved by naming convention - that default

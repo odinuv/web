@@ -19,7 +19,7 @@ of browsing (visitors do not have to wait for the server to process their reques
 A lot of pages use JavaScript very heavily nowadays. Sites like YouTube, Google drive/docs, Facebook
 are mostly built using this technology. When you transfer significant part of program logic into JavaScript,
 you can deliver desktop-app experience to your users. This architecture is called
-[Single Page Application](/en/apv/walkthrough/javascript/) (SPA).
+[Single Page Application](https://en.wikipedia.org/wiki/Single-page_application) (SPA).
 
 I will not teach you how to build application entirely with JavaScript, I will show you how to use
 this language to overcome most common problems with user interface -- quickly confirm some action or

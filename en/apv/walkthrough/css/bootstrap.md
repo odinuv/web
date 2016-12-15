@@ -27,7 +27,7 @@ same or a bit different features as Bootstrap. I will use Bootstrap version 3.x 
 Linking Bootstrap to your app is simple: go to their download page and copy those few lines from "Bootstrap
 CDN" section. You can also download whole Bootstrap in zip archive if you want. You just need to link
 bootstrap.min.css, bootstrap-theme.min.css and bootstrap.min.js in your `<head>`. Do not break Bootstrap
-folder structure. If you want to use Bootstrap's [JavaScript](todo) features, you should also link
+directory structure. If you want to use Bootstrap's [JavaScript](/en/apv/walkthrough/javascript/) features, you should also link
 [jQuery](https://jquery.com) (also available via CDN) before bootstrap.min.js.
 
 ### Tables, forms, inputs, pagination, navigation...

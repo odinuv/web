@@ -40,7 +40,7 @@ structural elements of the document, such as:
 - forms
 
 The HTML document is [parsed](http://odinuv.cz/en/apv/articles/programming/#source-code) 
-(together with [styles](todo)) by an interpreter build in the web browser.
+(together with [styles](/en/apv/walkthrough/css/)) by an interpreter build in the web browser.
 Then it is **rendered** by the 
 browser [rendering engine](http://odinuv.cz/en/apv/articles/html/#rendering-engines) on 
 the users' screen. During rendering, the
@@ -227,7 +227,7 @@ children:
  highly recommended to set page encoding with `<meta charset='utf-8' />`. Although web
  browsers mostly default to utf-8 encoding, you want to make sure that the page
  is displayed correctly (even if the user e.g. saves the page to his local drive).  
- - `style` -- [CSS styles](todo) in page
+ - `style` -- [CSS styles](/en/apv/walkthrough/css/) in page
  - `link` -- definition of related files (external style, fonts, etc.)
  - `script` -- [JavaScript](/en/apv/walkthrough/javascript/) code or link to [JavaScript](/en/apv/walkthrough/javascript/) code 
 
@@ -471,7 +471,7 @@ There is a number of common attributes, it's really good to know about:
 
 - `id` -- A unique identifier of the HTML element within the document (used, 
 e.g in [forms](http://localhost:4000/en/apv/walkthrough/html-forms/)).
-- `class` -- An arbitrary class of the HTML element, used mainly for [CSS styles](todo)).
+- `class` -- An arbitrary class of the HTML element, used mainly for [CSS styles](/en/apv/walkthrough/css/)).
 - `title` -- An arbitrary text which is shown when a user hovers over a HTML element.
 
 ### Validation
