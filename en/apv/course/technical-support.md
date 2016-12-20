@@ -17,17 +17,19 @@ A basic training with an IDE and SSH client is part of [APV course](/en/apv/cour
 
 ## FTP & SSH
 [FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol) and [SSH](https://en.wikipedia.org/wiki/Secure_Shell)
-are network services which are usually used to communicate with a web server. FTP is just for file transfer, SSH offers
-full remote access to the system. Both services require authentication with a login and a password. This is an image
-of [Midnight Commander](https://www.midnight-commander.org/) executed on remote computer via SSH:
+are network services which are usually used to communicate with a web server. FTP service is just for file transfer,
+SSH offers full remote access to the system via command line. Both services require authentication with a login and
+a password. This is an image of [Midnight Commander](https://www.midnight-commander.org/) executed on remote computer
+via SSH (especially useful tool for remote web server configuration):
 
 {: .image-popup}
 ![Midnight Commander on remote computer](/en/apv/course/ssh-mc.png)
 
 To connect with FTP server you need an FTP client program. SSH is a bit trickier -- you can use it similarly as FTP,
-just for file transfer or you can use remote shell via [Putty](http://www.putty.org/) on Windows or `ssh` command on
-Linux (`ssh user@hostname`). To transfer files over FTP/SSH protocol use these nice tools: [WinSCP](https://winscp.net/eng/download.php) on
-Windows or [FileZilla](https://filezilla-project.org/) (multi-platform).
+just for file transfers or you can use remote shell via [Putty](http://www.putty.org/) on Windows or `ssh` command on
+Linux (type `ssh user@hostname` to connect). To transfer files over FTP/SSH protocol use these nice tools:
+[WinSCP](https://winscp.net/eng/download.php) on Windows or [FileZilla](https://filezilla-project.org/) (multi-platform).
+Basic FTP plugin can also be found in two panel file managers.
 
 ### File permissions (chmod)
 Some PHP applications need to write their own files to disk (e.g. Latte template cache, image thumbnails, error logs).
@@ -37,7 +39,7 @@ allow them writing to your files/directories. This is done by `chmod` command. I
 to allow read/write/execution of your files to everybody else on that system. Switch `-R` means that you set that
 privilege to files and directories recursively and `0777` is mode of privileges for you, your usergroup and for everybody
 else. Both FileZilla and WinSCP provide setting of user privileges in file/directories context menu. Following image shows
-file attributes dialog:
+file attributes dialog (you do not have to remember some strange numbers, there are checkboxes for this):
 
 {: .image-popup}
 ![FileZilla file attributes](/en/apv/course/filezilla-privileges.png)
@@ -47,11 +49,13 @@ PHP is used as main programming language in this book. I will list here some tec
 some information about related applications.
  
 ### PHP configuration
-Make a script with [`phpinfo()`](http://php.net/manual/en/function.phpinfo.php) function call to list environment
+PHP is an interpreter and therefore it can be configured very differently on various systems. A script can work
+perfectly in your development environment but it can break down in production environment without obvious reason.
+Make a small script with [`phpinfo()`](http://php.net/manual/en/function.phpinfo.php) function call to list environment
 variables and settings of PHP. It also lists enabled/installed modules of PHP like PDO, MySQL/PostgreSQL, GD library
 etc. If you find some setting of PHP uncomfortable and you have the privilege to tweak PHP config, you can locate
-`php.ini` file and adjust the settings, otherwise you have to contact customer support. Usual output of `phpinfo()`
-function begins like this:
+`php.ini` file and adjust the settings, otherwise you have to contact customer support or even change the way you
+operate with your application. Usual output of `phpinfo()` function begins like this:
 
 {: .image-popup}
 ![PHP info](/en/apv/course/php-info.png)
@@ -64,12 +68,13 @@ enabled/installed. Most common settings of PHP which need to be adjusted often (
 - `upload_max_filesize` -- maximal size of uploaded file
 - SMTP settings -- for sending email
 
-For example `memory_limit` setting: when you work with images (resizing image to obtain a thumbnail), you need to
-fit whole bitmap into memory. For 2 Mpx image you need 2000000 pixels * 24 bit per channel ~ about 6 MiB of memory.
-But for 10 Mpx you need five times more.
+For example `memory_limit` setting: when you work with bitmap images (resizing image to obtain a thumbnail), you need
+to fit a whole bitmap into the memory. For 2 Mpx image you need 2000000 pixels &times; 24 bit per channel ~ about 6 MiB
+of memory. But for 10 Mpx you need five times more (also include some overhead for calculations and other script needs
+-- 128 MiB should be enough for your scripts).
 
-Size of upload can be limiting when you try to import large database dump with Adminer and also with images from
-users.
+Size of upload can be limiting when you try to import large database dump with Adminer and also with image uploads from
+users. Even a trained administrator can be lazy to downscale images beforehand, other users just do not care.
 
 Useful PHP extensions:
 
@@ -80,8 +85,8 @@ Useful PHP extensions:
 - XML or JSON -- file format support
 
 ### PHP as command line script interpreter
-[PHP](http://php.net) is useful language, it has many function in its standard library and much more in additional plugins. Once
-you learned basics of PHP, you might want to use PHP for another tasks not related with web applications.
+[PHP](http://php.net) is useful language, it has many function in its standard library and much more in additional
+plugins. Once you learned basics of PHP, you might want to use PHP for another tasks not related with web applications.
 PHP is especially good for text file processing. This is of course possible. If there is PHP installed in your
 system, you can use PHP interpreter (executable file `php`) to run scripts in terminal. Just type
 `php script-name.php` and PHP should run that script. To print output use `echo` command. Reading from standard
@@ -89,24 +94,26 @@ input is a bit more [complicated](http://php.net/manual/en/features.commandline.
 
 {: .note}
 If you have PHP installed but your terminal does not respond to `php` command, make sure that you have added
-PHP's location to system variable called `Path` (on Windows). To check its content type `path` into windows command
+PHP's location to system variable called `Path` (on Windows). To check its content type `path` into Windows command
 window. To modify `Path` system variable, open properties of your computer and find management of system variables
-or execute `setx path "%path%;C:\path\to\php"` command.
+or execute `setx path "%path%;C:\path\to\php"` command (which appends `path\to\php` as another `Path` route).
  
 ### Composer
-This [tool](https://getcomposer.org/) is used sometimes to download PHP libraries. It is again a command line tool written in PHP itself.
-It is used among developers to describe dependencies of their code. When you send your application's source code
-to a colleague (by email, file sharing service or preferably through [VCS](https://en.wikipedia.org/wiki/Version_control)
-system like [Git](https://git-scm.com/)) you do not need to send large amounts of libraries (which are usually
-larger than your code itself). You just send a recipe which dependencies he should download using his Composer.
+This [tool](https://getcomposer.org/) is used sometimes to download PHP libraries. It is again a command line tool
+written in PHP itself. It is used among developers to describe dependencies of their code on various libraries. When
+you send your application's source code to a colleague (by email, file sharing service or preferably through
+[VCS](https://en.wikipedia.org/wiki/Version_control) system like [Git](https://git-scm.com/)) you do not need to send
+large amounts of libraries (which are usually larger than your code itself). You just send a recipe which dependencies
+he should download using his Composer.
 
-For example: to download [Latte](https://packagist.org/packages/latte/latte) library execute `composer install latte/latte`.
-This action will create or modify `package.json` file which can be send along with your sources to your colleagues
-and `vendor` directory, which contains the library (you do not have include this directory when you want to share your
-code, Composer will download it according to `packages.json` file contents).
+For example: to download [Latte](https://packagist.org/packages/latte/latte) library execute `composer install latte/latte`
+in root of your project. This action will create or modify `package.json` file which can be send along with your
+sources to your colleagues and `vendor` directory, which contains the library (you do not have include this directory
+when you want to share your code, Composer will download it according to `packages.json` file contents).
 
-In your code just include composer's `autoload.php` file from `vendor` directory (`include 'vendor/autoload.php';`) and
-you can create new instance of Latte right ahead (`$tpl = new Latte\Engine();`).
+In your code just include Composer's `autoload.php` file (this file handles autoloading of classes by their namespace
+and name)  from `vendor` directory (`include 'vendor/autoload.php';`) and you can create new instance of Latte right
+ahead (`$tpl = new Latte\Engine();`) without including any other files.
 
 ### Sending emails from web applications
 Sometimes it is useful to send an email with notification to a user about an event that took place. PHP uses simple
@@ -115,10 +122,14 @@ or attachments, use PHP library like [SwiftMailer](http://swiftmailer.org/). You
 (`composer require swiftmailer/swiftmailer`).
 
 ### Adminer
-[Adminer](https://www.adminer.org) is a general database tool used in this book. Adminer handles different types of database engines. It is
-also a PHP application itself -- you download a single PHP script (do not download Adminer editor). Alternatives
-are [phpMyAdmin](https://www.phpmyadmin.net/) for MySQL database and [phpPgAdmin](http://phppgadmin.sourceforge.net/)
-for PostgreSQL.
+[Adminer](https://www.adminer.org) is a general database tool used in this book. Adminer handles different types of
+database engines. It is also a PHP application itself -- you download a single PHP script (do not download Adminer
+editor). Alternatives are [phpMyAdmin](https://www.phpmyadmin.net/) for MySQL/MariaDB databases and [phpPgAdmin](http://phppgadmin.sourceforge.net/)
+for PostgreSQL. Adminer is more versatile but it has less functions than specific tools.
+ 
+{: .note}
+There are also specific applications like [MySQL Workbench]() or [PgAdmin]() for database management which are not
+web-based.
 
 ### PHP frameworks
 I would have to write many books to describe PHP frameworks one by one. It is even impossible as I do not know
@@ -147,6 +158,9 @@ There are also "micro-frameworks" used for [SPA](https://en.wikipedia.org/wiki/S
 - [Laravel Lumen](https://github.com/laravel/lumen) -- [website](https://lumen.laravel.com/)
 - [Slim](https://github.com/slimphp/Slim) -- [website](https://www.slimframework.com/)
 
+To become a really experienced PHP developer, try to develop at least one non trivial application without a framework
+to gain insight -- such step can also help you to understand benefit of a framework.
+
 ## Apache web server
 This software is a complicated beast. It powers most web servers in the world and you will definitely have to
 configure it at some point of your life. It is very versatile and therefore the configuration is quiet detailed.
@@ -160,7 +174,7 @@ its subdirectories). To use `.htaccess` files, the server's administrator has to
 Apache's global config. You can use tools to enable plugins (`a2enmod`) and virtual hosts (`a2ensite`) on Linux systems.
 
 {: .note}
-On Linux operating systems, files which name begins with a dot are considered hidden. If you do not see .htaccess
+On Linux operating systems, files which name begins with a dot are considered hidden. If you do not see `.htaccess`
 file in directory listing in your FTP/SSH client, go to settings and enable hidden file listing.
 
 ### Enabling/disabling directory listing
@@ -168,7 +182,7 @@ To enable directory listing is useful for development servers. When you have mul
 directory and you do not want to create custom `index.html` or `index.php` file which you have to modify each
 time you add a new project. Apache will create a simple directory listing page for you automatically. On the 
 other hand, you want to obfuscate as much as possible for production servers and not show directory structure
-of your application.
+of your application to potential attacker.
 
 Put one of these lines into your `.htaccess` file. Second line is obviously used to disable directory listing.
 
@@ -192,8 +206,8 @@ into a browser and a rule used to convert it to something real and useful.
     RewriteRule ^/product/([0-9]+)/.+$ product.php?id=$1 [L,QSA]
 
 Those two `RewriteCond` lines test whether the path somebody entered into browser address bar (`%{REQUEST_FILENAME}`)
-is not an actual directory (`-d`) or file (`-f`). Regular expression extracts the ID number by `[0-9]+` pattern
-and passes it as `id` parameter of `product.php` script. 
+is not an actual directory (`-d`) or file (`-f`). All conditions must evaluate to true. In `RewriteRule` section,
+regular expression extracts the ID number by `[0-9]+` pattern and passes it as `id` parameter of `product.php` script. 
 
 Here is something more general (interpretation of `q` parameter is carried out by application's logic):
 
@@ -204,7 +218,14 @@ Here is something more general (interpretation of `q` parameter is carried out b
     
 This example takes any text (`.*` pattern) that comes inside and passes it as `q` parameter. Modifier *L* means
 that this rule is *last* applied and *QSA* means *query string append* (take anything that is behind `?` in original
-URL and forward it).
+URL and forward it). URL in user's browser stays same unless there us *R* flag after `RewriteRule`.
+
+Another use-case of mod_rewrite is to add `www` to the beginning of URL when user enters just `site.com` into
+his web browser:
+
+    RewriteEngine on
+    RewriteCond %{HTTP_HOST} ^site\.com
+    RewriteRule ^(.*)$ http://www.site.com/$1 [R=301,L]
 
 {: .note}
 If you want to use nice URLs, you have generate such URLs into `href` attribute of `<a>` tag. This means that you
@@ -233,4 +254,4 @@ create user accounts. To create more users and set rights for them, you usually 
 special environment for database administration.
 
 Real production server should be configured by database specialist. Important notes about technical issues with
-databases from developer's perspective are in [another article](/en/apv/articles/database-tech/).
+databases from developer's perspective are in [another article of this book](/en/apv/articles/database-tech/).
