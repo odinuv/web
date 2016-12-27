@@ -4,6 +4,12 @@ items:
         items:
           - url: /en/apv/course/
             title: APV Course
+            items:
+              - url: /en/apv/course/not-a-student/
+                title: For external readers
+
+              - url: /en/apv/course/technical-support/
+                title: Technical support
 
           - url: /en/apv/walkthrough/
             title: Walkthrough
@@ -57,16 +63,19 @@ items:
                 title: Database – Delete
 
               - url: /en/apv/walkthrough/css/
-                title: CSS - Cascading Style Sheets
+                title: CSS – Cascading Style Sheets
 
               - url: /en/apv/walkthrough/css/bootstrap/
-                title: CSS - Bootstrap
+                title: CSS – Bootstrap
 
               - url: /en/apv/walkthrough/javascript/
                 title: JavaScript
 
               - url: /en/apv/walkthrough/login/
                 title: Login
+
+              - url: /en/apv/walkthrough/pagination/
+                title: Pagination
 
           - url: /en/apv/articles/
             title: Articles
@@ -76,6 +85,9 @@ items:
 
               - url: /en/apv/articles/web/
                 title: Web
+
+              - url: /en/apv/articles/cookies-sessions/
+                title: Cookies and Sessions
 
               - url: /en/apv/articles/html/
                 title: HTML

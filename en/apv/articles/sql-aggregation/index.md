@@ -865,7 +865,7 @@ SELECT * FROM person
 OFFSET 20 LIMIT 10 ORDER BY last_name, first_name
 {% endhighlight %}
 
-See the [corresponding part of walkthrough](todo) for an example of implementation 
+See the [corresponding part of walkthrough](/en/apv/walkthrough/pagination) for an example of implementation 
 of entire pagination in PHP. However you should be aware that
 pagination is subject to 
 [certain Criticism](http://ux.stackexchange.com/questions/36394/when-is-it-better-to-paginate-and-not-to-paginate).

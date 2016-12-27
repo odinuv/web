@@ -40,6 +40,8 @@ document will look, it only describes structural elements of the document, such 
 
 An HTML document is [parsed](/en/apv/articles/programming/#source-code) 
 (together with [styles](todo)) by an interpreter built in the web browser.
+The HTML document is [parsed](http://odinuv.cz/en/apv/articles/programming/#source-code) 
+(together with [styles](/en/apv/walkthrough/css/)) by an interpreter build in the web browser.
 Then it is **rendered** by the 
 browser [rendering engine](/en/apv/articles/html/#rendering-engines) on 
 the users' screen. During rendering, the
@@ -156,7 +158,7 @@ In the beginning I said, that a HTML document is a hierarchial structure
 [(tree structure)](https://en.wikipedia.org/wiki/Tree_(graph_theory)) of HTML elements.
 
 {% highlight html %}
-{% include "/en/apv/articles/samplePage.html" }
+{% include /en/apv/articles/sample-page.html %}
 {% endhighlight %}
 
 In the above example, you can see that `<html>` is
@@ -307,7 +309,7 @@ children:
 
 - `title` -- set a page title, used for example in the title of the browser window (required)
 - `meta` -- set actual page **metadata** (e.g. encoding (see below), page description, author, keywords). 
-- `style` -- [CSS styles](todo) in page
+ - `style` -- [CSS styles](/en/apv/walkthrough/css/) in page
 - `link` -- definition of related files (external style, fonts, etc.)
 - `script` -- [JavaScript](/en/apv/walkthrough/javascript/) code or link to [JavaScript](/en/apv/walkthrough/javascript/) code 
 
@@ -510,6 +512,65 @@ either negligible market-share or with use only in legacy applications. This lea
 three to five browsers to test your web pages against (in case you are interested in full compatibility).
 The most being *Blink*, *Gecko* and *EdgeHTML*. You can leave out WebKit, because it shares much of its code base
 with Blink and you may add *Trident* to verify compatibility with the Internet Explorer.
+
+## Writing HTML documents
+The HTML document is described by a hierarchial structure of elements and written into a simple text file.
+Elements are enclosed by so called **tags**, for example:
+
+{% highlight html %}
+<p>This is a paragraph element.</p>
+{% endhighlight %}
+
+As you can see, the paragraph element starts by the **opening tag** `<p>`, then
+there is the content of the element (actual text of the paragraph) and it is
+finished by the **closing tag** `</p>`.
+
+There are over 100 elements available in the HTML language. Most of the HTML elements fall into two categories
+**block elements** and **line elements**. Block elements act as paragraphs and cannot be inserted into
+lines of text (they always interrupt the text line), line elements may be used anywhere. The tag names
+of HTML elements may sometimes
+seem cryptic, so here is a list of commonly used ones with a little explanation of their
+name (sorted alphabetically):
+
+- `<a>` -- [**A**nchor](https://en.wikipedia.org/wiki/Anchor_text) (i.e. a link within a text) (*line element*)
+- `<em>` -- **Em**phasis (*line element*)
+- `<strong>` -- **Strong** emphasis (*line element*)
+- `<p>` -- **P**aragraph (*block element*)
+- `<table>` -- well, a **table** (*block element*)
+- `<tr>` -- **T**able **R**ow
+- `<th>` -- **T**able **H**ead (table header cell)
+- `<td>` -- **T**able **D**ata (ordinary table cell)
+- `<img>` -- **Im**a**g**e (*line element*)
+- `<ol>` -- **O**rdered **L**ist (*block element*)
+- `<ul>` -- **U**nordered **L**ist (enumeration) (*block element*)
+- `<li>` -- **L**ist **I**tem (*block element*)
+- `<div>` -- **Div**ision (a [generic paragraph](https://www.w3.org/TR/html5/grouping-content.html#the-div-element)) (*block element*)
+- `<span>` -- span [(meaning range)](http://www.merriam-webster.com/dictionary/span) A generic part of line (*line element*)
+
+Any element can have **attributes**. Attributes are some additional information about the
+element. A typical example would be the Anchor element, which (apart from the link text)
+must contain additional information -- the link target.
+
+{% highlight html %}
+<a href='https://youtube.com/'>Youtube</a>
+{% endhighlight %}
+
+Attributes must be written in the *opening tag*, they are written in form `name='value'`, each
+attribute can be specified only once. In the above example the attribute name is `href` (meaning
+[**h**ypertext **ref**erence](https://www.w3.org/TR/2014/REC-html5-20141028/links.html#links)) 
+and the value is the actual [URL link](https://url.spec.whatwg.org/) (https://youtube.com/).
+The order of attributes in a tag is arbitrary.
+
+Note: you can use either single quotes `'` or double quotes `"` around attribute value, there is
+no difference.
+
+### Common Attributes
+There is a number of common attributes, it's really good to know about:
+
+- `id` -- A unique identifier of the HTML element within the document (used, 
+e.g in [forms](http://localhost:4000/en/apv/walkthrough/html-forms/)).
+- `class` -- An arbitrary class of the HTML element, used mainly for [CSS styles](/en/apv/walkthrough/css/)).
+- `title` -- An arbitrary text which is shown when a user hovers over a HTML element.
 
 ### Validation
 Because web browsers try to be smart (and because end-users want to see the page content), they

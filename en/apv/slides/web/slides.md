@@ -16,7 +16,6 @@ permalink: /en/apv/slides/web/
   - Documentation (what else is needed for reproducibility),
   - Organization (no randomness).
 - Apply those principles in Software Engineering.
-
 </section>
 
 <section markdown='1'>
@@ -29,7 +28,6 @@ permalink: /en/apv/slides/web/
     - Addressing and communication protocols
   - Application level:
     - Services and applications offered to end-users
-
 </section>
 
 <section markdown='1'>
@@ -66,7 +64,6 @@ permalink: /en/apv/slides/web/
 - UDP (User Datagram Protocol) -- An unreliable protocol.
 - Dozens of protocols for network services (DNS, DHCP, HTTP, SMTP, SSH, …).
 - Internet standards are marked as RFC (industry standards).
-
 </section>
 
 <section markdown='1'>
@@ -130,7 +127,6 @@ permalink: /en/apv/slides/web/
 - WWW service uses **HTTP** (Hyper-text transfer) protocol for transmitting the 
 web pages.
 - Web pages are usually created using the HTML language.
-
 </section>
 
 <section markdown='1'>
@@ -142,7 +138,6 @@ web pages.
     - Theoretically this prevents someone from logging in, but there is a way around this.
     - Requests from a single client are isolated on the server and they are difficult to be connected together.
 - HTTP is a **text** protocol.
-
 </section>
 
 <section markdown='1'>

@@ -11,18 +11,17 @@ You already know how to
 [use Latte templating system](/en/apv/walkthrough/templates/).
 Still you do not know, how to make your page to **not** look like it came from 1995.
 The answer is CSS -- a special syntax (yes, another language) which can define how
-HTML elements are rendered in your browser.
+HTML elements are [rendered](todo) in your browser.
 
 In this article I will not teach you every detail of CSS, but I want to show you some basics.
 Usually a beautiful design does not come from a programmer or HTML coder but from professional
 graphician. To make a great design you need a talent and much experience with graphical design.
 That is something that most programmers do not have (and that is OK, because we have talent to write
 good code). Nevertheless you need to know how to apply some CSS styles to make your application look modern.
- 
+
 ## CSS Basics
-CSS is a language for definition of graphical properties for individual HTML elements -- things like color
-of text, size of text, background color, position, size and even effects like shadows, transparency,
-rounded corners or mouse cursor and [many more](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference). 
+[CSS is a language](todo article) for definition of graphical properties for individual HTML elements -- things like color
+of text, size of text, background color, position, etc. 
 Each browser has a set of default CSS definitions for
 HTML elements (called *user agent stylesheet*), we can override these definitions by using our own.
 
@@ -38,7 +37,8 @@ h1 {
 }
 {% endhighlight %}
 
-It contains a set of  **CSS selectors** (`body` or `h1` in this case) each of them containing a set of **CSS properties** with
+It contains a set of [**CSS selectors**](todo) (`body` or `h1` in this case) each of them containing a 
+set of **CSS properties** with
 values in curly braces divided by semicolons. Most CSS properties and their values are self-explaining
 and as you can see, these properties are also very specific. For example, you can set different
 color and style for each side of an element:
@@ -75,12 +75,8 @@ Strikeout property values are those which are *overriden*.
 
 ### Linking your CSS to HTML file
 To link the style definition to our page, we need to pass our CSS definitions into the browser. 
-There are three ways how to do it:
-
-
-#### Separate file
-You can place CSS definitions into separate file(s), this is
-    the best solution, because you can easily swap CSS files if you want to apply new design.
+There are [three ways how to do it](todo), but the best is to place the CSS definitions into a 
+separate file(s), this is, because you can easily swap CSS files if you want to apply new design.
 Notice in [developer console (F12)](todo) that after we link HTML and CSS file together, a new
 [HTTP request](todo) is send by the browser to retrieve that CSS file.
 
@@ -90,6 +86,8 @@ Notice in [developer console (F12)](todo) that after we link HTML and CSS file t
 </head>
 {% endhighlight %}
 
+{% comment %}
+TODO: overit head a zmergovat do clanku
 #### Inside HTML
 You can also place CSS definitions directly into the `<head>` with `<style>` tag (this solution saves
     HTTP requests for static pages; it is however not suitable for dynamic pages because separate static
@@ -115,10 +113,11 @@ A quick (and dirty) solution for CSS testing is inline CSS with `style` attribut
     ...
 </body>
 {% endhighlight %}
+{% endcomment %}
 
 ### CSS Selectors
 Selector is a powerful expression which can locate HTML elements in your page. Remind yourself that 
-[HTML is a tree-like](/en/apv/) structure:
+[HTML is a tree-like](todo) structure:
 
 {: .image-popup}
 ![HTML tree](/en/apv/walkthrough/css/html.svg)

@@ -1,0 +1,30 @@
+{extends layout.latte}
+{block content}
+<table>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Nickname</th>
+    </tr>
+    {foreach $persons as $person}
+    <tr>
+        <td>{$person['first_name']}</td>
+        <td>{$person['last_name']}</td>
+        <td>{$person['nickname']}</td>
+    </tr>
+    {/foreach}
+</table>
+<table>
+    <tr>
+        {for $i = 0; $i < $pCount; $i++}
+        <td>
+            {if $i == $pCurr}
+            <span>{$i + 1}</span>
+            {else}
+            <a href="persons-list.php?page={$i}">{$i + 1}</a>
+            {/if}
+        </td>
+        {/for}
+    </tr>
+</table>
+{/block}

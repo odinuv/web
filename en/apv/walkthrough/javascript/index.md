@@ -11,22 +11,26 @@ In this article I want to introduce a *client-side* programming language called 
 This is a new concept for you which opens a lot of possibilities: you know that a browser is capable of
 rendering HTML with CSS, displaying images, maybe you know that you can also play video and audio
 in newer browsers using appropriate HTML tags (all this is very nice, but still the browser is a bit
-stupid). Executing scripts in browser during the time when a visitor is viewing your website can
+stupid). Executing scripts in the browser during the time when a visitor is viewing your website can
 improve his experience a lot. Just by hiding or showing some HTML elements or changing some CSS
-styles dynamically you can substantially improve (or reduce) readability of your page and increase speed
-of browsing (visitors do not have to wait for server to process their requests).
+styles dynamically, can substantially improve (or reduce) readability of your page and increase speed
+of browsing (visitors do not have to wait for the server to process their requests).
 
 A lot of pages use JavaScript very heavily nowadays. Sites like YouTube, Google drive/docs, Facebook
 are mostly built using this technology. When you transfer significant part of program logic into JavaScript,
-you can deliver desktop-app experience for your users.
+you can deliver desktop-app experience to your users. This architecture is called
+[Single Page Application](https://en.wikipedia.org/wiki/Single-page_application) (SPA).
 
 I will not teach you how to build application entirely with JavaScript, I will show you how to use
 this language to overcome most common problems with user interface -- quickly confirm some action or
 validate a form before it is send to backend.
 
 JavaScript itself is more than a language -- it is a package of browser interface functions, HTML manipulation
-functions and a language itself is called ECMAScript. It has versions such as HTML or CSS and it evolves.
-Current version is 6 (published in 2015).
+functions and the language itself is called [ECMAScript](https://www.ecma-international.org/memento/TC39.htm).
+It has versions such as HTML or CSS and it evolves. Current version is 6 (published in 2015).
+
+A good source of information about JavaScript is [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+(MDN) page.
 
 ## JavaScript basics
 JavaScript is often misunderstood language, it has syntax similar to Java, PHP or C++; its name refers
@@ -35,7 +39,7 @@ is not familiar at all. It has first-class functions (a function which can be st
 it is dynamically typed (variable type is defined by content like in PHP). Complex source code written
 in JavaScript is much different to anything you probably know. I will start with some basic examples
 which I believe would not confuse you at all; `console.log()` sends its output to browser's developer
-tools console (F12).
+tools console (usually activated by F12 key).
 
 Here is a brief JavaScript demo:
 
@@ -45,8 +49,8 @@ Here is a brief JavaScript demo:
 
 {: .note}
 To try JavaScript code you do not have to write a custom HTML page, just paste this code into online
-tool such as [JSFiddle](https://jsfiddle.net) or  (use JavaScript editor) or [Plunker](https://plnkr.co/edit/) 
-and click run. Remember to open that developer tools console.
+tool such as [JSFiddle](https://jsfiddle.net) (use JavaScript editor) or [Plunker](https://plnkr.co/edit/) 
+and click run. Remember to open that developer tools console when you work with JavaScript.
 
 In following example you can see control structures:
 

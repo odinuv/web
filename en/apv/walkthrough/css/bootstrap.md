@@ -27,7 +27,7 @@ same or a bit different features as Bootstrap. I will use Bootstrap version 3.x 
 Linking Bootstrap to your app is simple: go to their download page and copy those few lines from "Bootstrap
 CDN" section. You can also download whole Bootstrap in zip archive if you want. You just need to link
 bootstrap.min.css, bootstrap-theme.min.css and bootstrap.min.js in your `<head>`. Do not break Bootstrap
-folder structure. If you want to use Bootstrap's [JavaScript](todo) features, you should also link
+directory structure. If you want to use Bootstrap's [JavaScript](/en/apv/walkthrough/javascript/) features, you should also link
 [jQuery](https://jquery.com) (also available via CDN) before bootstrap.min.js.
 
 ### Tables, forms, inputs, pagination, navigation...
@@ -136,10 +136,10 @@ space and make it only 2 columns wide). The key is to use Bootstrap responsive m
 
 Screen size intervals for Bootstrap responsive classes:
 
-- xs -- under 768px (excl.) -- `col-xs-*`
-- sm -- from 768px to 992px (excl.) -- `col-sm-*`
-- md -- from 992px to 1200px (excl.) -- `col-md-*`
-- lg -- over 1200px -- `col-lg-*`
+- **xs** -- extra small -- under 768px (excl.) -- `col-xs-*`
+- **sm** -- small -- from 768px to 992px (excl.) -- `col-sm-*`
+- **md** -- medium -- from 992px to 1200px (excl.) -- `col-md-*`
+- **lg** -- large -- over 1200px -- `col-lg-*`
 
 ## CSS Preprocessors
 If you feel that CSS with its flat structure and lack of variables can get out of hands after some time,

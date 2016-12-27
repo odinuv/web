@@ -14,6 +14,5 @@ if(!empty($_POST["id_person"])) {
         exit($e->getMessage());
     }
 }
-
 $tplVars["pageTitle"] = "Delete a person";
 $latte->render('templates/delete.latte', $tplVars);

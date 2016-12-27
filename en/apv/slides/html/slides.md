@@ -323,7 +323,7 @@ permalink: /en/apv/slides/html/
 <section markdown='1'>
 ## Connecting styles with HTML cont.   
 - Inside HTML page:
-    - `<style type='text/css'>body {color: green}; … </style>`
+    - `<style type='text/css'>body {color: green;} … </style>`
     - Used for special pages.
     - Used to optimize the number of HTTP requests.
 - Inline:

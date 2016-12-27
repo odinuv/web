@@ -222,6 +222,7 @@ never designed for this which yields to some [technical drawbacks](todo).
 
 ## HTTP Protocol
 [HTTP protocol](https://www.w3.org/Protocols/) splits communication into transactions a HTTP Transaction consists of:
+
  - establish connection (client)
  - send request (client)
  - send response (server)
@@ -233,7 +234,6 @@ response (most importantly the *Content type*). A single HTTP transaction always
 **WWW resource** -- e.g. a single HTML page, a single image, etc. Therefore many HTTP transactions
 are required to transfer an entire HTML page.
 
-{% include /en/apv/articles/http-requests.md %}
 {: .image-popup}
 ![HTTP Requests](/en/apv/articles/web/http-requests.png)
 
@@ -264,8 +264,8 @@ in its state which user is logged in. When a user enters credentials on the logi
 the web application which processes the request is started, checks the credentials and
 responds with a successful login page. Then the user requests another page (e.g. list of her emails)
 and the application which processes the request is started again, unaware of what
-happened before. To workaround the statelessness of the HTTP protocol, [session and cookies](todo) must be used.
-Also it makes all web statistics considerably skewed, because it is very hard to
+happened before. To workaround the statelessness of the HTTP protocol, [session and cookies](/en/apv/articles/cookies-sessions)
+must be used. Also it makes all web statistics considerably skewed, because it is very hard to
 identify what is a *visit* of a page.
 
 The above can be seen as a tradeoff for the effectiveness of the HTTP protocol and HTTP server

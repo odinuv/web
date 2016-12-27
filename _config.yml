@@ -4,6 +4,7 @@ defaults:
       path: "" # an empty string here means all files in the project
     values:
       layout: "main"
+      pdf: true
 
 url: "https://odinuv.com"
 

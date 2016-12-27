@@ -4,7 +4,6 @@ if(x < 15) {
 } else {
     //...
 }
-
 var arr = ["a", "b", "c", "d", "e", "f"];
 for(var i = 0; i < arr.length; i++) {
     console.log(arr[i]);
