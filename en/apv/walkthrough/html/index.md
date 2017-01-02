@@ -13,8 +13,8 @@ stuff -- [dynamic pages](/en/apv/walkthrough/dynamic-page/). In this chapter, yo
 [HTML documents](/en/apv/articles/html/).
 
 ## Getting started
-Open your [favorite editor](todo) and create a new HTML file. If the editor is nice to you, it will
-automatically create a template for you. If not, here is one:
+Open your [favorite editor](/en/apv/articles/html/#validation) and create a new HTML file. If the editor
+is nice to you, it will automatically create a template for you. If not, here is one:
 
 {% highlight html %}
 {% include /en/apv/walkthrough/html/1-bare.html %}
@@ -35,7 +35,10 @@ be a link to `https://www.youtube.com`.
 {% endhighlight %}
 
 Open the page in your editor preview or in your favorite web browser and you should see an output similar to this.
-Note: there is no need to upload the page to a web site, since the page is static (static pages are boring, but easy)
+
+{: .note}
+There is no need to upload the page to a web site, since the page is static (static pages are boring, but easy).
+However, nobody else can view your page for now.
 
 {: .image-popup}
 ![Screenshot -- Page sample](/en/apv/walkthrough/html/static-1.png)
@@ -54,6 +57,7 @@ elements are organized hierarchically? Can you spot attributes?
 
 ### Task -- Tables
 The following additional rules apply to creating tables:
+
 - everything in a table must be in a table cell
 - a table cell must be in a table row
 - a table row must be in a table
@@ -106,6 +110,12 @@ Now as an exercise, create a table like this:
 {% include /en/apv/walkthrough/html/6-table-merge-sol-2.html %}
 {% endhighlight %}
 
+{: .note}
+You probably noticed that your HTML code becomes more and more complicated. A good practice is to maintain
+indentation of code. A good editor can help you -- it can automatically indents code and highlight matching pairs
+of tags. Another thing to remember is that you cannot just mix random tags (e.g. a `<tr>` has to be inside
+a `<table>` and nothing else should). Inexperienced HTML coders sometimes end up with nasty code which renders
+OK (in some browsers) but it is very far from any standards. Always check your code with a [validator](/en/apv/articles/html/#validation).
 
 ### Task -- Lists
 There are two types of lists -- ordered lists (numbered) and
@@ -147,6 +157,7 @@ be inside an `li` element):
 ## Putting it all together
 HTML elements may be nested and combined. Now try to create an entire page like this:
 
+{: .image-popup}
 ![Screenshot -- Complete page](/en/apv/walkthrough/html/complete-page.png)
 
 I used:
@@ -174,19 +185,21 @@ the looks of the document. Adjusting the font size and many other things is done
 
 ### Publishing your page
 {% comment %}TODO move this to dev tools?{% endcomment %}
-A webpage needs to be placed on a web server. That is a computer which is constantly connected to the Internet.
+A webpage needs to be placed on a web server. That is a computer which is constantly connected to the Internet
+and waits for HTTP requests which are served by [special software](/en/apv/course/technical-support/#apache-web-server).
 This computer has usually a hostname (something like www.myawesomepage.com) so you and others do not have to
-remember the IP address of that machine. Other people (visitors) can connect co that computer and download your page and
-referenced files (images and other stuff) when you upload it - remember to upload new versions.
-You can usually upload your page by using an [FTP](/en/apv/course/technical-support/#ftp--ssh) client or
-[SSH](/en/apv/course/technical-support/#ftp--ssh) client.
+remember the IP address of that machine. Other people (visitors) can connect to that computer and download your
+page and referenced files (images and other stuff) using their browser software (not always same as yours) after
+you upload it -- always remember to upload new versions of your files. You can usually upload your page using
+an [FTP](/en/apv/course/technical-support/#ftp--ssh) client or [SSH](/en/apv/course/technical-support/#ftp--ssh) client.
 
-You definitely noticed that web servers open some default page when you visit them (you do not have to write filename into
-your browser's address bar - www.myawesomepage.com/file.html). Such behavior is achieved by naming convention - that default
-file is usually named ``index.html`` or ``index.php``.
+You definitely noticed that web servers return some default page when you visit them (you do not have to write
+filename into your browser's address bar - www.myawesomepage.com/file.html). Such behavior is achieved by naming
+convention - that default file is usually named `index.html` or `index.php`.
 
 Important note is that server is another computer which usually runs some Linux OS. This means that absolute paths are
-different and case sensitive - when creating a web page locally on your PC, use **relative paths** and be precise with **case of letters**.
+different and case sensitive - when creating a web page locally on your PC, use **relative paths** and be precise
+with **case of letters** in them.
 
 ## Summary
 Now you should now be able to describe the structure of any text document using the HTML language. The document is

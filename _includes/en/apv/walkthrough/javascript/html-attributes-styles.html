@@ -10,6 +10,7 @@
     <script type="text/javascript">
         var links = document.getElementsByTagName("a");
         for(var i = 0; i < links.length; i++) {
+            links[i].title = links[i].innerHTML;    //copy content to title (displayed when mouse is over element)
             links[i].innerHTML = links[i].href; //copy href to content
             links[i].style.fontSize = "15pt";   //resize
             links[i].style.color = "#FF0000";   //make red

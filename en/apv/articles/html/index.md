@@ -77,6 +77,7 @@ Elements are written down using **tags**:
 {% endhighlight %}
 
 The above contains:
+
  - Element name (enclosed in angle brackets) -- `p`
  - Start tag -- `<p>`
  - End tag -- `</p>`
@@ -189,21 +190,20 @@ There are some oddities when writing down HTML elements:
 
 - **Empty elements** that have no body -- for example `img` element has no body, because its
 content is defined by the image source:
-
- - `<img src='http://example.com/image.png'>` (valid)
- - `<img src='http://example.com/image.png' />` (also valid)
- - `<img src='http://example.com/image.png'></img>` (also valid but not recommended)
+    - `<img src='http://example.com/image.png'>` (valid)
+    - `<img src='http://example.com/image.png' />` (also valid)
+    - `<img src='http://example.com/image.png'></img>` (also valid but not recommended)
 
 - **Boolean** (true/false) attributes are true when they are present in the tag, they
 either have no value at all, or they must have the values equal to their name. If 
 you want to set a boolean attribute to false, simple remove it:
 
- - `<input type='text' required>` (valid, true)
- - `<input type='text' required='required'>` (valid, true)
- - `<input type='text' required='1'>` (invalid, still true)
- - `<input type='text' required='0'>` (completely wrong)
- - `<input type='text' required='false'>` (completely wrong)
- - `<input type='text'>` (valid, false)
+    - `<input type='text' required>` (valid, true)
+    - `<input type='text' required='required'>` (valid, true)
+    - `<input type='text' required='1'>` (invalid, still true)
+    - `<input type='text' required='0'>` (completely wrong)
+    - `<input type='text' required='false'>` (completely wrong)
+    - `<input type='text'>` (valid, false)
 
 ### Data attributes 
 Data attributes start with the prefix `data-`. Otherwise the name of the attribute
@@ -373,11 +373,11 @@ HTML5 also brought in new features:
 
 - extend semantic elements (`article`, `nav`, `footer`, `menu`, `figure`, …)
 - improved user interaction
- - inserting objects into page (video, audio, vector graphics, math)
- - improved form elements (date input, number input, …)
- - validation of forms (different data types, regular expressions, …)
- - spread forms (form elements without containment)
- - data attributes
+    - inserting objects into page (video, audio, vector graphics, math)
+    - improved form elements (date input, number input, …)
+    - validation of forms (different data types, regular expressions, …)
+    - spread forms (form elements without containment)
+    - data attributes
 - removed all visual elements ('font', 'center', 'big', …)
 - accessibility improvements -- see [WCAG](https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines)
 - extensible with other markup ([MathML](https://en.wikipedia.org/wiki/MathML), 

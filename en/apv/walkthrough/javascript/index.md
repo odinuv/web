@@ -78,11 +78,18 @@ Other useful functions to retrieve HTML elements:
 - `document.querySelector(".some-css-selector")` -- returns first matched element
 - `document.querySelectorAll("#some-css-selector")` -- returns collection
 
-To access HTML attributes of retrieved elements just type `element.attr`
-(e.g. `console.log(link.href)`). An exception is `class` attribute which is accessed
+To access standard HTML attributes of retrieved elements just type `element.attr`
+(e.g. `console.log(link.href)` for `<a>` element). An exception is `class` attribute which is accessed
 using `element.className`. To change styles use `element.style` object with camel case
 style name (e.g. CSS `background-color` can be accessed with `element.style.backgroundColor`).
 Another special attribute is `innerHTML` which can be used to change content of an element.
+You might remember about [user defined attributes](/en/apv/articles/html/#data-attributes) which
+are found under `element.dataset.*` field.
+
+{: .note}
+Avoid changing of particular CSS styles in JavaScript. It is tedious and makes your code confusing.
+You should rather add or remove a CSS classes (there is a [`classList`](https://developer.mozilla.org/cs/docs/Web/API/Element/classList)
+field of HTML element for efficient work with CSS classes).
 
 {% highlight html %}
 {% include /en/apv/walkthrough/javascript/html-attributes-styles.html %}
@@ -141,9 +148,12 @@ You should see something like this in developer console:
 
 ![console.log() output](console-log.png)
 
-That weird stuff which is logged along with 'Button clicked' text is an event object describing
-what happened. Special event is `onload` which signals that whole page is loaded (but it can be also
-attached to `<img>` elements).
+That weird stuff which is logged along with 'Button clicked' text is an *event object* describing
+what happened. Event object also has methods: most used ones are `event.preventDefault()` to prevent
+browser from executing default actions (form submission, navigation, typing...) and `event.stopPropagation()`
+to stop processing event (in case that more handler functions are registered to same event). Special event
+is `onload` of `<body>` element which signals that whole page is loaded (but it can be also attached to
+particular `<img>` elements).
 
 You can attach events as HTML attributes like in example above or you can use programmatic approach
 which is much cleaner because it won't complicate your HTML code:
@@ -152,16 +162,32 @@ which is much cleaner because it won't complicate your HTML code:
 {% include /en/apv/walkthrough/javascript/events.html %}
 {% endhighlight %}
 
+{: .note}
+The reason why we used Latte templates was to divide program logic and view logic. It is the same with JavaScript:
+you should not mix HTML and JavaScript code. Ideally put all JavaScript into separate file(s) and use it to attach all
+event handlers.
+
+### Task -- toggle a class of HTML element using a button click
+Make a button and any HTML element with an `id` attribute. Attach click event to button using an `onclick` attribute.
+Toggle some CSS class on element with `id` using `element.classList.toggle('className')` method. Obviously you
+also need a CSS class with some visual properties.
+
+{: .solution}
+{% highlight html %}
+{% include /en/apv/walkthrough/javascript/events-toggle-css.html %}
+{% endhighlight %}
+
 ## Using JavaScript to confirm user actions
-In chapter about [delete](/en/apv/walkthrough/backend-delete) you were referred to this tutorial
-for information about how to confirm user action. Here is an example how to prevent navigation
-with a confirm popup for basic `<a>` tags and for `<form>` tags:
+In chapter about [delete](/en/apv/walkthrough/backend-delete) you were referred to this tutorial for information about
+how to confirm user action. Using JavaScript we can prevent visitor's browser from sending HTTP request which would e.g.
+actually delete a record from a database. Here is an example how to prevent navigation with a confirm popup for basic
+`<a>` tags:
 
 {% highlight html %}
 {% include /en/apv/walkthrough/javascript/prevent-nav-a.html %}    
 {% endhighlight %}
 
-Example above is a bit shorter in HTML code than following one which shows how to prevent form from submitting. 
+Example above is a bit shorter in HTML code than following one which shows how to prevent `<form>` from submitting. 
 
 {% highlight html %}
 {% include /en/apv/walkthrough/javascript/prevent-nav-form.html %}
@@ -169,7 +195,9 @@ Example above is a bit shorter in HTML code than following one which shows how t
 
 Notice that you have to pass that true/false value from called `confirmForm()` function using
 return keyword in `onsubmit` attribute. That attribute itself is a body of event handler function
-and has to return true or false to approve or cancel from subscription. 
+and has to return true or false to approve or cancel from subscription. If you want to use
+`formElement.addEventListener()` method in this case, stop the event by calling `eventObject.preventDefault()`
+inside handler instead of returning `false`.
 
 ### Task -- add confirm dialog to your delete person function
 Carefully select where to place `<script>` tag -- remember that `{foreach ...}` duplicates
