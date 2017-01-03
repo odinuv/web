@@ -547,6 +547,7 @@ relations are linked together.
 
 To define a foreign key an attribute of one relation (R2) on which the foreign Key is 
 defined must have either:
+
     - a value of an attribute of another relation (R1) (preferably key),
     - empty value (`NULL`).
 

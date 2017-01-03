@@ -50,7 +50,8 @@ Here is a brief JavaScript demo:
 {: .note}
 To try JavaScript code you do not have to write a custom HTML page, just paste this code into online
 tool such as [JSFiddle](https://jsfiddle.net) (use JavaScript editor) or [Plunker](https://plnkr.co/edit/) 
-and click run. Remember to open that developer tools console when you work with JavaScript.
+and click run. Remember to open that [developer tools](/en/apv/course/not-a-student/#web-browser) console
+when you work with JavaScript.
 
 In following example you can see control structures:
 

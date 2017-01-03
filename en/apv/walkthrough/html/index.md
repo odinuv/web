@@ -44,8 +44,8 @@ However, nobody else can view your page for now.
 ![Screenshot -- Page sample](/en/apv/walkthrough/html/static-1.png)
 
 ### Task -- Examine HTML
-Open the web browser [Developer Tools](todo) and examine the structure of the HTML page. Can you see that
-elements are organized hierarchically? Can you spot attributes?
+Open the web browser [Developer Tools](/en/apv/course/not-a-student/#web-browser) and examine the structure of
+the HTML page. Can you see that elements are organized hierarchically? Can you spot attributes?
 
 {: .solution}
 {: .image-popup}

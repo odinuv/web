@@ -128,8 +128,8 @@ editor). Alternatives are [phpMyAdmin](https://www.phpmyadmin.net/) for MySQL/Ma
 for PostgreSQL. Adminer is more versatile but it has less functions than specific tools.
  
 {: .note}
-There are also specific applications like [MySQL Workbench]() or [PgAdmin]() for database management which are not
-web-based.
+There are also specific applications like [MySQL Workbench](http://www.mysql.com/products/workbench/) or
+[PgAdmin](https://www.pgadmin.org/) for database management which are not web-based.
 
 ### PHP frameworks
 I would have to write many books to describe PHP frameworks one by one. It is even impossible as I do not know
