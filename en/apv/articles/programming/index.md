@@ -124,6 +124,7 @@ any way. They serve the purpose of writing your comments to the source code.
 These are values written directly in the code. For example, when you write in PHP:
 
 {% highlight php %}
+<?php
 echo "Hello World!";
 {% endhighlight %}
 
@@ -134,6 +135,7 @@ text is printed.
 These are values also written in the code, but they are assigned a name. For example:
 
 {% highlight php %}
+<?php
 define('MONTHS_IN_YEAR', 12);
 echo MONTHS_IN_YEAR;
 {% endhighlight %}
@@ -145,6 +147,7 @@ In this case, the constant value was defined using a [`define()`](http://php.net
 Variables are one of the most important parts of a programming language. For example in PHP:
 
 {% highlight php %}
+<?php
 $name = 'Jane';
 echo $name;
 $name = 'John';
@@ -159,6 +162,7 @@ The variable can contain different values in time.
 Each language has operators for working with values. For example:
 
 {% highlight php %}
+<?php
 echo 4 + 5;
 {% endhighlight %}
 
@@ -173,6 +177,7 @@ case `4 + 5` is and expression, which yields a value `9`. Expressions can be
 the order of evaluation. E.g.
 
 {% highlight php %}
+<?php
 echo (4 + 5) * 10;
 {% endhighlight %}
 
@@ -186,6 +191,7 @@ it is a command which prints a value to the screen. The value is obtained by eva
 code get executed:
 
 {% highlight php %}
+<?php
 $what = 5
 if ($what > 0) {
     echo "5 is bigger than 0";
@@ -195,6 +201,7 @@ if ($what > 0) {
 An `if` condition can have multiple **branches**:
 
 {% highlight php %}
+<?php
 $what = 5
 if ($what > 0) {
     echo "5 is bigger than 0";
@@ -221,7 +228,7 @@ Apart from the syntax, there are other rules, very important one is *Type System
 The values used in a programming language can have different **data types**. Types are specific
 to each language, but there are some commonly used:
 
-- **boolean** -- A value which is either [*true* or *false*](https://en.wikipedia.org/wiki/Boolean_data_type).
+- **boolean** -- A value which is either [*true* or *false*](#boolean-type).
 - **integer** -- Whole number.
 - **string** -- String of characters -- i.e. a text.
 - **float**, **real** -- Decimal number
@@ -234,6 +241,7 @@ In a strongly typed language, the values must be explicitly converted. Most lang
 web application development are weakly typed which means that you can write e.g.:
 
 {% highlight php %}
+<?php
 echo 5 + '4';
 {% endhighlight %}
 
@@ -242,11 +250,42 @@ it can be added to integer `5`. Then the output `9` is converted to string `'9'`
 is printed to the screen. The following code will fail:
 
 {% highlight php %}
+<?php
 echo 5 + 'four';
 {% endhighlight %}
 
 The above would yield an error, because the language interpreter is stupid and does not know that
 string `four` can be converted to number 4.
+
+#### Boolean Type
+[Boolean data type](https://en.wikipedia.org/wiki/Boolean_data_type) has only two values: **true** and **false**.
+Boolean type has a great significance in programming. Boolean values (true, false) are also called **logical values**.
+They can be manipulated using [**logical operators**](https://en.wikipedia.org/wiki/Boolean_algebra#Basic_operations) 
+(part of *boolean logic* or *boolean algebra*). The most important logical operators are:
+
+- logical **and** (conjunction) -- the result value is true if both operands are true, otherwise it is false.
+- logical **or** (disjunction) -- the result value is true if either operand is true, otherwise it is false 
+(i.e. if both operands are false)
+- logical **not** (negation) -- the result is negation of the value (if operand is true, result is false and vice versa).
+
+The **and** and **or** operators are **binary** which means that they have two **operands**. While it may sound alien,
+you are already familiar with binary operators. E.g. if you write `4 + 3`. The plus `+` is a binary 
+operator (arithmetic, not boolean though), `4` and `3` are its *operands*. The result is `7`. 
+Similarly you can write `true and false`. The `and` is a binary boolean operator, `true` and `false` are 
+its operands. The result is `false`. The `not` operator is **unary** which means that it has only one operand.
+For example the expression `not true`, negates the value `true` and results `false`. This is sort of logical, isn't it?
+That's why it's called boolean logic :). In PHP, the not operator is written using exclamation mark `!`:
+
+Some examples:
+{% highlight php %}
+<?php
+!true; // -> yields false
+(true and true) or false; // -> yields true
+((true or false) and true) and (!true); // -> yields false
+(!((!true) or false)) or false; // -> yields true
+{% endhighlight %}
+
+Knowing how boolean operators work is essential for writing [conditional statements](/en/apv/articles/programming/#control-flow).
 
 ### Standard Library
 Part of each high-level language is a *function library* (*library* or *standard library*).
@@ -299,6 +338,9 @@ making an application.
 - constants
 - variables
 - operators
+- operand
+- binary operator
+- unary operator
 - control flow constructs - conditions, loops
 - integer
 - string
