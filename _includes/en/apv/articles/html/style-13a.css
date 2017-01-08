@@ -1,0 +1,13 @@
+body, html {
+    margin: 0;
+    background-color: cyan;
+}
+article  {
+    column-count: 3;
+    background-color: blue;
+    border: 50px solid magenta; 
+    margin: 50px;
+}
+img {
+    width: 100px;
+}

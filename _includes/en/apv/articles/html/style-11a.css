@@ -1,0 +1,16 @@
+body, html {
+	margin: 0;
+	background-color: cyan;
+}
+.inner {
+	background-color: yellow;
+	width: 50px;
+	height: 50px;
+	margin: 50px;
+}
+.outer  {
+	background-color: blue;
+	border: 50px solid magenta;	
+	margin: 50px;
+	width: 500px;
+}

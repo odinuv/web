@@ -1,0 +1,16 @@
+body, html {
+    margin: 20px;   
+    background-color: cyan;
+}
+form.tabularForm {
+	display: table;
+}
+form.tabularForm label {
+	display: table-cell;
+}
+form.tabularForm input {
+	display: table-cell;
+}
+form.tabularForm div {
+	display: table-row;
+}

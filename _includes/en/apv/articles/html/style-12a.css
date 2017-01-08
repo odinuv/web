@@ -1,0 +1,11 @@
+body, html {
+	margin: 0;
+	background-color: cyan;
+}
+article {
+	background-color: grey;
+	width: 500px;
+}
+figure {
+	background-color: yellow;
+}

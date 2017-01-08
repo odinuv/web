@@ -1,0 +1,10 @@
+.rockets {
+    background: blue url(rocket-64x64.png) repeat-x 50% 50%;
+    height: 80px;
+}
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}

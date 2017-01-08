@@ -1,0 +1,21 @@
+ul, ol {
+	font-size: 20px;
+}
+ul li {
+	background: grey;
+}
+ul>li {
+	background: red
+}
+ul.menu {
+	background: yellow;
+}
+ul.menu a:visited {
+	color: cyan;
+}
+li#special a:visited {
+	color: magenta;
+}
+li ~ li {
+	text-decoration: underline;
+}

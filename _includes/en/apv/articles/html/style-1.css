@@ -1,0 +1,5 @@
+a {color: red}
+a[href='http://anotherexample.com'] {color: magenta}
+.contact_link {color: grey}
+#homepage_contact {color: green}
+:visited {color: blue}

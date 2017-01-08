@@ -1,0 +1,19 @@
+body, html {
+	font-family: "Times New Roman";
+    font-size: 16px;
+    margin: 0;
+    background-color: cyan;
+}
+article  {
+    background-color: blue;
+    border: 50px solid magenta;
+    line-height: 1.15;
+}
+.specialText {
+	margin-left: 50px;
+	margin-top: 50px;
+	line-height: 78.4px;
+	padding: 10px;
+	background-color: white;
+	border: 20px solid yellow;
+}

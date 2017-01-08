@@ -1,0 +1,12 @@
+body {
+	font-size: 12px;
+}
+table {
+	font-size: 20px;
+}
+p {
+	font-size: 5px;
+}
+td:first-child p {
+	font-size: 30px;
+}

@@ -1,0 +1,28 @@
+body, html {
+	margin: 0;
+	background-color: cyan;
+}
+.inner {
+	background-color: yellow;
+	width: 50px;
+	height: 50px;
+	margin: 50px;
+	float: left;
+}
+.outer  {
+	background-color: blue;
+	border: 50px solid magenta;	
+	margin: 50px;
+	width: 500px;
+	position: absolute;
+}
+.outer::after {
+ 	content: "";
+  	display: block;
+  	clear: both;
+}
+#special {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
