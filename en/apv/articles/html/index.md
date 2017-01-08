@@ -157,13 +157,14 @@ first item of the list</p></li><li><p>second item of the list</p></li>
 Let us have a look at a sample HTML document:
 
 {% highlight html %}
-{% include /en/apv/articles/sample-page.html %}
+{% include /en/apv/articles/html/html-sample.html %}
 {% endhighlight %}
 
 If you display the above HTML source document in your browser, you will see
 a simple page:
 
-![Screenshot - Sample document](/en/apv/articles/html/sample-page-3.png)
+{: .image-popup}
+![Screenshot - Sample document](/en/apv/articles/html/html-sample.png)
 
 In the beginning I said, that a HTML document is a hierarchial structure
 [(tree structure)](https://en.wikipedia.org/wiki/Tree_(graph_theory)) of HTML elements.
