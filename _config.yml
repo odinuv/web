@@ -6,7 +6,9 @@ defaults:
       layout: "main"
       pdf: true
 
-url: "https://odinuv.com"
+#url: "https://odinuv.com"
+url: "https://akela.mendelu.cz"
+baseurl: "~xpopelka"
 
 exclude:
   - docker-compose.yml
