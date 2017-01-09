@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Event handling with JavaScript</title>
+    <style>
+        .highlight {
+            border: 2px solid #00FF00;
+            text-decoration: underline;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<button onclick="toggleIt()">
+    Click this button to toggle a CSS class.
+</button>
+<div id="element">
+    This is an element.
+</div>
+<script type="text/javascript">
+    function toggleIt() {
+        var el = document.getElementById("element");
+        el.classList.toggle("highlight");
+    }
+    /* alternative:
+    //attach event programmatically
+    var allBtns = document.getElementsByTagName("button");
+    //only one event for click
+    allBtns[0].onclick = toggleIt;
+    //better way
+    //allBtns[0].addEventListener('click', toggleIt);
+    */
+</script>
+</body>
+</html>

@@ -80,8 +80,15 @@ development server.
 
 ## Web browser
 Any modern web-browser is suitable. I recommend [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/) or
-[Google Chrome](https://www.google.com/chrome/). Important feature which your browser should have
-is some kind of developer tools with network console. This feature is usually under F12 key.
+[Google Chrome](https://www.google.com/chrome/). Important feature which your browser should have is some kind of
+developer tools with network console and DOM inspector. This feature is usually under F12 key or in application's
+menu.
+
+{: .image-popup}
+![Opening developer tools](/en/apv/course/developer-tools-open.png)
+
+{: .image-popup}
+![Developer tools - network console](/en/apv/course/developer-tools.png)
 
 ## Text editor or IDE
 You should at least install a text editor which is suitable for developers - important features are

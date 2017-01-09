@@ -61,7 +61,8 @@ So I simply assigned the error to the `$message` variable and then passed that t
 `$tplVars['message'] = $message;`.
 
 Try the above script and verify that the form validation works fine. If you put `required` attribute to 
-the form controls, either remove it for the test, or use [developer tools](todo) to do so temporarily.
+the form controls, either remove it for the test, or use [developer tools](/en/apv/course/not-a-student/#web-browser)
+to do so temporarily.
 
 The part of the PHP script which requires deeper explanation is probably this:
 {% highlight php %}

@@ -71,8 +71,8 @@ descendants, unless these elements are told different. In case of conflict (you 
 values of the same attribute for an element), the right CSS definition is selected by 
 [*cascading*](http://localhost:4000/en/apv/articles/html/css/#cascading) of
 styles. In short the cascading means that more specific selectors and definitions which are defined
-last are used in case of uncertainty. You can observe these conflicts using CSS inspector in 
-[developer tools](todo) (F12) of your browser:
+last are used in case of uncertainty. You can observe these conflicts using DOM inspector in 
+[developer tools](/en/apv/course/not-a-student/#web-browser) (F12) of your browser:
 
 ![Screenshot -- Cascading](/en/apv/walkthrough/css/cascading.png)
 
