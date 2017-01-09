@@ -69,7 +69,7 @@ Even though creating an entire page stylesheet is complicated, the syntax of a C
 <span title='it is like bricks, they are simple and anyone can use them, but building an entire house is not that easy'>
 fairly simple</span>.
 A CSS document contains **rules**, **selectors** and **properties** and their values.
-CSS **rules** are written down as:
+CSS **rule** is composed of a selector and a set of properties and their values. CSS rule is written down as:
 
 {% highlight css %}
 selector {
@@ -270,7 +270,7 @@ number of HTTP requests. Note that it *is not* a good idea to include CSS files 
 get unnecessarily large, it is better to set up [HTTP caching](todo).
 
 ### Inline
-Third option is to include styles in the `style` attribute:
+Third (quick & dirty) option is to include styles in the `style` attribute:
 
 {% highlight html %}
 <!DOCTYPE html>

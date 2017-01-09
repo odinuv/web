@@ -119,6 +119,14 @@ any way. They serve the purpose of writing your comments to the source code.
 // this is a comment, and does nothing
 {% endhighlight %}
 
+Comments are either *single-line* or *multi-line*. A single-line comment (the above example) runs until the 
+end of the line. Multi-line comment must be terminated by a sequence of characters.
+
+{% highlight php %}
+/* this is a comment, that 
+does nothing and spans over more lines.
+*/
+{% endhighlight %}
 
 #### Literal
 These are values written directly in the code. For example, when you write in PHP:
