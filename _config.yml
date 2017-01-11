@@ -6,9 +6,9 @@ defaults:
       layout: "main"
       pdf: true
 
-#url: "https://odinuv.com"
-url: "https://akela.mendelu.cz"
-baseurl: "~xpopelka"
+url: "https://odinuv.com"
+#url: "https://akela.mendelu.cz"
+#baseurl: "/~xpopelka/"
 
 exclude:
   - docker-compose.yml
@@ -16,6 +16,9 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - deploy.sh
+  - mdeploy.sh
+  - .travis.yml
 
 sass:
   style: compressed

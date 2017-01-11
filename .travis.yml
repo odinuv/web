@@ -12,14 +12,14 @@ script:
   - docker-compose run --rm -e JEKYLL_ENV=production jekyll jekyll build
 
 deploy:
-#  - provider: script
-#    skip_cleanup: true
-#    script: ./deploy.sh
-#    on:
-#      tags: true
   - provider: script
     skip_cleanup: true
-    script: ./mdeploy.sh
+    script: ./deploy.sh
+#    on:
+#      tags: true
+#  - provider: script
+#    skip_cleanup: true
+#    script: ./mdeploy.sh
 #   on:
 #     tags: true
 #     all_branches: true
