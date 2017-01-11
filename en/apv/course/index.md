@@ -7,8 +7,8 @@ permalink: /en/apv/course/
 {:toc}
 
 ## Course information
-The aim of the course is to teach student basic categories of application software. Emphasis is given on 
-development of web applications and database applications (relational database systems). 
+The aim of the course is to teach student basic categories of application software. Emphasis is given on
+development of web applications and database applications (relational database systems).
 [Official course information](http://ects-prog.mendelu.cz/en/plan6937/predmet88060)
 
 ## Course outline
@@ -27,7 +27,7 @@ development of web applications and database applications (relational database s
     - [Presentation slides](/en/apv/slides/database-systems/)
 - Week 4
     - Articles: [Relational Database Systems](/en/apv/articles/database-systems/)
-    - Exercises: [Latte](/en/apv/walkthrough/templates/) and [Latte Templates](/en/apv/walkthrough/templates-layout/) 
+    - Exercises: [Latte](/en/apv/walkthrough/templates/) and [Latte Templates](/en/apv/walkthrough/templates-layout/)
     - [Presentation slides](/en/apv/slides/relational-database/)
 - Week 5
     - Articles: [SQL Language](/en/apv/articles/sql-join/)
@@ -43,29 +43,23 @@ development of web applications and database applications (relational database s
     - [Presentation slides](/en/apv/slides/database-design/)
 - Week 8
     - Articles: [Database Systems -- Sequences, Constraints, Keys](/en/apv/articles/database-tech/)
-    - Exercises: [Application Layout and Templates](todo)
+    - Exercises: [Application Layout and Templates]/en/apv/walkthrough/css/bootstrap/)
     - [Presentation slides](/en/apv/slides/database-tech/)
 - Week 9
-    - Articles: [Web applications -- Security](todo)
-    - Exercises: [Advanced SQL](todo)
-    - [Presentation slides](todo)
+    - Articles: [Cascading Style Sheets](/en/apv/articles/html/css/)
+    - Exercises: [Advanced Inserts](/en/apv/walkthrough/backend-insert/advanced/todo)
 - Week 10
-    - Articles: [Web applications -- Maintaining state](todo)
     - Exercises: [Deleting Data](/en/apv/walkthrough/backend-delete)
-    - [Presentation slides](todo)
 - Week 11
-    - Articles: [Web applications -- Architecture, Frameworks](todo)
-    - Exercises: [Login](todo)
-    - [Presentation slides](todo)
+    - Exercises: [Login](/en/apv/walkthrough/login/)
 - Week 12 & Week 13
-    - Articles: [Application Development](todo)
     - Work on Project
 
 ## Project Assignment
-To pass the course you need to create a project. The project assignment is 
+To pass the course you need to create a project. The project assignment is
 described below:
 
-> Create a web application for recording persons and contacts. The main goal of the application is 
+> Create a web application for recording persons and contacts. The main goal of the application is
 > to record persons (friend, acquaintances), their addresses, relationships and meetings.
 > Every person can have a name, nickname, age, location and contacts. Each person can have any
 > number of contacts (mobile, Skype, Jabber, ....). A person can have more contacts of the
@@ -75,14 +69,14 @@ described below:
 > the end-user. The application also records meetings between persons. Each meeting can be joined by any number of persons.
 > Each meeting should have a place and date.
 > The application must allow user friendly of entering and modifying the data. Take advantage of the proposed schema,
-> create a database and implement the entire application. 
+> create a database and implement the entire application.
 
-The assignment is intentionally every loosely defined. It is up to you to come up with the 
+The assignment is intentionally every loosely defined. It is up to you to come up with the
 application design, functionality and user interface. It is not an easy task, so I have designed a
-[database schema](/en/apv/walkthrough/database/#database-schema) for you.   
+[database schema](/en/apv/walkthrough/database/#database-schema) for you.
 
 {: .image-popup}
 ![Database Schema](/en/apv/schema.svg)
 
 The database schema defines what kind of data your application should store. You can change it
-if you want to, but please do so only after you understand the [database design process](todo). 
+if you want to, but please do so only after you understand the [database design process](todo).
