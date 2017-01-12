@@ -288,7 +288,7 @@ element from its default (*static*) position. But it is mostly
 used just as a container for the [*Absolute*](/en/apv/articles/html/css/#absolute-position) position mode.
 *Absolute* mode is used to place the element on a certain position
 within its parent. The parent is either the `body` element or the element with position set to anything other than *static*.
-[*Fixed position*](/en/apv/articles/html/css/#fixed-position) is used to place element on given position in the browser
+[*Fixed position*](/en/apv/articles/html/css/#fixed-position) is used to place the element on a given position in the browser
 window (even scrolling does not affect
 element position -- navigation panels on some sites behave like this).
 
@@ -297,7 +297,7 @@ Try to set relative and absolute positions and different sizes for some box elem
 
 -   Make a `<div>` with size 3 &times; 3 cm.
 -   Place this `<div>` (using absolute positioning) into the bottom right corner of another one, which has 10cm height.
--   Explore the difference between absolute `<div>` inside an *relative* and a *static* parent element.
+-   Explore the difference between absolute `<div>` inside a *relative* and a *static* parent element.
 -   Make a `<div>` with fixed position and place it in the bottom left corner. Make it 30% of window size.
 
 {: .solution}
