@@ -19,6 +19,7 @@ exclude:
   - deploy.sh
   - mdeploy.sh
   - .travis.yml
+  - replace.sh
 
 sass:
   style: compressed
