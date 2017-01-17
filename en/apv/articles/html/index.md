@@ -254,7 +254,7 @@ and `alt` for an **alt**ernative text (used when image cannot be displayed):
 The image element can have no other content apart the image itself. Instead of writing
 `<img src...></img>` it is shortened to only the start tag ([see below](#tags) for lengthy explanation).
 
-There is a number of [common attributes](http://www.w3.org/TR/html5/elements.html#global-attributes),
+There is a number of [common attributes](https://www.w3.org/TR/html/dom.html#sec-global-attributes),
 it's really good to know about:
 
 - `id` -- Unique identifier of the HTML element within the document (used,
@@ -461,19 +461,19 @@ a minor revision 5.1 standardized in 2016.
 {: .image-popup}
 ![Various HTML related Standards](/en/apv/articles/html/html-standards.svg)
 
-HTML5 also brought in new features:
+HTML5 also [brought in new features](http://www.whoishostingthis.com/resources/html5-guide/#page-1):
 
-- extend semantic elements (`article`, `nav`, `footer`, `menu`, `figure`, …)
-- improved user interaction
-    - inserting objects into the page (video, audio, vector graphics, math)
-    - improved form elements (date input, number input, …)
-    - validation of forms (different data types, regular expressions, …)
-    - spread forms (form elements without containment)
-    - data attributes
-- removed all visual elements (`font`, `center`, `big`, …)
-- accessibility improvements -- see [WCAG](https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines)
+- extend [semantic elements](http://www.whoishostingthis.com/resources/html5-guide/#page-12) (`article`, `nav`, `footer`, `menu`, `figure`, …),
+- improved user interaction:
+    - inserting objects into the page (video, audio, vector graphics, math),
+    - improved form elements (date input, number input, …),
+    - validation of forms (different data types, regular expressions, …),
+    - spread forms (form elements without containment),
+    - data attributes,
+- removed all visual elements (`font`, `center`, `big`, …),
+- accessibility improvements -- see [WCAG](https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines),
 - extensible with other markup ([MathML](https://en.wikipedia.org/wiki/MathML),
-[SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics))
+[SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics)).
 
 HTML5 standard describes the HTML language itself. The most important
 part of that is the allowed hierarchy of elements and their attributes. Apart from that, the standard
