@@ -1,0 +1,22 @@
+{extends layout.latte}
+
+{block content}
+<form method="post">
+    {* pass person's ID along for future UPDATE query *}
+    <input type="hidden" name="id" value="{$person['id_person']}"/>
+    {* print person name *}
+    <label>
+        Select new address for person {$person['first_name']} {$person['last_name']}:
+    </label>
+    <select name="location_id">
+        {* add blank option *}
+        <option value="">Unknown address</option>
+        {foreach $locations as $loc}
+        <option value="{$loc['id_location']}">
+            {$loc['city']} {$loc['street_name']} {$loc['street_number']}
+        </option>
+        {/foreach}
+    </select>
+    <button type="submit" name="search" value="search" required>Set</button>
+</form>
+{/block}

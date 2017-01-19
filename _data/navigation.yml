@@ -58,6 +58,9 @@ items:
 
               - url: /en/apv/walkthrough/backend-update/
                 title: Database – Updating
+                items:
+                - url: /en/apv/walkthrough/backend-update/using-select/
+                  title: Using select element
 
               - url: /en/apv/walkthrough/backend-delete/
                 title: Database – Delete

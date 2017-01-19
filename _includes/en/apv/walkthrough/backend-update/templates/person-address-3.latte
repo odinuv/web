@@ -1,0 +1,20 @@
+{extends layout.latte}
+
+{block content}
+<form method="post" action="store-address.php">
+    <input type="hidden" name="id" value="{$person['id_person']}"/>
+    <label>
+        Select new address for person {$person['first_name']} {$person['last_name']}:
+    </label>
+    <select name="location_id">
+        <option value="">Unknown address</option>
+        {foreach $locations as $loc}
+        {* preselect person's address *}
+        <option value="{$loc['id_location']}"{if $person['id_location'] == $loc['id_location']} selected{/if}>
+            {$loc['city']} {$loc['street_name']} {$loc['street_number']}
+        </option>
+        {/foreach}
+    </select>
+    <button type="submit" name="search" value="search" required>Set</button>
+</form>
+{/block}
