@@ -47,7 +47,7 @@ rounded corners or mouse cursor and [many more](https://developer.mozilla.org/en
 Creating styles for a full HTML page is quite a complex task. Because a web page is not a piece of 
 paper, the styles must adapt to virtually unlimited number of page (window) sizes. This leads
 us to [**responsive design**](https://en.wikipedia.org/wiki/Responsive_web_design) which basically is page 
-design in which the page layout changes with the page size. This means that some elements are show only when
+design in which the page layout changes with the page size. This means that some elements are shown only when
 there is enough space for them and other page elements are resized accordingly. Creating
 a clean good looking responsive page, which displays nicely on desktop with
 [screen resolution](https://en.wikipedia.org/wiki/Display_resolution) 1920 &times; 1080 as well as on a mobile 
@@ -192,7 +192,7 @@ properties it does not understand. Therefore the above code works, because
 - An old version of Firefox that does not understand the `box-shadow` property will read the `-mox-box-shadow` and 
 ignore the `box-shadow` and `-webkit-box-shadow`. The result it not guaranteed to be the same.
 
-Using vendor prefixed properties is generally discouraged. The should be used if you want to be an
+Using vendor prefixed properties is generally discouraged. They should be used if you want to be an
 early adopter of that particular feature or if you need to support older versions of some browsers.
 Thought it is better to use a [polyfill](https://en.wikipedia.org/wiki/Polyfill).
 
@@ -329,8 +329,8 @@ overriding in [developer tools](todo) where the overridden property value is cro
 ![Screenshot - Sample page](/en/apv/articles/html/sample-page-3.png)
 
 Not all CSS properties are inherited. Because there are [hundreds of available CSS properties](https://developer.mozilla.org/en/docs/Web/CSS/Reference).
-remembering a list of inherited and non-inherited properties is not practical. But if you use common sense
-judgement you'll probably figure it out on your own. E.g. it does not make any sense to inherited
+Remembering a list of inherited and non-inherited properties is not practical. But if you use common sense
+judgement you'll probably figure it out on your own. E.g. it does not make any sense to inherit
 any properties related to element size (width, height, margin, padding) because a child element with the
 same size as the parent element would not fit inside that parent element.
 
@@ -352,8 +352,8 @@ If you look at the above page in [developer tools](todo), you will see the follo
 {: .image-popup}
 ![Screenshot - Sample page](/en/apv/articles/html/sample-page-4.png)
 
-I.e. you can see that the `ul` element has no background, and you can see-through it its parent (`body`)
-with the green background. You can also see that there is not any overridden background for the `p` element.
+I.e. you can see that the `ul` element has no background, and you can see its parent through it -- the `body`
+element with the green background. You can also see that there is not any overridden background for the `p` element.
 
 ### Cascading
 There are multiple places where a style declaration can be placed (inline, external styles, ...) and multiple options
@@ -368,12 +368,12 @@ following simplified rules are applied in the cascade:
 
 - [specificity](https://developer.mozilla.org/en/docs/Web/CSS/Specificity) -- more specific selectors override 
 less specific selectors. For basic selectors this means that
-Id selector (e.g. `#someId`) overrides Class selector (e.g. `.someClass`) which overrides type selector (e.g. `ul`).
+id selector (e.g. `#someId`) overrides class selector (e.g. `.someClass`) which overrides type selector (e.g. `ul`).
 This gets more complicated in complex selectors but the rule of thumb is that a more specific rule wins
 over a generic one. I.e `p.firstParagraph` is more specific than `.firstParagraph` which is more specific than `p` selector.
 There is an [exact formula](https://www.w3.org/TR/selectors/#specificity) for computing selector specificity.
 - origin and importance -- author styles (provided in the page source by you) override the user-agent 
-styles (provided by the web browser). This can be modified by the 
+styles (provided by the web browser). This can also be modified by the 
 [`!important` rule](https://developer.mozilla.org/en/docs/Web/CSS/Specificity#The_!important_exception).
 - scope -- a style with scope overrides a style without scope, the typical case is inline style which
 applies only to certain part of the HTML document (scope) and overrides the styles assigned to the entire document.
@@ -583,13 +583,13 @@ selector combinators. With the following CSS style:
 {% include /en/apv/articles/html/style-9.css %}
 {% endhighlight %}
 
-the following HTML page: 
+... and the following HTML page: 
 
 {% highlight html %}
 {% include en/apv/articles/html/css-sample-9.html %}
 {% endhighlight %}
 
-will display like this:
+The page will display like this:
 
 {: .image-popup}
 ![Screenshot - Sample page](/en/apv/articles/html/sample-page-9.png)
@@ -611,7 +611,7 @@ of some `ul` element (though not direct). Then there is the rule `ul.menu` that 
 to the third list and makes it yellow. Also notice that the rule applies only to the list
 itself (not the list items, their background is set by `ul li` rule), so the only yellow part is list itself.
 
-Then there is rule `ul.menu a:visited` which makes all visited links in the third list cyan colored. The 
+Then there is the rule `ul.menu a:visited` which makes all visited links in the third list cyan colored. The 
 rule `li#special a:visited` makes the second link in the first list magenta colored because
 it is contained in an `li` with id `special`. It has higher specificity (using id instead of class), 
 therefore it overrides the previous rule. To test the visited and unvisited links, 
@@ -636,15 +636,14 @@ in several [layout modes](https://developer.mozilla.org/en-US/docs/Web/CSS/Layou
 - inline layout -- by default used for inline elements (`a`, `img`, `span`, ...),
 - table layout -- used for *contents* of table (the `table` itself is a block element),
 - positioned layout -- in this layout, the elements are positioned by their coordinates, without interaction with other elements,
-- [flex layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) (flexible box layout) -- in the layout the box are able to change their size to best accommodate the screen,
+- [flex layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) (flexible box layout) -- in the layout the boxes are able to change their size to best accommodate the screen,
 - [grid layout](http://gridbyexample.com/) -- allows positioning elements in a fixed grid (this is different to table in that a table is a dynamic grid -- 
 it accommodates to content)
 
 The *flex layout* and *grid layout* are the newest additions to CSS layouts. Grid layout is not very well supported
 among browsers yet, but there are already [some guides on using it](https://css-tricks.com/snippets/css/complete-guide-grid/).
-Keep in mind that layout mode is specified per element (not per document), which means that the 
-all layout modes can be mixed in a single document. Let's have a quick look on the basic properties and usage of 
-different layout modes. 
+Keep in mind that layout mode is specified per element (not per document), which means that all the layout modes
+can be mixed in a single document. Let's have a quick look on the basic properties and usage of different layout modes. 
 
 ### CSS Box Model
 Before we get to the layout modes, it is important how CSS handles HTML elements. Each element on a page is 
@@ -677,8 +676,8 @@ The margin edge determines the total space occupied by the HTML element on scree
 {% include /en/apv/articles/html/style-10a.css %}
 {% endhighlight %}
 
-Therefore, how much space an HTML element will occupy on screen, you need to add
-content, padding, border and margin together.
+Therefore, to calculate how much space an HTML element will occupy on a screen, you need to add
+content, padding, border and margin dimensions together.
 Feel free to experiment wit the page in [your browser developer tools](todo).
 
 ### Block layout
@@ -689,7 +688,7 @@ element occupies all available horizontal space of the **parent** element. Autom
 element has height to accommodate all of its **children**. 
 
 You can fix that by setting `.outer` width to e.g. `50px`. Now this may sound weird, the actual visible element width
-is `2 &times; 50 (border) + 2 &times; 50 (margin) + 50 (content size) = 250 px`. I.e. setting the width
+is `2 ✕ 50 (border) + 2 ✕ 50 (margin) + 50 (content size) = 250 px`. I.e. setting the width
 to 50px actually results in element width being 250px. This is as designed -- look at the box model schematic
 above -- the CSS `width` property refers to the *content width* (content edge). What happens if you
 set the width to more than the content width (e.g. 150px) ?
@@ -715,11 +714,12 @@ To center the `.inner` div, add `display: flex; justify-content: center` to the 
 What happens if you make the content smaller? I also made padding smaller, so that the behavior is more visible:
 
 {: .image-popup}
+{% comment %}TODO? stejny obrazek jak predtim{% endcomment %}
 ![Screenshot - Block layout - smaller width](/en/apv/articles/html/sample-page-10c.png)
 
 As you can see, the `.inner` element width remained 50px wide and it **overflowed** the designated space
 in `.outer` div. By default, the overflow is visible. You can control what happens with the overflow
-(of `.outer` div) by setting `overflow` property. Try setting it to `hide` or to `scroll`. 
+(of `.outer` div) by setting `overflow` property. Try setting it to `hidden` or to `scroll`. 
 Notice that the overflow does not include the padding (because that is not part of the content) --
 i.e. the overflow refers to the *content edge*.
 
@@ -763,8 +763,8 @@ left yellow box is in exact same position as in the previous example). This may 
 the elements are placed outside of their container, yet they respect its size (except height which overflows).
 Why does float behave so strangely? Because that is exactly what it is expected to do.
 
-Float was designed for positioning block elements in a flow of 
-[Lorem Ipsum](http://demo.agektmr.com/flexbox/) text, see how a figure looks without float:
+Float was designed for positioning block elements in a flow of text, see how a figure looks without float,
+I used [Lorem Ipsum](http://demo.agektmr.com/flexbox/) text to fill the page:
 
 {% highlight html %}
 {% include /en/apv/articles/html/css-sample-12a.html %}
@@ -802,7 +802,7 @@ to maintain both elements as rectangular boxes.
 
 If you want to have the container element to extend with the contained elements, you have to apply 
 [**Clearfix**](http://complexspiral.com/publications/containing-floats/)
-([shorter explanation](http://stackoverflow.com/questions/8554043/what-is-a-clearfix). The Clearfix is a CSS rule 
+([shorter explanation](http://stackoverflow.com/questions/8554043/what-is-a-clearfix)). The Clearfix is a CSS rule 
 (yes, it is a rule so special, that it has its own name) looks like this:
 
 {% highlight css %}
@@ -820,7 +820,7 @@ are also accepted with one semicolon, so `:after`). The rule works so that it vi
 *after* the list child of `.outer` element. That virtual element has no content `content: ""` and stops the 
 floating `clear: both` and switches layout mode to `block` layout. The same could be (and for older browser was)
 achieved by a special element in HTML code, which would stop floating. It is not that important to know how Clearfix works,
-but it is a nice illustration of immense CSS capabilities. The important think is that it ensures that the container
+but it is a nice illustration of immense CSS capabilities. The important thing is that it ensures that the container
 grows with the floats.
 
 Floating blocks are mainly useful for textual documents (as shown in the above example), but it has other 
@@ -832,7 +832,7 @@ Similarly to float layout, the column layout is an extension to block layout and
 text layouts. In the below example, the text is split into three columns:
 
 {% highlight html %}
-{% include /en/apv/articles/html/style-13a.css %}
+{% include /en/apv/articles/html/css-sample-13a.html %}
 {% endhighlight %}
 
 {% highlight css %}
@@ -876,8 +876,8 @@ and CSS style:
 by default set to value `normal`. You can see that in the above example between **computed** styles. 
 This means a that the line-height is guided by the used font (`font-family`). For the `Times New Roman` 
 family I used in the example, line-height normal is 1.15. That means 1.15 times bigger than the specified font
-size. Therefore the line-height is `16px * 1.15 = 18.4px`. Then you need to add 2 * 10px (padding)
-and 2 * 20px (border) which yields 78.4 px as the required height of the line:
+size. Therefore the line-height is `16px ✕ 1.15 = 18.4px`. Then you need to add 2 ✕ 10px (padding)
+and 2 ✕ 20px (border) which yields 78.4 px as the required height of the line:
 
 {% highlight css %}
 {% include /en/apv/articles/html/style-14a.css %}
@@ -923,7 +923,7 @@ And a CSS like this:
 {% include /en/apv/articles/html/style-15b.css %}
 {% endhighlight %}
 
-Notice the use of combined selector `form.tabularForm label` which selects all tables which 
+Notice the use of combined selector `form.tabularForm label` which selects all labels which 
 are children of `form.tabularForm`. Using tables for non-tabular data is quite 
 [controversial](http://phrogz.net/css/WhyTablesAreBadForLayout.html). Still, table layout
 mode may prove to be useful in many [scenarios](http://colintoh.com/blog/display-table-anti-hero).
@@ -952,7 +952,7 @@ And a CSS like this:
 {% include /en/apv/articles/html/style-16a.css %}
 {% endhighlight %}
 
-The element in the middle has class special which moves it 
+The element in the middle has class `special` which moves it 
 50 pixels to the left of its **original** position:
 
 {: .image-popup}
@@ -1038,6 +1038,7 @@ includes the `.outer` element. In short, the `#special` element hides behind par
 {% include /en/apv/articles/html/style-16e.css %}
 {% endhighlight %}
 
+{% comment %}TODO obrazek tu neni{% endcomment %}
 {: .image-popup}
 ![Screenshot - Relative position](/en/apv/articles/html/sample-page-16e.png)
 
@@ -1150,8 +1151,8 @@ does not matter what color it is.
 When representing RGB colors with [hexadecimal values](https://en.wikipedia.org/wiki/Hexadecimal),
 you need to take care to convert them correctly. You have to convert each component individually, 
 i.e. the number `#FF0000` represents 100% red, because `FF` in hexadecimal is
-(255 in decimal)[https://www.google.cz/search?q=0xFF+to+decimal]. If you try to convert the
-number `#FF0000` to decimal, you'll obtain nonsense 16711680.
+[255 in decimal](https://www.google.cz/search?q=0xFF+to+decimal). If you try to convert the
+number `#FF0000` to decimal, you'll obtain nonsense -- 16711680.
 
 Hexadecimal values can be shortened to three digits in case the digits in each component are repeated. 
 That means, you can shorten `#FF0000` to `#F00`. Keep in mind that the shortening is always applies to 
@@ -1194,6 +1195,33 @@ this because it makes no difference where it is zero points or zero pixels. Anot
 then the base line height defined by the font. You can read more about various units in the 
 [documentation](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units).
 
+{: .note}
+Do you remember [CSS Box Model](/en/apv/articles/html/css/#css-box-model)? Think of it a bit. You cannot simply use
+different CSS units for border/padding/margin and width/height if you want to achieve **precise** size of an element.
+Thankfully there is the [`calc()`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc) function in CSS which you can
+use to determine correct size of element. E.g. if you want to have five 20% wide elements with 5px border you can set
+CSS like this:
+
+{% highlight css %}
+div.box {
+  width: calc(20% - 10px);
+  float: left;
+  height: 50px;
+  border: 5px solid red;
+}
+{% endhighlight %}
+
+{% highlight html %}
+<div class="box">1</div>
+<div class="box">2</div>
+<div class="box">3</div>
+<div class="box">4</div>
+<div class="box">5</div>
+{% endhighlight %}
+
+{: .note.note-cont}
+This makes each `div` element 20% wide **including** its border. 
+
 ## At rules
 At rules are part of CSS syntax I omitted [at the beginning](#css-syntax). At rules are special kind of rules which do not 
 immediately define a style for some HTML elements. Some common at rules are:
@@ -1217,15 +1245,17 @@ have to be transformed into CSS, as that is the only language which web browsers
 
 Although the syntax of the CSS language is pretty simple, the rules which are used when actually 
 drawing HTML elements on screen are very complex. That means that creating a full page layout and design
-from scratch is non-trivial task and requires a lot of experience and deep understanding of CSS. 
+from scratch is non-trivial task and requires a lot of experience and deep understanding of CSS.
+It is also a very creative process, meaning that two different people will usually come up with two
+different solutions of page layout (HTML and CSS structure) which can render similar results in a browser.
 Fortunately there is an immense amount of ready to use (and free) templates with various complexity and 
 support for customization, e.g.:
 
-    - Bootstrap ([getbootstrap.com](http://getbootstrap.com/)),
-    - Free CSS Layouts ([maxdesign.com.au](http://maxdesign.com.au/css-layouts/)),
-    - Foundation ([foundation.zurb.com](http://foundation.zurb.com/)),
-    - Skeleton ([getskeleton.com](http://getskeleton.com/)),
-    - SemanticUI ([semantic-ui.com](http://semantic-ui.com/)).
+- Bootstrap ([getbootstrap.com](http://getbootstrap.com/)),
+- Free CSS Layouts ([maxdesign.com.au](http://maxdesign.com.au/css-layouts/)),
+- Foundation ([foundation.zurb.com](http://foundation.zurb.com/)),
+- Skeleton ([getskeleton.com](http://getskeleton.com/)),
+- SemanticUI ([semantic-ui.com](http://semantic-ui.com/)).
 
 You can follow the corresponding [part of walkthrough](/en/apv/walkthrough/css/bootstrap) to get 
 acquainted with Bootstrap framework.
