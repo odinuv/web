@@ -312,6 +312,9 @@ table {
   &:before {
     content: 'Note: ';
   }
+  &.note-cont:before {
+    content: '';
+  }
   font-style: italic;
   background-color: #ddd;
   margin-top: 10px;
