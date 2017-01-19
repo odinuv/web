@@ -108,7 +108,7 @@ Be careful here because you cannot reuse the entire template -- the `form` has d
 attribute and the ID parameter needs to passed along with the data in the edit form using hidden input.
 Only those inputs which are used to fill person information can be placed into separate template.
 
-TODO
+{% comment %}TODO{% endcomment %}
 
 ## Summary
 In this chapter you learned how to update data in database. This is technically no different than
