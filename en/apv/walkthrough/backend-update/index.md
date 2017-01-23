@@ -16,14 +16,15 @@ another combination of what you have learned already.
 We'll start by modifying the script for inserting a new person from the previous chapter. PHP Script:
 
 {: .solution}
-{% highlight html %}
-{% include /en/apv/walkthrough/backend-update/templates/person-update-1.latte %}
+{% highlight php %}
+{% include /en/apv/walkthrough/backend-update/person-update-1.php %}
 {% endhighlight %}
 
 Template: 
 
-{% highlight php %}
-{% include /en/apv/walkthrough/backend-update/person-update-1.php %}
+{: .solution}
+{% highlight html %}
+{% include /en/apv/walkthrough/backend-update/templates/person-update-1.latte %}
 {% endhighlight %}
 
 The only thing changed in the template so far is the button description (seeing an opportunity?).
