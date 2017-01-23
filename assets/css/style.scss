@@ -79,6 +79,8 @@ pre {
   background-color: $gray-lighter;
   border: none;
   padding: 1em 1.25em;
+  -moz-tab-size: 4;
+  tab-size: 4;
   code {
     font-size: ($code-font-size - 1); // smaller for code block
   }
