@@ -1221,11 +1221,11 @@ from scratch is non-trivial task and requires a lot of experience and deep under
 Fortunately there is an immense amount of ready to use (and free) templates with various complexity and 
 support for customization, e.g.:
 
-    - Bootstrap ([getbootstrap.com](http://getbootstrap.com/)),
-    - Free CSS Layouts ([maxdesign.com.au](http://maxdesign.com.au/css-layouts/)),
-    - Foundation ([foundation.zurb.com](http://foundation.zurb.com/)),
-    - Skeleton ([getskeleton.com](http://getskeleton.com/)),
-    - SemanticUI ([semantic-ui.com](http://semantic-ui.com/)).
+- Bootstrap ([getbootstrap.com](http://getbootstrap.com/)),
+- Free CSS Layouts ([maxdesign.com.au](http://maxdesign.com.au/css-layouts/)),
+- Foundation ([foundation.zurb.com](http://foundation.zurb.com/)),
+- Skeleton ([getskeleton.com](http://getskeleton.com/)),
+- SemanticUI ([semantic-ui.com](http://semantic-ui.com/)).
 
 You can follow the corresponding [part of walkthrough](/en/apv/walkthrough/css/bootstrap) to get 
 acquainted with Bootstrap framework.
