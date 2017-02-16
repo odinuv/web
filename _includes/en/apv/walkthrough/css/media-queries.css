@@ -6,18 +6,20 @@ body {
 @media screen and (min-width: 800px) {
 	/* CSS for larger screens */
 	body {
-	  padding: 4rem;
+		padding: 4rem;
 	}
 }
 @media screen and (max-width: 799px) {
 	/* CSS for smaller screens */
 	body {
-	  padding: 1rem;
+		padding: 1rem;
+		background-color: lightblue;
 	}
 }
 @media print {
 	/* CSS for printers */
 	nav {
 		display: none;
+		background-color: white;
 	}
 }

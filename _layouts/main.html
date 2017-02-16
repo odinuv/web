@@ -14,7 +14,7 @@
 <body>
 
 	<div class="root">
-		<div class="container header">
+		<div class="container header hidden-print">
 			<div class="inside">
 				<!--
 				<a href="{{ '/' | prepend: site.baseurl }}" class="logo"><img src="{{ '/assets/img/logo.png' | prepend: site.baseurl }}"></a>
@@ -31,7 +31,7 @@
 			<div class="inside">
 				<div class="row">
 
-					<div class="col-md-3 sidebar">
+					<div class="col-md-3 sidebar hidden-print">
 						<div class="navigation">
 						{% include navigation.html context="/" %}
 						</div>
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 
-		<div class="container footer">
+		<div class="container footer hidden-print">
 			<div class="inside">
 				<p>
 					{{ site.time | date: '%Y' }} <a href='https://github.com/ujpef/site/graphs/contributors'>Authors</a>
