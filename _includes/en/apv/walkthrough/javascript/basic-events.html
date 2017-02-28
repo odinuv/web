@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JS events example</title>
+    <script type="text/javascript">
+        //wait for the browser to load all HTML
+        window.onload = function() {
+            //you can attach only one event with this approach
+            console.log("Executed when everything is loaded.");
+            //find element using id attribute
+            var btn = document.getElementById("button1");
+            //register event
+            btn.onclick = function() {
+                btn.innerHTML = "You clicked on it!";
+            }
+        };
+    </script>
+</head>
+<body>
+    <button id="button1">Click it</button>
+</body>
+</html>
