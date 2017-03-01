@@ -35,11 +35,11 @@ JavaScript is often misunderstood language, it has syntax similar to Java, PHP o
 to Java but it is much different. JavaScript is object oriented like Java, but definition of a class
 is not familiar at all. It has first-class functions (a function which can be stored in a variable) and
 it is dynamically typed (variable type is defined by content like in PHP). Complex source code written
-in JavaScript is much different to anything you probably know. I will start with some basic examples
-which I believe would not confuse you at all; `console.log()` sends its output to browser's developer
-tools console (usually activated by F12 key).
+in JavaScript is much different to anything you probably know thanks to heavy use of anonymous functions.
+I will start with some basic examples which I believe would not confuse you at all; `console.log()` sends
+its output to browser's developer tools console (usually activated by F12 key).
 
-Here is a brief JavaScript demo:
+Here is a brief JavaScript demo and an overview of basic syntax and types:
 
 {% highlight javascript %}
 {% include /en/apv/articles/javascript/basics1.js %}
@@ -52,8 +52,8 @@ and click run. Remember to open that [developer tools](/en/apv/course/not-a-stud
 when you work with JavaScript.
 
 ### Data types
-JavaScript is dynamically typed like PHP. We have basic types: strings, numbers, booleans and also arrays
-(only ordinal )and general objects. Unlike in PHP, even basic types are objects, for example you can call
+JavaScript is dynamically typed like PHP. We have basic types: *strings*, *numbers*, *booleans* and also *arrays*
+(only ordinal) and general *objects*. Unlike in PHP, even basic types are objects, for example you can call
 methods on strings like this:
 
 {% highlight javascript %}
@@ -70,8 +70,8 @@ var s2 = new String("continues here");
 console.log(s1 + s2);
 {% endhighlight %}
     
-JavaScript is more strict with type conversions, sometimes you have to use `parseInt()` or `parseFloat()`
-functions to convert string variable into number:
+JavaScript is more strict with type conversions than PHP (or just different), sometimes you have to use
+`parseInt()` or `parseFloat()` functions to convert string variable into number:
     
 {% highlight javascript %}
 var a = "5";
@@ -79,6 +79,9 @@ var b = 8;
 console.log(a + b);             //string 58
 console.log(parseInt(a) + b);   //number 13
 {% endhighlight %}
+
+{: .note}
+There is no special operator to concatenate string like in PHP (the . operator).
 
 ### Declaring functions
 Basic declaration of a function is straightforward.
@@ -89,18 +92,19 @@ function something() {
 something();    //call that function
 {% endhighlight %}
     
-But then you can notice, that such declaration can interfere with a variable declaration when you use same name:
+But then you can notice, that such declaration can interfere with a variable declaration if you use same name
+(variables' and functions' identifiers are stored together although variables have higher priority):
 
 {% highlight javascript %}
 var fun = "a string";
 function fun() {
 }
-fun();  //error, fun is already a string!
-console.log(fun);
+fun();                  //error, fun is already a string!
+console.log(fun);       //outputs 'a string'
 {% endhighlight %}
-    
+
 In JavaScript, you can store functions into variables and also work with them in such way. Function is also an
-object with methods in JavaScript. This is called first-class functions. Next example shows even an anonymous
+object with methods in JavaScript. This is called *first-class functions*. Next example shows even an anonymous
 function passed into another function as argument's value.
 
 {% highlight javascript %}
@@ -215,6 +219,68 @@ Another special attribute is `innerHTML` which can be used to change content of 
 You might remember about [user defined attributes](/en/apv/articles/html/#data-attributes) which
 are found under `element.dataset.*` field.
 
+### Document object (DOM -- Document Object Model)
+Those `document.*` methods mentioned before are part of [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document).
+It is an object that contains structure of HTML elements presented by the browser and also methods/attributes to
+manipulate them. It contains a key called `body` which is a reference to HTML `<body>` element (there is also `head`
+attribute, but that is not used often). The `document` contains other nested HTML elements in `childNodes` attribute
+collection. Every child has `childNodes` attribute too -- they form a tree. DOM is standardized by [W3C](https://www.w3.org/standards/techs/dom).
+
+{% highlight javascript %}
+console.log(document.head);
+console.log(document.body);
+console.log(document.childNodes);       //only <html> node
+console.log(document.body.childNodes);  //body's nodes
+{% endhighlight %}
+
+Each node in DOM has [methods and attributes](https://developer.mozilla.org/en-US/docs/Web/API/Node), most important
+ones are:
+
+- [node.appendChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
+- [node.removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
+- [node.insertBefore()](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore)
+- [node.childNodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes)
+- [node.parentElement](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement)
+
+There is a difference between [DOM Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) and
+[DOM Element](https://developer.mozilla.org/en-US/docs/Web/API/Element), elements are only HTML tags, nodes
+are also texts between elements and [other stuff](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType).
+You will encounter elements most of the times, DOM Element inherits methods and properties from the DOM Node.
+
+To create an element use `var newElem = document.createElement('tag_name')` method.
+
+{: .note}
+You can find special collections like [`document.forms`](https://developer.mozilla.org/en-US/docs/Web/API/Document/forms),
+[`document.scripts`](https://developer.mozilla.org/en-US/docs/Web/API/Document/scripts) or [`document.links`](https://developer.mozilla.org/en-US/docs/Web/API/Document/links)
+on `document` object.
+
+### Window object (BOM -- Browser Object Model)
+The [`window` variable](https://developer.mozilla.org/en-US/docs/Web/API/Window) represents current browser's window
+or tab. It is the main variable in JavaScript, when a JavaScript interpret encounters unknown variable, it looks
+for it in `window` object properties.
+
+{% highlight javascript %}
+console.log(window);
+console.log('This is same...', window.document);
+console.log('...as this', document);
+{% endhighlight %}
+
+{% highlight javascript %}
+window.anything = "can be used as global variable";
+console.log(anything);
+{% endhighlight %}
+
+Following example nicely demonstrates that JavaScript scans for `var` declarations and moves them to top. You would
+expect to output `document` object on first line but JavaScript outputs `undefined` because the variable has not
+assigned a value yet.
+
+{% highlight javascript %}
+console.log('No content', document);
+var document = "not a document anymore";
+console.log('Still works', window.document);
+console.log('New content', document);
+{% endhighlight %}
+
 ### JavaScript events
 Events are type of signals which are broadcasted to JavaScript event listeners (functions)
 when some action takes place. For example a user can click a button, move a mouse or a timer ticks:
@@ -253,7 +319,7 @@ to stop processing event (in case that more handler functions are registered to 
 is `onload` of `<body>` element which signals that whole page is loaded (but it can be also attached to
 particular `<img>` elements).
 
-You can attach events as HTML attributes like in example above or you can use programmatic approach
+You can attach events as an HTML attributes like in example above or you can use programmatic approach
 which is much cleaner because it won't complicate your HTML code:
 
 {% highlight html %}
@@ -265,43 +331,80 @@ The reason why we used Latte templates was to divide program logic and view logi
 you should not mix HTML and JavaScript code. Ideally put all JavaScript into separate file(s) and use it to attach all
 event handlers.
 
+A good example which shows how to completely divide HTML and JavaScript code follows.
+
+{% highlight html %}
+{% include /en/apv/articles/javascript/prevent-nav-form-divided.html %}
+{% endhighlight %}
+
+{% highlight javascript %}
+{% include /en/apv/articles/javascript/prevent-nav-form-divided.js %}
+{% endhighlight %}
+
+{: .note}
+When you use `formElement.addEventListener('submit', ...)` to register an event, you have to prevent the browser from
+submitting the form by calling `eventObject.preventDefault()` inside handler instead of returning `false`.
+
+It is possible to work with special variable called `this` inside event handlers. That variable holds reference to an
+HTML element which fired event.
+
+{% highlight html %}
+{% include /en/apv/articles/javascript/using-this-events.html %}
+{% endhighlight %}
+
+The `this` variable has different meanings in different situations:
+
+- in event handlers it contains reference to an HTML element
+- in global function it same as the `window` variable
+- in methods of objects it contains reference to current instance
+
+{: .note}
+It is possible to change `this` variable content by using function's methods [`call()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function/Call)
+or [`apply()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function/Call).
+
 ## Variable scope
-It is not unusual to see a function declared inside another function. It can happen you when pass callbacks or
+It is not unusual to see a function declared inside another function. It can happen when you need to pass callbacks or
 event handlers. In such case, function declared inside another has access to variables from outer scope.
 
 {% highlight javascript %}
 window.addEventHandler("load", function() {
+    //variable is declared here (it is local for onload handler)
     var a = "variable a";
     var btn = document.getElementById("...");
     btn.addEventListener("click", function() {
+        //click handler has also access to that variable
         console.log(a); //outputs 'variable a'
     });
 });
 {% endhighlight %}
 
 This is useful, but be careful when you want to attach same event to multiple HTML elements with a variable
-which changes its content in outer scope.
+which changes its content in outer scope -- weird stuff starts to happen.
 
 {% highlight javascript %}
 window.addEventHandler("load", function() {
-    var allLinks = document.getElementsByTagName("button");
-    for(var i = 0; i < allLinks.length; i++) {
-        allLinks[i].addEventListener("click", function() {
+    var allButtons = document.getElementsByTagName("button");
+    for(var i = 0; i < allButtons.length; i++) {
+        allButtons[i].addEventListener("click", function() {
+            //logs last value of i, not individual values
             console.log(i);
         });
     }
 });
 {% endhighlight %}
 
-It does not matter on whichever `<a>` element you click, you always get last value of variable `i` in console
+It does not matter on whichever `<button>` element you click, you always get last value of variable `i` in console
 because the handler is executed after the `for` loop and variable `i` already changed its value to `allLinks.length`.
 In another words, there is only one variable `i` with one value in computer's memory and all event handlers 
-refer to it. You have either have to use the `let` keyword or construct a *closure*.
+refer to it. You either have to use the `let` keyword or construct a *closure*.
 
 {% highlight javascript %}
 window.addEventHandler("load", function() {
     function produceEventHandler(val) {
-        //return function which will serve as event handler, variable val is locked to value given when executing this
+        /*
+            return function which will serve as event handler, variable
+            val is locked to value given when executing produceEventHandler
+        */
         return function() {
             console.log(val);
         }
@@ -314,17 +417,74 @@ window.addEventHandler("load", function() {
 });
 {% endhighlight %}
 
+Thanks to `let` keyword we can use almost same code as originally intended:
+
+{% highlight javascript %}
+window.addEventHandler("load", function() {
+    var allButtons = document.getElementsByTagName("button");
+    for(let i = 0; i < allButtons.length; i++) {
+        //variable i is different for each iteration
+        allButtons[i].addEventListener("click", function() {
+            console.log(i);
+        });
+    }
+});
+{% endhighlight %}
+
+Lets return a bit and talk about `this` variable again. Put yourself into a situation when you need to register event
+handlers based on user action (inside another event handler). Perhaps you need a button which generates new HTML content
+and this content is responsibel for hiding original button.
+
+{% highlight html %}
+{% include /en/apv/articles/javascript/passing-this-events.html %}
+{% endhighlight %}
+
 ## AJAX
-AJAX stands form *asynchronous JavaScript and XML* although [JSON](http://json.org) format is currently
-much more common. The basic principle is that a browser calls some backend function using JavaScript
-HTTP client (the visitor does not have to be aware of this at all) and retrieves some data (originally
-XML but it can also be JSON, piece of HTML or just plain text). This data can be inserted into HTML page
-without its reload. Asynchronous means that the visitor is not blocked from other interaction with site
-during that HTTP request -- there can even be multiple HTTP requests processed at once.
+AJAX stands for *asynchronous JavaScript and XML* although [JSON](http://json.org) format is currently much more
+common. The basic principle is that a browser calls some backend function using JavaScript HTTP client (the visitor
+does not have to be aware of this at all) and retrieves some data (originally XML but it can also be JSON, piece of
+HTML or just plain text). This data can be inserted into HTML page without its reload thanks to dynamic HTML
+technologies. Asynchronous means that the visitor is not blocked from other interaction with site during that HTTP
+request. There can even be multiple HTTP requests processed at once.
 
 ### XMLHttpRequest
+This object is responsible for HTTP communication controlled by JavaScript. Its [API](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+allows you to open a HTTP connection and check its progress when it [changes](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState)
+using an [event handler](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/onreadystatechange).
 
-### Example
+Let's create a very small and simple example -- a calculator that just adds two integers. We need a PHP backend to
+provide results. This file can read parameters from query and returns JSON object instead of standard HTML.
+
+`calculate.php` file:
+
+{% highlight php %}
+{% include /en/apv/articles/javascript/ajax/calculate.php %}
+{% endhighlight %}
+
+And we need a JavaScript to talk with backend and deliver results into HTML page. The JavaScript code simply opens
+HTTP connection using GET method to `calculate.php` script with correct query parameters and waits for its response.
+If everything goes smooth, PHP returns HTTP code 200 and JSON data that can be parsed by JavaScript's
+[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) library.
+
+`index.html` file:
+
+{% highlight html %}
+{% include /en/apv/articles/javascript/ajax/index.html %}
+{% endhighlight %}
+
+Put both files into same directory and open `index.html` in your browser, fill the form and press button. You can try
+to open `calculate.php` too and pass query parameters to observe JSON output.
+
+Take a look into network console (also under F12 but switch to *Network* tab) and observe what your browser sends
+and receives when you press Calculate button. To view request parameters and response body click the HTTP request
+to `calculate.php` file (you can use XHR filter) and than select Parameters tab and Response tab. I used Firefox
+browser but Chrome developers tools are very similar.
+
+{: .image-popup}
+![console.log() output](ajax-network-1.png)
+
+{: .image-popup}
+![console.log() output](ajax-network-2.png)
 
 ## Summary
 Remember that JavaScript is executed inside a browser. Therefore it cannot store any data on a server --
@@ -340,17 +500,3 @@ JavaScript libraries like [jQuery](/en/apv/javascript/jquery) with more effectiv
 Now you know that most visual effect or desktop-application-like behaviour of a website is caused
 by JavaScript. Another thing to remember is that JavaScript has vast ecosystem of libraries and frameworks
 and I am not going to get much deeper into this topic in this book.
-
-TODO:
-- browser API (document - DOM, window - BOM)
-- *this* variable:
-    - inside a global function (this == window)
-    - inside an event handler (is element that event took place on)
-    - how to pass this into event handler (var self = this; or arrow function expression: () => {} or let)
-- *var* vs *let* keyword
-- ~~"foreach"~~
-    - ~~iteration over object's attributes for(var i in obj) {}~~
-    - ~~iteration over array for(var i of arr) {}~~
-- AJAX
-    - XMLHttpRequest
-    - return piece of HTML or JSON

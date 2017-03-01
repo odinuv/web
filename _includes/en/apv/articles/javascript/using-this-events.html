@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Using variable this in events</title>
+    <script type="text/javascript">
+        //general function which cahnges text inside element
+        function changeText() {
+            //thnaks to variable this you do not have to detect the button
+            console.log(this);
+            this.innerHTML = "Clicked button";
+        }
+        window.addEventListener('load', function() {
+            //find elements
+            var btns = document.getElementsByTagName("button");
+            //attach event to all of them
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener('click', changeText);
+            }
+        });
+    </script>
+</head>
+<body>
+    <button>Not clicked button</button>
+    <button>Not clicked button</button>
+    <button>Not clicked button</button>
+</body>
+</html>

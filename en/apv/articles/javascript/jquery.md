@@ -1,6 +1,6 @@
 ---
 title: jQuery
-permalink: /en/apv/articles/javascript/jquery
+permalink: /en/apv/articles/jquery/
 ---
 
 * TOC

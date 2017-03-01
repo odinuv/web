@@ -25,9 +25,18 @@ JavaScript code:
 {% include /en/apv/walkthrough/javascript/attach.html %}
 {% endhighlight %}
 
+{: .note}
+The console is a global object that represents [browser's developer console](/en/apv/course/not-a-student/#web-browser)
+(usually activated by F12 key). Method `log()` puts output into it. You should have the console activated everytime
+you develop some JavaScript functionality.
+
+Basic JavaScript syntax is described in separate [article](/en/apv/articles/javascript/#javascript-basics).
+
 Source code of linked scripts is executed immediately in order of `<script>` tag appearances, but usually you want
 to attach [event handlers](/en/apv/articles/javascript/#javascript-events) to execute another code after a visitor
-performs some action.
+performs some action. Event handlers can be attached to general events which take place globally (like loading the whole
+page or scrolling the window) or events that take place on particular HTML element (clicking on it or focusing it).
+But you have to find the element first to attach such handler.
 
 There are multiple function to locate and work with HTML elements -- the easiest one is
 `dcoument.getElementById("id_of_element")` which can find and return one element using its `id`
@@ -48,38 +57,45 @@ Another special attribute is `innerHTML` which can be used to change content of 
 You might remember about [user defined attributes](/en/apv/articles/html/#data-attributes) which
 are found under `element.dataset.*` field.
 
+{% highlight html %}
+{% include /en/apv/walkthrough/javascript/html-attributes-styles.html %}
+{% endhighlight %}
+
 {: .note}
 Avoid changing of particular CSS styles in JavaScript. It is tedious and makes your code confusing.
 You should rather add or remove a CSS classes (there is a [`classList`](https://developer.mozilla.org/cs/docs/Web/API/Element/classList)
 field of HTML element for efficient work with CSS classes).
 
-{% highlight html %}
-{% include /en/apv/walkthrough/javascript/html-attributes-styles.html %}
-{% endhighlight %}
-
 Each element can have a set of child nodes -- you can remove or add children with `elem1.appendChild(elem2)`
 and `elem1.removeChild(elem2)` methods. To create a new element you can use `var newElem = document.createElement("tag")`
 method.
 
-Basic event registration can be performed in similar manner:
+Basic [event registration](/en/apv/articles/javascript/#javascript-events) can be performed in similar manner:
 
 {% highlight html %}
 {% include /en/apv/walkthrough/javascript/basic-events.html %}
 {% endhighlight %}
 
+{: .note}
+Cleaner approach is obviously to divide HTML nad JavaScript code and attach events in JavaScript. And also imagine
+how ugly it would look if you have written complex code inside the `onclick` attribute.
+
 ### Task -- toggle a class of HTML element using a button click
 Make a button and any HTML element with an `id` attribute. Attach click event to button using an `onclick` attribute.
-Toggle some CSS class on element with `id` using `element.classList.toggle('className')` method. Obviously you
-also need a CSS class with some visual properties.
+Toggle some CSS class on element with `id` using `element.classList.toggle('className')` method. You also need a CSS
+class with some visual properties defined.
 
 {: .solution}
 {% highlight html %}
 {% include /en/apv/walkthrough/javascript/events-toggle-css.html %}
 {% endhighlight %}
 
+{: .note}
+If you came up with another solution, do not worry, there are always multiple working solutions when you write any code.
+
 ## Using JavaScript to confirm user actions
 In chapter about [deletion of records](/en/apv/walkthrough/backend-delete) you were referred to this tutorial for
-information about how to confirm such user action. Using JavaScript we can prevent visitor's browser from sending
+information about how to confirm such user action. Using JavaScript, we can prevent visitor's browser from sending
 HTTP request which would e.g. actually delete a record from a database. Here is an example how to prevent navigation
 with a confirm popup for basic `<a>` tags:
 
@@ -95,20 +111,7 @@ Example above is a bit shorter in HTML code than following one which shows how t
 
 Notice that you have to pass that true/false value from called `confirmForm()` function using
 return keyword in `onsubmit` attribute. That attribute itself is a body of event handler function
-and has to return true or false to approve or cancel from subscription. If you want to use
-`formElement.addEventListener()` method in this case, stop the event by calling `eventObject.preventDefault()`
-inside handler instead of returning `false`.
-
-Here is another version of this example which uses cleaner approach to event registration (HTML code is
-JavaScript-free and confirm message is placed inside a data attribute).
-
-{% highlight html %}
-{% include /en/apv/walkthrough/javascript/prevent-nav-form-divided.html %}
-{% endhighlight %}
-
-{% highlight javascript %}
-{% include /en/apv/walkthrough/javascript/prevent-nav-form-divided.js %}
-{% endhighlight %}
+and has to return true or false to approve or cancel from subscription.
 
 ### Task -- add confirm dialog to your delete person function
 Use ordinary approach with JavaScript code placed inside a template.
@@ -153,11 +156,11 @@ some backend API which can calculate the price according to selected parameters 
 XML format (such approach is called [AJAX](/en/apv/articles/javascript#ajax)).
 
 I used `document.forms` which contain object with keys given by forms `name` attributes, each form is
-again an object with keys given by inputs `name` attributes. Keys of JavaScript object can be accessed
+again an object with keys given by inputs' `name` attribute. Keys of JavaScript object can be accessed
 using square brackets (where you can also use a variable) or you can just use dot notation `.key`.
 There is no functional difference between `document.forms.formName` and `document["forms"]["formName"]`
 or `document.forms["formName"]`. I prefer latter variant because attribute values can contain characters
-like `-` which are reserved.
+like `-` which are reserved in JavaScript.
 
 ### Task -- add `required` attribute to person&address form inputs dynamically
 Do you remember when I was talking about inserting [multiple records at once](/en/apv/walkthrough/backend-insert/advanced/).
@@ -202,14 +205,14 @@ There are also many other JS libraries or frameworks. jQuery is used in most cas
 libraries (like [Bootstrap](/en/apv/walkthrough/css/bootstrap/)) require you to include it as well.
 Be careful about mixing different libraries -- some of them cannot or should not be used together.
 
-There are also many [polyfill](https://en.wikipedia.org/wiki/Polyfill) libraries which are used to
+Moreover, there are also [polyfill](https://en.wikipedia.org/wiki/Polyfill) libraries which are used to
 simulate behaviour of modern browsers in the older ones. These libraries are used for backwards
 compatibility of modern web pages with older browsers.
 
 ## Summary
-This brief chapter about JavaScript programming language should help you to improve your project
-with instant popup dialogs and a bit of client-side form validation. You can find more in my article
-about [JavaScript](/en/apv/articles/javascript).
+This brief chapter about JavaScript programming language should help you to improve your project with instant popup
+dialogs and a bit of client-side form validation. You can find more in [articles](/en/apv/articles/javascript)
+section of this book.
 
 ### New Concepts and Terms
 - JavaScript
