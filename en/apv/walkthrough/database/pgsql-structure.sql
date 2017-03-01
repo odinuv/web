@@ -11,7 +11,7 @@ SET client_min_messages = warning;
 SET search_path = public, pg_catalog;
 
 --
--- Name: gender; Type: TYPE; Schema: public; Owner: xpopelka
+-- Name: gender; Type: TYPE; Schema: public
 --
 
 CREATE TYPE gender AS ENUM (
@@ -20,14 +20,12 @@ CREATE TYPE gender AS ENUM (
 );
 
 
-ALTER TYPE public.gender OWNER TO xpopelka;
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: contact; Type: TABLE; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: contact; Type: TABLE; Schema: public; Tablespace: 
 --
 
 CREATE TABLE contact (
@@ -38,10 +36,9 @@ CREATE TABLE contact (
 );
 
 
-ALTER TABLE public.contact OWNER TO xpopelka;
 
 --
--- Name: contact_id_contact_seq; Type: SEQUENCE; Schema: public; Owner: xpopelka
+-- Name: contact_id_contact_seq; Type: SEQUENCE; Schema: public
 --
 
 CREATE SEQUENCE contact_id_contact_seq
@@ -52,17 +49,16 @@ CREATE SEQUENCE contact_id_contact_seq
     CACHE 1;
 
 
-ALTER TABLE public.contact_id_contact_seq OWNER TO xpopelka;
 
 --
--- Name: contact_id_contact_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: xpopelka
+-- Name: contact_id_contact_seq; Type: SEQUENCE OWNED BY; Schema: public
 --
 
 ALTER SEQUENCE contact_id_contact_seq OWNED BY contact.id_contact;
 
 
 --
--- Name: contact_type; Type: TABLE; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: contact_type; Type: TABLE; Schema: public; Tablespace: 
 --
 
 CREATE TABLE contact_type (
@@ -72,10 +68,9 @@ CREATE TABLE contact_type (
 );
 
 
-ALTER TABLE public.contact_type OWNER TO xpopelka;
 
 --
--- Name: contact_type_id_contact_type_seq; Type: SEQUENCE; Schema: public; Owner: xpopelka
+-- Name: contact_type_id_contact_type_seq; Type: SEQUENCE; Schema: public
 --
 
 CREATE SEQUENCE contact_type_id_contact_type_seq
@@ -86,17 +81,16 @@ CREATE SEQUENCE contact_type_id_contact_type_seq
     CACHE 1;
 
 
-ALTER TABLE public.contact_type_id_contact_type_seq OWNER TO xpopelka;
 
 --
--- Name: contact_type_id_contact_type_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: xpopelka
+-- Name: contact_type_id_contact_type_seq; Type: SEQUENCE OWNED BY; Schema: public
 --
 
 ALTER SEQUENCE contact_type_id_contact_type_seq OWNED BY contact_type.id_contact_type;
 
 
 --
--- Name: location; Type: TABLE; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: location; Type: TABLE; Schema: public; Tablespace: 
 --
 
 CREATE TABLE location (
@@ -112,10 +106,9 @@ CREATE TABLE location (
 );
 
 
-ALTER TABLE public.location OWNER TO xpopelka;
 
 --
--- Name: location_id_location_seq; Type: SEQUENCE; Schema: public; Owner: xpopelka
+-- Name: location_id_location_seq; Type: SEQUENCE; Schema: public
 --
 
 CREATE SEQUENCE location_id_location_seq
@@ -126,17 +119,16 @@ CREATE SEQUENCE location_id_location_seq
     CACHE 1;
 
 
-ALTER TABLE public.location_id_location_seq OWNER TO xpopelka;
 
 --
--- Name: location_id_location_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: xpopelka
+-- Name: location_id_location_seq; Type: SEQUENCE OWNED BY; Schema: public
 --
 
 ALTER SEQUENCE location_id_location_seq OWNED BY location.id_location;
 
 
 --
--- Name: meeting; Type: TABLE; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: meeting; Type: TABLE; Schema: public; Tablespace: 
 --
 
 CREATE TABLE meeting (
@@ -148,10 +140,9 @@ CREATE TABLE meeting (
 );
 
 
-ALTER TABLE public.meeting OWNER TO xpopelka;
 
 --
--- Name: meeting_id_meeting_seq; Type: SEQUENCE; Schema: public; Owner: xpopelka
+-- Name: meeting_id_meeting_seq; Type: SEQUENCE; Schema: public
 --
 
 CREATE SEQUENCE meeting_id_meeting_seq
@@ -162,17 +153,16 @@ CREATE SEQUENCE meeting_id_meeting_seq
     CACHE 1;
 
 
-ALTER TABLE public.meeting_id_meeting_seq OWNER TO xpopelka;
 
 --
--- Name: meeting_id_meeting_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: xpopelka
+-- Name: meeting_id_meeting_seq; Type: SEQUENCE OWNED BY; Schema: public
 --
 
 ALTER SEQUENCE meeting_id_meeting_seq OWNED BY meeting.id_meeting;
 
 
 --
--- Name: person; Type: TABLE; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: person; Type: TABLE; Schema: public; Tablespace: 
 --
 
 CREATE TABLE person (
@@ -188,10 +178,9 @@ CREATE TABLE person (
 );
 
 
-ALTER TABLE public.person OWNER TO xpopelka;
 
 --
--- Name: person_id_person_seq; Type: SEQUENCE; Schema: public; Owner: xpopelka
+-- Name: person_id_person_seq; Type: SEQUENCE; Schema: public
 --
 
 CREATE SEQUENCE person_id_person_seq
@@ -202,17 +191,16 @@ CREATE SEQUENCE person_id_person_seq
     CACHE 1;
 
 
-ALTER TABLE public.person_id_person_seq OWNER TO xpopelka;
 
 --
--- Name: person_id_person_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: xpopelka
+-- Name: person_id_person_seq; Type: SEQUENCE OWNED BY; Schema: public
 --
 
 ALTER SEQUENCE person_id_person_seq OWNED BY person.id_person;
 
 
 --
--- Name: person_meeting; Type: TABLE; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: person_meeting; Type: TABLE; Schema: public; Tablespace: 
 --
 
 CREATE TABLE person_meeting (
@@ -221,10 +209,9 @@ CREATE TABLE person_meeting (
 );
 
 
-ALTER TABLE public.person_meeting OWNER TO xpopelka;
 
 --
--- Name: relation; Type: TABLE; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: relation; Type: TABLE; Schema: public; Tablespace: 
 --
 
 CREATE TABLE relation (
@@ -236,10 +223,9 @@ CREATE TABLE relation (
 );
 
 
-ALTER TABLE public.relation OWNER TO xpopelka;
 
 --
--- Name: relation_id_relation_seq; Type: SEQUENCE; Schema: public; Owner: xpopelka
+-- Name: relation_id_relation_seq; Type: SEQUENCE; Schema: public
 --
 
 CREATE SEQUENCE relation_id_relation_seq
@@ -250,17 +236,16 @@ CREATE SEQUENCE relation_id_relation_seq
     CACHE 1;
 
 
-ALTER TABLE public.relation_id_relation_seq OWNER TO xpopelka;
 
 --
--- Name: relation_id_relation_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: xpopelka
+-- Name: relation_id_relation_seq; Type: SEQUENCE OWNED BY; Schema: public
 --
 
 ALTER SEQUENCE relation_id_relation_seq OWNED BY relation.id_relation;
 
 
 --
--- Name: relation_type; Type: TABLE; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: relation_type; Type: TABLE; Schema: public; Tablespace: 
 --
 
 CREATE TABLE relation_type (
@@ -269,10 +254,9 @@ CREATE TABLE relation_type (
 );
 
 
-ALTER TABLE public.relation_type OWNER TO xpopelka;
 
 --
--- Name: relation_type_id_relation_type_seq; Type: SEQUENCE; Schema: public; Owner: xpopelka
+-- Name: relation_type_id_relation_type_seq; Type: SEQUENCE; Schema: public
 --
 
 CREATE SEQUENCE relation_type_id_relation_type_seq
@@ -283,66 +267,65 @@ CREATE SEQUENCE relation_type_id_relation_type_seq
     CACHE 1;
 
 
-ALTER TABLE public.relation_type_id_relation_type_seq OWNER TO xpopelka;
 
 --
--- Name: relation_type_id_relation_type_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: xpopelka
+-- Name: relation_type_id_relation_type_seq; Type: SEQUENCE OWNED BY; Schema: public
 --
 
 ALTER SEQUENCE relation_type_id_relation_type_seq OWNED BY relation_type.id_relation_type;
 
 
 --
--- Name: id_contact; Type: DEFAULT; Schema: public; Owner: xpopelka
+-- Name: id_contact; Type: DEFAULT; Schema: public
 --
 
 ALTER TABLE ONLY contact ALTER COLUMN id_contact SET DEFAULT nextval('contact_id_contact_seq'::regclass);
 
 
 --
--- Name: id_contact_type; Type: DEFAULT; Schema: public; Owner: xpopelka
+-- Name: id_contact_type; Type: DEFAULT; Schema: public
 --
 
 ALTER TABLE ONLY contact_type ALTER COLUMN id_contact_type SET DEFAULT nextval('contact_type_id_contact_type_seq'::regclass);
 
 
 --
--- Name: id_location; Type: DEFAULT; Schema: public; Owner: xpopelka
+-- Name: id_location; Type: DEFAULT; Schema: public
 --
 
 ALTER TABLE ONLY location ALTER COLUMN id_location SET DEFAULT nextval('location_id_location_seq'::regclass);
 
 
 --
--- Name: id_meeting; Type: DEFAULT; Schema: public; Owner: xpopelka
+-- Name: id_meeting; Type: DEFAULT; Schema: public
 --
 
 ALTER TABLE ONLY meeting ALTER COLUMN id_meeting SET DEFAULT nextval('meeting_id_meeting_seq'::regclass);
 
 
 --
--- Name: id_person; Type: DEFAULT; Schema: public; Owner: xpopelka
+-- Name: id_person; Type: DEFAULT; Schema: public
 --
 
 ALTER TABLE ONLY person ALTER COLUMN id_person SET DEFAULT nextval('person_id_person_seq'::regclass);
 
 
 --
--- Name: id_relation; Type: DEFAULT; Schema: public; Owner: xpopelka
+-- Name: id_relation; Type: DEFAULT; Schema: public
 --
 
 ALTER TABLE ONLY relation ALTER COLUMN id_relation SET DEFAULT nextval('relation_id_relation_seq'::regclass);
 
 
 --
--- Name: id_relation_type; Type: DEFAULT; Schema: public; Owner: xpopelka
+-- Name: id_relation_type; Type: DEFAULT; Schema: public
 --
 
 ALTER TABLE ONLY relation_type ALTER COLUMN id_relation_type SET DEFAULT nextval('relation_type_id_relation_type_seq'::regclass);
 
 
 --
--- Name: contact_id_person_id_contact_type_contact_key; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: contact_id_person_id_contact_type_contact_key; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY contact
@@ -350,7 +333,7 @@ ALTER TABLE ONLY contact
 
 
 --
--- Name: contact_pkey; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: contact_pkey; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY contact
@@ -358,7 +341,7 @@ ALTER TABLE ONLY contact
 
 
 --
--- Name: contact_type_name_key; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: contact_type_name_key; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY contact_type
@@ -366,7 +349,7 @@ ALTER TABLE ONLY contact_type
 
 
 --
--- Name: contact_type_pkey; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: contact_type_pkey; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY contact_type
@@ -374,7 +357,7 @@ ALTER TABLE ONLY contact_type
 
 
 --
--- Name: location_pkey; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: location_pkey; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY location
@@ -382,7 +365,7 @@ ALTER TABLE ONLY location
 
 
 --
--- Name: meeting_start_id_location_key; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: meeting_start_id_location_key; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY meeting
@@ -390,7 +373,7 @@ ALTER TABLE ONLY meeting
 
 
 --
--- Name: person_first_name_last_name_nickname_key; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: person_first_name_last_name_nickname_key; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY person
@@ -398,7 +381,7 @@ ALTER TABLE ONLY person
 
 
 --
--- Name: person_meeting_pkey; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: person_meeting_pkey; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY person_meeting
@@ -406,7 +389,7 @@ ALTER TABLE ONLY person_meeting
 
 
 --
--- Name: person_pkey; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: person_pkey; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY person
@@ -414,7 +397,7 @@ ALTER TABLE ONLY person
 
 
 --
--- Name: relation_id_person1_id_person2_id_relation_type_key; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: relation_id_person1_id_person2_id_relation_type_key; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY relation
@@ -422,7 +405,7 @@ ALTER TABLE ONLY relation
 
 
 --
--- Name: relation_pkey; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: relation_pkey; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY relation
@@ -430,7 +413,7 @@ ALTER TABLE ONLY relation
 
 
 --
--- Name: relation_type_name_key; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: relation_type_name_key; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY relation_type
@@ -438,7 +421,7 @@ ALTER TABLE ONLY relation_type
 
 
 --
--- Name: relation_type_pkey; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: relation_type_pkey; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY relation_type
@@ -446,7 +429,7 @@ ALTER TABLE ONLY relation_type
 
 
 --
--- Name: schuzky_pkey; Type: CONSTRAINT; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: schuzky_pkey; Type: CONSTRAINT; Schema: public; Tablespace: 
 --
 
 ALTER TABLE ONLY meeting
@@ -454,28 +437,28 @@ ALTER TABLE ONLY meeting
 
 
 --
--- Name: fki_meeting; Type: INDEX; Schema: public; Owner: xpopelka; Tablespace: 
+-- Name: fki_meeting; Type: INDEX; Schema: public; Tablespace: 
 --
 
 CREATE INDEX fki_meeting ON meeting USING btree (id_location);
 
 
 --
--- Name: contact_id_contact_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+-- Name: contact_id_contact_type_fkey; Type: FK CONSTRAINT; Schema: public
 --
 
 ALTER TABLE ONLY contact
     ADD CONSTRAINT contact_id_contact_type_fkey FOREIGN KEY (id_contact_type) REFERENCES contact_type(id_contact_type);
 
 --
--- Name: contact_id_person_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+-- Name: contact_id_person_fkey; Type: FK CONSTRAINT; Schema: public
 --
 
 ALTER TABLE ONLY contact
     ADD CONSTRAINT contact_id_person_fkey FOREIGN KEY (id_person) REFERENCES person(id_person);
 
 --
--- Name: meeting_id_location_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+-- Name: meeting_id_location_fkey; Type: FK CONSTRAINT; Schema: public
 --
 
 ALTER TABLE ONLY meeting
@@ -483,7 +466,7 @@ ALTER TABLE ONLY meeting
 
 
 --
--- Name: person_id_location_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+-- Name: person_id_location_fkey; Type: FK CONSTRAINT; Schema: public
 --
 
 ALTER TABLE ONLY person
@@ -491,7 +474,7 @@ ALTER TABLE ONLY person
 
 
 --
--- Name: person_meeting_id_meeting_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+-- Name: person_meeting_id_meeting_fkey; Type: FK CONSTRAINT; Schema: public
 --
 
 ALTER TABLE ONLY person_meeting
@@ -499,7 +482,7 @@ ALTER TABLE ONLY person_meeting
 
 
 --
--- Name: person_meeting_id_person_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+-- Name: person_meeting_id_person_fkey; Type: FK CONSTRAINT; Schema: public
 --
 
 ALTER TABLE ONLY person_meeting
@@ -507,7 +490,7 @@ ALTER TABLE ONLY person_meeting
 
 
 --
--- Name: relation_id_person1_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+-- Name: relation_id_person1_fkey; Type: FK CONSTRAINT; Schema: public
 --
 
 ALTER TABLE ONLY relation
@@ -515,7 +498,7 @@ ALTER TABLE ONLY relation
 
 
 --
--- Name: relation_id_person2_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+-- Name: relation_id_person2_fkey; Type: FK CONSTRAINT; Schema: public
 --
 
 ALTER TABLE ONLY relation
@@ -523,7 +506,7 @@ ALTER TABLE ONLY relation
 
 
 --
--- Name: relation_id_relation_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: xpopelka
+-- Name: relation_id_relation_type_fkey; Type: FK CONSTRAINT; Schema: public
 --
 
 ALTER TABLE ONLY relation
@@ -537,7 +520,6 @@ ALTER TABLE ONLY relation
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
 GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO xpopelka;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
