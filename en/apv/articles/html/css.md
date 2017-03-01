@@ -41,7 +41,8 @@ CSS version 2 (2.1) is almost fully supported among all common browsers. Startin
 standard is split into **modules** with various degrees of standardization (earliest 2007). There are
 dozens of modules: font properties, color, box properties, box model, border, color, margin, background,
 size and even effects like shadows, transparency,
-rounded corners or mouse cursor and [many more](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference).
+rounded corners or mouse cursor and [many more](https://www.onblastblog.com/css3-cheat-sheet/)
+(See [CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)).
 
 ### Page Layout
 Creating styles for a full HTML page is quite a complex task. Because a web page is not a piece of 
