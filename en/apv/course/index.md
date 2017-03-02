@@ -43,7 +43,7 @@ development of web applications and database applications (relational database s
     - [Presentation slides](/en/apv/slides/database-design/)
 - Week 8
     - Articles: [Database Systems -- Sequences, Constraints, Keys](/en/apv/articles/database-tech/)
-    - Exercises: [Application Layout and Templates]/en/apv/walkthrough/css/bootstrap/)
+    - Exercises: [Application Layout and Templates](/en/apv/walkthrough/css/bootstrap/)
     - [Presentation slides](/en/apv/slides/database-tech/)
 - Week 9
     - Articles: [Cascading Style Sheets](/en/apv/articles/html/css/)

@@ -13,17 +13,19 @@ challenge is to provide the user with the initial values of the edited record. A
 another combination of what you have learned already.
 
 ## Getting Started
-We'll start by modifying the script for inserting a new person from the previous chapter. PHP Script:
+We'll start by modifying the script for inserting a new person from the previous chapter.
+PHP Script `person-update-1.php`:
+
+{: .solution}
+{% highlight php %}
+{% include /en/apv/walkthrough/backend-update/person-update-1.php %}
+{% endhighlight %}
+
+Template `person-update-1.latte`: 
 
 {: .solution}
 {% highlight html %}
 {% include /en/apv/walkthrough/backend-update/templates/person-update-1.latte %}
-{% endhighlight %}
-
-Template: 
-
-{% highlight php %}
-{% include /en/apv/walkthrough/backend-update/person-update-1.php %}
 {% endhighlight %}
 
 The only thing changed in the template so far is the button description (seeing an opportunity?).
@@ -36,6 +38,9 @@ need to supply the existing values into the form -- put them in the `value` attr
 controls. Lets' still assume that we have the ID of the selected person in `$idPerson` variable.
 We'll get back to that later.
 
+File `person-update-2.php`:
+
+{: .solution}
 {% highlight php %}
 {% include /en/apv/walkthrough/backend-update/person-update-2.php %}
 {% endhighlight %}
@@ -53,8 +58,11 @@ the `fetch()` method returns false. Which means that querying for `$person['firs
 would produce a warning about an undefined index. To simplify the whole thing, we just terminate
 the entire script with `exit`. This is a bit harsh, but effective.
 In the template, we need to use the values of the `$person` variable to pre-fill the form.
-Note that on the radiobutton (or `<select>`), you have to use the `selected` attribute:
+Note that on the radiobutton (or `<select>`), you have to use the `selected` attribute.
 
+File `person-update-2.latte`:
+
+{: .solution}
 {% highlight html %}
 {% include /en/apv/walkthrough/backend-update/templates/person-update-2.latte %}
 {% endhighlight %}
@@ -68,15 +76,17 @@ page for updating a person? There are many possible solutions, but one of the ea
 and still well usable is to link it from a list of persons.
 
 Let's update a list of persons to link each person to the update form, all we need is to
-add another field to the table:
+add another field to the table in `person-list.latte` file:
 
+{: .solution}
 {% highlight html %}
 {% include /en/apv/walkthrough/backend-update/templates/person-list.latte %}
 {% endhighlight %}
 
 Don't forget to add a `<th>` too, if you added a new table column. Also verify that
-you have `id_person` among the list of selected columns from the database: 
+you have `id_person` among the list of selected columns from the database in `person-list.php`: 
 
+{: .solution}
 {% highlight php %}
 {% include /en/apv/walkthrough/backend-update/person-list.php %}
 {% endhighlight %}
@@ -85,6 +95,9 @@ Now the table with persons contains a link next to each person and the link poin
 `person-update.php?id=XXX` where `XXX` is the ID of the corresponding person. Now all we need is to
 pickup the ID passed in the URL address in the `person-update.php` script.
 
+File `person-update-3.php`:
+
+{: .solution}
 {% highlight php %}
 {% include /en/apv/walkthrough/backend-update/person-update-3.php %}
 {% endhighlight %}
@@ -108,7 +121,7 @@ Be careful here because you cannot reuse the entire template -- the `form` has d
 attribute and the ID parameter needs to passed along with the data in the edit form using hidden input.
 Only those inputs which are used to fill person information can be placed into separate template.
 
-TODO
+{% comment %}TODO{% endcomment %}
 
 ## Summary
 In this chapter you learned how to update data in database. This is technically no different than

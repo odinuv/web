@@ -9,7 +9,7 @@ if(!empty($_POST["id_person"])) {
         $stmt->execute();
 
         //redirect to prevent accidental reload with same id_person value
-        header("Location: person-list.php");
+        header("Location: delete.php");
         exit();
     } catch(PDOException $e) {
         exit($e->getMessage());

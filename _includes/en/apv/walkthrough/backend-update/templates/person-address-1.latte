@@ -1,0 +1,15 @@
+{extends layout.latte}
+
+{block content}
+<form method="post">
+    <select name="location_id">
+        {* use foreach to generate option list *}
+        {foreach $locations as $loc}
+        <option value="{$loc['id_location']}">
+            {$loc['city']} {$loc['street_name']} {$loc['street_number']}
+        </option>
+        {/foreach}
+    </select>
+    <button type="submit">Set</button>
+</form>
+{/block}

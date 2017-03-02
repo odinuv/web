@@ -96,7 +96,7 @@ field of HTML element for efficient work with CSS classes).
 {% include /en/apv/walkthrough/javascript/html-attributes-styles.html %}
 {% endhighlight %}
 
-Each element can have a set of child nodes -- you can remove or ad children with `elem1.appendChild(elem2)`
+Each element can have a set of child nodes -- you can remove or add children with `elem1.appendChild(elem2)`
 and `elem1.removeChild(elem2)` methods. To create a new element you can use `var newElem = document.createElement("tag")`
 method.
 

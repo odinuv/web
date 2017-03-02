@@ -164,18 +164,24 @@ to gain insight -- such step can also help you to understand benefit of a framew
 ## Apache web server
 This software is a complicated beast. It powers most web servers in the world and you will definitely have to
 configure it at some point of your life. It is very versatile and therefore the configuration is quiet detailed.
-Also their [website](https://httpd.apache.org/) is not one of those super well organised. You can find its config
-in file called `httpd.conf` -- always make a backup before you start modifying it.
+Also their [website](https://httpd.apache.org/) is not one of those super well organised. You can find its general
+config in file called `httpd.conf` -- always make a backup before you start modifying it.
 
-Most common tasks in configuration is enabling or disabling some modules, turning on/off directory listings and
-setting up virtual hosts on your own server. For most website developers, first encounter with Apache's configuration
-is `.htaccess`  file which serves as local configuration for particular directory that it is placed in (and also
-its subdirectories). To use `.htaccess` files, the server's administrator has to configure `AllowOverride All` in
-Apache's global config. You can use tools to enable plugins (`a2enmod`) and virtual hosts (`a2ensite`) on Linux systems.
+Most common configuration tasks are enabling or disabling some modules, turning on/off directory listings and
+setting up virtual hosts on your own server. Most common modules which you usually want to enable are PHP
+for `*.php` files, HTTP authentication support and mod_rewrite. You can use tools to enable plugins (`a2enmod`)
+and virtual hosts (`a2ensite`) on Linux systems.
+
+For most website developers, first encounter with Apache's configuration is `.htaccess`  file which serves as
+local configuration for particular directory that it is placed in (and also its subdirectories). 
+To use `.htaccess` files, the server's administrator has to configure `AllowOverride All` in Apache's global config
+for that directory. You are usually allowed to use `.htaccess` files on shared web-hostings to configure mod_rewrite
+or protecting your website with HTTP authentication.
 
 {: .note}
 On Linux operating systems, files which name begins with a dot are considered hidden. If you do not see `.htaccess`
-file in directory listing in your FTP/SSH client, go to settings and enable hidden file listing.
+file in directory listing in your FTP/SSH client (and you know that you uploaded it), go to settings and enable
+hidden file listing.
 
 ### Enabling/disabling directory listing
 To enable directory listing is useful for development servers. When you have multiple projects placed in one
@@ -246,6 +252,23 @@ which should be OK.
 {: .note}
 If your application lives in a subdirectory, you usually need to add `RewriteBase path/to/subdirectory` into
 `.htaccess` file (right after `RewriteEngine on` line).
+
+### Configuration of basic HTTP authentication
+If your Apache server has enabled modules `mod_auth_basic` and `mod_authn_file`, you can use this approach
+to restrict access to selected directory and its subdirectories. This approach is useful when you want to hide
+a web application during its development. Put these lines into your `.htaccess` file:
+
+    AuthType Basic
+    AuthName "Restricted Content"
+    AuthUserFile /path/to/.htpasswd
+    Require valid-user
+    
+Contents of .htpasswd file can look somewhat like this:
+
+    user:$apr1$Ywno0KCc$/R75cky8xEvL5DpWuTLEy.
+    
+This line is for an account called `user` with a password `pass`. Use some online `.htpasswd` generator to
+obtain yours. There can be more users in `.htpasswd` file.
 
 ## Database systems
 In development environment, you almost never have to tweak database settings. When installing a database server,
