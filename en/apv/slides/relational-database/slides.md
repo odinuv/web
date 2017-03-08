@@ -205,8 +205,8 @@ the attribute).
 <table>
     {%include /en/apv/slides/relations.html %}
     <tr>
-        <td colspan='2'>R1[(Color = white) ∨ (Color = red)]</td>
-        <td colspan='2'>(R1[Color = green])[Style]</td>
+        <td colspan='2'>R1[(Color = white) ∨ (Color = cyan)]</td>
+        <td colspan='2'>(R1[Color = yellow])[Style]</td>
     </tr>
     <tr>
         <td colspan='2'>
@@ -301,7 +301,7 @@ the attribute).
         <td colspan='4'>
             <table>
                 <tr>
-                    <th>Color</th>
+                    <th>Color1</th>
                     <th>Style</th>
                     <th>Color2</th>
                     <th>Size</th>
@@ -351,7 +351,7 @@ the attribute).
     - How good are they?
 - In applications it is safest to use **artificial keys**:
     - also called **dumb keys** -- have no meaning.
-- Key is the core *integrity constraint**.
+- Key is the core **integrity constraint**.
 - **Weak entity** -- has only foreign key (e.g. `person-meeting`).
 </section>
 
@@ -478,7 +478,7 @@ with (relational) database system.
 ## SQL -- Syntax Conventions
 - Functions and keywords are written in UPPERCASE.
 - *Italics* mark placeholder:
-    - `DELETE FROM *table*`
+    - DELETE FROM *table*
 - `[ ]` -- optional part.
 - `{ }` -- set of elements.
 - `|` -- exclusive selection.
@@ -499,9 +499,9 @@ with (relational) database system.
 <section markdown='1'>
 ## SQL Commands
 - Define structure of data (database schema) -- DDL (data definition language):
-    - `CREATE (SCHEMA | TABLE | COLUMN | INDEX )`
-    - `ALTER (SCHEMA | TABLE | COLUMN | INDEX )`
-    - `DROP (SCHEMA | TABLE | COLUMN | INDEX )`
+    - `CREATE {SCHEMA | TABLE | COLUMN | INDEX }`
+    - `ALTER {SCHEMA | TABLE | COLUMN | INDEX }`
+    - `DROP {SCHEMA | TABLE | COLUMN | INDEX }`
 - Manipulate with data -- DML (data manipulation language):
     - `INSERT`, `SELECT`, `UPDATE`, `DELETE`
 - In certain areas, there can be considerable differences between different database servers!

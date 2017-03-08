@@ -7,9 +7,9 @@ permalink: /en/apv/walkthrough/dynamic-page/array/
 {:toc}
 
 In many languages, there are different structures for containing collections
-of values -- [arrays](http://php.net/manual/en/book.array.php), 
-[lists](https://en.wikipedia.org/wiki/List_comprehension), 
-collections](https://en.wikipedia.org/wiki/Java_collections_framework), 
+of values -- [arrays](http://php.net/manual/en/book.array.php),
+[lists](https://en.wikipedia.org/wiki/List_comprehension),
+[collections](https://en.wikipedia.org/wiki/Java_collections_framework),
 [hashsets](https://en.wikipedia.org/wiki/Set_(abstract_data_type)), etc.
 In PHP, this is simplified as there are only [arrays](http://php.net/manual/en/book.array.php).
 
@@ -140,7 +140,7 @@ The above example will print:
 
 Removing elements from array is not very common because PHP scripts are executed for a very short time (just to
 produce HTML page for browser) and then the memory used by the script is cleared automatically.
-Use the `unset` operation only when you truly want to remove something from an array. 
+Use the `unset` operation only when you truly want to remove something from an array.
 
 ### Traversing Arrays
 When you need to traverse the entire array, you need a loop. As mentioned above the `for` loop can be
@@ -249,7 +249,7 @@ $currentUser = [
 
 ## Summary
 You should now be able to work with arrays. This means you should be able to define
-an array, add elements to it and print an array. Arrays are very important -- for example results 
+an array, add elements to it and print an array. Arrays are very important -- for example results
 of database queries are stored in them. This means that we will work with them a lot.
 
 ### New Concepts and Terms

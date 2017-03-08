@@ -7,8 +7,8 @@ permalink: /en/apv/course/
 {:toc}
 
 ## Course information
-The aim of the course is to teach student basic categories of application software. Emphasis is given on
-development of web applications and database applications (relational database systems).
+The aim of the course is to teach students basic categories of application software. Emphasis is given on
+the development of web applications and database applications (relational database systems).
 [Official course information](http://ects-prog.mendelu.cz/en/plan6937/predmet88060)
 
 ## Course outline
@@ -61,17 +61,17 @@ described below:
 
 > Create a web application for recording persons and contacts. The main goal of the application is
 > to record persons (friend, acquaintances), their addresses, relationships and meetings.
-> Every person can have a name, nickname, age, location and contacts. Each person can have any
+> Each person can have a name, nickname, age, location and contacts. Each person can have any
 > number of contacts (mobile, Skype, Jabber, ....). A person can have more contacts of the
 > same type (e.g. two emails). Each person can have any number of relationships
-> with other persons in the database. Each relationship should have type (friend, fiend, acquaintance, spouse, ...)
-> and description. Contact and relationship types are recorded in database and can be modified by
+> with other persons in the database. Each relationship should be of a type (friend, fiend, acquaintance, spouse, ...)
+> and description. The contact and relationship types are recorded in the database and can be modified by
 > the end-user. The application also records meetings between persons. Each meeting can be joined by any number of persons.
 > Each meeting should have a place and date.
-> The application must allow user friendly of entering and modifying the data. Take advantage of the proposed schema,
+> The application must allow user friendly entering and modifying the data. Take advantage of the proposed schema,
 > create a database and implement the entire application.
 
-The assignment is intentionally every loosely defined. It is up to you to come up with the
+The assignment is intentionally very loosely defined. It is up to you to come up with the
 application design, functionality and user interface. It is not an easy task, so I have designed a
 [database schema](/en/apv/walkthrough/database/#database-schema) for you.
 
@@ -79,4 +79,5 @@ application design, functionality and user interface. It is not an easy task, so
 ![Database Schema](/en/apv/schema.svg)
 
 The database schema defines what kind of data your application should store. You can change it
-if you want to, but please do so only after you understand the [database design process](todo).
+if you want to do so, but please do so only after you understand 
+the [database design process](/en/apv/articles/database-design/).

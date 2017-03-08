@@ -119,11 +119,11 @@ any way. They serve the purpose of writing your comments to the source code.
 // this is a comment, and does nothing
 {% endhighlight %}
 
-Comments are either *single-line* or *multi-line*. A single-line comment (the above example) runs until the 
+Comments are either *single-line* or *multi-line*. A single-line comment (the above example) runs until the
 end of the line. Multi-line comment must be terminated by a sequence of characters.
 
 {% highlight php %}
-/* this is a comment, that 
+/* this is a comment, that
 does nothing and spans over more lines.
 */
 {% endhighlight %}
@@ -268,18 +268,18 @@ string `four` can be converted to number 4.
 #### Boolean Type
 [Boolean data type](https://en.wikipedia.org/wiki/Boolean_data_type) has only two values: **true** and **false**.
 Boolean type has a great significance in programming. Boolean values (true, false) are also called **logical values**.
-They can be manipulated using [**logical operators**](https://en.wikipedia.org/wiki/Boolean_algebra#Basic_operations) 
+They can be manipulated using [**logical operators**](https://en.wikipedia.org/wiki/Boolean_algebra#Basic_operations)
 (part of *boolean logic* or *boolean algebra*). The most important logical operators are:
 
 - logical **and** (conjunction) -- the result value is true if both operands are true, otherwise it is false.
-- logical **or** (disjunction) -- the result value is true if either operand is true, otherwise it is false 
+- logical **or** (disjunction) -- the result value is true if either operand is true, otherwise it is false
 (i.e. if both operands are false)
 - logical **not** (negation) -- the result is negation of the value (if operand is true, result is false and vice versa).
 
 The **and** and **or** operators are **binary** which means that they have two **operands**. While it may sound alien,
-you are already familiar with binary operators. E.g. if you write `4 + 3`. The plus `+` is a binary 
-operator (arithmetic, not boolean though), `4` and `3` are its *operands*. The result is `7`. 
-Similarly you can write `true and false`. The `and` is a binary boolean operator, `true` and `false` are 
+you are already familiar with binary operators. E.g. if you write `4 + 3`. The plus `+` is a binary
+operator (arithmetic, not boolean though), `4` and `3` are its *operands*. The result is `7`.
+Similarly you can write `true and false`. The `and` is a binary boolean operator, `true` and `false` are
 its operands. The result is `false`. The `not` operator is **unary** which means that it has only one operand.
 For example the expression `not true`, negates the value `true` and results `false`. This is sort of logical, isn't it?
 That's why it's called boolean logic :). In PHP, the not operator is written using exclamation mark `!`:
@@ -306,6 +306,12 @@ The problem is that each programming language has its own library, and each libr
 contains thousands of functions. Therefore it is very time consuming to get yourself
 acquainted with the language library. Contrary to popular belief, a programmer spends
 most of his time reading manuals for the libraries.
+
+Apart from standard library which comes bundled with every language interpreter (or compiler), there
+are also many 3rd party libraries. In general, the term **library** represents an external set of functions
+which we (as a programmers) include in our application without modification. There are also other terms describing
+a set of functions like *packages*, *modules*, *extensions*, *plugins*. In principle, all these represent the same
+thing.
 
 ## Summary
 In this article, you learned the basic programming jargon. If you do not feel confident
