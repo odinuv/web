@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Passing this into nested functions</title>
+    <script type="text/javascript">
+        function makeClickEvent(container) {
+            //return a function which handles first button click
+            return function() {
+                //insert content into div container
+                var firstButton = this;
+                var newButton = document.createElement("button");
+                newButton.innerText = "Hide first button";
+                //attach event which hides original button
+                newButton.addEventListener('click', function() {
+                    document.body.removeChild(firstButton);
+                });
+                //insert new button into container
+                container.appendChild(newButton);
+            };
+        }
+        window.addEventListener("load", function() {
+            //we have 3 buttons and 3 divs
+            var btns = document.getElementsByTagName("button");
+            var divs = document.getElementsByTagName("div");
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", makeClickEvent(divs[i]));
+            }
+        });
+    </script>
+</head>
+<body>
+    <button>Show other button</button><div></div><hr />
+    <button>Show other button</button><div></div><hr />
+    <button>Show other button</button><div></div><hr />
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JS events example</title>
+    <script type="text/javascript">
+        //wait for the browser to load all HTML
+        window.onload = function() {
+            //create an element and display it
+            var newList = document.createElement("ul");
+            var cont = document.getElementById("cont");
+            cont.appendChild(newList);
+            //set some content even with HTML tags
+            newList.innerHTML = "<li>First list item</li>";
+            //create content with code
+            var secondListItem = document.createElement("li");
+            //set text content - safe from XSS
+            secondListItem.textContent = "Second list item <strong>nope</strong>";
+            //append item into list
+            newList.appendChild(secondListItem);
+        };
+    </script>
+</head>
+<body>
+<div id="cont">
+    <!-- nothing here in HTML -->
+</div>
+</body>
+</html>

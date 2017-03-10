@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Using AJAX</title>
+    <script type="text/javascript">
+		window.onload = function() {
+			var a = document.getElementById("a");
+			var b = document.getElementById("b");
+			var btn = document.getElementById("btn");
+			var res = document.getElementById("res");
+			btn.onclick = function() {
+                //create a HTTP request when clicked on button
+				var request = new XMLHttpRequest();
+				//observe HTTP status changes
+				request.onreadystatechange = function () {
+					if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+					    //when done and HTTP code is 200, update result
+						var resObj = JSON.parse(this.responseText);
+						res.innerHTML = resObj.result;
+					} else if(this.readyState == XMLHttpRequest.DONE) {
+						res.innerHTML = "Error!";
+					}
+				};
+				//open connection and send data to PHP backend
+				request.open("GET", "calculate.php?a=" + a.value + "&b=" + b.value);
+				//starts HTTP request and the event handler declared before gets executed
+				request.send();
+			};
+		};
+    </script>
+</head>
+<body>
+	<input id="a" type="number" value="5" />
+	<input id="b" type="number" value="3" />
+	<button id="btn">Calculate</button>
+	<span id="res"></span>
+</body>
+</html>
