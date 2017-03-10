@@ -8,12 +8,11 @@
             //return a function which handles first button click
             return function() {
                 //insert content into div container
-                var firstButton = this;
                 var newButton = document.createElement("button");
                 newButton.innerText = "Hide first button";
                 //attach event which hides original button
-                newButton.addEventListener('click', function() {
-                    document.body.removeChild(firstButton);
+                newButton.addEventListener('click', () => {
+                    document.body.removeChild(this);
                 });
                 //insert new button into container
                 container.appendChild(newButton);
@@ -30,8 +29,8 @@
     </script>
 </head>
 <body>
-    <button>Show other button</button><div></div><hr />
-    <button>Show other button</button><div></div><hr />
-    <button>Show other button</button><div></div><hr />
+<button>Show other button</button><div></div><hr />
+<button>Show other button</button><div></div><hr />
+<button>Show other button</button><div></div><hr />
 </body>
 </html>

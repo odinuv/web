@@ -24,6 +24,7 @@
 				};
 				//open connection and send data to PHP backend
 				request.open("GET", "calculate.php?a=" + a.value + "&b=" + b.value);
+				//starts HTTP request and the event handler declared before gets executed
 				request.send();
 			};
 		};

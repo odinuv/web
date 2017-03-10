@@ -54,7 +54,7 @@ when you work with JavaScript.
 ### Data types
 JavaScript is dynamically typed like PHP. We have basic types: *strings*, *numbers*, *booleans* and also *arrays*
 (only ordinal) and general *objects*. Unlike in PHP, even basic types are objects, for example you can call
-methods on strings like this:
+methods or access object's attributes on strings like this:
 
 {% highlight javascript %}
 var chars = "a,b,c,d,e,f".split(',');  //divide string to array
@@ -108,9 +108,11 @@ object with methods in JavaScript. This is called *first-class functions*. Next 
 function passed into another function as argument's value.
 
 {% highlight javascript %}
+//store function into a variable
 var fun1 = function(fun2) {
     fun2();
 };
+//call that function with another as parameter
 fun1(function() {
     console.log('this gets also called');
 });
@@ -135,6 +137,10 @@ items in ES 2015.
 It is possible to iterate array items with `for...in` cycle, but it is wrong and should be avoided (it treats
 numeric array keys as strings for instance).
 
+{: .note.note-cont}
+The arrow expression `(a, b) => {...}` is just a shortcut to declare anonymous function. There is one important
+difference that I will explain later.
+
 ### Variable and constant declarations
 In older JavaScript versions you could have used only `var` keyword to denote a new variable. A variable declared
 using `var` is local in functions and global outside of them.
@@ -154,7 +160,7 @@ console.log(local);     //error
 In fact JavaScript scans the function body and moves all variable declarations to the beginning.
 
 New JavaScript version ES 2015 introduced also `const` and `let` keywords. The `let` keyword is interesting because
-it can create variable which scope is only inside curly brackets, observe difference between these two scripts:
+it can create variable which scope is only inside curly brackets, observe difference between these two pieces of code:
 
 {% highlight javascript %}
 //using var
@@ -162,6 +168,9 @@ for(var i = 1; i < 5; i++) {
     console.log(i); //1,2,3,4
 }
 console.log(i); //5
+{% endhighlight %}
+
+{% highlight javascript %}
 //using let
 for(let j = 1; j < 5; j++) {
     console.log(j); //1,2,3,4
@@ -192,9 +201,9 @@ Therefore there is a big difference in placement of `<script>` tags within your 
 {% endhighlight %}
 
 Web developers often want their JavaScript to execute when all HTML tags are loaded into browser.
-To achieve this an event called `onload` is used and most JavaScript code is executed in it.
+To achieve this an *event* called `onload` is used and most JavaScript code is executed in it.
 When you use `onload` event it does not matter whether you put you `<script>` tag into `<head>` or
-just before `</body>`.
+just before `</body>`. I will tell you more about events later.
 
 ### Interacting with HTML elements
 You obviously have to interact with existing (static) HTML structure somehow to achieve dynamic
@@ -206,25 +215,24 @@ will draw these changes immediately on the screen.
 To obtain an HTML element from document's structure use one of the following functions:
 
 - `document.getElementById("id_value")` -- returns one element found by its `id` attribute
-- `document.getElementsByTagName("table")` -- returns collection
-- `document.getElementsByClassName("some-class")` -- returns collection
-- `document.querySelector(".some-css-selector")` -- returns first matched element
-- `document.querySelectorAll("#some-css-selector")` -- returns collection
+- `document.getElementsByTagName("table")` -- returns collection of elements by given tag name
+- `document.getElementsByClassName("some-class")` -- returns collection of elements by given class attribute
+- `document.querySelector(".some-css-selector")` -- returns first element matched by given [CSS selector](/en/apv/articles/html/css/#selectors)
+- `document.querySelectorAll(".some-css-selector")` -- returns collection of elements matched by given [CSS selector](/en/apv/articles/html/css/#selectors)
 
-To access standard HTML attributes of retrieved elements just type `element.attr`
-(e.g. `console.log(link.href)` for `<a>` element). An exception is `class` attribute which is accessed
-using `element.className`. To change styles use `element.style` object with camel case
-style name (e.g. CSS `background-color` can be accessed with `element.style.backgroundColor`).
-Another special attribute is `innerHTML` which can be used to change content of an element.
-You might remember about [user defined attributes](/en/apv/articles/html/#data-attributes) which
-are found under `element.dataset.*` field.
+To access standard HTML attributes of retrieved elements just type `element.attr` (e.g. `console.log(link.href)` for
+`<a>` element). An exception is `class` attribute which is accessed using `element.className`. To change CSS styles use
+`element.style` object followed by *camelCase* style name (e.g. CSS property `background-color` can be accessed with
+`element.style.backgroundColor`). Another special attribute is `innerHTML` which can be used to change content of an
+element. You might remember about [user defined attributes](/en/apv/articles/html/#data-attributes) which are found
+under `element.dataset.*` field.
 
 ### Document object (DOM -- Document Object Model)
 Those `document.*` methods mentioned before are part of [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document).
 It is an object that contains structure of HTML elements presented by the browser and also methods/attributes to
 manipulate them. It contains a key called `body` which is a reference to HTML `<body>` element (there is also `head`
-attribute, but that is not used often). The `document` contains other nested HTML elements in `childNodes` attribute
-collection. Every child has `childNodes` attribute too -- they form a tree. DOM is standardized by [W3C](https://www.w3.org/standards/techs/dom).
+attribute, but that is not used often). The `document` contains nested HTML elements in `childNodes` attribute
+collection. Every other child has `childNodes` attribute too -- they form a tree. DOM is standardized by [W3C](https://www.w3.org/standards/techs/dom).
 
 {% highlight javascript %}
 console.log(document.head);
@@ -233,14 +241,25 @@ console.log(document.childNodes);       //only <html> node
 console.log(document.body.childNodes);  //body's nodes
 {% endhighlight %}
 
+Try to type some of those lines mention above into console (in the very bottom of the console you can write actual
+JavaScript commands).
+
+![Interactive console](interactive-console.png)
+
 Each node in DOM has [methods and attributes](https://developer.mozilla.org/en-US/docs/Web/API/Node), most important
 ones are:
 
-- [node.appendChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
-- [node.removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
-- [node.insertBefore()](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore)
+- [node.appendChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) -- insert an element as a
+  child of `node` (new element will be last child)
+- [node.removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild) -- remove given element from
+  child collection of `node`
+- [node.insertBefore()](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore) -- insert an element before
+  another child of `node` (similar to `appendChild`)
 - [node.childNodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes)
-- [node.parentElement](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement)
+- [node.firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild) -- first child of `node`, can be
+  used to insert new element as first child using `node.insertBefore(newNode, node.firstChild)`
+- [node.lastChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/lastChild) -- last child of `node`
+- [node.parentElement](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement) -- parent element of `node`
 
 There is a difference between [DOM Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) and
 [DOM Element](https://developer.mozilla.org/en-US/docs/Web/API/Element), elements are only HTML tags, nodes
@@ -261,8 +280,8 @@ for it in `window` object properties.
 
 {% highlight javascript %}
 console.log(window);
-console.log('This is same...', window.document);
-console.log('...as this', document);
+console.log('This is same...', document);
+console.log('...as this', window.document);
 {% endhighlight %}
 
 {% highlight javascript %}
@@ -272,10 +291,10 @@ console.log(anything);
 
 Following example nicely demonstrates that JavaScript scans for `var` declarations and moves them to top. You would
 expect to output `document` object on first line but JavaScript outputs `undefined` because the variable has not
-assigned a value yet.
+been assigned a value yet.
 
 {% highlight javascript %}
-console.log('No content', document);
+console.log('No content', document);    //strange!
 var document = "not a document anymore";
 console.log('Still works', window.document);
 console.log('New content', document);
@@ -283,12 +302,8 @@ console.log('New content', document);
 
 ### JavaScript events
 Events are type of signals which are broadcasted to JavaScript event listeners (functions)
-when some action takes place. For example a user can click a button, move a mouse or a timer ticks:
-
-{% highlight html %}
-<button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
-<button onclick="alert('Hello!')">Click me - alert()!</button>
-{% endhighlight %}
+when some action takes place. For example a user can click a button, press a key, navigate to other site, move a mouse
+or a timer ticks:
 
 {% highlight html %}
 <script type="text/javascript">
@@ -296,6 +311,8 @@ when some action takes place. For example a user can click a button, move a mous
         console.log('Button clicked', event);
     }
 </script>
+<button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
+<button onclick="alert('Hello!')">Click me - alert()!</button>
 {% endhighlight %}
 
 Open developer console (F12) and try to click this button or the other:
@@ -343,11 +360,13 @@ A good example which shows how to completely divide HTML and JavaScript code fol
 
 {: .note}
 When you use `formElement.addEventListener('submit', ...)` to register an event, you have to prevent the browser from
-submitting the form by calling `eventObject.preventDefault()` inside handler instead of returning `false`.
+submitting the form by calling `eventObject.preventDefault()` inside handler instead of returning `false` like mentioned
+in [walkthrough example](/en/apv/walkthrough/javascript/#using-javascript-to-confirm-user-actions).
 
 It is possible to work with special variable called `this` inside event handlers. That variable holds reference to an
 HTML element which fired event.
 
+{: .solution}
 {% highlight html %}
 {% include /en/apv/articles/javascript/using-this-events.html %}
 {% endhighlight %}
@@ -363,8 +382,8 @@ It is possible to change `this` variable content by using function's methods [`c
 or [`apply()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function/Call).
 
 ## Variable scope
-It is not unusual to see a function declared inside another function. It can happen when you need to pass callbacks or
-event handlers. In such case, function declared inside another has access to variables from outer scope.
+It is not unusual to see a function declared inside another function in JavaScript code. It can happen when you need to
+pass callbacks or event handlers. In such case, function declared inside another has access to variables from outer scope.
 
 {% highlight javascript %}
 window.addEventHandler("load", function() {
@@ -383,8 +402,10 @@ which changes its content in outer scope -- weird stuff starts to happen.
 
 {% highlight javascript %}
 window.addEventHandler("load", function() {
+    //find multiple buttons...
     var allButtons = document.getElementsByTagName("button");
     for(var i = 0; i < allButtons.length; i++) {
+        //...attach an event to each of them
         allButtons[i].addEventListener("click", function() {
             //logs last value of i, not individual values
             console.log(i);
@@ -400,10 +421,10 @@ refer to it. You either have to use the `let` keyword or construct a *closure*.
 
 {% highlight javascript %}
 window.addEventHandler("load", function() {
-    function produceEventHandler(val) {
+    function makeEventHandler(val) {
         /*
             return function which will serve as event handler, variable
-            val is locked to value given when executing produceEventHandler
+            val is locked to value given when executing makeEventHandler
         */
         return function() {
             console.log(val);
@@ -412,7 +433,7 @@ window.addEventHandler("load", function() {
     var allLinks = document.getElementsByTagName("button");
     for(var i = 0; i < allLinks.length; i++) {
         //call a function which generates the event handler
-        allLinks[i].addEventListener("click", produceEventHandler(i));
+        allLinks[i].addEventListener("click", makeEventHandler(i));
     }
 });
 {% endhighlight %}
@@ -432,16 +453,27 @@ window.addEventHandler("load", function() {
 {% endhighlight %}
 
 Lets return a bit and talk about `this` variable again. Put yourself into a situation when you need to register event
-handlers based on user action (inside another event handler). Perhaps you need a button which generates new HTML content
-and this content is responsibel for hiding original button.
+handlers based on user action (inside another event handler). Perhaps you need a `<button>` which generates new HTML
+content and this content is responsible for hiding original `<button>` element after user performs some consequent
+action. It means, that you need to pass reference for the first `<button>` into event handler attached to second,
+newly created one. You know that you can use `this` in first click event handler 
 
+{: .solution}
 {% highlight html %}
 {% include /en/apv/articles/javascript/passing-this-events.html %}
 {% endhighlight %}
 
+This can also be achieved with *arrow expression* `() => {}` mentioned before. This kind of function declaration
+does not introduce its own `this` variable and you can use `this` from parent scope.
+
+{: .solution}
+{% highlight html %}
+{% include /en/apv/articles/javascript/passing-this-events-arrow.html %}
+{% endhighlight %}
+
 ## AJAX
 AJAX stands for *asynchronous JavaScript and XML* although [JSON](http://json.org) format is currently much more
-common. The basic principle is that a browser calls some backend function using JavaScript HTTP client (the visitor
+common. The basic principle is that a browser calls some backend functionality using JavaScript HTTP client (the visitor
 does not have to be aware of this at all) and retrieves some data (originally XML but it can also be JSON, piece of
 HTML or just plain text). This data can be inserted into HTML page without its reload thanks to dynamic HTML
 technologies. Asynchronous means that the visitor is not blocked from other interaction with site during that HTTP
@@ -468,6 +500,7 @@ If everything goes smooth, PHP returns HTTP code 200 and JSON data that can be p
 
 `index.html` file:
 
+{: .solution}
 {% highlight html %}
 {% include /en/apv/articles/javascript/ajax/index.html %}
 {% endhighlight %}
@@ -485,6 +518,32 @@ browser but Chrome developers tools are very similar.
 
 {: .image-popup}
 ![console.log() output](ajax-network-2.png)
+
+## Promises
+Asynchronous nature of JavaScript is often hard to grasp for people who started with backend development in PHP
+where code execution usually flows from top to bottom. In JavaScript you have to think about the code differently:
+events are fired in random order according to user's actions. It means that reading the code from top to bottom
+does not necessarily end with its understanding.
+
+You can encounter another popular pattern for asynchronous processing called [*Promise*](https://developer.mozilla.org/cs/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+Implementation of this interface is used to handle asynchronous processes and readability of such code is better.
+Here is an example.
+
+`index.html` file of AJAX calculator using a *Promise*:
+
+{: .solution}
+{% highlight html %}
+{% include /en/apv/articles/javascript/ajax/index-promises.html %}
+{% endhighlight %}
+
+Promises can be chained or they can be stored in an array and treated as one job by usage of method
+[`.all()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all).
+
+{: .note}
+Promises can be used to separate logic. The code is also readable and the interface is unified and well-known.
+
+{: .note.note-cont}
+Internet explorer does not support promises and you have to use some kind of polyfill.
 
 ## Summary
 Remember that JavaScript is executed inside a browser. Therefore it cannot store any data on a server --

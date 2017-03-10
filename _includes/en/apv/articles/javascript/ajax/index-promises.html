@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Using AJAX</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            function calculate(a, b) {
+                //wrap HTTP communication into promise
+                return new Promise(function(resolve, reject) {
+                    //this code is executed immediately
+                    var request = new XMLHttpRequest();
+                    request.onreadystatechange = function () {
+                        //see that you can do whatever you want with returned value
+                        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                            //resolve should be called on success
+                            resolve(this.responseText);
+                        } else if (this.readyState == XMLHttpRequest.DONE) {
+                            //reject should be called on failure
+                            reject();
+                        }
+                    };
+                    request.open("GET", "calculate.php?a=" + a + "&b=" + b);
+                    request.send();
+                });
+            }
+            var a = document.getElementById("a");
+            var b = document.getElementById("b");
+            var btn = document.getElementById("btn");
+            var res = document.getElementById("res");
+            btn.onclick = function () {
+                //call function and register handlers for resolve and reject using then
+                calculate(a.value, b.value).then(function(response) {
+                    //just show the result
+                    var resObj = JSON.parse(response);
+                    res.innerHTML = resObj.result;
+                }, function() {
+                    res.innerHTML = "Error!";
+                });
+            };
+        };
+    </script>
+</head>
+<body>
+    <input id="a" type="number" value="5"/>
+    <input id="b" type="number" value="3"/>
+    <button id="btn">Calculate</button>
+    <span id="res"></span>
+</body>
+</html>

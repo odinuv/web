@@ -15,6 +15,9 @@
                 btn.innerHTML = "You clicked on it!";
             }
         };
+        function callMe() {
+            console.log("clicked");
+        }
     </script>
 </head>
 <body>
@@ -22,5 +25,7 @@
     <button onclick="alert('Hello')">Click it to see alert</button>
     <!-- this button will have an event attached to it programmatically -->
     <button id="button1">Click it to change this text</button>
+    <!-- this buttons uses a function declared in JavaScript code -->
+    <button onclick="callMe()">Click this to log into console</button>
 </body>
 </html>
