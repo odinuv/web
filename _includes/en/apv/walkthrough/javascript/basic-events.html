@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JS events example</title>
+    <script type="text/javascript">
+        //wait for the browser to load all HTML
+        window.onload = function() {
+            //you can attach only one event with this approach
+            console.log("Executed when everything is loaded.");
+            //find element using id attribute
+            var btn = document.getElementById("button1");
+            //register event
+            btn.onclick = function() {
+                btn.innerHTML = "You clicked on it!";
+            }
+        };
+        function callMe() {
+            console.log("clicked");
+        }
+    </script>
+</head>
+<body>
+    <!-- this button has event attached directly in HTML attribute -->
+    <button onclick="alert('Hello')">Click it to see alert</button>
+    <!-- this button will have an event attached to it programmatically -->
+    <button id="button1">Click it to change this text</button>
+    <!-- this buttons uses a function declared in JavaScript code -->
+    <button onclick="callMe()">Click this to log into console</button>
+</body>
+</html>

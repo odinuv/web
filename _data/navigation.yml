@@ -98,6 +98,9 @@ items:
                 - url: /en/apv/articles/html/css/
                   title: CSS Styles
 
+              - url: /en/apv/articles/javascript/
+                title: JavaScript
+
               - url: /en/apv/articles/database-systems/
                 title: Database Systems
 
