@@ -73,7 +73,7 @@ VALUES ('John', 'Doe', 'Johnny',
 <section markdown='1'>
 ## Updating data
 - SQL command UPDATE table SET *column* = *expression* [,*column* = *expression* ...] [ WHERE *search_condition* ]
-- `UPDATE person SET height = '196' WHERE id_person = '42'`
+- `UPDATE person SET height = '196' WHERE id_person = '42'`
 - If `WHERE` clause is missing, all rows are updated!
     - `UPDATE person SET birth_day=NULL`
 - `WHERE` condition usually contains key.
@@ -97,7 +97,7 @@ WHERE first_name = 'Ethyl'
 
 <section markdown='1'>
 ## Deleting Data
-- SQL command `DELETE FROM *table* WHERE *search_condition*`
+- SQL command DELETE FROM *table* WHERE *search_condition*
 - `DELETE FROM persons WHERE id_person = 42`
 - If the search condition is missing, **all rows in the table will be deleted**.
 - DELETE removes entire rows, to remove a single value use UPDATE.
@@ -105,7 +105,7 @@ WHERE first_name = 'Ethyl'
 
 <section markdown='1'>
 ## Selecting Data
-- SQL command `SELECT FROM *tables* WHERE *search_condition*`
+- SQL command SELECT FROM *tables* WHERE *search_condition*
 - SELECT is by far the most complicated SQL command.
     - You can be learning it for years and never finish.
 - Important clauses:
@@ -243,10 +243,10 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 
 <section markdown='1'>
 ## LEFT / RIGHT JOIN
-- *SELECT * FROM person LEFT JOIN contact ON person.id_person = contact.id_person*
+- `SELECT * FROM person LEFT JOIN contact ON person.id_person = contact.id_person`
     - Selects **all rows from left** table and rows satisfying the condition from the right table (1:0..1 or 1:0..N).
     - Selects all persons and if the persons has contacts, lists the contacts too.
-- *SELECT * FROM person RIGHT JOIN contact ON person.id_person = contact.id_person*
+- `SELECT * FROM person RIGHT JOIN contact ON person.id_person = contact.id_person`
     - Selects **all rows from the right** table and rows satisfying the condition from the left table.
     - Selects all contacts and lists person with each contact (same as INNER JOIN in this case).
 </section>
@@ -256,7 +256,7 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 - `SELECT * FROM relation LEFT JOIN relation_type ON relation.id_relation_type = relation_type.id_relation_type`
     - Selects all relations and lists relation type for each relation.
     - Lists also relations which have not type (cannot exist).
-- *SELECT * FROM relation RIGHT JOIN relation_type ON relation.id_relation_type = relation_type.id_relation_type`
+- `SELECT * FROM relation RIGHT JOIN relation_type ON relation.id_relation_type = relation_type.id_relation_type`
     - Select all relation types and assigns relation type to each relation.
     - Lists also relation types which are not used.
 </section>
@@ -267,7 +267,7 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 {% highlight sql %}
 SELECT * FROM
     contact LEFT JOIN contact_type
-    ON contact.id_contact_type =
+    ON contact.id_contact_type =
         contact_type.id_contact_type
 {% endhighlight %}
 
@@ -342,7 +342,7 @@ WHERE  {
     - underscore `_` -- placeholder for a single character:
         - `'Ju_y'` matches 'July', 'Judy'
     - percent `%` -- placeholder for 0 or more characters:
-        - `'J%' matches 'Jo', 'June', ...
+        - `'J%'` matches 'Jo', 'June', ...
 - `NOT` operator is unary boolean operator -- two notations:
     - `WHERE NOT first_name LIKE 'J%'`
     - `WHERE first_name NOT LIKE 'J%'`
