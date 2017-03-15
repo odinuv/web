@@ -74,8 +74,8 @@ and [radio-buttons](/en/apv/walkthrough/html-forms/#radio-button), where the nam
 Apart from the `name` and `value`, most controls have attributes:
 
 - `required` -- When used, the end-user must enter a value in the control.
-- `readonly` -- When used, the end-user cannot change the value of the control, he can
-    however focus the control (enter cursor into it) and e.g. copy text from the control.
+- `readonly` -- When used, the end-user cannot change the value of the control, she can
+    however focus the control (put the cursor into it) and e.g. copy a text from the control.
 - `disabled` -- When used, the end-user cannot interact with the control in any way.
 - `id` -- A unique identifier of the HTML element, used for 
 linking [labels](/en/apv/walkthrough/html-forms/#labels).
@@ -185,7 +185,7 @@ Try it in the following example:
 {% include /en/apv/walkthrough/html-forms/checkbox.html %}
 
 {: .note}
-When using checkbox, it is important to use the `label` element, so that the
+When using a checkbox, it is important to use the `label` element, so that the
 label text is clickable.
 
 ### Radio Button
@@ -233,7 +233,7 @@ to allow selecting of multiple elements.
 {% include /en/apv/walkthrough/html-forms/select.html %}
 
 {: .note}
-When using `multiple` make sure to append `[]` to the element name, so that the value of the
+When using `multiple`, make sure to append `[]` to the element name, so that the value of the
 element is sent as an array. Otherwise, only the first value would be sent.
 
 ### Textarea
@@ -280,9 +280,9 @@ form controls in rows. Also make sure to verify the form by using
 
 ### Summary
 Now you should be able to create HTML forms with many different controls. Keep
-in mind that forms cannot be processed by the HTML language, so so far none of the
+in mind that forms cannot be processed by the HTML language, so far none of the
 forms can actually do anything. When creating HTML forms, it is important to
-know what a name and value of each control is, and how they behave when
+know what the **name** and **value** of each control is, and how they behave when
 the form is actually submitted (because there are some differences between the
 controls). Also keep in mind that if you have form elements outside the `form` tag,
 they will be displayed as usually, but they will not be working

@@ -12,12 +12,12 @@ can switch to creating dynamic pages. A dynamic web page has content which is ge
 (on the fly) depending on some external input (usually user input and content stored 
 in a [database](/en/apv/walkthrough/database/)).
 For example, when you check your email on the web, the page you see contains your current emails (stored somewhere)
-and only those you want to see (e.g. in inbox or another folder you selected).
+and only those you want to see (e.g. in your inbox or another folder you have selected).
 
 To create a dynamic page, you need another technology beyond HTML, this can be either:
 
-- anything on [web server](/en/apv/walkthrough/dynamic-page) -- backend,
-- [JavaScript](/en/apv/walkthrough/javascript/) on web client -- frontend.
+- anything on a [web server](/en/apv/walkthrough/dynamic-page) -- backend,
+- [JavaScript](/en/apv/walkthrough/javascript/) on a web client -- frontend.
 
 In this part I will concentrate on the web *server* approach. I choose to use the [PHP language](http://php.net/) for
 the server backend, this choice is rather arbitrary as it is not anyhow better or worse
@@ -59,12 +59,12 @@ which interprets it and shows the end-user a web page. In PHP the HTML language 
 meaning. For the PHP interpreter, the HTML language is just a string of characters as anything else.
 
 You can see that in the first PHP script above -- PHP does not really care what's inside the string,
-it just *prints it*. In case PHP is being used as backend of web application, this means that the
-text will get sent to web browser (which expects it to be HTML).
+it just *prints it*. In case PHP is being used as backend of a web application, this means that the
+text will get sent to a web browser (which expects it to be HTML).
 
 ### Working with strings
 As working with character strings is really important, let's dive into it first. You can print a
-string using `echo` or `print` command (there is no practical difference between them). A string
+string using the `echo` or the `print` command (there is no practical difference between them). A string
 can be quoted in either single quotes `'` or double quotes `"` (there are some practical differences
 between them -- see below).
 
@@ -101,7 +101,7 @@ The operator [modulo](https://en.wikipedia.org/wiki/Modulo_operation) is `%`. Ex
 {% endhighlight %}
 
 The above example will print `Hi John4`. As you can see, there are no *declarations* of variables. In PHP a variable is
-declared simply by assigning it a value. Because PHP is a **dynamically typed language**, The 
+declared simply by assigning it a value. Because PHP is a **dynamically typed language**, the 
 [type of the variable](/en/apv/articles/programming/#type-system)
 is defined by the variable content.
 So `$count = 0` is an integer variable and `$count = 'many'` is a string variable. The type of the variable
@@ -159,7 +159,7 @@ print `Hi,\nJohn $lastName`.
 
 ### Mixing with HTML
 So far we haven't done much, because the script outputs only a plain text string. Outputting HTML is
-no different however, it just gets more tangled.
+no different, it just gets more tangled.
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/variables-4.php %}
@@ -220,10 +220,10 @@ as my solution. Make sure to verify your solution using the
 the message in the text area has the correct whitespace.
 
 ## Divide and conquer
-You can find yourself in a situation when you have two similar pages which share e.g. common header
+You can find yourself in a situation when you have two similar pages which share e.g. a common header
 and/or footer part. And now you are thinking about updating both of them -- you have to open both PHP
-files and make same changes in the same part of code. To avoid duplication of code you can use the
-`require` command which finds file by specified paths and "includes" it as if the source code of that
+files and make same changes in the same part of the code. To avoid duplication of the code you can use the
+`require` command which finds the file by specified paths and "includes" it as if the source code of that
 included file was written instead of that command:
 
 File `commonHeader.php`:
