@@ -234,7 +234,7 @@ Here is something more general (the interpretation of a `q` parameter is carried
 This example takes any text (`.*` pattern) that is contained in the URL and passes it as the `q` parameter.
 The Modifier *L* means
 that this rule is *last* applied and *QSA* means *query string append* (take everything that is behind `?` in the original
-URL and forward it). The URL in the users browser stays the same unless there us *R* flag after `RewriteRule`.
+URL and forward it). The URL in the browser stays the same unless there is *R* flag after `RewriteRule`.
 
 Another use-case of mod_rewrite is to add `www` to the URL beginning when a user enters just `site.com` into
 the web browser:
