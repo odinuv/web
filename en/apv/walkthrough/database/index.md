@@ -7,12 +7,12 @@ permalink: /en/apv/walkthrough/database/
 {:toc}
 
 In previous chapters, you have learned how to create a static HTML page, then how to 
-add dynamic content generated in a PHP script to that page. Then you learned how
+add dynamic content generated in a PHP script to that page. Then you have learned how
 to organize the PHP and HTML code using templates, so that it doesn't become a
 complete mess.
 
 So far it's probably still a bit boring, because the data that the application displays
-are still somewhat hardcoded in the PHP script. We would like to make the application
+is still somewhat hardcoded in the PHP script. We would like to make the application
 interactive, so that a user can permanently store and retrieve some arbitrary data.
 The answer to this is that we need a [database server](/en/apv/articles/database-systems/).
 
@@ -38,11 +38,11 @@ the definition of what tables do exist in the database and the second one contai
 Download both files (use 'Save Link As') and import both files using the procedure
 outlined below. 
 
-- [Structure of database](/en/apv/walkthrough/database/pgsql-structure.sql) 
+- [Database Structure](/en/apv/walkthrough/database/pgsql-structure.sql) 
 - [Sample data](/en/apv/walkthrough/database/pgsql-data.sql) 
 
 To import the file using the [Adminer](https://www.adminer.org/) client. Click on **Import**, select the 
-file you downloaded, and click **Execute**. Repeat the process for both files:
+file you have downloaded, and click **Execute**. Repeat the process for both files:
 
 {: .image-popup}
 ![Screenshot -- Import data](/en/apv/walkthrough/database/adminer-import-1.png)   
@@ -72,13 +72,13 @@ intricacies connected with it (so I'll start with some simple uses and leave the
 more difficult ones until later).
 
 The SQL language is a programming language, but instead of writing lengthy pieces of a programming 
-code as in PHP, we only write queries. An SQL query is a self-contained piece of code -- **statement**
+code as in PHP, we only write queries. An SQL query is a self-contained code piece -- **statement**
 -- instructing the database server to do something (e.g. delete some data). The query may 
 contain other statements inside.
 
 #### Database Schema
 When working with a database, it is really important to know the structure of the database.
-It is shown in the following graphic, which shows each table, the columns in the table and
+The following graphic is the database schema and it shows each table, the columns in the table and
 their data types. It also shows relationships between the tables (which we won't use much in this
 chapter). The design of a database structure is called **Database Schema**. Keep it handy.
 
@@ -91,10 +91,10 @@ and **rows** which contain the actual data. Most operations in SQL work on full 
 called **records**.
 
 {: .note}
-In SQL, the [keywords](/en/apv/articles/programming/#keywords) are usually written ALL CAPS, this 
+In SQL the [keywords](/en/apv/articles/programming/#keywords) are usually written ALL CAPS, this 
 is just a convention to improve readability. It has no effect on the query itself. SQL statements
 are delimited by the semicolon `;`. Because in most cases, only a single SQL statement is used, the 
-semicolon at the and of it may be safely omitted (it is a delimiter, not terminator).  
+semicolon at the end of it may be safely omitted (it is a delimiter, not terminator).  
 
 #### Reading Database Structure
 When you have the database schema imported into your own database, you should take time to 
@@ -108,14 +108,14 @@ the structure of the `person` table in your database:
 
 Here you can see for example that:
 
-- the column `id_person` has data type `integer`,
+- the column `id_person` has the data type `integer`,
 - the column `id_person` is an [automatically generated key](todo) (Auto Increment),
-- the column `id_person` has default value `nextval('person_id_person_seq')` (next value of a [sequence](todo)),
-- the column `birth_day` has data type `date`,
+- the column `id_person` has the default value `nextval('person_id_person_seq')` (next value of a [sequence](todo)),
+- the column `birth_day` has the data type `date`,
 - the column `birth_day` allows inserting `NULL`,
-- the column `gender` has type `gender` (a special type defined in your database),
+- the column `gender` has the type `gender` (a special type defined in your database),
 - there is a simple key defined on the `id_person` column (PRIMARY key),
-- there is a compound key defined on the combination of columns `first_name, last_name, nickname` (UNIQUE),
+- there is a compound key defined on the combination of the columns `first_name, last_name, nickname` (UNIQUE),
 - there is a foreign key on the `id_location` column, so that it points to 
 the `location` table `id_location` column (`source: id_location; target: location(id_location)`).
 
@@ -126,11 +126,11 @@ the database structure.
 The general syntax of the INSERT command is:
 
 {% highlight sql %}
-INSERT INTO *table_name* (*list_of_columns*) VALUES (*list_of_values*)
+INSERT INTO table_name (list_of_columns) VALUES (list_of_values)
 {% endhighlight %}
 
 The INSERT statement inserts **rows** into a table. 
-When you look at the schema, you should see that the `location` table has columns:
+When you look at the schema, you should see that the `location` table has the columns:
 `id_location`, `city`, `street_name`, `street_number`, `zip`, `country`, `location`, `latitude`, `longitude`.
 The column types of `latitude` and `longitude` is `numeric` which is a decimal number (GPS coordinates) and
 the type of `id_location` and `street_number` is `integer`. All other columns have the type `character varying` which 
@@ -147,8 +147,8 @@ INSERT INTO location (name, city, street_name) VALUES ('La Tour Eiffel', 'Paris'
 {% endhighlight %}
 
 The order of the inserted values must match the order of the column names, this (obviously?) means that 
-there must be same number of items in the column list and value list.  
-Try to run the query yourself in Adminer:
+there must be the same number of items in the column list and value list.  
+Try to run the query yourself in the Adminer:
 
 {: .image-popup}
 ![Screenshot -- Run SQL query](/en/apv/walkthrough/database/adminer-run-query.png)
@@ -161,7 +161,7 @@ You should see the result
 
     Query executed OK, 1 row affected.
 
-Click on **select** next to the `location` table to verify, that the row really got inserted into the table.
+Click on **select** next to the `location` table to verify that the row really got inserted into the table.
 That's -- once you know the structure of the destination table, writing an SQL INSERT statement is easy.
 Notice that there are two keywords used at the beginning of the query `INSERT INTO`. If you have some 
 programming background, this may look unusual to you. It is supposed to improve the readability of the
@@ -186,14 +186,14 @@ If you don't list a column in the
 INSERT query, then it is the same as if you listed it with the `DEFAULT` keyword. 
 Then it depends on the definition of the column:
 
-- If the column has a default value, than that value is inserted.
-- If the column has not a default value then:
+- If the column has a default value, then that value is inserted.
+- If the column has not a default value, then:
     - If the column allows NULLs, no value is inserted (NULL).
     - If the column requires a value (defined as `NOT NULL`), an error is raised -- a required value 
     for the table column was not provided in the INSERT query
 
 #### Working with Dates
-Although dates are printed as string, the database server stores them in a 
+Although dates are printed as strings, the database server stores them in a 
 [timestamp format](todo). When inserting a date, you must make sure 
 that the server understands it correctly by either:
 
@@ -217,29 +217,29 @@ INSERT INTO person (first_name, last_name, nickname, birth_day)
 VALUES ('John', 'Doe', 'Johnnie', TO_TIMESTAMP('24.12.2010', 'DD.MM.YYYY'),)
 {% endhighlight %}
 
-In the above query, I used the 
+In the above query, I have used the 
 [TO_TIMESTAMP function](https://www.postgresql.org/docs/9.5/static/functions-formatting.html) of the PostgreSQL
 database server. The first argument to the function is the date (in any format).
-The second argument to that function is the description of the format with a 
+The second argument to that function is the format description with a 
 [formatting string](https://www.postgresql.org/docs/9.5/static/functions-formatting.html#FUNCTIONS-FORMATTING-DATETIME-TABLE). 
 This way you tell the server that the date 
 starts with two digits representing a date and followed by a dot. 
 
-{. :note}
+{: .note}
 The date conversion functions are specific to each database server. While they share
 the same principle, they may have different names and parameters. Always consult the
-manual of the database server you are using (look for section 'Date conversion functions').
+manual of the database server you are using (look for the section 'Date conversion functions').
 
 ### UPDATE
 The general syntax of the UPDATE command is:
 
 {% highlight sql %}
-UPDATE *table_name* SET *list_of_modifications* WHERE *search_condition*
+UPDATE table_name SET list_of_modifications WHERE search_condition
 {% endhighlight %}
 
 The UPDATE command updates existing values in existing *rows* in the table. The *list_of_modifications* 
 is a list of assignments to be made. The *search_condition* is an expression which is evaluated for 
-each row and should yield boolean (true/false) value. If the *search_condition* is true, the corresponding row
+each row and should yield a [boolean](todo) value. If the *search_condition* is true, the corresponding row
 is updated, otherwise it is skipped. 
 
 Let's update a row in the `location` table:
@@ -254,7 +254,7 @@ Note that the same character `=` is used for both comparison (`WHERE` clause) an
 assignment (`SET` clause). In SQL the actual function of the equal sign is determined by 
 the context. There is no `==` operator in SQL. 
 
-The search condition can be composed of multiple statements joined using boolean operators `AND`, `OR` and `NOT`.
+The search condition can be composed of multiple statements joined using the boolean operators `AND`, `OR` and `NOT`.
 Notice that you can reference a column in both the search condition and in the assignment (`name` in the 
 above example). Also, the new value of the column may be an expression, so it's valid to write e.g.:
 `... SET age = age + 1 ...`. 
@@ -275,7 +275,7 @@ UPDATE person SET height = '135' WHERE first_name = 'John' AND last_name = 'Doe'
 
 There is a compound key on the columns `first_name`, `last_name`, `nickname` defined on
 the `persons` table (`UNIQUE (first_name, last_name, nickname)`). This guarantees that
-the combination of first name, last name and nickname of a person is unique 
+the combination of the first name, last name and nickname of a person is unique 
 (in your database that is). However the combination of `first_name` and `last_name`
 is **not guaranteed** to be unique and therefore the query **may** update more than 
 one person and therefore it is **wrong**. There are two correct options: 
@@ -298,27 +298,27 @@ of changing unwanted rows.
 The general syntax of the DELETE command is:
 
 {% highlight sql %}
-DELETE FROM *table_name* WHERE *search_condition*
+DELETE FROM table_name WHERE search_condition
 {% endhighlight %}
 
 The `DELETE` command removes **entire rows** from the table. Same rules apply for the *search_condition* as in
-the `UPDATE` statement. Including that if you forget the `WHERE` statement, then 
+the `UPDATE` statement. Including that -- if you forget the `WHERE` statement, then 
 **all rows of the table will be deleted!**.
 
 Let's delete the row, we have just inserted:
 
 {% highlight sql %}
-DELETE FROM location WHERE id_location > 50
+DELETE FROM person WHERE id_person > 50
 {% endhighlight %}
 
-I used the larger than ``>`` operator to delete any location inserted after the initial import.
-You will usually use equals ``=`` operator.
+I have used the larger than `>` operator to delete any location inserted after the initial import.
+You will usually use the equals `=` operator.
  
 ### SELECT
 The general syntax of a *simple* SELECT command is:
 
 {% highlight sql %}
-SELECT *column_list* FROM *table_name* WHERE *search_condition* ORDER BY *list_of_orderings* 
+SELECT column_list FROM table_name WHERE search_condition ORDER BY list_of_orderings
 {% endhighlight %}
 
 The `SELECT` command returns rows of an existing table (or tables) and returns 
@@ -345,15 +345,16 @@ SELECT * FROM location WHERE city LIKE 'B%'
 The above example selects all locations where `city` starts with letter `B`. 
 
 The `IN` operator is useful for matching against a set of values. The following will select
-all locations city of which is one of those mentioned in the set (defined in the parenthesis):
+all locations the city of which is one of those mentioned in the set (defined in the parenthesis):
 
 {% highlight sql %}
 SELECT * FROM location WHERE city IN ('Praha', 'Paris', 'Bremen') 
 {% endhighlight %}
 
 The set can be either enumerated as in the above example or it can be defined by another
-[`SELECT` query](/en/apv/articles/sql-aggregation/). To exclude set values from the result use ``column NOT IN (...)`` variant
-(also with ``NULL`` value use ``column IS NOT NULL``).
+[`SELECT` query](/en/apv/articles/sql-aggregation/). To exclude set values from the result 
+use the `column NOT IN (...)` variant
+(also with `NULL` value use `column IS NOT NULL`).
 
 #### ORDER BY
 Ordering of the results is possible by multiple criteria:
@@ -470,20 +471,20 @@ SELECT * FROM person WHERE first_name IN ('Gilda', 'Alisha', 'Lisette') ORDER BY
 {% endhighlight %}
 
 ## Task -- Search Using a Sub-select Set 
-Select all persons which have associated location in country *United Kingdom* and order
+Select all persons which have associated location in the `country` *United Kingdom* and order
 them by the `last_name` column. Now you will need to write two `SELECT`s and connect them using the `IN`
 operator.
 
 {: .solution}
-{% highlight sql %}
-Hint: Start by selecting `id_location` of the locations in *United Kingdom*. You should
+<div markdown='1'>
+Hint: Start by selecting `id_location` of the locations in the *United Kingdom*. You should
 get 12 rows with the sample data.
-{% endhighlight %}
+</div>
 
 {: .solution}
-{% highlight sql %}
-Hint: Write a `SELECT` statement use the previous SELECT inside parenthesis of the `IN` operator.
-{% endhighlight %}
+<div markdown='1'>
+Hint: Write a `SELECT` statement that uses the previous SELECT inside the parenthesis of the `IN` operator.
+</div>
 
 {: .solution}
 {% highlight sql %}
@@ -503,9 +504,9 @@ SELECT * FROM person
 ## Summary
 Now you should know how to work with a relational database. There is [much more to come](/en/apv/articles/sql-join/), but
 so far, you should be able to `SELECT`, `INSERT`, `UPDATE` and `DELETE` data. This is 
-sufficient to create a reasonably working web application. Just note that some techniques were
-not revealed to you yet -- be patient and read on! If you do not know how to do something
-(find ID of inserted row, limit the amount of returned results, calculate number of entries...)
+sufficient to create a reasonably working web application. Just note that some techniques have not been
+revealed to you yet -- be patient and read on! If you do not know how to do something
+(find ID of an inserted row, limit the amount of returned results, calculate the number of entries...)
 do not try to come up with your own solution, database systems are widely used for many years
 and there are tools and procedures how to do these things correctly.
 You should be familiar with the general syntax of SQL statements, the common key words, and 

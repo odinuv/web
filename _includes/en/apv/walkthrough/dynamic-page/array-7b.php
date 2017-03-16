@@ -1,12 +1,12 @@
 <?php
 
 $allOfThem = [
-	'flintstones' => [
+	'Flintstones' => [
 		'father' => 'Fred',
 		'mother' => 'Wilma',
 		'child' => 'Pebbles',
 	],
-	'rubbles' => [
+	'Rubbles' => [
 		'father' => 'Barney',
 		'mother' => 'Betty',
 		'child' => 'Bamm-Bamm',
@@ -15,6 +15,6 @@ $allOfThem = [
 
 foreach ($allOfThem as $familyName => $family) {
 	foreach ($family as $role => $name) {
-		echo "The $role in $familyName family is $name\n";
+		echo "The $role in the $familyName family is $name\n";
 	}
 }

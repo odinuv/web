@@ -17,7 +17,7 @@ but you should really know that they exist and how to use them.
 You have already met some functions in the previous examples -- e.g.:
 
 - `print_r` -- function to print an array
-- `count` -- function to return number of elements in an array
+- `count` -- function to return the number of elements in an array
 
 These are built-in [PHP functions](http://php.net/manual/en/funcref.php). PHP has many built-in functions, I will
 show some of the very useful ones along the way. Apart from those
@@ -63,10 +63,11 @@ values for them when you know that some function will be frequently called with 
 {% include /en/apv/walkthrough/dynamic-page/functions-4.php %}
 {% endhighlight %}
 
-Or you can set a mandatory data-type for function parameter - this functionality was extended in PHP7
-to also support scalar data-types, previous PHP versions could watch for classes and arrays only.
-This is useful when you write code which is used by other programmers - you do not have to write that much lines of
-code to check what your function got from outside world. A good [IDE](todo) can also take advantage of supplied information.
+Or you can set a mandatory data-type for a function parameter -- this functionality was extended in PHP7
+to support scalar data-types too. Previous PHP versions could watch for classes and arrays only.
+This is useful when you write some code which is used by other programmers -- you do not have to write that many lines of
+code to check what your function got from the outside world. A good [IDE](todo) can also take advantage of the 
+supplied information.
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/functions-5.php %}
@@ -120,7 +121,7 @@ If you have looked at the list of built-in [PHP functions and classes](http://ph
 you may have wondered
 what happens when you define a function or class which already exists. Well, a
 conflict happens and it becomes unclear what function you're calling. To solve this problem, PHP has
-**namespaces**. Referring to classes in namespaces is done using backslash the `\` character, e.g:
+**namespaces**. Referring to classes in namespaces is done using the backslash `\` character, e.g:
 
 {% highlight php %}
 $object = new \MyNameSpace\MyClass();
@@ -136,7 +137,7 @@ Working with namespaces is a bit tricky, because it depends on whether and how y
 uses them. At least you should be aware that namespaces exist and recognize namespaced classes.
 
 ## Task -- User class
-Create the class `User`, with private fields `$email`, `$firstName`, and `$lastName`. The
+Create the class `User`, with the private fields `$email`, `$firstName`, and `$lastName`. The
 fields should be set through the constructor. The class should have the method `printName()` to
 print the full user name. Create two users: `John Doe` with email `john.doe@example.com` and
 `Jane Dona` with email `jane.dona@example.com`. Print names of both users.
@@ -147,7 +148,7 @@ print the full user name. Create two users: `John Doe` with email `john.doe@exam
 
 ## Summary
 Now you should have basic understanding of what functions, classes and objects are.
-You should be able to call your own and built-in PHP functions. You should be able
+You should be able to call your own functions and built-in PHP functions. You should be able
 to define simple functions with parameters and return values. You should be able
 to create instances of classes and call methods.
 

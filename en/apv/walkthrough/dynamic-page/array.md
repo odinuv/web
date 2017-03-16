@@ -15,7 +15,7 @@ In PHP, this is simplified as there are only [arrays](http://php.net/manual/en/b
 
 An array is a collection of elements, each element has a value and an **index** (or **key**) through which it
 is accessed in the array. This means that **keys must by unique**. Because PHP is a dynamically
-typed language, each value and key can
+typed language, each value and each key can
 be of a different type. There are two types of arrays in PHP:
 
 - **ordinal** (indexes are e.g. integers)
@@ -38,9 +38,9 @@ In this case, the indexes are generated automatically starting with zero.
 {% include /en/apv/walkthrough/dynamic-page/array-1.php %}
 {% endhighlight %}
 
-Sometimes you may encounter an older PHP syntax which did not use the square brackets ``$flinstones = array("Fred", "...");``.
+Sometimes you may encounter an older PHP syntax not using the square brackets ``$flinstones = array("Fred", "...");``.
 
-Alternative definition -- item by item:
+An alternative definition -- item by item:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/array-1a.php %}
@@ -58,13 +58,13 @@ In this case, the element indexes are explicitly stated when the array is create
 {% include /en/apv/walkthrough/dynamic-page/array-2.php %}
 {% endhighlight %}
 
-Alternative definition -- item by item:
+An alternative definition -- item by item:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/array-2a.php %}
 {% endhighlight %}
 
-Alternative longer syntax:
+An alternative longer syntax:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/array-2b.php %}
@@ -128,7 +128,7 @@ When defining an array, you may use implicit array keys and write `$array[] = 'v
 reading a value from the array, the keys must **always** be used. Writing `echo $array[]` is not allowed.
 
 ### Removing elements from array
-Sometimes you may wish to remove an element. This can be done using ``unset()`` function:
+Sometimes you may wish to remove an element. This can be done using the `unset()` function:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/dynamic-page/array-8.php %}
@@ -138,15 +138,15 @@ The above example will print:
 
     Array ( [father] => Fred [mother] => Wilma )
 
-Removing elements from array is not very common because PHP scripts are executed for a very short time (just to
-produce HTML page for browser) and then the memory used by the script is cleared automatically.
+Removing elements from an array is not very common because PHP scripts are executed for a very short time (just to
+produce a HTML page for the browser) and then the memory used by the script is cleared automatically.
 Use the `unset` operation only when you truly want to remove something from an array.
 
 ### Traversing Arrays
 When you need to traverse the entire array, you need a loop. As mentioned above the `for` loop can be
 used only with ordinal arrays, the `foreach` loop can be used with any type of an array.
 
-When using a `for` loop, you often use the `count` function to return number of elements of the
+When using a `for` loop, you often use the `count` function to return a number of elements of the
 array, the below array has implicit indexes which start from 0:
 
 {% highlight php %}
@@ -157,7 +157,7 @@ The above will print:
 
     FredWilmaPebbles
 
-When using a `foreach` loop requires you to use two variables. In this case I named them
+When using a `foreach` you are required to use two variables. In this case I named them
 `$role` and `$name`. In each iteration of the `foreach` loop the element key will be
 assigned to the first variable (`$role`) and the value of the element will be assigned
 to the second variable `$name`.
@@ -190,7 +190,7 @@ You can also traverse multidimensional arrays:
 
 The above will print:
 
-    The father in Flintstones family is Fred The mother in Flintstones family is Wilma The child in Flintstones family is Pebbles The father in rubbles family is Barney The mother in rubbles family is Betty The child in rubbles family is Bamm-Bamm
+    The father in the Flintstones family is Fred The mother in the Flintstones family is Wilma The child in the Flintstones family is Pebbles The father in the Rubbles family is Barney The mother in the Rubbles family is Betty The child in the Rubbles family is Bamm-Bamm
 
 ## Task -- Add HTML
 Take the above example and change the output to a valid HTML page so that it looks like this:
@@ -205,14 +205,14 @@ Take the above example and change the output to a valid HTML page so that it loo
 ## Task -- Improve contact form
 Take the [contact form](/en/apv/walkthrough/dynamic-page/control/#task) from the previous chapter and:
 
-- define the `$currentUser` variable as an associative array with keys `firstName`, `lastName`, `email`, `yearOfBirth`
+- define the `$currentUser` variable as an associative array with the keys `firstName`, `lastName`, `email`, `yearOfBirth`
 - if the user is not logged in, the array will have all the elements empty
 - modify the form so that it always contains the elements `email`, `firstName`, `lastName`, `yearOfBirth`
-- if the user is logged in, fill in all the form controls with his values
+- if the user is logged in, fill in all the form controls with her values
 - define an array of birth years as a variable and use it when generating the `yearOfBirth` select field
 - don't forget to [preselect](/en/apv/walkthrough/html-forms/#select) the `yearOfBirth` of the logged user (if any)
 
-This is how the form should look like as viewed by user John Doe:
+This is how the form should look like as viewed by the user John Doe:
 
 ![Screenshot -- Form for logged user](/en/apv/walkthrough/dynamic-page/form-5a.png)
 
@@ -249,7 +249,7 @@ $currentUser = [
 
 ## Summary
 You should now be able to work with arrays. This means you should be able to define
-an array, add elements to it and print an array. Arrays are very important -- for example results
+an array, add elements to it and print an array. Arrays are very important -- for example the results
 of database queries are stored in them. This means that we will work with them a lot.
 
 ### New Concepts and Terms

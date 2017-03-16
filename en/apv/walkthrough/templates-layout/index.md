@@ -17,7 +17,7 @@ share common parts of the code and reduce repetition. Template Layouts have no
 effect on the final look of the HTML page. They are merely a programmatic tool used
 for better HTML code organization.
 
-Each HTML page in a web application **shares** a lot of HTML code with other pages in
+Each HTML page in a web application **shares** a lot of the HTML code with other pages in
 that application. So far you have only created simple isolated pages, so this might
 not seem obvious at the moment. But if you look at any existing web application you
 should see that all the pages usually share the same header, footer, navigation,
@@ -55,7 +55,7 @@ template contains the usual HTML header and `{include content}`. This defines
 a **block** named `content`. It's the responsibility of the template `template-3.latte` to
 fill the block with some meaning. In `template.latte`, you can see that the actual HTML
 code is wrapped inside `{block content}{/block}` macro. This defines the actual content
-of the block `content` (the naming sounds silly, but the block is the specific content of the page).
+of the block `content` (the naming sounds silly, but the block is the page specific content).
 
 The `extends` macro tells the template engine, that the page template **inherits** its content
 from the layout template. The inheritance relation can span multiple levels. You can create a
@@ -131,7 +131,7 @@ Layout template:
 {% endhighlight %}
 
 ## Task -- Modify the layout
-Now modify the layout to add an application menu, some footer and some header to make
+Now modify the layout to add an application menu, footer and header to make
 the page look similar to this:
 
 ![Screenshot -- Page sample](/en/apv/walkthrough/templates-layout/page-sample-1.png)
@@ -140,8 +140,8 @@ the page look similar to this:
 {% include /en/apv/walkthrough/templates-layout/layout-c2.latte %}
 {% endhighlight %}
 
-Notice that now there is a single point where you modified the HTML content, and both
-application pages (contact form and person form) were changed. This approach saves you
+Notice that now there is a single point where you have modified the HTML content, and both
+application pages (contact form and person form) have been changed. This approach saves you
 hours of time during application development.
 
 ## Task -- One size does not fit all
@@ -152,7 +152,9 @@ Create a login form which looks like this:
 ![Screenshot -- Page sample](/en/apv/walkthrough/templates-layout/page-sample-2.png)
 
 {: .solution}
+<div markdown='1'>
 Hint: Simply create another layout template.
+</div>
 
 Login form script:
 
@@ -172,9 +174,9 @@ Login layout template:
 {% include /en/apv/walkthrough/templates-layout/layout-login.latte %}
 {% endhighlight %}
 
-If you are concerned, that the footer is not shared between both layouts, you can create
+If you are concerned that the footer is not shared between both layouts, you can create
 a more complicated structure of a parent layout and child layouts (again by using `extends` and
-`include`). Personally I would say that at this moment, it is not necessary and does not have
+`include`). Personally I would say that at this moment it is not necessary and does not have
 much advantage. On the other hand -- you might ask, what is the point of creating a
 `login-layout.latte` if there is only one page using it. That is correct and using a simple template
 without layout would be also an acceptable solution. I'm counting on making a logout page
@@ -186,7 +188,7 @@ In this chapter, you have learned how to use *layout templates*. Layout template
 a better organized shared HTML code between various pages of your web application. By reducing
 repetition, they save you time, reduce number of errors and lead to a consistent page look & feel.
 
-On the other hand, you probably noticed, that now your application contains much more files
+On the other hand, you have probably noticed that now your application contains much more files
 (and it may be difficult to be oriented in them) and that the pages are not any more self-contained
 -- i.e. they become only snippets of the HTML code. This requires a bit of training and getting used to,
 because now the application code is slightly more abstract than it was at the beginning.

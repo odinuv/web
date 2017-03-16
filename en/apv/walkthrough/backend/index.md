@@ -20,7 +20,7 @@ familiar with [creating and running a PHP script](/en/apv/walkthrough/dynamic-pa
 
 To create an application which communicates with a database system, you 
 always need some kind of a library. Database libraries are specific to 
-the application language (PHP, Java, C++) an database (PostgreSQL, MySQL, ...),
+the application language (PHP, Java, C++) and database (PostgreSQL, MySQL, ...),
 so there are hundreds of them.
 
 For PHP, there is a very good built-in library -- [PDO (PHP Database Objects)](http://php.net/manual/en/class.pdo.php), 
@@ -71,7 +71,7 @@ print the complete array (it's not beautiful, but it shall be good enough at the
 {% endhighlight %}
 
 ### Selecting Data with Parameters
-Often you need to provide dynamic values (obtained from PHP variables and/or HTML forms) to
+You often need to provide dynamic values (obtained from PHP variables and/or HTML forms) to
 the SQL queries. E.g. assume you need to run a query like this (where *Bill* is provided
 by the end-user and stored in a PHP variable):
 
@@ -87,10 +87,10 @@ then **execute** the statement:
 {% include /en/apv/walkthrough/backend/select-prepared.php %}
 {% endhighlight %}
 
-In the above query, I used a placeholder name `:name` (placeholder must start with colon `:`). 
+In the above query, I have used a placeholder name `:name` (placeholder must start with colon `:`). 
 Then I bind a value to it using the [`bindValue`](http://php.net/manual/en/pdostatement.bindvalue.php) 
 method of the `$stmt` [`PDOStatement`](http://php.net/manual/en/class.pdostatement.php) 
-object. Last, I (`execute`)[http://php.net/manual/en/pdostatement.execute.php] the statement. 
+object. Last, I [`execute`](http://php.net/manual/en/pdostatement.execute.php) the statement. 
 Then the result can be printed as in the previous example. 
 
 {: .note}
@@ -113,7 +113,7 @@ provide the right parameters to it:
 
 Note that there is no `fetchAll` call, because the `INSERT` statement does not return a table 
 (or anything useful). Because working with prepared parameters can be a little bit tricky, you can
-use `$stmt->debugDumpParams();` function to print the SQL statement and actual values of parameters for
+use the `$stmt->debugDumpParams();` function to print the SQL statement and actual values of parameters for
 debugging purposes.  
    
 {: .note}
@@ -136,20 +136,20 @@ The first important part is the line `$db->setAttribute(PDO::ATTR_ERRMODE, PDO::
 which makes the database driver switch into the mode in which it [*throws*](todo) an exception
 whenever an error occurs in operations.
 
-Second, I wrapped the whole code in a `try -- catch` statement. As the name suggest, the code
-inside `try -- catch` is executed normally unless an exception occurs. Whenever an exception
+Second, I wrapped the whole code in a `try - catch` statement. As the name suggests, the code
+inside `try - catch` is executed normally unless an exception occurs. Whenever an exception
 occurs, the rest of the `try` code is skipped and the `catch` code is executed.
 In the `catch` code I catch exceptions of the [`PDOException`](http://php.net/manual/en/class.pdoexception.php) 
 class -- those are exceptions
 thrown by the PDO database driver. The method `getMessage` of the exception object returns the
 actual error message returned by the database.
 
-The above `INSERT` statement can fail for many reasons, e.g
+The above `INSERT` statement can fail for many reasons, e.g.
 
-- database server is not available
-- database credentials are wrong
-- inserted values are not allowed in the table (e.g. are too long)
-- there is something wrong in with the database structure (e.g. table does not exist)
+- the database server is not available
+- the database credentials are wrong
+- the inserted values are not allowed in the table (e.g. are too long)
+- there is something wrong with the database structure (e.g. a table does not exist)
 - many others... 
 
 Try to simulate some of the possible error conditions to make sure that the 
@@ -166,7 +166,7 @@ last names and first names (ascending). Make sure to use appropriate error handl
 
 Notice that I used two try-catch blocks, one for connecting to the database and one for the
 actual query. This will become more useful in future, when we need to distinguish between 
-errors in different parts of the code. In the first `catch` I used the `exit` function to
+errors in different parts of the code. In the first `catch` I have used the `exit` function to
 terminate immediately the execution of the script. 
 
 ## Task -- Select Pattern
@@ -209,7 +209,7 @@ Again, approach the task in steps, e.g.:
 
 1. Make a static HTML page with some sample data (skip this if you are confident with templates).
 2. Make a PHP script to print the page using templates.
-3. Make the data in the script dynamic -- load them from a variable, make sure the variable has the same 
+3. Make the data in the script dynamic -- load it from a variable, make sure the variable has the same 
 format as obtained from the database. 
 4. Write the SQL query to obtain the data you want.
 5. Hook the SQL query into the PHP script.
@@ -277,9 +277,9 @@ No one is forcing you to take all the above steps separately or in the shown ord
 But **you must always be able to divide a complex task into simpler steps**. This
 is really important -- the scripts will become only more and more complicated and there is really 
 only one way to be oriented in all the code and debug it. You have to split it into smaller pieces, 
-write and test the pieces individually. Notice how in the above steps I changed only one thing
+write and test the pieces individually. Notice how -- in the above steps -- I have changed only one thing
 at a time. Some parts (like the template layout) don't need to be changed at all. However splitting
-the code requires that you understand the connections between all the code parts:
+the code requires you to understand the connections between all the code parts:
 
 {: .image-popup}
 ![Schema of variables](/en/apv/walkthrough/backend/code-schematic.png)

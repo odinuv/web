@@ -241,16 +241,16 @@ File `page2.php`:
 {% include /en/apv/walkthrough/dynamic-page/require-3.php %}
 {% endhighlight %}
 
-This is not the best example because the included file requires you to define variable `$pageTitle` beforehand.
+This is not the best example because the included file requires you to define a variable `$pageTitle` beforehand.
 But I wanted to demonstrate the behavior of the included source code. Usually the role is opposite -- you include
-the file to use something from it. Important thing is that such concept allows you to divide the logic and **reuse**
-your code. In the next chapters you will learn about [functions and classes](/en/apv/walkthrough/dynamic-page/objects/). With them it is more natural to use `require`
+the file to use something **from it**. An important thing is that such a concept allows you to divide the logic and **reuse**
+your code. In the next chapters you will learn about [functions and classes](/en/apv/walkthrough/dynamic-page/objects/). With them it is more natural to use the `require`
 command to load libraries of reusable functions.
 
 Remarks:
 
 - There is also an `include` command, which does not cause critical error when the referenced file is not found.
-- Moreover, there are `include_once` and `require_once` commands which ignore multiple inclusion of same file.
+- Moreover, there are the `include_once` and `require_once` commands which ignore multiple inclusion of the same file.
 - More advanced PHP systems support automatic loading based on [namespaces](/en/apv/walkthrough/dynamic-page/objects/#namespaces) and class names.
 
 ## Summary
