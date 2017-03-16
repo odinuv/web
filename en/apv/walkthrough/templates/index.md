@@ -49,6 +49,13 @@ And a template file `template-1.latte` like this:
 {% include /en/apv/walkthrough/templates/template-1.latte %}
 {% endhighlight %}
 
+{: .note}
+Latte templating engine evolves like any other software. Newer version can have trouble to run
+in older PHP environment. Check if your Latte versions supports your PHP version. In case that
+you need older release of Latte, simply click [releases tab](https://github.com/nette/latte/releases)
+on GitHub and and download older one. Latte 3.x requires PHP 7.x to run, if you do not have one,
+download older version, e.g. 2.4.x which runs with PHP 5.4.
+
 Now, let's see what has happened. The template looks like a standard HTML document (with the file extension
 `latte`), there are
 some additional features however. In the template above I used `{$pageTitle}` which
