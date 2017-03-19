@@ -20,11 +20,11 @@ the [name-value pairs](/en/apv/walkthrough/html-forms/#name-and-value) for contr
 The name-value pairs of form controls accessible in PHP in either `$_GET` or `$_POST` variable. The `$_GET` 
 and `$_POST` variables are one of [PHP magical variables](todo). They are magical because they are automatically
 (magically) filled with values from the HTTP request. Whether the form controls are available in the 
-`$_GET` or `$_POST` variable is determined what `method` attribute is assigned to the HTML form. therefore
+`$_GET` or `$_POST` variable is determined by what `method` attribute is assigned to the HTML form. Therefore
 having `<form method='post'>` does an [HTTP POST](/en/apv/articles/web/#http-protocol) method and 
 PHP will make the name-value pairs available in the `$_POST` variable automatically.  
 
-To demonstrate this, we need a simple script with HTML form. PHP script:
+To demonstrate this, we need a simple script with a HTML form. The PHP script:
 
 {% highlight php %}
 {% include /en/apv/walkthrough/backend-select/form-1.php %}
@@ -52,11 +52,11 @@ in the array are form control names, and the values are control values. This und
 the importance of knowing 
 what [control names and values are](/en/apv/walkthrough/html-forms/#name-and-value).
 
-It is also important to know, that the entire script is stateless, the same 
+It is also important to know that the entire script is stateless, the same 
 way [HTTP protocol is](/en/apv/articles/web/#http-protocol). This means that the `$_POST` array is filled
-*only for a single execution*. Test the above example and see for yourself, that
-the content of `$_POST` array is only filled with what you just entered
-(or nothing, if you did not send the form and just loaded the page).
+*only for a single execution*. Test the above example and see for yourself that
+the content of the `$_POST` array is only filled with what you have just entered
+(or nothing, if you haven't sent the form and have just loaded the page).
 
 The `GET` method behaves slightly different than the `POST` method in that it changes the URL of the script. This 
 means that the state of the form is encoded in the address of the page and therefore remains there
@@ -65,16 +65,16 @@ until changed again. It is quite important to decide on the [correct HTTP method
 ### Connecting together
 Now let's make a page which lists the users in the database and lets the user search within them.
 We can list e.g. first name, last name, nickname of each person and order them by the last name and 
-first name. For searching we need to create a form with one *search keyword*.
+first name. We need to create a form with one *search keyword* for searching.
 Now let's think about what possible states the page can have and what will be displayed, for example:
 
-- The form was not submitted (page was visited through a link, or reloaded) -- display all persons
-- The form was submitted (end user pressed a button): 
+- The form was not submitted (the page was visited through a link, or reloaded) -- display all persons
+- The form was submitted (the end user pressed a button): 
  - The end user entered something to search for -- display only the found persons
  - The end user did not enter anything to search for -- display all persons
 
-If you are confident, you can skip right to the [finished page](todo). Otherwise 
-Let's start with making a static page first:
+If you are confident, you can skip right to the [finished page](todo). Otherwise,
+let's start with making a static page first:
 
 {% highlight html %}
 {% include /en/apv/walkthrough/backend-select/persons-static.html %}
@@ -87,8 +87,8 @@ use one [from the previous chapter](/en/apv/walkthrough/backend/). So the page t
 {% include /en/apv/walkthrough/backend-select/persons-list-1.latte %}
 {% endhighlight %}
 
-Let's add the form handling in the PHP script and print out what the user searched for. 
-To determine if a form has been submitted, you can use two methods:
+Let's add the form handling in the PHP script and print out what the user has searched for. 
+To determine if a form has been submitted you can use two methods:
 
 - check if the `$_GET` array is not empty (some form has been submitted)
 - check if the `$_GET` array contains an element with the button name (check if the specific button has been pressed)
@@ -123,12 +123,12 @@ WHERE (first_name ILIKE '%bill%') OR (last_name ILIKE '%bill%') OR (nickname ILI
 ORDER BY last_name, first_name
 {% endhighlight %}
 
-I used the [`ILIKE` operator](https://www.postgresql.org/docs/current/static/functions-matching.html) which 
-provides a case-insensitive match. Also I used '%' both
-on the beginning and at the end of the pattern so that a full-text search is achieved. The pattern
+I use the [`ILIKE` operator](https://www.postgresql.org/docs/current/static/functions-matching.html) which 
+provides a case-insensitive match. Also I use '%' both
+at the beginning and at the end of the pattern so that a full-text search is achieved. The pattern
 '%bill%' would therefore match any of: 'Bill', 'billy', 'kill-bill', etc.
 To achieve the required functionality you need to put the above SQL statements in the 
-prepared `if` conditions (assuming you have PDO instance in `$db` variable): 
+prepared `if` conditions (assuming you have the PDO instance in the `$db` variable): 
 
 {% highlight php %}
 if (!empty($_GET['search'])) {
@@ -187,13 +187,13 @@ if ($keyword) {
 {% endhighlight %}
 
 ### Finalizing
-There are many other solutions how the above code can be written. However it is very important to maintain 
-consistency of the program behavior in that each branch of the condition changes the state of the program 
+There are many other solutions how the above code can be written. However, it is very important to maintain 
+consistency of the program behavior -- each branch of the condition changes the state of the program 
 in a same way. Notice that no matter what branch of the first condition is executed, we 
-will **always have `$keyword` variable defined as a string** although its content may vary.
+will **always have the `$keyword` variable defined as a string** although its content may vary.
 If you look at the second condition, you'll see that no matter which branch gets executed, we 
-will **always have `$stmt` variable defined with an executed SQL statement**. It is therefore 
-very important to call `execute` in the first branch of that condition, to make the output compatible
+will **always have the `$stmt` variable defined with an executed SQL statement**. It is therefore 
+very important to call `execute` in the first branch of that condition to make the output compatible
 with the output of the second branch. This approach to writing the code prevents a lot of bugs and
 weird situations. But it requires you to ask 'what should be the outcome of this piece of code' ?
 
@@ -204,8 +204,8 @@ and printing of the results.
 {% include /en/apv/walkthrough/backend-select/persons-list-2.php %}
 {% endhighlight %}
 
-Perhaps you got the idea that I could've added the `required` attribute to the keyword
-form control to prevent the form from being submitted empty and simplify the PHP script. Yes, we
+Perhaps you have got the idea that I could have added the `required` attribute to the keyword
+form control to prevent the form from being submitted empty and could have simplified the PHP script. Yes, we
 can do that, but it won't simplify the PHP script, because the validation in form is
 only on the client side (web browser) and is [unreliable](todo). 
 
@@ -250,7 +250,7 @@ the user enters three words? What are all the possible states?
     - User entered three keywords -- display an error message
 </div> 
 
-Page template (notice the introduction of `$message` variable:
+Page template (notice the introduction of the `$message` variable:
 
 {: .solution}
 {% highlight html %}
@@ -266,18 +266,18 @@ PHP script (notice that the queries have different boolean operators):
 {: .note}
 The above script is written in a slightly different style than 
 the [previous one](/en/apv/walkthrough/backend-select/#finalizing). Here, I 
-maintained the consistency of state by first initializing the `$persons` and `$message` variables
-to some default values and used the conditions to change them only when necessary. This leads 
-to more concise code, which may be harder to read as it does not explicitly enumerate all of the 
+have maintained the state consistency by first initializing the `$persons` and `$message` variables
+to some default values and have used the conditions to change them only when necessary. This leads 
+to a more concise code, which may be harder to read as it does not explicitly enumerate all of the 
 possible states. This is however a more practical approach. 
 
 ## Summary
-There are many more options (probably thousands!), how the above search form can be implemented.
+There are many more options (probably thousands!) how the above search form can be implemented.
 For example you can add searching by a nickname, day of birth, height etc. There are many possibilities
 how all those criteria can be combined, which leads us to an [application design](todo).   
 
 In this chapter you have learned how to process HTML forms in the PHP script.
-You should be familiar with the structure of `$_GET` and `$_POST` variables.
+You should be familiar with the structure of the `$_GET` and `$_POST` variables.
 Make sure you understand the rules how HTML form controls are transformed into
 [name-value pairs](/en/apv/walkthrough/html-forms/#name-and-value) and subsequently into `$_GET` and `$_POST` variables.
 This allows you to implement your own logic into the application behavior. So from now on, most of the 

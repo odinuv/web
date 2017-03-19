@@ -28,7 +28,7 @@ We will create a page for inserting new persons in the database. Let's start wit
 {% include /en/apv/walkthrough/backend-insert/person-add.php %}
 {% endhighlight %}
 
-Can you see how [organizing you code](/en/apv/walkthrough/organize/) pays off? Adding a 
+Can you see how [organizing your code](/en/apv/walkthrough/organize/) pays off? Adding a 
 new page to the application requires almost only to write the necessary HTML code. There is 
 very little overhead now.
 
@@ -57,10 +57,10 @@ to pass in the values.
  
 Note that I didn't use `exit` in the `catch` statement. Failure to insert data into the database is a non-fatal
 error -- i.e. the application can continue and display an error to the user and let him correct the error.
-So I simply assigned the error to the `$message` variable and then passed that to the template in
+So I have simply assigned the error to the `$message` variable and then passed that to the template in
 `$tplVars['message'] = $message;`.
 
-Try the above script and verify that the form validation works fine. If you put `required` attribute to 
+Try the above script and verify that the form validation works fine. If you put the `required` attribute to 
 the form controls, either remove it for the test, or use [developer tools](/en/apv/course/not-a-student/#web-browser)
 to do so temporarily.
 
@@ -77,9 +77,9 @@ In the `person` table in the database. The
 column `birth_day` [allows NULLs](/en/apv/articles/sql-join/#null), i.e. its value is not 
 required. If the user does not fill the date input element, the PHP script will receive an empty 
 string. The database server will fail to insert this, because the empty string is neither a valid date, nor
-a NULL (database server is more concerned about data types than PHP). Therefore we need to 
-supply manually the `null` value in case `birth_day` is not filled. Luckily, PHP `null` is nicely compatible
-with database `NULL`. Again it is very important that you understand what values originate from 
+a NULL (the database server is more concerned about data types than PHP). Therefore we need to 
+supply manually the `null` value in case the `birth_day` is not filled. Luckily, the PHP `null` is nicely compatible
+with the database `NULL`. Again it is very important that you understand what values originate from 
 where and what variables are connected: 
 
 {: .image-popup}
@@ -99,19 +99,19 @@ form controls for the values. Check whether each column is required and handle N
 {% include /en/apv/walkthrough/backend-insert/person-add-sol.php %}
 {% endhighlight %}
 
-The radio buttons may be replaced by `<select>` control. 
+The radio buttons may be replaced by the `<select>` control. 
 The condition `(empty($_POST['gender']) || ($_POST['gender'] != 'male' && $_POST['gender'] != 'female'))`
 could be also written as `(empty($_POST['gender']) || !in_array($_POST['gender'], ['male', 'female']))`.
 The condition `(empty($_POST['height']) || empty(intval($_POST['height'])))` first checks that the value 
 `$_POST['height']` is defined and non-empty. Then it checks if the value converted to an integer 
-(using [`intval` function](http://php.net/manual/en/function.intval.php)) is still not empty.
+(using the [`intval` function](http://php.net/manual/en/function.intval.php)) is still not empty.
 In both conditions the order of conditional expressions is important. It must always start with the check
-for empty `$_POST` field due to [partial boolean evaluation](todo).
+for an empty `$_POST` field due to [partial boolean evaluation](todo).
 
 ## Summary
 In this chapter you have learned how to inset data from a HTML form into a database table. As usual there are multiple
 options how you can implement the application logic -- especially the value validation (e.g. you could trigger
-an error if height is not a number, instead of ignoring it). When inserting data to the database, you need to 
+an error if height is not a number instead of ignoring it). When inserting data to the database, you need to 
 be aware of what values are optional and handle the optional values correctly.
 
 ### New Concepts and Terms
