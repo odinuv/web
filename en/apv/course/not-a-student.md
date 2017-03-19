@@ -50,7 +50,7 @@ You can try to install [WAMP Server](http://www.wampserver.com) package or [XAMP
 on Windows. PHP is configured as Apache module in this case and you do not have to execute it separately.
 
 These packages contain [MySQL](https://www.mysql.com/) database instead of [PostgreSQL](https://www.postgresql.org/)
-which is used in our examples. Most SQL queries is same in both systems and I tried to provide alternatives
+which is used in my examples. Most SQL queries is same in both systems and I tried to provide alternatives
 and comments on MySQL in cases of difference. Another database system which you can encounter is
 [MariaDB](https://mariadb.org/). This an open source variant of MySQL.
 
