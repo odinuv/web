@@ -12,8 +12,8 @@ This is a new concept for you which opens a lot of possibilities: you know that 
 rendering HTML with CSS, displaying images, maybe you know that you can also play video and audio
 in newer browsers using appropriate HTML tags (all this is very nice, but still the browser is a bit
 stupid). Executing scripts in the browser during the time when a visitor is viewing your website can
-improve his experience a lot. Just by hiding or showing some HTML elements or changing some CSS
-styles dynamically, can substantially improve (or reduce) readability of your page and increase speed
+improve his experience a lot. Just hiding or showing some HTML elements or changing some CSS
+styles dynamically can substantially improve (or reduce) readability of your page and increase speed
 of browsing (visitors do not have to wait for the server to process their requests).
 
 A lot of pages use JavaScript very heavily nowadays. Sites like YouTube, Google drive/docs, Facebook
@@ -25,7 +25,7 @@ JavaScript itself is more than a language -- it is a package of browser interfac
 functions and the language itself is called [ECMAScript](https://www.ecma-international.org/memento/TC39.htm).
 It has versions such as HTML or CSS and it evolves. Current version is 6 (published in 2015) often
 labeled as ES 2015 (ECMAScript 2015 -- 6th Edition). Be careful when using ES 2015 features as they might
-not be supported in all browsers (even in recent versions like IE 10).
+not be supported in all browsers (even in recent versions like IE 10/11).
 
 A good source of information about JavaScript is [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 (MDN) page.
@@ -57,9 +57,10 @@ JavaScript is dynamically typed like PHP. We have basic types: *strings*, *numbe
 methods or access object's attributes on strings like this:
 
 {% highlight javascript %}
-var chars = "a,b,c,d,e,f".split(',');  //divide string to array
-var len = "some string".length;
-console.log(chars, len);
+var chars = "a,b,c,d,e,f".split(',');   //divide string to array
+console.log(chars, chars.length);       //print array and its length
+var len = "some string".length;         //get length of string...
+console.log(len);                       //...and display it
 {% endhighlight %}
 
 There is also not much difference between creating a string via String class constructor or string literal:
@@ -81,7 +82,9 @@ console.log(parseInt(a) + b);   //number 13
 {% endhighlight %}
 
 {: .note}
-There is no special operator to concatenate string like in PHP (the . operator).
+There is no special operator to concatenate string like in PHP (the `.` operator). Maybe it is not a very good idea
+to compare JavaScript with PHP because they languages with different history and background. But they are both used
+to develop web pages.
 
 ### Declaring functions
 Basic declaration of a function is straightforward.
@@ -111,7 +114,7 @@ function passed into another function as argument's value.
 //store function into a variable
 var fun1 = function(fun2) {
     fun2();
-};
+};  //note the ; this line is just and assignment of a value to a variable
 //call that function with another as parameter
 fun1(function() {
     console.log('this gets also called');
@@ -119,15 +122,18 @@ fun1(function() {
 {% endhighlight %}
 
 ### Control structures
-In following example you can see basic control structures `if` and `for`. There is also `while` loop and `switch`.
+In following example you can see basic control structures `if` and `for`. There is also a `while` loop and a `switch`
+statement.
 
 {% highlight javascript %}
 {% include /en/apv/articles/javascript/basics2.js %}
 {% endhighlight %}
 
 There was no PHP's `foreach` equivalent in JavaScript for a long time -- you would have to use plain `for` cycle
-and calculate array's length. There is a new `for...of` loop and array method `forEach()` to iterate over all array
-items in ES 2015.
+and obtain array's length. There is a new [`for...of` loop](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of)
+in ES 2015 and array [method `forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+to iterate over all array items (this one was standardized earlier). You can use [`for...in` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+to iterate over all object's properties.
  
 {% highlight javascript %}
 {% include /en/apv/articles/javascript/basics3.js %}
@@ -135,11 +141,12 @@ items in ES 2015.
  
 {: .note}
 It is possible to iterate array items with `for...in` cycle, but it is wrong and should be avoided (it treats
-numeric array keys as strings for instance).
+numeric array keys as strings for instance and does not guarantee order of items).
 
 {: .note.note-cont}
-The arrow expression `(a, b) => {...}` is just a shortcut to declare anonymous function. There is one important
-difference that I will explain later.
+The [arrow function expression `(a, b) => {...}`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+is just a shortcut to declare an anonymous function. There is one important difference against a declaration using
+`function() {}` that I will explain later.
 
 ### Variable and constant declarations
 In older JavaScript versions you could have used only `var` keyword to denote a new variable. A variable declared
@@ -157,7 +164,7 @@ console.log(local);     //error
 {% endhighlight %}
 
 {: .note}
-In fact JavaScript scans the function body and moves all variable declarations to the beginning.
+In fact, JavaScript scans the function body and moves all variable declarations to the beginning.
 
 New JavaScript version ES 2015 introduced also `const` and `let` keywords. The `let` keyword is interesting because
 it can create variable which scope is only inside curly brackets, observe difference between these two pieces of code:
@@ -179,20 +186,20 @@ console.log(j); //error
 {% endhighlight %}
 
 ## Linking JavaScript to your HTML
-Similarly to CSS, a JavaScript file is usually referred in `<head>` tag using a `<script>` tag.
-The `<script>` tag can contain URL to download some script or it can directly contain some
-JavaScript code:
+Similarly to CSS, a JavaScript file is usually referred in `<head>` tag using a `<script>` tag. But you can generally
+place the `<script>` tag anywhere inside the `<body>` element. The `<script>` tag can contain a `src` attribute with
+an URL to download some JavaScript source code or the tag can contain some JavaScript code directly:
 
 {% highlight html %}
 {% include /en/apv/articles/javascript/attach.html %}
 {% endhighlight %}
 
 ### Order and time of execution
-When you add `<script>` tags to you HTML, you might wonder when is JavaScript code executed.
+When you add `<script>` tags to your HTML, you might wonder when is JavaScript code executed.
 Basically the order is given by occurrence of `<script>` tags. Big difference is between
-scripts in `<head>` and inside `<body>` as those scripts in `<head>` do not have access
+scripts in the `<head>` and inside the `<body>` as those scripts in the `<head>` do not have access
 to HTML elements because those were not rendered by browser yet. On the other hand `<script>`
-tags in `<body>` have access to HTML elements in markup above itself.
+tags inside the `<body>` element have access to HTML elements in markup above itself.
 
 Therefore there is a big difference in placement of `<script>` tags within your HTML code:
 
@@ -202,7 +209,7 @@ Therefore there is a big difference in placement of `<script>` tags within your 
 
 Web developers often want their JavaScript to execute when all HTML tags are loaded into browser.
 To achieve this an *event* called `onload` is used and most JavaScript code is executed in it.
-When you use `onload` event it does not matter whether you put you `<script>` tag into `<head>` or
+When you use `onload` event it does not matter whether you put your `<script>` tag into `<head>` or
 just before `</body>`. I will tell you more about events later.
 
 ### Interacting with HTML elements
@@ -210,7 +217,8 @@ You obviously have to interact with existing (static) HTML structure somehow to 
 behaviour. Your browser has capability to project changes in HTML structure, HTML attributes
 and CSS thanks to [dynamic HTML](https://en.wikipedia.org/wiki/Dynamic_HTML) technologies.
 This means that you can append/remove/modify HTML elements using JavaScript and your browser
-will draw these changes immediately on the screen.
+will draw these changes immediately on the screen. You do not have call any function to request
+repaint elements' new state.
 
 To obtain an HTML element from document's structure use one of the following functions:
 
@@ -238,7 +246,7 @@ collection. Every other child has `childNodes` attribute too -- they form a tree
 console.log(document.head);
 console.log(document.body);
 console.log(document.childNodes);       //only <html> node
-console.log(document.body.childNodes);  //body's nodes
+console.log(document.body.childNodes);  //body's child nodes
 {% endhighlight %}
 
 Try to type some of those lines mention above into console (in the very bottom of the console you can write actual
@@ -276,7 +284,7 @@ on `document` object.
 ### Window object (BOM -- Browser Object Model)
 The [`window` variable](https://developer.mozilla.org/en-US/docs/Web/API/Window) represents current browser's window
 or tab. It is the main variable in JavaScript, when a JavaScript interpret encounters unknown variable, it looks
-for it in `window` object properties.
+for it in set of `window` object's properties.
 
 {% highlight javascript %}
 console.log(window);
@@ -288,6 +296,10 @@ console.log('...as this', window.document);
 window.anything = "can be used as global variable";
 console.log(anything);
 {% endhighlight %}
+
+Be careful with names of global variables -- you can easily overwrite some predefined global variables like `console`,
+`screen` (information about screen size), `document` (the DOM), `history` (window history), `location` (current URL in
+address bar)... Some more information about current browser can be found in `widnow.navigator` property.
 
 Following example nicely demonstrates that JavaScript scans for `var` declarations and moves them to top. You would
 expect to output `document` object on first line but JavaScript outputs `undefined` because the variable has not
@@ -302,8 +314,9 @@ console.log('New content', document);
 
 ### JavaScript events
 Events are type of signals which are broadcasted to JavaScript event listeners (functions)
-when some action takes place. For example a user can click a button, press a key, navigate to other site, move a mouse
-or a timer ticks:
+when some action takes place. For example a user can click a button, press a key, resize or scroll the window, navigate
+to another site or move a mouse. There are also events that are not associated directly with user actions, it can be
+timer ticks or when the browser finishes loading of the page or particular image:
 
 {% highlight html %}
 <script type="text/javascript">
@@ -543,7 +556,7 @@ Promises can be chained or they can be stored in an array and treated as one job
 Promises can be used to separate logic. The code is also readable and the interface is unified and well-known.
 
 {: .note.note-cont}
-Internet explorer does not support promises and you have to use some kind of polyfill.
+Internet Explorer does not support promises and you have to use some kind of [polyfill](https://en.wikipedia.org/wiki/Polyfill).
 
 ## Summary
 Remember that JavaScript is executed inside a browser. Therefore it cannot store any data on a server --
@@ -554,8 +567,16 @@ can vary from 99% to 0%. But without **some** backend code, you cannot create an
 The main effect of this effort is to deliver to your users more dynamic page with better usability.
 
 As you probably noticed, browser's APIs are quiet bulky and not very convenient. Therefore there are
-JavaScript libraries like [jQuery](/en/apv/javascript/jquery) with more effective expression.
+JavaScript libraries like [jQuery](/en/apv/articles/javascript/jquery/) with more effective expression.
 
 Now you know that most visual effect or desktop-application-like behaviour of a website is caused
 by JavaScript. Another thing to remember is that JavaScript has vast ecosystem of libraries and frameworks
 and I am not going to get much deeper into this topic in this book.
+
+### New Concepts and Terms
+- JavaScript
+- Document Object Model
+- Browser Object Model
+- Events
+- AJAX
+- Promise
