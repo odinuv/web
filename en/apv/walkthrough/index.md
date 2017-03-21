@@ -9,8 +9,8 @@ permalink: /en/apv/walkthrough/
 This part of the [TMWA book](/en/apv/) guides you through the actual development of a web application.
 However this is no ordinary tutorial. Here I show you all the necessary steps, I also try to show
 you how to approach different problems. There are examples and there are exercises with hidden
-solutions. I encourage you very much to look at them only when you completed the exercise
-(or when you are terribly stuck). And finally, **it is open ended**. There is no final solution which
+solutions. I encourage you very much to look at them only when you have completed the exercise
+(or when you are terribly stuck). And finally, **it is open ended**. The    re is no final solution which
 you can copy and paste and pretend you've written it all. Sorry about that :) However the
 walkthrough contains everything you need to know and use to build the final solution (whatever that would be).
 

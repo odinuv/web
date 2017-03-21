@@ -7,7 +7,7 @@ permalink: /en/apv/walkthrough/dynamic-page/control/
 {:toc}
 
 **Control flow** structures are language constructs which **control** the
-**flow** of the program -- i.e. they control, what lines of the source
+**flow** of the program -- i.e. they control what lines of the source
 code get executed. Important control flow constructs:
 
 - conditions -- **if**, **switch** (and **case**)
@@ -42,7 +42,7 @@ The above example can be rewritten using `switch` -- `case` statements:
 
 Note that it is important to put `break` in each branch, which terminates the
 `switch` execution (otherwise all consecutive branches will get executed too).
-The `break` at the end of `case 4` is especially tricky.
+The `break` at the end of the `case 4` statement is especially tricky.
 
 ### Comparison vs. Assignment
 When comparing two values, you must use the comparison operator `==`.
@@ -64,7 +64,7 @@ the [rules](/en/apv/walkthrough/dynamic-page/#boolean-conversions) `4` is not fa
 That's unexpected and somewhat dangerous, good [development tools](todo) will warn you about this.
 
 Sometimes this is prevented by writing conditions in reverse order `if (4 == $numberOfWheels)`. Because in
-this case, using a single `=` -- `if (4 = $numberOfWheels)` will cause compilation error (you cannot assign
+this case, using a single `=` -- i.e. `if (4 = $numberOfWheels)` will cause a compilation error (you cannot assign
 anything to the constant number 4). Personally I find this way of writing weird.
 
 ## Loops
@@ -85,7 +85,7 @@ which we'll [attend to later](/en/apv/walkthrough/dynamic-page/array/#traversing
 ## Task
 Take the [contact form from the previous chapter](/en/apv/walkthrough/dynamic-page/#task-1----contact-form) and:
 
-- Assume that you have variable the `$currentUser` with the name of the currently logged user or an empty string in case no one is logged.
+- Assume that you have the variable `$currentUser` with the name of the currently logged user or an empty string in case no one is logged.
 - If the user is logged in, display a greeting for him and hide the email input.
 - If the user is not logged in, show the email input and year of birth select box.
 - Fill the year of birth select box with the year from 1916 up to the current year 
@@ -106,7 +106,7 @@ And with `$currentUser = '';` the form should look like this:
 {% endhighlight %}
 
 As you can see, the script is getting rather complicated -- especially the concatenation of
-strings. From now on, we will be working on simplifying the code. Again, there are
+the strings. From now on, we will be working on simplifying the code. Again, there are
 many different solutions.
 
 ## Summary

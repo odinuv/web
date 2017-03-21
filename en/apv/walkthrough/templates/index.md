@@ -8,13 +8,13 @@ permalink: /en/apv/walkthrough/templates/
 
 If you look at the last 
 [version of the contact form](/en/apv/walkthrough/dynamic-page/array/#task----improve-contact-form), 
-you probably noticed that
+you have probably noticed that
 it is becoming quite a convoluted mess of PHP and HTML (and yet it is still a very
 simple form). The solution to this problem is to use **(HTML) templates**.
 
-The advantage of templates is that they simplify both the PHP and HTML code and
+The advantage of using templates is that they simplify both the PHP and HTML code and
 that they protect your code against [Cross Site Scripting vulnerabilities](todo).
-The disadvantage of templates is that you need to learn another language. HTML
+The templates disadvantage is that you need to learn another language. HTML
 templates are called templates, because they are HTML pages with placeholders. The
 actual value of the placeholders is supplied when the template is *rendered*
 (which usually means -- sent to a web browser). Only then the template becomes a
@@ -22,11 +22,11 @@ valid HTML page.
 
 ## Templating Engines
 Template engine is a library which processes a HTML page with **macros**
-(snippets of template language) and produces a valid HTML page.
+(snippets of a template language) and produces a valid HTML page.
 There are many templating engines available for PHP, some of the popular engines
 are: *Smarty*, *Latte*, *Twig*. All of them (and many others) can be used as
 parts of their respective [frameworks](todo) or standalone. In the following
-examples I will stick to using standalone *Latte* templating engine. The
+examples I will stick to using the standalone *Latte* templating engine. The
 choice is rather arbitrary, as all templating engines work in a very similar way, have
 almost the same features and they even have a somewhat similar syntax.
 
@@ -61,12 +61,12 @@ Now, let's see what has happened. The template looks like a standard HTML docume
 some additional features however. In the template above I used `{$pageTitle}` which
 prints the contents of a template variable `$pageTitle`.
 
-Now for the PHP script -- first statement `require 'latte.php';` instructs PHP to include the file
+Now for the PHP script -- the first statement `require 'latte.php';` instructs PHP to include the file
 `latte.php` in the same directory as your script. The `latte.php` is part of the Latte Templating
 engine and makes sure that the library is available in your script. Next we [create
 an instance](/en/apv/walkthrough/dynamic-page/objects/#classes) of the `Engine` 
 class: `$latte = new Latte\Engine();`. Note that the
-class `Engine` is in [namespace](/en/apv/walkthrough/dynamic-page/objects/#namespaces) `Latte\`.
+class `Engine` is in a [namespace](/en/apv/walkthrough/dynamic-page/objects/#namespaces) `Latte\`.
 Next we create an [associative array](/en/apv/walkthrough/dynamic-page/array/) `$templateVariables` 
 with value `'Template engine sample'` assigned to the `pageTitle` key.
 On the last line, we call the `render` [function](/en/apv/walkthrough/dynamic-page/objects/#functions) 
@@ -100,7 +100,7 @@ The statement `{$role|capitalize}` applies the built-in Latte `capitalize`
 [filter](https://latte.nette.org/en/filters).
 
 In the PHP code, I need to define all the variables: `$flintstones`, `$rubbles`, `$pageTitle` and
-`$showBold` in an associative array. I took the liberty to shorten the name of the
+`$showBold` in an associative array. I have taken the liberty to shorten the name of the
 variable `$templateVariables` to just `$tplVars`.
 
 You can put comments in the templates as well:
@@ -110,7 +110,7 @@ You can put comments in the templates as well:
 {% endhighlight %}
 
 Contrary to comments in HTML, comments in templates will not be contained in the resulting page.
-If you find passing variables between PHP script and a template confusing, have a look at 
+If you find passing variables between a PHP script and a template confusing, have a look at 
 the following schema.   
 
 {: .image-popup}
@@ -133,19 +133,19 @@ Template file `form-5.latte`:
 {% endhighlight %}
 
 {: .note}
-I simplified the condition
+I have simplified the condition
 `if ($templateVariables['currentUser']['firstName'] != '')` to
-`if ($templateVariables['currentUser']['firstName'])` because, the
+`if ($templateVariables['currentUser']['firstName'])` because the
 automatic [boolean conversion](/en/apv/walkthrough/dynamic-page/#boolean-conversions) allows us to do it.
 
 {: .note}
-You need to convert the entities &lt; and &gt; in the message back to the characters `<` and `>`. Now
+You need to convert the entities &amp;&lt; and &amp;gt; in the message back to the characters `<` and `>`. Now
 Latte does this conversion automatically for you.
 
 ## Task -- Person Form
 Using templates, create a form like the one below. Assume that you have a variable `$person`
 which contains the default values for the form inputs. The `person` variable should be an associative
-array with keys `id`, `first_name`, `last_name`, `nickname`, `birth_day`, `height`.
+array with the keys `id`, `first_name`, `last_name`, `nickname`, `birth_day`, `height`.
 
 {: .solution}
 {% highlight php %}
@@ -186,7 +186,7 @@ Template file `person-form.latte`:
 
 
 ## Summary
-Using a template engine requires you to learn its' macro language. However it
+Using a template engine requires you to learn its macro language. However it
 does lead to a cleaner [and safer](todo) HTML and PHP code. You don't need to struggle so much
 with using [proper quotes](/en/apv/walkthrough/dynamic-page/#working-with-strings).  
 When using templates, don't forget that
