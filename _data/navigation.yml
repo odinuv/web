@@ -100,6 +100,9 @@ items:
 
               - url: /en/apv/articles/javascript/
                 title: JavaScript
+                items:
+                - url: /en/apv/articles/javascript/jquery/
+                  title: jQuery
 
               - url: /en/apv/articles/database-systems/
                 title: Database Systems

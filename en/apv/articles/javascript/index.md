@@ -394,6 +394,21 @@ The `this` variable has different meanings in different situations:
 It is possible to change `this` variable content by using function's methods [`call()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function/Call)
 or [`apply()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Function/Call).
 
+#### Removing events
+Sometimes you need to detach an event in JavaScript code. You can simply do that by calling
+[`element.removeEventListener(eventHandler)`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+method in your code. You cannot use anonymous function in this case because you need a reference to `eventHandler`.
+
+{% highlight javascript %}
+var element = document.getElementById("...");
+var eventHandler = function() {
+    console.log("click");
+    //remove the click handler
+    this.removeEventListener("click", eventHandler);
+};
+element.addEventListener("click", eventHandler);
+{% endhighlight %}
+
 ## Variable scope
 It is not unusual to see a function declared inside another function in JavaScript code. It can happen when you need to
 pass callbacks or event handlers. In such case, function declared inside another has access to variables from outer scope.
@@ -414,7 +429,7 @@ This is useful, but be careful when you want to attach same event to multiple HT
 which changes its content in outer scope -- weird stuff starts to happen.
 
 {% highlight javascript %}
-window.addEventHandler("load", function() {
+window.addEventListener("load", function() {
     //find multiple buttons...
     var allButtons = document.getElementsByTagName("button");
     for(var i = 0; i < allButtons.length; i++) {
@@ -433,7 +448,7 @@ In another words, there is only one variable `i` with one value in computer's me
 refer to it. You either have to use the `let` keyword or construct a *closure*.
 
 {% highlight javascript %}
-window.addEventHandler("load", function() {
+window.addEventListener("load", function() {
     function makeEventHandler(val) {
         /*
             return function which will serve as event handler, variable
@@ -454,7 +469,7 @@ window.addEventHandler("load", function() {
 Thanks to `let` keyword we can use almost same code as originally intended:
 
 {% highlight javascript %}
-window.addEventHandler("load", function() {
+window.addEventListener("load", function() {
     var allButtons = document.getElementsByTagName("button");
     for(let i = 0; i < allButtons.length; i++) {
         //variable i is different for each iteration
@@ -483,6 +498,43 @@ does not introduce its own `this` variable and you can use `this` from parent sc
 {% highlight html %}
 {% include /en/apv/articles/javascript/passing-this-events-arrow.html %}
 {% endhighlight %}
+
+## Timers
+There are two types of timers in JavaScript -- an interval and a timeout. The difference is that interval timer ticks
+permanently. The functions which are used to setup interval are similar: `setInterval(callback, delay)` and 
+`setTimeout(callback, delay)`. They both return a reference to cancel timer by `clearTimeout(ref)` or
+`clearInterval(ref)` functions. The delay is specified in milliseconds.
+
+{% highlight javascript %}
+var ref;
+function startTimer() {
+    var c = 0;
+    ref = setInterval(function() {
+        console.log(c++);
+    }, 1000);
+}
+function stopTimer() {
+    clearInterval(ref);
+}
+{% endhighlight %}
+
+Open developers console and try to click following buttons you should be able to see a number to increment every second:
+
+<script type="text/javascript">
+var ref;
+function startTimer() {
+    var c = 0;
+    ref = setInterval(function() {
+        console.log(c++);
+    }, 1000);
+}
+function stopTimer() {
+    clearInterval(ref);
+}
+</script>
+
+<button onclick="startTimer()">Start timer</button>
+<button onclick="stopTimer()">Stop timer</button>
 
 ## AJAX
 AJAX stands for *asynchronous JavaScript and XML* although [JSON](http://json.org) format is currently much more
@@ -531,6 +583,11 @@ browser but Chrome developers tools are very similar.
 
 {: .image-popup}
 ![console.log() output](ajax-network-2.png)
+
+{: .note}
+Timer functions are often used to poll backend when you need to deliver "continuous" updates. A better solution is to
+use [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) but this is a bit more complicated and
+requires support of backend (PHP script cannot run longer than certain amount of time -- usually 30 seconds).
 
 ## Promises
 Asynchronous nature of JavaScript is often hard to grasp for people who started with backend development in PHP
