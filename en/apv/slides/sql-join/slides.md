@@ -2,7 +2,7 @@
 layout: slides
 title: SQL Basics
 description: Introduction to SQL, Joining tables in database.
-theme: black
+theme: white
 transition: slide
 permalink: /en/apv/slides/sql-join/
 ---
@@ -11,7 +11,7 @@ permalink: /en/apv/slides/sql-join/
 ## Introduction
 - SQL commands may be terminated with semicolon `;` (delimiter, not terminator).
 - Strings must be quoted with single quotes `'` (quote numbers as well).
-- Crete Database -- SQL command `CREATE`.
+- Create Database -- SQL command `CREATE`.
     - Syntax is fairly complicated and highly dependent on the specific database system.
     - Check the manual for details.
     - No need to learn this thing!

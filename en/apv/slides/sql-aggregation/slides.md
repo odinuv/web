@@ -2,7 +2,7 @@
 layout: slides
 title: SQL Aggregation
 description: Aggregation functions in SQL, grouping and sub-queries. 
-theme: black
+theme: white
 transition: slide
 permalink: /en/apv/slides/sql-aggregation/
 ---
