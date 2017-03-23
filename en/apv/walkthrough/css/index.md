@@ -136,8 +136,8 @@ li.different-than-others {
 {% endhighlight %}
 
 Notice that there is a difference between `li.different-than-others` and `li .different-than-others`. The first
-one selects an `li` element with class `different-than-others` and the latter selects **any** element
-with class `different-than-others` within an `li` element.
+one selects a `<li>` element with class `different-than-others` and the latter selects **any** element
+with class `different-than-others` within a `<li>` element.
 
 #### ID selector
 Sometimes you may wish to be even more specific and select one particular HTML element. That element is
@@ -156,7 +156,7 @@ In CSS selector you simply use `#` with `id` attribute value similarly to a clas
 
 #### Attribute selectors
 You can also select elements just by knowing certain HTML attribute values or their presence
-on HTML elements. This is useful because otherwise you have to pollute your HTML code
+on HTML elements. This is useful especially with forms because otherwise you have to pollute your HTML code
 with unnecessary `class` attributes:
 
 {% highlight css %}
@@ -179,11 +179,11 @@ do not have mouse). You can also use pseudo-classes on parent elements:
 ul li a {
     text-decoration: none;
 }
-/* applied on a when mouse is over whole ul */
+/* applied on all a's when mouse is over whole ul */
 ul:hover li a {
     color: #FF0000;
 }
-/* applied when mouse over particular a */
+/* applied when mouse is over particular a */
 ul li a:hover {
     text-decoration: underline;
 }
