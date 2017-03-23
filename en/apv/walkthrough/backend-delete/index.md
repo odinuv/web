@@ -16,8 +16,8 @@ is deletion of a single row. Each table should have a
 [primary key](/en/apv/articles/relational-database/#key) which identifies
 each row with unique value or set of values. You should therefore use it to delete rows.
 
-Be especially careful about compound keys. You cannot delete a single person by entering
-its `first_name` and `last_name`, because these two properties
+Be especially careful about compound keys. You cannot delete a single person record by entering
+its `first_name` and `last_name` values, because these two properties
 of a person can be shared among many records in database (there is unique key on `first_name`,
 `lastname` and `nickname` columns). Such way of deleting records can have unwanted side effects.
 
@@ -49,7 +49,7 @@ similar to this:
 
 ![Screenshot - Browser Reload](reload.png)
 
-In the form, we used `method="post"` which means that the form is submited using [HTTP POST method](todo).
+In the form, we used `method="post"` which means that the form is submitted using [HTTP POST method](todo).
 The HTTP POST method should be used to represent user actions (e.g. deleting a person). Reloading the 
 page will send the same HTTP request -- i.e. it will repeat the action, which is what the browser
 is asking about. To avoid this annoyance, you have to **redirect after POST**: 
@@ -95,28 +95,32 @@ article to extend your form with confirmation popup. It is a good idea to let us
 important information first because this action cannot be undone.
 
 ### Deleting records which are referenced by other records
-There are [foreign keys](/en/apv/articles/database-tech/#foreign-key-constraint) between person table
-and other tables (person is referenced in `relation` or `contact` tables). When you take a look
-at *Foreign keys* section of table details in Adminer, you can see that there is `NO ACTION` under
+There are [foreign keys](/en/apv/articles/database-tech/#foreign-key-constraint) between `person` table
+and other tables (`person` table is referenced from records in `relation` or `contact` tables). When you take a look
+at *Foreign keys* section of `contact` table details in Adminer, you can see that there is `NO ACTION` defined under
 `ON DELETE` event:
 
 ![Foreign key cascade 1](fk1.png)
  
-This means that if you try to delete a person record, the database server has no defined
-action to do with contacts. It is not meaningful to keep contact entries which do not belong to any
-person. We should therefore set that `ON DELETE` behaviour to `CASCADE`:
+This means that if you try to delete a person record, the database server has no defined action to do with contacts
+related to it -- the database does not know what to do with person's contacts when that person record ceases to exist.
+Due to foreign key constraint, `id_person` column in `contact` table cannot store anything else than values from
+`id_person` column in `person` table. As a result, the database has to reject your `DELETE` command.
+
+Of course, it is not meaningful to keep contact entries which do not belong to any person. We should therefore set
+that `ON DELETE` behaviour to `CASCADE` (use "Alter" button on right side):
 
 ![Foreign key cascade 2](fk2.png)
 
 You should change this in every table which references `person` table, otherwise you won't be able
 to delete persons with related entries in those tables.
 
-In other cases you might prefer to break relation instead of deleting related entries. It is an example
+In other cases you might prefer to break relation instead of deleting related entries. It is the case 
 of [`location` -- `person` relationship](/en/apv/articles/database-tech/#foreign-key----set-nul-example). 
-When you delete an address which is used by a person you would
-rather set `ON DELETE` behaviour of `id_location` foreign key in `person` table to `SET NULL` instead
-of `CASCADE` to preserve a person (only from now we will not know where he lives anymore). To be able
-to do this, `id_location` column must support storing NULL value.
+When you want to delete an address which is referenced by a person record, you would rather set `id_location` column
+in `person` table foreign key deletion behaviour to `SET NULL` instead of `CASCADE`. Such setting would preserve
+a person record and set its `id_location` column to NULL (from now on, you will not know where he lives anymore).
+To be able to do this, `id_location` column must support storing NULL value.
 
 ### Task -- Configure Foreign Keys
 Now configure the foreign keys in your database so that you can delete records as needed.
