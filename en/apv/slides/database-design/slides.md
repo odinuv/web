@@ -266,7 +266,7 @@ the end-user...
 - Is it possible to replace ER modelling by object oriented modelling?
 - If a database is in 3. NF, can it be used in an application?
 - What are possible cardinality ratios?
-- When is it practical to store date as thee columns (day, month, year)?
+- When is it practical to store date as three columns (day, month, year)?
 - What is optionality and when is it important?
 - Is it possible to determine cardinality unambiguously?
 - When is it necessary to create a table for a relationship?
