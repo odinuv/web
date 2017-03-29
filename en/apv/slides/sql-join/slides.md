@@ -2,7 +2,6 @@
 layout: slides
 title: SQL Basics
 description: Introduction to SQL, Joining tables in database.
-theme: white
 transition: slide
 permalink: /en/apv/slides/sql-join/
 ---
