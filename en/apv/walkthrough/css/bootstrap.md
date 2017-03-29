@@ -30,7 +30,7 @@ There are more CSS frameworks available online -- e.g.:
 
 I will use Bootstrap version 3.x here because it is best known and I like it.
 The above frameworks offer similar features to Bootstrap, so the choice is rather arbitrary.
-And if you are curious what the word Bootstrap means, you can [read an article about it].
+And if you are curious what the word Bootstrap means, you can [read an article about it](TODO).
 
 Linking Bootstrap to your application is simple. Go to [the download page](http://getbootstrap.com/getting-started/#download) and copy those
 few lines from **Bootstrap [CDN](https://en.wikipedia.org/wiki/Content_delivery_network)** section. You can also download the whole Bootstrap
@@ -82,7 +82,7 @@ The CSS classes for HTML forms are probably the most complicated because Bootstr
 (horizontal, inline) and most forms are usually composed of many elements.
 In the [components section](http://getbootstrap.com/components/) you can find more complicated elements like
 [navbars (navigation bar)](http://getbootstrap.com/components/#navbar),
-wells (http://getbootstrap.com/components/#wells),
+[wells](http://getbootstrap.com/components/#wells),
 [pagination](http://getbootstrap.com/components/#pagination) and
 [universal icons](http://getbootstrap.com/components/#glyphicons). The universal icons are usually used on buttons and links like this:
 
@@ -93,7 +93,7 @@ wells (http://getbootstrap.com/components/#wells),
 </button>
 {% endhighlight %}
 
-Make sure to hHave a look at [navbar component](http://getbootstrap.com/components/#navbar). It has quite a complicated HTML code and uses
+Make sure to have a look at [navbar component](http://getbootstrap.com/components/#navbar). It has quite a complicated HTML code and uses
 many CSS classes, but if you work carefully and
 remove unwanted elements you can get a nice navigation in your application (you can use `navbar-inverse` class to
 have a black one).
@@ -125,7 +125,7 @@ red (`#db0808`).
 
 {: .solution}
 <div markdown='1'>
-Your HTML should look like this:
+Your HTML should look like this (custom CSS styles have to come last to overwrite Bootstrap styles):
 
 {: .solution}
 {% highlight html %}
@@ -139,8 +139,8 @@ In the linked CSS file (`my-styles.css`), you simply define what you want to cha
 {% include /en/apv/walkthrough/css/my-styles.css %}
 {% endhighlight %}
 
-If you are not where a particular CSS property (`background` and `background-image` in this case) is defined, you can always
-find the right place using [the Developer tools](todo).
+If you are not sure, where a particular CSS property (`background` and `background-image` in this case) is defined, you can always
+find the right place using [the Developer tools](/en/apv/course/not-a-student/#web-browser).
 </div>
 
 ## Responsive design
