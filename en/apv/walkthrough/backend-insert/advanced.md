@@ -104,6 +104,16 @@ rows are inserted in their tables or no row is inserted at all after transaction
 {% include /en/apv/walkthrough/backend-insert/advanced3.php %}
 {% endhighlight %}
 
+Either SQL query from my example may raise exception and program execution will jump into the catch block. When this
+happens, the database will revert to previous state thanks to rollback command. On the other hand, when everything goes
+smooth, the changes are persisted into the database using commit command.
+
+{: .note}
+The database system executes SQL commands in transaction right away -- it does not wait until the commit command.
+The most important moment is when you begin the transaction, because at that time, the database begins to record 
+your changes and you can revert to that state using rollback command. Your changes in database are available to you
+during the transaction but no one else can see them.
+
 ## Task -- Play around with transactions
 Take the first PHP script and complete it so that it inserts data into `location` and `person` table, or create your
 own one with full working forms. Make sure to use the version without transactions. Then try to break 
