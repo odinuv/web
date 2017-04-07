@@ -202,6 +202,13 @@ Put one of the following lines into your `.htaccess` file. The second line is ob
     Options Indexes
     Options -Indexes
 
+### Set a directory as inaccessible from the Internet
+Sometimes you need to store files which should not be accessed freely. Perhaps you want to read them using PHP or
+generate thumbnails or apply watermark in case of files containing images. To do this, simply put following into
+`.htaccess` file:
+
+    deny from all
+
 ### Configuration of mod_rewrite
 You might have noticed that professional web applications have nice looking URLs -- like this book, I do not have
 `/path/to/file.php` style URLs. I have cool URLs like `/en/articles/name-of-article`. To achieve this,

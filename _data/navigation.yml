@@ -80,6 +80,9 @@ items:
               - url: /en/apv/walkthrough/pagination/
                 title: Pagination
 
+              - url: /en/apv/walkthrough/upload/
+                title: File upload
+
           - url: /en/apv/articles/
             title: Articles
             items:
