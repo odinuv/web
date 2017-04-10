@@ -1,0 +1,10 @@
+{extends layout.latte}
+
+{block content}
+<form method="post" enctype="multipart/form-data" action="upload-01.php">
+	<label>Select a file:</label>
+	<input type="file" name="user_file" required />
+	<br />
+	<input type="submit" value="Upload" />
+</form>
+{/block}
