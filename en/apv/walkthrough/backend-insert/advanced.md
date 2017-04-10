@@ -1,70 +1,71 @@
 ---
-title: Inserting data - Advanced techniques
+title: Inserting Data with Dependencies
 permalink: /en/apv/walkthrough/backend-insert/advanced/
 ---
 
 * TOC
 {:toc}
 
-You saw that relational database requires to divide information into columns and rows -- this gives us
-tables with records as a result. A record in such table has given structure. Sometimes there is a need to store
+You have seen that relational database requires to divide information into columns and rows -- this gives us
+tables with records as a result. A record in such a table has a given structure. Sometimes there is a need to store
 related information into multiple tables -- there can be many reasons for that:
 
-- records are naturally separable by common reasoning or by application design needs
-  (e.g. store product images in another table than products themselves)
-- record in one table can be shared by records in another table/tables (e.g. address can be shared
+- Records are naturally separable by common reasoning or by application design needs
+  (e.g. product images are stored in another table than the products themselves).
+- Record in one table can be shared by records in other tables (e.g. an address can be shared
   among many persons whom happen to live in the same building or an address can be shared by a person
-  and also can be used as meeting location)
-- another technical reasons -- mostly defined by
+  and also can be used as a meeting location).
+- Other technical reasons -- mostly defined by
   [database normalization rules](/en/apv/articles/database-design/#database-normalization) which
   should be obeyed during the [database structure design process](/en/apv/articles/database-design/).
-  
-Records are then connected by [foreign keys](/en/apv/articles/relational-database/#foreign-key) -- meta-information
-about relationships between tables.
 
-## Inserting data with dependencies
+Records are then connected by [foreign keys](/en/apv/articles/relational-database/#foreign-key) which 
+contain information about relationships between tables.
 
-Let's think about a simple scenario based on our database structure -- you want to create a form, where the users
-of your application could fill information about a person and information about address of this person together.
-This is quiet helpful because users do not need to create the address record beforehand.
+Let's think about a simple scenario based on your 
+[database structure](http://odinuv.cz/en/apv/course/#project-assignment) -- you want to create a form, where the users
+of your application could fill (in a single step) the information about a person and information about the address of this person. This is quite helpful because users do not need to create the address record beforehand.
 
-In your database schema, you have table `person` and table `location`. After examination of columns in these two
-tables you find out, that the table `person` has column `id_address` which has also defined foreign key into table `location`.
-This means, that in the `person` table you can define a link for each record to the `location` table using value from
-column `id_location` of table `location`. This also means, that multiple persons can share one address (imagine that
+In your database schema, you have the table `person` and the table `location`. After the examination of columns in these two
+tables you find out that the table `person` has the column `id_address` which also has a defined 
+[foreign key](http://odinuv.cz/en/apv/articles/relational-database/#foreign-key) pointing into the table `location`.
+This means that in the `person` table you can define a link for each record to the `location` table using the value from
+the column `id_location` of the table `location`. This also means that multiple persons can share one address (imagine that
 they live in one household as a family).
 
-### Insert data into database
+Because te person links to the address, you have to insert information about the address first. Then
+somehow find the ID assigned to that new row (remember that it is [auto-generated](http://odinuv.cz/en/apv/walkthrough/database/#insert)), store the ID in local variable of the script.
+Then you can insert the the row with person information which will include the ID of the new address. 
+The only problem is how to find the auto-generated ID.
 
-Logically, you want to insert information about address first, somehow find the ID assigned to that new row and then
-insert row with person information which will include the ID of new address. You need to be able to find out what was
-the ID assigned to the row with address information which was inserted as last **in your session**. Session is
-basically a connection between your application and SQL server which is initiated during startup of you application.
+## Concurrency Problems
+If you work with the database alone (when you develop an application), the state of the database does not change unless
+you do something. In a real world situation, there can be many other users changing the database through your application
+at any moment. This basically means that you cannot `INSERT` the data and then `SELECT` e.g. the highest ID from the table. 
+The problem is that many other users' `INSERT` commands could be executed between your `INSERT` and your `SELECT MAX()...` command. You have to ask the database system specifically for ID of 
+[last insertion in **in your session**](/en/apv/articles/database-tech/#currval--lastinsertid-or-max). Session is
+basically a connection between your application and the SQL server. Session is initiated during the startup of 
+your application.
 
-#### Concurrency problems
+For this purpose the database [has a mechanism](/en/apv/articles/database-tech/#automatically-generated-key) which will return the last ID generated by an auto-increment
+**sequence** requested by **your** `INSERT` in **your** database session. In Postgre SQL, each auto-increment sequence
+has a name -- you can find that name in the default value of the *id* column:
 
-If you work with database alone (when you develop an application), the state of database does not change unless
-you do something. In real scenario, there can be many other users intervening with the database through your application
-at the **same time**. This basically means that you cannot `INSERT` the data and then somehow `SELECT` the ID from *last row*
-(some crafty people like to use SQL `MAX()` function) -- the problem is, that many other users' `INSERT` commands
-could be executed between your `INSERT` and your `SELECT MAX()...` command. You have to ask the database system specifically
-for ID of **your** last insertion.
+{: .image-popup}
+![Screenshot - Sequence Name](/en/apv/walkthrough/backend-insert/sequence-name.png)
 
-For this purpose the database has a mechanism which will return last number generated by an auto increment
-sequence requested by **your** `INSERT` in **your** database session. In Postgre SQL, each autoincrement sequence
-is given a name -- you can find that name in default value of *id* column.
-
-There is a `CURRVAL(seq_name)` SQL function which will return last value of autoincrement sequence in Postgre SQL and
-this function takes as argument the name of generator sequence. Execute both commands at once in Adminer:
+There is a [`CURRVAL(seq_name)`](/en/apv/articles/database-tech/#auto-increment-in-postgresql) SQL function which will return the last value of the auto-increment sequence in Postgre SQL and
+this function takes as an argument the name of the sequence. Execute both commands at once in the Adminer:
 
 {% highlight sql %}
 {% include /en/apv/walkthrough/backend-insert/advanced1.sql %}
 {% endhighlight %}
 
-Now you can search for record with ID which was returned -- you should find a row with `city` column set to `Bucharest`.
-Notice that these two queries have to be separated by semicolon.
+Now you can search for the record with the returned ID -- you should find a row with the `city` column set to `Bucharest`.
+Notice that these two queries have to be executed in a single execution and therefore they have to be separated by a semicolon.
 
-In PHP with PDO library you can use `lastInsertId($sequenceName)` method instead of executing separate SQL SELECT
+## PHP Code
+In PHP with the PDO library you can use the `lastInsertId($sequenceName)` method instead of executing separate SQL SELECT
 command:
 
 {% highlight php %}
@@ -72,61 +73,61 @@ command:
 {% endhighlight %}
 
 {: .note}
-`lastInsertId($sequenceName)` method picks the correct SQL command depending on SQL dialect that we are using,
-`CURRVAL(seq_name)` with Postgre SQL or, for example, with MySQL -- `LAST_INSERT_ID()` -- this SQL function does not
-take any argument and you do not have to pass `$sequenceName` into `lastInsertId()` function.
+The `lastInsertId($sequenceName)` method picks the correct SQL command depending on the SQL server that you are using.
+On PostgreSQL, this will be `CURRVAL(seq_name)`. For example On MySQL this will be the `LAST_INSERT_ID()` function 
+which does not take any arguments and you do not have to pass `$sequenceName` into `lastInsertId()` function in that case.
 
 {: .note.note-cont}
-In the above example, I used two variables `$stmt1` and `$stmt2` for the queries. It is not necessary, because 
-I don't need `$stmt1` after `$stmt2`, so you can use only a single variable and overwrite it.  
+In the above example, I have used two variables `$stmt1` and `$stmt2` for the queries. It is not necessary, because 
+I don't need `$stmt1` after `$stmt2`, so you can use only a single variable and overwrite it. In fact, it is 
+better to reuse the same variable if possible.
 
-### Error control and transactions
-
-You already know, that you have to enclose database communication into `try-catch` blocks. But what happens, when the
+## Error control and transactions
+You already know that you have to enclose database communication [in `try-catch`](/en/apv/walkthrough/backend-select/#finalizing) blocks. But what happens when the
 first query (insert an address) is accepted and the second one (insert a person) is not? There can be more reasons than
 you think for the second `INSERT` command to fail:
 
-- the row you are inserting is not complete (some mandatory columns have null value).
-- the row you are inserting have wrong data-type or range of one or more columns.
+- the row you are inserting is not complete (some mandatory column has `NULL` value).
+- the row you are inserting has a wrong data-type or range of one or more columns.
 - the row you are inserting is in conflict with another row (uniqueness).
-- the script is terminated from outside (problem in another process, hardware failure, electric power loss...).
-- the database server is gone -- connection was terminated (i.e. problems with computer network, when database is hosted on another server).
+- the script is terminated from outside (a problem in another process, hardware failure, electric power loss...).
+- the database server goes away -- connection was terminated (i.e. problems with computer network, server crashed or is restarted).
 
-It would result into a state, in which you have the address in the database and a not the person. The user would try to
-insert the information again, but there will be an unused address record in `location` table!
+Any of the above would result in a state in which you have the address in the database and not the person. 
+The user would try to insert the information again, but there will be an unused address record in the `location` table.
+Even worse, it might be impossible to insert the address at all if it would violate record uniqueness.
 
 To prevent this and other [inconsistent states](/en/apv/articles/database-systems/#data-integrity) you 
 want to enclose both queries into a [*transaction*](/en/apv/articles/database-systems#transaction).
-Such modification will make sure, that both queries are either accepted by database system and both 
-rows are inserted in their tables or no row is inserted at all after transaction ends.
+This will make sure that both queries are either accepted by the database system and both 
+rows are inserted into their tables or no row is inserted at all after the transaction ends.
 
 {% highlight php %}
 {% include /en/apv/walkthrough/backend-insert/advanced3.php %}
 {% endhighlight %}
 
-Either SQL query from my example may raise exception and program execution will jump into the catch block. When this
-happens, the database will revert to previous state thanks to rollback command. On the other hand, when everything goes
-smooth, the changes are persisted into the database using commit command.
+Either SQL query from my example may raise an exception and the program execution will jump into the `catch` block. When this
+happens, the database will revert to the previous state thanks to `rollback` command. On the other hand, when everything goes
+smooth, the changes are store permanently in the database using `commit` command.
 
 {: .note}
-The database system executes SQL commands in transaction right away -- it does not wait until the commit command.
-The most important moment is when you begin the transaction, because at that time, the database begins to record 
-your changes and you can revert to that state using rollback command. Your changes in database are available to you
+The database system executes the SQL commands in transaction right away -- it does not wait until the `commit` command.
+The most important moment is when you `begin` the transaction, at that moment the database begins to record 
+your changes and you can revert to **that state** using `rollback` command. Your changes in database are available to you
 during the transaction but no one else can see them.
 
 ## Task -- Play around with transactions
-Take the first PHP script and complete it so that it inserts data into `location` and `person` table, or create your
-own one with full working forms. Make sure to use the version without transactions. Then try to break 
-the second `INSERT` command (just make an error in SQL command spelling, e.g. `IxSERT` instead of 
-`INSERT`). Observe changes in the database. Then add the transaction commands (`begin`, `commit`, `rollback`) 
-and again observe what changes are made to database. Do you notice the change of behavior? 
+Take the [first PHP script](#php-code) above and complete it so that it inserts data into the `location` and `person` tables. Or create your own with full working forms. Make sure to use the version without transactions. Then try to break 
+the second `INSERT` command (just make an error in the SQL command spelling, e.g. `IxSERT` instead of 
+`INSERT`). Observe the changes in the database. Then add the transaction commands (`begin`, `commit`, `rollback`) 
+and again observe what changes are made to the database. Do you notice the change of behavior? 
 Can you explain why it changed? 
 
 <div class="solution">
     <p markdown="1">
-        If you run the the script without transaction commands, the first INSERT succeeds and the location
+        If you run the the script without the transaction commands, the first `INSERT` succeeds and the the location
         will be inserted into the `location` table. It will remain there even if the other insert fails.
-        When you add transaction commands, the behavior will change. If the first INSERT fails, and 
+        When you add the transaction commands, the behavior will change. If the first INSERT fails, and 
         raises an exception, the script will jump to `catch` statement and issue the `rollback` command. 
         This will roll back all SQL commands from the beginning of the transaction -- in this case the
         insert into the `location` table. Therefore the database will not contain the orphaned location record.
@@ -135,9 +136,11 @@ Can you explain why it changed?
 
 ## Summary
 In this chapter I demonstrated how to insert multiple records which have some dependence among them. This requires
-using a *last insert id* value for current database session. In the second part 
-I described the importance of transactions when inserting multiple rows.
+using a *last insert id* value for the current database session. In the second part 
+I described the importance of using transactions when inserting multiple rows.
 
 ### New Concepts and Terms
-- lastInsertId($sequenceName)
+- Sequence
+- Session
+- `lastInsertId`
 - Transaction
