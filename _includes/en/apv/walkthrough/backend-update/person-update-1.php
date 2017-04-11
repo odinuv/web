@@ -16,10 +16,10 @@ if (!empty($_POST['save'])) {
         try {
             $stmt = $db->prepare(
                 "UPDATE person SET first_name = :first_name, last_name = :last_name, 
-				nickname = :nickname, birth_day = :birth_day, gender = :birth_day
-				WHERE person_id = :person_id"
+				nickname = :nickname, birth_day = :birth_day, gender = :gender, height = :height
+				WHERE id_person = :id_person"
             );
-            $stmt->bindValue(':person_id', $personId);
+            $stmt->bindValue(':id_person', $personId);
             $stmt->bindValue(':first_name', $_POST['first_name']);
             $stmt->bindValue(':last_name', $_POST['last_name']);
             $stmt->bindValue(':nickname', $_POST['nickname']);

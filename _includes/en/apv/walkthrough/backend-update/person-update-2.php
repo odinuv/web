@@ -5,18 +5,6 @@ require 'include/start.php';
 $message = '';
 $personId = 1;
 
-try {
-    $stmt = $db->prepare("SELECT * FROM person WHERE person_id = :person_id");
-    $stmt->bindValue(':person_id', $personId);
-    $stmt->execute();
-    $tplVars['person'] = $stmt->fetch();
-    if (!$tplVars['person']) {
-        exit("Cannot find person with ID: $personId");
-    }
-} catch (PDOException $e) {
-    exit("Cannot get person " . $e->getMessage());
-}
-
 if (!empty($_POST['save'])) {
     // user clicked on the save button
     if (empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['nickname'])) {
@@ -28,10 +16,10 @@ if (!empty($_POST['save'])) {
         try {
             $stmt = $db->prepare(
                 "UPDATE person SET first_name = :first_name, last_name = :last_name, 
-				nickname = :nickname, birth_day = :birth_day, gender = :birth_day
-				WHERE person_id = :person_id"
+				nickname = :nickname, birth_day = :birth_day, gender = :gender, height = :height
+				WHERE id_person = :id_person"
             );
-            $stmt->bindValue(':person_id', $personId);
+            $stmt->bindValue(':id_person', $personId);
             $stmt->bindValue(':first_name', $_POST['first_name']);
             $stmt->bindValue(':last_name', $_POST['last_name']);
             $stmt->bindValue(':nickname', $_POST['nickname']);
@@ -54,6 +42,18 @@ if (!empty($_POST['save'])) {
             $message = "Failed to update person (" . $e->getMessage() . ")";
         }
     }
+}
+
+try {
+    $stmt = $db->prepare("SELECT * FROM person WHERE id_person = :id_person");
+    $stmt->bindValue(':id_person', $personId);
+    $stmt->execute();
+    $tplVars['person'] = $stmt->fetch();
+    if (!$tplVars['person']) {
+        exit("Cannot find person with ID: $personId");
+    }
+} catch (PDOException $e) {
+    exit("Cannot get person " . $e->getMessage());
 }
 
 $tplVars['message'] = $message;

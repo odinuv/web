@@ -3,12 +3,6 @@
 require 'include/start.php';
 
 $message = '';
-if (!empty($_GET['id'])) {
-    $personId = $_GET['id'];
-} else {
-    exit("Parameter 'id' is missing.");
-}
-
 if (!empty($_POST['save'])) {
     // user clicked on the save button
     if (empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['nickname'])) {
@@ -19,11 +13,9 @@ if (!empty($_POST['save'])) {
         // everything filled
         try {
             $stmt = $db->prepare(
-                "UPDATE person SET first_name = :first_name, last_name = :last_name, 
-				nickname = :nickname, birth_day = :birth_day, gender = :gender, height = :height
-				WHERE id_person = :id_person"
+                "INSERT INTO person (first_name, last_name, nickname, birth_day, gender, height) 
+                VALUES (:first_name, :last_name, :nickname, :birth_day, :gender, :height)"
             );
-            $stmt->bindValue(':id_person', $personId);
             $stmt->bindValue(':first_name', $_POST['first_name']);
             $stmt->bindValue(':last_name', $_POST['last_name']);
             $stmt->bindValue(':nickname', $_POST['nickname']);
@@ -41,24 +33,13 @@ if (!empty($_POST['save'])) {
                 $stmt->bindValue(':height', intval($_POST['height']));
             }
             $stmt->execute();
-            $message = "Person updated";
+            $message = "Person inserted";
         } catch (PDOException $e) {
-            $message = "Failed to update person (" . $e->getMessage() . ")";
+            $message = "Failed to insert person (" . $e->getMessage() . ")";
         }
     }
 }
 
-try {
-    $stmt = $db->prepare("SELECT * FROM person WHERE id_person = :id_person");
-    $stmt->bindValue(':id_person', $personId);
-    $stmt->execute();
-    $tplVars['person'] = $stmt->fetch();
-    if (!$tplVars['person']) {
-        exit("Cannot find person with ID: $personId");
-    }
-} catch (PDOException $e) {
-    exit("Cannot get person " . $e->getMessage());
-}
-
+$tplVars['operation'] = "Insert Person";
 $tplVars['message'] = $message;
-$latte->render('templates/person-update-2.latte', $tplVars);
+$latte->render('templates/person-insert-4.latte', $tplVars);

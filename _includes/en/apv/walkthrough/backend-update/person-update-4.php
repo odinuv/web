@@ -60,5 +60,6 @@ try {
     exit("Cannot get person " . $e->getMessage());
 }
 
+$tplVars['operation'] = 'Update Person';
 $tplVars['message'] = $message;
-$latte->render('templates/person-update-2.latte', $tplVars);
+$latte->render('templates/person-update-4.latte', $tplVars);

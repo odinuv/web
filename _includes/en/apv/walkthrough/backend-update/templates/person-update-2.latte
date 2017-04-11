@@ -24,14 +24,13 @@
     </tr>
     <tr>
         <td>Gender</td>
-        <td>
-            <label>Male
+        <td><label>Male
                 <input type="radio" name="gender" value="male" required
-                       {if $person['gender'] == 'male'}selected{/if}>
+                       {if $person['gender'] == 'male'}checked{/if}>
             </label>
             <label>Female
                 <input type="radio" name="gender" value="female" required
-                       {if $person['gender'] == 'female'}selected{/if}>
+                       {if $person['gender'] == 'female'}checked{/if}>
             </label>
         </td>
     </tr>
@@ -41,7 +40,7 @@
     </tr>
     <tr>
         <td colspan=" 2">
-            <button type="submit" name="save">Update Person</button>
+            <button type="submit" name="save" value="save">Update Person</button>
         </td>
     </tr>
 </table>

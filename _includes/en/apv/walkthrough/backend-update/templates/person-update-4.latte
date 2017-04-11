@@ -1,0 +1,9 @@
+{extends layout.latte}
+
+{block content}
+{if $message}
+    <p>{$message}</p>
+{/if}
+<h1>Update Person Details</h1>
+{include person-form.latte}
+{/block}

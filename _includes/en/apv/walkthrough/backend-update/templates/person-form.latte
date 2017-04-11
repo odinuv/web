@@ -1,0 +1,43 @@
+{block form}
+<form method="post">
+<table>
+    <tr>
+        <td><label for="first_name">First name</label></td>
+        <td><input type="text" name="first_name" id="first_name" required value="{$person['first_name']}"></td>
+    </tr>
+    <tr>
+        <td><label for="last_name">Last name</label></td>
+        <td><input type="text" name="last_name" id="last_name" required value="{$person['last_name']}"></td>
+    </tr>
+    <tr>
+        <td><label for="nickname">Nickname</label></td>
+        <td><input type="text" name="nickname" id="nickname" required value="{$person['nickname']}"></td>
+    </tr>
+    <tr>
+        <td><label for="birth_day">Date of Birth</label></td>
+        <td><input type="date" name="birth_day" id="birth_day" value="{$person['birth_day']}"></td>
+    </tr>
+    <tr>
+        <td>Gender</td>
+        <td>
+            <label>Male
+                <input type="radio" name="gender" value="male" required
+                       {if $person['gender'] == 'male'}checked{/if}>
+            </label>
+            <label>Female
+                <input type="radio" name="gender" value="female" required
+                       {if $person['gender'] == 'female'}checked{/if}>
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="height">Height</label></td>
+        <td><input type="number" name="height" id="height" value="{$person['height']}"></td>
+    </tr>
+    <tr>
+        <td colspan=" 2">
+            <button type="submit" name="save" value="save">{$operation}</button>
+        </td>
+    </tr>
+</table>
+{/block}
