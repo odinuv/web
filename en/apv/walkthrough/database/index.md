@@ -38,8 +38,8 @@ the definition of what tables do exist in the database and the second one contai
 Download both files (use 'Save Link As') and import both files using the procedure
 outlined below. 
 
-- [Database Structure](/en/apv/walkthrough/database/pgsql-structure.sql) 
-- [Sample data](/en/apv/walkthrough/database/pgsql-data.sql) 
+- [Database Structure](/en/db/pgsql-structure.sql) 
+- [Sample data](/en/db//pgsql-data.sql) 
 
 To import the file using the [Adminer](https://www.adminer.org/) client. Click on **Import**, select the 
 file you have downloaded, and click **Execute**. Repeat the process for both files:
