@@ -16,7 +16,7 @@ or photos for persons stored in your database.
 
 ## Limitations
 - PHP has setting that defines [maximal size for file upload](/en/apv/course/technical-support/#php-configuration).
-  That option is set to a different value every server. You should let your users know that there is a limit.
+  That option can be set to a different value on every server. You should let your users know that there is a limit.
 - Internet connection speed (**upload speed** -- that one is usually significantly slower thant download speed) and
   quality of connection is important when uploading larger amounts of data.
 - Cheap/free shared web hostings often suffer from issues with full hard drive -- other users uploaded so much files
@@ -41,7 +41,7 @@ that you store all uploaded files from all users into a single directory on you 
     always possible.
   - You should at least disable file listing of directory containing uploaded files using either [`.htaccess`](/en/apv/course/technical-support/#enablingdisabling-directory-listing)
     or a dummy index file (a poor man's solution).
-  - Afterwards, you can use PHP's [`readfile]()`](http://php.net/manual/en/function.readfile.php) function to send
+  - Afterwards, you can use PHP's [`readfile()`](http://php.net/manual/en/function.readfile.php) function to send
     files' contents to authorised visitors.
 - You need to store information about uploaded files needed in your application into database.
 - You need to take care of [permissions](/en/apv/course/technical-support/#file-permissions-chmod) for the directory
@@ -120,7 +120,7 @@ PHP script `upload-02.php`:
 {: .note}
 You can apply some restrictions on uploaded files -- maybe you want to limit the size or file type. You can use PHP's GD
 library to check image properties with [`getimagesize()`](http://php.net/manual/en/function.getimagesize.php) function.
-If you reject the image, remember to delete it from file system using [`unlink()`](http://php.net/manual/en/function.unlink.php)
+If you reject the file, remember to delete it from file system using [`unlink()`](http://php.net/manual/en/function.unlink.php)
 function.
 
 ### Download script
@@ -142,7 +142,7 @@ PHP script `fetch-file-01.php`:
 {% endhighlight %}
 
 Try to switch different `Content-Disposition` headers to modify behaviour of browser -- `inline` disposition displays
-file content directly in browser if the browser supports such file type (image or PDF file) while `attachment`
+file content directly in browser if the browser supports such file type (HTML, an image or a PDF file) while `attachment`
 disposition forces browser to offer visitor to download the file whatever the file type is. You can also change the
 `filename` section to whatever you want to suggest different file name in file dialog. `Content-Type` header is crucial
 for interpretation of transferred data -- you have to set correct [MIME type](https://en.wikipedia.org/wiki/Media_type)
@@ -163,17 +163,26 @@ reason about this. The server sends HTTP response header with file *version* alo
 remembers that *version* and when it makes subsequent HTTP request for that same file, it sends last *version*
 that it has in its cache. The server simply checks if the *version* is same and confirms it -- the file contents
 is not transmitted in this case. There is a chance that it has newer *version* and it tells to the browser to delete
-the old one and store a new one -- contents of file is transmitted. You can achieve significant improvement of load-time
-for a website with a lot of static files if your browser uses cache properly.
+the old one and store a new one -- contents of file is transmitted this time. You can achieve significant improvement
+of load-time for a website with a lot of static files if your browser uses cache properly. The *version* can be
+a date and a time of last content update or a [hash](/en/apv/walkthrough/login/#storing-users-passwords)
+of some unique content part.
 
 Common PHP script output should not be cached because there is a good chance that data in database or something else
 changed (e.g. user logged on/off) and you want to deliver new content as response for each request. On the other hand,
-PHP script which sends response of uploaded file which never (or very rarely) changes should employ HTTP caching.
+PHP script which sends uploaded file which never (or very rarely) changes as response should employ HTTP caching.
+Plus the fact that files are commonly quiet large so you can save a lot of time and bandwidth.
 
-In following script I use just very simple approach, first HTTP request is extended with `Last-Modified` header
-with current time (or you can use file modification time). Subsequent requests are turned down once the PHP script
-detects that browser has a copy of file in its cache (browser sends `If-Modified-Since` header and PHP script can
-detect this in `$_SERVER['HTTP_IF_MODIFIED_SINCE']` variable).
+In following script I use just very simple approach, first HTTP response is extended with `Last-Modified` header
+with current time (or you can use real file's modification time). Visitor's browser remembers that information and
+when requesting that same URL using HTTP it attaches `If-Modified-Since` header. Subsequent requests are turned down
+once the PHP script detects that browser has a copy of file in its cache (browser sends `If-Modified-Since` header and
+PHP script can detect this in `$_SERVER['HTTP_IF_MODIFIED_SINCE']` variable). My approach does not examine the version
+of cached file because it never changes.
+
+{: .note}
+Besides using `Last-Modified` and `If-Modified-Since` approach, you can use [`ETag`](https://en.wikipedia.org/wiki/HTTP_ETag)
+HTTP header for content which chnages cannot be captured by date and time.
 
 PHP script `fetch-file-02.php`:
 
@@ -185,8 +194,8 @@ PHP script `fetch-file-02.php`:
 Upload some file, find its ID in database table and try do download it using second version of `fetch-file` script.
 Open developer tools network console and observe first and subsequent HTTP request for file. You should see HTTP
 status code 200 and some amount of transferred bytes for the first time. Subsequent requests should be handled with
-304 status code and much smaller amount of transferred bytes. When you clear your cache `Ctrl+Shift+Del` or use
-`Ctrl+F5` to reload, the scenario should repeat. Observe HTTP headers too.
+304 status code and much smaller amount of transferred bytes. When you clear your browser's cache using `Ctrl+Shift+Del`
+or use reload a page using `Ctrl+F5`, the scenario should repeat. Observe HTTP headers too.
 
 ## Summary
 I guided you through process of file uploads in this chapter and pointed out some security risks and good practices.
