@@ -60,7 +60,7 @@ permalink: /en/apv/slides/database-tech/
 - `SELECT * FROM person ORDER BY id_person LIMIT 10 OFFSET 5`
 - Remember to include `ORDER BY`! Otherwise you'll have random results.
 - Criticism:
-    - If it is not on the first page, search better.
+    - If it is not on the first page, search is better.
     - Maybe considered user unfriendly (combined with bad search).
 - Other application: "TOP 10 best customers"
     - How many results should such query return?     
@@ -72,17 +72,17 @@ permalink: /en/apv/slides/database-tech/
 
 {% highlight sql %}
 CREATE TABLE table_name ( 
-    column data_type [NOT NULL] [DEFAULT value] [PRIMARY KEY]
-    [, column data_type ...] 
+    column data_type [NOT NULL] [DEFAULT value] [PRIMARY KEY]
+    [, column data_type ...] 
 )
 {% endhighlight %}
 
 {% highlight sql %}
 CREATE TABLE contact (
-    id_contact serial PRIMARY KEY,
+    id_contact serial PRIMARY KEY,
     id_person integer NOT NULL REFERENCES person (id_person),
-    id_contact_type integer REFERENCES contact_type (id_contact_type),
-    contact character varying(200) NOT NULL
+    id_contact_type integer REFERENCES contact_type (id_contact_type),
+    contact character varying(200) NOT NULL
 )
 {% endhighlight %}
 </section>
@@ -211,7 +211,7 @@ $db->execute(
 - Details of working with LO are dependent on the database interface.
     - Send escaped data within the SQL string (limited size), 
     - Binary data must be sent via special functions.
-- Use this to store medium sized files, better then storing them in file system.
+- Use this to store medium sized files, better than storing them in file system.
 </section>
 
 <section markdown='1'>
@@ -358,7 +358,7 @@ value in the `person.id_location` table is set to NULL.
 - Deleting records from database is uneasy task:
     - use `SET NULL` where link can be lost,
     - use `CASCADE` where related records can be lost,
-    - use `RESTRICT` in al other cases.
+    - use `RESTRICT` in all other cases.
 - Can you delete a user from information system?
     - What about the history of operations?
     - Disabling is a better option.
