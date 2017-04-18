@@ -536,6 +536,77 @@ function stopTimer() {
 <button onclick="startTimer()">Start timer</button>
 <button onclick="stopTimer()">Stop timer</button>
 
+## Classes and inheritance
+You can create an instance of object in JavaScript just by assigning object literal to a variable -- `var x = {...}`.
+This approach is not very universal. It is useful to define a *class* and derive instances of objects from it using
+`new` keyword -- this is similar to Java or PHP. Traditional JavaScript has unfamiliar class definition based on
+prototypes:
+
+{% highlight javascript %}
+//a function which will be used as constructor
+var SomeClass = function(value) {
+    this.value = value;
+};
+//this is a method
+SomeClass.prototype.getValue = function() {
+    return this.value;
+};
+//create an instance
+var instanceOfSomeClass = new SomeClass(5);
+console.log(instanceOfSomeClass.getValue());
+{% endhighlight %}
+
+{: .note}
+Use CamelCase variable names to emphasize that a variable is intended to contain a class definition.
+
+The `prototype` property of function object is a container for methods that are mapped to an instance being created
+using `new` keyword. In method's context, the `this` variable refers to individual instance. An interesting point is
+that you can change prototype of a class and all instances will notice that change even if they were created
+before that change.
+
+Inheritance is achieved by chaining of prototypes, here is a simple example:
+
+{% highlight javascript %}
+//general class
+var Rectangle = function(w, h) {
+    this.w = w;
+    this.h = h;
+};
+Rectangle.prototype.getArea = function() {
+    return this.w * this.h;
+};
+//specialized class
+var Square = function(s) {
+    Rectangle.call(this, s, s);
+};
+//inheritance - must be after constructor and before methods 
+Square.prototype = new Rectangle();
+Square.prototype.constructor = Square;
+//now you can define methods which belong only to Square class
+Square.prototype.enlarge = function(step) {
+    this.w = this.w + step;
+    this.h = this.w;
+};
+var sq = new Square(8);
+var rt = new Rectangle(10, 5);
+console.log('Square area', sq.getArea());
+console.log('Rectangle area:', rt.getArea());
+sq.enlarge(2);
+console.log('Larger square area:', sq.getArea());
+rt.enlarge(2);  //error
+{% endhighlight %}
+
+The line with `Square.prototype = new Rectangle();` is crucial. It simply creates an instance of a Rectangle and assigns
+it as prototype of a Square class. This basically makes all Rectangle methods accessible in Square's prototype. Next
+line reverts constructor to Square function, it is not very important and the code works without it but some
+[constructions depend on it](http://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor).
+Note that `new Rectangle()` is called without arguments -- you should make your constructors in a way that this fact does
+not raise fatal errors (or pass the needed values).
+
+{: .note}
+You can use [ordinary `class` and `extends` keywords](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+in new versions of JavaScript.
+
 ## AJAX
 AJAX stands for *asynchronous JavaScript and XML* although [JSON](http://json.org) format is currently much more
 common. The basic principle is that a browser calls some backend functionality using JavaScript HTTP client (the visitor
@@ -610,7 +681,9 @@ Promises can be chained or they can be stored in an array and treated as one job
 [`.all()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all).
 
 {: .note}
-Promises can be used to separate logic. The code is also readable and the interface is unified and well-known.
+Promises can be used to separate different levels of application's logic -- in my example, you can see that low level
+HTTP communication is separated from result display. Moreover, you can reuse low level function anywhere and build
+whatever logic over it. The code is more readable and the Promise interface is unified and well-known.
 
 {: .note.note-cont}
 Internet Explorer does not support promises and you have to use some kind of [polyfill](https://en.wikipedia.org/wiki/Polyfill).
@@ -635,5 +708,6 @@ and I am not going to get much deeper into this topic in this book.
 - Document Object Model
 - Browser Object Model
 - Events
+- Objects
 - AJAX
 - Promise
