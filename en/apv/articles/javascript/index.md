@@ -544,7 +544,7 @@ Traditional JavaScript (i.e. that one which is executable in all browsers) has u
 on prototypes:
 
 {% highlight javascript %}
-//a function which will be used as constructor
+//a function which will be used as a constructor
 var SomeClass = function(value) {
     this.value = value;
 };
@@ -554,6 +554,7 @@ SomeClass.prototype.getValue = function() {
 };
 //create an instance
 var instanceOfSomeClass = new SomeClass(5);
+//and call some method
 console.log(instanceOfSomeClass.getValue());
 {% endhighlight %}
 
@@ -561,10 +562,12 @@ console.log(instanceOfSomeClass.getValue());
 Use [CamelCase](https://en.wikipedia.org/wiki/Camel_case) variable names to emphasize that a variable is intended to
 contain a class definition.
 
-The `prototype` property of function object is a container for methods that are mapped to an instance being created
+The `prototype` property of a function object is a container for methods that are mapped to an instance being created
 using `new` keyword. In method's context, the `this` variable refers to individual instance. An interesting point is
 that you can change prototype of a class and all instances will notice that change even if they were created
-before that change.
+before that change. You should not return anything from constructor -- JavaScript would use that value as a result
+of `new` operator which is not intuitive. Do not call constructors as regular functions also, that would cause to
+create unwanted global variables because `this` variable points to `window` object in global function's context.
 
 Inheritance is achieved by chaining of prototypes, here is a simple example:
 
@@ -607,7 +610,7 @@ not raise fatal errors (or pass the needed values).
 
 {: .note}
 You can use [ordinary `class` and `extends` keywords](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
-in new versions of JavaScript.
+to define classes in new versions of JavaScript.
 
 ## AJAX
 AJAX stands for *asynchronous JavaScript and XML* although [JSON](http://json.org) format is currently much more
