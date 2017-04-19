@@ -537,10 +537,11 @@ function stopTimer() {
 <button onclick="stopTimer()">Stop timer</button>
 
 ## Classes and inheritance
-You can create an instance of object in JavaScript just by assigning object literal to a variable -- `var x = {...}`.
+You can create an instance of an object in JavaScript just by assigning object literal to a variable -- `var x = {...}`.
 This approach is not very universal. It is useful to define a *class* and derive instances of objects from it using
-`new` keyword -- this is similar to Java or PHP. Traditional JavaScript has unfamiliar class definition based on
-prototypes:
+`new` keyword -- this is similar to Java or [PHP OOP approach](/en/apv/walkthrough/dynamic-page/objects/).
+Traditional JavaScript (i.e. that one which is executable in all browsers) has unfamiliar class definition based
+on prototypes:
 
 {% highlight javascript %}
 //a function which will be used as constructor
@@ -557,7 +558,8 @@ console.log(instanceOfSomeClass.getValue());
 {% endhighlight %}
 
 {: .note}
-Use CamelCase variable names to emphasize that a variable is intended to contain a class definition.
+Use [CamelCase](https://en.wikipedia.org/wiki/Camel_case) variable names to emphasize that a variable is intended to
+contain a class definition.
 
 The `prototype` property of function object is a container for methods that are mapped to an instance being created
 using `new` keyword. In method's context, the `this` variable refers to individual instance. An interesting point is
