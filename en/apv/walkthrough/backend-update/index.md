@@ -152,14 +152,13 @@ And a `person-form.latte`:
 {% include /en/apv/walkthrough/backend-update/templates/person-update-4.latte %}
 {% endhighlight %}
 
-
 As you can see, templates allow you to reuse common blocks of HTML code (using the `include` statement)
 and remove repeating code.
 
 ## Summary
 In this chapter you have learned how to update data in the database. This is technically no different to
 selecting or inserting data, it is just a combination of all the approaches you have learned in
-previous chapters.
+previous chapters. I have also demonstrated how to reuse code using templates.
 
 ### New Concepts and Terms
 - supply values to form controls
