@@ -57,14 +57,14 @@ permalink: /en/apv/slides/web-security/
   - good language = 250 000 words
   - 8 characters (A-Za-z0-9) = 6 553 600 000 000 combinations
   - 10 characters = 10 485 760 000 000 000 combinations
-- [https://imgs.xkcd.com/comics/password_strength.png](or this)  
+- [https://imgs.xkcd.com/comics/password_strength.png](https://imgs.xkcd.com/comics/password_strength.png)  
 </section>
 
 <section markdown='1'>
 ## Login
 - authentication -- validating user **identity**
 - authorization -- validating user **permissions**
-- authentication -- does not exist
+- uthtentification -- does not exist
 - four factors for validating user identity:
   - you know it (password -- easiest)
   - you have it (key, certificate -- also good)
@@ -132,4 +132,12 @@ permalink: /en/apv/slides/web-security/
   - Parameters to queries
   - Value in HTML
 - Never escape beforehand, un-escaping is complicated     
+</section>
+
+<section markdown='1'>
+## Checkpoint
+- Is it possible to stop SQL injection attack by removing SQL keywords?
+- Is an application that does not generate any HTML content vulnerable to XSS?
+- Who has to verify a certificate to be trustworthy?
+- Is it possible to perform MIM attack with HTTPS?
 </section>
