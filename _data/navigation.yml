@@ -151,3 +151,9 @@ items:
 
               - url: /en/apv/slides/database-tech/
                 title: Databases – Technical Details
+
+              - url: /en/apv/slides/web-security/
+                title: Web security
+
+              - url: /en/apv/slides/web-apps/
+                title: Web applications

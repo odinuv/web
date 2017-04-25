@@ -30,12 +30,12 @@ My goals are **not**:
 - to make an excellent (PHP, JavaScript, SQL, ...) programmer out of you. That needs much more practice, but this
 may be a good start;
 - to show you all the technical details;
-- to make an [UX, Software Architect, Testing, ...) expert out of you (that needs much more than reading a single book,
+- to make an (UX, Software Architect, Testing, ...) expert out of you (that needs much more than reading a single book,
 but this may be a good start).
 
 ## Who? Why?
 *Who is this for?* This book was originally written for students of
-[Application Software Programmes](http://ects-prog.mendelu.cz/en/plan6937/predmet88060) subject
+[Application Software Programmes](http://ects-prog.mendelu.cz/en/plan6937/predmet88060) course
 at [Mendel University](https://is.mendelu.cz/). However it is suitable for [anyone](/en/apv/course/not-a-student)
 with interest in web application development.
 
