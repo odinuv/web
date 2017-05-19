@@ -125,6 +125,12 @@ items:
               - url: /en/apv/articles/database-tech/
                 title: Databases – Technical Details
 
+              - url: /en/apv/articles/security/
+                title: Security of web applications
+                items:
+                - url: /en/apv/articles/security/sql-injection/
+                  title: SQL injection
+
           - url: /en/apv/slides/
             title: Slides
             items:

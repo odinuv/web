@@ -144,9 +144,9 @@ all of them. To develop a real larger scale PHP application you do not need a fr
 again and again, you would consider some tasks repetitive. PHP frameworks usually take care of tasks which are
 related to application infrastructure (routing, templates, logging, user authentication) and they offer a set of
 well known and tested libraries to perform usual tasks (sending emails, communication with database) they also
-take care of tedious tasks related to security ([CSRF](todo), [XSS](todo) or [SQL injection](todo)). Most of them
-use [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture and some of them offer
-additional features such as [ORM](/en/apv/articles/database-tech/#orm), command line tools to speed up
+take care of tedious tasks related to security ([CSRF](todo), [XSS](todo) or [SQL injection](/en/apv/articles/security/sql-injection/)).
+Most of them use [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture and some of
+them offer additional features such as [ORM](/en/apv/articles/database-tech/#orm), command line tools to speed up
 development or testing library interface. They are usually downloadable with Composer.
 
 You can check out the source code and popularity of PHP frameworks on [GitHub](https://github.com/) where their

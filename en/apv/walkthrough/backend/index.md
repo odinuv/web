@@ -100,7 +100,7 @@ any other string.
 
 {: .note}
 If you are tempted to use the `$personName` variable directly within the SQL query string,
-in the `query` method, don't do it! Such approach would introduce [SQL injection vulnerability](todo). 
+in the `query` method, don't do it! Such approach would introduce [SQL injection vulnerability](/en/apv/articles/security/sql-injection/). 
 
 ### Inserting Data
 Let's insert a new row in the `location` table. The principle remains the same as in the 
