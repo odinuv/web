@@ -19,7 +19,7 @@ remember everything written in following lines.
 
 ![Exploits of a Mom](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
-## What is SQL injection -- how do I know that my code is vulnerable?
+## What is SQL injection -- how does it work and how do I know that my code is vulnerable?
 SQL injection is a kind of backdoor into SQL interface. It is based on a fact, that SQL commands are passed to database
 interface as *strings*. There is no difference between a string which you type in your *source code* (something like
 `$db->query('SELECT * FROM person ORDER BY last_name');`) and a string which is *passed into your script from a form*
@@ -35,14 +35,10 @@ An attacker can easily guess SQL queries for particular functionality (like SELE
 is actually a piece of SQL code that your program naively concatenates into a final query and that string is send
 to your database.
 
-Let's see and example for better understanding: following query is meant to load balance from an imaginary bank account
+Let's see and example for better understanding: following code is meant to load balance from an imaginary bank account
 table (there are several types of bank accounts -- that is the purpose filter parameter taken from `$_GET`). The owner
 of an account is securely stored in session data storage and cannot be changed easily. Suppose that an attacker wants to
 see someone else's account balance.
-
-This is an example of backend code, note that variable column values in `WHERE` are enclosed in apostrophes `'` which
-denote SQL strings. Contrary, from PHP's point of view, everything there is a string and variable containing string
-is being concatenated into it. SQL syntax has no meaning for PHP interpreter -- it is really just a string.
 
 {% highlight php %}
 <?php
@@ -51,12 +47,16 @@ $sql = "SELECT balance FROM bank_account " .
        "WHERE type = '" . $_GET['filter'] . "' AND owner = '" . $id . "'";
 {% endhighlight %}
 
+Note that compared column values in `WHERE` are enclosed in apostrophes `'` which denote SQL strings. Contrary,
+from PHP's point of view, everything there is a string and variable containing string is being concatenated into
+it. SQL syntax has no meaning for PHP interpreter -- it is really just a string.
+
 The attacker first tests the presence of SQL injection vulnerability by fiddling with filter parameter:
 
     https://banking.insecure-app.com/account/balance?filter='
     
 One of the easiest way is to pass an apostrophe into a query parameter. Let's see what happend on the backend.
-This is the query which will be sent to the database system (just a string for PHP):
+This is the query which will be send to the database system (just a string for PHP interpreter):
 
     SELECT balance FROM bank_account WHERE type = ''' AND owner = '123'
     
@@ -74,8 +74,8 @@ structure of the SQL statement but he can guess column or table names. He can tr
 
     https://banking.insecure-app.com/account/balance?filter=savings';#
    
-Which will result in following SQL query, which gets account balances for **all** accounts in the database, this is
-SQL query after variable substitution:
+Which will result in following SQL query, that gets account balances for **all** accounts in the database. This is
+the SQL query after variable substitution:
 
     SELECT account_name, balance FROM bank_account WHERE type = 'savings';# AND owner = '123'
     
@@ -110,8 +110,8 @@ e.g. [`mysqli_multi_query()`](http://php.net/manual/es/mysqli.multi-query.php) f
 It is quiet easy to spot SQL injection vulnerability in ones code when you know what you are looking for. Have a look
 at lines where SQL statements are defined and check for direct concatenation with variables (especially with `$_POST`,
 `$_GET` or `$_COOKIE`). Here is another example of SQL injection. When you just pass numbers into the script,
-everything goes smooth but try to pass `5 OR true` as POST's `id` parameter and you just deleted everything stored inside
-`person` table.
+everything goes smooth but try to pass `5 OR true` as POST's `id` parameter and you just deleted everything stored
+inside the `person` table.
 
 {% highlight php %}
 <?php
@@ -121,12 +121,14 @@ if(!empty($_POST['id'])) {
 }
 {% endhighlight %}
 
+The worst thing about SQL injection is that the code works OK when you pass "normal" values into the script.
+
 {: .note}
 You can suggest to use [`intval()`](http://php.net/manual/en/function.intval.php) function which would convert
 such malicious input into a single zero. But you should rather avoid direct concatenation of variables into
 SQL querries at all.
 
-## How can I avoid SQL injection
+## How can I avoid SQL injection?
 It is rather simple: always escape data from untrusted sources. Never pass raw input data into a SQL query. The PDO
 interface's style of commands is not super-expressive but with those prepared statements and value binding you avoid
 significant scurity risks (although you type much more letters). You can use some more syntax-efficient database
@@ -136,16 +138,15 @@ interface or ORM.
 Definitelly not! It might seem reasonable to escape everything that comes into the script via $_POST or $_GET
 (and also $_COOKIE, data imported from other web services via API, files...) right in the beginnig of script
 execution. But keep in mind, that SQL injection only affects SQL databases. Why would you escape data which
-you just store in a text file, [Redis cache](https://redis.io/) or in $_SESSION? You cannout establish effective
+you just store in a text file, [Redis cache](https://redis.io/) or in $_SESSION? You cannot establish effective
 escaping policy until you know what kind of database system you are using.
 
 ### What if I need to build complicated query? How do I escape one particular string?
 Sometimes you need to build a query dynamically, for example when you need to build variable `WHERE` statement,
-in that case you have to build SQL query string and setup value placeholders to replace and their order of appearence.
+in that case you have to build SQL query string and setup value placeholders and remember their order of appearence.
 PDO's separate [`quote()` method](http://php.net/manual/en/pdo.quote.php) may also be useful.
 
 {% highlight php %}
-<?php
 <?php
 $db = new PDO('pgsql:host=localhost;dbname=...', 'login', 'pass');
 $filters = ['first_name', 'last_name', 'nickname']; //allowed column names
@@ -154,9 +155,9 @@ $sep = '';
 $actualFilters = [];
 foreach($_GET['filter'] as $k => $v) {
     if(in_array($k, $filters)) {                    //$k is only an allowed value
-        $sql .= $sep . $k . ' ILIKE ? ';
-        $sep = ' AND ';                             //for next iteration
-        $actualFilters[] = '%' . $v . '%';          //use '?' as placeholder
+        $sql .= $sep . $k . ' ILIKE ? ';            //use '?' as placeholder for variable
+        $sep = ' AND ';                             //operator for next iteration
+        $actualFilters[] = '%' . $v . '%';          //store replacement value
     }
 }
 $stmt = $db->prepare($sql);
@@ -165,14 +166,17 @@ print_r($stmt->fetchAll());
 {% endhighlight %}
 
 Try to pass these URL parameters: `script.php?filter[first_name]=ka&filter[last_name]=os`. The SQL string which
-is passed into `prepare()` method looks like this `SELECT * FROM person WHERE first_name ILIKE ? AND last_name ILIKE ?`.
+is passed into `prepare()` method looks like this: `SELECT * FROM person WHERE first_name ILIKE ? AND last_name ILIKE ?`.
 Those question marks are then replaced by values from `$actualFilters` array. The amount of question marks must match
-length of `$actualFilters` array.
+length of `$actualFilters` array. Question marks in SQL query are replaced from left to right with values from
+`$actualFilters` array.
 
 {: .note}
-Another way is to generate SQL query with ':something' kind of placeholders, remeber the value and placeholder
-in an associative array and then call `bindValue()` inside a loop.
+Another way is to generate SQL query with ':something' kind of placeholders, than remeber the value and placeholder
+in an associative array and then call `bindValue()` inside a loop driven by that associative array.
 
 ## Summary
 SQL injection can be a nasty and unforgiving bug which you definitelly do not want in your code. **Escape values,
-always**. Now you can fully enjoy that comic strip in the header section of this article.
+always**. You can use a database interface like PDO which does this for you, but you have to use it correctly.
+Using PDO's `query()` method with direct PHP's variable concatenation is wrong practice. Now you can fully enjoy that
+comic strip in the header section of this article.
