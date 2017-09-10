@@ -135,12 +135,13 @@ permalink: /en/apv/slides/web-apps/
     - dangerous for users
     - tedious for programmers
 {% highlight html %}
-    <a href="...&userIdentity=abc123"></a>
+    <a href="...&userIdentity=abc123">...</a>
 {% endhighlight %}
 {% highlight html %}
     <form action="..." method="post">
         <input type="hidden" name="userIdentity" value="abc123" />
         ...
+        <input type="submit" value="..." />
     </form>
 {% endhighlight %}
 </section>

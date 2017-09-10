@@ -144,9 +144,9 @@ all of them. To develop a real larger scale PHP application you do not need a fr
 again and again, you would consider some tasks repetitive. PHP frameworks usually take care of tasks which are
 related to application infrastructure (routing, templates, logging, user authentication) and they offer a set of
 well known and tested libraries to perform usual tasks (sending emails, communication with database) they also
-take care of tedious tasks related to security ([CSRF](todo), [XSS](todo) or [SQL injection](todo)). Most of them
-use [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture and some of them offer
-additional features such as [ORM](/en/apv/articles/database-tech/#orm), command line tools to speed up
+take care of tedious tasks related to security ([CSRF](todo), [XSS](todo) or [SQL injection](/en/apv/articles/security/sql-injection/)).
+Most of them use [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture and some of
+them offer additional features such as [ORM](/en/apv/articles/database-tech/#orm), command line tools to speed up
 development or testing library interface. They are usually downloadable with Composer.
 
 You can check out the source code and popularity of PHP frameworks on [GitHub](https://github.com/) where their
@@ -222,29 +222,30 @@ to achieve better ranking in search results for selected key words. Mod_rewrite 
 into a browser and a rule used to convert it to something real and useful.
 
     RewriteEngine on
-    RewriteCond %{REQUEST_FILENAME} -f
-    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^/product/([0-9]+)/.+$ product.php?id=$1 [L,QSA]
 
 The two `RewriteCond` lines test whether the path entered into browser address bar (`%{REQUEST_FILENAME}`)
-is not an actual directory (`-d`) or file (`-f`). All conditions must evaluate to true. In the `RewriteRule` section,
+is not (`!`) an actual directory (`-d`) or file (`-f`). All conditions must evaluate to true. In the `RewriteRule` section,
 a regular expression extracts the ID number by `[0-9]+` pattern and passes it as an `id` parameter of the `product.php` 
 script. 
 
 Here is something more general (the interpretation of a `q` parameter is carried out by application's logic):
 
     RewriteEngine on
-    RewriteCond %{REQUEST_FILENAME} -f
-    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
     
 This example takes any text (`.*` pattern) that is contained in the URL and passes it as the `q` parameter.
-The Modifier *L* means
-that this rule is *last* applied and *QSA* means *query string append* (take everything that is behind `?` in the original
-URL and forward it). The URL in the browser stays the same unless there is *R* flag after `RewriteRule`.
+The flag *L* means that this rule is *last* applied and *QSA* means *query string append* (take everything that is
+behind `?` in the original URL and forward it). The URL in the browser stays the same unless there is *R* flag after
+`RewriteRule`.
 
 Another use-case of mod_rewrite is to add `www` to the URL beginning when a user enters just `site.com` into
-the web browser:
+the web browser -- here I used the `R` flag with status code 301 which tells the browser that the content is located
+elsewhere and it should navigate to the new URL given in `RewriteRule` (the browser's address bar changes):
 
     RewriteEngine on
     RewriteCond %{HTTP_HOST} ^site\.com
@@ -264,7 +265,7 @@ it fails. To prevent this, you have to generate all URLs from root of your appli
 that, you need to put a `<base href="http://my-cool-site.com/my-shop/">` tag with an absolute path to the application root
 (newer browsers do not need domain name) into `<head>` tag. This will cause that all relative URLs are prefixed with
 `href` attribute value from `<base>` tag. Therefore the image will be loaded from `http://my-cool-site.com/my-shop/images/shop-logo.png`
-which should be ok.
+which should be OK.
 
 {: .note}
 If your application lives in a subdirectory, you usually need to add `RewriteBase path/to/subdirectory` into
@@ -285,13 +286,14 @@ Contents of the `.htpasswd` file can look like this:
     user:$apr1$Ywno0KCc$/R75cky8xEvL5DpWuTLEy.
 
 The above line defines an account called `user` with a password `pass`. Use some online `.htpasswd` 
-[generator](todo) to obtain yours. There can be more users defined in `.htpasswd` file.
+[generator](http://www.htaccesstools.com/htpasswd-generator/) to obtain yours. There can be more users defined
+ in `.htpasswd` file.
 
 ## Database systems
 In development environment, you almost never have to tweak database settings. When installing a database server,
 a form usually pops out which lets you select your intentions (development/production server) and it lets you
 create user accounts. To create more users and set permissions for them, you usually use SQL commands directly or
-special environment for database administration.
+a special environment for database administration.
 
 A real production server should be configured by a database specialist. Important notes about technical issues with
 databases from the developer's perspective are in [another article of this book](/en/apv/articles/database-tech/).
