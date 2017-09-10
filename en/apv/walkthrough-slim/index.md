@@ -1,6 +1,6 @@
 ---
-title: Walkthrough
-permalink: /en/apv/walkthrough/
+title: Slim Walkthrough
+permalink: /en/apv/walkthrough-slim/
 ---
 
 * TOC

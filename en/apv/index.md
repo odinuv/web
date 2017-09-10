@@ -1,17 +1,24 @@
 ---
 title: The Making of a Web Application
 permalink: /en/apv/
+redirect_from: /en/
+redirect_from: /
 ---
 
 * TOC
 {:toc}
 
-This web book is an introduction to the development of web applications. It consists of a
-[**Walkthrough**](/en/apv/walkthrough/) which will guide you through making the
-web application step by step and [**Articles**](/en/apv/articles/) explaining the
+This web book is an introduction to the development of web applications. It consists of two
+walkthroughs --- [**Classic Walkthrough**](/en/apv/walkthrough/) and [**Slim Walkthrough**](/en/apv/walkthrough-slim/)
+which will guide you through making the web application step by step and [**Articles**](/en/apv/articles/) explaining the
 details of all the used technologies.
 
-[Course outline](/en/apv/course/)
+**[APV Course outline](/en/apv/course/)**
+
+Why two walkthroughs? Because there are many completely different approaches to build a web application.
+The classic [**Walkthrough**](/en/apv/walkthrough/) goes to the roots and is great for general understanding. THe
+[**Slim Walkthrough**](/en/apv/walkthrough-slim/) uses a PHP framework which represents a quicker way to the goal, but there
+is some magic involved.
 
 ## Goals
 My goals are:
