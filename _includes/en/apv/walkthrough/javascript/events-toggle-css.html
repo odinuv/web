@@ -6,7 +6,6 @@
     <style>
         .highlight {
             border: 2px solid #00FF00;
-            text-decoration: underline;
             padding: 5px;
         }
     </style>
@@ -18,17 +17,17 @@
 <div id="element">
     This is an element.
 </div>
-<script type="text/javascript">
+<script>
     function toggleIt() {
         var el = document.getElementById("element");
         el.classList.toggle("highlight");
     }
     /* alternative:
-    //attach event programmatically
+    // attach the event programmatically
     var allBtns = document.getElementsByTagName("button");
-    //only one event for click
+    // basic event handler attachment
     allBtns[0].onclick = toggleIt;
-    //better way
+    // better way of event handler attachment (allows more handlers)
     //allBtns[0].addEventListener('click', toggleIt);
     */
 </script>

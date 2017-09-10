@@ -693,6 +693,40 @@ whatever logic over it. The code is more readable and the Promise interface is u
 {: .note.note-cont}
 Internet Explorer does not support promises and you have to use some kind of [polyfill](https://en.wikipedia.org/wiki/Polyfill).
 
+## Famous jQuery and other libraries
+If you are digging enough around web applications, you definitely heard or read about
+[jQuery](https://jquery.com). It is a library which main purpose is to help coders to achieve
+desired behaviour faster. In past it also helped to overcome differences in browser's APIs.
+It offers many function for manipulation with HTML, events handling and communication with backend.
+It is worth trying but I think that it is not a very good idea to learn jQuery for beginners
+because you will have trouble working with pure JavaScript (sometimes called
+[vanilla JavaScript](http://vanilla-js.com/) -- this page tries to explain that a JS library
+like jQuery is not always needed). The importance of jQuery and similar
+[facade](https://en.wikipedia.org/wiki/Facade_pattern) libraries has declined as various
+browsers improved/united their APIs (e.g.: to find elements using CSS selector you can
+use `document.querySelector()` method instead of jQuery, event binding can be done by
+`element.addEventListener()` in all modern browsers instead of jQuery's `$('.selector').click(fn)`).
+Moreover, new libraries and frameworks like [React](https://facebook.github.io/react/) or
+[Angular](https://angularjs.org/) emerged since jQuery's best times.
+
+Here is the same example of flight reservation form with jQuery style code -- notice completely
+different style of accessing elements via CSS selector which is common in jQuery. This code
+is not much shorter than in clean JavaScript but in some cases jQuery can shorten your code
+up to one half of original.
+
+{: .solution}
+{% highlight html %}
+{% include /en/apv/walkthrough/javascript/form-validation-jquery.html %}
+{% endhighlight %}
+
+There are also many other JS libraries or frameworks. jQuery is used in most cases and sometimes other
+libraries (like [Bootstrap](/en/apv/walkthrough/css/bootstrap/)) require you to include it as well.
+Be careful about mixing different libraries -- some of them cannot or should not be used together.
+
+Moreover, there are also [polyfill](https://en.wikipedia.org/wiki/Polyfill) libraries which are used to
+simulate behaviour of modern browsers in the older ones. These libraries are used for backwards
+compatibility of modern web pages with older browsers.
+
 ## Summary
 Remember that JavaScript is executed inside a browser. Therefore it cannot store any data on a server --
 you always need some kind of backend which can communicate securely with your database.

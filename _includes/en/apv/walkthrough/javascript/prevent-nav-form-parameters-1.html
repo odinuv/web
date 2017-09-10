@@ -6,12 +6,15 @@
 </head>
 <body>
     <form action="http://example.com" method="post" onsubmit="return confirmForm()">
-        <input type="submit" value="OK">
+        <input type="submit" value="Accept">
+    </form>
+    <form action="http://example.com" method="post" onsubmit="return confirmForm()">
+        <input type="submit" value="Deny">
     </form>
     <script>
         function confirmForm() {
             //show popup and return true/false
-            return confirm('Really submit form?');
+            return confirm('Do you really want to Accept/Deny?');
         }
     </script>
 </body>

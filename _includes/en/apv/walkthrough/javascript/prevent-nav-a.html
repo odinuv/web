@@ -1,10 +1,14 @@
-<a href="javascript:confirmNav('http://www.server.org/')">Server</a>
-<script type="text/javascript">
-    function confirmNav(url) {
-        //show popup
-        if(confirm('Really navigate to ' + url + '?')) {
-            //redirect browser if user response was positive
-            location.href = url;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Form validation</title>
+</head>
+<body>
+    <a href="http://www.server.org)" onclick='return confirmNav();'>External link</a>
+    <script>
+        function confirmNav(url) {
+            return confirm('Navigate away?');
         }
-    }
-</script>
+    </script>
+</body>

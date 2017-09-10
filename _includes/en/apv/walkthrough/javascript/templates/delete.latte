@@ -17,14 +17,14 @@
         <td>
             <form action="delete.php" method="post"
                   onsubmit="return confirmDelete('{$person['first_name']} {$person['last_name']}')">
-                <input type="hidden" name="id_person" value="{$person['id_person']}"/>
-                <input type="submit" value="Delete"/>
+                <input type="hidden" name="id_person" value="{$person['id_person']}">
+                <input type="submit" value="Delete">
             </form>
         </td>
     </tr>
     {/foreach}
 </table>
-<script type="text/javascript">
+<script>
     function confirmDelete(name) {
         return confirm('Really delete ' + name + '?');
     }

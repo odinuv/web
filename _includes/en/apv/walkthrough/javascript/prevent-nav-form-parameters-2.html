@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Form validation</title>
+</head>
+<body>
+    <form action="http://example.com" method="post" onsubmit="return confirmForm('Accept')">
+        <input type="submit" value="Accept">
+    </form>
+    <form action="http://example.com" method="post" onsubmit="return confirmForm('Deny')">
+        <input type="submit" value="Deny">
+    </form>
+    <script>
+        function confirmForm(action) {
+            //show popup and return true/false
+            return confirm('Do you really want to ' + action + '?');
+        }
+    </script>
+</body>

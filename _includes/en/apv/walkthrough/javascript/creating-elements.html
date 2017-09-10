@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>JS events example</title>
-    <script type="text/javascript">
+    <script>
         //wait for the browser to load all HTML
         window.onload = function() {
             //create an element and display it
             var newList = document.createElement("ul");
-            var cont = document.getElementById("cont");
+            var cont = document.getElementById("container");
             cont.appendChild(newList);
             //set some content even with HTML tags
             newList.innerHTML = "<li>First list item</li>";
@@ -22,7 +22,7 @@
     </script>
 </head>
 <body>
-<div id="cont">
+<div id="container">
     <!-- nothing here in HTML -->
 </div>
 </body>
