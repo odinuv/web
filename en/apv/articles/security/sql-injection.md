@@ -61,9 +61,10 @@ This is the query which will be send to the database system (just a string for P
     SELECT balance FROM bank_account WHERE type = ''' AND owner = '123'
     
 This clearly yields into an SQL syntax error which is reported somehow (perhaps a fatal-error message). Failure of SQL
-query is usually accompanied by an absolute failure to continue rendering of a page and sometimes a (when the attacker
-is lucky) also with a trace of error and even part of SQL statement (this is usually disabled though). An open-source
-software is in great disadvantage here because the attacker can study SQL queries directly in application's source code.
+query is usually accompanied by an absolute failure to continue rendering of a page and sometimes (when the attacker
+is lucky) also with a trace of error and even part of SQL statement (this is usually disabled on production servers though).
+An open-source software is in great disadvantage here because the attacker can study SQL queries directly in application's
+source code.
 
 {: .note}
 Be careful about error reporting, the more precise error reporting you have in production environment, the more
