@@ -5,7 +5,7 @@
 @import "bootstrap-sprockets";
 
 // Core variables and mixins
-@import "variables"; // customised variables 
+@import "variables"; // customised variables
 @import "bootstrap/mixins";
 
 // Reset and dependencies
@@ -329,4 +329,14 @@ img {
 
 .underline {
   text-decoration: underline;
+}
+
+.common-part-info {
+  &:before {
+    content: 'Ⓘ';
+  }
+  top: -60px;
+  left: -20px;
+  display: inline;
+  position: relative;
 }

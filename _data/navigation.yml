@@ -11,8 +11,35 @@ items:
   - url: /en/apv/walkthrough-slim/
     title: Walktrough Slim
     items:
-      -
+      - url: /en/apv/walkthrough-slim/html/
+        title: HTML
 
+      - url: /en/apv/walkthrough-slim/html-forms/
+        title: HTML Forms
+
+      - url: /en/apv/walkthrough-slim/dynamic-page/
+        title: Dynamic Page
+        items:
+          - url: /en/apv/walkthrough-slim/dynamic-page/control/
+            title: Control Structures
+
+          - url: /en/apv/walkthrough-slim/dynamic-page/array/
+            title: Arrays
+
+          - url: /en/apv/walkthrough-slim/dynamic-page/objects/
+            title: Functions & Classes & Objects
+
+      - url: /en/apv/walkthrough-slim/templates/
+        title: Templates
+
+      - url: /en/apv/walkthrough-slim/database/
+        title: Database & SQL
+
+      - url: /en/apv/walkthrough-slim/css/
+        title: CSS – Cascading Style Sheets
+
+      - url: /en/apv/walkthrough-slim/css/bootstrap/
+        title: CSS – Bootstrap
 
   - url: /en/apv/walkthrough/
     title: Walkthrough
