@@ -1,14 +1,7 @@
----
-title: Forms
-permalink: /en/apv/walkthrough/html-forms/
----
 
-* TOC
-{:toc}
-
-Apart from [describing the structure](/en/apv/walkthrough/html/) of text documents, the HTML language can
+Apart from [describing the structure](html/) of text documents, the HTML language can
 be used to create forms. However, HTML is not capable of processing those forms, so
-another [part of the technology stack](/en/apv/walkthrough/dynamic-page/) must be 
+another [part of the technology stack](dynamic-page/) must be 
 used for that. So again, this
 will be slightly boring, because you can't do much with HTML forms alone.
 
@@ -56,7 +49,7 @@ There are two methods to associate a label with an input. Either the `input` ele
 {% endhighlight %}
 
 ### Name and Value
-When [processing HTML forms](/en/apv/walkthrough/dynamic-page/), the browser only 
+When [processing HTML forms](dynamic-page/), the browser only 
 sends the server **name** and **value** pairs for
 each form control. This means that is quite important to know what is the `name` and `value` of each
 element and how they produce the **name** -- **value** pairs. To test what is received on a server for each
@@ -67,8 +60,8 @@ setting the `action=http://odinuv.cz/en/form_test.php` attribute.
 For most form controls, the `name` of the control must be unique within the `form` element. This means that
 across different forms, the form elements may be the same, but inside a single form you must not use the same name twice,
 because the value of one form control would overwrite the value from the other form control. A notable
-exception to this are [buttons](/en/apv/walkthrough/html-forms/#button) 
-and [radio-buttons](/en/apv/walkthrough/html-forms/#radio-button), where the name does not need to be unique.
+exception to this are [buttons](#button) 
+and [radio-buttons](#radio-button), where the name does not need to be unique.
 
 ### Common attributes
 Apart from the `name` and `value`, most controls have attributes:
@@ -78,7 +71,7 @@ Apart from the `name` and `value`, most controls have attributes:
     however focus the control (put the cursor into it) and e.g. copy a text from the control.
 - `disabled` -- When used, the end-user cannot interact with the control in any way.
 - `id` -- A unique identifier of the HTML element, used for 
-linking [labels](/en/apv/walkthrough/html-forms/#labels).
+linking [labels](#labels).
 
 ### Button
 Button is an important part of the form, as it actually allows the end user to send a form.
@@ -86,16 +79,16 @@ Button is best created with the `button` element. Button should have a `type` at
 
 - `submit` -- Standard button for submitting a form
 - `reset` -- Button for resetting the form to the default state (and make end-user angry)
-- `button` -- Button which does nothing (button must be [handled by JavaScript](/en/apv/walkthrough/javascript/))
+- `button` -- Button which does nothing (button must be [handled by JavaScript](javascript/))
 
 Button has the `name` and `value` attributes. However, if a form has multiple buttons, only the button which has been
 actually clicked, will be sent by the browser. Buttons are used without the `label` element.
 
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/button.html %}
+{% include /walkthrough-common/html-forms/button.html %}
 {% endhighlight %}
 
-{% include /en/apv/walkthrough/html-forms/button.html %}
+{% include /walkthrough-common/html-forms/button.html %}
 
 ### Basic Text Input
 As shown above, the text input is created by specifying the `type='text'` attribute. Use the
@@ -108,10 +101,10 @@ is no end tag for the `input` element. Other useful attributes are:
 - `required` -- to trigger validation that a value must be entered
 
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/text-input.html %}
+{% include /walkthrough-common/html-forms/text-input.html %}
 {% endhighlight %}
 
-{% include /en/apv/walkthrough/html-forms/text-input.html %}
+{% include /walkthrough-common/html-forms/text-input.html %}
 
 You can create a password input (input is hidden by asterisks) by specifying
 `type='password'`. Apart from blocking the visible input, it behaves the same
@@ -129,10 +122,10 @@ The name of the form control is defined by the `name` attribute. Other useful at
 - `step` -- a step by which the number can be increased
 
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/number-input.html %}
+{% include /walkthrough-common/html-forms/number-input.html %}
 {% endhighlight %}
 
-{% include /en/apv/walkthrough/html-forms/number-input.html %}
+{% include /walkthrough-common/html-forms/number-input.html %}
 
 ### Date input
 There is a number of predefined inputs for entering date and time values. Some of
@@ -146,10 +139,10 @@ Predefined date input types are:
 - `month` -- for entering just a month of a year
 
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/date-input.html %}
+{% include /walkthrough-common/html-forms/date-input.html %}
 {% endhighlight %}
 
-{% include /en/apv/walkthrough/html-forms/date-input.html %}
+{% include /walkthrough-common/html-forms/date-input.html %}
 
 ### Advanced Text Input
 If you need the end user to enter a value, but it fits into none of the above
@@ -163,10 +156,10 @@ combination of attributes:
 - `pattern` to trigger validation that a value must be entered
 
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/text-input.html %}
+{% include /walkthrough-common/html-forms/text-input.html %}
 {% endhighlight %}
 
-{% include /en/apv/walkthrough/html-forms/text-input.html %}
+{% include /walkthrough-common/html-forms/text-input.html %}
 
 ### Checkbox
 Checkbox is suitable for getting a boolean value from the end-user. As all
@@ -179,10 +172,10 @@ the form). To make the checkbox checked by default, use the
 Try it in the following example:
 
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/checkbox.html %}
+{% include /walkthrough-common/html-forms/checkbox.html %}
 {% endhighlight %}
 
-{% include /en/apv/walkthrough/html-forms/checkbox.html %}
+{% include /walkthrough-common/html-forms/checkbox.html %}
 
 {: .note}
 When using a checkbox, it is important to use the `label` element, so that the
@@ -190,7 +183,7 @@ label text is clickable.
 
 ### Radio Button
 Radiobutton is suitable for choosing between few mutually exclusive values.
-For few values, it is better than a [Select box](/en/apv/walkthrough/html-forms/#select) because it saves the
+For few values, it is better than a [Select box](#select) because it saves the
 end-user a click. There are a couple of exceptions to the radiobutton behavior.
 First, the `name` attribute of the radio button is used to define a **radio group**.
 Radio-buttons within the same *radio group* are mutually exclusive -- this means that the
@@ -201,10 +194,10 @@ have a radiobutton pre-selected, use the [boolean attribute](/en/apv/articles/ht
 `checked='checked'`. You can test it in the following examples:
 
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/radiobutton.html %}
+{% include /walkthrough-common/html-forms/radiobutton.html %}
 {% endhighlight %}
 
-{% include /en/apv/walkthrough/html-forms/radiobutton.html %}
+{% include /walkthrough-common/html-forms/radiobutton.html %}
 
 {: .note}
 When using the radio button, it is important to use the `label` element, so that the
@@ -218,7 +211,7 @@ has the `value` attribute. The content of the `select` element are `option` elem
 the content of the `option` element is the actual text of the option.
 To have an option pre-selected, you can use the `selected` attribute
 (yes, that is different to the `checked` used 
-in the [checkbox and radiobutton](/en/apv/walkthrough/html-forms/#checkbox)).
+in the [checkbox and radiobutton](#checkbox)).
 The feel and look of the select element can be controlled by attributes:
 
 - `size` -- a number of visible items. When the size is equal to 1 (default), the select is displayed
@@ -227,10 +220,10 @@ as a drop-down select.
 to allow selecting of multiple elements.
 
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/select.html %}
+{% include /walkthrough-common/html-forms/select.html %}
 {% endhighlight %}
 
-{% include /en/apv/walkthrough/html-forms/select.html %}
+{% include /walkthrough-common/html-forms/select.html %}
 
 {: .note}
 When using `multiple`, make sure to append `[]` to the element name, so that the value of the
@@ -244,24 +237,24 @@ row allowed in the textarea. A default value for `textarea` is entered simply as
 The content of the `textarea` element is one of the few places in HTML, where whitespace is important.
 
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/textarea.html %}
+{% include /walkthrough-common/html-forms/textarea.html %}
 {% endhighlight %}
 
-{% include /en/apv/walkthrough/html-forms/textarea.html %}
+{% include /walkthrough-common/html-forms/textarea.html %}
 
 {: .note}
 Inside `textarea` whitespace matters, therefore the line `You certainly want to buy it` must not be indented.
 
 ### Task -- Form in a list
-Now try to create the following form. I used a [list](/en/apv/walkthrough/html/#task----lists) for arranging the
+Now try to create the following form. I used a [list](/walkthrough-common/html/#task----lists) for arranging the
 form controls in rows. Also make sure to verify the form by using
 `<form method='post' action='http://odinuv.cz/en/form_test.php'>` and submitting the form.
 
-![Screenshot - Form](/en/apv/walkthrough/html-forms/form-2.png)
+![Screenshot - Form](/en/apv/walkthrough-common/html-forms/form-2.png)
 
 {: .solution}
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/form-sol-1.html %}
+{% include /walkthrough-common/html-forms/form-sol-1.html %}
 {% endhighlight %}
 
 ### Task -- Form in a table
@@ -274,7 +267,7 @@ form controls in rows. Also make sure to verify the form by using
 
 {: .solution}
 {% highlight html %}
-{% include /en/apv/walkthrough/html-forms/form-sol-2.html %}
+{% include /walkthrough-common/html-forms/form-sol-2.html %}
 {% endhighlight %}
 
 
