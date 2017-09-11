@@ -47,7 +47,7 @@ Here is a brief JavaScript demo and an overview of basic syntax and types:
 
 {: .note}
 To try JavaScript code you do not have to write a custom HTML page, just paste this code into online
-tool such as [JSFiddle](https://jsfiddle.net) (use JavaScript editor) or [Plunker](https://plnkr.co/edit/) 
+tool such as [JSFiddle](https://jsfiddle.net) (use JavaScript editor) or [Plunker](https://plnkr.co/edit/)
 and click run. Remember to open that [developer tools](/en/apv/course/not-a-student/#web-browser) console
 when you work with JavaScript.
 
@@ -70,10 +70,10 @@ var s1 = "some string";
 var s2 = new String("continues here");
 console.log(s1 + s2);
 {% endhighlight %}
-    
+
 JavaScript is more strict with type conversions than PHP (or just different), sometimes you have to use
 `parseInt()` or `parseFloat()` functions to convert string variable into number:
-    
+
 {% highlight javascript %}
 var a = "5";
 var b = 8;
@@ -94,7 +94,7 @@ function something() {
 }
 something();    //call that function
 {% endhighlight %}
-    
+
 But then you can notice, that such declaration can interfere with a variable declaration if you use same name
 (variables' and functions' identifiers are stored together although variables have higher priority):
 
@@ -134,11 +134,11 @@ and obtain array's length. There is a new [`for...of` loop](https://developer.mo
 in ES 2015 and array [method `forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 to iterate over all array items (this one was standardized earlier). You can use [`for...in` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
 to iterate over all object's properties.
- 
+
 {% highlight javascript %}
 {% include /en/apv/articles/javascript/basics3.js %}
 {% endhighlight %}
- 
+
 {: .note}
 It is possible to iterate array items with `for...in` cycle, but it is wrong and should be avoided (it treats
 numeric array keys as strings for instance and does not guarantee order of items).
@@ -225,8 +225,8 @@ To obtain an HTML element from document's structure use one of the following fun
 - `document.getElementById("id_value")` -- returns one element found by its `id` attribute
 - `document.getElementsByTagName("table")` -- returns collection of elements by given tag name
 - `document.getElementsByClassName("some-class")` -- returns collection of elements by given class attribute
-- `document.querySelector(".some-css-selector")` -- returns first element matched by given [CSS selector](/en/apv/articles/html/css/#selectors)
-- `document.querySelectorAll(".some-css-selector")` -- returns collection of elements matched by given [CSS selector](/en/apv/articles/html/css/#selectors)
+- `document.querySelector(".some-css-selector")` -- returns first element matched by given [CSS selector](/en/apv/articles/css/#selectors)
+- `document.querySelectorAll(".some-css-selector")` -- returns collection of elements matched by given [CSS selector](/en/apv/articles/css/#selectors)
 
 To access standard HTML attributes of retrieved elements just type `element.attr` (e.g. `console.log(link.href)` for
 `<a>` element). An exception is `class` attribute which is accessed using `element.className`. To change CSS styles use
@@ -444,7 +444,7 @@ window.addEventListener("load", function() {
 
 It does not matter on whichever `<button>` element you click, you always get last value of variable `i` in console
 because the handler is executed after the `for` loop and variable `i` already changed its value to `allLinks.length`.
-In another words, there is only one variable `i` with one value in computer's memory and all event handlers 
+In another words, there is only one variable `i` with one value in computer's memory and all event handlers
 refer to it. You either have to use the `let` keyword or construct a *closure*.
 
 {% highlight javascript %}
@@ -484,7 +484,7 @@ Lets return a bit and talk about `this` variable again. Put yourself into a situ
 handlers based on user action (inside another event handler). Perhaps you need a `<button>` which generates new HTML
 content and this content is responsible for hiding original `<button>` element after user performs some consequent
 action. It means, that you need to pass reference for the first `<button>` into event handler attached to second,
-newly created one. You know that you can use `this` in first click event handler 
+newly created one. You know that you can use `this` in first click event handler
 
 {: .solution}
 {% highlight html %}
@@ -501,7 +501,7 @@ does not introduce its own `this` variable and you can use `this` from parent sc
 
 ## Timers
 There are two types of timers in JavaScript -- an interval and a timeout. The difference is that interval timer ticks
-permanently. The functions which are used to setup interval are similar: `setInterval(callback, delay)` and 
+permanently. The functions which are used to setup interval are similar: `setInterval(callback, delay)` and
 `setTimeout(callback, delay)`. They both return a reference to cancel timer by `clearTimeout(ref)` or
 `clearInterval(ref)` functions. The delay is specified in milliseconds.
 
@@ -584,7 +584,7 @@ Rectangle.prototype.getArea = function() {
 var Square = function(s) {
     Rectangle.call(this, s, s);
 };
-//inheritance - must be after constructor and before methods 
+//inheritance - must be after constructor and before methods
 Square.prototype = new Rectangle();
 Square.prototype.constructor = Square;
 //now you can define methods which belong only to Square class

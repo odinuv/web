@@ -51,8 +51,8 @@ Other useful functions to retrieve HTML elements:
 
 - `document.getElementsByTagName("table")` --- returns an array of elements with a given tag name (i.e all `<table>` elements)
 - `document.getElementsByClassName("some-class")` --- returns an array of elements with a given `class` attribute
-- `document.querySelector(".some-css-selector")` --- returns the first element matched by a given [CSS selector](/en/apv/articles/html/css/#selectors)
-- `document.querySelectorAll(".some-css-selector")` --- returns an array of elements matched by a given [CSS selector](/en/apv/articles/html/css/#selectors)
+- `document.querySelector(".some-css-selector")` --- returns the first element matched by a given [CSS selector](/en/apv/articles/css/#selectors)
+- `document.querySelectorAll(".some-css-selector")` --- returns an array of elements matched by a given [CSS selector](/en/apv/articles/css/#selectors)
 
 When you have elements, you can access their HTML attributes by their standard names (e.g. `console.log(link.href)` for
 an `<a>` element). An exception is the `class` attribute which must be accessed using the `element.className` property.

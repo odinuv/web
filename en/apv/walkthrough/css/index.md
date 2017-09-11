@@ -11,7 +11,7 @@ You already know how to
 [use the Latte templating system](/en/apv/walkthrough/templates/).
 Still you do not know, how to make your page **not** to look like it came from 1995.
 The answer is CSS -- a special syntax (yes, another language) which can define how
-HTML elements are [rendered](/en/apv/articles/html/css/) in your browser.
+HTML elements are [rendered](/en/apv/articles/css/) in your browser.
 
 In this article I will not teach you every detail of CSS, but I want to show you some basics.
 Usually a beautiful design does not come from a programmer or HTML coder but from professional
@@ -20,7 +20,7 @@ That is something that most programmers do not have (and that is OK, because we 
 a good code). Nevertheless you need to know how to apply some CSS styles to make your application look modern.
 
 ## CSS Basics
-[CSS is a language](/en/apv/articles/html/css/#cascading-style-sheets) for the definition of graphical properties for individual HTML elements -- things like text color, text size, background color, position, etc.
+[CSS is a language](/en/apv/articles/css/#cascading-style-sheets) for the definition of graphical properties for individual HTML elements -- things like text color, text size, background color, position, etc.
 Each browser has a set of default CSS definitions for
 HTML elements (called *user agent stylesheet*), we can override these definitions by using our own.
 
@@ -36,7 +36,7 @@ h1 {
 }
 {% endhighlight %}
 
-It contains a set of [**CSS selectors**](/en/apv/articles/html/css/#selectors) (`body` or `h1` in this case) each of them containing a
+It contains a set of [**CSS selectors**](/en/apv/articles/css/#selectors) (`body` or `h1` in this case) each of them containing a
 set of **CSS properties** with
 values in curly braces divided by semicolons. Most CSS properties and their values are self-explaining
 and as you can see, these properties are also very specific. For example, you can set a different
@@ -68,7 +68,7 @@ CSS styles for many HTML elements globally using those CSS selectors [(read on)]
 The styles which you define for elements in the upper levels of the HTML structure are inherited by their
 descendants, unless these elements are told to be different. In case of conflict (you can set different
 values of the same attribute for an element), the right CSS definition is selected by
-[*cascading*](http://localhost:4000/en/apv/articles/html/css/#cascading) of
+[*cascading*](/en/apv/articles/css/#cascading) of
 styles. In short the cascading means that more specific selectors and definitions which are defined
 last are used in case of uncertainty. You can observe these conflicts using the DOM inspector in
 [developer tools](/en/apv/course/not-a-student/#web-browser) (F12) of your browser:
@@ -80,7 +80,7 @@ Strikeout property values are those which are *overridden*.
 
 ### Linking your CSS to HTML file
 To link the style definition to our page, we need to pass our CSS definitions into the browser.
-There are [three ways how to do it](/en/apv/articles/html/css/#connecting-styles-with-html), but the best is to
+There are [three ways how to do it](/en/apv/articles/css/#connecting-styles-with-html), but the best is to
 place the CSS definitions into a
 separate file(s). This way, you can easily swap CSS files if you want to apply a new design.
 Notice in the [developer console (F12)](todo) that after you link the HTML and CSS file together, a new
@@ -168,7 +168,7 @@ input[required] {
 {% endhighlight css %}
 
 #### Pseudo-classes
-A [pseudo-class](/en/apv/articles/html/css/#pseudo-classes) is a special selector for features which cannot be easily recorded in the HTML code or
+A [pseudo-class](/en/apv/articles/css/#pseudo-classes) is a special selector for features which cannot be easily recorded in the HTML code or
 described with classes. Most popular one is `:hover` which is used to style
 HTML elements while a mouse cursor is present over them (an interesting point is that some modern devices
 do not have a mouse). You can use pseudo-classes also on parent elements:
@@ -238,7 +238,7 @@ Try to find and use CSS for rounded corners.
 {% endhighlight %}
 
 ### Colors
-[Colors](/en/apv/articles/html/css/#css-colors) are defined with their [RGB components](https://en.wikipedia.org/wiki/RGB_color_model).
+[Colors](/en/apv/articles/css/#css-colors) are defined with their [RGB components](https://en.wikipedia.org/wiki/RGB_color_model).
 Usually a HEX coding is used, but plain RGB is also available:
 
 {% highlight css %}
@@ -249,7 +249,7 @@ h1 {
 }
 {% endhighlight css %}
 
-The [HEX coding](/en/apv/articles/html/css/#hexadecimal-colors) makes it simple to mix colors because it gives you 16 levels of
+The [HEX coding](/en/apv/articles/css/#hexadecimal-colors) makes it simple to mix colors because it gives you 16 levels of
 each basic color -- e.g. if you want to mix a somewhat yellowish color you can take 12 levels (C - 12) of red and
 10 levels (A - 10) of green which is encoded like this <span style="color: #CCAA00">#CCAA00</span>.
 
@@ -273,21 +273,21 @@ Some useful relative units:
 -   *vmin*, *vmax* -- percent of smaller/larger dimension of viewport
 
 You can set width and height only for
-[block elements](/en/apv/articles/html/css/#block-layout). [Inline elements](/en/apv/articles/html/css/#inline-layout)
+[block elements](/en/apv/articles/css/#block-layout). [Inline elements](/en/apv/articles/css/#inline-layout)
 can only change the size of font (line-height). To switch
 this behavior, you can use the CSS property `display` with value `block` or `inline`. There is also a mode called
 `inline-block` which enables inline elements to have specific width and height and not wrap lines at their ends.
 
 ### Positioning
-There are four types of element's [position modes](/en/apv/articles/html/css/#positioned-layout). The default one
+There are four types of element's [position modes](/en/apv/articles/css/#positioned-layout). The default one
 is *static* which places inline elements on
 a single baseline as long as they fit width of the window and block elements on entire width of the window.
-The position mode called [*Relative*](/en/apv/articles/html/css/#relative-position) is used to displace an
+The position mode called [*Relative*](/en/apv/articles/css/#relative-position) is used to displace an
 element from its default (*static*) position. But it is mostly
-used just as a container for the [*Absolute*](/en/apv/articles/html/css/#absolute-position) position mode.
+used just as a container for the [*Absolute*](/en/apv/articles/css/#absolute-position) position mode.
 The *absolute* mode is used to place the element on a certain position
 within its parent. The parent is either the `body` element or the element with its position set to anything other than *static*.
-The [*fixed position*](/en/apv/articles/html/css/#fixed-position) is used to place the element on a given position in the browser
+The [*fixed position*](/en/apv/articles/css/#fixed-position) is used to place the element on a given position in the browser
 window (even scrolling does not affect
 the element position -- navigation panels on some sites behave like this).
 

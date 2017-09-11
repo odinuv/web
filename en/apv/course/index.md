@@ -46,7 +46,7 @@ the development of web applications and database applications (relational databa
     - Exercises: [Application Layout and Templates](/en/apv/walkthrough/css/bootstrap/)
     - [Presentation slides](/en/apv/slides/database-tech/)
 - Week 9
-    - Articles: [Cascading Style Sheets](/en/apv/articles/html/css/)
+    - Articles: [Cascading Style Sheets](/en/apv/articles/css/)
     - Exercises: [Advanced Inserts](/en/apv/walkthrough/backend-insert/advanced/todo)
 - Week 10
     - Exercises: [Deleting Data](/en/apv/walkthrough/backend-delete)
@@ -79,5 +79,5 @@ application design, functionality and user interface. It is not an easy task, so
 ![Database Schema](/en/apv/schema.svg)
 
 The database schema defines what kind of data your application should store. You can change it
-if you want to do so, but please do so only after you understand 
+if you want to do so, but please do so only after you understand
 the [database design process](/en/apv/articles/database-design/).

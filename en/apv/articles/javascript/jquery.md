@@ -13,7 +13,7 @@ implementation and DOM/BOM interfaces. Writing complex JavaScript code was almos
 to produce a website compatible with most common browsers that days. It was common practice to have large pieces of code
 for different browsers and crazy detection of browser type and version. You also noticed in [previous article](/en/apv/articles/javascript/),
 that DOM lookup and manipulation methods have long names. In the past, there also was no `document.querySelector()`
-method to utilize handy [CSS selectors](/en/apv/articles/html/css/#selectors) to search for DOM elements. The jQuery
+method to utilize handy [CSS selectors](/en/apv/articles/css/#selectors) to search for DOM elements. The jQuery
 library eliminated those tedious issues and gave developers unified API which was cross-browser consistent -- this
 is called a [facade](https://en.wikipedia.org/wiki/Facade_pattern).
 
