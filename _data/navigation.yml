@@ -103,6 +103,9 @@ items:
 
       - url: /en/apv/articles/css/
         title: CSS Styles
+        items:
+        - url: /en/apv/articles/css/layout/
+          title: Layout Modes
 
       - url: /en/apv/articles/javascript/
         title: JavaScript

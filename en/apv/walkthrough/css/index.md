@@ -273,21 +273,21 @@ Some useful relative units:
 -   *vmin*, *vmax* -- percent of smaller/larger dimension of viewport
 
 You can set width and height only for
-[block elements](/en/apv/articles/css/#block-layout). [Inline elements](/en/apv/articles/css/#inline-layout)
+[block elements](/en/apv/articles/css/layout/#block-layout). [Inline elements](/en/apv/articles/css/layout/#inline-layout)
 can only change the size of font (line-height). To switch
 this behavior, you can use the CSS property `display` with value `block` or `inline`. There is also a mode called
 `inline-block` which enables inline elements to have specific width and height and not wrap lines at their ends.
 
 ### Positioning
-There are four types of element's [position modes](/en/apv/articles/css/#positioned-layout). The default one
+There are four types of element's [position modes](/en/apv/articles/css/layout/#positioned-layout). The default one
 is *static* which places inline elements on
 a single baseline as long as they fit width of the window and block elements on entire width of the window.
-The position mode called [*Relative*](/en/apv/articles/css/#relative-position) is used to displace an
+The position mode called [*Relative*](/en/apv/articles/css/layout/#relative-position) is used to displace an
 element from its default (*static*) position. But it is mostly
-used just as a container for the [*Absolute*](/en/apv/articles/css/#absolute-position) position mode.
+used just as a container for the [*Absolute*](/en/apv/articles/css/layout/#absolute-position) position mode.
 The *absolute* mode is used to place the element on a certain position
 within its parent. The parent is either the `body` element or the element with its position set to anything other than *static*.
-The [*fixed position*](/en/apv/articles/css/#fixed-position) is used to place the element on a given position in the browser
+The [*fixed position*](/en/apv/articles/css/layout/#fixed-position) is used to place the element on a given position in the browser
 window (even scrolling does not affect
 the element position -- navigation panels on some sites behave like this).
 
