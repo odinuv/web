@@ -26,3 +26,4 @@ sass:
 
 gems:
   - jekyll-sitemap
+  - jekyll-redirect-from  
