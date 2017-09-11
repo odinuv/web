@@ -1,7 +1,7 @@
 
-Apart from [describing the structure](html/) of text documents, the HTML language can
+Apart from [describing the structure](../html/) of text documents, the HTML language can
 be used to create forms. However, HTML is not capable of processing those forms, so
-another [part of the technology stack](dynamic-page/) must be 
+another [part of the technology stack](../dynamic-page/) must be 
 used for that. So again, this
 will be slightly boring, because you can't do much with HTML forms alone.
 
@@ -19,11 +19,11 @@ The following list shows the most common (and useful) form controls and some
 very useful attributes of those controls.
 
 Many form inputs are created using the `input` element. The input element has no content, so
-it's written in using shorthand tags `<input ... />`. The type of the input is determined by the
+it's written in using shorthand tags `<input ...>`. The type of the input is determined by the
 value of the `type` attribute. Therefore to create a text form input, use:
 
 {% highlight html %}
-<input type='text' />
+<input type='text'>
 {% endhighlight %}
 
 ### Labels
@@ -38,18 +38,18 @@ There are two methods to associate a label with an input. Either the `input` ele
 #### Method 1
 {% highlight html %}
 <label>Enter your name:
-    <input type='text' />
+    <input type='text'>
 </label>
 {% endhighlight %}
 
 #### Method 2
 {% highlight html %}
 <label for='firstName'>Enter your name:</label>
-<input id='firstName' type='text' />
+<input id='firstName' type='text'>
 {% endhighlight %}
 
 ### Name and Value
-When [processing HTML forms](dynamic-page/), the browser only 
+When [processing HTML forms](../dynamic-page/), the browser only 
 sends the server **name** and **value** pairs for
 each form control. This means that is quite important to know what is the `name` and `value` of each
 element and how they produce the **name** -- **value** pairs. To test what is received on a server for each
@@ -79,7 +79,7 @@ Button is best created with the `button` element. Button should have a `type` at
 
 - `submit` -- Standard button for submitting a form
 - `reset` -- Button for resetting the form to the default state (and make end-user angry)
-- `button` -- Button which does nothing (button must be [handled by JavaScript](javascript/))
+- `button` -- Button which does nothing (button must be [handled by JavaScript](../javascript/))
 
 Button has the `name` and `value` attributes. However, if a form has multiple buttons, only the button which has been
 actually clicked, will be sent by the browser. Buttons are used without the `label` element.

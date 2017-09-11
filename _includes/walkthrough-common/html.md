@@ -2,7 +2,7 @@
 A static [web page](/en/apv/articles/web/#www-service) is a page which must be modified by the
 page developer. For example, this site
 is a static page. Static pages are generally boring, but they are a necessary step to get into the fun
-stuff -- [dynamic pages](dynamic-page/). In this chapter, you will learn to write
+stuff -- [dynamic pages](../dynamic-page/). In this chapter, you will learn to write
 [HTML documents](/en/apv/articles/html/).
 
 ## Getting started
@@ -169,7 +169,7 @@ so it is written with just the start tag `<img src='...'>`. This can get a
 [lot more complicated](/en/apv/articles/html/#html-elements----tags).
 
 The page does not look like the nice best page in the world, but it will get much better, once you
-get to [layout and styles](css/) because the HTML language does not have the means to format and
+get to [layout and styles](../css/) because the HTML language does not have the means to format and
 style a document. Do not attempt to style a web page using the HTML language.
 E.g. never use a second `h2` or third level `h3` heading instead of the first level heading
 `h`` just to get a smaller font size. The structure of the document must be used irrespective of
