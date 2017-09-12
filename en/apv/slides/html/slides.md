@@ -1,7 +1,7 @@
 ---
 layout: slides
 title: HTML, CSS and other Web Standards
-description: Overview of HTML language, a little excursion into its history and introduction to CSS language. 
+description: Overview of HTML language, a little excursion into its history and introduction to CSS language.
 transition: slide
 permalink: /en/apv/slides/html/
 ---
@@ -12,14 +12,14 @@ permalink: /en/apv/slides/html/
     - **Hypertext** is a document interconnected with other documents via links.
 - The most used format of web pages (documents provided by WWW service).
 - The last version of the standard -- HTML5 from 2014 -- [W3C Specification](https://www.w3.org/TR/html5/).
-- HTML is language for describing the **structure of a text document**.
+- HTML is a language for describing the **structure of a text document**.
 - HTML is **not** a programming language.
 - HTML is interpreted by Web Browsers.
 
 </section>
 
 <section markdown='1'>
-## Web Browsers 
+## Web Browsers
 
 ![Graph -- Browser Share](/en/apv/articles/html/browsers.png)
 </section>
@@ -29,7 +29,7 @@ permalink: /en/apv/slides/html/
 - Hierarchical structure of **elements**:
     - **parent** -- **child** relationship (**siblings** too).
 - Elements are written down using **tags**:
-    - `<h1 id='intro'>Introduction</h1>` 
+    - `<h1 id='intro'>Introduction</h1>`
 - Element:
     - Name (enclosed in angle brackets) -- `h1`,
     - Start tag -- `<h1>`,
@@ -52,17 +52,17 @@ permalink: /en/apv/slides/html/
 </section>
 
 <section markdown='1'>
-## HTML Structure 
+## HTML Structure
 - **Entities** -- placeholders for special characters:
-    - Begin with ampersand `&`, end with semicolon `;`,
+    - Begin with the ampersand `&`, end with the semicolon `;`,
     - Encoded as:
-        - symbolic character name -- `&gt;` (greater) -- defined in 
+        - a symbolic character name -- `&gt;` (greater) -- defined in
         [W3C Specification](http://w3c.github.io/html/syntax.html#named-character-references),
-        - or numeric Unicode character code reference -- `&#62;` or `&#x3E;`,            
-- **Comments** -- A part of HTML code which is not interpreted:
-    - `<!--` comment may not contain two dashes `-->`,
+        - or a numeric Unicode character code reference -- `&#62;` or `&#x3E;`,
+- **Comments** -- a part of the HTML code which is not interpreted:
+    - `<!--` a comment may not contain two dashes `-->`,
     - They are still visible in the page source!
-- Unless you do something special, then all browsers generally do behave the same way.
+- Unless you do something special, all browsers generally do behave the same way.
 
 </section>
 
@@ -116,12 +116,12 @@ permalink: /en/apv/slides/html/
 <section markdown='1'>
 ## HTML Attributes
 - Common attributes:
-    - id, class -- used for styling and scripting on client side,
+    - id, class -- used for styling and scripting on the client side,
     - style -- definition of an inline style,
     - title -- hint which is shown on mouse-over,
     - others -- http://www.w3.org/TR/html5/elements.html#global-attributes,
     - data attributes -- arbitrary attributes without semantics.
-- **Containment principle** -- related to **page layout**.
+- **Containment principle** -- related to the **page layout**.
 
 </section>
 
@@ -148,28 +148,28 @@ permalink: /en/apv/slides/html/
 
 <section markdown='1'>
 ## HTML Header
-- `head` element may contain:
+- a `head` element may contain:
     - `title` -- set page title (required),
     - `meta` -- set page **metadata**, at least encoding:
         - `<meta charset='utf-8' />` (almost required)
-    - `style` -- CSS styles in page,
-    - `link` -- definition of related files (external style, fonts, etc.),
-    - `script` -- JavaScript code or link to JavaScript code.
+    - `style` -- CSS styles in the page,
+    - `link` -- a definition of related files (external style, fonts, etc.),
+    - `script` -- a JavaScript code or a link to a JavaScript code.
 
 </section>
 
 <section markdown='1'>
 ## HTML × XHTML × XML
-- XML (Extensible Markup Language) -- generic language for data description.
+- XML (Extensible Markup Language) -- a generic language for data description.
 - Looks similar to HTML -- the same ancestor (SGML):
     - contains elements, attributes, entities,
     - does not define interpretation or rendering of data.
 - Simplified rules:
     - required header: `<?xml version="1.0"?>`,
-    - tag name is lower-case, end tag is required
-    - attribute value must be in quotes, a value is required,
-    - empty tag may be shortened to `<element />`,
-- **XML Application** is an interpretation of the XML document (not a program).
+    - a tag name is lower-case, the end tag is required
+    - an attribute value must be in quotes, a value is required,
+    - an empty tag may be shortened to `<element />`,
+- An **XML Application** is an interpretation of the XML document (not a program).
 
 </section>
 
@@ -205,42 +205,42 @@ permalink: /en/apv/slides/html/
 ## HTML × XHTML × XML
 - HTML4 has:
     - many optional language elements (the language was supposed to be smart),
-    - complicated implementation of interpreter in web browser,
+    - complicated implementation of an interpreter in a web browser,
     - semantic elements and visual elements,
     - `<!DOCTYPE ` that specifies the DTD.
 - XML has:
     - faster and more effective processing than HTML,
     - simple *parser* implementation.
-    - no error recovery    
+    - no error recovery
 </section>
 
 <section markdown='1'>
 ## HTML × XHTML × XML Cont.
 - XHTML:
-    - is a XML application of HTML language,
+    - is an XML application of the HTML language,
     - has supposedly simplified *interpreter* implementation,
-    - has no error recovery if transmitted as `application/xhtml+xml`, 
+    - has no error recovery if transmitted as `application/xhtml+xml`,
 - HTML5:
     - is a brand new language without a lot of historic burden,
     - is developed from 2007, standardized in 2014,
     - is not based on SGML,
-    - has complicated implementation of interpreter.
+    - has complicated implementation of an interpreter.
     - contains both HTML and XHTML markups (and HTML DOM) representations
 </section>
 
 <section markdown='1'>
 ## HTML5
 - `<!DOCTYPE html>`
-- Extend semantic elements (`article`, `nav`, `menu`, ...).
+- Extended semantic elements (`article`, `nav`, `menu`, ...).
 - Improved user interaction:
-    - inserting objects into page (video, vector graphics, math, ...),
+    - inserting objects into the page (video, vector graphics, math, ...),
     - improved form elements (date, number, ...),
     - validation of forms (data types, regexp, ...),
     - spread forms (form elements without containment),
     - data attributes.
 - Removed all visual elements.
-- Did some accessibility improvements (see WCAG).
-- Extensible with other markup (MathML, SVG).
+- Done some accessibility improvements (see WCAG).
+- Extensible with other markups (MathML, SVG).
 
 </section>
 
@@ -248,7 +248,7 @@ permalink: /en/apv/slides/html/
 ## Styles
 - HTML describes only the **structure** of a text document.
     - There is no way to change the visual *rendering*.
-- To change the rendering of document, **styles** must be used.
+- To change the rendering of a document, **styles** must be used.
 - CSS (Cascading Style Sheets) is a language for the definition of styles.
     - CSS is not a programming language.
 - When no styles are applied, the web browser uses default styles (also called **user-agent** styles).
@@ -259,7 +259,7 @@ permalink: /en/apv/slides/html/
 ## CSS Styles
 - From CSS3, the standard is split into **modules**:
     - Various degrees of standardization (earliest 2007).
-- Various browser tests to determine support:
+- Various browser tests to determine the support:
     - [http://www.w3.org/TR/CSS/](http://www.w3.org/TR/CSS/)
     - [http://acid3.acidtests.org/](http://acid3.acidtests.org/)
     - [http://css3test.com/](http://css3test.com/)
@@ -272,7 +272,7 @@ permalink: /en/apv/slides/html/
 <section markdown='1'>
 ## CSS Styles
 - Dozens of modules:
-    - font properties, color, box properties, box model, 
+    - font properties, color, box properties, box model,
     - border, color, margin, background, effects, …
 - **Web page is not paper**.
     - Web page must adapt to (almost) infinite number of window sizes.
@@ -283,54 +283,50 @@ permalink: /en/apv/slides/html/
 
 <section markdown='1'>
 ## CSS Syntax
-- CSS document is composed of CSS rules:
+- A CSS document is composed of CSS rules:
     - `selector {property: value;}`
 - Example: `body {color: black;}`
     - There is no semicolon after the parentheses.
 - Selector:
     - element name -- `h1 {color: white}`
-    - element class -- `.table_list {width: 100%}` 
+    - element class -- `.table_list {width: 100%}`
     - element id -- `#input_name {width: 40px}`
 - Selectors can be combined.
 - Any number of properties can be set in a single rule.
-
 </section>
 
 <section markdown='1'>
 ## CSS Syntax
 - Selector combinations examples:
-    - `li, a` -- for element that is either `<li>` or `<a>`,
-    - `li a` -- for element `<a>` that is contained in `<li>`,
-    - `li>a` -- for element `<a>` that is direct child of `<li>`,
-    - `li.menu` -- for element `<li>` that has class `menu`.
+    - `li, a` -- for an element that is either `<li>` or `<a>`,
+    - `li a` -- for an element `<a>` that is contained in `<li>`,
+    - `li>a` -- for an element `<a>` that is a direct child of `<li>`,
+    - `li.menu` -- for an element `<li>` that has the class `menu`.
 - Pseudo-classes:
     - things which cannot be determined by HTML structure,
     - hover, active, focus, link, visited, nth-child, …
-    - `li a:visited` -- visited link inside an `li`,
-    - `li.menu a#first:link` -- not visited link with id `first` inside an `li` with class `menu`.
-
+    - `li a:visited` -- a visited link inside an `li`,
+    - `li.menu a#first:link` -- a not visited link with id `first` inside an `li` with the class `menu`.
 </section>
 
 <section markdown='1'>
 ## Connecting styles with HTML
 - External file:
-    - `<link rel='stylesheet' type='text/css' href='style.css' />`
-    - Best solution -- all styles in one place.
-    - Link to HTML element with selectors (element name, class, id).
-
+    - `<link rel='stylesheet' href='style.css'>`
+    - The best solution -- all styles in one place.
+    - a link to the HTML element with selectors (element name, class, id).
 </section>
 
 <section markdown='1'>
-## Connecting styles with HTML cont.   
+## Connecting styles with HTML cont.
 - Inside HTML page:
     - `<style type='text/css'>body {color: green;} … </style>`
     - Used for special pages.
     - Used to optimize the number of HTTP requests.
 - Inline:
     - `<body style='color: green'>…`
-    - (Obviously?) without a selector. 
-    - Highest priority, use only for exceptions. 
-
+    - (Obviously?) without a selector.
+    - Highest priority, use only for exceptions.
 </section>
 
 <section markdown='1'>
@@ -363,15 +359,15 @@ permalink: /en/apv/slides/html/
 - All CSS rules are applied in order by priority:
     - **closer** and **more specific** rules have higher priority;
     - higher priority rules override lower priority rules;
-    - only properties are overridden, not entire rules.  
+    - only properties are overridden, not entire rules.
 - Inline style > page style > external style.
 - Id > class.
 
 </section>
 
 <section markdown='1'>
-## CSS Box Model 
-- Padding -- inside of the HTML element -- between content and box.
+## CSS Box Model
+- Padding -- inside of the HTML element -- between the content and the box.
 - Border -- outside of the HTML element -- around the box.
 - Margin -- outside of the HTML element -- around the box.
 
@@ -379,19 +375,19 @@ permalink: /en/apv/slides/html/
 </section>
 
 <section markdown='1'>
-## CSS Box Size 
+## CSS Box Size
 - Size -- width/height - content + spacing + border.
 - The size is depending on the **box model**:
     - basic types: `inline`, `block` (corresponding with HTML elements);
-    - inline is limited by line size;
-    - block is sized independently.
+    - inline is limited by the line size;
+    - the block is sized independently.
 
 </section>
 
 <section markdown='1'>
 ## CSS Colors
 - On screen, colours are mixed **additively**.
-- Color can be set by:
+- A color can be set by:
     - name -- `black`, `white`, … (over a hundred);
     - by three RGB components (component intensity 0-255):
         - `color: rgb(255, 0, 0)` (decimal),
@@ -399,13 +395,13 @@ permalink: /en/apv/slides/html/
         - `color: #F00` (shorthand hexadecimal),
         - `color: rgba(255, 0, 0, 0.5)` (**alpha channel**);
     - by three HSL components:
-        - `color: hsl(0, 100%, 50%)`, 
+        - `color: hsl(0, 100%, 50%)`,
         - `color: hsla(0, 100%, 50%, 0.5)` (**alpha channel**).
 </section>
 
 <section markdown='1'>
 ## CSS Layouts
-- Creating a full page layout is non-trivial task.
+- Creating a full page layout is a non-trivial task.
 - Layouts for web pages and for web applications are completely different.
 - Use existing layouts, e.g.:
     - Bootstrap ([getbootstrap.com](http://getbootstrap.com/)),
@@ -418,7 +414,7 @@ permalink: /en/apv/slides/html/
 
 <section markdown='1'>
 ## Sources
-- Always check the data and author -- many sources are outdated or plain wrong.
+- Always check the data and the author -- many sources are outdated or plain wrong.
 - [W3C wiki](www.w3.org/community/webed/wiki/)
 - [Mozilla Developer Portal](https://developer.mozilla.org/en-US/docs/Web)
 - [Google University](https://developers.google.com/university/)
@@ -427,10 +423,10 @@ permalink: /en/apv/slides/html/
 
 <section markdown='1'>
 ## Checkpoint
-- Why mustn't HTML start tag and end tag cross?
-- What happens if HTML document lacks a `<!DOCTYPE`?
+- Why mustn't the HTML start tag and end tag cross?
+- What happens if a HTML document lacks a `<!DOCTYPE`?
 - Can you have a delete icon on a page without using an image?
-- What does XML and HTML have in common? 
+- What does XML and HTML have in common?
 - Why CSS3 has not been standardized yet?
 - Who says that `<title>` must not occur twice in a HTML document?
 - Is it better to draw a border using CSS or use an PNG image?

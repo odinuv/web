@@ -15,10 +15,17 @@ details of all the used technologies.
 
 **[APV Course outline](/en/apv/course/)**
 
-Why two walkthroughs? Because there are many completely different approaches to build a web application.
-The classic [**Walkthrough**](/en/apv/walkthrough/) goes to the roots and is great for general understanding. THe
-[**Slim Walkthrough**](/en/apv/walkthrough-slim/) uses a PHP framework which represents a quicker way to the goal, but there
-is some magic involved.
+## Why two Walkthroughs?
+Because there are many completely different approaches to build a web application.
+
+- The [**Classic Walkthrough**](/en/apv/walkthrough/) goes to the roots and is great for general understanding. It uses
+raw mostly procedural PHP and no PHP framework. HTML is rendered using Latte Templates.
+-  The [**Slim Walkthrough**](/en/apv/walkthrough-slim/) uses the Slim PHP framework. It represents a quicker way to the goal, but there
+is some magic involved. HTML is also rendered using Latte Templates.
+
+Both Walkthroughs share some parts (e.g HTML, HTML forms, SQL), the difference is mainly in the way the PHP code on
+backend is organized.
+Note that for **[APV Course outline](/en/apv/course/)**, the [**Slim Walkthrough**](/en/apv/walkthrough-slim/) is the current one.
 
 ## Goals
 My goals are:
