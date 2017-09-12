@@ -1,14 +1,14 @@
 ---
 layout: slides
 title: SQL Aggregation
-description: Aggregation functions in SQL, grouping and sub-queries. 
+description: Aggregation functions in SQL, grouping and sub-queries.
 transition: slide
 permalink: /en/apv/slides/sql-aggregation/
 ---
 
 <section markdown='1'>
 ## Sub Queries
-- SQL language is very powerful and rich, there are many ways to solve one problem:
+- The SQL language is very powerful and rich, there are many ways to solve one problem:
     - Join condition × Where condition,
     - Join × `IN` operator,
     - Join × sub-query.
@@ -21,13 +21,13 @@ permalink: /en/apv/slides/sql-aggregation/
 ## Example -- Query 1
 {% highlight sql %}
 SELECT person.nickname, contact.contact
-FROM 
-  (person JOIN contact 
+FROM
+  (person JOIN contact
     ON person.id_person = contact.id_person
-  ) JOIN contact_type 
-	ON contact.id_contact_type = 
+  ) JOIN contact_type
+	ON contact.id_contact_type =
       contact_type.id_contact_type
-WHERE 
+WHERE
   contact_type.name LIKE '%mail'
 {% endhighlight %}
 </section>
@@ -36,13 +36,13 @@ WHERE
 ## Example -- Query 2
 {% highlight sql %}
 SELECT person.nickname, contact_email.contact
-FROM 
+FROM
   person JOIN (
-    SELECT contact, id_person FROM 
+    SELECT contact, id_person FROM
       contact JOIN (
-        SELECT id_contact_type FROM 
+        SELECT id_contact_type FROM
           contact_type
-        WHERE name LIKE '%mail') AS type_email 
+        WHERE name LIKE '%mail') AS type_email
       ON contact.id_contact_type = type_email.id_contact_type
   ) AS contact_email
   ON person.id_person = contact_email.id_person
@@ -52,11 +52,11 @@ FROM
 <section markdown='1'>
 ## Example -- Query 3
 {% highlight sql %}
-SELECT person.nickname FROM person 
+SELECT person.nickname FROM person
   WHERE person.id_person IN (
-	SELECT DISTINCT id_person FROM contact 
+	SELECT DISTINCT id_person FROM contact
 	WHERE id_contact_type IN (
-	  SELECT id_contact_type FROM contact_type 
+	  SELECT id_contact_type FROM contact_type
 	  WHERE name LIKE '%mail'
 	)
 )
@@ -67,15 +67,15 @@ SELECT person.nickname FROM person
 ## Example -- Query 4
 {% highlight sql %}
 SELECT person.nickname
-FROM person 
+FROM person
 WHERE EXISTS (
-  SELECT 1 FROM 
-    contact 
+  SELECT 1 FROM
+    contact
   WHERE EXISTS (
-    SELECT 1 FROM 
+    SELECT 1 FROM
       contact_type
     WHERE name LIKE '%mail' AND
-      contact.id_contact_type = contact_type.id_contact_type 
+      contact.id_contact_type = contact_type.id_contact_type
   ) AND person.id_person = contact.id_person
 )
 {% endhighlight %}
@@ -83,23 +83,23 @@ WHERE EXISTS (
 
 <section markdown='1'>
 ## Example Summary
-- Example of 4 different approaches to retrieving persons with e-mail. 
+- Example of 4 different approaches to retrieving persons with e-mails.
     - They can be combined freely.
-- Query 3 and 4 does not allow to select `contact` value, otherwise results are same.
+- Query 3 as well as 4 does not allow to select the `contact` value, otherwise results are same.
 - Query 1 -- join everything together, then select what you want.
 - Query 2 -- select first, then join together (mind aliases).
-- Query 3 -- use `IN` operator and sub-queries to select sets.
-- Query 4 -- use `EXISTS` operator and correlated sub-queries.  
+- Query 3 -- use the `IN` operator and sub-queries to select sets.
+- Query 4 -- use the `EXISTS` operator and correlated sub-queries.
 </section>
 
 <section markdown='1'>
 ## Another Example -- Query 1A
 
 {% highlight sql %}
-SELECT person.first_name, person.last_name, 
+SELECT person.first_name, person.last_name,
   location.city
-FROM 
-  person JOIN location 
+FROM
+  person JOIN location
     ON person.id_location = location.id_location
 WHERE city = 'Brno'
 {% endhighlight %}
@@ -111,11 +111,11 @@ WHERE city = 'Brno'
 ## Example -- Query 1B
 
 {% highlight sql %}
-SELECT person.first_name, person.last_name, 
+SELECT person.first_name, person.last_name,
   location_brno.city
 FROM person
   JOIN (
-    SELECT city, id_location 
+    SELECT city, id_location
 	  FROM location
 	  WHERE city = 'Brno'
   ) AS location_brno
@@ -130,44 +130,44 @@ ON person.id_location = location_brno.id_location
 ## Example -- Query 2A
 
 {% highlight sql %}
-SELECT person.first_name, person.last_name, 
+SELECT person.first_name, person.last_name,
   location.city
-FROM 
-  person LEFT JOIN location 
+FROM
+  person LEFT JOIN location
   ON person.id_location = location.id_location
 WHERE (city = 'Brno') OR (city IS NULL)
 {% endhighlight %}
 
-- Without condition, same result.
-- With condition gives you a list of persons living in Brno city or without address.
+- Without amy condition, the same result.
+- With a condition, gives you a list of persons living in Brno city or without an address.
 </section>
 
 <section markdown='1'>
 ## Example -- Query 2B
 
 {% highlight sql %}
-SELECT person.first_name, person.last_name, 
+SELECT person.first_name, person.last_name,
   location_brno.city
 FROM person
   LEFT JOIN (
-    SELECT city, id_location 
+    SELECT city, id_location
   FROM location
     WHERE city = 'Brno'
   ) AS location_brno
 ON person.id_location = location_brno.id_location
 {% endhighlight %}
 
-- Gives a list of **all** persons and their address provided that they live in Brno.
+- Gives a list of **all** persons and their addresses provided that they live in Brno.
 </section>
 
 <section markdown='1'>
 ## Example -- Summary
-- In Queries 2A and 2B the search condition is moved into sub-query.     
+- In Queries 2A and 2B the search condition is moved into a sub-query.
 - Queries 1A and 2A are functionally equivalent.
-    - 1A is simpler, but whatever you do, you cannot change it to result 2B.
+    - 1A is simpler, but whatever you do, you cannot change it to the result 2B.
     - It is an example of a dead-end approach.
-- Example of how tiny changes in the query can lead to very different results.
-- Example of how tiny changes in the requirements can lead to very different queries.
+- An example of how tiny changes in the query can lead to very different results.
+- An example of how tiny changes in the requirements can lead to very different queries.
 </section>
 
 <section markdown='1'>
@@ -175,11 +175,11 @@ ON person.id_location = location_brno.id_location
 - Aggregation in SQL is an operation which merges two rows (entities) into one:
     - Needs an aggregation function (SUM, MAX, AVG, ...).
     - Causes loss of information.
-- Used to gain overview / high-level information.    
+- Used to gain overview / high-level information.
 - Used when not interested in all details.
 - Examples:
-    - What are is the sum of sales on each day? (vs. list of all receipts)
-    - What is average age of our customer? (vs. list of all customers)
+    - What is the sum of sales on each day? (vs. list of all receipts)
+    - What is the average age of our customer? (vs. list of all customers)
 </section>
 
 <section markdown='1'>
@@ -191,7 +191,7 @@ ON person.id_location = location_brno.id_location
     - `SELECT COUNT(height) FROM person` -- number of **values** in the `height`column (40).
     - `SELECT COUNT(DISTINCT height) FROM person` -- number of **unique values** in the `height` column (26).
     - Combining `DISTINCT` and `*` makes no sense.
-- All of the above queries return a single row -- they aggregate the **entire table**.    
+- All of the above queries return a single row -- they aggregate the **entire table**.
 </section>
 
 <section markdown='1'>
@@ -199,11 +199,11 @@ ON person.id_location = location_brno.id_location
 
 {: .highlight}
 <pre>
-SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ... 
-FROM <em>table_expression</em> 
+SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
+FROM <em>table_expression</em>
     [ WHERE <em>search_condition</em> ]
     <strong>[ GROUP BY <em>column_expression</em> [, ... ] ]</strong>
-    [ HAVING <em>search_condition</em> ]  
+    [ HAVING <em>search_condition</em> ]
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
@@ -211,16 +211,16 @@ FROM <em>table_expression</em>
 
 <section markdown='1'>
 ## Aggregation of Groups
-- Aggregating entire table is not that useful -- too big loss of information.
-- Use `GROUP BY` statement to divide table in groups.
-    - Aggregation function is applied to each group.
-    - Result of aggregation contains one row per group.
-    - Group is defined by a column (or columns).
+- Aggregating the entire table is not that useful -- too big loss of information.
+- Use the `GROUP BY` statement to divide table in groups.
+    - An aggregation function is applied to each group.
+    - The result of aggregation contains one row per group.
+    - A group is defined by a column (or columns).
     - Each distinct value (or combination of values) identifies one group.
 </section>
 
 <section markdown='1'>
-## Example 
+## Example
 - Number of emails for each person having a contact.
 - Source table is `contact`:
 
@@ -240,7 +240,7 @@ FROM <em>table_expression</em>
 - `SELECT id_person, COUNT(*) FROM contact GROUP BY id_person`
 - `COUNT` function is applied to each group of `id_person` values.
     - How many times does `id_person = X` occur in the table?
-    - Multiple rows of original table are merged into one. 
+    - Multiple rows of the original table are merged into one.
 
 | id\_person | COUNT |
 |-----------|-------|
@@ -253,13 +253,13 @@ FROM <em>table_expression</em>
 <section markdown='1'>
 ## Example 2 -- Aggregation with Optional elements
 - Number of emails for each person (including those not having any).
-- Non-solution (returns 1 for person without contact, does not return persons without email):
+- Non-solution (returns 1 for a person without any contact, does not return persons without an email):
 
 {% highlight sql %}
-SELECT person.id_person, COUNT(*) 
+SELECT person.id_person, COUNT(*)
     FROM person LEFT JOIN contact
     ON person.id_person = contact.id_person
-WHERE contact.id_contact_type = '4' 
+WHERE contact.id_contact_type = '4'
 GROUP BY person.id_person
 {% endhighlight %}
 </section>
@@ -268,12 +268,12 @@ GROUP BY person.id_person
 ## Correction -- All persons (sub-query)
 
 {% highlight sql %}
-SELECT person.id_person, COUNT(*) 
-FROM person LEFT JOIN 
-    (SELECT id_contact, id_person FROM contact 
+SELECT person.id_person, COUNT(*)
+FROM person LEFT JOIN
+    (SELECT id_contact, id_person FROM contact
     WHERE contact.id_contact_type = '4'
     ) AS contact_email
-  ON person.id_person = contact_email.id_person  
+  ON person.id_person = contact_email.id_person
 GROUP BY person.id_person
 {% endhighlight %}
 </section>
@@ -282,10 +282,10 @@ GROUP BY person.id_person
 ## Correction -- All persons (join condition)
 
 {% highlight sql %}
-SELECT person.id_person, COUNT(*) 
+SELECT person.id_person, COUNT(*)
   FROM person LEFT JOIN contact
-  ON person.id_person = contact.id_person 
-    AND contact.id_contact_type = '4' 
+  ON person.id_person = contact.id_person
+    AND contact.id_contact_type = '4'
 GROUP BY person.id_person
 {% endhighlight %}
 </section>
@@ -294,13 +294,13 @@ GROUP BY person.id_person
 ## Correction -- Count Only Values
 
 {% highlight sql %}
-SELECT person.id_person, 
-  COUNT(contact.id_contact) 
-FROM person LEFT JOIN 
-    (SELECT id_contact, id_person FROM contact 
+SELECT person.id_person,
+  COUNT(contact.id_contact)
+FROM person LEFT JOIN
+    (SELECT id_contact, id_person FROM contact
     WHERE contact.id_contact_type = '4'
     ) AS contact_email
-  ON person.id_person = contact_email.id_person  
+  ON person.id_person = contact_email.id_person
 GROUP BY person.id_person
 {% endhighlight %}
 </section>
@@ -312,10 +312,10 @@ GROUP BY person.id_person
 - `contact.contact` makes no sense here:
 
 {% highlight sql %}
-SELECT person.id_person, COUNT(contact.id_contact), 
+SELECT person.id_person, COUNT(contact.id_contact),
   person.first_name, contact.contact
 FROM person LEFT JOIN contact
-  ON person.id_person = contact.id_person  
+  ON person.id_person = contact.id_person
 GROUP BY person.id_person
 {% endhighlight %}
 </section>
@@ -325,24 +325,24 @@ GROUP BY person.id_person
 
 {: .highlight}
 <pre>
-SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ... 
-FROM <em>table_expression</em> 
+SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
+FROM <em>table_expression</em>
     [ WHERE <em>search_condition</em> ]
     <strong>[ GROUP BY <em>column_expression</em> [, ... ] ]</strong>
-    [ HAVING <em>search_condition</em> ]  
+    [ HAVING <em>search_condition</em> ]
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
 </section>
 
 <section markdown='1'>
-- Search condition applied to the result of aggregation:
+- A search condition applied to the result of aggregation:
 
 {% highlight sql %}
-SELECT person.id_person, COUNT(contact.id_contact) 
+SELECT person.id_person, COUNT(contact.id_contact)
     FROM person JOIN contact
     ON person.id_person = contact.id_person
-WHERE contact.id_contact_type = '4' 
+WHERE contact.id_contact_type = '4'
 GROUP BY person.id_person
 HAVING COUNT(contact.id_contact) > 1
 {% endhighlight %}
@@ -361,19 +361,19 @@ HAVING COUNT(contact.id_contact) > 1
 ## SQL Summary
 - Selecting the **right data** is complex, you need to understand the requirement.
     - Nothing will help you with that.
-    - SQL is not procedural language, you cannot do something and the fix it. You 
+    - SQL is not a procedural language, you cannot do something and then fix it. You
     need to be precise and perfect in implementation.
-- If a SQL query does not return anything, it does not mean it is wrong (and vice versa) 
+- If a SQL query does not return anything, it does not mean that it is wrong (and vice versa)
 </section>
 
 <section markdown='1'>
 ## Checkpoint
-- Does every SELECT with aggregation function need to have a GROUP BY?
+- Does every SELECT with an aggregation function need to have a GROUP BY?
 - Can you substitute LEFT JOIN with RIGHT JOIN?
 - What conditions must a sub-query used with `IN` satisfy?
-- Can you list more than one column in `GROUP BY` clause?
+- Can you list more than one column in the `GROUP BY` clause?
 - Can you use a sub-query without `JOIN` ?
-- Can you use more than one aggregation function in a single query? 
-- Does it make sense to use GROUP BY without aggregation function?
-- Can you fully replace JOIN by sub-queries?
+- Can you use more than one aggregation function in a single query?
+- Does it make sense to use GROUP BY without an aggregation function?
+- Can you fully replace JOIN with sub-queries?
 </section>
