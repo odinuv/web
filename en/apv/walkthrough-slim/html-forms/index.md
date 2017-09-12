@@ -8,4 +8,4 @@ permalink: /en/apv/walkthrough-slim/html-forms/
 * TOC
 {:toc}
 
-{% include /walkthrough-common/html-forms.md %}
+{% include /en/apv/walkthrough-common/html-forms.md %}
