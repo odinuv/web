@@ -1,6 +1,6 @@
 ---
 title: HTML
-permalink: /en/apv/walkthrough-common/html/
+permalink: /en/apv/walkthrough/html/
 ---
 
 * TOC
