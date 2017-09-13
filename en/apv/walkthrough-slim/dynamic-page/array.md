@@ -1,6 +1,6 @@
 ---
 title: Arrays
-permalink: /en/apv/walkthrough/dynamic-page/array/
+permalink: /en/apv/walkthrough-slim/dynamic-page/array/
 ---
 
 <div class='common-part-info' title='This part is common to all walkthroughs'>&nbsp;</div>

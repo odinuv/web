@@ -18,7 +18,7 @@ items:
         title: HTML Forms
 
       - url: /en/apv/walkthrough-slim/dynamic-page/
-        title: Dynamic Page
+        title: Basic Backend
         items:
           - url: /en/apv/walkthrough-slim/dynamic-page/control/
             title: Control Structures
@@ -28,6 +28,9 @@ items:
 
           - url: /en/apv/walkthrough-slim/dynamic-page/objects/
             title: Functions & Classes & Objects
+
+      - url: /en/apv/walkthrough-slim/slim/
+        title: Slim Backend
 
       - url: /en/apv/walkthrough-slim/templates/
         title: Templates
@@ -51,7 +54,7 @@ items:
         title: HTML Forms
 
       - url: /en/apv/walkthrough/dynamic-page/
-        title: Dynamic Page
+        title: Basic Backend
         items:
           - url: /en/apv/walkthrough/dynamic-page/control/
             title: Control Structures
