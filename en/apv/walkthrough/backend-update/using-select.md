@@ -89,6 +89,7 @@ carried out by `label` element.
 {: .note}
 See those squared brackets in third example? They tell the backend to interpret incoming data as array (you can even
 specify keys for that array in template's code). Always pass values from multiple selects/checkboxes as array.
+You can read more about this approach in another [walkthrough article](/en/apv/walkthrough/passing-arrays/).
 
 {: .note.note-cont}
 Radio buttons are like drop-down lists, they allow only one checked value -- no need for squared brackets.

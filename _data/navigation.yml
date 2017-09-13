@@ -104,6 +104,9 @@ items:
       - url: /en/apv/walkthrough/css/bootstrap/
         title: CSS – Bootstrap
 
+      - url: /en/apv/walkthrough/passing-arrays/
+        title: Passing arrays
+
       - url: /en/apv/walkthrough/javascript/
         title: JavaScript
 

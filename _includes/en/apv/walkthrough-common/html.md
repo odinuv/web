@@ -10,7 +10,7 @@ Open your [favorite editor](/en/apv/articles/html/#validation) and create a new 
 is nice to you, it will automatically create a template for you. If not, here is one:
 
 {% highlight html %}
-{% include /walkthrough-common/html/1-bare.html %}
+{% include /en/apv/walkthrough-common/html/1-bare.html %}
 {% endhighlight %}
 
 This is a minimal valid HTML document. Notice that the elements are hierarchically organized. The
@@ -24,7 +24,7 @@ be a link to `https://www.youtube.com`.
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough-common/html/2-task-basics.html %}
+{% include /en/apv/walkthrough-common/html/2-task-basics.html %}
 {% endhighlight %}
 
 Open the page in your editor preview or in your favorite web browser and you should see an output similar to this.
@@ -64,7 +64,7 @@ Create a table like this in HTML:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough-common/html/3-table-intro.html %}
+{% include /en/apv/walkthrough-common/html/3-table-intro.html %}
 {% endhighlight %}
 
 ### Task -- Playing with task cells 1
@@ -76,7 +76,7 @@ Tip: use the attribute `border` on `table` to get a clear view of table cells. A
 
 Given this table:
 {% highlight html %}
-{% include /walkthrough-common/html/4-table-merge-task.html %}
+{% include /en/apv/walkthrough-common/html/4-table-merge-task.html %}
 {% endhighlight %}
 
 Join the two cells **12** and **13**. Then join the cells **23** and **33**. To achieve a
@@ -86,7 +86,7 @@ table like this:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough-common/html/5-table-merge-sol-1.html %}
+{% include /en/apv/walkthrough-common/html/5-table-merge-sol-1.html %}
 {% endhighlight %}
 
 Notice that you have to *delete* the appropriate cells, because the table now
@@ -100,7 +100,7 @@ Now as an exercise, create a table like this:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough-common/html/6-table-merge-sol-2.html %}
+{% include /en/apv/walkthrough-common/html/6-table-merge-sol-2.html %}
 {% endhighlight %}
 
 {: .note}
@@ -124,7 +124,7 @@ Create an ordered list with 3 items:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough-common/html/7-lists-sol-1.html %}
+{% include /en/apv/walkthrough-common/html/7-lists-sol-1.html %}
 {% endhighlight %}
 
 ### Task -- Lists 2
@@ -144,7 +144,7 @@ be inside an `li` element):
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough-common/html/8-lists-sol-2.html %}
+{% include /en/apv/walkthrough-common/html/8-lists-sol-2.html %}
 {% endhighlight %}
 
 ## Putting it all together
@@ -161,7 +161,7 @@ I used:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough-common/html/9-all.html %}
+{% include /en/apv/walkthrough-common/html/9-all.html %}
 {% endhighlight %}
 
 Note that the `img` element does not have any content (content is defined by the `src` attribute)

@@ -1,0 +1,12 @@
+{extends layout.latte}
+
+{block content}
+<form action="height-form.php" method="post">
+    {foreach $persons as $person}
+    <label>{$person['first_name']} {$person['last_name']}</label>
+    <input type="number" name="height[{$person['id_person']}]" value="{$person['height']}">
+    <br>
+    {/foreach}
+    <input type="submit" name="save" value="Update">
+</form>
+{/block}
