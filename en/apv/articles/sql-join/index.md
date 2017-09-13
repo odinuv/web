@@ -6,15 +6,15 @@ permalink: /en/apv/articles/sql-join/
 * TOC
 {:toc}
 
-In the previous article I described [the principles of relational database](/en/apv/articles/relational-database/).
-This leads to SQL language which is build upon them and is used by many
+In the previous article I have described [the principles of the relational databases](/en/apv/articles/relational-database/).
+This leads to the SQL language which is built upon them and is used by many
 database systems worldwide. In this article I will describe in more details how
-individual relations (tables) are connected (joined) together. I assume, that
+individual relations (tables) are connected (joined) together. I assume that
 you have some basic experience with SQL in [querying individual tables](/en/apv/walkthrough/database/#select).
 
 ## Introduction
-When working with database, and especially when working with multiple tables,
-it is crucial to understand the structure of the database -- **database schema**.
+When working with a database, and especially when working with multiple tables,
+it is crucial to understand the structure of the database -- its **database schema**.
 There is a full follow up article about the [database design](todo) in which
 I explain how to create the schema. But before you start designing your own
 databases it is good to know how to work with existing ones.
@@ -28,9 +28,9 @@ The [example database](/en/apv/walkthrough/database/#database-schema) has the fo
 There are eight tables in the schema, each table has its columns and their data types
 listed in the schema. The schema also shows [keys](/en/apv/articles/relational-database/#key):
 
-- column marked with `PK` is part of Primary Key,
-- column marked with `FK` is part of Foreign Key,
-- column marked with `K` is part of some other Key.
+- a column marked with `PK` is part of a Primary Key,
+- a column marked with `FK` is part of a Foreign Key,
+- a column marked with `K` is part of some other Key.
 
 The database schema also shows lines representing *relationships* between tables (relations) --
 these provide further details about the defined foreign keys. The relationship endpoints
@@ -40,15 +40,15 @@ reference how many other rows. A bar means *one*, a circle means *zero* and a fo
 {: .image-popup}
 ![ERD Legend](/en/apv/articles/sql-join/erd-legend.svg)
 
-From that you can see for example that:
+Reading that you can see for example that:
 
-- the `person_meeting` table has compound primary key;
-- the `person` table has a compound key on combination `first_name`, `last_name`, `nickname`;
+- the `person_meeting` table has a compound primary key;
+- the `person` table has a compound key on the combination `first_name`, `last_name`, `nickname`;
 - the `contact_type.name` column must be unique;
-- the `meeting.id_location` column references `location.id_location` column;
-- a `meeting` has 1..1 relationship to `location` therefore a meeting **must have exactly one**
+- the `meeting.id_location` column references the `location.id_location` column;
+- a `meeting` has 1..1 relationship to the `location` therefore a meeting **must have exactly one**
 (at least one and at most one) assigned location
-- a `location` has 0..N relationship to `meeting` therefore a location **can be used by zero or more**
+- a `location` has 0..N relationship to the `meeting` therefore a location **can be used by zero or more**
 meetings (a location does not have to be used in any meeting at all);
 - a person can have zero or more contacts;
 - a contact must be assigned to exactly one person;
@@ -56,14 +56,14 @@ meetings (a location does not have to be used in any meeting at all);
 - an attendance must be assigned to one person.
 
 ## Selecting Data
-I assume, you now know how to [select data from a single table](/en/apv/walkthrough/database/#select). When joining multiple
+I assume you know how to [select data from a single table](/en/apv/walkthrough/database/#select). When joining multiple
 tables together, it is important to follow some good practices. First it is good practice to
 be explicit about column names and use dot notation to specify **fully qualified column names**.
 So instead of `SELECT description FROM ...` use `SELECT meeting.description FROM ...`, otherwise
-you will run into weird errors in case you join tables which happen to have same columns.
+you will run into weird errors in case you join tables which happen to have columns with same name.
 
 Also, avoid using `*`, at least in the SQL queries used in your application. When
-you are requesting all columns from a table in application, you make:
+you are requesting all columns from a table in an application, you make:
 
 - the application inefficient (what if there is a column containing a person photograph?),
 - prone to errors which arise from database changes.
@@ -71,7 +71,7 @@ you are requesting all columns from a table in application, you make:
 Image that you select data from two tables like `SELECT meeting.*, person.* FROM ...`. The
 column named `description` will contain the meeting description. When you then add a `description`
 column to the `person` table, that column will override the first one (you will have two
-columns with the same name) and the query will suddenly start to return person description! Such errors
+columns with the same name) and the query will suddenly start to return the person description! Such errors
 are very treacherous so it is best to avoid them in the first place.
 
 ### Aliases
@@ -90,7 +90,7 @@ SELECT id_contact_type id, name FROM contact_type
 {% endhighlight %}
 
 Learn to spot when you need aliases. For example you need them when writing
-`SELECT meeting.description, relation.description FROM ... ` because in query *result*, the
+`SELECT meeting.description, relation.description FROM ... ` because in the query *result*, the
 column name is never fully qualified - i.e. you will have two columns named `description`.
 Therefore use `SELECT meeting.description AS meeting_description, relation.description FROM ... `
 (or rename both columns to avoid confusion).
@@ -121,7 +121,7 @@ table, i.e. the query:
 SELECT DISTINCT city, street_name FROM location ORDER BY city;
 {% endhighlight %}
 
-Will return unique **combinations** of `city` and `street_name`, therefore it will return
+will return unique **combinations** of `city` and `street_name`, therefore it will return
 some cities duplicate. The result will be a relation. It is important to be aware of
 when you may receive duplicates in the query results because they may change the results
 of joins slightly unexpectedly.
@@ -135,13 +135,13 @@ requires some care when comparing it. For example the below query will return no
 SELECT * FROM person WHERE height = NULL
 {% endhighlight %}
 
-As will the below one: 
+As will the one below: 
 
 {% highlight sql %}
 SELECT * FROM person WHERE height != NULL
 {% endhighlight %}
 
-Only the below query will really return persons without height:
+Only the query below will really return persons without height:
 
 {% highlight sql %}
 SELECT * FROM person WHERE height IS NULL
@@ -170,7 +170,7 @@ A query:
 SELECT AVG(height) FROM person
 {% endhighlight %}
 
-Will return `5`.
+will return `5`.
 
 |height|
 |------|
@@ -182,13 +182,13 @@ Will return `5`.
 SELECT AVG(height) FROM person
 {% endhighlight %}
 
-Will return `7.5`. This means that for example for person height, you cannot replace 
+will return `7.5`. This means that for example for person height, you cannot replace 
 an unknown value with 0. As you can see in the above example, doing so will return wrong
-results for e.g *average person height*. Therefore it is very important to use nul values 
+results for e.g *average person height*. Therefore it is very important to use NULL values 
 where needed.  
 
 ## Joining Tables
-The principle of joining tables comes from 
+The principle of joining tables comes from the 
 [Θ-join operator in relational algebra](/en/apv/articles/relational-database/#set-operations).
 To join two tables together, you need to provide a condition which will be used to
 match individual records. The result of the join will contain all columns of the
@@ -208,11 +208,11 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
 
-- A table in *table_expression* is any of:
-    - **relation** (physical table in schema)
-    - **view** (virtual table in schema)
-    - **result of query** (volatile table) -- allows [recursion](https://en.wikipedia.org/wiki/Recursion)
-    - **result of join** (volatile table) -- allows [recursion](https://en.wikipedia.org/wiki/Recursion)
+- A table in the *table_expression* is any of:
+    - **relation** (a physical table in the schema)
+    - **view** (a virtual table in the schema)
+    - **result of query** (a volatile table) -- allows [recursion](https://en.wikipedia.org/wiki/Recursion)
+    - **result of join** (a volatile table) -- allows [recursion](https://en.wikipedia.org/wiki/Recursion)
 
 Tables are joined using the `JOIN` operator:
 
@@ -237,9 +237,9 @@ SELECT * FROM
 The join will return only the rows for which the join condition is true.
 
 ### Cross JOIN
-The join condition corresponds to foreign key `FOREIGN KEY (id_location) REFERENCES location(id_location)`
-which is defined in the `person` table. This sort of makes sure that the result makes sense.
-In case you want to join tables between where there is no foreign key, or you want to make some more
+The join condition corresponds to the foreign key `FOREIGN KEY (id_location) REFERENCES location(id_location)`
+which is defined in the `person` table. This makes sure that the result makes sense.
+In case you want to join tables where there is no foreign key, or you want to make a more
 complicated join condition, you can use a **cross join** (also called **cartesian product** or **cross product**):
 
 {% highlight sql %}
@@ -252,9 +252,9 @@ combinations which make no sense at all! If you run the query, be patient for th
 it contains a lot of rows. Do you know how many?
 
 {: .solution}
-Number of rows in `person` table times number of rows in `location` table. A little above 2400 in the sample database.
+Number of rows in the `person` table times the number of rows in the `location` table. A few above 2400 in the sample database.
 
-The obtain a sensible result -- list for each person only the location which is *assigned* to that person --
+To obtain a sensible result -- list for each person only the location which is *assigned* to that person --
 you again need to add that condition:
 
 {% highlight sql %}
@@ -263,8 +263,8 @@ SELECT * FROM
     WHERE person.id_location = location.id_person
 {% endhighlight %}
 
-Now the result is exactly the same as the one you obtained with the `JOIN` operator.
-Cross join has two uses:
+Now the result is exactly the same as the one you have obtained with the `JOIN` operator.
+The cross join has two uses:
 
 - When you have no idea about the join condition, it helps you find it.
 - When you really need all combinations of rows from two tables (which is rare, but happens sometimes).
@@ -272,13 +272,13 @@ Cross join has two uses:
 Otherwise I highly discourage you from using it. Putting the join condition into
 the `WHERE` statement is functionally equivalent to putting it into the `ON` statement.
 But it leads to chaotic SQL queries in which join conditions and search conditions are mixed together.
-Which ultimately leads to gross errors where the join conditions becomes overridden by the
+Which ultimately leads to gross errors where the join conditions become overridden by the
 search condition and the query returns rows which makes no sense at all. So you should avoid
 using cross joins.
 
 ### INNER JOIN
-The join I described above is an **inner join** -- it returns the matching rows from both
-tables. It is the default type of join, but if you want to be explicit (which I strongly suggest),
+The join I have described above is an **inner join** -- it returns the matching rows from both
+tables. It is the default type of a join, but if you want to be explicit (which I strongly suggest),
 you write it as:
 
 {% highlight sql %}
@@ -292,8 +292,8 @@ This is exactly the same as the query not using the `INNER` keyword.
 ### OUTER JOIN
 An outer join allows you to select matching rows from both tables **plus** some not matching rows.
 This is useful in cases where some parts of the relation is optional. For example, let's say you want
-to list all persons and their addresses. If you use `INNER` join, it will give you only those persons
-that have some address, so it will not give you all the persons!
+to list all persons and their addresses. If you use the `INNER` join, it will give you only those persons
+that have an address, so it will not give you all the persons!
 
 To obtain all persons, even those that do not match any location. You need to use an outer join
 -- either LEFT or RIGHT:
@@ -316,7 +316,7 @@ The two queries above are equivalent. `LEFT JOIN` takes **all the rows** from th
 (to the left of the JOIN operator) -- person and matches rows from the remaining table.
 Or I can say that the `LEFT JOIN` does an `INNER JOIN` and then adds unmatched rows
 from the `LEFT` table. `RIGHT JOIN` works analogously.
-Because the order of tables is not important in the join statement, you can use `LEFT`
+Because the order of tables is not important in the join statement, you can use the `LEFT`
 or `RIGHT` join depending on what currently suits you. Also note that the
 keyword `OUTER` is optional (when there is a LEFT or RIGHT join, it is always outer).
 
@@ -340,35 +340,35 @@ SELECT * FROM
 {% endhighlight %}
 
 The above query will give you all locations irrespective of whether some person is using
-them. It will always give you all locations even if they are not used anywhere. Outer
+them. It will always give you all locations even if they are not used anywhere. An outer
 join is typically used when there is something optional (relations 0..1:1:N or 1..1:0..N).
 It does not make sense to use it in cases where the relationship is required because it
 cannot add anything not already returned by `INNER JOIN`.
 
-The answer to question whether you want to use inner or outer join fully depends on
+The answer to the question whether you want to use an inner or outer join fully depends on
 the application you are writing. Consider these requests and the corresponding
 type of join:
 
-- list all customers and their contact address (outer join)
+- list all customers and their contact addresses (outer join)
 - list all employees enrolled in a course (inner join)
-- list all licenses (including unused ones) and the employee they are assigned (outer join)
+- list all licenses (including unused ones) and the employees they are assigned to (outer join)
 - list all occupied meeting rooms (inner join)
-- list all customers who bought something and their contact address (inner join and outer join)
+- list all customers who bought something and their contact addresses (inner join and outer join)
 
 ### JOIN Types
-The below diagram shows all the useful join types:
+The diagram below shows all the useful join types:
 
 {: .image-popup}
 ![Join types Venn diagram](/en/apv/articles/sql-join/join-types.svg)
 
-The INNER join is an intersection of LEFT and RIGHT join. It contains only the rows
-common to both tables (and to LEFT and RIGHT join). Note however that it is not
-intersection of the tables. Its counter part is `FULL OUTER JOIN` which is an
-union of both LEFT and RIGHT join as it contains the matched rows and unmatched rows
+The INNER join is an intersection of the LEFT and RIGHT join. It contains only the rows
+common to both tables (and to the LEFT and RIGHT join). Note however that it is not
+the intersection of the tables. Its counter part is `FULL OUTER JOIN` which is an
+union of both the LEFT and RIGHT join as it contains the matched rows and unmatched rows
 from both the left table and the right table. Although there is nothing wrong with it,
-full outer join is rarely used, it simply is not often required in applications.
+the full outer join is rarely used, simply it is not often required in applications.
 
-You may also come across the term *equijoin*. That is no other type of join, it is simply
+You may also come across the term *equijoin*. That is no other join type, it is simply
 a join which uses equality as the join condition. Most joins are equijoins.
 
 ### USING
@@ -390,14 +390,14 @@ SELECT * FROM
     ON person.id_location = location.id_location
 {% endhighlight %}
 
-The `USING` statement allows you to simplify a very common type of join condition. It does
+The `USING` statement allows you to simplify a very common type of a join condition. It does
 in no way affect the way the tables are joined. You can use it with any of the above modifiers.
 The only difference is that the resulting table will contain only a single column `id_location`.
 
 ### NATURAL Join
-You may also encounter a `NATURAL` join. Natural join is designed for the same purpose as the
+You may also encounter a `NATURAL` join. The natural join is designed for the same purpose as the
 `USING` statement, but it takes it one step further -- it automatically assumes that the
-join condition is equality of all columns with same names. So this:
+join condition is equality of all columns with identical names. So this:
 
 {% highlight sql %}
 SELECT * FROM
@@ -434,12 +434,12 @@ SELECT * FROM
 {% endhighlight %}
 
 So it will probably return no rows at all. And this is very likely something you don't want to do.
-Therefore I suggest that you don't use NATURAL join and always be explicit about the columns you
+Therefore I suggest that you don't use a NATURAL join and are always explicit about the columns you
 want to use in your condition.
 
 ### Joining more than two tables
-A single `JOIN` operator can join only two tables. If you want join more than two tables you simply take
-advantage of the rule that *a result of join is a table* as well. If you want to select
+A single `JOIN` operator can join only two tables. If you want to join more than two tables, you simply take
+advantage of the rule that *a result of a join is a table* as well. If you want to select
 all `person`s with all their `contact`s and their `contact_type`s, you would use:
 
 {% highlight sql %}
@@ -485,8 +485,8 @@ SELECT * FROM
 WHERE relation.id_person2 = '21'
 {% endhighlight %}
 
-Note that I swapped `id_person1` and `id_person2` and the result is 6 rows. Now I have two
-tables with same attributes and I want to merge the results into a single table:
+Note that I have swapped `id_person1` and `id_person2` and the result is 6 rows. Now I have two
+tables with the same attributes and I want to merge the results into a single table:
 
 {% highlight sql %}
 SELECT * FROM
@@ -505,9 +505,9 @@ ORDER BY first_name
 {% endhighlight %}
 
 The above query will return all 10 rows. Notice there are some oddities with the `UNION` statement.
-`UNION` is an operator which expects a `SELECT` statement on both left and right side. But the first
+`UNION` is an operator which expects a `SELECT` statement on both the left and the right side. But the first
 `SELECT` statement cannot contain an `ORDER BY` clause, as that can be used only at the end of the
-entire query. Also note that in the `ORDER BY` clause, fully qualified column name is not necessary
+entire query. Also note that in the `ORDER BY` clause, a fully qualified column name is not necessary
 because there is only a single column `first_name` in the entire table. By default `UNION` removes
 duplicates from the result, if you wan to keep them, use `UNION ALL`.
 
@@ -528,19 +528,19 @@ The above query is quite interesting because it is a query, where you must use
 [aliases](/en/apv/articles/sql-join/#aliases) on
 both tables and columns. It also shows joining more than two tables together and it also
 shows that nothing prevents you from joining the same table more times. In the above query
-I first join table `person` to `relation` on column `id_person`. Then I again join table
-`person`, but on column `id_person2`. This is possible because the table `relation` has two
+I first join the table `person` to `relation` on the column `id_person`. Then I again join the table
+`person`, but on the column `id_person2`. This is possible because the table `relation` has two
 links to the table `person` and the join person represents a different person each time
 (once it is the first person, second time it is the other one). Because the same table is used
 more than once, it must be renamed with alias (it would be sufficient to name one of them), also the
 column names must be renamed.
 
 ## Summary
-In this article I have described how joining tables works in SQL. Join is used to
+In this article I have described how joining tables works in SQL. The join is used to
 obtain data from multiple tables and merge their column sets together.
-Join is a very important part of the SQL language, no real application can do without it.
+The join is a very important part of the SQL language, no real application can do without it.
 I have also shown the `UNION` statement which can merge data from two compatible
-tables together. Union is used much less than join.
+tables together. The union is used much less than the join.
 
 Technically, joins are not too complicated. The complex thing about joining tables is that you
 have to analyze and understand what the application requires and choose the appropriate

@@ -12,7 +12,7 @@ It is important to distinguish between
 [**software engineering**](https://en.wikipedia.org/wiki/Software_engineering) (**software development**)
 and [**computer science**](https://en.wikipedia.org/wiki/Outline_of_computer_science).
 Although it is difficult to agree on brief universal definitions, I would say that the difference
-between them is comparable to difference between **masonry**, **architecture** (**house building**) and **physics**.
+between them is comparable to the difference between **masonry**, **architecture** (**house building**) and **physics**.
 Although software is very much different from houses.
 
 ### Programming
@@ -22,13 +22,13 @@ a single programming language -- i.e. an excellent programmer in one language ma
 The asset of a good programmer is speed and code quality -- made possible by deep understanding of the
 technology she uses. Anyone (with a little effort) can learn to write
 computer programs. The skill is in being able to do it efficiently and with reasonable quality -- the same
-way anyone (with a little effort) can build a brick wall.
+way as anyone (with a little effort) can build a brick wall.
 
 ### Software Engineering
 *Software Engineering* (as any other engineering) deals with the question how the **programming code should be organized** and
 what development processes should be applied. Software development includes a great deal of
 [Project management](https://en.wikipedia.org/wiki/Project_management) and it is something you learn best by studying
-rules and standards and by learning from (preferably other peoples') failed projects. Software engineering guides
+rules and standards and by learning from (preferably other people's) failed projects. Software engineering guides
 programmers in writing their code in a similar manner in which architectural plans guide masons. Software
 engineering requires a broad understanding of many technologies and approaches so that you can choose
 the most suitable ones for the assignment.
@@ -54,7 +54,7 @@ devices such as a graphic card and display, keyboard, mouse, etc.
 
 To make the processor do something, you need to provide it with a (computer) program. The program is executed
 on the processor by following the *instructions* written in the program. A program is created by
-writing a *source code* in some *programming language*. Since the processor understands only
+writing a *source code* in a particular *programming language*. Since the processor understands only
 [low-level instructions](https://en.wikipedia.org/wiki/Low-level_programming_language),
 the programming language also has to be low-level (such as the [Assembly language](https://en.wikipedia.org/wiki/Assembly_language)).
 
@@ -65,15 +65,15 @@ such as 'save a file' or 'show this text on the screen', etc. and makes it possi
 [high-level programming language](https://en.wikipedia.org/wiki/High-level_programming_language).
 
 ### Source Code
-Source code is a simple text document, which contains the instruction for the operating system (and
+A source code is a simple text document, which contains the instruction for the operating system (and
 subsequently the processor) to perform.
 In a high-level language, the source code must be translated into more low-level instructions the OS and the processor
 understands. This is done usually either by *compiling* or *interpreting*. In a *compiled language*
 (e.g. [C++](https://en.wikipedia.org/wiki/C%2B%2B)), the
 source code is translated to an [*executable file*](https://en.wikipedia.org/wiki/Executable).
-An Executable file is simply a file you can execute, e.g. on Windows, everything with `.exe` extension.
+An executable file is simply a file you can execute, e.g. on Windows, everything with `.exe` extension.
 In an *interpreted language*, you need to run another program -- the *Interpreter* -- which reads
-the your source code from text, *interprets* what it's supposed to do, and instructs the OS or processor to do that.
+your source code from a text file, *interprets* what it's supposed to do, and instructs the OS or processor to do that.
 There are a lot of exceptions to the above, including languages like
 [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) or
 [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) which are somewhat partially compiled.
@@ -86,8 +86,8 @@ defined are called [*syntax*](https://en.wikipedia.org/wiki/Syntax_(programming_
 In natural languages (such as English), such rules do not have to be followed strictly
 (and you can still be understood). However in programming languages, the *syntax* must be followed
 strictly and precisely, otherwise the *interpreter* or *compiler* is not able to process
-([parse](https://en.wikipedia.org/wiki/Parsing)) the source code. Strictly speaking, the
-*interpreter* first *parses* the source code, to try to understand what you have written, and
+([parse](https://en.wikipedia.org/wiki/Parsing)) the source code. Strictly speaking, first the
+*interpreter* *parses* the source code to try to understand what you have written, and
 then *evaluates* that by making the operating system and processor do something.
 
 There are big differences between different programming languages, but there are also some
@@ -120,7 +120,7 @@ any way. They serve the purpose of writing your comments to the source code.
 {% endhighlight %}
 
 Comments are either *single-line* or *multi-line*. A single-line comment (the above example) runs until the
-end of the line. Multi-line comment must be terminated by a sequence of characters.
+end of the line. A multi-line comment must be terminated by a sequence of characters.
 
 {% highlight php %}
 /* this is a comment, that
@@ -162,8 +162,8 @@ $name = 'John';
 echo $name;
 {% endhighlight %}
 
-The above will first print `Jane` and then `John`. Variables in PHP are marked with `$` sign,
-so `$name` is a variable. Technically, a variable is actually a space in computer memory.
+The above will first print `Jane` and then `John`. Variables in PHP are marked with the `$` sign,
+so the `$name` is a variable. Technically, a variable is actually a space in computer memory.
 The variable can contain different values in time.
 
 #### Operators
@@ -180,7 +180,7 @@ working with [boolean values](/en/apv/articles/programming/#type-system). By the
 
 #### Expressions and Statements
 Expressions are language constructs which yield a value (can be **evaluated**). For example, in the above
-case `4 + 5` is and expression, which yields a value `9`. Expressions can be
+case `4 + 5` is an expression, which yields a value `9`. Expressions can be
 *simple* or *compound*. Compound expressions should use parentheses to determine explicitly
 the order of evaluation. E.g.
 
@@ -195,8 +195,8 @@ it is a command which prints a value to the screen. The value is obtained by eva
 
 #### Control Flow
 **Control flow** structures are language constructs which **control** the
-**flow** of the program -- i.e. they control, what lines of source
-code get executed:
+**flow** of the program. These are mainly **conditions** and **loops**. They 
+control what lines of the source code get executed:
 
 {% highlight php %}
 <?php
@@ -228,21 +228,21 @@ less tangled and confusing. Each language has many built in functions.
 Keywords are *reserved words* of the language. They have some special meaning in the
 language itself and do something special. E.g. in the above examples, the keyword
 `if` marks the beginning of a conditional statement. The keyword `echo` prints
-a text on the screen.
+a text to the screen.
 
 ### Type System
 The source code must strictly conform to the defined syntax of the chosen language.
-Apart from the syntax, there are other rules, very important one is *Type System*.
-The values used in a programming language can have different **data types**. Types are specific
+Apart from the syntax, there are other rules, a very important one is *Type System*.
+The values used in a programming language can have different **data types**. These types are specific
 to each language, but there are some commonly used:
 
 - **boolean** -- A value which is either [*true* or *false*](#boolean-type).
-- **integer** -- Whole number.
-- **string** -- String of characters -- i.e. a text.
-- **float**, **real** -- Decimal number
-- **array** -- list of values (each value can be of the above type)
+- **integer** -- A whole number.
+- **string** -- A string of characters -- i.e. a text.
+- **float**, **real** -- A decimal number
+- **array** -- A List of values (each value can be of the above type)
 
-Depending on how the language handles types, there are [**strongly typed languages**](https://en.wikipedia.org/wiki/Strong_and_weak_typing)
+Depending on how the language handles its types, there are [**strongly typed languages**](https://en.wikipedia.org/wiki/Strong_and_weak_typing)
 and **weakly (loosely) typed languages**. Because this is quite a complicated area, I will simplify it
 to just that in a weakly typed language, the values of different types are converted automatically.
 In a strongly typed language, the values must be explicitly converted. Most languages used in
@@ -253,8 +253,8 @@ web application development are weakly typed which means that you can write e.g.
 echo 5 + '4';
 {% endhighlight %}
 
-In the above example, the `'4'` gets automatically converted to integer, so that
-it can be added to integer `5`. Then the output `9` is converted to string `'9'` which
+In the above example, the `'4'` gets automatically converted to an integer, so that
+it can be added to the integer `5`. Then the output `9` is converted to a string `'9'` which
 is printed to the screen. The following code will fail:
 
 {% highlight php %}
@@ -263,18 +263,18 @@ echo 5 + 'four';
 {% endhighlight %}
 
 The above would yield an error, because the language interpreter is stupid and does not know that
-string `four` can be converted to number 4.
+the string `four` can be converted to the number 4.
 
 #### Boolean Type
-[Boolean data type](https://en.wikipedia.org/wiki/Boolean_data_type) has only two values: **true** and **false**.
-Boolean type has a great significance in programming. Boolean values (true, false) are also called **logical values**.
+A [boolean data type](https://en.wikipedia.org/wiki/Boolean_data_type) has only two values: **true** and **false**.
+The boolean type is of great significance in programming. The boolean values (true, false) are also called **logical values**.
 They can be manipulated using [**logical operators**](https://en.wikipedia.org/wiki/Boolean_algebra#Basic_operations)
 (part of *boolean logic* or *boolean algebra*). The most important logical operators are:
 
 - logical **and** (conjunction) -- the result value is true if both operands are true, otherwise it is false.
 - logical **or** (disjunction) -- the result value is true if either operand is true, otherwise it is false
 (i.e. if both operands are false)
-- logical **not** (negation) -- the result is negation of the value (if operand is true, result is false and vice versa).
+- logical **not** (negation) -- the result is negation of the value (if one operand is true, the result is false and vice versa).
 
 The **and** and **or** operators are **binary** which means that they have two **operands**. While it may sound alien,
 you are already familiar with binary operators. E.g. if you write `4 + 3`. The plus `+` is a binary
@@ -282,7 +282,7 @@ operator (arithmetic, not boolean though), `4` and `3` are its *operands*. The r
 Similarly you can write `true and false`. The `and` is a binary boolean operator, `true` and `false` are
 its operands. The result is `false`. The `not` operator is **unary** which means that it has only one operand.
 For example the expression `not true`, negates the value `true` and results `false`. This is sort of logical, isn't it?
-That's why it's called boolean logic :). In PHP, the not operator is written using exclamation mark `!`:
+That's why it's called boolean logic :). In PHP, the not operator is written using the exclamation mark `!`:
 
 Some examples:
 {% highlight php %}
@@ -296,10 +296,10 @@ Some examples:
 Knowing how boolean operators work is essential for writing [conditional statements](/en/apv/articles/programming/#control-flow).
 
 ### Standard Library
-Part of each high-level language is a *function library* (*library* or *standard library*).
-Library is a collection of generally
+A part of each high-level language is a *function library* (*library* or *standard library*).
+A library is a collection of generally
 usable functions and blocks which you can use in the source code of that language. The
-library provides even higher level functions than what the language itself has. E.g. it could be
+library provides even higher level functions than thos ethe language itself has. E.g. it could be
 functions for ciphering, sending data over network,
 [user interface](https://en.wikipedia.org/wiki/User_interface) controls, etc.
 The problem is that each programming language has its own library, and each library
@@ -307,15 +307,15 @@ contains thousands of functions. Therefore it is very time consuming to get your
 acquainted with the language library. Contrary to popular belief, a programmer spends
 most of his time reading manuals for the libraries.
 
-Apart from standard library which comes bundled with every language interpreter (or compiler), there
+Apart from a standard library which comes bundled with every language interpreter (or compiler), there
 are also many 3rd party libraries. In general, the term **library** represents an external set of functions
-which we (as a programmers) include in our application without modification. There are also other terms describing
+which we (as programmers) include in our application without modification. There are also other terms describing
 a set of functions like *packages*, *modules*, *extensions*, *plugins*. In principle, all these represent the same
 thing.
 
 ## Summary
-In this article, you learned the basic programming jargon. If you do not feel confident
-having intuitive understanding of the below terms, try to take a
+In this article, you have learned the basic programming jargon. If you do not feel confident
+having intuitive understanding of the terms below, try to take a
 course at [Codecademy](https://www.codecademy.com/) which should help you digest them better.
 
 It is very important to understand that the source code is executed so that each
