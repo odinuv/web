@@ -1,6 +1,6 @@
 ---
 title: Slim Backend
-permalink: /en/apv/walkthrough-slim/slim/
+permalink: /en/apv/walkthrough-slim/slim-intro/
 ---
 
 * TOC
@@ -35,22 +35,22 @@ Before you start this approach, you need to have [Git](todo).
 Go to the [Slim Project page](https://bitbucket.org/apvmendelu/slim-based-project) and [login with a Bitbucket] account](https://bitbucket.org/).
 When you login, you should see a plus button on the left:
 
-{. image-popup}
+{: .image-popup}
 ![Screenshot - Fork repository - Step 1](/en/apv/walkthrough-slim/slim/fork-1.png)
 
 Now select **Fork this repository**:
 
-{. image-popup}
+{: .image-popup}
 ![Screenshot - Fork repository - Step 2](/en/apv/walkthrough-slim/slim/fork-2.png)
 
 Now you name your application repository:
 
-{. image-popup}
+{: .image-popup}
 ![Screenshot - Fork repository - Step 3](/en/apv/walkthrough-slim/slim/fork-3.png)
 
 Wait a little while and you should be redirected to your own repository which contains the slim project skeleton:
 
-{. image-popup}
+{: .image-popup}
 ![Screenshot - Fork repository - Step 4](/en/apv/walkthrough-slim/slim/fork-4.png)
 
 Note the command for cloning the repository, e.g. `git clone https://odinuv@bitbucket.org/odinuv/my-slim.git`. Run this
@@ -90,7 +90,7 @@ should see an output similar to this:
 
 When the command finishes, you the project directory should contain the following contents:
 
-{. image-popup}
+{: .image-popup}
 ![Screenshot - Project Structure](/en/apv/walkthrough-slim/slim/project-structure.png)
 
 The project root contains the following directories and files:
@@ -148,13 +148,13 @@ Go to [Packagist](https://packagist.org/) and search for the `Latte` library. Yo
 Review the available information about the library. Create an empty directory and try to install the library there
 as if it was a new project you're working on.
 
-{: .solution}
+{: .image-popup}
 <div markdown='1'>
 You should find the [`latte/latte` library](https://packagist.org/packages/latte/latte). There you can see the command to install
 the library `composer require latte/latte`. Go to an empty directory and run it.
 </div>
 
-{: .solution}
+{: .image-popup}
 <div markdown='1'>
 When the command finishes, the current directory should contain `composer.json`, `composer.lock` files and `vendor` directory.
 The `composer.json` files should be similar to this:
@@ -244,6 +244,14 @@ in context menu and "Properties" (F9 key):
 Setting the directory permissions to 0777 may be unnecessarily permissive. However, it is always the first step. Once you
 get the application working, you can start playing with it. The exact permissions required depend on the exact configuration
 of the web server you are using.
+
+#### Missing Environment File
+
+    Fatal error: Uncaught exception 'Dotenv\Exception\InvalidPathException' with message 'Unable to read the environment file at /home/public_html/public_html/devel/src/../.env.' in /home/public_html/public_html/devel/vendor/vlucas/phpdotenv/src/Loader.php:75 Stack trace: #0 /home/public_html/public_html/devel/vendor/vlucas/phpdotenv/src/Loader.php(52): Dotenv\Loader->ensureFileIsReadable() #1 /home/public_html/public_html/devel/vendor/vlucas/phpdotenv/src/Dotenv.php(91): Dotenv\Loader->load() #2 /home/public_html/public_html/devel/vendor/vlucas/phpdotenv/src/Dotenv.php(48): Dotenv\Dotenv->loadData() #3 /home/public_html/public_html/devel/src/settings.php(4): Dotenv\Dotenv->load() #4 /home/public_html/public_html/devel/public/index.php(17): require('/export/home/xp...') #5 {main} thrown in /home/public_html/public_html/devel/vendor/vlucas/phpdotenv/src/Loader.php on line 75
+
+The important part of the above message is `Unable to read the environment file at /home/public_html/public_html/devel/src/../.env.` which means that
+you either forgot to create the environment file (`.env`) or you have put it in a wrong directory. Note that the `.env` file begins with a dot, on some systems
+this might be considered as a hidden file.
 
 ### Running
 If the application throws no errors and displays the following screen, it is running:

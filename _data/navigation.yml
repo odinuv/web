@@ -29,7 +29,10 @@ items:
           - url: /en/apv/walkthrough-slim/dynamic-page/objects/
             title: Functions & Classes & Objects
 
-      - url: /en/apv/walkthrough-slim/slim/
+      - url: /en/apv/walkthrough-slim/slim-intro/
+        title: Slim Introduction
+
+      - url: /en/apv/walkthrough-slim/slim-backend/
         title: Slim Backend
 
       - url: /en/apv/walkthrough-slim/templates/

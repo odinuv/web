@@ -8,4 +8,4 @@ permalink: /en/apv/walkthrough/html/
 * TOC
 {:toc}
 
-{% include /walkthrough-common/html.md %}
+{% include /en/apv/walkthrough-common/html.md %}
