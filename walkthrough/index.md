@@ -1,12 +1,13 @@
 ---
 title: Walkthrough
-permalink: /en/apv/walkthrough/
+permalink: /walkthrough/
+redirect_rom: /en/apv/walkthrough/
 ---
 
 * TOC
 {:toc}
 
-This part of the [TMWA book](/en/apv/) guides you through the actual development of a web application.
+This part of the [TMWA book](/) guides you through the actual development of a web application.
 However this is no ordinary tutorial. Here I show you all the necessary steps, I also try to show
 you how to approach different problems. There are examples and there are exercises with hidden
 solutions. I encourage you very much to look at them only when you have completed the exercise
@@ -16,7 +17,7 @@ walkthrough contains everything you need to know and use to build the final solu
 
 The walkthrough revolves around a web application for managing contacts and meetings. As there are
 thousands of solutions to this, I have prepared a
-[database schema](/en/apv/walkthrough/database/#database-schema) which I will use
+[project assignment](/course/#project-assignment) which I will use
 through the examples and exercises (nothing prevents you from changing it).
 
 ## Requirements

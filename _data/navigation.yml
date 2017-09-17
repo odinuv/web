@@ -29,10 +29,10 @@ items:
           - url: /walkthrough-slim/backend-intro/objects/
             title: Functions & Classes & Objects
 
-      - url: /walkthrough/database-intro/
+      - url: /walkthrough-slim/database-intro/
         title: Database & SQL
 
-      - url: /walkthrough/database-using/
+      - url: /walkthrough-slim/database-using/
         title: Working with Database
 
       - url: /walkthrough-slim/slim-intro/

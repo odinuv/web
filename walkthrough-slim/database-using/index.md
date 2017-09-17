@@ -1,6 +1,6 @@
 ---
-title: Backend Introduction
-permalink: /walkthrough-slim/backend-intro/
+title: Working with Database
+permalink: /walkthrough-slim/database-using/
 ---
 
 <div class='common-part-info' title='This part is common to all walkthroughs'>&nbsp;</div>
@@ -8,4 +8,4 @@ permalink: /walkthrough-slim/backend-intro/
 * TOC
 {:toc}
 
-{% include /common/backend-intro.md %}
+{% include /common/database-using.md %}

@@ -1,11 +1,3 @@
----
-title: Using Database
-permalink: /walkthrough/database/
-redirect_from: /en/apv/walkthrough/database/
----
-
-* TOC
-{:toc}
 
 In previous chapters, you have learned how to create a static HTML page, then how to
 add dynamic content generated in a PHP script to that page. Then you have learned how
