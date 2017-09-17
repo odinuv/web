@@ -1,207 +1,213 @@
 items:
-  - url: /en/apv/course/
+  - url: /course/
     title: APV Course
     items:
-      - url: /en/apv/course/not-a-student/
+      - url: /course/not-a-student/
         title: For external readers
 
-      - url: /en/apv/course/technical-support/
+      - url: /course/technical-support/
         title: Technical support
 
-  - url: /en/apv/walkthrough-slim/
+  - url: /walkthrough-slim/
     title: Walktrough Slim
     items:
-      - url: /en/apv/walkthrough-slim/html/
+      - url: /walkthrough-slim/html/
         title: HTML
 
-      - url: /en/apv/walkthrough-slim/html-forms/
+      - url: /walkthrough-slim/html-forms/
         title: HTML Forms
 
-      - url: /en/apv/walkthrough-slim/dynamic-page/
-        title: Basic Backend
+      - url: /walkthrough-slim/backend-intro/
+        title: Backend Introduction
         items:
-          - url: /en/apv/walkthrough-slim/dynamic-page/control/
+          - url: /walkthrough-slim/backend-intro/control/
             title: Control Structures
 
-          - url: /en/apv/walkthrough-slim/dynamic-page/array/
+          - url: /walkthrough-slim/backend-intro/array/
             title: Arrays
 
-          - url: /en/apv/walkthrough-slim/dynamic-page/objects/
+          - url: /walkthrough-slim/backend-intro/objects/
             title: Functions & Classes & Objects
 
-      - url: /en/apv/walkthrough-slim/slim-intro/
+      - url: /walkthrough/database-intro/
+        title: Database & SQL
+
+      - url: /walkthrough/database-using/
+        title: Working with Database
+
+      - url: /walkthrough-slim/slim-intro/
         title: Slim Introduction
 
-      - url: /en/apv/walkthrough-slim/slim-backend/
+      - url: /walkthrough-slim/slim-backend/
         title: Slim Backend
 
-      - url: /en/apv/walkthrough-slim/templates/
+      - url: /walkthrough-slim/templates/
         title: Templates
 
-      - url: /en/apv/walkthrough-slim/database/
+      - url: /walkthrough-slim/database/
         title: Database & SQL
 
-      - url: /en/apv/walkthrough-slim/css/
+      - url: /walkthrough-slim/css/
         title: CSS – Cascading Style Sheets
 
-      - url: /en/apv/walkthrough-slim/css/bootstrap/
+      - url: /walkthrough-slim/css/bootstrap/
         title: CSS – Bootstrap
 
-  - url: /en/apv/walkthrough/
+  - url: /walkthrough/
     title: Walkthrough
     items:
-      - url: /en/apv/walkthrough/html/
+      - url: /walkthrough/html/
         title: HTML
 
-      - url: /en/apv/walkthrough/html-forms/
+      - url: /walkthrough/html-forms/
         title: HTML Forms
 
-      - url: /en/apv/walkthrough/dynamic-page/
-        title: Basic Backend
+      - url: /walkthrough/backend-intro/
+        title: Backend Introduction
         items:
-          - url: /en/apv/walkthrough/dynamic-page/control/
+          - url: /walkthrough/backend-intro/control/
             title: Control Structures
 
-          - url: /en/apv/walkthrough/dynamic-page/array/
+          - url: /walkthrough/backend-intro/array/
             title: Arrays
 
-          - url: /en/apv/walkthrough/dynamic-page/objects/
+          - url: /walkthrough/backend-intro/objects/
             title: Functions & Classes & Objects
 
-      - url: /en/apv/walkthrough/templates/
+      - url: /walkthrough/templates/
         title: Templates
 
-      - url: /en/apv/walkthrough/templates-layout/
+      - url: /walkthrough/templates-layout/
         title: Template Layouts
 
-      - url: /en/apv/walkthrough/database/
+      - url: /walkthrough/database-intro/
         title: Database & SQL
 
-      - url: /en/apv/walkthrough/backend/
-        title: Database Backend
+      - url: /walkthrough/database-using/
+        title: Working with Database
 
-      - url: /en/apv/walkthrough/organize/
+      - url: /walkthrough/organize/
         title: Code Organization
 
-      - url: /en/apv/walkthrough/backend-select/
+      - url: /walkthrough/backend-select/
         title: Database – Selecting and filtering
 
-      - url: /en/apv/walkthrough/backend-insert/
+      - url: /walkthrough/backend-insert/
         title: Database – Inserting
         items:
-        - url: /en/apv/walkthrough/backend-insert/advanced/
+        - url: /walkthrough/backend-insert/advanced/
           title: Advanced inserts
 
-      - url: /en/apv/walkthrough/backend-update/
+      - url: /walkthrough/backend-update/
         title: Database – Updating
         items:
-        - url: /en/apv/walkthrough/backend-update/using-select/
+        - url: /walkthrough/backend-update/using-select/
           title: Using select element
 
-      - url: /en/apv/walkthrough/backend-delete/
+      - url: /walkthrough/backend-delete/
         title: Database – Delete
 
-      - url: /en/apv/walkthrough/css/
+      - url: /walkthrough/css/
         title: CSS – Cascading Style Sheets
 
-      - url: /en/apv/walkthrough/css/bootstrap/
+      - url: /walkthrough/css/bootstrap/
         title: CSS – Bootstrap
 
-      - url: /en/apv/walkthrough/passing-arrays/
+      - url: /walkthrough/passing-arrays/
         title: Passing arrays
 
-      - url: /en/apv/walkthrough/javascript/
+      - url: /walkthrough/javascript/
         title: JavaScript
 
-      - url: /en/apv/walkthrough/login/
+      - url: /walkthrough/login/
         title: Login
 
-      - url: /en/apv/walkthrough/pagination/
+      - url: /walkthrough/pagination/
         title: Pagination
 
-      - url: /en/apv/walkthrough/upload/
+      - url: /walkthrough/upload/
         title: File upload
 
-  - url: /en/apv/articles/
+  - url: /articles/
     title: Articles
     items:
-      - url: /en/apv/articles/programming/
+      - url: /articles/programming/
         title: Inroduction to Programming
 
-      - url: /en/apv/articles/web/
+      - url: /articles/web/
         title: Web
 
-      - url: /en/apv/articles/cookies-sessions/
+      - url: /articles/cookies-sessions/
         title: Cookies and Sessions
 
-      - url: /en/apv/articles/html/
+      - url: /articles/html/
         title: HTML
 
-      - url: /en/apv/articles/css/
+      - url: /articles/css/
         title: CSS Styles
         items:
-        - url: /en/apv/articles/css/layout/
+        - url: /articles/css/layout/
           title: Layout Modes
 
-      - url: /en/apv/articles/javascript/
+      - url: /articles/javascript/
         title: JavaScript
         items:
-        - url: /en/apv/articles/javascript/jquery/
+        - url: /articles/javascript/jquery/
           title: jQuery
 
-      - url: /en/apv/articles/database-systems/
+      - url: /articles/database-systems/
         title: Database Systems
 
-      - url: /en/apv/articles/relational-database/
+      - url: /articles/relational-database/
         title: Relational Databases
 
-      - url: /en/apv/articles/sql-join/
+      - url: /articles/sql-join/
         title: SQL Language Basics
 
-      - url: /en/apv/articles/sql-aggregation/
+      - url: /articles/sql-aggregation/
         title: SQL Aggregation
 
-      - url: /en/apv/articles/database-design/
+      - url: /articles/database-design/
         title: Database Design
 
-      - url: /en/apv/articles/database-tech/
+      - url: /articles/database-tech/
         title: Databases – Technical Details
 
-      - url: /en/apv/articles/security/
+      - url: /articles/security/
         title: Security of web applications
         items:
-        - url: /en/apv/articles/security/sql-injection/
+        - url: /articles/security/sql-injection/
           title: SQL injection
 
-  - url: /en/apv/slides/
+  - url: /slides/
     title: Slides
     items:
-      - url: /en/apv/slides/web/
+      - url: /slides/web/
         title: Internet and Web Service
 
-      - url: /en/apv/slides/html/
+      - url: /slides/html/
         title: Web Standards
 
-      - url: /en/apv/slides/database-systems/
+      - url: /slides/database-systems/
         title: Database Systems
 
-      - url: /en/apv/slides/relational-database/
+      - url: /slides/relational-database/
         title: Relational Databases
 
-      - url: /en/apv/slides/sql-join/
+      - url: /slides/sql-join/
         title: SQL Language Basics
 
-      - url: /en/apv/slides/sql-aggregation/
+      - url: /slides/sql-aggregation/
         title: SQL Aggregation
 
-      - url: /en/apv/slides/database-design/
+      - url: /slides/database-design/
         title: Database Design
 
-      - url: /en/apv/slides/database-tech/
+      - url: /slides/database-tech/
         title: Databases – Technical Details
 
-      - url: /en/apv/slides/web-security/
+      - url: /slides/web-security/
         title: Web security
 
-      - url: /en/apv/slides/web-apps/
+      - url: /slides/web-apps/
         title: Web applications

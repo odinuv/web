@@ -1,0 +1,40 @@
+{extends 'layout-c2.latte'}
+
+{block content}
+    <h1>{$pageTitle}</h1>
+    <h2 n:if="$currentUser['first_name']">Hello {$currentUser['first_name']} {$currentUser['last_name']}</h2>
+	<form method="post" action="http://odinuv.cz/form_test.php">
+		<ul>
+			<li>
+				<label>First name:
+					<input type="text" name="first_name" value="{$currentUser['first_name']}">
+				</label>
+			</li>
+            <li>
+                <label>Last name:
+                    <input type="text" name="last_name" value="{$currentUser['last_name']}">
+                </label>
+            </li>
+            <li>
+                <label>E-mail address:
+                    <input type="email" name="email" value="{$currentUser['email']}">
+                </label>
+            </li>
+            <li>
+                <label>Year of birth:
+                    <select name="birth_year">
+                    {foreach $years as $year}
+                        <option n:attr="selected => $currentUser['birth_year'] == $year" value="{$year}">{$year}</option>
+                    {/foreach}
+                    </select>
+                </label>
+            </li>
+			<li>
+				<label>Message for us:
+					<textarea name="message" cols="{$cols}" rows="{$rows}">{$message}</textarea>
+				</label>
+			</li>
+		</ul>
+		<button type="submit" name="contact" value="contact">Contact Us</button>
+	</form>
+{/block}
