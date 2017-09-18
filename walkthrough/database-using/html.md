@@ -35,7 +35,7 @@ Consult the [HTML guide](/walkthrough/html/) if you are not sure.
 
 {: .solution}
 {% highlight html %}
-{% include /walktrough/database-using/persons-static.html %}
+{% include /walkthrough/database-using/persons-static.html %}
 {% endhighlight %}
 
 ### Step 2
@@ -43,17 +43,17 @@ Create a PHP script, a template and a layout template.
 
 {: .solution}
 {% highlight php %}
-{% include /walktrough/database-using/persons-dynamic-1.php %}
+{% include /walkthrough/database-using/persons-dynamic-1.php %}
 {% endhighlight %}
 
 {: .solution}
 {% highlight html %}
-{% include /walktrough/database-using/persons-dynamic-1.latte %}
+{% include /walkthrough/database-using/persons-dynamic-1.latte %}
 {% endhighlight %}
 
 {: .solution}
 {% highlight html %}
-{% include /walktrough/database-using/layout.latte %}
+{% include /walkthrough/database-using/layout.latte %}
 {% endhighlight %}
 
 ### Step 3
@@ -63,12 +63,12 @@ sure the array has the same form as the one
 
 {: .solution}
 {% highlight php %}
-{% include /walktrough/database-using/persons-dynamic-2.php %}
+{% include /walkthrough/database-using/persons-dynamic-2.php %}
 {% endhighlight %}
 
 {: .solution}
 {% highlight html %}
-{% include /walktrough/database-using/persons-dynamic-2.latte %}
+{% include /walkthrough/database-using/persons-dynamic-2.latte %}
 {% endhighlight %}
 
 ### Step 4
@@ -86,7 +86,7 @@ Modify the PHP script to load the variable from the database.
 
 {: .solution}
 {% highlight php %}
-{% include /walktrough/database-using/persons-list.php %}
+{% include /walkthrough/database-using/persons-list.php %}
 {% endhighlight %}
 
 No one is forcing you to take all the above steps separately or in the shown order.
@@ -98,7 +98,7 @@ at a time. Some parts (like the template layout) don't need to be changed at all
 the code requires you to understand the connections between all the code parts:
 
 {: .image-popup}
-![Schema of variables](/walktrough/database-using/code-schematic.png)
+![Schema of variables](code-schematic.png)
 
 ## Summary
 In this chapter, you have learned how to use SQL queries from within a PHP script and

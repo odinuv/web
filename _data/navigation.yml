@@ -85,6 +85,9 @@ items:
 
       - url: /walkthrough/database-using/
         title: Working with Database
+        items:
+        - url: /walkthrough/database-using/html/
+          title: Working with Database and HTML
 
       - url: /walkthrough/organize/
         title: Code Organization
