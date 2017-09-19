@@ -7,7 +7,7 @@ permalink: /walkthrough-slim/slim-intro/
 {:toc}
 
 In the previous parts, you have learned how to work with [HTML forms](../html-forms/) and the [basics of PHP language](../backend-intro/).
-Using plain to create an entire application is somewhat tedious and requires that you take care in organizing your source code.
+Using plain PHP to create an entire application is somewhat tedious and requires that you take care in organizing your source code.
 Otherwise it can easily become an unmaintainable mess which no one can understand.
 
 A common solution to this is to use a framework. A framework serves two purposes, first it takes care of some common (and repetitive) tasks
@@ -32,7 +32,7 @@ support for HTML templates and PDO database connections). You can either **fork 
 
 ### Fork the Repository
 Before you start this approach, you need to have [Git](todo).
-Go to the [Slim Project page](https://bitbucket.org/apvmendelu/slim-based-project) and [login with a Bitbucket] account](https://bitbucket.org/).
+Go to the [Slim Project page](https://bitbucket.org/apvmendelu/slim-based-project) and [login with a Bitbucket account](https://bitbucket.org/).
 When you login, you should see a plus button on the left:
 
 {: .image-popup}
@@ -170,7 +170,7 @@ The `composer.json` files should be similar to this:
 
 The `vendor` directory should contain the `composer` and `latte` subdirectories (these are the actual libraries) and a
 `autoload.php` file. The `autoload.php` file makes the libraries available in your PHP script. Therefore to use any
-of the installed libraries in your PHP script, all you need to do is write `require vendor/autoload.php` in the PHP
+of the installed libraries in your PHP script, all you need to do is write `require "vendor/autoload.php";` in the PHP
 script (see [require](todo)).
 
 The practical implications are that you need to include the `composer.json` and `composer.lock` files with your
@@ -208,14 +208,14 @@ a not found error too, you probably uploaded the application in a wrong director
 one (`public/`) does not, than chances are, that the redirection rules might be messed up. This commonly happens when
 the application is not placed in the root of the web server.
 
-For example, if the complete URL you're using is `https://example.com/username/devel/public/`, then you many need to
+For example, if the complete URL you're using is `https://example.com/~username/devel/public/`, then you may need to
 edit the `.htaccess` file in the `public` folder and modify the line
 
     # RewriteBase /
 
 to
 
-    RewriteBase /username/devel/public/
+    RewriteBase /~username/devel/public/
 
 Don't forget to upload the modified `.htaccess` file to the web server!
 
@@ -234,7 +234,7 @@ server and issue the commands:
     chmod 0777 cache
     chmod 0777 logs
 
-Or if you are using a FTP/SCP client, you can set directory permissions there as well. For example in [WinScp](todo) it is
+Or if you are using a FTP/SCP client, you can set directory permissions there as well. For example in [WinScp](/course/technical-support/#file-permissions-chmod) it is
 in context menu and "Properties" (F9 key):
 
 {: .image-popup}
