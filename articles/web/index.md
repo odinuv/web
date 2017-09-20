@@ -1,6 +1,7 @@
 ---
 title: Web
-permalink: /en/apv/articles/web/
+permalink: /articles/web/
+redirect_from: /en/apv/articles/web/
 ---
 
 * TOC
@@ -46,7 +47,7 @@ in the context of networks, we talk about *applications* and *roles*, not about 
 
 The following image shows how a random network looks on the application level view:
 
-![A random network schema](/en/apv/articles/web/network-schema.png)
+![A random network schema](/articles/web/network-schema.png)
 
 From the application point of view, you should interpret the above image as that:
 
@@ -236,7 +237,7 @@ response (most importantly the *Content type*). A single HTTP transaction always
 are required to transfer an entire HTML page.
 
 {: .image-popup}
-![HTTP Requests](/en/apv/articles/web/http-requests.png)
+![HTTP Requests](/articles/web/http-requests.png)
 
 {% comment %} doplnit uplny vypis {% endcomment %}
 
@@ -265,7 +266,7 @@ in its state which user is logged in. When a user enters credentials on the logi
 the web application which processes the request is started, checks the credentials and
 responds with a successful login page. Then the user requests another page (e.g. list of her emails)
 and the application which processes the request is started again, unaware of what
-has happened before. To workaround the statelessness of the HTTP protocol, [sessions and cookies](/en/apv/articles/cookies-sessions)
+has happened before. To workaround the statelessness of the HTTP protocol, [sessions and cookies](/articles/cookies-sessions)
 must be used. Also, it makes all web statistics considerably skewed, because it is very hard to
 identify what a *visit* of a page is.
 
