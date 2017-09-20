@@ -48,9 +48,9 @@ redirect_from: /en/apv/slides/database-tech/
 <section markdown='1'>
 ## Database Interfaces cont.
 - Every interface has functions to:
-    - connect to database (`connect` or constructor),
+    - connect to a database (`connect` or a constructor),
     - execute a query (`exec`, `execute`, `prepare`),
-    - fetch a result of SELECT query (`fetch`, `open`, `next`, `seek`) -- work with **resultset**
+    - fetch a result of the SELECT query (`fetch`, `open`, `next`, `seek`) -- work with **resultset**
     - retrieve an error result (`error`, `lastError`).
 </section>
 
@@ -64,7 +64,7 @@ redirect_from: /en/apv/slides/database-tech/
     - If it is not on the first page, search is better.
     - Maybe considered user unfriendly (combined with bad search).
 - Other application: "TOP 10 best customers"
-    - How many results should such query return?
+    - How many results should such a query return?
 </section>
 
 
@@ -93,7 +93,7 @@ CREATE TABLE contact (
 - `CREATE` statements are practically used only during imports and exports.
     - Because of different data types, it is impossible to use them for migrations.
     - Use special tools for migrations.
-- Database System have very complex configurations:
+- Database Systems have very complex configurations:
     - Can cause big changes in behavior;
     - E.g. MySQL / MariaDB storage engines (MyISAM × InnoDB)
 - Different implementations of auto-increment
@@ -102,10 +102,10 @@ CREATE TABLE contact (
 <section markdown='1'>
 ## Data Dictionary
 - The structure of every DB is stored in another DB.
-- Shared database `information_schema`: invisible, accessible, read-only.
-- Show tables in information_schema:
+- DD is a shared database `information_schema`: invisible, accessible, read-only.
+- To show tables in information_schema:
     - `SELECT * FROM information_schema.tables WHERE table_schema = 'information_schema'`
-- Show columns of a table:
+- To show columns of a table:
     - `SELECT * FROM information_schema.columns WHERE table_name = 'person'`
 - If unsupported, there are commands like `DESCRIBE`, `SHOW`
 - Modifications through commands `ALTER`, `RENAME`, `DROP`, `MODIFY`, `ADD` ...
@@ -114,11 +114,11 @@ CREATE TABLE contact (
 <section markdown='1'>
 ## Data Types -- String
 - character_varying(size) / varchar(size) / nvarchar(size)
-    - standard string limited by size
+    - a standard string limited by size
     - size in bytes for ANSI strings
     - size in characters for Unicode strings
 - char(size) / character(size) / nchar(size)
-    - string limited by size
+    - a string limited by size
     - filled with spaces, not very useful
     - `LIKE` compares without spaces
 - text / ntext
@@ -135,22 +135,22 @@ CREATE TABLE contact (
 - smallint -- 2B -- -2<sup>15</sup>..2<sup>15</sup>
     - 2<sup>15</sup> -- 32 768
 - whole numbers:
-    - signed (with sign) -- allows negative numbers
-    - unsigned (without sign) -- allows only positive numbers
+    - signed (with a sign) -- allows negative numbers
+    - unsigned (without a sign) -- allows only positive numbers
     - do not combine them!
 </section>
 
 <section markdown='1'>
 ## Data Types -- Decimal Numbers
 - `real` / `float` / `double`:
-    - floating point decimal point;
+    - a floating-point decimal;
     - inexact! -- e.g. `2 != 6 / 3` !
     - real range 1e<sup>-37</sup>..1e<sup>37</sup>
     - double range 1e<sup>-307</sup>..1e<sup>308</sup>
 - `number` / `numeric` / `decimal(precision, scale)`:
-    - fixed decimal point;
-    - precision -- maximum number of digit;
-    - scale -- number of digits after decimal point.
+    - a fixed-point decimal;
+    - precision -- maximum number of digits;
+    - scale -- number of digits after the decimal point.
 - `money` -2<sup>63</sup>..2<sup>63</sup> = 92 233 720 368 547 758.08
 </section>
 
@@ -159,9 +159,9 @@ CREATE TABLE contact (
 - Date and time is stored as **timestamp** (an unambiguous point in time).
 - Usually number of milliseconds / microseconds from 1.1.1970.
 - Range from 4713 BC to 294276 AD.
-- Conversion to string date is **very complex**, never ever do it yourself!
+- Conversion to a string date is **very complex**, never ever do it yourself!
 - Timestamp fixes leap days, leap seconds, DST...
-- Timestamp should contain time zone (use UTC whenever possible).
+- Timestamp should contain a time zone (use UTC whenever possible).
 - Does not allow to store incomplete dates ('January 2016'), use separate columns.
 </section>
 
@@ -169,18 +169,18 @@ CREATE TABLE contact (
 ## Data Types -- Date Types
 - `datetime` / `date` / `time`:
     - In mysql `datetime` is *sort of same* as timestamp
-- `timestamp`, `time`, `date` cannot be used to store date / datetime interval:
+- `timestamp`, `time`, `date` cannot be used to store a date / datetime interval:
     - never assume that an hour has 3600 seconds (can be from 0 up to 7200);
         - because of leap days, seconds;
         - because of DST;
-    - `interval` -- store interval of date time values.
+    - `interval` -- store the interval of date time values.
 </section>
 
 <section markdown='1'>
 ## Data Types -- Date Alternative
 - You may encounter using native application format:
-   - column data type is integer
-   - use timestamp of the application language:
+   - a column data type is an integer
+   - use the timestamp of the application language:
 
 {% highlight php %}
 <?php
@@ -197,9 +197,9 @@ $db->execute(
 - pros:
     - simple, for one application without problems
 - cons:
-    - non-atomic (1NF), impossible to select part of date
+    - non-atomic (1NF), impossible to select a part of the date
     - ordering works fine though
-    - impossible to store or compute interval
+    - impossible to store or compute an interval
     - brings back application and database dependency
     - unreliable when more applications use the database
 </section>
@@ -210,40 +210,40 @@ $db->execute(
     - BLOB / image -- binary data,
     - BLOB -- binary large object (LOB, LO).
 - Details of working with LO are dependent on the database interface.
-    - Send escaped data within the SQL string (limited size),
-    - Binary data must be sent via special functions.
-- Use this to store medium sized files, better than storing them in file system.
+    - Escaped data may be sent within the SQL string (limited size),
+    - Binary data may be sent via special functions ('unlimited' size).
+- Use this to store medium sized files, better than storing them in a file system.
 </section>
 
 <section markdown='1'>
 ## Automatically Generated Key
-- The most commonly used type of primary key:
-    - abstract record identifier,
+- The most commonly used type of a primary key:
+    - an abstract record identifier,
     - independent on outside conditions,
     - **auto-increment** or **sequence**,
     - simpler to use than compound keys (all parts must be used).
 - There should be a natural key defined too (for the end-user).
-- No database fully follows the standard (historical reasons).
+- No database follows the standard fully (historical reasons).
 </section>
 
 <section markdown='1'>
 ## Auto-increment in PostgreSQL
-- The column is assigned special data type `serial` when creating table.
-    - `CREATE TABLE table (id serial NOT NULL,` ...
+- The column is assigned a special data type `serial` when creating the table.
+    - `CREATE TABLE table (id serial NOT NULL,` ...
     - creates a **sequence** to generate the values;
-    - assigns default value to:
+    - assigns a default value to:
         - `nextval('sequence_name')`
-    - cannot be exported exactly (column is integer).
-- To obtain last value call:
+    - cannot be exported exactly (the column is an integer).
+- To obtain the last value, call:
     - `SELECT currval('sequence_name')`,
     - or `$db->lastInsertId('sequence_name')` in PDO.
-- If value is inserted explicitly, sequence won't update!
+- If a value is inserted explicitly, the sequence won't update!
     - Subsequent inserts will probably fail!
 </section>
 
 <section markdown='1'>
 ## Currval or Max?
-- To obtain the last value of inserted row, you **must always** use predefined functions.
+- To obtain the last value of an inserted row, you **must always** use predefined functions.
 - Correct:
     - `SELECT currval('sequence_name')`
     - `$db->lastInsertId('sequence_name')`
@@ -262,13 +262,13 @@ WHERE first_name = 'X' AND last_name = 'Y'
     - Does not work in **concurrent environment**.
 - Obtaining the value must be **thread-safe**.
     - Hard to test -- requires multiple users in rapid succession.
-- The last insert value is tied to **database session** (connection).
+- The last-insert-value is tied to the **database session** (connection).
 </section>
 
 <section markdown='1'>
 ## Integrity Constraints
-- Basic ones on single table:
-    - NOT NULL -- column with required value
+- Basic ones on a single table:
+    - NOT NULL -- a column with a required value
     - `UNIQUE (KEY)`, `PRIMARY (KEY)` -- keys
     - `CHECK` -- arbitrary rules, not supported by some systems
         - e.g. `height > 0`
@@ -278,13 +278,13 @@ WHERE first_name = 'X' AND last_name = 'Y'
 
 <section markdown='1'>
 ## Foreign Key
-- It is not possible to UPDATE / DELETE record while ignoring the dependent records.
-- UPDATE refers only to change of the primary key (not used often)
+- It is not possible to UPDATE / DELETE a record while ignoring the dependent records.
+- UPDATE refers only to primary key change (not used often)
 - DELETE is more common, possible behavior settings:
     - `CASCADE` -- delete the dependent records too,
     - `RESTRICT / NO ACTION` -- default behavior, do not allow deletion,
-    - `SET NULL` -- set dependent column to null, cancel the relationship
-    - decision depends on the application requirements!
+    - `SET NULL` -- set the dependent column to null, cancel the relationship
+    - the decision depends on the application requirements!
 </section>
 
 <section markdown='1'>
@@ -316,8 +316,8 @@ CREATE TABLE contact (
 )
 {% endhighlight %}
 
-- If you delete a person, you probably want to delete their contacts too.
-- When deleting from `person` table `id_person=2`, contacts depending on that row will be deleted too.
+- If you delete a person, you probably want to delete his contacts too.
+- When deleting from the `person` table `id_person=2`, contacts depending on that row will be deleted too.
 </section>
 
 <section markdown='1'>
@@ -349,32 +349,32 @@ CREATE TABLE person (
 )
 {% endhighlight %}
 
-- When the row with `id_location=11` is deleted from `location` table, the
+- When the row with `id_location=11` is deleted from the `location` table, the
 value in the `person.id_location` table is set to NULL.
-- If a person looses their address, we don't want to kill them.
+- If a person looses her address, we don't want to kill her.
 </section>
 
 <section markdown='1'>
 ## Deleting Records
-- Deleting records from database is uneasy task:
-    - use `SET NULL` where link can be lost,
+- Deleting records from the database is an uneasy task:
+    - use `SET NULL` where a link can be lost,
     - use `CASCADE` where related records can be lost,
     - use `RESTRICT` in all other cases.
 - Can you delete a user from information system?
-    - What about the history of operations?
+    - What about the history of his operations?
     - Disabling is a better option.
-    - What if you need to create someone with same login / email?
+    - What if you need to create someone with the same login / email?
 - What if the requirement is that someone must always be responsible for an item?
 </section>
 
 <section markdown='1'>
 ## Database Portability
 - The above (and below) differences make portability problematic.
-- Making and application portable between multiple database system is rarely wanted and inefficient.
+- Making an application portable between multiple database systems is rarely wanted and usually inefficient.
 - The goal of universal interfaces is mostly to ease programming.
 - The biggest problems are not syntactic differences in SQL, but
 different approaches:
-    - What may perform fine on one server can lead to extreme HW requirements on another.
+    - What may perform fine on one server can lead to extreme HW requirements on another one.
     - Same queries lead to different **execution plans**.
 </section>
 
@@ -383,13 +383,13 @@ different approaches:
 - The most basic -- ISAM (Index Sequential Access Method):
     - Index files, Data files:
         - Like a contact directory (address book, phone book);
-        - Speedup read, slow down writes.
+        - Speedup reads, slow down writes.
     - Different implementations -- hash tables, trees.
-- Index should be created on:
+- An index should be created on:
     - Keys (usually done automatically)
     - Columns used in JOINs (should be foreign keys)
     - Columns used often in `WHERE` clauses (should be keys)
-- Do not create index on all columns!
+- Do not create indexes on all columns!
 </section>
 
 <section markdown='1'>
@@ -411,17 +411,17 @@ different approaches:
 </section>
 
 <section markdown='1'>
-## Things build on top of SQL
+## Things built on top of SQL
 - Doctrine Query Language (DQL), Hibernate Query Language (HQL), Java Persistence Query Language (JPQL), JOOQ, ...
-- Usually ORM (Object-Relational Mapping) layer and language which queries the *object model*.
+- Usually an ORM (Object-Relational Mapping) layer and the language which queries the *object model*.
     - The layer generates SQL queries.
 - For some kinds of applications (or some parts), ORM is wonderful
     - For some parts is greatly annoying.
-    - `u.articles` refers to table:
+    - `u.articles` refers to the table:
 </section>
 
 <section markdown='1'>
-## Things build on top of SQL cont.
+## Things built on top of SQL cont.
 {% highlight php %}
 <?php
 ...
@@ -438,10 +438,10 @@ $users = $query->getResult();
 ## Query Builders
 - Not to be confused wit ORM (most ORM support it).
 - Fluent interface, Query Builder class:
-    - Sometimes less cluttered than plain SQL query;
-    - Usually more cluttered than normal query;
-    - Hard to test the query outside application;
-    - Does not make developing easier anyway;
+    - Sometimes less cluttered than a plain SQL query;
+    - Usually more cluttered than a normal query;
+    - Hard to test the query outside the application;
+    - Does not make developing *that much* easier;
     - In some cases it is almost necessary.
 
 {% highlight php %}
@@ -457,12 +457,12 @@ $qb->select('person.*')
 
 <section markdown='1'>
 ## Checkpoint
-- Is it better to set foreign key to `ON DELETE CASCADE` or `ON DELETE SET NULL`?
-- Can you store date as integer in database?
+- Is it better to set a foreign key to `ON DELETE CASCADE` or `ON DELETE SET NULL`?
+- Can you store a date as an integer in the database?
 - Does every table have an index?
-- Is it better to use MySQL or PostgreSQL DB server?
+- Is it better to use the MySQL or PostgreSQL DB server?
 - Why can't you use `MAX()` to obtain id of the last inserted record?
 - Does every hour have 3600 seconds?
-- Why can't you use `text` data type everywhere?
+- Why can't you use the `text` data type everywhere?
 - Can you obtain ID of the last inserted record of a different database user?
 </section>

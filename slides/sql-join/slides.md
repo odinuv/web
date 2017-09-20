@@ -9,9 +9,9 @@ redirect_from: /en/apv/slides/sql-join/
 
 <section markdown='1'>
 ## Introduction
-- SQL commands may be terminated with semicolon `;` (delimiter, not terminator).
+- SQL commands may be terminated with a semicolon `;` (delimiter, not a terminator).
 - Strings must be quoted with single quotes `'` (quote numbers as well).
-- Create Database -- SQL command `CREATE`.
+- Create Database -- the SQL command `CREATE`.
     - Syntax is fairly complicated and highly dependent on the specific database system.
     - Check the manual for details.
     - No need to learn this thing!
@@ -26,12 +26,12 @@ redirect_from: /en/apv/slides/sql-join/
 
 <section markdown='1'>
 ## Insert data
-- SQL command INSERT INTO [ (*column_list*) ] VALUES (*value_list*)
+- The SQL command INSERT INTO [ (*column_list*) ] VALUES (*value_list*)
 - `INSERT INTO persons (first_name, last_name, nickname) VALUES ('John', 'Doe', 'Johnny')`
 - Columns not listed are inserted with default values (usually `NULL`).
-- If default value is `NULL`, and the column is `NOT NULL` then a value must be provided.
-- In application code, all columns should be listed.
-- Automatically generated primary key (auto_increment, serial) is almost never inserted.
+- If the default value is `NULL`, and the column is `NOT NULL`, then a value must be provided.
+- In an application code, all columns should be listed.
+- An automatically generated primary key (auto_increment, serial) is almost never inserted.
 </section>
 
 <section markdown='1'>
@@ -52,7 +52,7 @@ VALUES (DEFAULT, 'John', 'Doe', 'Johnny')
 
 <section markdown='1'>
 ## Insert -- dates
-- Dates are inserted as strings (usually `Y-m-d`) or with conversion function.
+- Dates are inserted as strings (usually `Y-m-d`) or with a conversion function.
 - Insert date -- PostgreSQL (first) vs. MySQL (second):
 
 {% highlight sql %}
@@ -72,13 +72,13 @@ VALUES ('John', 'Doe', 'Johnny',
 
 <section markdown='1'>
 ## Updating data
-- SQL command UPDATE table SET *column* = *expression* [,*column* = *expression* ...] [ WHERE *search_condition* ]
+- The SQL command UPDATE table SET *column* = *expression* [,*column* = *expression* ...] [ WHERE *search_condition* ]
 - `UPDATE person SET height = '196' WHERE id_person = '42'`
-- If `WHERE` clause is missing, all rows are updated!
+- If the `WHERE` clause is missing, all rows are updated!
     - `UPDATE person SET birth_day=NULL`
-- `WHERE` condition usually contains key.
+- The `WHERE` condition usually contains a key.
     - If compound, then all parts must be provided!
-- To remove a value set it to `NULL`.
+- To remove a value, set it to `NULL`.
 </section>
 
 <section markdown='1'>
@@ -97,24 +97,24 @@ WHERE first_name = 'Ethyl'
 
 <section markdown='1'>
 ## Deleting Data
-- SQL command DELETE FROM *table* WHERE *search_condition*
+- The SQL command DELETE FROM *table* WHERE *search_condition*
 - `DELETE FROM persons WHERE id_person = 42`
 - If the search condition is missing, **all rows in the table will be deleted**.
-- DELETE removes entire rows, to remove a single value use UPDATE.
+- DELETE removes entire rows; to remove a single value, use UPDATE.
 </section>
 
 <section markdown='1'>
 ## Selecting Data
-- SQL command SELECT FROM *tables* WHERE *search_condition*
+- The SQL command SELECT FROM *tables* WHERE *search_condition*
 - SELECT is by far the most complicated SQL command.
     - You can be learning it for years and never finish.
 - Important clauses:
     - `FROM` -- source tables from which you select data,
-    - `WHERE` -- search condition -- same as in `UPDATE` or `DELETE`,
+    - `WHERE` -- a search condition -- the same as in `UPDATE` or `DELETE`,
     - `JOIN` -- for joining multiple tables together,
     - `ORDER BY` -- for ordering rows in the result,
     - `GROUP BY` -- for aggregating data,
-    - `HAVING` -- search condition for aggregated data.
+    - `HAVING` -- a search condition for aggregated data.
 </section>
 
 <section markdown='1'>
@@ -140,7 +140,7 @@ FROM <em>table_expression</em>
     - sometimes a SQL query is also allowed.
 - `SELECT ... FROM` -- projection from relational algebra
 - `WHERE` -- restriction from relational algebra
-- `SELECT * FROM persons` -- all columns and all rows from table `persons`
+- `SELECT * FROM persons` -- all columns and all rows from the table `persons`
 - `SELECT id_person, first_name, last_name FROM persons WHERE height > 190`
 </section>
 
@@ -166,7 +166,7 @@ FROM <em>table_expression</em>
 FROM ...
 - `*` -- select all columns available in the `FROM` clause.
 - `table.*` -- select all columns from the given table.
-- `table.column` -- select column from the given table.
+- `table.column` -- select the column from the given table.
 - `AS` -- assign a temporary different name to a column -- **alias**.
 </section>
 
@@ -204,10 +204,10 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 - To select data from multiple tables, they must be JOINed.
 - By joining tables (Θ - join) the original schema can be reconstructed.
 - A table is:
-    - **relation** (physical table in schema)
-    - **view** (virtual table in schema)
-    - **result of query** (volatile table)
-    - **result of join** (volatile table)
+    - **relation** (a physical table in a schema)
+    - **view** (a virtual table in a schema)
+    - **result of query** (a volatile table)
+    - **result of join** (a volatile table)
 </section>
 
 <section markdown='1'>
@@ -224,18 +224,18 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 </pre>
 
 - On both *left* and *right* side of the JOIN, there is a table.
-- The joined table contains rows for which join condition is true.
+- The joined table contains rows for which the join condition is true.
 - CROSS JOIN / Cartesian Join / Cartesian Product :
     - `SELECT * FROM persons, locations`
 </section>
 
 <section markdown='1'>
 ## INNER JOIN Operator
-- Can join with Cartesian Product, `JOIN` is more flexible.
+- You can join with Cartesian Product. `JOIN` is more flexible.
 - `SELECT * FROM persons INNER JOIN contact ON persons.id_person = contact.id_person`
 - Selects rows from both tables which satisfy the join condition (1:1 or 1:1..N).
 - Selects all persons which have some contact.
-- Each person is listed as many times as it has contacts.
+- Each person is listed as many times as she has contacts.
 - If column names are same, the condition can be shortened:
     - `SELECT * FROM persons INNER JOIN contact USING(id_person)`
 - `INNER JOIN` is default and symmetric.
@@ -244,20 +244,20 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 <section markdown='1'>
 ## LEFT / RIGHT JOIN
 - `SELECT * FROM person LEFT JOIN contact ON person.id_person = contact.id_person`
-    - Selects **all rows from left** table and rows satisfying the condition from the right table (1:0..1 or 1:0..N).
-    - Selects all persons and if the persons has contacts, lists the contacts too.
-- `SELECT * FROM person RIGHT JOIN contact ON person.id_person = contact.id_person`
+    - Selects **all rows from the left** table and rows satisfying the condition from the right table (1:0..1 or 1:0..N).
+    - Selects all persons and if the persons have contacts, lists the contacts too.
+- `SELECT * FROM person RIGHT JOIN contact ON person.id_person = contact.id_person`
     - Selects **all rows from the right** table and rows satisfying the condition from the left table.
-    - Selects all contacts and lists person with each contact (same as INNER JOIN in this case).
+    - Selects all contacts and lists persons with each contact (same as INNER JOIN in this case).
 </section>
 
 <section markdown='1'>
 ## LEFT / RIGHT JOIN
-- `SELECT * FROM relation LEFT JOIN relation_type ON relation.id_relation_type = relation_type.id_relation_type`
-    - Selects all relations and lists relation type for each relation.
-    - Lists also relations which have not type (cannot exist).
-- `SELECT * FROM relation RIGHT JOIN relation_type ON relation.id_relation_type = relation_type.id_relation_type`
-    - Select all relation types and assigns relation type to each relation.
+- `SELECT * FROM relation LEFT JOIN relation_type ON relation.id_relation_type = relation_type.id_relation_type`
+    - Selects all relations and lists the relation type for each relation.
+    - Lists also relations which have no type (cannot exist).
+- `SELECT * FROM relation RIGHT JOIN relation_type ON relation.id_relation_type = relation_type.id_relation_type`
+    - Select all relation types and assigns the relation type to each relation.
     - Lists also relation types which are not used.
 </section>
 
@@ -298,10 +298,10 @@ SELECT * FROM contact NATURAL JOIN contact_type
 <section markdown='1'>
 ## JOIN Summary
 - JOIN is used to obtain data from multiple tables.
-- Alias is used when same table is used more times in join.
-- Join condition is usually equality between two columns.
-    - One of them usually has foreign key.
-- Join condition can be more exotic (AND / OR, inequality)
+- An alias is used when the same table is used more times in join.
+- The join condition is usually an equality between two columns.
+    - One of them usually has a foreign key.
+- The join condition can be more exotic (AND / OR, inequality)
 - Join connects tables -- relations, views, other joins, selects.
 </section>
 
@@ -409,12 +409,12 @@ ORDER BY last_name DESC, nickname DESC
 <section markdown='1'>
 ## Checkpoint
 - Is it possible to join more than two tables?
-- What happens if you run `DELETE` without `WHERE`?
-- Can you join a table in database with result of `SELECT`?
+- What happens if you run a `DELETE` without a `WHERE`?
+- Can you join a table in the database with result of a `SELECT`?
 - What are aliases useful for?
-- Is it necessary to give join condition for every join?
-- Why should you list column names in `INSERT`?
-- Can you insert date to database in arbitrary format?
+- Is it necessary to give the join condition for every join?
+- Why should you list column names in an `INSERT`?
+- Can you insert date to the database in arbitrary format?
 - What are the most common methods of joining tables?
 - Why is using a cartesian product not a good idea?
 </section>
