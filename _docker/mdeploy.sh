@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 
-cd $TRAVIS_BUILD_DIR
-./_docker/replace.sh
+/code/_docker/replace.sh
 
-cd _site
+cd /code/_site
 filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
     echo "No files to update"

@@ -19,7 +19,7 @@ deploy:
 #      tags: true
   - provider: script
     skip_cleanup: true
-    script: $TRAVIS_BUILD_DIR/_docker/mdeploy.sh
+    script: docker-composer run --rm deploy
 #   on:
 #     tags: true
 #     all_branches: true
