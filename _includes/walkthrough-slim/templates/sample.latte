@@ -1,0 +1,16 @@
+{extends layout.latte}
+
+{block title}TITLE OF PAGE{/block}
+
+{block body}
+    <div class="container">
+        <h1>BODY CONTENT</h1>
+
+        <form action="{link sample-process}" method="post">
+            <label>Type your name:</label>
+            <input class="form-control" type="text" name="person">
+            <br>
+            <input class="btn btn-primary" type="submit" value="OK">
+        </form>
+    </div>
+{/block}
