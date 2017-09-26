@@ -17,9 +17,9 @@ deploy:
     script: $TRAVIS_BUILD_DIR/_docker/deploy.sh
 #    on:
 #      tags: true
-#  - provider: script
-#    skip_cleanup: true
-#    script: ./mdeploy.sh
+  - provider: script
+    skip_cleanup: true
+    script: $TRAVIS_BUILD_DIR/_docker/mdeploy.sh
 #   on:
 #     tags: true
 #     all_branches: true

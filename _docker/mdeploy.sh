@@ -1,20 +1,10 @@
 #!/bin/bash
 set -e
 
-gitLastCommit=$(git show --summary --grep="Merge pull request")
-if [[ -z "$gitLastCommit" ]]
-then
-    lastCommit=$(git log --format="%H" -n 1)
-else
-    echo "We got a Merge Request!"
-    #take the last commit and take break every word into an array
-    arr=($gitLastCommit)
-    #the 5th element in the array is the commit ID we need. If git log changes, this breaks. :(
-    lastCommit=${arr[4]}
-fi
-echo $lastCommit
+cd $TRAVIS_BUILD_DIR
+./_docker/replace.sh
 
-cd ../_site
+cd _site
 filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
     echo "No files to update"

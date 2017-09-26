@@ -2,8 +2,8 @@
 set -e
 
 echo "Replacing links"
-grep -rlF '](/en' ./en/ | xargs sed -i 's@](/en@](/~xpopelka/en@g'
+grep -rlF '](/' . | xargs sed -i 's@](/@](/~xpopelka/@g'
 echo "Replacing permalinks"
-grep -rl 'permalink: /en' ./en/ | xargs sed -i 's@permalink: /en@permalink: /~xpopelka/en@g'
+grep -rl 'permalink: /' . | xargs sed -i 's@permalink: /@permalink: /~xpopelka/@g'
 echo "Replacing menulinks"
-grep -rl 'url: /en' ./_data/ | xargs sed -i 's@url: /en@url: /~xpopelka/en@g'
+grep -rl 'url: /' ./_data/ | xargs sed -i 's@url: /@url: /~xpopelka/@g'
