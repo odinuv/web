@@ -19,7 +19,7 @@ deploy:
 #      tags: true
   - provider: script
     skip_cleanup: true
-    script: docker-composer run --rm deploy
+    script: docker-compose run --rm deploy
 #   on:
 #     tags: true
 #     all_branches: true
