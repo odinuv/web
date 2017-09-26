@@ -208,4 +208,5 @@ Jak se nesklouznout k bastardním metodikám.
         - překlad/dokumentace
         - ostatní?
     - Zašlete na **ondrej.popelka@mendelu.cz**
+    - Účty
 </section>
