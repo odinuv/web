@@ -1,0 +1,13 @@
+{extends layout.latte}
+
+{block title}Login{/block}
+
+{block body}
+    <pre>
+        id: {$user['id_account']}
+        login: {$user['login']}
+    </pre>
+    <form action="{link logout}" method="post">
+        <input type="submit" value="Logout">
+    </form>
+{/block}

@@ -1,0 +1,16 @@
+{extends layout.latte}
+
+{block title}Login{/block}
+
+{block body}
+    <h1>Login</h1>
+    <form action="{link do-login}" method="post">
+        <label>Login:</label>
+        <input type="text" name="login" required>
+        <br>
+        <label>Password:</label>
+        <input type="password" name="pass" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+{/block}

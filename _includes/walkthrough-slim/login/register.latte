@@ -1,0 +1,26 @@
+{extends layout.latte}
+
+{block title}Register{/block}
+
+{block body}
+    <h1>Register</h1>
+    {if $message}
+        <p>{$message}</p>
+    {/if}
+    <form action="{link do-register}" method="post">
+        <label>Login:</label>
+        <input type="text" name="login" value="{$form['login']}" required/>
+        <br/>
+        <label>Password:</label>
+        <!--
+            Passwords are not usually send back and forth over internet.
+            Hence there is no default value for password inputs.
+        -->
+        <input type="password" name="pass1" required/>
+        <br/>
+        <label>Password (verification):</label>
+        <input type="password" name="pass2" required/>
+        <br/>
+        <input type="submit" value="Register"/>
+    </form>
+{/block}
