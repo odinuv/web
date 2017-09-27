@@ -2,7 +2,7 @@
 set -e
 
 cd /code/_site/
-mv /code/_site/~xpopelka/ /code/_site/
+mv /code/_site/~xpopelka/* /code/_site/
 filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
     echo "No files to update"
