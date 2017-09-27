@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-/code/_docker/replace.sh
-
 cd /code/_site
 filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
