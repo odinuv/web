@@ -14,7 +14,7 @@ else
         if [ "$f" != ".travis.yml" ] && [ "$f" != "deploy.sh" ] && [ "$f" != "test.js" ] && [ "$f" != "package.json" ]
         then
             echo "Uploading $f"
-            curl --insecure --ftp-create-dirs -T $f -u $MFTP_USER:$MFTP_PASS $MFTP_TARGET/$f
+            curl -s --insecure --ftp-create-dirs -T $f -u $MFTP_USER:$MFTP_PASS $MFTP_TARGET/$f
             if [ $? -ne 0 ]; then
               echo "Could not upload file" >&2
               exit 1
