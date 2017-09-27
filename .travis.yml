@@ -15,11 +15,11 @@ deploy:
   - provider: script
     skip_cleanup: true
     script: $TRAVIS_BUILD_DIR/_docker/deploy.sh
-#    on:
-#      tags: true
   - provider: script
     skip_cleanup: true
-    script: docker-compose run --rm deploy
+    script: $TRAVIS_BUILD_DIR/_docker/mdeploy-run.sh
+#    on:
+#      tags: true
 #   on:
 #     tags: true
 #     all_branches: true
