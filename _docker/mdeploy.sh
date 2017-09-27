@@ -2,8 +2,8 @@
 set -e
 
 cd /code/_site/
-mv /code/_site/~xpopelka/* /code/tmp/
 mkdir /code/tmp/
+mv /code/_site/~xpopelka/* /code/tmp/
 cp -r /code/tmp/* /code/_site/
 filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
