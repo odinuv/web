@@ -2,3 +2,4 @@ _site
 .idea
 .sass-cache
 .vscode
+/course/ca/config.php

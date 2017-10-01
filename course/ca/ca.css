@@ -1,0 +1,70 @@
+.formContainer p {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    line-height: normal;
+}
+#inputEmail {
+    width: 300px;
+    font-weight: bold;
+}
+#requestResult, #profileResultSuccess, #profileResultFail, #pointResultSuccess, #pointResultFail, #changeUserNameContainer {
+    display: none;
+}
+#inputUserName {
+    width: 150px;
+    font-weight: bold;
+}
+#loader {
+    background-image: url('ajax-loader.gif');
+    width: 24px;
+    height: 24px;
+    display: none;
+    margin-left: 5px;
+    margin-top: -32px;
+    float: right;
+}
+.verify {
+    height: 24px;
+    margin-left: 5px;
+    background: url("next.png") no-repeat scroll 8px 2px #EBEBEB;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px 6px 6px 6px;
+    padding-left: 25px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+.valid {
+    background: url('valid.png') no-repeat;
+    color: green;
+    padding-left: 20px;
+}
+.invalid {
+    background: url('invalid.png') no-repeat;
+    padding-left: 20px;
+    font-weight: bold;
+    color: #CC4040;
+}
+#changeUserName {
+    cursor: pointer;
+}
+#refreshAllActiveUsers, #importUsers {
+    cursor: pointer;
+}
+#password {
+    width: 200px;
+}
+#exportConfig {
+    border: 1px dotted #CCCCCC;
+}
+#csvContents {
+    width: 500px;
+    height: 500px;
+}
+.admin_fieldset legend {
+    padding: 5px;
+    font-weight: bold;
+}
+.admin_fieldset {
+    padding: 10px;
+    border: 1px dotted #CCCCCC;
+}
