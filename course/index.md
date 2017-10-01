@@ -12,6 +12,16 @@ The aim of the course is to teach students basic categories of application softw
 the development of web applications and database applications (relational database systems).
 [Official course information](http://ects-prog.mendelu.cz/en/plan6937/predmet88060)
 
+## Requirements
+To pass the course you have to:
+
+- pass the midterm test (minimum 50% points)
+- get at least 90 points on [Codecademy](https://www.codecademy.com/) --- [**Verify**](codecademy.php)
+- finish the [course project](#project-assignment)
+- pass the final exam (minimum 50% points) 
+
+The grade from the final exam and the project evaluation make up for the final course grade.
+
 ## Course outline
 
 - Week 1
