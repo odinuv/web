@@ -7,14 +7,14 @@ redirect_from: /en/apv/articles/html/
 * TOC
 {:toc}
 
-If you read the [previous article](/articles/web/), you should know what web applications
+If you have read the [previous article](/articles/web/), you should know what web applications
 are and that they are created using the HTML language. In this article I'm going to
 concentrate more on what HTML is and what is important in it.
 
 ## HTML essentials
 A web page must be created using HTML (Hyper Text Markup Language) as that is the language which is understood by
 [Web Browsers](/articles/web/#www-service).
-**HyperText** is a document which has links to other parts of the same document or
+A **HyperText** is a document which has links to other parts of the same document or
 other documents. Although this may seem normal now, it was quite a revolutionary idea,
 because until HyperText's invention, text documents were read in a linear fashion.
 
@@ -26,7 +26,7 @@ HTML is not a [programming language](/articles/programming/#programming-for-dumm
 there are no variables, conditions, assignments,
 etc. This makes learning HTML much easier than learning a programming language
 (although it may look cryptic from the beginning).
-HTML language is designed to describe the structure of a
+The HTML language is designed to describe the structure of a
 text (or mostly text) document. The HTML language is not designed to describe how a text
 document will look, it only describes structural elements of the document, such as:
 
@@ -43,12 +43,12 @@ An HTML document is [parsed](/articles/programming/#source-code)
 (together with [styles](/walkthrough/css/)) by an interpreter built in the web browser.
 Then it is **rendered** by the
 browser [rendering engine](/articles/html/#rendering-engines) on
-the users' screen. During rendering, the
+the user's screen. During rendering, the
 browser figures out where each part of the document should be displayed, how big it should be
 and how it should look and then draws some lines and points on the screen.
 
 ## HTML Language Structure
-HTML language consists of the following parts:
+The HTML language consists of the following parts:
 
 - [**elements**](https://www.w3.org/TR/html5/dom.html#elements)
 - [**attributes**](http://www.w3.org/TR/html5/index.html#attributes-1)
@@ -67,7 +67,7 @@ however that they are still visible in the page source code in a web browser
 
 ### HTML Elements
 HTML elements represent parts of a text document. A `p` element
-represents a paragraph in a text, a `table` elements represents a table, etc.
+represents a paragraph in a text, a `table` element represents a table, etc.
 HTML elements are organized into a hierarchial structure. A HTML
 document is a text document in which this structure is recorded.
 Elements are written down using **tags**:
@@ -94,7 +94,7 @@ The above example contains one attribute with:
 ### Entities
 Apart from elements, HTML can also contain **entities** which are placeholders for
 special characters -- for example `&gt;` represents the character `>` (**g**reater **t**han).
-Entities begin with ampersand `&`, end with semicolon `;`, they may be encoded as either:
+Entities begin with an ampersand `&` and end with a semicolon `;`, they may be encoded as either:
 
   - symbolic [character name](http://www.w3.org/TR/html5/named-character-references.html) -- `&gt;`,
   - numeric [Unicode character code](https://en.wikipedia.org/wiki/Unicode) references -- `&#62;`
@@ -107,7 +107,7 @@ which has a special meaning in HTML. e.g writing this is incorrect:
 <p>Three is smaller than five: 3 < 5</p>
 {% endhighlight %}
 
-Because the `<` character denotes the start of tag in HTML, you should write:
+Because the `<` character denotes the start of a tag in HTML, you should write:
 
 {% highlight html %}
 <p>Three is smaller than five: 3 &lt; 5</p>
@@ -118,11 +118,11 @@ Another reason for using entities is that you need to write a
 [Unicode character](http://unicode-table.com/en/) which you cannot type on the keyboard.
 For example `&#10084;` will give you a heart.
 
-## Writing HTML documents
-An HTML document should begin with `<!DOCTYPE html>` header. This denotes that
-it is HTML5 version document. White-space is mostly ignored (there are
+## Writing HTML Documents
+An HTML document should begin with the `<!DOCTYPE html>` header. This denotes that
+it is an HTML5 version document. White-space is mostly ignored (there are
 few exceptions like `pre` and `textarea` elements). Which means that HTML
-documents are usually formatted to underline the hierarchy of elements:
+documents are usually formatted to underline the elements hierarchy:
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -155,7 +155,7 @@ first item of the list</p></li><li><p>second item of the list</p></li>
 </div>
 
 ### Hierarchical Structure
-Let us have a look at a sample HTML document:
+Let us have a look at an HTML document example:
 
 {% highlight html %}
 {% include /articles/html/html-sample.html %}
@@ -167,25 +167,25 @@ a simple page:
 {: .image-popup}
 ![Screenshot - Sample document](/articles/html/html-sample.png)
 
-In the beginning I said, that a HTML document is a hierarchial structure
+At the beginning I said, that a HTML document is a hierarchial structure
 [(tree structure)](https://en.wikipedia.org/wiki/Tree_(graph_theory)) of HTML elements.
 In the above example, you can see that `<html>` is
 a **root** element, other elements `<body>` and `<head>` are its **children**.
 The element `<head>` is a **sibling** to `<body>`. The `<body>` element
 has children `<div>`, `<div>` and `<footer>`. It is very important to recognize this
-hierarchical structure shown in the below image:
+hierarchical structure shown in the image below:
 
 {: .image-popup}
 ![Hierarchical HTML](/walkthrough/css/html.svg)
 
-Notice that the hierarchical structure of HTML means that the following is not a valid HTML document:
+Notice that the hierarchical structure of HTML means that the following piece of code is not a valid HTML document:
 
 {% highlight html %}
 <p>Text<strong>in Bold</p></strong>
 {% endhighlight %}
 
-It is important to understand HTML document as this hierarchical structure. It will become
-more and more important when dealing with [stylesheets](todo) or [Javascript code](todo).
+It is important to understand that an HTML document as this hierarchical structure. It will become
+more and more important when dealing with [stylesheets](todo) or a [Javascript code](todo).
 
 ### Common Elements
 There are over 100 elements available in the HTML language. The tag names
@@ -206,9 +206,9 @@ names (sorted alphabetically):
 - `<ul>` -- **U**nordered **L**ist (enumeration) (*block element*),
 - `<li>` -- **L**ist **I**tem (*block element*),
 - `<div>` -- **Div**ision (a [generic paragraph](https://www.w3.org/TR/html5/grouping-content.html#the-div-element)) (*block element*),
-- `<span>` -- Span [(meaning range)](http://www.merriam-webster.com/dictionary/span) A generic part of line (*line element*).
+- `<span>` -- Span [(meaning range)](http://www.merriam-webster.com/dictionary/span) A generic part of a line (*line element*).
 
-There are many more HTML elements, but not worry, you'll learn them along the way.
+There are many more HTML elements, but don't worry, you'll learn them along the way.
 There are two basic types of HTML elements:
 
 - **block-level elements** elements -- p, h1, div, …
@@ -218,11 +218,11 @@ There are two basic types of HTML elements:
 represent generic paragraphs, i.e. they are blocks
 of a text which span the entire line of the document (in other words -- they always start a new text line).
 For example a table cannot be inserted in the middle of a line. *Inline elements*
-are parts of line. Inline elements may be inserted in inline elements
+are parts of a line. Inline elements may be inserted in inline elements
 or block elements. Block elements may be inserted only inside other block elements
 The exception to this rule is the `a` (link) element, which is
-line element, but block elements may be inserted into it. Be careful not to insert any
-other *active* (clickable) element (e.g. `input`) as a child of `a`). Such combination of
+a line element, but block elements may be inserted into it. Be careful not to insert any
+other *active* (clickable) element (e.g. `input`) as a child of `a`). Such a combination of
 elements [is forbidden](http://stackoverflow.com/questions/6393827/can-i-nest-a-button-element-inside-an-a-using-html5).
 
 ### Common Attributes
@@ -234,9 +234,9 @@ must contain additional information -- the link target.
 <a href='https://youtube.com/'>Youtube</a>
 {% endhighlight %}
 
-Attributes must be written in the *opening tag*, they are written in form `name='value'`, each
+Attributes must be written in the *opening tag*, they are written in the form `name='value'`, each
 attribute can be specified only once. In the above example the attribute name is `href` (meaning
-[**h**ypertext **ref**erence](https://www.w3.org/TR/2014/REC-html5-20141028/links.html#links))
+'[**h**ypertext **ref**erence](https://www.w3.org/TR/2014/REC-html5-20141028/links.html#links)')
 and the value is the actual [URL link](https://url.spec.whatwg.org/) (https://youtube.com/).
 The order of attributes in a tag is arbitrary.
 
@@ -245,7 +245,7 @@ You can use either single quotes `'` or double quotes `"` around an attribute va
 no difference in HTML.
 
 Another example would be an image which requires two attributes -- `src` for the image **source**
-and `alt` for an **alt**ernative text (used when image cannot be displayed):
+and `alt` for an **alt**ernative text (used when the image cannot be displayed):
 
 {% highlight html %}
 <img src='https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png' alt='HTML5 logo'>
@@ -253,22 +253,22 @@ and `alt` for an **alt**ernative text (used when image cannot be displayed):
 
 {: .note}
 The image element can have no other content apart the image itself. Instead of writing
-`<img src...></img>` it is shortened to only the start tag ([see below](#tags) for lengthy explanation).
+`<img src...></img>` it is shortened to the start tag only ([see below](#tags) for lengthy explanation).
 
 There is a number of [common attributes](https://www.w3.org/TR/html/dom.html#sec-global-attributes),
 it's really good to know about:
 
-- `id` -- Unique identifier of the HTML element within the document (used,
+- `id` --- A unique identifier of the HTML element within the document (used,
 e.g. in [forms](http://localhost:4000/walkthrough/html-forms/) and [CSS styles](todo));
-- `class` -- Arbitrary class of the HTML element, used mainly for [CSS styles](todo));
-- `title` -- Arbitrary text which is shown when a user hovers over a HTML element;
-- `style` -- Definition of an [inline style](todo);
+- `class` --- An arbitrary class of the HTML element, used mainly for [CSS styles](todo));
+- `title` --- An arbitrary text which is shown when a user hovers over a HTML element;
+- `style` --- A definition of an [inline style](todo);
 - [data attributes](/articles/html/#data-attributes).
 
 ### Tags
 There are some oddities when writing down HTML elements:
 
-**Empty elements** are elements that have no body -- for example `img` element has no body, because its
+**Empty elements** are elements that have no body -- for example the `img` element has no body, because its
 content is defined by the image source. For empty elements the end tag is omitted:
 
 - `<img src='http://example.com/image.png'>` (valid)
@@ -276,7 +276,7 @@ content is defined by the image source. For empty elements the end tag is omitte
 - `<img src='http://example.com/image.png'></img>` (also valid but not recommended)
 
 [**Boolean** (true/false)](/articles/programming/#type-system) attributes are true when they
-are present in the tag. They either have no value at all, or they must have the value equal to their name. If
+are present in the tag. They either have no value at all, or they must have their value equal to their name. If
 you want to set a boolean attribute to false, simple remove it:
 
 - `<input type='text' required>` (valid, true)
@@ -298,28 +298,28 @@ Data attributes are useful for passing arbitrary values to [JavaScript](/walkthr
 However their use would fall into the advanced category, so you probably won't use them soon.
 
 ### HTML Header
-The `head` element contains various information about the page itself, these are commonly
+The `head` element contains various information about the page itself, this is commonly
 called **metadata** (data about data in the page). The `head` section is not part of the
 page itself, so do not confuse this with the actual page header (with logo, menu, etc.) --
 that goes to the `body` element. The `head` element usually contains the following
 children:
 
-- `title` -- set a page title, used for example in the title of the browser window (required)
-- `meta` -- set actual page **metadata** (e.g. encoding (see below), page description, author, keywords).
- - `style` -- [CSS styles](/walkthrough/css/) in page
-- `link` -- definition of related files (external style, fonts, etc.)
-- `script` -- [JavaScript](/walkthrough/javascript/) code or link to [JavaScript](/walkthrough/javascript/) code
+- `title` --- Set a page title, used for example in the title of the browser window (required).
+- `meta` --- Set the page **metadata** (e.g. encoding (see below), page description, author, keywords).
+ - `style` --- [CSS styles](/walkthrough/css/) in page.
+- `link` --- A definition of related files (external style, fonts, etc.).
+- `script` --- A [JavaScript](/walkthrough/javascript/) code or link to a [JavaScript](/walkthrough/javascript/) code.
 
 #### Encoding
 It is highly recommended to set page encoding with `<meta charset='utf-8' />`. Although web
 browsers mostly default to utf-8 encoding, you want to make sure that the page
-is displayed correctly (even if the user e.g. saves the page to his local drive).
+is displayed correctly (even if the user e.g. saves the page to her local drive).
 
 It is also important to save the source code in correct encoding ([utf-8](https://en.wikipedia.org/wiki/Utf-8))
-during creation. It has to be the same encoding which you declare in `<head>` section. It is not enough to
-put `<meta charset='utf-8' />` into `<head>` and store the source code in
+during its creation. It has to be the same encoding which you declare in the `<head>` section. It is not enough to
+put `<meta charset='utf-8'>` into `<head>` and store the source code in
 [ASCII encoding](https://en.wikipedia.org/wiki/Extended_ASCII). The web browser may display some
-characters incorrectly until you set your editor save the file in correct encoding.
+characters incorrectly until you set your editor to save the file in the correct encoding.
 
 ### Validation
 Because web browsers try to be smart (and because end-users want to see the page content), they
@@ -331,14 +331,14 @@ until there are too many of them and the browser
 To prevent this, make sure that your HTML pages are valid by checking them with
 the [HTML Validator](https://validator.w3.org/). This checks the document against all the
 rules outlined in the [HTML specification](https://www.w3.org/html/). A valid HTML document has
-a really good chance that it will display the same in all available web browsers.
-To ease the validation process, you should probably install [some browser extension](todo).
+a really good chance that it will display the same way in all available web browsers.
+To ease the validation process, you should probably install some [browser extension](todo).
 
 ## HTML Standards
-The standardization organization for all web related standards is [W3C -- WWW Consortium](https://www.w3.org/)
-Current HTML version is [HTML5](https://www.w3.org/TR/html5/) finally standardized in 2014
-(with minor revision 5.1 standardized in 2016).
-The previous version -- HTML 4.01 is still used, you can recognize HTML4 document by the following
+The standardization organization for all web related standards is [W3C -- WWW Consortium](https://www.w3.org/).
+The Current HTML version is [HTML5](https://www.w3.org/TR/html5/) finally standardized in 2014
+(with the minor revision 5.1 standardized in 2016).
+The previous version -- HTML 4.01 is still used, you can recognize an HTML4 document by the following
 (or similar) beginning:
 
 {% highlight html %}
@@ -383,19 +383,19 @@ below are equivalent and valid:
         </UL>
 {% endhighlight %}
 
-As you can see, in HTML lots of the code is optional, this was intentional so that
+As you can see, in HTML lots of the code is optional, this is intentional so that
 the language behaves *smartly* (e.g. when you end a list, it's clear that the
 list item is also ended).
 But this variability made implementations of web browsers quite complicated and in the end also
 proved to be somewhat confusing for HTML developers as well and ultimately lead to
-development of the *XHTML* language, but before I get to that, I need to tell you about XML.
+the development of the *XHTML* language, but before I get to that, I need to tell you about XML.
 
 ### XML
 Parallel to HTML an [XML (Extensible Markup Language)](https://en.wikipedia.org/wiki/XML) was
 born. The XML language is a generic language for data description, so its companions are
 e.g. [CSV -- Comma-Separated Values](https://en.wikipedia.org/wiki/Comma-separated_values) for
 tabular data or [JSON -- JavaScript Object Notation](https://en.wikipedia.org/wiki/JSON) for
-any structured data. XML has nothing to do with HTML or structure of text documents.
+any structured data. XML has nothing to do with HTML or the structure of text documents.
 It does not define any interpretation nor any rendering of the data.
 
 However XML looks similar to HTML4 because they both have the same ancestor (SGML). It
@@ -408,7 +408,7 @@ But it has simplified writing rules:
  - start tag and end tag is always required
  - empty tags may be shortened to `<element />`
 
-XML is a widely used language with many **XML Applications** (here 'application' means interpretation of a XML document,
+XML is a widely used language with many **XML Applications** (here 'application' means the interpretation of an XML document,
 not a program), which are again defined using DTD (Document Type Definition). An example of a
 random XML document:
 
@@ -433,8 +433,8 @@ random XML document:
 
 ### HTML × XML × XHTML
 HTML (at version 4) was complex to write and even more complex to
-process by web browsers. To some extend it felt like it was blocking
-further development of the web, because each browser implementation was
+be processed by web browsers. To some extend it felt like it was blocking
+further web development, because each browser implementation was
 complicated and different. Therefore people made efforts to simplify it.
 And one of them was the XHTML language. The XHTML language is an XML application
 of the HTML language. Which means that it has a simple parser (as XML does),
@@ -452,10 +452,10 @@ with HTML5.
 
 ### HTML5
 HTML5 is a brand new language which looks like HTML (yes, 3rd one).
-It has no relation to SGML, so the `<!DOCTYPE html>` was shortened and
-no longer references a DTD. It is a new language without lot of the
-historic burden (but some of it is still there) with complicated implementation of
-the interpreter in a web browser. But it is also backward compatible (allows both HTML and
+It has no relation to SGML, so the `<!DOCTYPE html>` is shortened and
+no longer references a DTD. It is a new language without a lot of the
+historic burden (but some of it is still there) with a complicated implementation of
+the interpreter in a web browser. But it is also backward compatible (allows both the HTML and
 XHTML syntax) and finally it is current -- developed from 2007, standardized in 2014 with
 a minor revision 5.1 standardized in 2016.
 
@@ -476,16 +476,16 @@ HTML5 also [brought in new features](http://www.whoishostingthis.com/resources/h
 - extensible with other markup ([MathML](https://en.wikipedia.org/wiki/MathML),
 [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics)).
 
-HTML5 standard describes the HTML language itself. The most important
+The HTML5 standard describes the HTML language itself. The most important
 part of that is the allowed hierarchy of elements and their attributes. Apart from that, the standard
 describes main representations of HTML:
 
-- HTML markup language for writing HTML into text documents,
-- XHTML language (an application of XML) for writing HTML into text documents (also called XML syntax of HTML),
-- HTML Document Object Model for representing HTML in web browser memory.
+- the HTML markup language for writing HTML into text documents,
+- the XHTML language (an application of XML) for writing HTML into text documents (also called XML syntax of HTML),
+- the HTML Document Object Model for representing HTML in web browser memory.
 
 The three representations are [not entirely equivalent](https://www.w3.org/TR/2016/REC-html51-20161101/introduction.html#html-vs-xhtml)
-but for most practical work you don't need to worry to o much about this. I suggest
+but for most practical work you don't need to worry too much about this. I suggest
 you use the HTML markup language over the XHTML markup language. If you use the XHTML langauge, you
 have to set [MIME type](https://en.wikipedia.org/wiki/Media_type) to `application/xhtml+xml`
 and be prepared that a malformed document won't be displayed.
@@ -524,9 +524,9 @@ The most important being *Blink*, *Gecko* and *EdgeHTML*. You can leave out WebK
 with Blink and you may add *Trident* to verify compatibility with the Internet Explorer.
 
 ## Summary
-In this article I described the principles of HTML language. Contrary to popular belief, HTML
-is not just a text document with some tags. It is a document with hierarchial structure
-of document elements. You should be aware of the basic properties of HTML language and
+In this article I have described the HTML language principles. Contrary to popular belief, HTML
+is not just a text document with some tags. It is a document with a hierarchial structure
+of document elements. You should be aware of the basic properties of the HTML language and
 its relations to other languages and standards. You should be also aware of the features
 available in HTML5. Feel free to go through the [corresponding exercises](/walkthrough/html/)
 to get yourself acquainted with HTML.

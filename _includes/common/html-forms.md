@@ -263,7 +263,7 @@ for arranging the
 form controls in rows. Also make sure to verify the form by using
 `<form method='post' action='http://odinuv.cz/form_test.php'>` and submitting the form.
 
-![Screenshot - Form](/walkthrough/html-forms/form-1.png)
+![Screenshot - Form](/common/html-forms/form-1.png)
 
 {: .solution}
 {% highlight html %}
