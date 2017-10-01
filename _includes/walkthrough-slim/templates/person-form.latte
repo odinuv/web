@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{$pageTitle}</title>
+    </head>
+    <body>
+        <h1>{$pageTitle}</h1>
+        {if $person['id']}
+            <h2>Update person {$person['first_name']} {$person['last_name']}</h2>
+        {else}
+            <h2>Create a new person</h2>
+        {/if}
+    	<form method="post" action="http://odinuv.cz/form_test.php">
+    		<ul>
+    			<li>
+    				<label>First name:
+    					<input type="text" name="first_name" value="{$person['first_name']}">
+    				</label>
+    			</li>
+                <li>
+                    <label>Last name:
+                        <input type="text" name="last_name" value="{$person['last_name']}">
+                    </label>
+                </li>
+                <li>
+                    <label>Nickname:
+                        <input type="text" name="nickname" value="{$person['nickname']}">
+                    </label>
+                </li>
+                <li>
+                    <label>Date of Birth:
+                        <input type="date" name="birth_day" value="{$person['birth_day']}">
+                    </label>
+                </li>
+    			<li><label>Height:
+                        <input type="number" name="height" value="{$person['height']}">
+                    </label>
+    			</li>
+    		</ul>
+            {if $person['id']}
+                <button type="submit" name="submit" value="update">Update</button>
+            {else}
+                <button type="submit" name="submit" value="create">Create new</button>
+            {/if}
+    	</form>
+	</body>
+</html>
