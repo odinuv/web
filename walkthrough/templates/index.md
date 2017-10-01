@@ -1,7 +1,7 @@
 ---
 title: Templates
 permalink: /walkthrough/templates/
-redirect_from: /en/apv/walkthrough/passing-arrays/
+redirect_from: /en/apv/walkthrough/templates/
 ---
 
 * TOC

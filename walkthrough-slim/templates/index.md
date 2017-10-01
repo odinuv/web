@@ -280,7 +280,7 @@ Template file `form-5.latte`:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/templates/contact-form.latte %}
+{% include /walkthrough-slim/templates/contact-form.latte %}
 {% endhighlight %}
 
 {: .note}
