@@ -185,6 +185,9 @@ items:
         - url: /articles/security/sql-injection/
           title: SQL injection
 
+        - url: /articles/security/xss/
+          title: Cross site scripting
+
   - url: /slides/
     title: Slides
     items:
