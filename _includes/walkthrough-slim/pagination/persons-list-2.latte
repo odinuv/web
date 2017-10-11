@@ -1,0 +1,45 @@
+{extends layout.latte}
+
+{block title}Persons{/block}
+
+{block body}
+<table>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Nickname</th>
+    </tr>
+    {foreach $persons as $person}
+    <tr>
+        <td>{$person['first_name']}</td>
+        <td>{$person['last_name']}</td>
+        <td>{$person['nickname']}</td>
+    </tr>
+    {/foreach}
+</table>
+<table>
+    <tr>
+        {if $pCurr > 0}
+        <td>
+            <a href="{link persons ['page' => 0]}">First page</a>
+            <a href="{link persons ['page' => $pCurr - 1]}">Previous page</a>
+        </td>
+        {/if}
+        {for $i = 0; $i < $pCount; $i++}
+        <td>
+            {if $i == $pCurr}
+                <span>{$i + 1}</span>
+            {else}
+                <a href="{link persons ['page' => $i]}">{$i + 1}</a>
+            {/if}
+        </td>
+        {/for}
+        {if $pCurr < $pCount - 1}
+        <td>
+            <a href="{link persons ['page' => $pCurr + 1]}">Next page</a>
+            <a href="{link persons ['page' => $pCount - 1]}">Last page</a>
+        </td>
+        {/if}
+    </tr>
+</table>
+{/block}
