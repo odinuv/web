@@ -56,6 +56,9 @@ items:
       - url: /walkthrough-slim/login/
         title: Login
 
+      - url: /walkthrough-slim/pagination/
+        title: Pagination
+
   - url: /walkthrough/
     title: Walkthrough
     items:
