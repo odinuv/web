@@ -1,7 +1,6 @@
 ---
 title: User authentication - login
 permalink: /walkthrough-slim/login/
-redirect_from: /en/apv/walkthrough-slim/login/
 ---
 
 * TOC

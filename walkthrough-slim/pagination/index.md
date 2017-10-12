@@ -1,7 +1,6 @@
 ---
 title: Pagination
 permalink: /walkthrough-slim/pagination/
-redirect_from: /en/apv/walkthrough-slim/pagination/
 ---
 
 * TOC
