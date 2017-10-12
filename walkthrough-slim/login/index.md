@@ -181,7 +181,7 @@ Sometimes you wish to leave some data in the `$_SESSION` variable -- the content
 
 ### Task -- Create a logout route
 Make a POST route which will handle logout. It is safer to use POST method because GET logout route can be easily
-exploited via [XSS](TODO) and [CSRF](TODO). Use [`session_destroy()`](http://php.net/manual/en/function.session-destroy.php)
+exploited via [XSS](/articles/security/xss) and [CSRF](TODO). Use [`session_destroy()`](http://php.net/manual/en/function.session-destroy.php)
 function. Redirect user to a public route of your application after logout.
 
 File `src/routes.php`:
