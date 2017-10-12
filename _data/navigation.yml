@@ -53,6 +53,9 @@ items:
       - url: /walkthrough-slim/css/bootstrap/
         title: CSS – Bootstrap
 
+      - url: /walkthrough-slim/javascript/
+        title: JavaScript
+
       - url: /walkthrough-slim/login/
         title: Login
 
