@@ -31,20 +31,22 @@ the definition of what tables do exist in the database and the second one contai
 Download both files (use 'Save Link As') and import both files using the procedure
 outlined below.
 
-- [Database Structure](/en/db/pgsql-structure.sql)
-- [Sample data](/en/db//pgsql-data.sql)
+- [Database Structure PostgreSQL](/common/pgsql-structure.sql)
+- [Sample data PostgreSQL](/common/pgsql-data.sql)
+- [Database Structure MySQL](/common/mysql-structure.sql)
+- [Sample data MySQL](/common/mysql-data.sql)
 
 To import the file using the [Adminer](https://www.adminer.org/) client. Click on **Import**, select the
 file you have downloaded, and click **Execute**. Repeat the process for both files:
 
 {: .image-popup}
-![Screenshot -- Import data](/walkthrough/database/adminer-import-1.png)
+![Screenshot -- Import data](/common/database-intro/adminer-import-1.png)
 
 Once you have the structure of the database and the data imported, you
 should see, content in the Adminer:
 
 {: .image-popup}
-![Screenshot -- Imported data](/walkthrough/database/adminer-import-2.png)
+![Screenshot -- Imported data](/common/database-intro/adminer-import-2.png)
 
 ### SQL Language
 SQL is a language which is used for communicating with most of the widely used database servers.

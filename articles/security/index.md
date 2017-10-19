@@ -30,4 +30,5 @@ There are many kind of security issues, some of them are less dangerous, some of
 Read about web application security and risks:
 
 - [SQL injection](/articles/security/sql-injection/)
+- [Cross site scripting](/articles/security/xss/)
 - [Storing passwords and user authentication](/walkthrough/login/) - walkthrough article

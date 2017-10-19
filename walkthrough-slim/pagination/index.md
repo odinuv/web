@@ -1,7 +1,6 @@
 ---
 title: Pagination
-permalink: /walkthrough/pagination/
-redirect_from: /en/apv/walkthrough/pagination/
+permalink: /walkthrough-slim/pagination/
 ---
 
 * TOC
@@ -10,21 +9,24 @@ redirect_from: /en/apv/walkthrough/pagination/
 {% include /common/pagination.md %}
 
 ## Task - add basic pagination to person list module
-Use page number (starting from 0) as request parameter. Make current page button inactive or make it
+Use page number (starting from 0) as path parameter. Make current page button inactive or make it
 distinct visually in another way (so the user can tell which page is he currently browsing).
 
-File `persons-list.php`:
+File `src/routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/pagination/persons-list.php %}
+{% include /walkthrough-slim/pagination/pagination.php %}
 {% endhighlight %}
 
-File `persons-list.latte`:
+Notice, that `page` parameter in route definition is not mandatory and also that it takes only numbers:
+`/persons[/{page:[0-9]+}]`.
+
+File `templates/persons-list.latte`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/pagination/templates/persons-list-1.latte %}
+{% include /walkthrough-slim/pagination/persons-list-1.latte %}
 {% endhighlight %}
 
 {: note}
@@ -44,11 +46,11 @@ one from page count (because it starts from zero).
 Links for previous or first page should be visible only if current page is larger than zero. Similarly, links
 for next and last page should be visible on other pages than the last one.
 
-Updated file `persons-list.latte`:
+Updated file `templates/persons-list.latte`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/pagination/templates/persons-list-2.latte %}
+{% include /walkthrough-slim/pagination/persons-list-2.latte %}
 {% endhighlight %}
 
 If you have search function in your person list, you have to decide if you want to paginate filtered results
@@ -57,12 +59,12 @@ want to hide pagination controls in that case:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/pagination/templates/persons-list-3.latte %}
+{% include /walkthrough-slim/pagination/persons-list-3.latte %}
 {% endhighlight %}
 
 {: .note}
 You can also check the page parameter value for negative values. You can do this by use of mathematical
-function `max(0, intval($_GET['page']))` to avoid `if()` statement. Function `max()` returns obviously its
+function `max(0, intval($args['page']))` to avoid `if()` statement. Function `max()` returns obviously its
 larger argument. A combination of `min()` and `max()` can also be handy sometimes -- `min(max(0, $v), 100)`.
 
 {% include /common/pagination-conclusion.md %}

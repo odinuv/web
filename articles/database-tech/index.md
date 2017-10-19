@@ -1,6 +1,7 @@
 ---
 title: Databases – Technical Details
-permalink: /en/apv/articles/database-tech/
+permalink: /articles/database-tech/
+redirect_from: /en/apv/articles/database-tech/
 ---
 
 * TOC
