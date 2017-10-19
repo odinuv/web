@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+		</title>
+	</head>
+  <body>
+   <form method='post' 
+   action='http://odinuv.cz/form_test.php'>
+     <table border='1'>
+       <tr>
+         <td>Name</td>
+         <td><input type='text' value='Tim' name='name'></td>
+       </tr>
+       <tr>
+         <td>Surname</td>
+         <td><input type='text' name='surname'></td>
+       </tr>
+       <tr>
+         <td>Date of birth</td>
+         <td><input type='date' name='dob'></td>
+       </tr>
+       <tr>
+         <td>Gender</td>
+         <td><input name='gender' type='radio' 
+              value='m'>male<br>
+            <input name='gender' 
+              type='radio' value='f'>female</td>
+       </tr>
+       <tr>
+         <td>Favorite color</td>
+         <td><select name='color'>
+          <option value='b'>black</option>
+          <option value='w'>white</option>
+          <option value='p'>pink</option>
+          <option value='y'>yellow</option>
+         </select</td>
+       </tr>
+       <tr>
+         <td>Agree with terms and conditions</td>
+         <td><input type='checkbox' name='tac'></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td><button>Send</button></td>
+       </tr>
+     </table>
+   </form>
+  </body>
+</html>
