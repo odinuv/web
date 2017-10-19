@@ -68,9 +68,9 @@ The grade from the final exam and the project evaluation make up for the final c
 
 ## APVA Class
 
-- (Basic HTML)[\course\apva\basic-html.html]
-- (Form Elements)[\course\apva\form-elements.html]
-- (Example Form)[\course\apva\example-form.html]
+- [Basic HTML](\course\apva\basic-html.html)
+- [Form Elements](\course\apva\form-elements.html)
+- [Example Form](\course\apva\example-form.html)
 
 ## Project Assignment
 To pass the course you need to create a project. The project assignment is
