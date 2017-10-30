@@ -1,7 +1,7 @@
 ---
 title: CSS - Cascading Style Sheets
 permalink: /walkthrough/css/
-redirect_from: /walkthrough/css/
+redirect_from: /en/apv/walkthrough/css/
 ---
 
 * TOC
