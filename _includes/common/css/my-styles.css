@@ -1,0 +1,6 @@
+.btn-danger {
+	background: #ff0000;
+}
+.btn-primary {
+	background-image: linear-gradient(to bottom,#935ebc 0,#4e36af 100%);
+}

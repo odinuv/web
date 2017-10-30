@@ -1,7 +1,6 @@
 ---
 title: CSS - Cascading Style Sheets
-permalink: /walkthrough/css/
-redirect_from: /walkthrough/css/
+permalink: /walkthrough-slim/css/
 ---
 
 * TOC
