@@ -47,6 +47,9 @@ items:
       - url: /walkthrough-slim/database/
         title: Database & SQL
 
+      - url: /walkthrough-slim/named-routes/
+        title: Named routes
+
       - url: /walkthrough-slim/css/
         title: CSS – Cascading Style Sheets
 

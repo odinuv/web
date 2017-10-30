@@ -261,12 +261,13 @@ it is called *routing*.
 {: .note}
 Nice URLs can cause problems because your web browser generates relative paths according to address bar content.
 If you have some non-existing path in the address bar (`/product/12345/new-super-cool-laptop`) and your browser tries
-to load an image (`<img src="images/shop-logo.png" alt="Logo" />`) from that path (`/product/12345/new-super-cool-laptop/images/shop-logo.png`),
+to load an image given by relative path (`<img src="images/shop-logo.png" alt="Logo">`) from that page (the resulting URL of image is `/product/12345/new-super-cool-laptop/images/shop-logo.png`),
 it fails. To prevent this, you have to generate all URLs from root of your application. To persuade the browser to do
 that, you need to put a `<base href="http://my-cool-site.com/my-shop/">` tag with an absolute path to the application root
 (newer browsers do not need domain name) into `<head>` tag. This will cause that all relative URLs are prefixed with
 `href` attribute value from `<base>` tag. Therefore the image will be loaded from `http://my-cool-site.com/my-shop/images/shop-logo.png`
-which should be OK.
+which should be OK. Another way is to store absolute path to root of your application and use it everywhere around
+in your code: `<img src="{$basePath}/images/shop-logo.png">` where `{$basePath}` contains the same URL as in `<base>` tag.
 
 {: .note}
 If your application lives in a subdirectory, you usually need to add `RewriteBase path/to/subdirectory` into
