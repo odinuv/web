@@ -30,11 +30,11 @@ end-user will see a 404 Not Found error.
 The `routes.php` file contains all the routes your application handles. Let's look at a simple
 route:
 
-{% highlight php %}
+~~~ php?start_inline=1
 $app->get('/hello', function (Request $request, Response $response, $args) {
     echo "Hello World!";
 });
-{% endhighlight %}
+~~~
 
 Go ahead and add this piece of code at the end of your `routes.php` file. Upload the changed file to
 the server (if necessary) and visit the `/hello` URL. You should see a "Hello World!" message in your
@@ -53,17 +53,17 @@ Because the above code may still look a little bit messy, let's separate it:
 
 The call to the `get` function is:
 
-{% highlight php %}
+~~~ php?start_inline=1
 $app->get('/hello', callback);
-{% endhighlight %}
+~~~
 
 And the callback definition is:
 
-{% highlight php %}
+~~~ php?start_inline=1
 function (Request $request, Response $response, $args) {
     echo "Hello World!";
 }
-{% endhighlight %}
+~~~
 
 {: .note}
 The last line of the original function `});` is particularly confusing because `}` 
@@ -75,13 +75,13 @@ name of the function. This is correct, because the callback --- as we used it in
 `routes.php` file --- was defined as an **anonymous function**. To write the equivalent code
 without using an anonymous function you would have to name it somehow:
 
-{% highlight php %}
+~~~ php?start_inline=1
 function handleGetHello (Request $request, Response $response, $args) {
     echo "Hello World!";
 }
 
 $app->get('/hello', 'handleGetHello');
-{% endhighlight %}
+~~~
 
 {: .note}
 There function `handleGetHello` in the `$app->get` line is passed as a string. If you write 
@@ -99,9 +99,9 @@ In the above simple request handler, you don't have to worry about the
  it is good for. Every request handler (regardless of the URL and HTTP method) has the
  same [*signature*](todo):
 
-{% highlight php %}
+~~~ php?start_inline=1
 function (Request $request, Response $response, $args) {}
-{% endhighlight %}
+~~~
 
 This means that the handler takes 
 [three parameters](https://www.slimframework.com/docs/objects/router.html#route-callbacks):
@@ -160,12 +160,12 @@ end-user's screen.
 ## Working With the Request
 Working with request and response objects is important when you need to get some data from the end-user. 
 
-### Task --- Create a Simple Form
+### Task -- Create a Simple Form
 Now create another route, name it e.g. `/enter-name` and make sure it outputs a simple
 [HTML Form](../html-forms/) with a text field and a button.
 
 {: .solution}
-{% highlight php %}
+~~~ php?start_inline=1
 $app->get('/enter-name', function (Request $request, Response $response, $args) {
     echo "
     <!DOCTYPE html>
@@ -182,7 +182,7 @@ $app->get('/enter-name', function (Request $request, Response $response, $args) 
         </body>
     </html>";
 });
-{% endhighlight %}
+~~~
 
 Note that the part `method='post'` is important for the next bit.
 Now if you visit the URL `/enter-name` in the web browser, you should see the form. 
@@ -201,18 +201,18 @@ The solution is to add another route for the same URL but for the `post` method.
 will handle the HTTP request created when the form is submitted. Use the following
 code as the *body* of the handler:
 
-{% highlight php %}
+~~~ php?start_inline=1
 $input = $request->getParsedBody();
 echo "The end-user entered name:" . $input['name'];
-{% endhighlight %}
+~~~
 
 {: .solution}
-{% highlight php %}
+~~~ php?start_inline=1
 $app->post('/enter-name', function (Request $request, Response $response, $args) {
     $input = $request->getParsedBody();
     echo "The end-user entered name:" . $input['name'];
 });
-{% endhighlight %}
+~~~
 
 Now when you fill and send the form, you should see the respective message.
 The secret weapon to work with values from HTML forms is the `$request->getParsedBody()` method.
@@ -225,7 +225,7 @@ As shown above, to create the application response, it is sufficient to
 `echo` the result. However, this is approach is quite simplistic and is not
 suitable for more complex responses.
 
-### Task --- Generate an HTML Response
+### Task -- Generate an HTML Response
 In the [above example](#task----add-a-post-handler), the route handler returned only 
 a plain text response. Even if the web browser is capable of displaying it, it is 
 not a valid HTML page. Go ahead and extend the
@@ -233,7 +233,7 @@ not a valid HTML page. Go ahead and extend the
 in the page title and in the page body, make it `<strong>` in the page body.
 
 {: .solution}
-{% highlight php %}
+~~~ php?start_inline=1
 $app->post('/enter-name', function (Request $request, Response $response, $args) {
     $input = $request->getParsedBody();
     echo "
@@ -248,13 +248,13 @@ $app->post('/enter-name', function (Request $request, Response $response, $args)
         </body>
     </html>";
 });
-{% endhighlight %}
+~~~
 
 Another solution is possible using the `response->getBody()->write()` function to
 avoid concatenating the strings, e.g. like this:
 
 {: .solution}
-{% highlight php %}
+~~~ php?start_inline=1
 $app->post('/enter-name', function (Request $request, Response $response, $args) {
     $input = $request->getParsedBody();
     $response->getBody()->write("<!DOCTYPE html>
@@ -273,7 +273,7 @@ $app->post('/enter-name', function (Request $request, Response $response, $args)
     </html>");
     return $response;
 });
-{% endhighlight %}
+~~~
 
 Both solutions produce exactly the same output. You may like the first or second, but
 I find them both ugly. Apart from that, they are both wrong, because they are 
