@@ -1,7 +1,7 @@
 ---
 title: Inserting Data with Dependencies
-permalink: /en/apv/walkthrough/backend-insert/advanced/
-redirect_from: /walkthrough/backend-insert/advanced/
+permalink: /walkthrough/backend-insert/advanced/
+redirect_from: /en/apv/walkthrough/backend-insert/advanced/
 ---
 
 * TOC
