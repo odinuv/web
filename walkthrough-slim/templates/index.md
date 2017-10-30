@@ -133,7 +133,7 @@ done using the `$this->view->addParam` call. The first argument of the `addParam
 method is the name of the variable (`pageTitle`) and the second parameter is 
 an arbitrary value.
 
-### Task --- Simplify Template
+### Task -- Simplify Template
 Have you noticed that the `sample-1.latte` template in the above example is not 
 using the layout template? Go ahead and modify it so that it uses it.
 
@@ -188,7 +188,7 @@ The statement `{$role|capitalize}` applies the built-in Latte `capitalize`
 In the PHP code, I need to define all the variables: `$flintstones`, `$rubbles`, `$pageTitle` and
 `$showBold`.
 
-### Task --- Simplify Template
+### Task -- Simplify Template
 For the sake of practicing, go ahead and again simplify the `flintstones-1.latte` template
 so that it uses the layout template.
 
@@ -232,7 +232,7 @@ the following schema.
 {: .image-popup}
 ![Schematic of template variables](/walkthrough-slim/templates/template-schema.svg)
 
-## Task --- Contact form
+## Task -- Contact form
 Let's convert the [contact form](../backend-intro/array/#task----improve-contact-form)
 we did in one of the [earlier chapter](../backend-intro/array/) into a template.
 
@@ -293,7 +293,7 @@ automatic [boolean conversion](/walkthrough/backend-intro/#boolean-conversions) 
 You need to convert the entities &amp;lt; and &amp;gt; in the message back to the characters `<` and `>`.
 Now Latte does this conversion automatically for you.
 
-## Task --- Person Form
+## Task -- Person Form
 Using templates, create a form like the one below. Assume that you have a variable `$person`
 which contains the default values for the form inputs. The `person` variable should be an associative
 array with the keys `id`, `first_name`, `last_name`, `nickname`, `birth_day`, `height`.
@@ -330,7 +330,6 @@ Wondering about the route name? `add-person` or `person-add` are good URLs.
 </div>
 
 {: .solution}
-<?php
 {% highlight php %}
 $app->get('/person-add', function (Request $request, Response $response, $args) {
 	// Existing user
