@@ -7,9 +7,9 @@ redirect_from: /en/apv/walkthrough/backend-select/
 * TOC
 {:toc}
 
-In the [previous chapter](/walkthrough/backend/), you have learned how to use SQL queries from within
+In the [previous chapter](/walkthrough/database-using/), you have learned how to use SQL queries from within
 PHP scripts. You have also learned how to use parameters in SQL queries using
-[prepared statements](/walkthrough/backend/#selecting-data-with-parameters). In this chapter, we will connect
+[prepared statements](/walkthrough/database-using/#selecting-data-with-parameters). In this chapter, we will connect
 it with HTML forms to build a fully interactive page which communicates with a database.
 
 ## Getting Started
@@ -43,7 +43,7 @@ Layout template:
 {% include /walkthrough/backend-select/layout.latte %}
 {% endhighlight %}
 
-If you enter some text (e.g. 'fooBar') in the text field in hit the button,
+If you enter some text (e.g. 'fooBar') in the text field in and hit the button,
 you should see something like:
 
     array ( 'someText' => 'fooBar', 'send' => 'something', )
@@ -64,17 +64,17 @@ means that the state of the form is encoded in the address of the page and there
 until changed again. It is quite important to decide on the [correct HTTP method to use](todo).
 
 ### Connecting together
-Now let's make a page which lists the users in the database and lets the user search within them.
+Now let's make a page which lists the persons in the database and lets the user search within them.
 We can list e.g. first name, last name, nickname of each person and order them by the last name and
 first name. We need to create a form with one *search keyword* for searching.
 Now let's think about what possible states the page can have and what will be displayed, for example:
 
 - The form was not submitted (the page was visited through a link, or reloaded) -- display all persons
 - The form was submitted (the end user pressed a button):
- - The end user entered something to search for -- display only the found persons
- - The end user did not enter anything to search for -- display all persons
+  - The end user entered something to search for -- display only the found persons
+  - The end user did not enter anything to search for -- display all persons
 
-If you are confident, you can skip right to the [finished page](todo). Otherwise,
+If you are confident, you can skip right to the [finished page](#finalizing). Otherwise,
 let's start with making a static page first:
 
 {% highlight html %}
