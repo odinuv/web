@@ -50,6 +50,12 @@ items:
       - url: /walkthrough-slim/backend-select/
         title: Database – Selecting and filtering
 
+      - url: /walkthrough-slim/backend-insert/
+        title: Database – Inserting
+        items:
+        - url: /walkthrough-slim/backend-insert/advanced/
+          title: Advanced inserts
+
       - url: /walkthrough-slim/css/
         title: CSS – Cascading Style Sheets
 

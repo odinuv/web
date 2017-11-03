@@ -1,7 +1,6 @@
 ---
 title: Inserting Data with Dependencies
-permalink: /walkthrough/backend-insert/advanced/
-redirect_from: /en/apv/walkthrough/backend-insert/advanced/
+permalink: /walkthrough-slim/backend-insert/advanced/
 ---
 
 * TOC
@@ -10,13 +9,13 @@ redirect_from: /en/apv/walkthrough/backend-insert/advanced/
 {% include /common/advanced-inserts-1.md %}
 
 {% highlight php %}
-{% include /walkthrough/backend-insert/advanced2.php %}
+{% include /walkthrough-slim/backend-insert/advanced2.php %}
 {% endhighlight %}
 
 {% include /common/advanced-inserts-2.md %}
 
 {% highlight php %}
-{% include /walkthrough/backend-insert/advanced3.php %}
+{% include /walkthrough-slim/backend-insert/advanced3.php %}
 {% endhighlight %}
 
 {% include /common/advanced-inserts-3.md %}

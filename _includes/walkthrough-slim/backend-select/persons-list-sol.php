@@ -34,6 +34,7 @@ $route->get('/persons', function (Request $request, Response $response, $args) {
             }
         }
     } catch (PDOException $e) {
+        $this->logger->error($e->getMessage());
         exit("I cannot execute the query: " . $e->getMessage());
     }
 
