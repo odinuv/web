@@ -16,7 +16,7 @@ walkthrough contains everything you need to know and use to build the final solu
 
 The walkthrough revolves around a web application for managing contacts and meetings. As there are
 thousands of solutions to this, I have prepared a
-[database schema](/walkthrough/database/#database-schema) which I will use
+[project assignment](/course/#project-assignment) which I will use
 through the examples and exercises (nothing prevents you from changing it).
 
 ## Requirements
