@@ -49,7 +49,7 @@ First we need to check that the user submitted the form. If yes, then we need to
 user. All three fields are required (they are mandatory in the `person` table) and must be validated on the
 server (in the PHP script) because the [client side validation is insufficient](todo).
 If the user input is valid, then we can send an `INSERT` query to the database, to insert the data. We
-will need a [prepared statement](/walkthrough/backend/#selecting-data-with-parameters)
+will need a [prepared statement](/walkthrough/database-using/#selecting-data-with-parameters)
 to pass in the values.
 
 {% highlight php %}
@@ -61,18 +61,26 @@ error -- i.e. the application can continue and display an error to the user and 
 So I have simply assigned the error to the `$message` variable and then passed that to the template in
 `$tplVars['message'] = $message;`.
 
+{: .note}
+There are actually different types of SQL errors, you can check the value returned by `$e->getCode()` method.
+For example the duplicate record error is 23505 (unique violation) and the error in date format has code 22007.
+
 Try the above script and verify that the form validation works fine. If you put the `required` attribute to
 the form controls, either remove it for the test, or use [developer tools](/course/not-a-student/#web-browser)
 to do so temporarily.
 
 The part of the PHP script which requires deeper explanation is probably this:
-{% highlight php %}
+~~~php?start_inline=1
 if (empty($_POST['birth_day'])) {
     $stmt->bindValue(':birth_day', null);
 } else {
     $stmt->bindValue(':birth_day', $_POST['birth_day']);
 }
-{% endhighlight %}
+~~~
+
+{: .note}
+You can use shorter [ternary operator](http://php.net/manual/en/language.operators.comparison.php) to save some space
+in your source code: `$stmt->bindValue(':birth_day', empty($_POST['birth_day']) ? null : $_POST['birth_day']);`.
 
 In the `person` table in the database. The
 column `birth_day` [allows NULLs](/articles/sql-join/#null), i.e. its value is not
@@ -105,7 +113,7 @@ The condition `(empty($_POST['gender']) || ($_POST['gender'] != 'male' && $_POST
 could be also written as `(empty($_POST['gender']) || !in_array($_POST['gender'], ['male', 'female']))`.
 The condition `(empty($_POST['height']) || empty(intval($_POST['height'])))` first checks that the value
 `$_POST['height']` is defined and non-empty. Then it checks if the value converted to an integer
-(using the [`intval` function](http://php.net/manual/en/function.intval.php)) is still not empty.
+(using the [`intval` function](http://php.net/manual/en/function.intval.php)) is still not empty (i.e. non-zero).
 In both conditions the order of conditional expressions is important. It must always start with the check
 for an empty `$_POST` field due to [partial boolean evaluation](todo).
 
