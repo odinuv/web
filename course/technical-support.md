@@ -126,8 +126,18 @@ ahead (`$tpl = new Latte\Engine();`) without including any other files.
 ### Sending emails from web applications
 Sometimes it is useful to send an email with notification to a user about an event that took place. PHP uses simple
 [`mail()`](http://php.net/manual/en/function.mail.php) function to send plain-text emails. To send HTML emails
-or attachments, use some PHP library such as [SwiftMailer](http://swiftmailer.org/). You can download it with Composer
-(`composer require swiftmailer/swiftmailer`).
+or emails with attachments, use some PHP library such as [SwiftMailer](http://swiftmailer.org/). You can download it
+with Composer (`composer require swiftmailer/swiftmailer`). This library can be configured to send mail directly to
+given SMTP server (be careful with this).
+
+The trickier part is configuring your environment - you usually do not want to send real email messages to real people
+from your dev-server. On Windows OS use [Papercut](https://papercut.codeplex.com/) tool to open local SMTP server with
+simple user interface to view generated messages. On Linux OS you can try to install full mail stack and configure it
+to deliver messages only locally or use [ssmpt](https://packages.debian.org/wheezy/ssmtp) and
+[MailDev](http://danfarrelly.nyc/MailDev/) -- you have to install [Node.js](https://nodejs.org/en/) and NPM.
+
+Check PHP settings in [php.ini](/course/technical-support/#php-configuration) file to configure SMTP server and port
+on Windows or system mail command on Linux. You can also try commercial services like [Mailtrap](https://mailtrap.io/). 
 
 ### Adminer
 [Adminer](https://www.adminer.org) is a general database tool used in this book. Adminer handles different types of
