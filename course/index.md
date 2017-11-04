@@ -18,7 +18,7 @@ To pass the course you have to:
 - pass the midterm test (minimum 50% points)
 - get at least 90 points on [Codecademy](https://www.codecademy.com/) --- [**Verify**](codecademy.php)
 - finish the [course project](#project-assignment)
-- pass the final exam (minimum 50% points) 
+- pass the final exam (minimum 50% points)
 
 The grade from the final exam and the project evaluation make up for the final course grade.
 
@@ -68,9 +68,16 @@ The grade from the final exam and the project evaluation make up for the final c
 
 ## APVA Class
 
-- [Basic HTML](\course\apva\basic-html.html)
-- [Form Elements](\course\apva\form-elements.html)
-- [Example Form](\course\apva\example-form.html)
+- Week 2:
+    - [Basic HTML](\course\apva\basic-html.html)
+    - [Form Elements](\course\apva\form-elements.html)
+    - [Example Form](\course\apva\example-form.html)
+- Week 4:
+    - [Slim Framework](\course\apva\slim.zip)
+    - [Updated routes.php](\courser\apva\routes-1.phps)
+- Week 5:
+    - [Updated routes.php](\courser\apva\routes-2.phps)
+    - [People list template](\courser\apva\people.latte)
 
 ## Project Assignment
 To pass the course you need to create a project. The project assignment is

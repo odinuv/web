@@ -213,7 +213,7 @@ are running sequentially.
 - Is an information system only software?
 - Is data better than information?
 - How is information transmitted?
-- Does every database system have to use the SQL language?
+- Does every DBS have to use the SQL language?
 - Should accounting use an ACID or a BASE database ?
 - What are differences between the object data model and the relational data model?
 </section>
