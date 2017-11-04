@@ -1,0 +1,15 @@
+{extends layout.latte}
+
+{block title}POST form test{/block}
+
+{block body}
+<p>
+	{$postData}
+</p>
+<form action="{link processTestForm}" method="post">
+	<label>Some text:
+		<input type="text" name="someText">
+	</label>
+	<button type="submit" name="send" value="something">Send</button>
+</form>
+{/block}

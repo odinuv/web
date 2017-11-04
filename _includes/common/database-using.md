@@ -35,11 +35,9 @@ connection string would be e.g.:
 To create a database connection, create a new instance of the [`PDO` class](http://php.net/manual/en/class.pdo.php).
 Provide the *DSN connection string*, *database username* and *password* in the constructor.
 
-{% highlight php %}
-<?php
-
+~~~ php?start_inline=1
 $db = new PDO('pgsql:host=akela.mendelu.cz;dbname=xpopelka', 'xpopelka', 'password');
-{% endhighlight %}
+~~~
 
 ### Selecting Data
 To select data from the database, use the `query` method of the `PDO` connection object.
@@ -53,7 +51,7 @@ also its result. One way to obtain the result is calling the
 {% include /common/database-using/select-simple.php %}
 {% endhighlight %}
 
-The `fetchAll` function returns a [two-dimensional array](/walkthrough/backend-intro/array/). It returns an array
+The `fetchAll` function returns a [two-dimensional array](./backend-intro/array/). It returns an array
 of result table (`person`) rows. Each row is an array indexed by column keys, values
 are table cells. Therefore the following code will print `first_name` of the
 second person (as ordered by `first_name`). I used the [`print_r` function](http://php.net/manual/en/function.print-r.php) to

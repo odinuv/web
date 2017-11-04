@@ -13,10 +13,12 @@ try {
 $tplVars['pageTitle'] = 'Persons List';
 
 $message = '';
+$keyword = '';
 $persons = [];
 try {
     if (!empty($_GET['keyword'])) {
-        $parts = explode(' ', $_GET['keyword']);
+		$keyword = $_GET['keyword'];
+        $parts = explode(' ', $keyword);
         if (count($parts) == 1) {
             $stmt = $db->prepare('
                 SELECT first_name, last_name, nickname, AGE(birth_day) FROM person

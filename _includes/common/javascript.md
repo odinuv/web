@@ -9,7 +9,7 @@ very basic functions of this language to overcome the most common problems with 
 validate a form before it is send to the [backend](todo).
 
 ## Linking JavaScript to your HTML
-[Similarly to CSS](/walkthrough/css/#linking-your-css-to-html-file), a JavaScript file is usually referenced in the `<head>`
+[Similarly to CSS](./css/#linking-your-css-to-html-file), a JavaScript file is usually referenced in the `<head>`
 element using a `<script>` tag (however it may be placed in other parts of the HTML too).
 The `<script>` tag can contain either an URL to download a script or it can directly contain some
 JavaScript code:
@@ -122,7 +122,7 @@ You also need to define the CSS class `highlight` with some visual properties de
 If you came up with another solution, do not worry, there are always multiple working solutions when you write any code.
 
 ## Confirm User Actions
-In the chapter about [records deletion](/walkthrough/backend-delete), you were referred to this article for
+In the chapter about [records deletion](./backend-delete), you were referred to this article for
 information about how to confirm a user action. Using JavaScript, we can prevent the visitor's browser from sending
 a HTTP request (i.e. following a link or sending a form). This is called *preventing navigation* and might be useful for
 example when the user is filling a form and you want to make sure that she does not accidentally leave the page (and loose the filled form).
@@ -166,7 +166,7 @@ the message and I directly passed the action being confirmed. The `+` operator i
 adding numbers and concatenating strings.
 
 ### Task -- Confirm Person Deletion
-Now enhance the [script for deleting persons](/walkthrough/backend-delete). Insert a piece of
+Now enhance the [script for deleting persons](./backend-delete). Insert a piece of
 Javascript code which will prompt the user for confirmation before deleting the person.
 Feel free to to insert the JavaScript code directly into the template, but be careful
 where you insert the `<script>` tag -- remember that `{foreach ...}` duplicates all source inside
@@ -183,9 +183,9 @@ Remember that the actions representing modifications of the database records sho
 the server using the [`POST` method](todo).
 
 ## Form validation
-Nowadays you can use much more types of [input elements](/walkthrough/html-forms/#advanced-text-input)
+Nowadays you can use much more types of [input elements](./html-forms/#advanced-text-input)
 than a few years ago. This means that many validations can be carried out by the browser.
-You can adjust CSS styles using `:valid`, `:invalid` or `:required` [pseudo-classes](/walkthrough/css/#pseudoclasses)
+You can adjust CSS styles using `:valid`, `:invalid` or `:required` [pseudo-classes](./css/#pseudoclasses)
 to visually differentiate input states. You should use these capabilities as much as possible. Nevertheless
 you may sometimes need to implement some custom logic. For example switch `required` state or
 `enable`/`disable` some input in dependence of another input's value or dynamically
@@ -219,7 +219,7 @@ must be considered unreliable). A better solution in such case is to use
 [AJAX](/articles/javascript#ajax).
 
 ### Task -- Add `required` attribute to Person & Address form inputs dynamically
-Do you remember when I was talking about inserting [multiple records at once](/walkthrough/backend-insert/advanced/).
+Do you remember when I was talking about inserting [multiple records at once](./backend-insert/advanced/).
 You should have already created a form where you can insert a person and a place where he lives.
 Try to extend this form with JavaScript and add `required` attribute to `city` only when a user enters a `street_name`.
 

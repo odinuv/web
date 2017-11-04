@@ -69,7 +69,7 @@ supplied information.
 ## Classes
 **Classes** are templates for **Objects**. Objects are structures which can contain
 **fields** (also called properties or attributes) with values (similar to associative
-[arrays](/walkthrough/backend-intro/array/)) and functions. In other words we
+[arrays](./backend-intro/array/)) and functions. In other words we
 say that Objects are **instances** of
 classes. Functions in classes and objects are called **methods**.
 *Fields* and *methods* are Class and Object **members**. Let's see an example:

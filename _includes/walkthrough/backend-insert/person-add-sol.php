@@ -12,7 +12,7 @@ if (!empty($_POST['save'])) {
 	} else {
 		// everything filled
 		try {
-			$stmt = db->prepare(
+			$stmt = $db->prepare(
 				"INSERT INTO person (first_name, last_name, nickname, birth_day, gender) 
 				VALUES (:first_name, :last_name, :nickname, :birth_day, :gender)"
 			);

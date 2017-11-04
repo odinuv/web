@@ -1,62 +1,66 @@
 ---
 title: Interaction
-permalink: /walkthrough/backend-select/
-redirect_from: /en/apv/walkthrough/backend-select/
+permalink: /walkthrough-slim/backend-select/
 ---
 
 * TOC
 {:toc}
 
-In the [previous chapter](/walkthrough/database-using/), you have learned how to use SQL queries from within
+In the [previous chapter](/walkthrough-slim/database-using/), you have learned how to use SQL queries from within
 PHP scripts. You have also learned how to use parameters in SQL queries using
-[prepared statements](/walkthrough/database-using/#selecting-data-with-parameters). In this chapter, we will connect
+[prepared statements](/walkthrough-slim/database-using/#selecting-data-with-parameters). In this chapter, we will connect
 it with HTML forms to build a fully interactive page which communicates with a database.
 
 ## Getting Started
-In this chapter, we need to get back to [HTML forms](/walkthrough/html-forms/) and processing them in PHP.
+In this chapter, we need to get back to [HTML forms](/walkthrough-slim/html-forms/) and processing them in PHP.
 For processing HTML forms, you need to be familiar with what the browser sends --
-the [name-value pairs](/walkthrough/html-forms/#name-and-value) for controls.
+the [name-value pairs](/walkthrough-slim/html-forms/#name-and-value) for controls.
 
-### POST Values
-The name-value pairs of form controls accessible in PHP in either `$_GET` or `$_POST` variable. The `$_GET`
-and `$_POST` variables are one of [PHP magical variables](todo). They are magical because they are automatically
-(magically) filled with values from the HTTP request. Whether the form controls are available in the
-`$_GET` or `$_POST` variable is determined by what `method` attribute is assigned to the HTML form. Therefore
-having `<form method='post'>` does an [HTTP POST](/articles/web/#http-protocol) method and
-PHP will make the name-value pairs available in the `$_POST` variable automatically.
+### Request parameters
+Slim framework has built-in methods for obtaining parameters of the request. These methods are available through
+[*Request*](https://www.slimframework.com/docs/objects/request.html) object which is available as argument for
+your route handler. HTTP protocol can transfer parameters via URL (`path?param1=value1&param2=value2`) and in body
+of HTTP request, the latter is available only with POST method. To access query parameters or POST body payload use
+these two functions:
 
-To demonstrate this, we need a simple script with a HTML form. The PHP script:
+~~~ php?start_inline=1
+$app->post('/route', function(Request $request, Response $response, $args) {
+    $queryParams = $request->getQueryParams();    //query parameters from URL
+    $postData = $request->getParsedBody();        //POST data
+});
+~~~
+
+{: .note}
+In plain PHP you would use magical variables called `$_POST` or `$_GET`. You can read more in the
+[classical walkthrough](/walkthrough/backend-select/#post-values) section of this book.
+
+To demonstrate this, we need two routes with a HTML form. The first route is used to display the form for the first
+time when visitor loads the page and the second route is used when the form is submitted. You already know that Slim
+identifies the handler that it executes based on HTTP method and the URL. The PHP code to insert into `routes.php`:
 
 {% highlight php %}
-{% include /walkthrough/backend-select/form-1.php %}
+{% include /walkthrough-slim/backend-select/post-vars.php %}
 {% endhighlight %}
 
-HTML form:
+HTML form in template `post-vars.latte`:
 
 {% highlight php %}
-{% include /walkthrough/backend-select/form-1.latte %}
+{% include /walkthrough-slim/backend-select/post-vars.latte %}
 {% endhighlight %}
 
-Layout template:
-
-{% highlight php %}
-{% include /walkthrough/backend-select/layout.latte %}
-{% endhighlight %}
-
-If you enter some text (e.g. 'fooBar') in the text field in and hit the button,
-you should see something like:
+To display the form page enter URL which ends with `/test-post` and the GET route should trigger.
+If you enter some text (e.g. 'fooBar') in the text field in and hit the button, you should see something like:
 
     array ( 'someText' => 'fooBar', 'send' => 'something', )
 
-You can see that the `$_POST` array is as an associative array of form controls. The indexes
+You can see that the `$postData` array is as an associative array of form controls. The indexes
 in the array are form control names, and the values are control values. This underlines
-the importance of knowing
-what [control names and values are](/walkthrough/html-forms/#name-and-value).
+the importance of knowing what [control names and values are](./html-forms/#name-and-value).
 
 It is also important to know that the entire script is stateless, the same
-way [HTTP protocol is](/articles/web/#http-protocol). This means that the `$_POST` array is filled
+way [HTTP protocol is](/articles/web/#http-protocol). This means that the `$postData` array is filled
 *only for a single execution*. Test the above example and see for yourself that
-the content of the `$_POST` array is only filled with what you have just entered
+the content of the `$postData` array is only filled with what you have just entered
 (or nothing, if you haven't sent the form and have just loaded the page).
 
 The `GET` method behaves slightly different than the `POST` method in that it changes the URL of the script. This
@@ -78,33 +82,33 @@ If you are confident, you can skip right to the [finished page](#finalizing). Ot
 let's start with making a static page first:
 
 {% highlight html %}
-{% include /walkthrough/backend-select/persons-static.html %}
+{% include /walkthrough-slim/backend-select/persons-static.html %}
 {% endhighlight %}
 
-Now add a PHP script, which generates the page using a template and a layout template (you can
-use one [from the previous chapter](/walkthrough/backend/). So the page template would be:
+Now add a PHP route, which generates the page using a template and a layout template (you can
+use one [from the previous chapter](./backend/). So the page template would be:
 
 {% highlight html %}
-{% include /walkthrough/backend-select/persons-list-1.latte %}
+{% include /walkthrough-slim/backend-select/persons-list-1.latte %}
 {% endhighlight %}
 
-Let's add the form handling in the PHP script and print out what the user has searched for.
+Let's add the form handling in the `routes.php` file and print out what the user has searched for.
 To determine if a form has been submitted you can use two methods:
 
-- check if the `$_GET` array is not empty (some form has been submitted)
-- check if the `$_GET` array contains an element with the button name (check if the specific button has been pressed)
+- check if the query parameters array is not empty (some form has been submitted)
+- check if the query parameters array contains an element with the button name (check if the specific button has been pressed)
 
 Generally the second option is better, as it works even if there are multiple forms on
 a single page. To determine if an array contains an element, we can use the `empty` function:
 
 {% highlight php %}
-{% include /walkthrough/backend-select/persons-list-1.php %}
+{% include /walkthrough-slim/backend-select/persons-list-1.php %}
 {% endhighlight %}
 
-It is not correct to use the condition `if ($_GET['search'] == '')` because that would trigger a warning
+It is not correct to use the condition `if ($queryParams['search'] == '')` because that would trigger a warning
 that the `search` item is not found in the array (and thus cannot be compared to anything). Also the
 `empty` function checks if the value of the variable evaluates to false, taking advantage of the
-[boolean conversion](/walkthrough/backend-intro/#boolean-conversions). This means
+[boolean conversion](./backend-intro/#boolean-conversions). This means
 we can use it also on the `keyword` field to check whether the
 user has entered some non-empty string.
 
@@ -131,13 +135,16 @@ at the beginning and at the end of the pattern so that a full-text search is ach
 To achieve the required functionality you need to put the above SQL statements in the
 prepared `if` conditions (assuming you have the PDO instance in the `$db` variable):
 
-{% highlight php %}
-if (!empty($_GET['search'])) {
-	if (!empty($_GET['keyword'])) {
-        $keyword = $_GET['keyword'];
+~~~php?start_inline=1
+$queryParams = $request->getQueryParams();
+if (!empty($queryParams['search'])) {
+	if (!empty($queryParams['keyword'])) {
+        $keyword = $queryParams['keyword'];
 		$stmt = $db->prepare('
             SELECT first_name, last_name, nickname, AGE(birth_day) FROM person
-            WHERE (first_name ILIKE :keyword) OR (last_name ILIKE :keyword) OR (nickname ILIKE :keyword)
+            WHERE (first_name ILIKE :keyword)
+               OR (last_name ILIKE :keyword)
+               OR (nickname ILIKE :keyword)
             ORDER BY last_name, first_name
         ');
         $stmt->bindValue('keyword', '%' . $keyword . '%');
@@ -156,14 +163,15 @@ if (!empty($_GET['search'])) {
         ORDER BY last_name, first_name
     ');
 }
-{% endhighlight %}
+~~~
 
 Or use another condition:
 
-{% highlight php %}
-if (!empty($_GET['search'])) {
-	if (!empty($_GET['keyword'])) {
-        $keyword = $_GET['keyword'];
+~~~php?start_inline=1
+$queryParams = $request->getQueryParams();
+if (!empty($queryParams['search'])) {
+	if (!empty($queryParams['keyword'])) {
+        $keyword = $queryParams['keyword'];
 	} else {
 		$keyword = '';
 	}
@@ -185,7 +193,7 @@ if ($keyword) {
         ORDER BY last_name, first_name
     ');
 }
-{% endhighlight %}
+~~~
 
 ### Finalizing
 There are many other solutions how the above code can be written. However, it is very important to maintain
@@ -202,7 +210,7 @@ Let's add the condition to the PHP script together with the connection to the da
 and printing of the results.
 
 {% highlight php %}
-{% include /walkthrough/backend-select/persons-list-2.php %}
+{% include /walkthrough-slim/backend-select/persons-list-2.php %}
 {% endhighlight %}
 
 Perhaps you have got the idea that I could have added the `required` attribute to the keyword
@@ -226,13 +234,12 @@ count the number of items in the array.
 </div>
 
 {: .solution}
-{% highlight php %}
-<?php
+~~~php?start_inline=1
 $keyword = 'John Do';
 $parts = explode(' ', $keyword);
 $first_name = $parts[0];
 $last_name = $parts[1];
-{% endhighlight %}
+~~~
 
 {: .solution}
 <div markdown='1'>
@@ -255,18 +262,18 @@ Page template (notice the introduction of the `$message` variable:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/backend-select/persons-list-sol.latte %}
+{% include /walkthrough-slim/backend-select/persons-list-sol.latte %}
 {% endhighlight %}
 
 PHP script (notice that the queries have different boolean operators):
 
 {% highlight php %}
-{% include /walkthrough/backend-select/persons-list-sol.php %}
+{% include /walkthrough-slim/backend-select/persons-list-sol.php %}
 {% endhighlight %}
 
 {: .note}
 The above script is written in a slightly different style than
-the [previous one](/walkthrough/backend-select/#finalizing). Here, I
+the [previous one](./backend-select/#finalizing). Here, I
 have maintained the state consistency by first initializing the `$persons` and `$message` variables
 to some default values and have used the conditions to change them only when necessary. This leads
 to a more concise code, which may be harder to read as it does not explicitly enumerate all of the
@@ -278,9 +285,9 @@ For example you can add searching by a nickname, day of birth, height etc. There
 how all those criteria can be combined, which leads us to an [application design](todo).
 
 In this chapter you have learned how to process HTML forms in the PHP script.
-You should be familiar with the structure of the `$_GET` and `$_POST` variables.
+You should be familiar with obtaining the parameters from *Request* object.
 Make sure you understand the rules how HTML form controls are transformed into
-[name-value pairs](/walkthrough/html-forms/#name-and-value) and subsequently into `$_GET` and `$_POST` variables.
+[name-value pairs](./html-forms/#name-and-value) and subsequently into query parameters and POST data.
 This allows you to implement your own logic into the application behavior. So from now on, most of the
 exercises have a virtually unlimited number of solutions.
 
@@ -288,4 +295,4 @@ exercises have a virtually unlimited number of solutions.
 - Processing HTML forms
 - HTTP GET
 - HTTP POST
-- $\_GET and $\_POST magical variables
+- *Request* object

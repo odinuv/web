@@ -258,7 +258,7 @@ form controls in rows. Also make sure to verify the form by using
 {% endhighlight %}
 
 ### Task -- Form in a table
-Now try to create the following form. Here I used a [table](/walkthrough/html/#task----tables)
+Now try to create the following form. Here I used a [table](./html/#task----tables)
 for arranging the
 form controls in rows. Also make sure to verify the form by using
 `<form method='post' action='http://odinuv.cz/form_test.php'>` and submitting the form.
