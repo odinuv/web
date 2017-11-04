@@ -73,11 +73,11 @@ The grade from the final exam and the project evaluation make up for the final c
     - [Form Elements](\course\apva\form-elements.html)
     - [Example Form](\course\apva\example-form.html)
 - Week 4:
-    - [Slim Framework](\course\apva\slim.zip)
-    - [Updated routes.php](\courser\apva\routes-1.phps)
+    - [Slim Framework](\course\apva\slim-framework.zip)
+    - [Updated routes.php](\course\apva\routes-1.phps)
 - Week 5:
-    - [Updated routes.php](\courser\apva\routes-2.phps)
-    - [People list template](\courser\apva\people.latte)
+    - [Updated routes.php](\course\apva\routes-2.phps)
+    - [People list template](\course\apva\people.latte)
 
 ## Project Assignment
 To pass the course you need to create a project. The project assignment is
