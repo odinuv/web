@@ -1,7 +1,6 @@
 ---
 title: Using select element
-permalink: /walkthrough/backend-update/using-select/
-redirect_from: /en/apv/walkthrough/backend-update/using-select/
+permalink: /walkthrough-slim/backend-update/using-select/
 ---
 
 * TOC
@@ -14,18 +13,18 @@ redirect_from: /en/apv/walkthrough/backend-update/using-select/
 ### Step 1
 Load all locations from database into `select` element options and use the value attribute for `id_location`.
 
-`person-address-1.php`:
+`routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/backend-update/person-address-1.php %}
+{% include /walkthrough-slim/backend-update/person-address-1.php %}
 {% endhighlight %}
 
-`person-address-1.latte`:
+`person-address.latte`:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/backend-update/templates/person-address-1.latte %}
+{% include /walkthrough-slim/backend-update/person-address-1.latte %}
 {% endhighlight %}
 
 ### Step 2
@@ -33,39 +32,39 @@ Now prepare your script to receive `id` parameter which will represent ID of a p
 database and print his name. Remember to pass ID of person along with new ID of his new address -- you will need both
 in `UPDATE` query.
 
-`person-address-2.php`:
+`routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/backend-update/person-address-2.php %}
+{% include /walkthrough-slim/backend-update/person-address-2.php %}
 {% endhighlight %}
 
-`person-address-2.latte`:
+`person-address.latte`:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/backend-update/templates/person-address-2.latte %}
+{% include /walkthrough-slim/backend-update/person-address-2.latte %}
 {% endhighlight %}
 
 {: .note}
-To test your page, find some person in a database and type URL like `person-address-2.php?id=XXX`
+To test your page, find some person in a database and type URL like `set-address?id=XXX`
 into browser's address bar. Or you can prepare a link to this form from list of persons.
 
 ### Step 3
 Almost there -- preselect address of a person if he has one and tell the form where to send data:
 
-`person-address-3.php` (no change here):
+`routes.php`: (no change here):
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/backend-update/person-address-3.php %}
+{% include /walkthrough-slim/backend-update/person-address-3.php %}
 {% endhighlight %}
 
-`person-address-3.latte`:
+`person-address.latte`:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/backend-update/templates/person-address-3.latte %}
+{% include /walkthrough-slim/backend-update/person-address-3.latte %}
 {% endhighlight %}
 
 {: .note}
@@ -82,11 +81,11 @@ Now create the update script which will handle form submission -- it will receiv
 address (or empty string if you choose *Unknown address* option). Redirect back to person address selection form
 after update:
 
-`store-address.php`:
+`routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/backend-update/store-address.php %}
+{% include /walkthrough-slim/backend-update/store-address.php %}
 {% endhighlight %}
 
 {% include /common/using-select-2.md %}

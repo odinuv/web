@@ -58,6 +58,9 @@ items:
 
       - url: /walkthrough-slim/backend-update/
         title: Database – Updating
+        items:
+        - url: /walkthrough-slim/backend-update/using-select/
+          title: Using select element
 
       - url: /walkthrough-slim/css/
         title: CSS – Cascading Style Sheets
