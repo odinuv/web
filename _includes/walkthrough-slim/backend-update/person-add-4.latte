@@ -1,0 +1,11 @@
+{extends layout.latte}
+
+{block title}Person insert{/block}
+
+{block body}
+{if isset($message)}
+    <p>{$message}</p>
+{/if}
+<h1>Add a new person</h1>
+{include person-form.latte, operation => 'Insert person'}
+{/block}

@@ -1,0 +1,31 @@
+{extends layout.latte}
+
+{block title}List of persons{/block}
+
+{block body}
+<form method="get">
+    <label>Search for first name, last name or nickname:
+        <input type="text" name="keyword">
+    </label>
+    <button type="submit" name="search" value="search" required>Search</button>
+</form>
+<p>You searched for '{$keyword}'</p>
+<table>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Nickname</th>
+        <th>Age</th>
+        <th></th>
+    </tr>
+    {foreach $persons as $person}
+        <tr>
+            <td>{$person['first_name']}</td>
+            <td>{$person['last_name']}</td>
+            <td>{$person['nickname']}</td>
+            <td>{$person['age']}</td>
+            <td><a href="{link update-person}?id={$person['id_person']}">Edit</a></td>
+        </tr>
+    {/foreach}
+</table>
+{/block}

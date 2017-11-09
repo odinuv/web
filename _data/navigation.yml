@@ -56,6 +56,9 @@ items:
         - url: /walkthrough-slim/backend-insert/advanced/
           title: Advanced inserts
 
+      - url: /walkthrough-slim/backend-update/
+        title: Database – Updating
+
       - url: /walkthrough-slim/css/
         title: CSS – Cascading Style Sheets
 
