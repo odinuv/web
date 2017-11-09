@@ -13,8 +13,8 @@ if (!empty($_POST['save'])) {
 		// everything filled
 		try {
 			$stmt = $db->prepare(
-				"INSERT INTO person (first_name, last_name, nickname, birth_day, gender) 
-				VALUES (:first_name, :last_name, :nickname, :birth_day, :gender)"
+                "INSERT INTO person (first_name, last_name, nickname, birth_day, height, gender) 
+                VALUES (:first_name, :last_name, :nickname, :birth_day, :height, :gender)"
 			);
 			$stmt->bindValue(':first_name', $_POST['first_name']);
 			$stmt->bindValue(':last_name', $_POST['last_name']);
