@@ -3,7 +3,7 @@
 {block title}Add person{/block}
 
 {block body}
-	{if $message}
+	{if isset($message)}
 		<p>{$message}</p>
 	{/if}
 	<form method="post">
