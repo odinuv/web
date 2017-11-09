@@ -129,7 +129,7 @@ PHP script for updating a person:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/backend-update/person-insert-4.php %}
+{% include /walkthrough/backend-update/person-update-4.php %}
 {% endhighlight %}
 
 Latte template script for inserting a person (`person-insert-4.latte`):
@@ -150,7 +150,7 @@ And a `person-form.latte`:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/backend-update/templates/person-update-4.latte %}
+{% include /walkthrough/backend-update/templates/person-form.latte %}
 {% endhighlight %}
 
 As you can see, templates allow you to reuse common blocks of HTML code (using the `include` statement)

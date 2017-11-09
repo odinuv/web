@@ -70,7 +70,8 @@ the form controls, either remove it for the test, or use [developer tools](/cour
 to do so temporarily.
 
 The part of the PHP script which requires deeper explanation is probably this:
-~~~php?start_inline=1
+
+~~~ php?start_inline=1
 if (empty($_POST['birth_day'])) {
     $stmt->bindValue(':birth_day', null);
 } else {
@@ -79,8 +80,9 @@ if (empty($_POST['birth_day'])) {
 ~~~
 
 {: .note}
-You can use shorter [ternary operator](http://php.net/manual/en/language.operators.comparison.php) to save some space
-in your source code: `$stmt->bindValue(':birth_day', empty($_POST['birth_day']) ? null : $_POST['birth_day']);`.
+You can use shorter [ternary operator](http://php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary)
+to save some space in your source code:
+`$stmt->bindValue(':birth_day', empty($_POST['birth_day']) ? null : $_POST['birth_day']);`.
 
 In the `person` table in the database. The
 column `birth_day` [allows NULLs](/articles/sql-join/#null), i.e. its value is not
@@ -122,6 +124,9 @@ In this chapter you have learned how to inset data from a HTML form into a datab
 options how you can implement the application logic -- especially the value validation (e.g. you could trigger
 an error if height is not a number instead of ignoring it). When inserting data to the database, you need to
 be aware of what values are optional and handle the optional values correctly.
+
+Notice one annoying behaviour -- when the process of adding a person fails, the values a user inserted into the fields
+are gone. We will take care of it in the [next step](/walkthrough/backend-update).
 
 ### New Concepts and Terms
 - Optional values

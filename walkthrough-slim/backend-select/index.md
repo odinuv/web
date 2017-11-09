@@ -135,7 +135,7 @@ at the beginning and at the end of the pattern so that a full-text search is ach
 To achieve the required functionality you need to put the above SQL statements in the
 prepared `if` conditions (assuming you have the PDO instance in the `$db` variable):
 
-~~~php?start_inline=1
+~~~ php?start_inline=1
 $queryParams = $request->getQueryParams();
 if (!empty($queryParams['search'])) {
 	if (!empty($queryParams['keyword'])) {
@@ -167,7 +167,7 @@ if (!empty($queryParams['search'])) {
 
 Or use another condition:
 
-~~~php?start_inline=1
+~~~ php?start_inline=1
 $queryParams = $request->getQueryParams();
 if (!empty($queryParams['search'])) {
 	if (!empty($queryParams['keyword'])) {
@@ -234,7 +234,7 @@ count the number of items in the array.
 </div>
 
 {: .solution}
-~~~php?start_inline=1
+~~~ php?start_inline=1
 $keyword = 'John Do';
 $parts = explode(' ', $keyword);
 $first_name = $parts[0];
