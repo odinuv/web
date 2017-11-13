@@ -45,7 +45,7 @@ To verify a password when user tries to log-in (first fetch hash and salt from d
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/login/hash-salt.php %}
+{% include /common/login/hash-salt.php %}
 {% endhighlight %}
 
 {: .note}

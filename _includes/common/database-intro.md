@@ -99,7 +99,7 @@ of what structure is defined for the data. In fact the database schema defines a
 the structure of the `person` table in your database:
 
 {: .image-popup}
-![Database structure](/walkthrough/database/adminer-structure.png)
+![Database structure](/common/database-intro/adminer-structure.png)
 
 Here you can see for example that:
 
@@ -146,7 +146,7 @@ there must be the same number of items in the column list and value list.
 Try to run the query yourself in the Adminer:
 
 {: .image-popup}
-![Screenshot -- Run SQL query](/walkthrough/database/adminer-run-query.png)
+![Screenshot -- Run SQL query](/common/database/adminer-run-query.png)
 
 Important: Unlike in HTML and PHP, in SQL, strings must always be enclosed in single
 quotes `'`. Double quotes are **not allowed** for string values. Actually double quotes

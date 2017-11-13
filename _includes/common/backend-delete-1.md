@@ -22,4 +22,4 @@ use the database keys correctly!
 
 It is also worth noting that before you allow users of your application to modify or even
 delete information, you should first
-take steps to [authenticate](/walkthrough/login) and authorize them.
+take steps to [authenticate](login) and authorize them.
