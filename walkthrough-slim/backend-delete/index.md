@@ -1,7 +1,6 @@
 ---
 title: Deleting data
-permalink: /walkthrough/backend-delete/
-redirect_from: /en/apv/walkthrough/backend-delete/
+permalink: /walkthrough-slim/backend-delete/
 ---
 
 * TOC
@@ -20,14 +19,20 @@ parameter is supplied. This parameter should be the primary key of the row you w
 one number. PHP script with `DELETE` SQL command:
 
 {% highlight php %}
-{% include /walkthrough/backend-delete/delete.php %}
+{% include /walkthrough-slim/backend-delete/delete-1.php %}
 {% endhighlight %}
 
-That's pretty much all. To test this, you can create a simple form with `<input type="number">`.
-Latte template with form:
+That's pretty much all. To test this, you can create a simple form with `<input type="number">` and
+a GET method route. Latte template with form:
 
 {% highlight html %}
-{% include /walkthrough/backend-delete/templates/delete.latte %}
+{% include /walkthrough-slim/backend-delete/delete.latte %}
+{% endhighlight %}
+
+The route to render the template:
+
+{% highlight php %}
+{% include /walkthrough-slim/backend-delete/delete-2.php %}
 {% endhighlight %}
 
 {: .note}
@@ -49,14 +54,14 @@ page will send the same HTTP request -- i.e. it will repeat the action (delete t
 is asking about. To avoid this annoyance, you have to **redirect after POST**:
 
 {% highlight php %}
-{% include /walkthrough/backend-delete/delete-2.php %}
+{% include /walkthrough-slim/backend-delete/delete-3.php %}
 {% endhighlight %}
 
-In the above script, I added the line `header("Location: delete.php");`. This calls the PHP
+In the above script, I added the line `return $response->withHeader(...);`. This calls the internal PHP
 [`header()` function](http://php.net/manual/en/function.header.php) which sends a [HTTP header](todo).
 The [`Location` header](https://en.wikipedia.org/wiki/HTTP_location) is used to inform the browser
 that the page has moved (redirected) to a new location. In this case, the new location is the same as the old location
-(`delete.php`), but the browser still moves to the new address. During this the POST data from the
+(GET route called `deleteForm`), but the browser still moves to the new address. During this the POST data from the
 form is lost, because the HTTP GET method is used. This means that when the user actually sees the page,
 the browser will be looking at the second load of that page and it will know nothing about the submitted form.
 
@@ -78,16 +83,15 @@ The above script works but it is not very useful. Users of your application do n
 and they do not want to remember some ID value which they have to type into a form. They want to see
 a list of persons and a nice delete button which they just click.
 
-Extend your script which [lists all persons](/walkthrough/backend-select/) with a delete button.
+Extend your script which [lists all persons](/walkthrough-slim/backend-select/) with a delete button.
 Take the HTML form you have used in the previous example, and change the `<input type="number" ...>`
-`type="hidden"`. Then put that form in each row of the users list.
-Pass the value of `id_person` column as a value of the hidden form field. Remember to
-extend the `SELECT` SQL command to retrieve the `id_person` column.
-Also remember to redirect back to list of persons after deletion.
+`type="hidden"`. Then put that form in each row of the users list. Pass the value of `id_person` column
+as a value of the hidden form field. Remember to extend the `SELECT` SQL command to retrieve the
+`id_person` column. Also remember to redirect back to list of persons after deletion.
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/backend-delete/templates/person-list.latte %}
+{% include /walkthrough-slim/backend-delete/person-list.latte %}
 {% endhighlight %}
 
 {% include /common/backend-delete-2.md %}

@@ -62,6 +62,9 @@ items:
         - url: /walkthrough-slim/backend-update/using-select/
           title: Using select element
 
+      - url: /walkthrough-slim/backend-delete/
+        title: Database – Delete
+
       - url: /walkthrough-slim/css/
         title: CSS – Cascading Style Sheets
 

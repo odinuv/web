@@ -1,0 +1,13 @@
+{extends layout.latte}
+
+{block title}Delete a person by ID{/block}
+
+{block body}
+<form action="{link delete}" method="post">
+    <label>ID of a person</label>
+    <input type="number" name="id_person" />
+    <br />
+
+    <input type="submit" value="Delete a person" />
+</form>
+{/block}
