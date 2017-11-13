@@ -15,7 +15,7 @@ The `<script>` tag can contain either an URL to download a script or it can dire
 JavaScript code:
 
 {% highlight html %}
-{% include /walkthrough/javascript/attach.html %}
+{% include /common/javascript/attach.html %}
 {% endhighlight %}
 
 In the above example, the actual JavaScript code is `console.log("Some message.");` and `console.log("Another message.");`.
@@ -55,7 +55,7 @@ element. You may remember about [user defined attributes](/articles/html/#data-a
 in the `element.dataset` object (e.g. `element.dataset.personid` for `data-personId` attribute).
 
 {% highlight html %}
-{% include /walkthrough/javascript/html-attributes-styles.html %}
+{% include /common/javascript/html-attributes-styles.html %}
 {% endhighlight %}
 
 {: .note}
@@ -76,7 +76,7 @@ event handler to each type of event. You can attach [multiple events](/articles/
 using the `addEventListener('event', handler)` method of the element object.
 
 {% highlight html %}
-{% include /walkthrough/javascript/basic-events.html %}
+{% include /common/javascript/basic-events.html %}
 {% endhighlight %}
 
 If you are new, to Javascript (or any programming), you may be confused by the line `window.onload = function() ...`. This is indeed something new as
@@ -101,7 +101,7 @@ remove or add children (`elem2`) to an HTML element `elem` with `elem1.appendChi
 To create a new element you can use `document.createElement` method - e.g. `var newElem = document.createElement("<p>")` to create a new paragraph.
 
 {% highlight html %}
-{% include /walkthrough/javascript/creating-elements.html %}
+{% include /common/javascript/creating-elements.html %}
 {% endhighlight %}
 
 In the above code, first I create a list `ul` element (`newList` variable). Then I pick an existing HTML element (with id `container`) and
@@ -115,7 +115,7 @@ You also need to define the CSS class `highlight` with some visual properties de
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/javascript/events-toggle-css.html %}
+{% include /common/javascript/events-toggle-css.html %}
 {% endhighlight %}
 
 {: .note}
@@ -131,7 +131,7 @@ Here is an example how to prevent navigation with a confirm popup for basic `<a>
 If you want to prevent navigation on a form, you have to use the `onsubmit` event:
 
 {% highlight html %}
-{% include /walkthrough/javascript/prevent-nav-form.html %}
+{% include /common/javascript/prevent-nav-form.html %}
 {% endhighlight %}
 
 You have to pass a true/false value returned by the `confirm` function from the called `confirmForm()` function
@@ -141,7 +141,7 @@ handler function and has to return `true` or `false` to approve or cancel from s
 Similar confirmation can be created on links:
 
 {% highlight html %}
-{% include /walkthrough/javascript/prevent-nav-a.html %}
+{% include /common/javascript/prevent-nav-a.html %}
 {% endhighlight %}
 
 Again, the handler must return a boolean value from the `confirmNav` function.
@@ -151,92 +151,16 @@ Let's create and alert for a form which takes some parameters. I have slightly m
 are now two forms, but we would still like to use the same `confirmForm` function.
 
 {% highlight html %}
-{% include /walkthrough/javascript/prevent-nav-form-parameters-1.html %}
+{% include /common/javascript/prevent-nav-form-parameters-1.html %}
 {% endhighlight %}
 
 Modify the code so that you pass a parameter to the `confirmForm`, and display appropriate confirmation message.
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/javascript/prevent-nav-form-parameters-2.html %}
+{% include /common/javascript/prevent-nav-form-parameters-2.html %}
 {% endhighlight %}
 
 There are many different solutions. In the solution above, I used the `+` operator to concatenate strings in
 the message and I directly passed the action being confirmed. The `+` operator in Javascript works both for
 adding numbers and concatenating strings.
-
-### Task -- Confirm Person Deletion
-Now enhance the [script for deleting persons](./backend-delete). Insert a piece of
-Javascript code which will prompt the user for confirmation before deleting the person.
-Feel free to to insert the JavaScript code directly into the template, but be careful
-where you insert the `<script>` tag -- remember that `{foreach ...}` duplicates all source inside
-and you do not want multiple `<script>` tags with same function declaration in your markup.
-Try to pass the person name into the confirmation message.
-
-{: .solution}
-{% highlight html %}
-{% include /walkthrough/javascript/templates/delete.latte %}
-{% endhighlight %}
-
-{: .note}
-Remember that the actions representing modifications of the database records should be transmitted to
-the server using the [`POST` method](todo).
-
-## Form validation
-Nowadays you can use much more types of [input elements](./html-forms/#advanced-text-input)
-than a few years ago. This means that many validations can be carried out by the browser.
-You can adjust CSS styles using `:valid`, `:invalid` or `:required` [pseudo-classes](./css/#pseudoclasses)
-to visually differentiate input states. You should use these capabilities as much as possible. Nevertheless
-you may sometimes need to implement some custom logic. For example switch `required` state or
-`enable`/`disable` some input in dependence of another input's value or dynamically
-calculate some additional value such as price.
-
-Here is an example with dynamic form which simulates a flight reservation. I used a `<fieldset>` element
-which is capable of disabling or enabling multiple inputs within it. These inputs represent optional
-baggage section of a flight reservation form. Based on the selected options, the price of flight is
-adjusted immediatelly:
-
-![Form validation](/common/javascript/form-validation.png)
-
-{: .solution}
-{% highlight html %}
-{% include /walkthrough/javascript/form-validation.html %}
-{% endhighlight %}
-
-I used `document.forms` which contains object with keys defined by the form `name` attribute.
-Each form is again an object with keys defined by inputs' `name` attribute. Attributes of
-JavaScript objects can be accessed using square brackets (where you can also use a variable)
-or you can just use the dot notation `.key`. There is no functional difference between
-`document.forms.formName` and `document["forms"]["formName"]`
-or `document.forms["formName"]`. I prefer latter variant because attribute values can
-contain characters like `-` which are reserved in JavaScript and cannot be used in the former variant.
-
-{: .note}
-This approach is ideal for manipulating form elements (such as enabling/disabling the fieldset as
-in the above example). Computing the final price this way is not ideal, because it
-means duplicated logic in the server and the client scripts (the price computed by the client
-must be considered unreliable). A better solution in such case is to use
-[AJAX](/articles/javascript#ajax).
-
-### Task -- Add `required` attribute to Person & Address form inputs dynamically
-Do you remember when I was talking about inserting [multiple records at once](./backend-insert/advanced/).
-You should have already created a form where you can insert a person and a place where he lives.
-Try to extend this form with JavaScript and add `required` attribute to `city` only when a user enters a `street_name`.
-
-{: .solution}
-{% highlight html %}
-{% include /walkthrough/javascript/form-validation-address.html %}
-{% endhighlight %}
-
-## Summary
-This brief chapter about JavaScript programming language should help you to improve your project with instant popup
-dialogs and a bit of client-side form validation. You can find more in [articles](/articles/javascript)
-section of this book.
-
-### New Concepts and Terms
-- JavaScript
-- Event
-- Event Handler
-- Callback
-- Anonymous function
-- Dynamic HTML

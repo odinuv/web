@@ -717,7 +717,7 @@ up to one half of original.
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/javascript/form-validation-jquery.html %}
+{% include /articles/javascript/form-validation-jquery.html %}
 {% endhighlight %}
 
 There are also many other JS libraries or frameworks. jQuery is used in most cases and sometimes other
