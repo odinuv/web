@@ -16,8 +16,8 @@ the development of web applications and database applications (relational databa
 To pass the course you have to:
 
 - pass the midterm test (minimum 50% points)
-- get at least 90 points on [Codecademy](https://www.codecademy.com/) --- [**Verify**](codecademy.php)
-- finish the [course project](#project-assignment)
+- get at least 90 points on [Codecademy](https://www.codecademy.com/) --- [**Verify**](http://odinuv.cz/course/codecademy.php)
+- finish the [course project](#project-assignment) [first evaluation](https://akela.mendelu.cz/~xpopelka/vysledky.txt)
 - pass the final exam (minimum 50% points)
 
 The grade from the final exam and the project evaluation make up for the final course grade.

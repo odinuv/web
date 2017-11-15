@@ -1,7 +1,7 @@
 <?php
 
-require 'phpQuery.php';
-require 'config.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'phpQuery.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'config.php';
 
 class CodecademyBackend
 {

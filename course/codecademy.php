@@ -18,7 +18,7 @@
 <body>
 
 <?php
-require('ca/CodecademyBackend.php');
+require(__DIR__ . DIRECTORY_SEPARATOR . 'ca/CodecademyBackend.php');
 ?>
 
 <div class="root">
