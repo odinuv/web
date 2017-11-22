@@ -1,6 +1,6 @@
 ---
-title: Named routes
-permalink: /walkthrough-slim/named-routes/
+title: Current route
+permalink: /walkthrough-slim/named-routes/current-route/
 ---
 
 * TOC

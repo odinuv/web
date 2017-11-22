@@ -56,7 +56,7 @@ items:
       - url: /walkthrough-slim/named-routes/
         title: Named routes
         items:
-        - url: /walkthrough-slim/named-routes/current-route
+        - url: /walkthrough-slim/named-routes/current-route/
           title: Current route
 
       - url: /walkthrough-slim/backend-update/
