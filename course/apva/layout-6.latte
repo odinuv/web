@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>{include title}</title>
+    <link rel="stylesheet" href="{$basePath}/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{$basePath}/css/bootstrap/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="{$basePath}/js/jquery.js"></script>
+    <script type="text/javascript" src="{$basePath}/css/bootstrap/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {ifset meta}{include meta}{/ifset}
+</head>
+<body>
+  <nav class='navbar navbar-default'>
+    <div class='container-fluid'>
+        <ul class='nav navbar-nav'>
+          <li><a href='{link index}'>Home</a></li>
+          <li><a href='{link people}'>Persons</a></li>
+          <li><a href='{link new-person}'>New Person</a></li>
+        </ul>
+    </div>
+  </nav>
+  <div class='container'>
+    {include body}
+  </div>
+</body>
+</html>

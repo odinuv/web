@@ -1,0 +1,53 @@
+{extends layout.latte}
+
+{block title}Add Person{/block}
+
+{block body}
+<h1>Add new person</h1>
+<form method='post' class='form-horizontal'>
+  <div class='form-group'>
+    <label class='control-label col-sm-2'>First name:</label>
+    <div class='col-sm-10'>
+      <input class='form-control' type='text' name='first_name' required='required'>
+    </div>
+  </div>
+  <div class='form-group'>
+    <label class='control-label col-sm-2'>Last name:</label>
+    <div class='col-sm-10'>
+      <input class='form-control' type='text' name='last_name' required>
+    </div>
+  </div>
+  <div class='form-group'>
+    <label class='control-label col-sm-2'>Nickname:</label>
+    <div class='col-sm-10'>
+      <input class='form-control' type='text' name='nickname' required>
+    </div>
+  </div>    
+  <div class='form-group'>
+    <label class='control-label col-sm-2'>Height:</label>
+    <div class='col-sm-10'>
+      <input class='form-control' type='number' name='height'>
+    </div>
+  </div>
+  <div class='form-group'>
+    <label class='control-label col-sm-2'>Birth day:</label>
+    <div class='col-sm-10'>    
+      <input class='form-control' type='date' name='birth_day'>
+    </div>
+  </div>
+  <div class='form-group'>
+    <label class='control-label col-sm-2'>Gender:</label>
+    <div class='col-sm-10'>
+      <select class='form-control' name='gender'>
+        <option value='male'>Male</option>
+        <option value='female'>Female</option>
+      </select>
+    </div>
+  </div>      
+  <div class='form-group'>
+    <div class='col-sm-offset-2 col-sm-10'>    
+      <button class='btn btn-primary' type='submit' name='save'>Save</button>
+    </div>
+  </div>
+</form>
+{/block}
