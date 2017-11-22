@@ -44,9 +44,6 @@ items:
       - url: /walkthrough-slim/templates/
         title: Templates
 
-      - url: /walkthrough-slim/named-routes/
-        title: Named routes
-
       - url: /walkthrough-slim/backend-select/
         title: Database – Selecting and filtering
 
@@ -55,6 +52,12 @@ items:
         items:
         - url: /walkthrough-slim/backend-insert/advanced/
           title: Advanced inserts
+
+      - url: /walkthrough-slim/named-routes/
+        title: Named routes
+        items:
+        - url: /walkthrough-slim/named-routes/current-route
+          title: Current route
 
       - url: /walkthrough-slim/backend-update/
         title: Database – Updating

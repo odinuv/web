@@ -5,7 +5,7 @@ I want to show you how to store user account data securely (especially passwords
 (authenticate) a user which is trying to log into your application. I will not talk about different levels
 of user permissions because it would complicate things a lot -- such feature is called authorisation.
 
-## Storing user's passwords
+## Storing users' passwords
 It is not a safe approach to store passwords in their plain-text form. Such passwords can be viewed by anybody
 who has access to your database (maybe now it is only you, but in future it can be some of your colleagues or
 even your employees). A password is always saved in hashed form (a *hash* is a result of function which outputs

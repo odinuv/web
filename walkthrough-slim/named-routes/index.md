@@ -6,9 +6,13 @@ permalink: /walkthrough-slim/named-routes/
 * TOC
 {:toc}
 
-All you have to do to extend functionality of your application is add a route and its handler. But there is one small
-catch, you usually call a route from many places in your templates and it is not a very good idea to use plain URL to
-do this. Because you use a templating engine, you can use some kind of transformation for all in-app links. 
+Until now you used browser's address bar to navigate between different pages. With forms I made use of the fact,
+that without `action` attribute, the form is submitted to the same URL (only `action` attribute was set to `POST`).
+This is not user friendly at all, but using hardcoded routes in templates is also not very efficient.
+
+You usually link to a route from many places in your application and it is not a very good idea to use plain URL to
+do this. Because you use a framework and a templating engine, you can use some kind of transformation for all in-app
+links.
 
 The reason is simple: sometimes you need to change the route definition to describe better what the route is doing,
 move the route to another "module" or wrap group of routes using a common [middleware](https://www.slimframework.com/docs/concepts/middleware.html).
@@ -66,23 +70,44 @@ Or with parameters:
 ~~~
 
 {: .note}
-You can find the definition of this `{link}` macro in `src/dependencies.php`.
+You can find the definition of this `{link}` macro in `src/dependencies.php` file.
 
 ### Task -- use named routes
-1) Go through your `src/routes.php` file and make up a unique route identifier for all your routes -- use `setName()`
+
+1. Go through your `src/routes.php` file and make up a unique route identifier each of you routes -- use `setName()`
    method.
-2) Scan your templates and replace all hardcoded routes in `<a href="...">` and `<form action="...">` tags with
-   `{link}` macro.
+2. Scan your templates and replace all hardcoded routes in `<a href="...">` and `<form action="...">` tags with
+   `{link routeName}` macro. If you can't find any yet, make a simple navigation bar in `layout.latte` file.
    
 {: .note}
 To distinguish modules of your application, you can make up route names in form `module:action`, e.g. `people:add`,
 `meeting:view` etc.
 
+Added names in `src/routes.php`:
+
 {: .solution}
 ~~~ php?start_inline=1
-$app->get('/flintstones', function (Request $request, Response $response, $args) {
-    echo "Hello World!";
-});
+$app->get('/', function (Request $request, Response $response, $args) {
+    //...
+})->setName('index');
+
+$app->get('/add-person', function (Request $request, Response $response, $args) {
+    //...
+})->setName('add');
+
+$app->post('/add-person', function (Request $request, Response $response, $args) {
+    //...
+})->setName('add-perform');
+~~~
+
+New `<nav>` element in `templates/layout.latte`:
+
+{: .solution}
+~~~ html
+<nav>
+    <a href="{link index}">List of persons</a>
+    <a href="{link add}">Add new person</a>
+</nav>
 ~~~
 
 ## Routes and folder nesting
