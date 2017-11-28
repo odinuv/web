@@ -247,3 +247,9 @@ items:
 
       - url: /slides/web-apps/
         title: Web applications
+
+      - url: /slides/application-development/
+        title: Application development
+
+      - url: /slides/finale/
+        title: Finale
