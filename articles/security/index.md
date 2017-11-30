@@ -31,4 +31,5 @@ Read about web application security and risks:
 
 - [SQL injection](/articles/security/sql-injection/)
 - [Cross site scripting](/articles/security/xss/)
+- [Cross site request forgery](/articles/security/csrf/)
 - [Storing passwords and user authentication](/walkthrough/login/) - walkthrough article

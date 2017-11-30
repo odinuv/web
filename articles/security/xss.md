@@ -115,14 +115,14 @@ is "hosted" on affected website and therefore anonymous.
 The simplest use of XSS is to open some popup window perhaps with some kind of advertisement -- simply put,
 the attacker wants to catch attention of a visitor and make him to do something else.
 
-More dangerous XSS attack is a combination with [CSRF](todo) attack -- the attacker expects that visitor
+More dangerous XSS attack is a combination with [CSRF](/articles/security/csrf/) attack -- the attacker expects that visitor
 of affected site is actually logged into another (well known) service. He knows that the browser automatically
 appends HTTP headers (i.e. cookies with authorisation tokens) for HTTP requests. The attacker can execute actions
 on behalf of his victim -- perhaps he can try to change a password and block the account or issue order of goods.
-These kind of attacks are more difficult to perform nowadays thanks to origin policy applied in web browsers
-(you cannot easily send XHR JavaScript request to another domain) but still the attacker can make the visitor
-to submit ordinary form with modified hidden fields. Any action invoked by the GET method can easily exploited
-even with simple `<img src="http://target.com/make/some/harm.php">` tag.
+These kind of attacks are more difficult to perform nowadays thanks to [origin policy](https://en.wikipedia.org/wiki/Same-origin_policy)
+applied in web browsers (you cannot easily send AJAX requests to another domain unless that domain allows it)
+but still the attacker can make the visitor to submit ordinary form with modified hidden fields. Any action invoked
+by the GET method can easily exploited even with simple `<img src="http://target.com/make/some/harm.php">` tag.
 
 XSS can also be used to spy on visitors and send personal data like user credentials to the attacker. This is a very
 dangerous scenario.
