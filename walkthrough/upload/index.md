@@ -99,6 +99,11 @@ PHP script `fetch-file-01.php`:
 {% include /walkthrough/upload/fetch-file-01.php %}
 {% endhighlight %}
 
+{: .note}
+This script uses [`http_response_code()`](http://php.net/manual/en/function.http-response-code.php) function to notify
+client about errors and non-existing files by HTTP status code. Such codes are useful for browsers and search engine
+crawlers to understand that this URL contains nothing interesting.
+
 Try to switch different `Content-Disposition` headers to modify behaviour of browser -- `inline` disposition displays
 file content directly in browser if the browser supports such file type (HTML, XML, an image or a PDF file) while
 `attachment` disposition forces browser to offer visitor to download the file whatever the file type is. You can also

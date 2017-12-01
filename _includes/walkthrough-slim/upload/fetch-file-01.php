@@ -14,10 +14,11 @@ $app->get('/fetch-file', function(Request $request, Response $response, $args) {
                 $directory = $settings['uploadDir'];
                 $fh = fopen($directory . DIRECTORY_SEPARATOR . $fileInfo['file_name'], 'r');
                 $stream = new \Slim\Http\Stream($fh);
+                $origName = $fileInfo['file_name_orig'];
                 //set headers and send file contents
                 return $response
                     ->withHeader('Content-Type', $fileInfo['file_type'])
-                    ->withHeader('Content-Disposition', 'inline; filename="' . $fileInfo['file_name_orig'] . '"')
+                    ->withHeader('Content-Disposition', 'inline; filename="' . $origName . '"')
                     ->withBody($stream);
             } else {
                 return $response->withStatus(404)->write('File not found');
