@@ -7,16 +7,22 @@ permalink: /articles/security/csrf/
 {:toc}
 
 Cross site request forgery is a kind of attack that aims on websites which allow their users to authenticate
-permanently in their browser. Suppose that an attacker knows the structure of your application -- he knows which HTTP
+permanently. Suppose that an attacker knows the structure of your application -- he knows which HTTP
 request to send to perform an action on behalf of logged-in user. All he has to do is to prepare an `<a>` tag to click,
 `<img>` tag to display or `<form>` which automatically submits using JavaScript when someone visits his trap-page or
-views an email with HTML. It works because when a HTTP request is performed, the browser appends all cookies that
-are used to identify a visitor, he can perform perform some action on behalf of the victim unnoticed.
+views an email with his HTML code. It works because when a HTTP request is performed, the browser appends all cookies that
+are used to identify a visitor, he can perform some action on behalf of the victim unnoticed.
 
 {: .note}
 The attacker does not need to access the cookie or session data (that should not be possible thanks to
 [same origin policy](https://en.wikipedia.org/wiki/Same-origin_policy) of browsers). Attacker exploits the basic
 principles of HTTP communication.
+
+{: .note-cont}
+The `<img>` tag is especially tricky. An attacker can specify arbitrary URL as `src` attribute. The browser
+connects to that URL and expects to get an image, if the result of URL is not an image, the browser simply displays
+image placeholder, but the action represented by that URL was already performed -- therefore you should always use POST
+method for modifications of data. The `<img>` element can also be hidden to avoid attention.
 
 ## Example
 Suppose that you have an application which allows users to register and login. The user has to enter an email address
@@ -26,7 +32,7 @@ allows to stay logged-in even if the user was not working with your application 
 Suppose that there is a form which allows the user to change his registration email without any confirmation (like
 entering current password or confirming the change of email from email message sent to original email address).
 
-The password reset functionality simply generates new email and sends it to the current email address registered
+The password reset functionality simply generates new password and sends it to the current email address registered
 to an account.
 
 The form can look like this (it is a change in database so it uses the POST method):
@@ -42,13 +48,14 @@ The form can look like this (it is a change in database so it uses the POST meth
 ~~~
 
 When this form is submitted, the browser appends cookie header to the POST request with [session ID](/articles/cookies-sessions/)
-which is used to identify the visitor.
+which is used to identify the visitor. It is absolutely irrelevant whether the form was really submitted by a person
+or by JavaScript from entirely different site.
 
 The attacker can also create an account in your application and study behaviour and HTML code of it. He can copy that
 form and just add this simple JavaScript and remove visible form elements:
 
 ~~~ html
-<form action="/change-email" method="post" name="CSRF">
+<form action="http://www.your-app.com/change-email" method="post" name="CSRF">
     <input type="hidden" name="new-email" value="attackers@email-address.com">
 </form>
 <script type="text/javascript">
@@ -69,7 +76,7 @@ Once a user of your website visits a page with this automated form, the form sub
 email address of visitor's account (suppose that the visitor is also user of your application and he is logged-in
 at the time of the attack). The attacker can than use the password-reset functionality of your application to
 generate a new password and cut the user off his account. The generated password will obviously be delivered into
-attackers email.
+attackers email account.
 
 ### Who is to blame?
 Unfortunately, the developer is:
