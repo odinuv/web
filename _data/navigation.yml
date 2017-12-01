@@ -83,6 +83,9 @@ items:
       - url: /walkthrough-slim/pagination/
         title: Pagination
 
+      - url: /walkthrough-slim/upload/
+        title: File upload
+
   - url: /walkthrough/
     title: Walkthrough
     items:
@@ -214,6 +217,9 @@ items:
 
         - url: /articles/security/xss/
           title: Cross site scripting
+
+        - url: /articles/security/csrf/
+          title: Cross site request forgery
 
   - url: /slides/
     title: Slides

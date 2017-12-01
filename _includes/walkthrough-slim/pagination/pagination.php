@@ -23,5 +23,6 @@ $app->get('/persons[/{page:[0-9]+}]', function(Request $request, Response $respo
 		return $this->view->render($response, 'persons-list.latte', $tplVars);
 	} catch (PDOException $e) {
 		$this->logger->error($e->getMessage());
+        exit($e->getMessage());
 	}
 })->setName('persons');

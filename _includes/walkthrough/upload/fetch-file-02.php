@@ -1,4 +1,8 @@
 <?php
+//reset cache related headers
+header_remove('Cache-Control');
+header_remove('Pragma');
+header_remove('Expires');
 require 'include/start.php';
 $dir = './uploads';
 if(!empty($_GET['id'])) {

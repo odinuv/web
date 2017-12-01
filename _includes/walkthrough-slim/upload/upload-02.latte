@@ -1,0 +1,19 @@
+{extends layout.latte}
+
+{block title}File upload{/block}
+
+{block body}
+<form method="post" enctype="multipart/form-data">
+	<label>Select a person:</label>
+	<select name="id_person">
+		{foreach $persons as $p}
+		<option value="{$p['id_person']}">{$p['first_name']} {$p['last_name']}</option>
+		{/foreach}
+	</select>
+	<br />
+	<label>Select a file:</label>
+	<input type="file" name="user_file" required />
+	<br />
+	<input type="submit" value="Upload" />
+</form>
+{/block}

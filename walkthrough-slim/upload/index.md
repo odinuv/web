@@ -1,7 +1,6 @@
 ---
 title: File upload
-permalink: /walkthrough/upload/
-redirect_from: /en/apv/walkthrough/upload/
+permalink: /walkthrough-slim/upload/
 ---
 
 * TOC
@@ -15,34 +14,46 @@ to your `<form>` tag. To select a file from visitor's computer use `<input type=
 New browsers support `accept=".jpg, .png"` attribute to limit file types, but you cannot trust it, it is merely a user
 convenience function.
 
-Template `upload-01.latte`:
+Template `upload.latte`:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/upload/templates/upload-01.latte %}
+{% include /walkthrough-slim/upload/upload-01.latte %}
 {% endhighlight %}
 
 PHP handles incoming file upload automatically and stores file in temporal directory. You should move the file to target
-directory Using [`move_uploaded_file()`](http://php.net/manual/en/function.move-uploaded-file.php) function. To find
-location of uploaded file, its name and other stuff use `$_FILES['file_input_name']` variable.
+directory Using `moveTo()` method of Slim's file object. Slim has the `getUploadedFiles()` method on `$request` object
+which returns collection of uploaded files.
 
 According to my previous advice, the file is renamed using a randomly generated string, the random file name is being
 generated until there is no collision. You can prefix file name with current date using `date('Y-m-d')` or `time()`
 function for better debugging.
 
-PHP script `upload-01.php`:
+Routes in `routes.php`:
 
 {: .solution}
 {% highlight php %}
 {% include /walkthrough/upload/upload-01.php %}
 {% endhighlight %}
 
+Notice that I used a configuration entry to store the path for uploaded files. Append this line to settings array in 
+`src/settings.php` file and also create the `uploads` folder in your project:
+
+~~~ php?start_inline=1
+return [
+    'settings' => [
+        //...
+        'uploadDir' => __DIR__ . '/../uploads',
+        //...
+    ],
+];
+~~~
+
 {: .note}
-You have to create directory for uploads manually according to `$dir` variable. Remember to set [permissions](/course/technical-support/#file-permissions-chmod)
-for target directory to 0777. Otherwise you won't be able to store files on Linux systems. You can set the `$dir`
-variable to a path which is outside the scope of HTTP server. For example: when your PHP files are in a directory
-`/home/username/public_html/devel` set `$dir = ../../uploads;` to put uploaded files next to `public_html` directory
-which is not accessible from the Internet.
+Remember to set [permissions](/course/technical-support/#file-permissions-chmod) for target directory to 0777.
+Otherwise you won't be able to store files on Linux systems. You can set the `uploadDir` configuration to a path which
+is outside the scope of HTTP server. For example: when your public folder is `/home/username/public_html/devel/public`
+set `uploadDir` to `__DIR__ . "/../uploads"` to put uploaded files next to `public` directory.
 
 ### Create a database table
 Now you know that files are being stored in a directory of your choice but you need to store other information to access
@@ -60,18 +71,18 @@ into a database table. The `file_type` key contains so called [MIME type](https:
 of a file -- this was declared by the browser and should not be trusted very much. The rest of file attributes is
 self explanatory.
 
-Template `upload-02.latte`:
+Template `upload.latte`:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/upload/templates/upload-02.latte %}
+{% include /walkthrough-slim/upload/upload-02.latte %}
 {% endhighlight %}
 
-PHP script `upload-02.php`:
+Routes in `routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/upload/upload-02.php %}
+{% include /walkthrough-slim/upload/upload-02.php %}
 {% endhighlight %}
 
 {: .note}
@@ -92,11 +103,11 @@ In following script I simply fetch file information from database using file ID 
 with correct `Content-Type` and `Content-Disposition` headers. I will deliver file contents to visitor using
 [`readfile()`](http://php.net/manual/en/function.readfile.php) function.
 
-PHP script `fetch-file-01.php`:
+Route in `routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/upload/fetch-file-01.php %}
+{% include /walkthrough-slim/upload/fetch-file-01.php %}
 {% endhighlight %}
 
 Try to switch different `Content-Disposition` headers to modify behaviour of browser -- `inline` disposition displays
@@ -108,7 +119,10 @@ so the browser can display the file or open appropriate application. In this cas
 during file upload.
 
 ~~~ php?start_inline=1
-header('Content-Disposition: attachment; filename="' . $fileInfo['file_name_orig'] . '"');
+return $response
+    ->withHeader('Content-Type', $fileInfo['file_type'])
+    ->withHeader('Content-Disposition', 'inline; filename="' . $fileInfo['file_name_orig'] . '"')
+    ->withBody($stream);
 ~~~
 
 {: .note}
@@ -124,7 +138,7 @@ that it has in its cache. The server simply checks if the *version* is same and 
 is not transmitted in this case. There is a chance that it has newer *version* and it tells to the browser to delete
 the old one and store a new one -- contents of file is transmitted this time. You can achieve significant improvement
 of load-time for a website with a lot of static files if your browser uses cache properly. The *version* can be
-a date and a time of last content update or a [hash](/walkthrough/login/#storing-users-passwords)
+a date and a time of last content update or a [hash](/walkthrough-slim/login/#storing-users-passwords)
 of some unique content part.
 
 Common PHP script output should not be cached because there is a good chance that data in database or something else
@@ -136,18 +150,18 @@ In following script I use just very simple approach, first HTTP response is exte
 with current time (or you can use real file's [modification time](http://php.net/manual/en/function.filemtime.php)).
 Visitor's browser remembers that information and when requesting that same URL using HTTP it attaches `If-Modified-Since`
 header. Subsequent requests are turned down once the PHP script detects that browser has a copy of file in its cache
-(browser sends `If-Modified-Since` header and PHP script can detect this in `$_SERVER['HTTP_IF_MODIFIED_SINCE']` variable).
-My approach does not examine the version of cached file because it never changes.
+(browser sends `If-Modified-Since` header and PHP script can detect this using `$request->getHeader('If-Modified-Since')`
+method). My approach does not examine the version of cached file because it never changes.
 
 {: .note}
 Besides using `Last-Modified` and `If-Modified-Since` approach, you can use [`ETag`](https://en.wikipedia.org/wiki/HTTP_ETag)
 HTTP header for content which changes cannot be captured by date and time.
 
-PHP script `fetch-file-02.php`:
+Route in `routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/upload/fetch-file-02.php %}
+{% include /walkthrough-slim/upload/fetch-file-02.php %}
 {% endhighlight %}
 
 Upload some file, find its ID in database table and try do download it using second version of `fetch-file` script.

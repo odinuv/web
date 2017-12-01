@@ -105,4 +105,5 @@ it is very hard to guess current token value, the request is not accepted.
 
 ## Summary
 It is better to use some framework with built-in CSRF protection or a library dedicated to this task than taking care
-of this all by yourself.
+of this all by yourself. There is a [tutorial on CSRF protection](https://www.slimframework.com/docs/features/csrf.html)
+for Slim framework.
