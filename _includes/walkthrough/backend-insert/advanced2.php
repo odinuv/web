@@ -10,7 +10,7 @@ try {
     $addressID = $db->lastInsertId("location_id_location_seq");
 
     $stmt2 = $db->prepare("INSERT INTO person
-                           (..., address_id, ...)
+                           (..., id_location, ...)
                            VALUES
                            (..., :aid, ...)");
     $stmt2->bindValue(":aid", $addressID);

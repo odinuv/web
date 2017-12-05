@@ -15,7 +15,7 @@ $app->post('/add-person', function(Request $request, Response $response, $args) 
         $addressID = $this->db->lastInsertId("location_id_location_seq");
 
         $stmt2 = $this->db->prepare("INSERT INTO person
-                           (..., address_id, ...)
+                           (..., id_location, ...)
                            VALUES
                            (..., :aid, ...)");
         $stmt2->bindValue(":aid", $addressID);
