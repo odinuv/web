@@ -160,17 +160,21 @@ File `templates/profile.latte`:
 
 Another option is to store the middleware handler into a variable and add it to selected routes manually:
 
-{% highlight php %}
-$authMiddleware = function($request, $response, $next) { ...; $next($request, $response); };
+~~~ php?start_inline=1
+$authMiddleware = function($request, $response, $next) { ... return $next($request, $response); ... };
 
 $app->get('/route1', function(...) {...})->add($authMiddleware);
 $app->get('/route2', function(...) {...})->add($authMiddleware);
-{% endhighlight %}
+~~~
 
 {: .note}
 Now you can see why is it important to give names to your routes. You can transfer all routes into this "auth"
-group. Result of this operation is that all these routes' URLs now start with `/auth` string. Because you used named
-routes and `{link ...}` macro, you do not have to change URLs in templates at all. 
+group without additional changes. Result of this operation is that all these route URLs now start with `/auth`
+string. Because you used named routes and `{link ...}` macro, you do not have to change URLs in templates at all.
+
+{: .note-cont}
+Because route `/` named `index` is on URL `/auth/` (`/auth` + `/`), you can create a redirect route which tells
+new visitor's browser to redirect either to `index` or `login` route.
 
 ## Logout
 Finally, we have to give our users an option to leave our application. A logout action is usually just deletion of
