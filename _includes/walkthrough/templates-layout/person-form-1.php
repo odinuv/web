@@ -23,7 +23,7 @@ $person = [
     'height' => null,
 ];
 */
-if ($persn['id']) {
+if ($person['id']) {
     $tplVars['pageTitle'] = "Edit person";
 } else {
     $tplVars['pageTitle'] = "Add new person";
