@@ -45,13 +45,13 @@ If you followed the previous steps --- if you used the
 [prepared skeleton](todo) --- I have good news for you. Latte is ready to use in your project.
 Actually, you should already have a route in you `routes.php` file similar to one below:
 
-{% highlight php %}
+~~~ php?start_inline=1
 <?php 
 $app->get('/sample', function (Request $request, Response $response, $args) {
     // Render sample view
     return $this->view->render($response, 'sample.latte');
 });
-{% endhighlight %}
+~~~
 
 So what does the line `$this->view->render($response, 'sample.latte');` do ? 
 It uses the `view` property of the Slim application, which happens to be a
@@ -113,13 +113,13 @@ macros. However, the most important is the `{$variable`} macro, which allows you
 safely (without the possibility of a [Cross Site Scripting attack](todo)) insert 
 parameters in the HTML code. Try adding the following route in your application:
 
-{% highlight php %}
+~~~ php?start_inline=1
 <?php
 $app->get('/variables', function (Request $request, Response $response, $args) {
 	$this->view->addParam('pageTitle', 'Template engine sample');
 	return $this->view->render($response, 'sample-1.latte');
 });
-{% endhighlight %}
+~~~
 
 Template file `sample-1.latte`:
 
@@ -159,21 +159,7 @@ There are also more complicated macros:
 And a corresponding route to fill in the parameters:
 
 {% highlight php %}
-<?php 
-$app->get('/flintstones', function (Request $request, Response $response, $args) {
-	$this->view->addParam('pageTitle', 'Flintstones');
-	$this->view->addParam('showBold', true);
-	$this->view->addParam(
-		'flintstones', 
-		['father' => 'Fred', 'mother' => 'Wilma', 'child' => 'Pebbles']
-	);
-	$this->view->addParam(
-		'rubbles',
-		['father' => 'Barney', 'mother' => 'Betty', 'child' => 'Bamm-Bamm']
-	);
-	
-	return $this->view->render($response, 'flintstones-1.latte');
-});
+{% include /walkthrough-slim/templates/flintstones-1.php %}
 {% endhighlight %}
 
 There are two options how the macros can be written in latte. In the template above, the
@@ -201,25 +187,7 @@ It is also possible to simplify the PHP code a little bit, if you
 pass all the template variables as an [associative array](todo).
 
 {% highlight php %}
-<?php
-$app->get('/flintstones', function (Request $request, Response $response, $args) {
-	$tplVars = [
-		'pageTitle' => 'Flintstones',
-		'showBold' => true
-		'flintstones' => [
-			'father' => 'Fred',
-			'mother' => 'Wilma',
-			'child' => 'Pebbles',
-		]
-	];
-	$tplVars['rubbles'] = [
-		'father' => 'Barney',
-		'mother' => 'Betty',
-		'child' => 'Bamm-Bamm',
-	];
-	$this->view->addParams($tplVars);
-	return $this->view->render($response, 'flintstones-2.latte');
-});
+{% include /walkthrough-slim/templates/flintstones-2.php %}
 {% endhighlight %}
 
 In the PHP code, I need to define all the variables: `$flintstones`, `$rubbles`, `$pageTitle` and
@@ -238,42 +206,7 @@ we did in one of the [earlier chapter](../backend-intro/array/) into a template.
 
 {: .solution}
 {% highlight php %}
-<?php
-$app->get('/contact-form', function (Request $request, Response $response, $args) {
-
-	$currentUser = [
-		'first_name' => 'John',
-		'last_name' => 'Doe',
-		'email' => 'john.doe@example.com',
-		'birth_year' => 1996,
-	];
-	/*
-	// Not Logged User
-	$currentUser = [
-		'first_name' => '',
-		'last_name' => '',
-		'email' => '',
-		'birth_year' => '',
-	];
-	*/
-	if ($currentUser['first_name']) {
-		$tplVars['message'] = "Hello,\nI'd like to know more about your product <ProductName>\n\nBest Regards,\n" . 
-			$currentUser['first_name'] . ' ' . $currentUser['last_name'];
-	} else {
-		$tplVars['message'] = "Hello,\nI'd like to know more about your product <ProductName>\n\nBest Regards,\n<YourName>";
-	}
-
-	$tplVars['rows'] = 10;
-	$tplVars['cols'] = 50;
-	$tplVars['pageTitle'] = "Contact form";
-	$tplVars['currentUser'] = $currentUser;
-	$tplVars['years'] = [];
-	for ($year = 1916; $year < date('Y'); $year++) {
-		$tplVars['years'][] = $year;
-	}
-	$this->view->addParams($tplVars);
-	return $this->view->render($response, 'contact-form.latte');
-});
+{% include /walkthrough-slim/templates/contact-form.php %}
 {% endhighlight %}
 
 Template file `form-5.latte`:
@@ -299,7 +232,7 @@ which contains the default values for the form inputs. The `person` variable sho
 array with the keys `id`, `first_name`, `last_name`, `nickname`, `birth_day`, `height`.
 
 {: .solution}
-{% highlight php %}
+~~~ php?start_inline=1
 <?php
 // This is not a solution. It is only a hint, what the PHP script should contain
 // Existing user
@@ -322,7 +255,7 @@ $person = [
     'height' => null,
 ];
 */
-{% endhighlight %}
+~~~
 
 {: .solution}
 <div markdown='1'>
@@ -331,43 +264,14 @@ Wondering about the route name? `add-person` or `person-add` are good URLs.
 
 {: .solution}
 {% highlight php %}
-$app->get('/person-add', function (Request $request, Response $response, $args) {
-	// Existing user
-	$person = [
-		'id' => 123,
-		'first_name' => 'John',
-		'last_name' => 'Doe',
-		'nickname' => 'johnd',
-		'birth_day' => '1996-01-23',
-		'height' => 173,
-	];
-	/*
-	// New user
-	$person = [
-		'id' => null
-		'first_name' => '',
-		'last_name' => '',
-		'nickname' => '',
-		'birth_day' => null,
-		'height' => null,
-	];
-	*/
-	if ($person['id']) {
-		$tplVars['pageTitle'] = "Edit person";
-	} else {
-		$tplVars['pageTitle'] = "Add new person";
-	}
-	$tplVars['person'] = $person;
-	$this->view->addParams($tplVars);
-	return $this->view->render($response, 'person-form.latte');
-});
+{% include /walkthrough-slim/templates/person-form.php %}
 {% endhighlight %}
 
 Template file `person-form.latte`:
 
 {: .solution}
 {% highlight html %}
-{% include /walkthrough/templates/person-form.latte %}
+{% include /walkthrough-slim/templates/person-form.latte %}
 {% endhighlight %}
 
 ## Summary
