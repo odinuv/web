@@ -44,6 +44,9 @@ items:
       - url: /walkthrough-slim/templates/
         title: Templates
 
+      - url: /walkthrough-slim/templates-layout/
+        title: Template Layouts
+
       - url: /walkthrough-slim/backend-select/
         title: Database – Selecting and filtering
 
