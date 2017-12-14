@@ -1,0 +1,23 @@
+{extends layout.latte}
+
+{block title}Height form{/block}
+
+{block body}
+<form method="post" name="heightForm">
+    {foreach $persons as $person}
+        <label>{$person['first_name']} {$person['last_name']}</label>
+        <input type="number" name="height[{$person['id_person']}]" value="{$person['height']}">
+        <button type="button" onclick="resetHeight({$person['id_person']}, {$person['height']})">
+            Reset
+        </button>
+        <br>
+    {/foreach}
+    <input type="submit" name="save" value="Update">
+</form>
+<script type="text/javascript">
+    function resetHeight(personId, origValue) {
+        var form = document.forms['heightForm'];
+        form['height[' + personId + ']'].value = origValue;
+    }
+</script>
+{/block}

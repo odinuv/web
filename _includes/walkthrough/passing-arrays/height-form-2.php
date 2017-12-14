@@ -5,12 +5,11 @@ try {
     if(!empty($_POST['save'])) {
         //update individual records
         foreach($_POST['height'] as $id => $h) {
-            if(!empty($h)) {
-                $stmt = $db->prepare('UPDATE person SET height = :h WHERE id_person = :id');
-                $stmt->bindValue(':id', $id);
-                $stmt->bindValue(':h', $h);
-                $stmt->execute();
-            }
+            $stmt = $db->prepare('UPDATE person SET height = :h WHERE id_person = :id');
+            //store null or actual value
+            $stmt->bindValue(':h', !empty($h) ? intval($h) : null);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
         }
     }
     //select persons from database (young or with unknown height)

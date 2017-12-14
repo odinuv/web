@@ -1,7 +1,6 @@
 ---
 title: Passing arrays
-permalink: /walkthrough/passing-arrays/
-redirect_from: /en/apv/walkthrough/passing-arrays/
+permalink: /walkthrough-slim/passing-arrays/
 ---
 
 * TOC
@@ -22,27 +21,27 @@ Template `height-form.latte`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/passing-arrays/templates/height-form-1.latte %}
+{% include /walkthrough-slim/passing-arrays/height-form-1.latte %}
 {% endhighlight %}
 
-Create also a PHP script which loads all young persons or persons with unknown height.
+Create also a GET route which loads all young persons or persons with unknown height.
 
-File `height-form.php`:
+Route in `routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/passing-arrays/height-form-1.php %}
+{% include /walkthrough-slim/passing-arrays/height-form-1.php %}
 {% endhighlight %}
 
 Now you should be able to see all submitted values and keys representing IDs of persons using `print_r($_POST)` or
 similar command. Then you can update person records in the database using `UPDATE` SQL statement. The ID of a person
 should be accessible as the key of array. Use `foreach($array as $key => $value) { ... }` to get the ID.
 
-File `height-form.php`:
+Route in  `routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/passing-arrays/height-form-2.php %}
+{% include /walkthrough-slim/passing-arrays/height-form-2.php %}
 {% endhighlight %}
 
 After you finish reading of [JavaScript](/articles/javascript) article, return here and try to create a simple
@@ -52,7 +51,7 @@ Template `height-form.latte`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/passing-arrays/templates/height-form-2.latte %}
+{% include /walkthrough-slim/passing-arrays/height-form-2.latte %}
 {% endhighlight %}
 
 {: .note}
