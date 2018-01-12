@@ -1,4 +1,4 @@
----
+﻿---
 layout: slides
 title: Databases -- Technical Details
 description: Database data types, automatically generated keys.
@@ -133,7 +133,7 @@ CREATE TABLE contact (
 - integer -- 4B -- -2<sup>31</sup>..2<sup>32</sup>
     - 2<sup>32</sup> = 2 147 483 647
 - smallint -- 2B -- -2<sup>15</sup>..2<sup>15</sup>
-    - 2<sup>15</sup> -- 32 768
+    - 2<sup>15</sup> = 32 768
 - whole numbers:
     - signed (with a sign) -- allows negative numbers
     - unsigned (without a sign) -- allows only positive numbers
@@ -436,7 +436,7 @@ $users = $query->getResult();
 
 <section markdown='1'>
 ## Query Builders
-- Not to be confused wit ORM (most ORM support it).
+- Not to be confused with ORM (most ORM support it).
 - Fluent interface, Query Builder class:
     - Sometimes less cluttered than a plain SQL query;
     - Usually more cluttered than a normal query;
@@ -461,7 +461,7 @@ $qb->select('person.*')
 - Can you store a date as an integer in the database?
 - Does every table have an index?
 - Is it better to use the MySQL or PostgreSQL DB server?
-- Why can't you use `MAX()` to obtain id of the last inserted record?
+- Why can't you use `MAX()` to obtain ID of the last inserted record?
 - Does every hour have 3600 seconds?
 - Why can't you use the `text` data type everywhere?
 - Can you obtain ID of the last inserted record of a different database user?

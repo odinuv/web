@@ -1,4 +1,4 @@
----
+﻿---
 layout: slides
 title: SQL Basics
 description: Introduction to SQL, Joining tables in database.
@@ -267,14 +267,14 @@ SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 {% highlight sql %}
 SELECT * FROM
     contact LEFT JOIN contact_type
-    ON contact.id_contact_type =
+    ON contact.id_contact_type =
         contact_type.id_contact_type
 {% endhighlight %}
 
 {% highlight sql %}
 SELECT * FROM
     contact_type RIGHT JOIN contact
-    ON contact.id_contact_type =
+    ON contact.id_contact_type =
         contact_type.id_contact_type
 {% endhighlight %}
 

@@ -10,7 +10,7 @@ redirect_from: /en/apv/articles/sql-aggregation/
 In the [previous article](/articles/sql-join/) I have described how tables are joined together
 in SQL. In this article I will get into more advanced SQL stuff. In
 SQL, there are many ways how one problem can be solved. In procedural
-languages (like PHP), there also many ways how the same procedure can be written.
+languages (like PHP), there are also many ways how the same procedure can be written.
 But these are mostly cosmetic changes, which do not lead to a completely different code.
 Because SQL is declarative language, there are many *conceptually different* ways
 how a task can be described. And each of these ways may or may not lead to
@@ -21,7 +21,7 @@ Because of this, it is crucial for you to understand what the SQL query is reall
 doing and **why** it returns the data it returns. In this article, I will
 try to explain some of the common approaches and the differences between them.
 Honestly, this is quite difficult and requires a lot of thinking.
-In the second part of the article I will explain what aggregation in SQL is
+In the second part of the article I will explain what aggregation in SQL is and
 what it is good for.
 
 ## Sub-queries
@@ -752,8 +752,8 @@ aggregated table.
 SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 FROM <em>table_expression</em>
     [ WHERE <em>search_condition</em> ]
-    <strong>[ GROUP BY <em>column_expression</em> [, ... ] ]</strong>
-    [ HAVING <em>search_condition</em> ]
+    [ GROUP BY <em>column_expression</em> [, ... ] ]
+    <strong>[ HAVING <em>search_condition</em> ]</strong>
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
@@ -893,7 +893,7 @@ WHERE RowNum >= 20 AND RowNum < 30 ORDER BY last_name, first_name
 ### TOP X
 Other applications of limiting the number of query results are queries
 such as "TOP 10 best customers" or "TOP 10 smallest persons". There is a certain
-confusion about how many results should such such a query return.
+confusion about how many results should such a query return.
 There are three options (assuming the top 10 smallest persons problem):
 
 - Order persons by their height descending and return the first 10 rows.
