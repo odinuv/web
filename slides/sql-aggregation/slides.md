@@ -329,8 +329,8 @@ GROUP BY person.id_person
 SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 FROM <em>table_expression</em>
     [ WHERE <em>search_condition</em> ]
-    <strong>[ GROUP BY <em>column_expression</em> [, ... ] ]</strong>
-    [ HAVING <em>search_condition</em> ]
+    [ GROUP BY <em>column_expression</em> [, ... ] ]
+    <strong>[ HAVING <em>search_condition</em> ]</strong>
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>
