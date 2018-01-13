@@ -1,4 +1,4 @@
----
+﻿---
 title: SQL – Joining data
 permalink: /articles/sql-join/
 redirect_from: /en/apv/articles/sql-join/
@@ -380,7 +380,6 @@ join condition uses the two columns with the same name. You can write:
 SELECT * FROM
     person LEFT JOIN location
     USING (id_location)
-    ON person.id_location = location.id_location
 {% endhighlight %}
 
 Which is equivalent to
