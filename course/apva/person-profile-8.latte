@@ -1,0 +1,27 @@
+{extends layout.latte}
+
+{block title}Person profile{/block}
+
+{block body}
+<h1>Person profile</h1>
+
+<!-- comment -->
+
+<form method="post">
+  Nickname: 
+  <input name="nickname" value="{$nickname}" class="form-control">
+  <br>
+  First name:
+  <input name="first_name" value="{$first_name}" class="form-control">
+  <br>
+  Last name:
+  <input name="last_name" value="{$last_name}" class="form-control">
+  <br>
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+
+<hr>
+<a href="{link people}">Back to people list</a>
+
+{/block}

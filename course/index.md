@@ -83,6 +83,9 @@ The grade from the final exam and the project evaluation make up for the final c
     - [People list template](\course\apva\people-6.latte)
     - [New person template](\course\apva\new-person-6.latte)
     - [Layout template](\course\apva\layout-6.latte)
+- Week 8:
+    - [Updated routes.php](\course\apva\routes-8.phps)
+    - [Person profile template](\course\apva\person-profile-8.latte)
 
 ## Project Assignment
 To pass the course you need to create a project. The project assignment is
