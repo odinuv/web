@@ -57,7 +57,7 @@ You might be asking how a client-side storage is helpful to maintain state of ap
 I already told you -- server decides to believe information from a client, that is all you have. The client
 is used to store its own state for server (or at least part of it).
 
-This is not quiet safe, because anyone (user or software) can access and modify cookie files created by a
+This is not quite safe, because anyone (user or software) can access and modify cookie files created by a
 browser. Therefore it is wise to store only a key to identify user data repository on server as described before
 (read about sessions below).
 
@@ -116,7 +116,7 @@ desired period of time.
 Companies like Google and many others which based their business on online advertising use cookies to track
 your visits to sites which participate in their advertising programme. An owner of a website (e.g. a merchant)
 places their tracking script into his website and when you visit his site, your browser sends a cookie to advertisement
-company's server along with information about merchant's visited site. The advertising company than knows which
+company's server along with information about merchant's visited site. The advertising company then knows which
 sites (e.g. products that merchant sells) interests you. Later, when you visit another site (e.g. someones blog)
 with a slot for an online ad, they can identify you by a cookie and place a banner for a product you visited before.
 

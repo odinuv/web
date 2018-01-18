@@ -1,4 +1,4 @@
----
+﻿---
 layout: slides
 title: SQL Aggregation
 description: Aggregation functions in SQL, grouping and sub-queries.
@@ -139,7 +139,7 @@ FROM
 WHERE (city = 'Brno') OR (city IS NULL)
 {% endhighlight %}
 
-- Without amy condition, the same result.
+- Without any condition, the same result.
 - With a condition, gives you a list of persons living in Brno city or without an address.
 </section>
 
@@ -189,7 +189,7 @@ ON person.id_location = location_brno.id_location
 - Argument is a column (or column_expression).
 - Examples:
     - `SELECT COUNT(*) FROM person` -- number of **rows** in the `person` table (49).
-    - `SELECT COUNT(height) FROM person` -- number of **values** in the `height`column (40).
+    - `SELECT COUNT(height) FROM person` -- number of **values** in the `height` column (40).
     - `SELECT COUNT(DISTINCT height) FROM person` -- number of **unique values** in the `height` column (26).
     - Combining `DISTINCT` and `*` makes no sense.
 - All of the above queries return a single row -- they aggregate the **entire table**.
@@ -329,8 +329,8 @@ GROUP BY person.id_person
 SELECT [ ALL | DISTINCT ] <em>column_expression</em>, ...
 FROM <em>table_expression</em>
     [ WHERE <em>search_condition</em> ]
-    <strong>[ GROUP BY <em>column_expression</em> [, ... ] ]</strong>
-    [ HAVING <em>search_condition</em> ]
+    [ GROUP BY <em>column_expression</em> [, ... ] ]
+    <strong>[ HAVING <em>search_condition</em> ]</strong>
     [ ORDER BY { <em>column_expression</em> [ ASC | DESC ] }
         [, <em>column_expression</em> [ASC | DESC ], ... ]
 </pre>

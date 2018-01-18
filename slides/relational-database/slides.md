@@ -1,4 +1,4 @@
----
+﻿---
 layout: slides
 title: Relational Database Systems
 description: Principles of relational database systems and introduction to SQL language.
@@ -526,7 +526,7 @@ with a (relational) database system.
 - A view is defined by a `SELECT` query.
 - A view is usually only for reading and does not contain the actual copy of the data.
     - I.e. it is updated as the underlying tables (used in the defining query) are updated.
-- A vView (or any `SELECT` query) does not have to be a relation!
+- A view (or any `SELECT` query) does not have to be a relation!
 - Views are used:
     - for same reasons as functions in procedural programming,
     - to define user sections of the database schema.
