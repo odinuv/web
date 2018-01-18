@@ -195,7 +195,7 @@ different and case sensitive - when creating a web page locally on your PC, use 
 with **case of letters** in them.
 
 ## Summary
-Now you should now be able to describe the structure of any text document using the HTML language. The document is
+Now you should be able to describe the structure of any text document using the HTML language. The document is
 still formatted poorly, we will get to that later. The documents you produce now are formated with some
 default formats build into your web browser. Do not worry, that you might not be able to create complex
 pages right now, you need to know the principles and be able to create simple pages.
