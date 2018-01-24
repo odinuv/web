@@ -80,6 +80,7 @@ attackers email account.
 
 ### Who is to blame?
 Unfortunately, the developer is:
+
 - You should not allow change of important email address without password confirmation.
 - You should have sent a message to confirm address change to original email and initiate the change after it is
   confirmed by secret token from that message.
