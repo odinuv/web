@@ -6,18 +6,26 @@ permalink: /walkthrough-slim/named-routes/
 * TOC
 {:toc}
 
-Until now you used browser's address bar to navigate between different pages. With forms I made use of the fact,
+Until now, you used browser's address bar to navigate between different pages. With forms I made use of the fact,
 that without `action` attribute, the form is submitted to the same URL (only `action` attribute was set to `POST`).
 This is not user friendly at all, but using hardcoded routes in templates is also not very efficient.
 
-You usually link to a route from many places in your application and it is not a very good idea to use plain URL to
-do this. Because you use a framework and a templating engine, you can use some kind of transformation for all in-app
+Before I start explaining named routes, I want to take a short detour. A route in Slim framework is a combination of
+HTTP method and a path. You define a route on `$app` object using `get('/path', ...)` or `post('/another/path, ...)`
+methods which reflect the HTTP methods. Generally, the HTTP server opens only physical files given by path in URL, but
+with configure [*mod_rewrite*](/course/technical-support/#configuration-of-modrewrite), you can also prescribe behaviour
+for non-existing paths (as those defined on your `$app` object). This magical behaviour is defined in `public/.htaccess`
+file: the web server simply passes the problematic URL to `public/index.php` file and the framework executes
+corresponding method.
+
+You usually "link" to a route from many places in your application and it is not a very good idea to use plain-text URL
+to do this. Because you use a framework and a templating engine, you can use some kind of transformation for all in-app
 links.
 
 The reason is simple: sometimes you need to change the route definition to describe better what the route is doing,
 move the route to another "module" or wrap group of routes using a common [middleware](https://www.slimframework.com/docs/concepts/middleware.html).
 Other reason is localisation of your app to another language. When you change the route definition in `src/routes.php`,
-you will have to change **all** links to it this route all over your source code. Take a look at following example:
+you will have to change **all** links to this route all over your source code. Take a look at following example:
 
 ~~~ php?start_inline=1
 $app->get('/any/route/[{param}]', function(Request $request, Response $response, $args) {
@@ -51,22 +59,43 @@ $app->get('/any/route/[{param}]', function(Request $request, Response $response,
 ~~~
 
 {: .note}
-The `param` part of the URL is not mandatory thanks to squared brackets.
+The `param` part of the URL is a so-called placeholder and is not mandatory thanks to squared brackets. You can read
+more about [passing values in a dedicated chapter](/walkthrough-slim/passing-values/).
 
 You can then create URLs using *router* object like this: `$this->router->pathFor('uniqueRouteName');` or this:
-`$this->router->pathFor('uniqueRouteName', ['param' => '123']);` in your route handlers. But usually you rather want
-to create links in your templates. You can always pass *router* object into the template and call `pathFor()` method,
-but I tried to simplify this for you. I made a `{link}` macro which you can use in your templates to generate links
-easily. Instead of calling `pathFor()` method on *router* object, you simply type:
+`$this->router->pathFor('uniqueRouteName', ['param' => '123']);` in your route handlers. The PHP code which redirects
+to such route (e.g. after modification or deletion of record) can look like this:
+
+~~~ php
+$app->get('/some/other/route', function(Request $request, Response $response, $args) {
+    return $response->withHeader(
+        'Location',
+        $this->router->pathFor('uniqueRouteName', ['param' => '123'])
+    );
+})->setName('anotherUniqueRouteName');
+~~~
+
+You need to type more letters, but the effort pays off later when you need to rename the route due to some structural
+changes in the application.
+
+But usually you rather want to create links in your templates. You can always pass *router* object into the template
+and call `pathFor()` method, but I tried to simplify this for you. I made a `{link}` macro which you can use in your
+templates to generate links easily. Instead of calling `pathFor()` method on *router* object, you simply type:
+
+Or with parameter in path:
 
 ~~~ html
 <a href="{link uniqueRouteName}">Link to route</a>
 ~~~
 
-Or with parameters:
-
 ~~~ html
 <a href="{link uniqueRouteName ['param' => 123]}">Link to route</a>
+~~~
+
+Or with query parameters:
+
+~~~ html
+<a href="{link uniqueRouteName ['param' => 123]}?id=123">Link to route</a>
 ~~~
 
 {: .note}
