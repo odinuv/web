@@ -27,6 +27,11 @@ general curiosity over financial motives to envy or even revenge).
 
 There are many kind of security issues, some of them are less dangerous, some of them are very serious.
 
+You need to start thinking differently to build a secure web application: once you write some code, imagine yourself
+as someone who wants to break in -- inexperienced web developers usually see themselves as the only users of the
+application. Those with higher skills consider also other nice-behaving users. But you have to think like the attacker
+to see your code in the right light.
+
 Read about web application security and risks:
 
 - [SQL injection](/articles/security/sql-injection/)
