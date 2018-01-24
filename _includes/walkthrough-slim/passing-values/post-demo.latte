@@ -1,0 +1,11 @@
+{extends layout.latte}
+
+{block title}Form test{/block}
+
+{block body}
+<form action="{link showData}" method="post">
+    <input type="text" name="a">
+    <input type="number" name="b">
+    <input type="submit" value="Send">
+</form>
+{/block}
