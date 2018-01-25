@@ -122,7 +122,7 @@ As described in [named routes](/walkthrough-slim/named-routes) chapter, you shou
 URLs ([docs](https://www.slimframework.com/docs/objects/router.html)). Again, the `pathFor()` method generates a simple
 string with URL so you can append a query parameters easily using the [string concatenation operator](http://php.net/manual/en/language.operators.string.php).
 
-~~~ php
+~~~ php?start_inline=1
 $app->post('/some/route', function(Request $request, Response $response, $args) {
     $id = $request->getQueryParam('id');
     //do some DB stuff
@@ -148,13 +148,13 @@ in route definitions. Placeholders are named slots in the route path and you can
 use them similarly as query parameters. Following route definitions have placeholders for mandatory `id` and optional
 `filter` values. Use `$args` array to access placeholder values.
 
-~~~ php
+~~~ php?start_inline=1
 $app->get('/show/user/{id}', function(Request $request, Response $response, $args) {
     $id = $args['id'];
 })->setName('uniqueRouteName');
 ~~~
 
-~~~ php
+~~~ php?start_inline=1
 $app->get('/show/user/{id}[/{filter}]', function(Request $request, Response $response, $args) {
     $id = $args['id'];
     $filter = isset($args['filter']) ? $args['filter'] : null;
@@ -167,7 +167,7 @@ You need to supply values as associative array to build a URL for a route with p
 <a href="{link uniqueRouteName ['id' => $id, 'filter' => '2018']}">Click me!</a>
 ~~~
 
-~~~ php
+~~~ php?start_inline=1
 $app->post('/process/{id}', function(Request $request, Response $response, $args) {
     $id = $args['id'];
     //do some DB stuff
