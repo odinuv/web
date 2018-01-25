@@ -1,4 +1,4 @@
-﻿---
+---
 layout: slides
 title: SQL Basics
 description: Introduction to SQL, Joining tables in database.

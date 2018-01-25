@@ -1,4 +1,4 @@
-﻿---
+---
 layout: slides
 title: Relational Database Systems
 description: Principles of relational database systems and introduction to SQL language.
