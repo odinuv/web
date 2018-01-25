@@ -2,9 +2,9 @@
 set -e
 
 echo "Replacing links"
-grep -rlF '](/' . | xargs sed -i 's@](/@](/~xpopelka/@g'
+grep -rlF '](/' . | xargs sed -i 's@](/@](/~'$MFTP_USER'/@g'
 echo "Replacing permalinks"
-grep -rl 'permalink: /' . | xargs sed -i 's@permalink: /@permalink: /~xpopelka/@g'
+grep -rl 'permalink: /' . | xargs sed -i 's@permalink: /@permalink: /~'$MFTP_USER'/@g'
 echo "Replacing menulinks"
-grep -rl 'url: /' ./_data/ | xargs sed -i 's@url: /@url: /~xpopelka/@g'
-grep -rl '#baseurl: "/~xpopelka/"' ./_config.yml | xargs sed -i 's@#baseurl: "/~xpopelka/"@baseurl: "/~xpopelka/"@g'
+grep -rl 'url: /' ./_data/ | xargs sed -i 's@url: /@url: /~'$MFTP_USER'/@g'
+grep -rl '#baseurl: "/~'$MFTP_USER'/"' ./_config.yml | xargs sed -i 's@#baseurl: "/~'$MFTP_USER'/"@baseurl: "/~'$MFTP_USER'/"@g'
