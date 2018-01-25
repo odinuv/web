@@ -1,4 +1,4 @@
-﻿---
+---
 layout: slides
 title: Databases -- Technical Details
 description: Database data types, automatically generated keys.
