@@ -3,7 +3,7 @@ set -e
 
 cd /code/_site/
 mkdir /code/tmp/
-mv /code/_site/~xpopelka/* /code/tmp/
+mv /code/_site/~$MFTP_USER/* /code/tmp/
 cp -r /code/tmp/* /code/_site/
 filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
