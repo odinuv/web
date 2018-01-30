@@ -92,12 +92,14 @@ much more information:
 
 And here is an example: `http://user:password@server.com:123/path/to/a/file.php?query=param#hashValue`
 
-# Task -- try to build full URL to you devel folder
+### Task -- try to build full URL to you devel folder
 Make a URL with login and password which can be used to open your `/~xlogin/devel` folder on Akela server.
+You should be able to open your `/devel` folder without filling authentication popup dialog using this URL.
+Use anonymous browser window to avoid storing your password in local browser history.
 
 {: .solution}
 <div markdown='1'>
-    You should come up with something like this: `https://xlogin:password@akela.mendelu.cz/~xlogin/devel`.
+You should come up with something like this: `https://xlogin:password@akela.mendelu.cz/~xlogin/devel`.
 </div>
 
 {: .note}

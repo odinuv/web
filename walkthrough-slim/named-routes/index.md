@@ -66,7 +66,7 @@ You can then create URLs using *router* object like this: `$this->router->pathFo
 `$this->router->pathFor('uniqueRouteName', ['param' => '123']);` in your route handlers. The PHP code which redirects
 to such route (e.g. after modification or deletion of record) can look like this:
 
-~~~ php
+~~~ php?start_inline=1
 $app->get('/some/other/route', function(Request $request, Response $response, $args) {
     return $response->withHeader(
         'Location',
