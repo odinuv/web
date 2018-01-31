@@ -218,17 +218,20 @@ items:
       - url: /articles/database-tech/
         title: Databases – Technical Details
 
+      - url: /articles/web-applications/
+        title: Web Applications
+
       - url: /articles/security/
-        title: Security of web applications
+        title: Security of Web Applications
         items:
         - url: /articles/security/sql-injection/
-          title: SQL injection
+          title: SQL Injection
 
         - url: /articles/security/xss/
-          title: Cross site scripting
+          title: Cross Site Scripting
 
         - url: /articles/security/csrf/
-          title: Cross site request forgery
+          title: Cross Site Request Forgery
 
   - url: /slides/
     title: Slides
