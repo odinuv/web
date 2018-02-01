@@ -21,6 +21,7 @@ services:
       - MFTP_USER
       - MFTP_PASS
       - MFTP_TARGET
+      - MFTP_PATH
     volumes:
       - ../:/code
     working_dir: /code
