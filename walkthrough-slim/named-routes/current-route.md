@@ -53,6 +53,9 @@ method. But again, it is tedious to do this in every route. We can use [middlewa
 mechanism of the framework to construct a new middleware which injects `$routeName` variable into every template
 and do not think about this anymore.
 
+Middleware is a piece of code that is executed before or after a route, one middleware can be shared among
+many routes, better explanations and another usage of middleware is in the [login article](/walkthrough-slim/login/).
+
 {: .note}
 It is a good practice to make some effort and avoid duplication of code whenever it is possible.
 
@@ -92,6 +95,5 @@ Now your application should highlight currently active menu item. You will learn
 better in the upcoming [CSS](/walkthrough-slim/css) or [Bootstrap](/walkthrough-slim/css/bootstrap) article.
 
 ### New Concepts and Terms
-- Named routes
-- `{link routeName}` macro
-- `{$basePath}` variable
+- Current menu item/route highlight
+- Middleware
