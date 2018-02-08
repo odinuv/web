@@ -1,0 +1,27 @@
+{extends layout.latte}
+
+{block title}Add contact{/block}
+
+{block body}
+    <!-- print list of contacts with type here and add a delete button -->
+    <!--
+    <form method="post">
+    OR
+    <form action="{link addContact}?id={$id}" method="post">
+    -->
+    <form action="{link addContact}" method="post">
+        <!-- hidden input with ID -->
+        <input type="hidden" name="id" value="{$id}">
+        <label>Contact type</label>
+        <select name="idct">
+            {foreach $types as $ct}
+                <option value="{$ct['id_contact_type']}">{$ct['name']}</option>
+            {/foreach}
+        </select>
+        <br>
+        <label>Contact</label>
+        <input type="text" name="contact">
+        <br>
+        <input type="submit" value="Add contact">
+    </form>
+{/block}
