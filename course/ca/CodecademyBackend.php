@@ -205,10 +205,10 @@ class CodecademyBackend
         // send notification email
         @mail(
             $email,
-            'Potvrzeni od xpopelka',
+            'Potvrzeni CA',
             "Zapsal jsem si, ze mate na Codecademy uzivatelske jmeno $userName, \r\nzatim mate $points bodu, pocet ".
-            "bodu se prubezne aktualizuje.\r\n\r\nS pozdravem\r\n\tOndrej Popelka",
-            "From: ondrej.popelka@mendelu.cz\r\nBcc: odinuv@gmail.com"
+            "bodu se prubezne aktualizuje.\r\n\r\nS pozdravem\r\n\tJiri Lysek",
+            "From: jiri.lysek@mendelu.cz\r\nBcc: jiri.lysek@mendelu.cz"
         );
 
     }
