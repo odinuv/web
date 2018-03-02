@@ -278,7 +278,7 @@ $app->post('/enter-name', function (Request $request, Response $response, $args)
 Both solutions produce exactly the same output. You may like the first or second, but
 I find them both ugly. Apart from that, they are both wrong, because they are 
 **insecure**. This approach to generating a HTML response is prone to 
-[XSS attacks](todo) and should really be avoided. The right solution to this
+[XSS attacks](/articles/security/xss) and should really be avoided. The right solution to this
 is to use [templates](../templates/). Using the `$response` object is also 
 necessary when you need to manipulate [HTTP headers](todo).
 

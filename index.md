@@ -79,5 +79,5 @@ and [Jiri Lysek](http://is.mendelu.cz/lide/clovek.pl?id=54010).
 If you find errors or weak spots in the book, please open an issue on [Github repository](https://github.com/ujpef/site/issues). If you feel
 confident that you can correct the issue as well, please send a
 [pull request](https://help.github.com/articles/using-pull-requests/). If you feel for
-a larger contribution, or you want to discuss something about the book, join us at [Slack](todo).
+a larger contribution, or you want to discuss something about the book, contact us using an [email](mailto:jiri.lysek@mendelu.cz).
 

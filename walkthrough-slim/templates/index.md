@@ -7,7 +7,7 @@ permalink: /walkthrough-slim/templates/
 {:toc}
 
 In the [previous chapter](../slim-backend/), you have learned how to handle HTTP requests with
-[Slim Framework](todo). You should be able to create your own routes and access values entered
+[Slim Framework](https://www.slimframework.com/). You should be able to create your own routes and access values entered
 in HTML forms by the end-user. I have also discouraged you from generating HTML pages 
 directly within the route handlers.
 
@@ -110,7 +110,7 @@ Template engine offers plenty of [macros](https://latte.nette.org/en/macros) whi
 generation of the HTML code. In the above example, I used the `{extends}` 
 (uses a layout template), `{block}` (defines a block) and `{include}` (includes a block) 
 macros. However, the most important is the `{$variable`} macro, which allows you to 
-safely (without the possibility of a [Cross Site Scripting attack](todo)) insert 
+safely (without the possibility of a [Cross Site Scripting attack](/articles/security/xss)) insert 
 parameters in the HTML code. Try adding the following route in your application:
 
 ~~~ php?start_inline=1
@@ -276,7 +276,7 @@ Template file `person-form.latte`:
 
 ## Summary
 Using a template engine requires you to learn its macro language. However it
-does lead to a cleaner [and safer](todo) HTML and PHP code. You don't need to struggle so much
+does lead to a cleaner [and safer](/articles/security/xss) HTML and PHP code. You don't need to struggle so much
 with using [proper quotes](../backend-intro/#working-with-strings).
 When using templates, don't forget that
 the variables defined inside a template are only those passed via the `addParam` or

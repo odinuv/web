@@ -29,7 +29,7 @@ few lines from the **Bootstrap [CDN](https://en.wikipedia.org/wiki/Content_deliv
 in a zip archive if you want. You just need to link
 `bootstrap.min.css`, `bootstrap-theme.min.css` and `bootstrap.min.js` in your `<head>`. If you want to use Bootstrap locally,
 make sure not to break the Bootstrap
-directory structure. If you want to use Bootstrap's [JavaScript](../javascript/) features, you should also link
+directory structure. If you want to use Bootstrap's [JavaScript](../../javascript/) features, you should also link
 the [jQuery](https://jquery.com) library (also available via [CDN](https://jquery.com/download/#using-jquery-with-a-cdn))
 before `bootstrap.min.js` (always use the latest compressed production version). With all this, the beginning of your HTML document should look like this:
 
