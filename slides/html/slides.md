@@ -416,7 +416,7 @@ redirect_from: /en/apv/slides/html/
 <section markdown='1'>
 ## Sources
 - Always check the data and the author -- many sources are outdated or plain wrong.
-- [W3C wiki](www.w3.org/community/webed/wiki/)
+- [W3C wiki](http://www.w3.org/community/webed/wiki/)
 - [Mozilla Developer Portal](https://developer.mozilla.org/en-US/docs/Web)
 - [Google University](https://developers.google.com/university/)
 - [W3C](http://www.w3c.org)
