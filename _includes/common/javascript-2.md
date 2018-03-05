@@ -1,7 +1,7 @@
 ## Form validation
-Nowadays you can use much more types of [input elements](./html-forms/#advanced-text-input)
+Nowadays you can use much more types of [input elements](../html-forms/#advanced-text-input)
 than a few years ago. This means that many validations can be carried out by the browser.
-You can adjust CSS styles using `:valid`, `:invalid` or `:required` [pseudo-classes](./css/#pseudoclasses)
+You can adjust CSS styles using `:valid`, `:invalid` or `:required` [pseudo-classes](../css/#pseudoclasses)
 to visually differentiate input states. You should use these capabilities as much as possible. Nevertheless
 you may sometimes need to implement some custom logic. For example switch `required` state or
 `enable`/`disable` some input in dependence of another input's value or dynamically
@@ -35,7 +35,7 @@ must be considered unreliable). A better solution in such case is to use
 [AJAX](/articles/javascript#ajax).
 
 ### Task -- Add `required` attribute to Person & Address form inputs dynamically
-Do you remember when I was talking about inserting [multiple records at once](./backend-insert/advanced/).
+Do you remember when I was talking about inserting [multiple records at once](../backend-insert/advanced/).
 You should have already created a form where you can insert a person and a place where he lives.
 Try to extend this form with JavaScript and add `required` attribute to `city` only when a user enters a `street_name`.
 

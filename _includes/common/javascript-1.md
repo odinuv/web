@@ -9,7 +9,7 @@ very basic functions of this language to overcome the most common problems with 
 validate a form before it is send to the [backend](todo).
 
 ## Linking JavaScript to your HTML
-[Similarly to CSS](./css/#linking-your-css-to-html-file), a JavaScript file is usually referenced in the `<head>`
+[Similarly to CSS](../css/#linking-your-css-to-html-file), a JavaScript file is usually referenced in the `<head>`
 element using a `<script>` tag (however it may be placed in other parts of the HTML too).
 The `<script>` tag can contain either an URL to download a script or it can directly contain some
 JavaScript code:
@@ -122,7 +122,7 @@ You also need to define the CSS class `highlight` with some visual properties de
 If you came up with another solution, do not worry, there are always multiple working solutions when you write any code.
 
 ## Confirm User Actions
-In the chapter about [records deletion](./backend-delete), you were referred to this article for
+In the chapter about [records deletion](../backend-delete), you were referred to this article for
 information about how to confirm a user action. Using JavaScript, we can prevent the visitor's browser from sending
 a HTTP request (i.e. following a link or sending a form). This is called *preventing navigation* and might be useful for
 example when the user is filling a form and you want to make sure that she does not accidentally leave the page (and loose the filled form).

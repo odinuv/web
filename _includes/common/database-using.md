@@ -51,7 +51,7 @@ also its result. One way to obtain the result is calling the
 {% include /common/database-using/select-simple.php %}
 {% endhighlight %}
 
-The `fetchAll` function returns a [two-dimensional array](./backend-intro/array/). It returns an array
+The `fetchAll` function returns a [two-dimensional array](../backend-intro/array/). It returns an array
 of result table (`person`) rows. Each row is an array indexed by column keys, values
 are table cells. Therefore the following code will print `first_name` of the
 second person (as ordered by `first_name`). I used the [`print_r` function](http://php.net/manual/en/function.print-r.php) to

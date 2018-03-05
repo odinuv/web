@@ -23,7 +23,7 @@ To get you started as quickly as possible, I prepared a sample database for you.
 It contains the structure of the [project](/course/#project-assignment) and also some sample data,
 which is useful for testing your application. First you need to import the database,
 then you can start playing with it using the
-[SQL language](./database/#sql-language).
+[SQL language](../database/#sql-language).
 
 ### Import Database
 I prepared files that you can import into the database, there are two files, the first one contains
@@ -50,7 +50,7 @@ should see, content in the Adminer:
 
 ### SQL Language
 SQL is a language which is used for communicating with most of the widely used database servers.
-If you have been following this Walkthrough from the [beginning](./html/), then this is
+If you have been following this Walkthrough from the [beginning](../html/), then this is
 the fourth language you have learned so far (after HTML, PHP, Latte Macro Language).
 
 The SQL language has only four everyday-use commands (there are dozens of others, which are

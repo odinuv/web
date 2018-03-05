@@ -9,7 +9,7 @@ I don't need `$stmt1` after `$stmt2`, so you can use only a single variable and 
 better to reuse the same variable if possible.
 
 ## Error control and transactions
-You already know that you have to enclose database communication [in `try-catch`](./backend-select/#finalizing) blocks. But what happens when the
+You already know that you have to enclose database communication [in `try-catch`](../../backend-select/#finalizing) blocks. But what happens when the
 first query (insert an address) is accepted and the second one (insert a person) is not? There can be more reasons than
 you think for the second `INSERT` command to fail:
 

@@ -55,7 +55,7 @@ If you enter some text (e.g. 'fooBar') in the text field in and hit the button, 
 
 You can see that the `$postData` array is as an associative array of form controls. The indexes
 in the array are form control names, and the values are control values. This underlines
-the importance of knowing what [control names and values are](./html-forms/#name-and-value).
+the importance of knowing what [control names and values are](../html-forms/#name-and-value).
 
 It is also important to know that the entire script is stateless, the same
 way [HTTP protocol is](/articles/web/#http-protocol). This means that the `$postData` array is filled

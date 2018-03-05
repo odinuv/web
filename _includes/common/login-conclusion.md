@@ -13,7 +13,7 @@ There is a lot more to explore: you probably know sites where you can persist yo
 or even weeks -- ours is forgotten as soon as the visitor closes his browser's window. That can be achieved by setting
 special attributes to cookies which hold keys to a sessions. You also probably seen that some sites use global services
 like Facebook or Google to provide login functionality, which is good for users who do not want to remember too many
-passwords. Totally [different approach](https://jwt.io/) of authentication is used for [single page applications](./javascript/).
+passwords. Totally [different approach](https://jwt.io/) of authentication is used for [single page applications](../javascript/).
 
 Remember that you are responsible for security of your application and also for the data of your users.
 
