@@ -249,7 +249,7 @@ items:
         title: Relational Databases
 
       - url: /slides/sql-join/
-        title: SQL Language Basics
+        title: SQL Joins
 
       - url: /slides/sql-aggregation/
         title: SQL Aggregation
