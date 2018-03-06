@@ -242,6 +242,9 @@ items:
       - url: /slides/html/
         title: Web Standards
 
+      - url: /slides/web-technologies/
+        title: Web technologies
+
       - url: /slides/database-systems/
         title: Database Systems
 
