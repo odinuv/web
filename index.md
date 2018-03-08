@@ -13,28 +13,28 @@ redirect_from: /en/apv/
 The [Old Czech website](https://akela.mendelu.cz/~xpopelka/cs/apv/) is still available.
 
 This web book is an introduction to the development of web applications. It consists of two
-walkthroughs --- [**Classic Walkthrough**](/en/apv/walkthrough/) and [**Slim Walkthrough**](/en/apv/walkthrough-slim/)
-which will guide you through making the web application step by step and [**Articles**](/en/apv/articles/) explaining the
+walkthroughs --- [**Classic Walkthrough**](/walkthrough/) and [**Slim Walkthrough**](/walkthrough-slim/)
+which will guide you through making the web application step by step and [**Articles**](/articles/) explaining the
 details of all the used technologies.
 
 ## Why two Walkthroughs?
 Because there are many completely different approaches to build a web application.
 
-- The [**Classic Walkthrough**](/en/apv/walkthrough/) goes to the roots and is great for general understanding. It uses
+- The [**Classic Walkthrough**](/walkthrough/) goes to the roots and is great for general understanding. It uses
 raw mostly procedural PHP and no PHP framework. HTML is rendered using Latte Templates.
--  The [**Slim Walkthrough**](/en/apv/walkthrough-slim/) uses the Slim PHP framework. It represents a quicker way to the goal, but there
+-  The [**Slim Walkthrough**](/walkthrough-slim/) uses the Slim PHP framework. It represents a quicker way to the goal, but there
 is some magic involved. HTML is also rendered using Latte Templates.
 
 Both Walkthroughs share some parts (e.g HTML, HTML forms, SQL), the difference is mainly in the way the PHP code on
 backend is organized.
-Note that for **[APV Course outline](/en/apv/course/)**, the [**Slim Walkthrough**](/en/apv/walkthrough-slim/) is the current one.
+Note that for **[APV Course outline](/course/)**, the [**Slim Walkthrough**](/en/apv/walkthrough-slim/) is the current one.
 
 ## Goals
 My goals are:
 
 - to show you how web applications can be made (using SQL, PHP, JavaScript);
 - to teach you enough programming so that you can put together a web application;
-- to teach you something about [software engineering](/en/apv/articles/programming/#software-engineering);
+- to teach you something about [software engineering](/articles/programming/#software-engineering);
 - to show you how stuff works and **why** it works that way;
 - to explain the principles which last for a long time.
 - to show you how things should be done properly (aka professionally);
@@ -42,7 +42,7 @@ My goals are:
 
 My goals are **not**:
 
-- to teach you [Computer Science](/en/apv/articles/programming/#computer-science);
+- to teach you [Computer Science](/articles/programming/#computer-science);
 - to make an excellent (PHP, JavaScript, SQL, ...) programmer out of you. That needs much more practice, but this
 may be a good start;
 - to show you all the technical details;

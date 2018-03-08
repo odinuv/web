@@ -18,7 +18,7 @@ the [name-value pairs](/walkthrough-slim/html-forms/#name-and-value) for control
 
 ### Request parameters
 Slim framework has built-in methods for obtaining parameters of the request. These methods are available through
-[*Request*](https://www.slimframework.com/docs/objects/request.html) object which is available as argument for
+[*Request*](https://www.slimframework.com/docs/v3/objects/request.html) object which is available as argument for
 your route handler. HTTP protocol can transfer parameters via URL (`path?param1=value1&param2=value2`) and in body
 of HTTP request, the latter is available only with POST method. To access query parameters or POST body payload use
 these two functions:

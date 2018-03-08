@@ -49,7 +49,7 @@ This template code universally highlights the menu item that currently matches s
 It is possible to provide this variable in every route by hand (`$tplVars['routeName'] = 'currentRouteName';`),
 but there is a better and more universal way. Slim framework provides us with *request* object, which also contains
 information about a route. You can access this object and get route name using `$request->getAttribute('route')->getName()`
-method. But again, it is tedious to do this in every route. We can use [middleware](https://www.slimframework.com/docs/concepts/middleware.html)
+method. But again, it is tedious to do this in every route. We can use [middleware](https://www.slimframework.com/docs/v3/concepts/middleware.html)
 mechanism of the framework to construct a new middleware which injects `$routeName` variable into every template
 and do not think about this anymore.
 
@@ -88,7 +88,7 @@ $app->add(function (Request $request, Response $response, callable $next) {
 ~~~
 
 {: .note}
-Presented steps are inspired by [Slim cookbook article](https://www.slimframework.com/docs/cookbook/retrieving-current-route.html).
+Presented steps are inspired by [Slim cookbook article](https://www.slimframework.com/docs/v3/cookbook/retrieving-current-route.html).
 
 ## Summary
 Now your application should highlight currently active menu item. You will learn how to make the highlight look even

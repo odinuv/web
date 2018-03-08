@@ -10,14 +10,14 @@ redirect_from: /en/apv/course/
 ## Course information
 The aim of the course is to teach students basic categories of application software. Emphasis is given on
 the development of web applications and database applications (relational database systems).
-[Official course information](http://ects-prog.mendelu.cz/en/plan6937/predmet88060)
+[Official course information](http://ects-prog.mendelu.cz/cz/plan8594/predmet1099)
 
 ## Requirements
 To pass the course you have to:
 
 - pass the midterm test (minimum 50% points)
 - get at least 90 points on [Codecademy](https://www.codecademy.com/) --- [**Verify**](http://odinuv.cz/course/codecademy.php)
-- finish the [course project](#project-assignment) --- [first evaluation](https://akela.mendelu.cz/~xpopelka/vysledky.txt)
+- finish the [course project](#project-assignment)<!-- --- [first evaluation](https://akela.mendelu.cz/~xpopelka/vysledky.txt) -->
 - pass the final exam (minimum 50% points)
 
 The grade from the final exam and the project evaluation make up for the final course grade.
@@ -26,66 +26,77 @@ The grade from the final exam and the project evaluation make up for the final c
 
 - Week 1
     - Articles: [Web](/articles/web/)
-    - Exercises: [HTML](/walkthrough/html/), [HTML Forms](/walkthrough/html-forms/)
+    - Exercises: [HTML](/walkthrough-slim/html/), [HTML Forms](/walkthrough-slim/html-forms/)
     - [Presentation slides](/slides/web/)
+    - [Presentation slides](/slides/web-technologies/)
 - Week 2
     - Articles: [HTML](/articles/html/)
-    - Exercises: [PHP](/walkthrough/backend-intro/)
+    - Exercises: [PHP](/walkthrough-slim/backend-intro/)
     - [Presentation slides](/slides/html/)
 - Week 3
-    - Articles: [Database Systems](/articles/database-systems/)
-    - Exercises: [SQL](/walkthrough/database/)
+    - Exercises: [Latte](/walkthrough-slim/templates/) and [Latte Templates](/walkthrough-slim/templates-layout/)
     - [Presentation slides](/slides/database-systems/)
 - Week 4
     - Articles: [Relational Database Systems](/articles/database-systems/)
-    - Exercises: [Latte](/walkthrough/templates/) and [Latte Templates](/walkthrough/templates-layout/)
+    - Exercises: [SQL](/walkthrough-slim/database/)
     - [Presentation slides](/slides/relational-database/)
 - Week 5
-    - Articles: [SQL Language](/articles/sql-join/)
-    - Exercises: [Connecting to database](/walkthrough/backend/), [Selecting data](/walkthrough/backend-select/)
+    - Articles: [Database Systems](/articles/database-systems/)
+    - Exercises: [Connecting to database](/walkthrough-slim/backend/), [Selecting data](/walkthrough-slim/backend-select/)
     - [Presentation slides](/slides/sql-join/)
 - Week 6
-    - Articles: [SQL Aggregation](/articles/sql-aggregation/)
-    - Exercises: [Inserting data](/walkthrough/backend-insert/)
+    - Articles: [SQL Language](/articles/sql-join/)
+    - Exercises: [Inserting data](/walkthrough-slim/backend-insert/)
     - [Presentation slides](/slides/sql-aggregation/)
 - Week 7
     - Articles: [Database Design](/articles/database-design/)
-    - Exercises: [Updating data](/walkthrough/backend-update/)
+    - Exercises: [Updating data](/walkthrough-slim/backend-update/)
     - [Presentation slides](/slides/database-design/)
 - Week 8
-    - Articles: [Database Systems -- Sequences, Constraints, Keys](/articles/database-tech/)
-    - Exercises: [Application Layout and Templates](/walkthrough/css/bootstrap/)
+    - Articles: [SQL Aggregation](/articles/sql-aggregation/)
+    - Exercises: Advanced SQL querries (see article)
     - [Presentation slides](/slides/database-tech/)
 - Week 9
-    - Articles: [Cascading Style Sheets](/articles/css/)
-    - Exercises: [Advanced Inserts](/walkthrough/backend-insert/advanced/todo)
+    - Articles: [Database Systems -- Sequences, Constraints, Keys](/articles/database-tech/)
+    - Exercises: [Application Layout](/walkthrough-slim/css/bootstrap/) and [Bootstrap](/walkthrough-slim/css/bootstrap/)
+    - [Presentation slides](/slides/web-security/)
 - Week 10
-    - Exercises: [Deleting Data](/walkthrough/backend-delete)
+    - Articles: [Cascading Style Sheets](/articles/css/)
+    - Exercises: [Advanced inserts](/walkthrough-slim/backend-insert/advanced/)
+    - [Presentation slides](/slides/web-apps/)
 - Week 11
-    - Exercises: [Login](/walkthrough/login/)
-- Week 12 & Week 13
+    - Articles: [Security](/articles/security/)
+    - Exercises: [Deleting Data](/walkthrough-slim/backend-delete)
+    - [Presentation slides](/slides/application-development/)
+- Week 12
+    - Articles: [Web applications](/articles/web-applications/)
+    - Exercises: [Login](/walkthrough-slim/login/) 
+    - [Presentation slides](/slides/finale/)
+- Week 13
     - Work on Project
 
+<!--
 ## APVA Class
 
 - Week 2:
-    - [Basic HTML](\course\apva\basic-html.html)
-    - [Form Elements](\course\apva\form-elements.html)
-    - [Example Form](\course\apva\example-form.html)
+    - [Basic HTML](/course/apva/basic-html.html)
+    - [Form Elements](/course/apva/form-elements.html)
+    - [Example Form](/course/apva/example-form.html)
 - Week 4:
-    - [Slim Framework](\course\apva\slim-framework.zip)
-    - [Updated routes.php](\course\apva\routes-1.phps)
+    - [Slim Framework](/course/apva/slim-framework.zip)
+    - [Updated routes.php](/course/apva/routes-1.phps)
 - Week 5:
-    - [Updated routes.php](\course\apva\routes-2.phps)
-    - [People list template](\course\apva\people.latte)
+    - [Updated routes.php](/course/apva/routes-2.phps)
+    - [People list template](/course/apva/people.latte)
 - Week 6:
-    - [Updated routes.php](\course\apva\routes-6.phps)
-    - [People list template](\course\apva\people-6.latte)
-    - [New person template](\course\apva\new-person-6.latte)
-    - [Layout template](\course\apva\layout-6.latte)
+    - [Updated routes.php](/course/apva/routes-6.phps)
+    - [People list template](/course/apva/people-6.latte)
+    - [New person template](/course/apva/new-person-6.latte)
+    - [Layout template](/course/apva/layout-6.latte)
 - Week 8:
-    - [Updated routes.php](\course\apva\routes-8.phps)
-    - [Person profile template](\course\apva\person-profile-8.latte)
+    - [Updated routes.php](/course/apva/routes-8.phps)
+    - [Person profile template](/course/apva/person-profile-8.latte)
+-->
 
 ## Project Assignment
 To pass the course you need to create a project. The project assignment is
@@ -105,7 +116,7 @@ described below:
 
 The assignment is intentionally very loosely defined. It is up to you to come up with the
 application design, functionality and user interface. It is not an easy task, so I have designed a
-[database schema](/walkthrough/database/#database-schema) for you.
+[database schema](/walkthrough-slim/database/#database-schema) for you.
 
 {: .image-popup}
 ![Database Schema](/common/schema.svg)

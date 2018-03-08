@@ -41,11 +41,11 @@ the server (if necessary) and visit the `/hello` URL. You should see a "Hello Wo
 browser. 
 
 The `$app` variable contains the 
-[Slim Application](https://www.slimframework.com/docs/objects/application.html) object. The 
+[Slim Application](https://www.slimframework.com/docs/v3/objects/application.html) object. The 
 variable is already initialized elsewhere (in `public/index.php` file) so it is ready to use.
 The Application has a method `get` (and also `post`, `put` and other [HTTP verbs](/articles/web/#http-protocol)) 
 which configures a route. The method 
-[accepts two parameters](https://www.slimframework.com/docs/objects/router.html#how-to-create-routes).
+[accepts two parameters](https://www.slimframework.com/docs/v3/objects/router.html#how-to-create-routes).
 The first is the name of the route and the second is the a function which handles the 
 route --- a **callback** (or **handler**) (something that is *called back* when 
 a request to that particular route is made).
@@ -104,7 +104,7 @@ function (Request $request, Response $response, $args) {}
 ~~~
 
 This means that the handler takes 
-[three parameters](https://www.slimframework.com/docs/objects/router.html#route-callbacks):
+[three parameters](https://www.slimframework.com/docs/v3/objects/router.html#route-callbacks):
 
 - an object representing the HTTP request (generated automatically by the Slim framework)
 - an object representing the HTTP response (empty and expected to be filled by the handler)

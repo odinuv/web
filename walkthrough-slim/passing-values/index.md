@@ -132,7 +132,7 @@ Or with more parameters:
 In PHP code, you usually use `Location` header to redirect (but there are some other ways -- you can generate `<meta>`
 tag in the `<head>` section of page with `http-equiv="refresh"` and `content` attribute to achieve redirect too).
 As described in [named routes](/walkthrough-slim/named-routes) chapter, you should use the *router* object to generate
-URLs ([docs](https://www.slimframework.com/docs/objects/router.html)). Again, the `pathFor()` method generates a simple
+URLs ([docs](https://www.slimframework.com/docs/v3/objects/router.html)). Again, the `pathFor()` method generates a simple
 string with URL so you can append a query parameters easily using the [string concatenation operator](http://php.net/manual/en/language.operators.string.php).
 
 ~~~ php?start_inline=1
@@ -153,10 +153,10 @@ usually rendered for a very short moment (it might seem that it is not rendered 
 occasional error reports difficult (hint: use logger or disable the `Location` header for a while).
 
 Use `getQueryParam('paramName')` method on `$request` object to obtain value of selected parameter. More info in the
-[framework docs](https://www.slimframework.com/docs/objects/request.html).
+[framework docs](https://www.slimframework.com/docs/v3/objects/request.html).
 
 ### Using route placeholders
-Slim framework router can use [placeholders](https://www.slimframework.com/docs/objects/router.html#route-placeholders)
+Slim framework router can use [placeholders](https://www.slimframework.com/docs/v3/objects/router.html#route-placeholders)
 in route definitions. Placeholders are named slots in the route path and you can substitute them with a value. You can
 use them similarly as query parameters. Following route definitions have placeholders for mandatory `id` and optional
 `filter` values. Use `$args` array to access placeholder values.

@@ -129,11 +129,11 @@ You can prevent anonymous users to access all your application's functions or ju
 tries to access prohibited function without authentication, he should be redirected to the login page.
 
 ### Task -- protect your application
-Write a [middleware](https://www.slimframework.com/docs/concepts/middleware.html) function which will verify
+Write a [middleware](https://www.slimframework.com/docs/v3/concepts/middleware.html) function which will verify
 presence of user's data in `$_SESSION` array and redirect to login route if no such data is found. The 
 is automatically executed before (or after) a route. You can choose to have a global (application) middleware
 for all routes or a middleware for a group of routes or a middleware for a particular route. We do not want
-to block all routes and therefore we will create a middleware only for a certain [group of routes](https://www.slimframework.com/docs/objects/router.html#route-groups).
+to block all routes and therefore we will create a middleware only for a certain [group of routes](https://www.slimframework.com/docs/v3/objects/router.html#route-groups).
 
 The middleware handler is provided with three input parameters, two of them are already familiar, it is the
 `$request` and `$response` objects. The third one is the `$next` callback which represents the next action (a route

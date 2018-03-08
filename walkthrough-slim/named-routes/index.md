@@ -23,7 +23,7 @@ to do this. Because you use a framework and a templating engine, you can use som
 links.
 
 The reason is simple: sometimes you need to change the route definition to describe better what the route is doing,
-move the route to another "module" or wrap group of routes using a common [middleware](https://www.slimframework.com/docs/concepts/middleware.html).
+move the route to another "module" or wrap group of routes using a common [middleware](https://www.slimframework.com/docs/v3/concepts/middleware.html).
 Other reason is localisation of your app to another language. When you change the route definition in `src/routes.php`,
 you will have to change **all** links to this route all over your source code. Take a look at following example:
 

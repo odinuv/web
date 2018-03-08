@@ -122,10 +122,10 @@ The project directory (root) contains the following directories and files:
     - .htaccess --- a hidden file used by [Apache web server](/course/technical-support/) to route requests to `index.php`.
     - index.php --- an entry script of the Slim Framework, do not modify this file.
 - src --- the source code of the application, this is the directory, where most of your work will be done.
-    - dependencies.php --- a script which initializes the application dependencies ([dependency container](https://www.slimframework.com/docs/concepts/di.html)), these currently include the [Latte Template engine](../templates/), [PDO Database](../database-using/) and [Monolog Logger](todo).
-    - middleware.php --- a script which configures the [Middleware of the Slim Framework](https://www.slimframework.com/docs/concepts/middleware.html). It is currently empty, but it will become useful when implementing an [application login](../login/).
+    - dependencies.php --- a script which initializes the application dependencies ([dependency container](https://www.slimframework.com/docs/v3/concepts/di.html)), these currently include the [Latte Template engine](../templates/), [PDO Database](../database-using/) and [Monolog Logger](todo).
+    - middleware.php --- a script which configures the [Middleware of the Slim Framework](https://www.slimframework.com/docs/v3/concepts/middleware.html). It is currently empty, but it will become useful when implementing an [application login](../login/).
     - routes.php --- a script which defines [routes](../slim-backend/) --- how an HTTP request is handled. This will be **the most important script** in the beginning.
-    - settings.php --- a script which configures the [Application Settings](https://www.slimframework.com/docs/objects/application.html). There is no need to touch this file, the actual setting values are configured in the `.env` file (see below).
+    - settings.php --- a script which configures the [Application Settings](https://www.slimframework.com/docs/v3/objects/application.html). There is no need to touch this file, the actual setting values are configured in the `.env` file (see below).
 - templates --- a directory for [Latte Templates](../templates/).
     - index.latte --- a sample template.
     - layout.latte --- a sample [template layout](../templates-layout/).
