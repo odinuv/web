@@ -7,6 +7,7 @@ services:
 
 before_install:
   - docker-compose -v
+  - curl --version
 
 script:
   - cd _docker && docker-compose run --rm -e JEKYLL_ENV=production jekyll jekyll build
