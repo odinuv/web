@@ -36,7 +36,7 @@ else
             #fi
         fi
     done
-    $COMMAND = "$COMMAND
+    COMMAND="$COMMAND
     close
     exit"
     lftp -c "$COMMAND"
