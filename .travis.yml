@@ -5,6 +5,11 @@ language: bash
 services:
   - docker
 
+addons:
+  apt:
+    packages:
+    - lftp
+
 before_install:
   - docker-compose -v
   - curl --version
