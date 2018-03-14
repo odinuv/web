@@ -36,7 +36,7 @@ else
             #fi
         fi
     done
-    lftp < $COMMAND
+    lftp < "$COMMAND"
     if [ $? -ne 0 ]; then
         echo "File upload failed" >&2
     fi
