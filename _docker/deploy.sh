@@ -27,7 +27,7 @@ open -u $FTP_USER,$FTP_PASS $FTP_TARGET"
         if [ "$f" != ".travis.yml" ] && [ "$f" != "deploy.sh" ] && [ "$f" != "test.js" ] && [ "$f" != "package.json" ]
         then
             COMMAND="$COMMAND
-put $f"
+put $f -o $f"
             #echo "Uploading $f"
             #curl --ftp-create-dirs -T ${f} -u ${FTP_USER}:${FTP_PASS} ${FTP_TARGET}/html/${f}
             #if [ $? -ne 0 ]; then
