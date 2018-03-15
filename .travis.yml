@@ -18,9 +18,9 @@ script:
   - cd _docker && docker-compose run --rm -e JEKYLL_ENV=production jekyll jekyll build
 
 deploy:
-  - provider: script
-    skip_cleanup: true
-    script: $TRAVIS_BUILD_DIR/_docker/deploy.sh
+#  - provider: script
+#    skip_cleanup: true
+#    script: $TRAVIS_BUILD_DIR/_docker/deploy.sh
   - provider: script
     skip_cleanup: true
     script: $TRAVIS_BUILD_DIR/_docker/mdeploy-run.sh
