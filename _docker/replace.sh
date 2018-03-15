@@ -1,10 +1,8 @@
 #/bin/bash
 set -e
 
-ls -l
-sudo chmod 0777 ./_site
-ls -l
-
+echo "Setting _site writable"
+sudo chmod -R 0777 ./_site
 echo "Replacing links"
 grep -rlF '](/' . | xargs sed -i 's@](/@](/~'$MFTP_USER'/'$MFTP_PATH'/@g'
 echo "Replacing permalinks"
