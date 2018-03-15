@@ -17,7 +17,7 @@ open -u $MFTP_USER,$MFTP_PASS $MFTP_TARGET"
         if [ "$f" != ".travis.yml" ] && [ "$f" != "deploy.sh" ] && [ "$f" != "test.js" ] && [ "$f" != "package.json" ]
         then
             COMMAND="$COMMAND
-put $f -o $f"
+mput -d $f"
             #echo "Uploading $f"
             #curl -s --insecure --ftp-create-dirs -T $f -u $MFTP_USER:$MFTP_PASS $MFTP_TARGET/$f
             #if [ $? -ne 0 ]; then
