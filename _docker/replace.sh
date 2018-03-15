@@ -2,7 +2,8 @@
 set -e
 
 ls -l
-chmod 0777 ./_site
+sudo chmod 0777 ./_site
+ls -l
 
 echo "Replacing links"
 grep -rlF '](/' . | xargs sed -i 's@](/@](/~'$MFTP_USER'/'$MFTP_PATH'/@g'
