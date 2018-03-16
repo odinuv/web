@@ -1,5 +1,5 @@
 ---
-title: Slim Backend
+title: Slim Introduction
 permalink: /walkthrough-slim/slim-intro/
 ---
 

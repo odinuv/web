@@ -26,23 +26,23 @@ The grade from the final exam and the project evaluation make up for the final c
 
 - Week 1
     - Articles: [Web](/articles/web/)
-    - Exercises: [HTML](/walkthrough-slim/html/), [HTML Forms](/walkthrough-slim/html-forms/)
+    - Exercises: [HTML](/walkthrough-slim/html/) and [HTML Forms](/walkthrough-slim/html-forms/)
     - [Presentation slides](/slides/web/)
-    - [Presentation slides](/slides/web-technologies/)
+    - [Presentation slides](/slides/html/)
 - Week 2
     - Articles: [HTML](/articles/html/)
     - Exercises: [PHP](/walkthrough-slim/backend-intro/)
-    - [Presentation slides](/slides/html/)
+    - [Presentation slides](/slides/web-technologies/)
 - Week 3
     - Exercises: [Latte](/walkthrough-slim/templates/) and [Latte Templates](/walkthrough-slim/templates-layout/)
     - [Presentation slides](/slides/database-systems/)
 - Week 4
     - Articles: [Relational Database Systems](/articles/database-systems/)
-    - Exercises: [SQL](/walkthrough-slim/database/)
+    - Exercises: [SQL](/walkthrough-slim/database/) and [Working with database](/walkthrough-slim/database-using/)
     - [Presentation slides](/slides/relational-database/)
 - Week 5
     - Articles: [Database Systems](/articles/database-systems/)
-    - Exercises: [Connecting to database](/walkthrough-slim/backend/), [Selecting data](/walkthrough-slim/backend-select/)
+    - Exercises: [Slim introduction](/walkthrough-slim/slim-intro/), [Connecting to database](/walkthrough-slim/backend/) and [Selecting data](/walkthrough-slim/backend-select/)
     - [Presentation slides](/slides/sql-join/)
 - Week 6
     - Articles: [SQL Language](/articles/sql-join/)
@@ -50,7 +50,7 @@ The grade from the final exam and the project evaluation make up for the final c
     - [Presentation slides](/slides/sql-aggregation/)
 - Week 7
     - Articles: [Database Design](/articles/database-design/)
-    - Exercises: [Updating data](/walkthrough-slim/backend-update/)
+    - Exercises: [Application Layout](/walkthrough-slim/css/bootstrap/) and [Bootstrap](/walkthrough-slim/css/bootstrap/)
     - [Presentation slides](/slides/database-design/)
 - Week 8
     - Articles: [SQL Aggregation](/articles/sql-aggregation/)
@@ -58,7 +58,7 @@ The grade from the final exam and the project evaluation make up for the final c
     - [Presentation slides](/slides/database-tech/)
 - Week 9
     - Articles: [Database Systems -- Sequences, Constraints, Keys](/articles/database-tech/)
-    - Exercises: [Application Layout](/walkthrough-slim/css/bootstrap/) and [Bootstrap](/walkthrough-slim/css/bootstrap/)
+    - Exercises: [Deleting Data](/walkthrough-slim/backend-delete) and [Updating data](/walkthrough-slim/backend-update/)
     - [Presentation slides](/slides/web-security/)
 - Week 10
     - Articles: [Cascading Style Sheets](/articles/css/)
@@ -66,11 +66,11 @@ The grade from the final exam and the project evaluation make up for the final c
     - [Presentation slides](/slides/web-apps/)
 - Week 11
     - Articles: [Security](/articles/security/)
-    - Exercises: [Deleting Data](/walkthrough-slim/backend-delete)
+    - Exercises: [Login](/walkthrough-slim/login/) 
     - [Presentation slides](/slides/application-development/)
 - Week 12
     - Articles: [Web applications](/articles/web-applications/)
-    - Exercises: [Login](/walkthrough-slim/login/) 
+    - Exercises: [Pagination](/walkthrough-slim/pagination/)
     - [Presentation slides](/slides/finale/)
 - Week 13
     - Work on Project
