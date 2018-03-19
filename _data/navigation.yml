@@ -8,6 +8,9 @@ items:
       - url: /course/technical-support/
         title: Technical support
 
+      - url: /course/faq/
+        title: FAQ
+
   - url: /walkthrough-slim/
     title: Walktrough Slim
     items:
@@ -28,6 +31,9 @@ items:
 
           - url: /walkthrough-slim/backend-intro/objects/
             title: Functions & Classes & Objects
+
+          - url: /walkthrough-slim/backend-intro/receiving-values/
+            title: Receiving values
 
       - url: /walkthrough-slim/database-intro/
         title: Database & SQL
@@ -115,6 +121,9 @@ items:
 
           - url: /walkthrough/backend-intro/objects/
             title: Functions & Classes & Objects
+
+          - url: /walkthrough/backend-intro/receiving-values/
+            title: Receiving values
 
       - url: /walkthrough/templates/
         title: Templates
