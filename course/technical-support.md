@@ -102,26 +102,32 @@ input is a bit more [complicated](http://php.net/manual/en/features.commandline.
 If you have PHP installed but your terminal does not respond to the `php` command, make sure that you have added
 PHP location to system variable called `Path` (on Windows). To check its content type `path` into the Windows command
 window. To modify the `Path` system variable, open the properties of your computer and find management of system variables
-or execute `setx path "%path%;C:\path\to\php"` command (which appends `path\to\php` as another `Path` route).
+or execute `setx path "%path%;C:\your\path\to\php"` command (which appends `C:\your\path\to\php` as another `Path` route).
 
 ### Composer
-This [tool](https://getcomposer.org/) is used sometimes to download PHP libraries. It is again a command line tool
+This [tool](https://getcomposer.org/) is used often to download PHP libraries. It is again a command line tool
 written in PHP itself. It is used among developers to describe dependencies of their code on various libraries. When
 you send your application's source code to a colleague (by email, file sharing service or preferably through
 [VCS](https://en.wikipedia.org/wiki/Version_control) system like [Git](https://git-scm.com/)) you do not need to send
 large amounts of libraries (which are usually larger than your code itself). You just send a recipe which dependencies
-should be downloaded using Composer.
+should be downloaded using Composer (stored in `composer.json` file).
 
-For example: to download [Latte](https://packagist.org/packages/latte/latte) library execute `composer install latte/latte`
-in the root of your project. This action will create or modify a `package.json` file which you can send along with your
+For example: to download [Latte](https://packagist.org/packages/latte/latte) library execute `composer require latte/latte`
+in the root of your project. This action will create or modify a `composer.json` file which you can send along with your
 sources to your colleagues and a `vendor` directory, which contains the library (you do not have to include this directory
-when you want to share your code, Composer will download it according to the `packages.json` file contents).
+when you want to share your code, Composer will download it according to the `composer.json` file contents).
 
 In your code just include Composer's `autoload.php` file (this file handles autoloading of
 [classes](/walkthrough/backend-intro/objects/#classes) by their
 [namespace](/walkthrough/backend-intro/objects/#namespaces)
 and name)  from `vendor` directory (`include 'vendor/autoload.php';`) and you can create a new instance of Latte right
 ahead (`$tpl = new Latte\Engine();`) without including any other files.
+
+{: .note}
+You can either install Composer globally in your system and then call `composer` command in your command line
+interpreter directly or you can download file `composer.phar` which you can execute using `php` interpreter itself by
+calling `php composer.phar` (in the same folder). Other command line options and switches are identical. You have to
+install PHP itself before you can use Composer.
 
 ### Sending emails from web applications
 Sometimes it is useful to send an email with notification to a user about an event that took place. PHP uses simple
