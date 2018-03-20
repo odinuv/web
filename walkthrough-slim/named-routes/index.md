@@ -7,7 +7,7 @@ permalink: /walkthrough-slim/named-routes/
 {:toc}
 
 Until now, you used browser's address bar to navigate between different pages. With forms I made use of the fact,
-that without `action` attribute, the form is submitted to the same URL (only `action` attribute was set to `POST`).
+that without `action` attribute, the form is submitted to the same URL (only `method` attribute was set to `post`).
 This is not user friendly at all, but using hardcoded routes in templates is also not very efficient.
 
 Before I start explaining named routes, I want to take a short detour. A route in Slim framework is a combination of

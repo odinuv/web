@@ -59,7 +59,7 @@ way [HTTP protocol is](/articles/web/#http-protocol). This means that the `$_POS
 the content of the `$_POST` array is only filled with what you have just entered
 (or nothing, if you haven't sent the form and have just loaded the page).
 
-The `GET` method behaves slightly different than the `POST` method in that it changes the URL of the script. This
+The *GET* method behaves slightly different than the *POST* method in that it changes the URL of the script. This
 means that the state of the form is encoded in the address of the page and therefore remains there
 until changed again. It is quite important to decide on the [correct HTTP method to use](todo).
 

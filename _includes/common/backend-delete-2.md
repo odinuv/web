@@ -52,7 +52,7 @@ If you are stuck, I suggest you configure the following tables and keys:
 </div>
 
 ## Summary
-Now you now how to delete records from a database. I have also showed you how to redirect after `POST`
+Now you now how to delete records from a database. I have also showed you how to redirect after *POST*
 to avoid action confirmation. You should also understand how the foreign keys guard the
 consistency of the data and that you need to think what to do with the dependent records -- whether to delete them along
 or leave them in the database while removing the link to the deleted record. For a deeper explanation see

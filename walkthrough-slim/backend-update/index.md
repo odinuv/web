@@ -128,7 +128,7 @@ it is very likely that they will have to be added to both forms. Hint: you will 
 
 You have to solve one last problem, when a the insert or update action fails, the values from input fields are
 lost. This is very annoying for the user. I already prepared the mechanism to display initial values of the
-update form, you can use this to pass submitted values to the form in `POST` routes simply by `$tplVars['person'] = $data;`.
+update form, you can use this to pass submitted values to the form in *POST* routes simply by `$tplVars['person'] = $data;`.
 
 PHP script for inserting a person:
 

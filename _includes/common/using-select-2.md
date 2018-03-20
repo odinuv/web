@@ -1,6 +1,6 @@
 {: .note}
 Notice that I used a different way to pass ID of person to the script in hidden form field. This means, that the
-ID of a person is not visible in URL after form submit and you can find it in `POST` data using `getParsedBody()`
+ID of a person is not visible in URL after form submit and you can find it in *POST* data using `getParsedBody()`
 method. Other way is to append the ID to `action` attribute of the form as in previous article about
 [person update](../backend-update/).
 

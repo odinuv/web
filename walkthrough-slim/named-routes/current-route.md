@@ -71,7 +71,7 @@ return [
 ];
 ~~~
 
-Than add new middleware in `src/middleware.php`:
+Then add new middleware in `src/middleware.php`:
 
 ~~~ php?start_inline=1
 use Slim\Exception\NotFoundException;

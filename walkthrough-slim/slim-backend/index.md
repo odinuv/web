@@ -192,7 +192,7 @@ Fill it in and click the button. You should see an error:
 
 This means exactly what it says. Your application was able to recognize the URL
 and find a matching route, but that route does not allow the particular 
-[HTTP method](todo) you used in the request --- the `POST` method (as specified in
+[HTTP method](todo) you used in the request --- the *POST* method (as specified in
 `method='post` in the `<form>` field). This is expected, because we used
 `$app->get('/enter-name', ...` in our route.
 

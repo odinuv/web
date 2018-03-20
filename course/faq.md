@@ -14,10 +14,10 @@ beginner. If you have any other question and you think that it should be answere
 ### How does it all work together? I have written all the code, it works, but I do not know why!
 Well, working web application is a complicated thing. Do not trust anybody who tells you opposite. You have to know
 quiet a lot of technologies (e.g. HTTP, HTML, CSS, PHP, SQL and a bit of JavaScript) to build one. The advantage of
-web technologies is that you only need a text-editor to code a HTML page.
+web technologies is that you only need a text-editor to code a HTML page or PHP script.
 
 You have to study all building blocks separately and then connect all the ends together. Start with plain
-[HTML](/walkthrough-slim/html-forms/), than try plain [PHP](/walkthrough-slim/backend-intro/), than generate some HTML
+[HTML](/walkthrough-slim/html-forms/), then try plain [PHP](/walkthrough-slim/backend-intro/), then generate some HTML
 code in PHP script. Important part are [HTML forms](/walkthrough-slim/html-forms/) and [receiving values](/walkthrough-slim/backend-intro/receiving-values/).
 Mix in some [templating engine](/walkthrough-slim/templates/) magic, add a [framework](/walkthrough-slim/slim-intro/)
 and you are good to go. There is no simple answer for this, you have to study.

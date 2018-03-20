@@ -74,7 +74,7 @@ create his own website with such code and use spam email to attract visitors to 
 
 Once a user of your website visits a page with this automated form, the form submits which results in change of
 email address of visitor's account (suppose that the visitor is also user of your application and he is logged-in
-at the time of the attack). The attacker can than use the password-reset functionality of your application to
+at the time of the attack). The attacker can then use the password-reset functionality of your application to
 generate a new password and cut the user off his account. The generated password will obviously be delivered into
 attackers email account.
 
