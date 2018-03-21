@@ -34,7 +34,7 @@ Before we get to the layout modes, it is important how CSS handles HTML elements
 represented as a rectangular box (even if it has round corners) with four *edges*:
 
 {: .image-popup}
-![Schema -- Box Model](/articles/html/boxmodel.png)
+![Schema -- Box Model](/articles/css/boxmodel.png)
 
 The edges are computed from the element *content*.
 In the following example, the `inner` div size is 50 &times; 50 pixels. So that is the
@@ -50,7 +50,7 @@ between the element border and its parent *content edge*. The cyan rectangle sho
 The margin edge determines the total space occupied by the HTML element on screen.
 
 {: .image-popup}
-![Screenshot - Box model](/articles/html/sample-page-10a.png)
+![Screenshot - Box model](/articles/css/sample-page-10a.png)
 
 {% highlight html %}
 {% include /articles/html/css-sample-10a.html %}
@@ -78,7 +78,7 @@ above -- the CSS `width` property refers to the *content width* (content edge). 
 set the width to more than the content width (e.g. 150px) ?
 
 {: .image-popup}
-![Screenshot - Block layout - larger width](/articles/html/sample-page-10c.png)
+![Screenshot - Block layout - larger width](/articles/css/sample-page-10c.png)
 
 The content size was extended, but the content (obviously?) was not. That's simply because the `.inner` div
 has set width to 50px and no border or padding. This means that the space between the `.inner` *margin edge*
@@ -99,7 +99,7 @@ What happens if you make the content smaller? I also made padding smaller, so th
 
 {: .image-popup}
 {% comment %}TODO? stejny obrazek jak predtim{% endcomment %}
-![Screenshot - Block layout - smaller width](/articles/html/sample-page-10c.png)
+![Screenshot - Block layout - smaller width](/articles/css/sample-page-10c.png)
 
 As you can see, the `.inner` element width remained 50px wide and it **overflowed** the designated space
 in `.outer` div. By default, the overflow is visible. You can control what happens with the overflow
@@ -127,7 +127,7 @@ modified the CSS (`.inner` now has margin).
 {% endhighlight %}
 
 {: .image-popup}
-![Screenshot - boxes with no float](/articles/html/sample-page-11a.png)
+![Screenshot - boxes with no float](/articles/css/sample-page-11a.png)
 
 Notice that the boxes are stacked below each other. This is because block layout favors vertical flow -- i.e.
 it is assumed that a block level element occupies entire 'line' of screen (even if it really does not). This is typical
@@ -137,7 +137,7 @@ occupy the entire width of the document. If not, you can modify the by setting i
 When you set `float: left` to the `.inner` div. You should see this:
 
 {: .image-popup}
-![Screenshot - boxes with float left](/articles/html/sample-page-11b.png)
+![Screenshot - boxes with float left](/articles/css/sample-page-11b.png)
 
 All the `.inner` elements floated out of the parent `.outer` div. Which shrank to zero height, this is
 why the blue area disappeared. It still has width `500px` however, because that it defined in the style, so
@@ -159,7 +159,7 @@ I used [Lorem Ipsum](http://demo.agektmr.com/flexbox/) text to fill the page:
 {% endhighlight %}
 
 {: .image-popup}
-![Screenshot - text with no float](/articles/html/sample-page-12a.png)
+![Screenshot - text with no float](/articles/css/sample-page-12a.png)
 
 And now, lets float the figures:
 
@@ -172,12 +172,12 @@ And now, lets float the figures:
 {% endhighlight %}
 
 {: .image-popup}
-![Screenshot - text with float](/articles/html/sample-page-12b.png)
+![Screenshot - text with float](/articles/css/sample-page-12b.png)
 
 And this is how it looks like if the container `article` does not have enough text
 
 {: .image-popup}
-![Screenshot - text with float](/articles/html/sample-page-12c.png)
+![Screenshot - text with float](/articles/css/sample-page-12c.png)
 
 The above example should make the float behavior more clear. The floated element (`figure`) is removed
 from the container (`article`) element and positioned **as if it were there**. Similarly the content of
@@ -228,7 +228,7 @@ The columns are primarily set using the `column-count` property. There are also
 to tweak how the columns behave. You should see an output simirlar to this one:
 
 {: .image-popup}
-![Screenshot - text in columns](/articles/html/sample-page-13a.png)
+![Screenshot - text in columns](/articles/css/sample-page-13a.png)
 
 The column layout is primarily useful for splitting text into columns, if you want to put other
 blocks in columns, you should see the [flex layout](#flex-layout).
@@ -242,7 +242,7 @@ height of the element is controlled by the **line height**. This means that sett
 height (which is line height). This means that they interfere with the surrounding text:
 
 {: .image-popup}
-![Screenshot - inline border](/articles/html/sample-page-14a.png)
+![Screenshot - inline border](/articles/css/sample-page-14a.png)
 
 The above was generated using the following HTML:
 
@@ -268,7 +268,7 @@ and 2 ✕ 20px (border) which yields 78.4 px as the required height of the line:
 {% endhighlight %}
 
 {: .image-popup}
-![Screenshot - inline border](/articles/html/sample-page-14b.png)
+![Screenshot - inline border](/articles/css/sample-page-14b.png)
 
 If you want every line to have the same height, you (obviously?) need to set the `line-height` property
 for the entire `article` element. You can switch any element to inline layout by setting
@@ -292,7 +292,7 @@ only *semantic* tables -- i.e. it should contain only data whose *meaning* is a 
 form:
 
 {: .image-popup}
-![Screenshot - Tabular form](/articles/html/sample-page-15b.png)
+![Screenshot - Tabular form](/articles/css/sample-page-15b.png)
 
 It is not *semantically* correct to put the form in a `table` and `td` elements, because it is not
 truly a table. Yet it makes sense to display it in a form of a table. It can be done with a HTML like this:
@@ -340,7 +340,7 @@ The element in the middle has class `special` which moves it
 50 pixels to the left of its **original** position:
 
 {: .image-popup}
-![Screenshot - Relative position](/articles/html/sample-page-16a.png)
+![Screenshot - Relative position](/articles/css/sample-page-16a.png)
 
 {% highlight css %}
 #special {
@@ -363,7 +363,7 @@ If you modify the `#special` element to:
 You'll see a result like this:
 
 {: .image-popup}
-![Screenshot - Absolute position](/articles/html/sample-page-16b.png)
+![Screenshot - Absolute position](/articles/css/sample-page-16b.png)
 
 Notice two things: First, the element left it's parent -- you can see that the other
 `.inner` elements have been rearranged. Second, the element position should be
@@ -382,7 +382,7 @@ container `.outer`.
 {% endhighlight %}
 
 {: .image-popup}
-![Screenshot - Relative position](/articles/html/sample-page-16c.png)
+![Screenshot - Relative position](/articles/css/sample-page-16c.png)
 
 The `#special` element now **overlaps** the first yellow box (notice there is number 5 instead of 1). This
 is because it is positioned at coordinates 0, 0 **relative** to the content of the `.outer` element
@@ -402,7 +402,7 @@ modified by seting the `z-index` property, but only if the element
 Let's change the `#special` element color and offset it a bit so that you can see the overlap more clearly:
 
 {: .image-popup}
-![Screenshot - Relative position](/articles/html/sample-page-16d.png)
+![Screenshot - Relative position](/articles/css/sample-page-16d.png)
 
 {% highlight css %}
 {% include /articles/html/style-16d.css %}
@@ -422,9 +422,8 @@ includes the `.outer` element. In short, the `#special` element hides behind par
 {% include /articles/html/style-16e.css %}
 {% endhighlight %}
 
-{% comment %}TODO obrazek tu neni{% endcomment %}
 {: .image-popup}
-![Screenshot - Relative position](/articles/html/sample-page-16e.png)
+![Screenshot - Relative position](/articles/css/sample-page-16e.png)
 
 The above works, but if you experiment with it, you'll run into some peculiarities. E.g. setting
 `.outer` z-index to 10 would not bring it above the yellow boxes or setting `#special` stacking order
@@ -460,7 +459,7 @@ You can see how fixed position is used in the following example:
 {% endhighlight %}
 
 {: .image-popup}
-![Screenshot - Flex layout](/articles/html/sample-page-17a.png)
+![Screenshot - Flex layout](/articles/css/sample-page-17a.png)
 
 Notice that the element is positioned from bottom right corner and its margin still applies. You need to
 test that above example on your own and see that the yellow box number five stays attached to the viewport
@@ -486,7 +485,7 @@ To recreate the [example with floats](#float-layout) using flex layout, you can 
 {% endhighlight %}
 
 {: .image-popup}
-![Screenshot - Flex layout](/articles/html/sample-page-18a.png)
+![Screenshot - Flex layout](/articles/css/sample-page-18a.png)
 
 The `display: flex;` property switches the layout mode of `.outer` div to *flexible container*.
 All children of that element become *flexible boxes*. The property `flex-flow: row wrap;` defines that

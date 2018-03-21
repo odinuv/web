@@ -24,7 +24,7 @@ restriction `name="multi[123][]"`.
 You probably see that you can create useful web applications even without such complicated gadgets. On the other hand,
 useful and easy to use user interface can make difference and give you a competitive advantage. The decision is up to you.
 
-Introduced approach may be widely extended with [JavaScript](/articles/javascript) and/or [AJAX](/articles/javascript/#ajax).
+Introduced approach may be widely extended with [JavaScript](/articles/javascript/) and/or [AJAX](/articles/javascript/#ajax).
 We can easily generate form input fields on demand and even prefill some values from backend.
 
 A useful improvement in your project may be a form which will allow to add or modify multiple contact information of

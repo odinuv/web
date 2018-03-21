@@ -14,7 +14,7 @@ it is becoming quite a convoluted mess of PHP and HTML (and yet it is still a ve
 simple form). The solution to this problem is to use **(HTML) templates**.
 
 The advantage of using templates is that they simplify both the PHP and HTML code and
-that they protect your code against [Cross Site Scripting vulnerabilities](todo).
+that they protect your code against [Cross Site Scripting vulnerabilities](/articles/security/xss/).
 The templates disadvantage is that you need to learn another language. HTML
 templates are called templates, because they are HTML pages with placeholders. The
 actual value of the placeholders is supplied when the template is *rendered*

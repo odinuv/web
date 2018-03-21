@@ -117,8 +117,8 @@ The project directory (root) contains the following directories and files:
 - cache --- a directory used for a [template cache](/walkthrough-slim/templates/), no need to worry about this one now.
 - logs --- a directory for files with application messages, these will be useful when debugging the application.
 - public --- a directory with files accessible to the end-user of the application:
-    - css --- a directory for [Cascading Styles Sheets](../css), includes [Bootstrap](../bootstrap/).
-    - js --- a directory containing [Javascript files](../javascript), includes [JQuery](../javascript/jquery/).
+    - css --- a directory for [Cascading Styles Sheets](../css/), includes [Bootstrap](../css/bootstrap/).
+    - js --- a directory containing [Javascript files](../javascript/), includes [jQuery](/articles/javascript/jquery/).
     - .htaccess --- a hidden file used by [Apache web server](/course/technical-support/) to route requests to `index.php`.
     - index.php --- an entry script of the Slim Framework, do not modify this file.
 - src --- the source code of the application, this is the directory, where most of your work will be done.
@@ -139,7 +139,7 @@ The project directory (root) contains the following directories and files:
 This is probably a lot of stuff in the beginning. So I want to drive your attention to the important parts. These are:
 
 - The `src` directory and mainly the `routes.php` file, which will contain most of your code.
-- The `templates` directory which contains the [Latte Templates](../templates) for HTML pages, I will get to this one when [explaining templates](../templates).
+- The `templates` directory which contains the [Latte Templates](../templates/) for HTML pages, I will get to this one when [explaining templates](../templates/).
 - The `.env` file which is used to configure your application (most importantly the database credentials), this will be important when [using the database](../database-using/).
 - The `composer` tool and its stuff.
 

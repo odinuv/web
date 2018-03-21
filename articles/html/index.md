@@ -40,7 +40,7 @@ document will look, it only describes structural elements of the document, such 
 - forms
 
 An HTML document is [parsed](/articles/programming/#source-code)
-(together with [styles](/walkthrough/css/)) by an interpreter built in the web browser.
+(together with [styles](/walkthrough-slim/css/)) by an interpreter built in the web browser.
 Then it is **rendered** by the
 browser [rendering engine](/articles/html/#rendering-engines) on
 the user's screen. During rendering, the
@@ -176,7 +176,7 @@ has children `<div>`, `<div>` and `<footer>`. It is very important to recognize 
 hierarchical structure shown in the image below:
 
 {: .image-popup}
-![Hierarchical HTML](/walkthrough/css/html.svg)
+![Hierarchical HTML](/common/css/html.svg)
 
 Notice that the hierarchical structure of HTML means that the following piece of code is not a valid HTML document:
 
@@ -259,7 +259,7 @@ There is a number of [common attributes](https://www.w3.org/TR/html/dom.html#sec
 it's really good to know about:
 
 - `id` --- A unique identifier of the HTML element within the document (used,
-e.g. in [forms](http://localhost:4000/walkthrough/html-forms/) and [CSS styles](/articles/css/));
+e.g. in [forms](/walkthrough-slim/html-forms/) and [CSS styles](/articles/css/));
 - `class` --- An arbitrary class of the HTML element, used mainly for [CSS styles](/articles/css/));
 - `title` --- An arbitrary text which is shown when a user hovers over a HTML element;
 - `style` --- A definition of an [inline style](/articles/css/#inline);
@@ -294,7 +294,7 @@ is arbitrary. For example you may write:
 <p data-myAttribute='someValue'></p>
 {% endhighlight %}
 
-Data attributes are useful for passing arbitrary values to [JavaScript](/walkthrough/javascript/).
+Data attributes are useful for passing arbitrary values to [JavaScript](/walkthrough-slim/javascript/).
 However their use would fall into the advanced category, so you probably won't use them soon.
 
 ### HTML Header
@@ -306,9 +306,9 @@ children:
 
 - `title` --- Set a page title, used for example in the title of the browser window (required).
 - `meta` --- Set the page **metadata** (e.g. encoding (see below), page description, author, keywords).
- - `style` --- [CSS styles](/walkthrough/css/) in page.
+ - `style` --- [CSS styles](/walkthrough-slim/css/) in page.
 - `link` --- A definition of related files (external style, fonts, etc.).
-- `script` --- A [JavaScript](/walkthrough/javascript/) code or link to a [JavaScript](/walkthrough/javascript/) code.
+- `script` --- A [JavaScript](/walkthrough-slim/javascript/) code or link to a [JavaScript](/walkthrough-slim/javascript/) code.
 
 #### Encoding
 It is highly recommended to set page encoding with `<meta charset='utf-8' />`. Although web
@@ -528,7 +528,7 @@ In this article I have described the HTML language principles. Contrary to popul
 is not just a text document with some tags. It is a document with a hierarchial structure
 of document elements. You should be aware of the basic properties of the HTML language and
 its relations to other languages and standards. You should be also aware of the features
-available in HTML5. Feel free to go through the [corresponding exercises](/walkthrough/html/)
+available in HTML5. Feel free to go through the [corresponding exercises](/walkthrough-slim/html/)
 to get yourself acquainted with HTML.
 
 ### New Concepts and Terms

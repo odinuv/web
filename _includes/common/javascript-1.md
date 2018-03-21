@@ -1,7 +1,7 @@
 Sometimes a quick popup alert or a confirmation dialog is the best solution to displaying a notification or question
 to a website visitor. Imagine that you have to write a PHP script and a template to confirm deletion
 of a record -- it would be a lot of code. You probably saw a dialog with native look of the operating system
-on other websites. Such dialog can be displayed using a [JavaScript](/articles/javascript) code and it
+on other websites. Such dialog can be displayed using a [JavaScript](/articles/javascript/) code and it
 is a built-int part of the browser ([frontend](todo)).
 
 In this article I will not teach you how to build an application entirely with JavaScript. I will show you how to use
@@ -106,7 +106,7 @@ To create a new element you can use `document.createElement` method - e.g. `var 
 
 In the above code, first I create a list `ul` element (`newList` variable). Then I pick an existing HTML element (with id `container`) and
 add the list as a child of the container. Then I add two items to the list. Notice the difference between assigning `innerHTML` and `textContent`.
-The latter is much safer approach, not susceptible to [XSS attacks](/articles/security/xss).
+The latter is much safer approach, not susceptible to [XSS attacks](/articles/security/xss/).
 
 ### Task -- Toggle Class Using a Button Click
 Make a button and some HTML element with an `id` attribute. Attach a click event to the button using an `onclick` attribute.
@@ -122,7 +122,7 @@ You also need to define the CSS class `highlight` with some visual properties de
 If you came up with another solution, do not worry, there are always multiple working solutions when you write any code.
 
 ## Confirm User Actions
-In the chapter about [records deletion](../backend-delete), you were referred to this article for
+In the chapter about [records deletion](../backend-delete/), you were referred to this article for
 information about how to confirm a user action. Using JavaScript, we can prevent the visitor's browser from sending
 a HTTP request (i.e. following a link or sending a form). This is called *preventing navigation* and might be useful for
 example when the user is filling a form and you want to make sure that she does not accidentally leave the page (and loose the filled form).

@@ -329,7 +329,7 @@ timer ticks or when the browser finishes loading of the page or particular image
 <button onclick="alert('Hello!')">Click me - alert()!</button>
 {% endhighlight %}
 
-Open developer console (F12) and try to click this button or the other:
+Open [developer console (F12)](/course/not-a-student/#web-browser) and try to click this button or the other:
 
 <button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
 <button onclick="alert('Hello!')">Click me - alert()!</button>
@@ -375,7 +375,7 @@ A good example which shows how to completely divide HTML and JavaScript code fol
 {: .note}
 When you use `formElement.addEventListener('submit', ...)` to register an event, you have to prevent the browser from
 submitting the form by calling `eventObject.preventDefault()` inside handler instead of returning `false` like mentioned
-in [walkthrough example](/walkthrough/javascript/#using-javascript-to-confirm-user-actions).
+in [walkthrough example](/walkthrough-slim/javascript/#using-javascript-to-confirm-user-actions).
 
 It is possible to work with special variable called `this` inside event handlers. That variable holds reference to an
 HTML element which fired event.
@@ -540,7 +540,7 @@ function stopTimer() {
 ## Classes and inheritance
 You can create an instance of an object in JavaScript just by assigning object literal to a variable -- `var x = {...}`.
 This approach is not very universal. It is useful to define a *class* and derive instances of objects from it using
-`new` keyword -- this is similar to Java or [PHP OOP approach](/walkthrough/backend-intro/objects/).
+`new` keyword -- this is similar to Java or [PHP OOP approach](/walkthrough-slim/backend-intro/objects/).
 Traditional JavaScript (i.e. that one which is executable in all browsers) has unfamiliar class definition based
 on prototypes:
 
@@ -721,7 +721,7 @@ up to one half of original.
 {% endhighlight %}
 
 There are also many other JS libraries or frameworks. jQuery is used in most cases and sometimes other
-libraries (like [Bootstrap](/walkthrough/css/bootstrap/)) require you to include it as well.
+libraries (like [Bootstrap](/walkthrough-slim/css/bootstrap/)) require you to include it as well.
 Be careful about mixing different libraries -- some of them cannot or should not be used together.
 
 Moreover, there are also [polyfill](https://en.wikipedia.org/wiki/Polyfill) libraries which are used to

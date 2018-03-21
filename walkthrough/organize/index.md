@@ -57,7 +57,7 @@ Currently you have many files in your project:
 - Included PHP scripts (such as 'start.php' or 'latte.php')
 - Templates
 - Layout template(s)
-- Other resources such as [CSS styles](../css) and images
+- Other resources such as [CSS styles](../css/) and images
 - Experimental testing pieces of a code
 
 So let's bring a few rules into this:

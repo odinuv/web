@@ -86,7 +86,7 @@ let's start with making a static page first:
 {% endhighlight %}
 
 Now add a PHP route, which generates the page using a template and a layout template (you can
-use one [from the previous chapter](./backend/). So the page template would be:
+use one [from the previous chapter](/walkthrough-slim/templates-layout/). So the page template would be:
 
 {% highlight html %}
 {% include /walkthrough-slim/backend-select/persons-list-1.latte %}
@@ -108,7 +108,7 @@ a single page. To determine if an array contains an element, we can use the `emp
 It is not correct to use the condition `if ($queryParams['search'] == '')` because that would trigger a warning
 that the `search` item is not found in the array (and thus cannot be compared to anything). Also the
 `empty` function checks if the value of the variable evaluates to false, taking advantage of the
-[boolean conversion](./backend-intro/#boolean-conversions). This means
+[boolean conversion](#boolean-conversions). This means
 we can use it also on the `keyword` field to check whether the
 user has entered some non-empty string.
 
@@ -273,7 +273,7 @@ PHP script (notice that the queries have different boolean operators):
 
 {: .note}
 The above script is written in a slightly different style than
-the [previous one](./backend-select/#finalizing). Here, I
+the [previous one](#finalizing). Here, I
 have maintained the state consistency by first initializing the `$persons` and `$message` variables
 to some default values and have used the conditions to change them only when necessary. This leads
 to a more concise code, which may be harder to read as it does not explicitly enumerate all of the
@@ -287,7 +287,7 @@ how all those criteria can be combined, which leads us to an [application design
 In this chapter you have learned how to process HTML forms in the PHP script.
 You should be familiar with obtaining the parameters from *Request* object.
 Make sure you understand the rules how HTML form controls are transformed into
-[name-value pairs](./html-forms/#name-and-value) and subsequently into query parameters and POST data.
+[name-value pairs](../html-forms/#name-and-value) and subsequently into query parameters and POST data.
 This allows you to implement your own logic into the application behavior. So from now on, most of the
 exercises have a virtually unlimited number of solutions.
 

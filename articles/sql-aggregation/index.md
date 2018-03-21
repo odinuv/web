@@ -156,7 +156,7 @@ widely and for complicated queries it is in fact easier (because it allows you t
 parts of the query isolated).
 
 #### Approach 3 -- IN operator
-The [IN operator](/walkthrough/database/#select) is used as part of the `WHERE` clause to check if a value of
+The [IN operator](/walkthrough-slim/database-intro/#select) is used as part of the `WHERE` clause to check if a value of
 a column is in a *set* of values.
 
 {% highlight sql %}
@@ -410,7 +410,7 @@ you can find a current list in [the manual](https://www.postgresql.org/docs/9.5/
 
 An aggregation function takes a column (or [column_expression](https://www.postgresql.org/docs/9.5/static/sql-expressions.html))
 as an argument. For example
-you can run the following queries on the [sample database](/walkthrough/database/#import-database):
+you can run the following queries on the [sample database](/walkthrough-slim/database-intro/#import-database):
 
 - `SELECT COUNT(*) FROM person` -- number of **rows** in the `person` table (49).
 - `SELECT COUNT(height) FROM person` -- number of **values** in the `height`column (40).
@@ -575,7 +575,7 @@ GROUP BY person.id_person
 {% endhighlight %}
 
 Notice that the solution heavily depends on how the columns are defined in the database, so you must be able to
-[understand the table definition](/walkthrough/database/#reading-database-structure). Also counting
+[understand the table definition](/walkthrough-slim/database-intro/#reading-database-structure). Also counting
 (or summing) anything properly requires that you
 wrap your head around the aggregation principle. Hopefully the next example will help you
 with that.
@@ -798,7 +798,7 @@ WHERE contact_count.count > 1
 {% endhighlight %}
 
 ## Group By Column Expression
-If you read the [definition](/walkthrough/database/#reading-database-structure) properly, you may have noticed that
+If you read the [definition](/walkthrough-slim/database-intro/#reading-database-structure) properly, you may have noticed that
 `GROUP BY` clause allows you to use a [column expression](https://www.postgresql.org/docs/9.5/static/sql-expressions.html)
 (not only a column name).
 The following query takes advantage of that:
@@ -869,7 +869,7 @@ SELECT * FROM person
 OFFSET 20 LIMIT 10 ORDER BY last_name, first_name
 {% endhighlight %}
 
-See the [corresponding part of the walkthrough](/walkthrough/pagination) for an example of
+See the [corresponding part of the walkthrough](/walkthrough-slim/pagination/) for an example of
 implementation of entire pagination in PHP. However, you should be aware that
 pagination is subject to
 [certain Criticism](http://ux.stackexchange.com/questions/36394/when-is-it-better-to-paginate-and-not-to-paginate).
@@ -902,7 +902,7 @@ There are three options (assuming the top 10 smallest persons problem):
 equal to that value.
 
 Each approach may return a different number of results (assuming
-[the sample database](/walkthrough/database/#import-database)):
+[the sample database](/walkthrough-slim/database-intro/#import-database)):
 
 {% highlight sql %}
 SELECT * FROM person ORDER BY height LIMIT 10;

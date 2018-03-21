@@ -82,7 +82,7 @@ let's start with making a static page first:
 {% endhighlight %}
 
 Now add a PHP script, which generates the page using a template and a layout template (you can
-use one [from the previous chapter](/walkthrough/backend/). So the page template would be:
+use one [from the previous chapter](/walkthrough/templates-layout/). So the page template would be:
 
 {% highlight html %}
 {% include /walkthrough/backend-select/persons-list-1.latte %}

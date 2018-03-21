@@ -4,7 +4,7 @@ backup. Be careful about what you delete, though do not be afraid to experiment 
 your project since [you do have a backup for it](todo).
 
 ## Uniquness
-The [SQL `DELETE`](database/#delete) command is already familiar to you.
+The [SQL `DELETE`](../database-intro/#delete) command is already familiar to you.
 One thing you should think of is how to determine which rows to delete. The most common action
 is deletion of a single row. Each table should have a
 [primary key](/articles/relational-database/#key) which identifies
@@ -22,4 +22,4 @@ use the database keys correctly!
 
 It is also worth noting that before you allow users of your application to modify or even
 delete information, you should first
-take steps to [authenticate](login) and authorize them.
+take steps to [authenticate](../login/) and authorize them.

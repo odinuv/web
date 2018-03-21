@@ -21,7 +21,7 @@ styles built in a web browser. These are called [user-agent](/articles/web/#www-
 every web browser so that it renders an HTML page without styles in some sensible manner.
 
 {: .image-popup}
-![Screenshot - User agent styles](/articles/html/user-agent-css.png)
+![Screenshot - User agent styles](/articles/css/user-agent-css.png)
 
 ## Cascading Style Sheets
 Cascading Style Sheets (CSS) is standard defining the rendering **rules** for a HTML (or
@@ -57,7 +57,7 @@ phone with screen resolution 320 &times; 480 is really difficult. It is comparab
 application as it requires design and graphical skills as well as *deep understanding* of CSS rendering
 modes and all available options. It also requires fairly good understating of HTML and experience so that
 you can design a good page layout
-(not to be confused with [layout template](/articles/walkthrough/templates-layout/)).
+(not to be confused with [layout template](/walkthrough-slim/templates-layout/)).
 
 Simply put, a **page layout** describes the arrangement (position and sizes) of all page elements (e.g. paragraphs).
 Luckily, there is plenty of ready to use [page layouts](#summary) which
@@ -111,12 +111,12 @@ the following HTML document:
 will display like this (when the link is not visited):
 
 {: .image-popup}
-![Screenshot -- Sample page Unvisited](/articles/html/sample-page-1a.png)
+![Screenshot -- Sample page Unvisited](/articles/css/sample-page-1a.png)
 
 And when the link is visited, the HTML document will display like this:
 
 {: .image-popup}
-![Screenshot -- Sample page Visited](/articles/html/sample-page-1b.png)
+![Screenshot -- Sample page Visited](/articles/css/sample-page-1b.png)
 
 I will explain why all of the links are not blue [in a moment](#overriding).
 
@@ -328,7 +328,7 @@ black. The latter rule overrides the former rule and makes all paragraphs black.
 overriding in [developer tools](/course/not-a-student/#web-browser) where the overridden property value is crossed out.
 
 {: .image-popup}
-![Screenshot - Sample page](/articles/html/sample-page-3.png)
+![Screenshot - Sample page](/articles/css/sample-page-3.png)
 
 Not all CSS properties are inherited. Because there are [hundreds of available CSS properties](https://developer.mozilla.org/en/docs/Web/CSS/Reference).
 Remembering a list of inherited and non-inherited properties is not practical. But if you use common sense
@@ -352,7 +352,7 @@ is transparent, therefore you can see the parent element underneath. For example
 If you look at the above page in [developer tools](/course/not-a-student/#web-browser), you will see the following:
 
 {: .image-popup}
-![Screenshot - Sample page](/articles/html/sample-page-4.png)
+![Screenshot - Sample page](/articles/css/sample-page-4.png)
 
 I.e. you can see that the `ul` element has no background, and you can see its parent through it -- the `body`
 element with the green background. You can also see that there is not any overridden background for the `p` element.
@@ -421,7 +421,7 @@ border-left-color: black;
 Lets say that I want to create a page like this:
 
 {: .image-popup}
-![Screenshot - page with rockets](/articles/html/sample-page-7.png)
+![Screenshot - page with rockets](/articles/css/sample-page-7.png)
 
 All I need is a simple HTML page with two `div`s:
 
@@ -439,7 +439,7 @@ Background `background` is shorthand property, which can be seen in browser deve
 when you switch to **computed** properties:
 
 {: .image-popup}
-![Screenshot - page with rockets - developer tools](/articles/html/sample-page-7a.png)
+![Screenshot - page with rockets - developer tools](/articles/css/sample-page-7a.png)
 
 So writing down:
 {% highlight css %}
@@ -594,7 +594,7 @@ selector combinators. With the following CSS style:
 The page will display like this:
 
 {: .image-popup}
-![Screenshot - Sample page](/articles/html/sample-page-9.png)
+![Screenshot - Sample page](/articles/css/sample-page-9.png)
 
 Ok, this looks really ugly, but it demonstrates different selector and combinators. There are
 three lists in the page, the first and third are un-ordered and the second one is ordered. The
@@ -684,7 +684,7 @@ value use a [color picker](https://www.google.cz/search?q=coor+picker) or
 [color scheme picker](http://paletton.com/) to pick multiple matching colors.
 
 ## CSS Units
-There are [many CSS units]((https://www.w3.org/TR/css3-values/#lengths)) to set sizes of different elements,
+There are [many CSS units](https://www.w3.org/TR/css3-values/#lengths)) to set sizes of different elements,
 most used ones are *px*, *em*, *rem*, *pt* and *%*. The available units fall into categories:
 
 - absolute units -- pixels (`px`), centimeters (`cm`), millimeters (`mm`), [points](https://en.wikipedia.org/wiki/Point_(typography)) (`pt`), ...
@@ -767,7 +767,7 @@ support for customization, e.g.:
 - Skeleton ([getskeleton.com](http://getskeleton.com/)),
 - SemanticUI ([semantic-ui.com](http://semantic-ui.com/)).
 
-You can follow the corresponding [part of walkthrough](/walkthrough/css/bootstrap) to get
+You can follow the corresponding [part of walkthrough](/walkthrough-slim/css/bootstrap/) to get
 acquainted with Bootstrap framework.
 
 ### New Concepts and Terms

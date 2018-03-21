@@ -522,7 +522,7 @@ relation (table). The simplest solution is to use **auto increment** or
 (which are very similar, but still slightly different approaches to
 the same thing) to generate a progression of integers usually starting from 1.
 This approach is also used in
-our [example database](/walkthrough/database/#database-schema) because it is a typical
+our [example database](/walkthrough-slim/database-intro/#database-schema) because it is a typical
 approach to obtain a simple artificial identifier (**ID**). Keep in mind that it is not at all important
 if the sequence of numbers is continuos or has gaps, it is also not important how large
 the ID numbers are. The only important property is that they **mustn't repeat**.
@@ -538,7 +538,7 @@ have two physical tables which represent a single relation. When you want to ins
 into that relation you cannot reliably create a sequence of numbers -- you can check the
 other table for the largest number (if possible), but by the time you receive the response from
 the remote system, the number could have already changed. There is an example
-in a [separate article about inserting](/walkthrough/backend-insert/advanced/).
+in a [separate article about inserting](/walkthrough-slim/backend-insert/advanced/).
 
 ## Foreign Key
 A foreign key is quite special, it represents **relationships** between **entities**
@@ -565,7 +565,7 @@ value of a record in one relation is the same as an attribute value of a record
 It is the condition as in [*join*](/articles/sql-join/#joining-tables). Foreign keys are very often used as
 join conditions.
 
-For example in the [example database](/walkthrough/database/#database-schema), there are relations `person` and
+For example in the [example database](/walkthrough-slim/database-intro/#database-schema), there are relations `person` and
 `contact`. `contact` contains individual values for different persons (an email address,
 a phone number, etc.), these must be assigned to a particular person to make sense.
 Therefore the `contact` relation has the attribute `id_person` which is a *reference*
@@ -581,7 +581,7 @@ table is `person`.
 
 It is possible to have an entity (relation) which has only foreign keys and has
 no own keys. Such an entity is called a **Weak entity**. In
-the [example database](/walkthrough/database/#database-schema) is is
+the [example database](/walkthrough-slim/database-intro/#database-schema) is is
 the `person-meeting` entity. The `person-meeting` entity represents an attendance of
 a person on a meeting (why this is a separate table is described in
 [article about database design](/articles/database-design/#using-e-r-model)).

@@ -38,11 +38,11 @@ The grade from the final exam and the project evaluation make up for the final c
     - [Presentation slides](/slides/database-systems/)
 - Week 4
     - Articles: [Relational Database Systems](/articles/database-systems/)
-    - Exercises: [SQL](/walkthrough-slim/database/) and [Working with database](/walkthrough-slim/database-using/)
+    - Exercises: [SQL](/walkthrough-slim/database-intro/) and [Working with database](/walkthrough-slim/database-using/)
     - [Presentation slides](/slides/relational-database/)
 - Week 5
     - Articles: [Database Systems](/articles/database-systems/)
-    - Exercises: [Slim introduction](/walkthrough-slim/slim-intro/), [Connecting to database](/walkthrough-slim/backend/) and [Selecting data](/walkthrough-slim/backend-select/)
+    - Exercises: [Slim introduction](/walkthrough-slim/slim-intro/) and [Selecting data](/walkthrough-slim/backend-select/)
     - [Presentation slides](/slides/sql-join/)
 - Week 6
     - Articles: [SQL Language](/articles/sql-join/)
@@ -58,7 +58,7 @@ The grade from the final exam and the project evaluation make up for the final c
     - [Presentation slides](/slides/database-tech/)
 - Week 9
     - Articles: [Database Systems -- Sequences, Constraints, Keys](/articles/database-tech/)
-    - Exercises: [Deleting Data](/walkthrough-slim/backend-delete) and [Updating data](/walkthrough-slim/backend-update/)
+    - Exercises: [Deleting Data](/walkthrough-slim/backend-delete/) and [Updating data](/walkthrough-slim/backend-update/)
     - [Presentation slides](/slides/web-security/)
 - Week 10
     - Articles: [Cascading Style Sheets](/articles/css/)
@@ -116,7 +116,7 @@ described below:
 
 The assignment is intentionally very loosely defined. It is up to you to come up with the
 application design, functionality and user interface. It is not an easy task, so I have designed a
-[database schema](/walkthrough-slim/database/#database-schema) for you.
+[database schema](/walkthrough-slim/database-intro/#database-schema) for you.
 
 {: .image-popup}
 ![Database Schema](/common/schema.svg)

@@ -129,7 +129,7 @@ to an automatically generated key. Also even within one database system, there
 may be complex changes in behavior -- e.g [MyISAM](http://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html) ×
 [InnoDB](http://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html) storage
 engines on the [MySQL database server](http://dev.mysql.com/doc/refman/5.7/en/).
-It is therefore the best to use a [good tool](todo ide) for designing the database,
+It is therefore the best to use a [good tool](/course/not-a-student/#text-editor-or-ide) for designing the database,
 which is also capable of generating the correct SQL queries for you.
 
 SQL statements for defining the database schema are also often used for importing and exporting
@@ -284,7 +284,7 @@ grows, you will run into problems caused by the fact that it is non-atomic (
 [1NF](/articles/database-design/#first-normal-form)), which
 means that it is impossible to select a part of the date as well as impossible to 
 store or compute the interval. It brings back
-[application and database dependency](/artcles/database-systems/#integrated-information-system).
+[application and database dependency](/articles/database-systems/#integrated-information-system).
 And it is therefore unreliable when more applications use the database.
 
 ### Binary Data
@@ -412,7 +412,6 @@ calling:
 $db->lastInsertId();
 ...
 ~~~
-{% endhighlight %}
 
 The PDO [`lastInsertId` function](http://php.net/manual/en/pdo.lastinsertid.php) takes
 case of the differences between PostgreSQL and MySQL servers.
@@ -497,7 +496,7 @@ SELECT CURRVAL('relation_type_id_relation_type_seq');
 The Currval function (and the sequence) have a special property -- it remembers
 the last value for current database connection. This for example means that
 if you want to use that function in an
-[web admin interface](/walkthrough/database-intro/#getting-started), you have to
+[web admin interface](/walkthrough-slim/database-intro/#getting-started), you have to
 put both queries together. Otherwise -- if you run the INSERT query, and then
 run the SELECT query -- you will obtain the following error:
 
@@ -625,7 +624,7 @@ child rows -- i.e. cancel the relationship.
 
 The decision which behavior should be used depends on the application requirements and
 is usually different for each individual relationship. I can demonstrate it on the
-[sample database](/walkthrough/database/#import-database).
+[sample database](/walkthrough-slim/database-intro/#import-database).
 
 ### Foreign Key -- Cascade Example
 Look at the following excerpt of the `person` and `contact` table.
@@ -669,7 +668,7 @@ ALTER TABLE ONLY person_meeting
 {: .note}
 Be sure to check the name of the foreign key constraint before you run the
 above queries. The above corresponds to the default state of the
-[sample database](/walkthrough/database/#import-database).
+[sample database](/walkthrough-slim/database-intro/#import-database).
 
 Or when creating a new table, you would do it like this:
 

@@ -22,7 +22,6 @@ There are more CSS frameworks available online -- e.g.:
 
 I will use the Bootstrap version 3.x here because it is best known and I like it.
 The above frameworks offer similar features to Bootstrap, so the choice is rather arbitrary.
-And if you are curious what the word Bootstrap means, you can [read an article about it](bootstrap/).
 
 Linking Bootstrap to your application is simple. Go to [the download page](http://getbootstrap.com/getting-started/#download) and copy those
 few lines from the **Bootstrap [CDN](https://en.wikipedia.org/wiki/Content_delivery_network)** section. You can also download the whole Bootstrap

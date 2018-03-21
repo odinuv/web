@@ -2,13 +2,13 @@
 When you know the basics of [HTML](/articles/html/) and know how to
 create a [static HTML page](../html/) you
 can start with implementing a [server backend](todo). The server backend is 
-an application which generates the HTML page dynamically (on the fly) depending on some external input (usually user input and content stored in a [database](../database/)).
+an application which generates the HTML page dynamically (on the fly) depending on some external input (usually user input and content stored in a [database](../database-intro/)).
 For example, when you check your email on the web, the page you see contains your current emails (stored somewhere)
 and only those you want to see (e.g. in your inbox or another folder you have selected).
 
 To create a dynamic page, you need another technology beyond HTML, this can be either:
 
-- anything on a [web server](../backend-intro) -- backend,
+- anything on a [web server](../backend-intro/) -- backend,
 - [JavaScript](../javascript/) on a web client -- frontend.
 
 In this part I will concentrate on the web *server* approach. I choose to use the [PHP language](http://php.net/) for

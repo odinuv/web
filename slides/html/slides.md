@@ -22,7 +22,7 @@ redirect_from: /en/apv/slides/html/
 <section markdown='1'>
 ## Web Browsers
 
-![Graph -- Browser Share](/articles/html/browsers.png)
+![Graph -- Browser Share](/articles/css/browsers.png)
 </section>
 
 <section markdown='1'>
@@ -372,7 +372,7 @@ redirect_from: /en/apv/slides/html/
 - Border -- outside of the HTML element -- around the box.
 - Margin -- outside of the HTML element -- around the box.
 
-![Margin & Padding](/articles/html/margin-padding.png)
+![Margin & Padding](/articles/css/margin-padding.png)
 </section>
 
 <section markdown='1'>

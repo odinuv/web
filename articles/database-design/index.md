@@ -11,7 +11,7 @@ In the previous articles, you have learned about the
 [principles of relational databases](/articles/relational-database/),
 the [basics of SQL](/articles/sql-join/) and
 [aggregation in SQL](/articles/sql-aggregation/). In all those articles, I used
-the [example database](/walkthrough/database/#import-database) from
+the [example database](/walkthrough-slim/database-intro/#import-database) from
 the [project](/course/#project-assignment). There are a number of questions you should
 be asking yourself by now, such as:
 
@@ -277,7 +277,7 @@ For example if you have a relationship between `person` and `location`, you have
 
 A table which exists to represent a M:N relationship is called an **association table**. Typically,
 the association table has a compound primary key -- `id_person` + `id_location` in the above
-`residence` table. In the [sample database](/walkthrough/database/#database-schema),
+`residence` table. In the [sample database](/walkthrough-slim/database-intro/#database-schema),
 there is a `person_meeting` association table.
 Sometimes this is also referred to as a [**weak entity**](https://en.wikipedia.org/wiki/Weak_entity). The
 `person_meeting` (or `residence`) entities have no primary key of their own. They are only
@@ -499,7 +499,7 @@ can be created (a **physical model**):
 
 The above diagram is also an ERD in so called **Crow's foot notation**. This
 notation displays relations (tables) and their definitions directly. With
-proper [design software](todo ido), the SQL queries to create tables in the database can be
+proper [design software](todo), the SQL queries to create tables in the database can be
 generated automatically. You can then start using the database.
 
 ## Naming conventions

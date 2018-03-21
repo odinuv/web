@@ -200,7 +200,7 @@ and values given by form input fields. Accessing data or route placeholders from
 (i.e. `getQueryParam()` method and `$args` array).
 
 ## Checking incoming data
-Sometimes you may not be sure whether a form or a link passed data correctly. One way is to use [developer tools](/not-a-student/#web-browser)
+Sometimes you may not be sure whether a form or a link passed data correctly. One way is to use [developer tools](/course/not-a-student/#web-browser)
 in your browser and other is to print contents of variables directly to the browser.
 
 To check incoming data in a *POST* route use `print_r()` or [similar function](http://php.net/manual/en/function.var-dump.php):

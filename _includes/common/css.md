@@ -74,7 +74,7 @@ To link the style definition to our page, we need to pass our CSS definitions in
 There are [three ways how to do it](/articles/css/#connecting-styles-with-html), but the best is to
 place the CSS definitions into a
 separate file(s). This way, you can easily swap CSS files if you want to apply a new design.
-Notice in the [developer console (F12)](todo) that after you link the HTML and CSS file together, a new
+Notice in the [developer console (F12)](/course/not-a-student/#web-browser) that after you link the HTML and CSS file together, a new
 [HTTP request](/articles/http/) is sent by the browser to retrieve that CSS file.
 
 {% highlight html %}
@@ -324,7 +324,7 @@ graphical design into the HTML and CSS codes). The important thing is that you c
 and know how to connect CSS with HTML. You should be able to find basic CSS properties online and be able
 to use them.
 
-In the [following chapter](css/bootstrap) I will show you how to use some freely available CSS styles
+In the [following chapter](./bootstrap/) I will show you how to use some freely available CSS styles
 so that you can save a lot of work designing a full page from scratch.
 
 ### New Concepts and Terms

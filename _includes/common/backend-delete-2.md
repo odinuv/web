@@ -1,5 +1,5 @@
 ## Next Steps
-Take a look at the [JavaScript](javascript#using-javascript-to-confirm-user-actions)
+Take a look at the [JavaScript](javascript/#using-javascript-to-confirm-user-actions)
 article to extend your form with a confirmation popup. It is a good idea to let the user confirm
 important information deletion because this action cannot be undone.
 
@@ -23,7 +23,7 @@ that `ON DELETE` behavior to `CASCADE` (use "Alter" button on right side):
 ![Screenshot - Foreign Key Cascade](/common/backend-delete/fk2.png)
 
 The `CASCADE` ensures that the `DELETE` command will delete the record
-with [**all records depending on it**](/article/database-tech/#integrity-constraints).
+with [**all records depending on it**](/articles/database-tech/#integrity-constraints).
 You should change this in every table which references `person` table, otherwise you won't be able
 to delete persons with entries in those tables.
 
@@ -56,8 +56,8 @@ Now you now how to delete records from a database. I have also showed you how to
 to avoid action confirmation. You should also understand how the foreign keys guard the
 consistency of the data and that you need to think what to do with the dependent records -- whether to delete them along
 or leave them in the database while removing the link to the deleted record. For a deeper explanation see
-the [corresponding article](/article/database-tech/#integrity-constraints). You can also
-take a look at the chapter about [login](login) to limit access to this functionality.
+the [corresponding article](/articles/database-tech/#integrity-constraints). You can also
+take a look at the chapter about [login](../login/) to limit access to this functionality.
 
 ### New Concepts and Terms
 - Delete

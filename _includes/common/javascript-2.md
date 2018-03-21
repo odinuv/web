@@ -32,7 +32,7 @@ This approach is ideal for manipulating form elements (such as enabling/disablin
 in the above example). Computing the final price this way is not ideal, because it
 means duplicated logic in the server and the client scripts (the price computed by the client
 must be considered unreliable). A better solution in such case is to use
-[AJAX](/articles/javascript#ajax).
+[AJAX](/articles/javascript/#ajax).
 
 ### Task -- Add `required` attribute to Person & Address form inputs dynamically
 Do you remember when I was talking about inserting [multiple records at once](../backend-insert/advanced/).
@@ -46,7 +46,7 @@ Try to extend this form with JavaScript and add `required` attribute to `city` o
 
 ## Summary
 This brief chapter about JavaScript programming language should help you to improve your project with instant popup
-dialogs and a bit of client-side form validation. You can find more in [articles](/articles/javascript)
+dialogs and a bit of client-side form validation. You can find more in [articles](/articles/javascript/)
 section of this book.
 
 ### New Concepts and Terms

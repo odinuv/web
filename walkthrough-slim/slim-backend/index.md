@@ -7,7 +7,7 @@ permalink: /walkthrough-slim/slim-backend/
 {:toc}
 
 In the [previous chapter](../html-forms/), you have learned how to set up an application 
-using the [Slim Framework](,,/slim-intro/#getting-started). You should know 
+using the [Slim Framework](../slim-intro/#getting-started). You should know 
 what [Composer](../slim-intro/#composer) is. You should understand the basic 
 Slim [project structure](../slim-intro/#project-structure), how to set up database credentials and 
 where the application log is. In this part of the walkthrough I will show how to actually do something.
@@ -278,7 +278,7 @@ $app->post('/enter-name', function (Request $request, Response $response, $args)
 Both solutions produce exactly the same output. You may like the first or second, but
 I find them both ugly. Apart from that, they are both wrong, because they are 
 **insecure**. This approach to generating a HTML response is prone to 
-[XSS attacks](/articles/security/xss) and should really be avoided. The right solution to this
+[XSS attacks](/articles/security/xss/) and should really be avoided. The right solution to this
 is to use [templates](../templates/). Using the `$response` object is also 
 necessary when you need to manipulate [HTTP headers](/articles/http/).
 

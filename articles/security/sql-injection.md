@@ -10,7 +10,7 @@ redirect_from: /en/apv/articles/sql-aggregation/
 This article is about dangerous vulnerability which is often introduced by inexperienced or lazy programmers of web
 applications. A good developer should always keep in mind weak spots of technology he is using and avoid them.
 Some of those weaknesses are easy to spot and can be deduced easily when you take a while and think about them,
-like basic [XSS](TODO) vulnerability. Some of them are a bit more trickier.
+like basic [XSS](/articles/security/xss/) vulnerability. Some of them are a bit more trickier.
 
 You can also read about SQL injection on [Wikipedia](https://en.wikipedia.org/wiki/SQL_injection).
 
@@ -91,7 +91,7 @@ Now you should ask yourself:
   has no meaning as a delimiter?
 
 The answer is easy, you have to escape those unwanted apostrophes for every potentially dangerous substitution value.
-Escaping means that you put a backslash in front of the apostrophe: `\'`. It is similar to [escaping](/walkthrough/backend-intro/#working-with-strings)
+Escaping means that you put a backslash in front of the apostrophe: `\'`. It is similar to [escaping](/walkthrough-slim/backend-intro/#working-with-strings)
 of apostrophes or quotes in PHP strings to prevent premature ending of string but it is interpreted on another
 level -- database system level.
 

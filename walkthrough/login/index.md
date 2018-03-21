@@ -11,7 +11,7 @@ redirect_from: /en/apv/walkthrough/login/
 
 ### Task -- create a form for user registration
 It should have an input for login or email and two inputs for password verification (all inputs are required).
-You can use [Bootstrap](/walkthrough/css/bootstrap) CSS styles.
+You can use [Bootstrap](/walkthrough/css/bootstrap/) CSS styles.
 
 File `templates/register.latte`:
 
@@ -45,11 +45,11 @@ If an existing account is found and passwords match, your application can trust 
 Actually there were cases when a user logged into another user's account by a mistake -- two different accounts had
 same passwords (not even salt can solve this situation). There are also online identity thefts when user's password
 is compromised and used by someone else to harm original person. You can add another tier of user authentication,
-e.g. send an SMS to his cell phone to retype a verification code or distribute user [certificates](TODO).
+e.g. send an SMS to his cell phone to retype a verification code or distribute user [certificates](todo).
 
 ### Task -- create a form for user registration
 It should have an input for login or email and two inputs for password verification (all inputs are required).
-You can use [Bootstrap](/walkthrough/css/bootstrap) CSS styles.
+You can use [Bootstrap](/walkthrough/css/bootstrap/) CSS styles.
 
 File `templates/register.latte`:
 
@@ -83,7 +83,7 @@ If an existing account is found and passwords match, your application can trust 
 Actually there were cases when a user logged into another user's account by a mistake -- two different accounts had
 same passwords (not even salt can solve this situation). There are also online identity thefts when user's password
 is compromised and used by someone else to harm original person. You can add another tier of user authentication,
-e.g. send an SMS to his cell phone to retype a verification code or distribute user [certificates](TODO).
+e.g. send an SMS to his cell phone to retype a verification code or distribute user [certificates](todo).
 
 ### Task -- create a form for user login with PHP script
 Create a login form and a PHP script to process login information. You can make error message a bit confusing to
@@ -113,9 +113,9 @@ File `login.php`:
 You probably noticed that there is no way to tell if a user has authenticated in subsequent HTTP requests due to stateless
 nature of [HTTP protocol](/articles/web/#http-protocol). To safely store login information you would probably
 want to logically connect subsequent HTTP request from one client (internet browser) and associate these requests with
-some kind of server storage. That is exactly what [*sessions*](/articles/cookies-sessions#sessions) are used for. A session
+some kind of server storage. That is exactly what [*sessions*](/articles/cookies-sessions/#sessions) are used for. A session
 is a server-side storage which is individual for each client. Client holds only unique key to this storage on its side
-(stored in [cookies](/articles/cookies-sessions#cookies)). Client is responsible for sending this key with every HTTP
+(stored in [cookies](/articles/cookies-sessions/#cookies)). Client is responsible for sending this key with every HTTP
 request. If the client "forgets" the key, data stored in session is lost. The key is actually called *session ID*.
 
 To initiate work with session storage you have to call PHP function [`session_start()`](http://php.net/manual/en/function.session-start.php)
@@ -161,7 +161,7 @@ File `protect.php`:
 {% include /walkthrough/login/include/protect.php %}
 {% endhighlight %}
 
-Here is an example how to protect [deletion](/walkthrough/backend-delete) of persons from database
+Here is an example how to protect [deletion](/walkthrough/backend-delete/) of persons from database
 with created script:
 
 File `delete.php`:

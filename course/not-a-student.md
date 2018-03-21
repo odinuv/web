@@ -104,7 +104,7 @@ I recommend to install full *IDE* (Integrated Development Environment) -- a free
 [NetBeans](https://netbeans.org/) can be downloaded -- select PHP stack on download page.
 [Eclipse](http://www.eclipse.org) IDE is also free but not much popular for PHP development
 nowadays. There are also commercial IDEs like [PHP storm](https://www.jetbrains.com/phpstorm/).
-In NetBeans you also get support for [Latte templates](/walkthrough/templates).
+In NetBeans you also get support for [Latte templates](/walkthrough/templates/).
 
 If you had never worked with an IDE, do not bother yourself with this for now and just download a
 good text editor. You can always switch to an IDE later.

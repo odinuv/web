@@ -10,7 +10,7 @@ permalink: /walkthrough-slim/login/
 
 ### Task -- create a form for user registration
 It should have an input for login or email and two inputs for password verification (all inputs are required).
-You can use [Bootstrap](/walkthrough/css/bootstrap) CSS styles. Prepare a place to display error message and
+You can use [Bootstrap](/walkthrough/css/bootstrap/) CSS styles. Prepare a place to display error message and
 remember to prepare `form` data array to display values in case of failure.
 
 File `templates/register.latte`:
@@ -54,7 +54,7 @@ If an existing account is found and passwords match, your application can trust 
 Actually there were cases when a user logged into another user's account by a mistake -- two different accounts had
 same passwords (not even salt can solve this situation). There are also online identity thefts when user's password
 is compromised and used by someone else to harm original person. You can add another tier of user authentication,
-e.g. send an SMS to his cell phone to retype a verification code or distribute user [certificates](TODO).
+e.g. send an SMS to his cell phone to retype a verification code or distribute user [certificates](todo).
 
 ### Task -- create a form for user login and Slim routes to handle it
 Create a login form and a Slim routes to process login information. You can make error message a bit confusing to
@@ -100,9 +100,9 @@ File `templates/login.latte`:
 You probably noticed that there is no way to tell if a user has authenticated in subsequent HTTP requests due to stateless
 nature of [HTTP protocol](/articles/web/#http-protocol). To safely store login information you would probably
 want to logically connect subsequent HTTP request from one client (internet browser) and associate these requests with
-some kind of server storage. That is exactly what [*sessions*](/articles/cookies-sessions#sessions) are used for. A session
+some kind of server storage. That is exactly what [*sessions*](/articles/cookies-sessions/#sessions) are used for. A session
 is a server-side storage which is individual for each client. Client holds only unique key to this storage on its side
-(stored in [cookies](/articles/cookies-sessions#cookies)). Client is responsible for sending this key with every HTTP
+(stored in [cookies](/articles/cookies-sessions/#cookies)). Client is responsible for sending this key with every HTTP
 request. If the client "forgets" the key, data stored in session is lost. The key is actually called *session ID*.
 
 To initiate work with session storage you have to call PHP function [`session_start()`](http://php.net/manual/en/function.session-start.php)
@@ -202,7 +202,7 @@ Sometimes you wish to leave some data in the `$_SESSION` variable -- the content
 
 ### Task -- Create a logout route
 Make a POST route which will handle logout. It is safer to use POST method because GET logout route can be easily
-exploited via [XSS](/articles/security/xss) and [CSRF](/articles/security/csrf.md). Use [`session_destroy()`](http://php.net/manual/en/function.session-destroy.php)
+exploited via [XSS](/articles/security/xss/) and [CSRF](/articles/security/csrf/). Use [`session_destroy()`](http://php.net/manual/en/function.session-destroy.php)
 function. Redirect user to a public route of your application after logout.
 
 File `src/routes.php`:

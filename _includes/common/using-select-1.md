@@ -1,4 +1,4 @@
-This small chapter is about using HTML [select element](../html-forms/#select). This element has
+This small chapter is about using HTML [select element](../../html-forms/#select). This element has
 three faces in HTML. You often encounter it as simple drop-down list and less often as select list and rarely
 as select list with multiple options:
 
@@ -74,14 +74,14 @@ transmitted to server's backend named according to value of `name` attribute att
 That hidden `value` is very important because you can have different representation of entry for the user (e.g. textual)
 and for your code (e.g. ID of some database entry).
 
-Groups of [`radio` buttons](../html-forms/#radio-button) and [`checkbox`es](../html-forms/#checkbox)
+Groups of [`radio` buttons](../../html-forms/#radio-button) and [`checkbox`es](../../html-forms/#checkbox)
 work similarly, except that you have to give each of them **same** `name` attribute and textual representation is
 carried out by `label` element.
 
 {: .note}
 See those squared brackets in third example? They tell the backend to interpret incoming data as array (you can even
 specify keys for that array in template's code). Always pass values from multiple selects/checkboxes as array.
-You can read more about this approach in another [walkthrough article](../passing-arrays/).
+You can read more about this approach in another [walkthrough article](../../passing-arrays/).
 
 {: .note.note-cont}
 Radio buttons are like drop-down lists, they allow only one checked value -- no need for squared brackets.

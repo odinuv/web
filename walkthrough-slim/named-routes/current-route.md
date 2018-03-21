@@ -92,7 +92,7 @@ Presented steps are inspired by [Slim cookbook article](https://www.slimframewor
 
 ## Summary
 Now your application should highlight currently active menu item. You will learn how to make the highlight look even
-better in the upcoming [CSS](/walkthrough-slim/css) or [Bootstrap](/walkthrough-slim/css/bootstrap) article.
+better in the upcoming [CSS](/walkthrough-slim/css/) or [Bootstrap](/walkthrough-slim/css/bootstrap/) article.
 
 ### New Concepts and Terms
 - Current menu item/route highlight

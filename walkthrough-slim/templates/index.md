@@ -16,7 +16,7 @@ and it is prone to [Cross Site Scripting attacks](/articles/security/xss/) and o
 this is to use templates.
 
 The advantage of using templates is that they simplify both the PHP and HTML code and
-that they protect your code against [Cross Site Scripting vulnerabilities](/articles/security/css).
+that they protect your code against [Cross Site Scripting vulnerabilities](/articles/security/xss/).
 The templates disadvantage is that you need to learn another language. HTML
 templates are called templates, because they are HTML pages with placeholders. The
 actual value of the placeholders is supplied when the template is *rendered*
@@ -35,7 +35,7 @@ Template engine is a library which processes an HTML page with **macros**
 There are many templating engines available for PHP, some of the popular engines
 are: [*Smarty*](https://www.smarty.net/), [*Latte*](https://latte.nette.org/en/), 
 [*Twig*](https://twig.symfony.com/). All of them (and many others) can be used as
-parts of their respective [frameworks](../slim-intro) or standalone. In the following
+parts of their respective [frameworks](../slim-intro/) or standalone. In the following
 examples I will stick to using the standalone *Latte* templating engine. The
 choice is rather arbitrary, as all templating engines work in a very similar way, have
 almost the same features and they even have a somewhat similar syntax.
@@ -98,7 +98,7 @@ Sounds complicated? Can't you put all the HTML code in one template? Why bother 
 the blocks? The answer is laziness. Imagine that your application contains 30 pages
 (not that much actually). Each one of them will contain the same HTML header
 as you can see in the layout template (the header loads 
-[Bootstrap](../css/bootstrap/) and [JQuery](../javascript/jquery/) libraries). Sure, you 
+[Bootstrap](../css/bootstrap/) and [jQuery](/articles/javascript/jquery/) libraries). Sure, you 
 can copy it 30 times, but what if you later need to add another library in all your pages?
 
 In short, using layout templates allows you to share common code, which in turn
@@ -110,7 +110,7 @@ Template engine offers plenty of [macros](https://latte.nette.org/en/macros) whi
 generation of the HTML code. In the above example, I used the `{extends}` 
 (uses a layout template), `{block}` (defines a block) and `{include}` (includes a block) 
 macros. However, the most important is the `{$variable`} macro, which allows you to 
-safely (without the possibility of a [Cross Site Scripting attack](/articles/security/xss)) insert 
+safely (without the possibility of a [Cross Site Scripting attack](/articles/security/xss/)) insert 
 parameters in the HTML code. Try adding the following route in your application:
 
 ~~~ php?start_inline=1
@@ -276,7 +276,7 @@ Template file `person-form.latte`:
 
 ## Summary
 Using a template engine requires you to learn its macro language. However it
-does lead to a cleaner [and safer](/articles/security/xss) HTML and PHP code. You don't need to struggle so much
+does lead to a cleaner [and safer](/articles/security/xss/) HTML and PHP code. You don't need to struggle so much
 with using [proper quotes](../backend-intro/#working-with-strings).
 When using templates, don't forget that
 the variables defined inside a template are only those passed via the `addParam` or

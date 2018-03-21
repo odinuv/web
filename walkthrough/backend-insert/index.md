@@ -94,7 +94,7 @@ with the database `NULL`. Again it is very important that you understand what va
 where and what variables are connected:
 
 {: .image-popup}
-![Code schema -- Script for inserting data](/walkthrough/backend-insert/code-schematic.png)
+![Code schema -- Script for inserting data](/common/backend-insert/code-schematic.png)
 
 ## Task -- Extend the form
 Now extend the form by adding other columns from the `person` table -- `gender` and `height`. Use proper

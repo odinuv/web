@@ -11,7 +11,7 @@ In the previous article I have described [the principles of the relational datab
 This leads to the SQL language which is built upon them and is used by many
 database systems worldwide. In this article I will describe in more details how
 individual relations (tables) are connected (joined) together. I assume that
-you have some basic experience with SQL in [querying individual tables](/walkthrough/database/#select).
+you have some basic experience with SQL in [querying individual tables](/walkthrough-slim/database-intro/#select).
 
 ## Introduction
 When working with a database, and especially when working with multiple tables,
@@ -21,7 +21,7 @@ I explain how to create the schema. But before you start designing your own
 databases it is good to know how to work with existing ones.
 
 ### Reading the Database Schema
-The [example database](/walkthrough/database/#database-schema) has the following schema:
+The [example database](/walkthrough-slim/database-intro/#database-schema) has the following schema:
 
 {: .image-popup}
 ![Database Schema](/common/schema.svg)
@@ -57,7 +57,7 @@ meetings (a location does not have to be used in any meeting at all);
 - an attendance must be assigned to one person.
 
 ## Selecting Data
-I assume you know how to [select data from a single table](/walkthrough/database/#select). When joining multiple
+I assume you know how to [select data from a single table](/walkthrough-slim/database-intro/#select). When joining multiple
 tables together, it is important to follow some good practices. First it is good practice to
 be explicit about column names and use dot notation to specify **fully qualified column names**.
 So instead of `SELECT description FROM ...` use `SELECT meeting.description FROM ...`, otherwise

@@ -174,7 +174,7 @@ style a document. Do not attempt to style a web page using the HTML language.
 E.g. never use a second `h2` or third level `h3` heading instead of the first level heading
 `h`` just to get a smaller font size. The structure of the document must be used irrespective of
 the looks of the document. Adjusting the font size and many other things is done through
-[Style Sheets](css/), which we will get to later.
+[Style Sheets](../css/), which we will get to later.
 
 ### Publishing your page
 {% comment %}TODO move this to dev tools?{% endcomment %}

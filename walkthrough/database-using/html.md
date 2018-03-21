@@ -98,7 +98,7 @@ at a time. Some parts (like the template layout) don't need to be changed at all
 the code requires you to understand the connections between all the code parts:
 
 {: .image-popup}
-![Schema of variables](code-schematic.png)
+![Schema of variables](../code-schematic.png)
 
 ## Summary
 In this chapter, you have learned how to use SQL queries from within a PHP script and

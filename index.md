@@ -52,7 +52,7 @@ but this may be a good start).
 ## Who? Why?
 *Who is this for?* This book was originally written for students of
 [Application Software Programmes](http://ects-prog.mendelu.cz/en/plan6937/predmet88060) course
-at [Mendel University](https://is.mendelu.cz/). However it is suitable for [anyone](/course/not-a-student)
+at [Mendel University](https://is.mendelu.cz/). However it is suitable for [anyone](/course/not-a-student/)
 with interest in web application development.
 
 *Why web applications?* Because they are popular and they

@@ -12,7 +12,7 @@ inability to maintain any kind of information between subsequent HTTP requests f
 server's side. The server simply does not know, whether it has talked to certain client before or not.
 Yet you know, from your own experience, that this is possible.
 
-You used a server-side storage called *session* in walkthrough article about [authentication](/walkthrough/login)
+You used a server-side storage called *session* in walkthrough article about [authentication](/walkthrough-slim/login/)
 of users. Let's take a step back and think about how to allow server identify its clients.
 
 ## Make HTTP stateful

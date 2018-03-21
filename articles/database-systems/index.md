@@ -391,7 +391,7 @@ columnar databases have very high compression ratios, excellent performance for 
 performance for data modification queries. They are suitable for data warehouses.
 - [Key-value storage](https://en.wikipedia.org/wiki/Key-value_database) is used by non-relational database
 systems and usually by NoSQL database systems. Records are stored simply as key-value pairs in a form similar to
-[associative arrays](/walkthrough/backend-intro/array/). Key-value databases
+[associative arrays](/walkthrough-slim/backend-intro/array/). Key-value databases
 are used mainly when the structure of the data cannot be fixed. An
 example is [Windows Registry](https://en.wikipedia.org/wiki/Windows_Registry) which contains configurations for
 different applications (which are obviously different). By the way, Windows registry is also a hierarchical database.

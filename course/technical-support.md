@@ -13,7 +13,7 @@ encounter some technical issues. The information stated here may be useful to yo
 the APV course borders and write yourself a new web application and upload it on a Linux server or run it on your
 own PC.
 
-Some information related to this topic can also be found in the section for [readers not studying at MENDELU](/course/not-a-student).
+Some information related to this topic can also be found in the section for [readers not studying at MENDELU](/course/not-a-student/).
 A basic training with an IDE and SSH client is part of the [APV course](/course).
 
 ## FTP & SSH

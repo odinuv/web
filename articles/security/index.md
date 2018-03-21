@@ -38,7 +38,7 @@ Read about web application security and risks:
 - [Cross site scripting](/articles/security/xss/)
 - [Cross site request forgery](/articles/security/csrf/)
 - Storing passwords and user authentication - walkthrough article in [Slim](/walkthrough-slim/login/) or
-  [plain PHP](/walkthrough/login/)
+  [plain PHP](/walkthrough-slim/login/)
   
 Read more about [attacks](https://www.owasp.org/index.php/Category:Attack) and [vulnerabilities](https://www.owasp.org/index.php/Category:Vulnerability)
 of applications on [OWASP site](https://www.owasp.org/).

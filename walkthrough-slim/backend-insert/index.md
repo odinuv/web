@@ -8,7 +8,7 @@ permalink: /walkthrough-slim/backend-insert/
 
 In previous chapters, you have learned how to [work with HTML forms](/walkthrough-slim/html-forms/).
 Now we will add a little bit more of a code to insert data into the database.
-There is no new technology necessary for this, all you need is [SQL INSERT](/walkthrough-slim/database/#insert) and
+There is no new technology necessary for this, all you need is [SQL INSERT](/walkthrough-slim/database-intro/#insert) and
 [working with HTML forms](/walkthrough-slim/html-forms/). Yet there are some things, which are worth deeper explanation.
 
 ## Getting started

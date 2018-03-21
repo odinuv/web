@@ -15,7 +15,7 @@ the data is organized into [tables](/articles/sql-join/#relation-vs-table). Spec
 what we need, any relation database could be used.
 
 ## Getting started
-Before you get started, you need a [database server](tools todo) and credentials to it.
+Before you get started, you need a [database server](/course/not-a-student/#installing-your-own-server-on-your-pc) and credentials to it.
 You also need an access to some kind of an administration interface, preferably
 a graphical one, so that you don't get completely lost at the beginning.
 
@@ -23,7 +23,7 @@ To get you started as quickly as possible, I prepared a sample database for you.
 It contains the structure of the [project](/course/#project-assignment) and also some sample data,
 which is useful for testing your application. First you need to import the database,
 then you can start playing with it using the
-[SQL language](../database/#sql-language).
+[SQL language](/articles/sql-join/).
 
 ### Import Database
 I prepared files that you can import into the database, there are two files, the first one contains
@@ -146,7 +146,7 @@ there must be the same number of items in the column list and value list.
 Try to run the query yourself in the Adminer:
 
 {: .image-popup}
-![Screenshot -- Run SQL query](/common/database/adminer-run-query.png)
+![Screenshot -- Run SQL query](/common/database-intro/adminer-run-query.png)
 
 Important: Unlike in HTML and PHP, in SQL, strings must always be enclosed in single
 quotes `'`. Double quotes are **not allowed** for string values. Actually double quotes

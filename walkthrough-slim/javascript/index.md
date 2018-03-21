@@ -11,7 +11,7 @@ permalink: /walkthrough-slim/javascript/
 {% include /common/javascript-1.md %}
 
 ### Task -- Confirm Person Deletion
-Now enhance the [script for deleting persons](/walkthrough-slim/backend-delete). Insert a piece of
+Now enhance the [script for deleting persons](/walkthrough-slim/backend-delete/). Insert a piece of
 Javascript code which will prompt the user for confirmation before deleting the person.
 Feel free to to insert the JavaScript code directly into the template, but be careful
 where you insert the `<script>` tag -- remember that `{foreach ...}` duplicates all source inside

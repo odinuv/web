@@ -44,7 +44,7 @@ Route in  `routes.php`:
 {% include /walkthrough-slim/passing-arrays/height-form-2.php %}
 {% endhighlight %}
 
-After you finish reading of [JavaScript](/articles/javascript) article, return here and try to create a simple
+After you finish reading of [JavaScript](/articles/javascript/) article, return here and try to create a simple
 reset button next to each input field which will simply return original value into the field.
 
 Template `height-form.latte`:
