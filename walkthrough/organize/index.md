@@ -131,7 +131,7 @@ the rules I outlined here, but _do follow **some rules**_.
 
 ## Task -- Index page
 Every application starts somewhere. The `index.php` file has special behavior in that
-it [replaces the default directory listing](todo). Every application should have its index
+it [replaces the default directory listing](/course/technical-support/#enablingdisabling-directory-listing). Every application should have its index
 with some useful content.
 
 {: .solution}

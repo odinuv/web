@@ -16,7 +16,7 @@ you have some basic experience with SQL in [querying individual tables](/walkthr
 ## Introduction
 When working with a database, and especially when working with multiple tables,
 it is crucial to understand the structure of the database -- its **database schema**.
-There is a full follow up article about the [database design](todo) in which
+There is a full follow up article about the [database design](/articles/database-design/) in which
 I explain how to create the schema. But before you start designing your own
 databases it is good to know how to work with existing ones.
 

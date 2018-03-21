@@ -12,11 +12,11 @@ in HTML forms by the end-user. I have also discouraged you from generating HTML 
 directly within the route handlers.
 
 In theory, generating a HTML page is nothing complicated. In practice, it gets cluttered quickly 
-and it is prone to [Cross Site Scripting attacks](todo) and other errors. The solution to
+and it is prone to [Cross Site Scripting attacks](/articles/security/xss/) and other errors. The solution to
 this is to use templates.
 
 The advantage of using templates is that they simplify both the PHP and HTML code and
-that they protect your code against [Cross Site Scripting vulnerabilities](todo).
+that they protect your code against [Cross Site Scripting vulnerabilities](/articles/security/css).
 The templates disadvantage is that you need to learn another language. HTML
 templates are called templates, because they are HTML pages with placeholders. The
 actual value of the placeholders is supplied when the template is *rendered*
@@ -77,7 +77,7 @@ plain old HTML. In the above template, there are the following pieces of Latte c
 
 - `{extends layout.latte}` --- a reference to [**layout template** (see below)](todo)
 - `{block title}...{/block}` and `{block body}...{/block}` --- code which defines contents of a template block, the block itself is defined in the layout template
-- `{link sample-process}` --- a `link` [macro](todo)
+- `{link sample-process}` --- a `link` [macro](/walkthrough-slim/named-routes/)
 
 To understand what the **layout template** is and how **blocks** work, you have to look 
 in `layout.latte` file:
@@ -184,7 +184,7 @@ so that it uses the layout template.
 {% endhighlight %}
 
 It is also possible to simplify the PHP code a little bit, if you 
-pass all the template variables as an [associative array](todo).
+pass all the template variables as an [associative array](/walkthrough-slim/backend-intro/array/).
 
 {% highlight php %}
 {% include /walkthrough-slim/templates/flintstones-2.php %}

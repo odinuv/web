@@ -185,7 +185,7 @@ Notice that the hierarchical structure of HTML means that the following piece of
 {% endhighlight %}
 
 It is important to understand that an HTML document as this hierarchical structure. It will become
-more and more important when dealing with [stylesheets](todo) or a [Javascript code](todo).
+more and more important when dealing with [stylesheets](/articles/css/) or a [Javascript code](/articles/javascript/).
 
 ### Common Elements
 There are over 100 elements available in the HTML language. The tag names
@@ -259,10 +259,10 @@ There is a number of [common attributes](https://www.w3.org/TR/html/dom.html#sec
 it's really good to know about:
 
 - `id` --- A unique identifier of the HTML element within the document (used,
-e.g. in [forms](http://localhost:4000/walkthrough/html-forms/) and [CSS styles](todo));
-- `class` --- An arbitrary class of the HTML element, used mainly for [CSS styles](todo));
+e.g. in [forms](http://localhost:4000/walkthrough/html-forms/) and [CSS styles](/articles/css/));
+- `class` --- An arbitrary class of the HTML element, used mainly for [CSS styles](/articles/css/));
 - `title` --- An arbitrary text which is shown when a user hovers over a HTML element;
-- `style` --- A definition of an [inline style](todo);
+- `style` --- A definition of an [inline style](/articles/css/#inline);
 - [data attributes](/articles/html/#data-attributes).
 
 ### Tags

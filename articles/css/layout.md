@@ -62,7 +62,7 @@ The margin edge determines the total space occupied by the HTML element on scree
 
 Therefore, to calculate how much space an HTML element will occupy on a screen, you need to add
 content, padding, border and margin dimensions together.
-Feel free to experiment wit the page in [your browser developer tools](todo).
+Feel free to experiment wit the page in [your browser developer tools](/course/not-a-student/#web-browser).
 
 ### Block layout
 Now you probably wonder, why the `.outer` div above is not square. This is because a `div` is a block level element

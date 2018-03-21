@@ -59,7 +59,7 @@ values for them when you know that some function will be frequently called with 
 Or you can set a mandatory data-type for a function parameter -- this functionality was extended in PHP7
 to support scalar data-types too. Previous PHP versions could watch for classes and arrays only.
 This is useful when you write some code which is used by other programmers -- you do not have to write that many lines of
-code to check what your function got from the outside world. A good [IDE](todo) can also take advantage of the
+code to check what your function got from the outside world. A good [IDE](/course/not-a-student/#text-editor-or-ide) can also take advantage of the
 supplied information.
 
 {% highlight php %}

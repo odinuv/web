@@ -36,7 +36,7 @@ the bellow PHP script regardless of what your form looks like!
 Notice, that I used a `$message` variable in the template. It will come in handy.
 
 ### Inserting Data
-It is important to use a correct [HTTP method](todo). Since inserting a person is a data changing action, I
+It is important to use a correct [HTTP method](/articles/http/). Since inserting a person is a data changing action, I
 am using the POST method (`<form method='post'>`). This means that we will find the form data in
 with `$request->getParsedBody()` method when the user submits the form. In pure PHP it would be in `$_POST` variable.
 

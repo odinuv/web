@@ -108,7 +108,7 @@ This means that the handler takes
 
 - an object representing the HTTP request (generated automatically by the Slim framework)
 - an object representing the HTTP response (empty and expected to be filled by the handler)
-- a list of values for [route placeholders](todo)
+- a list of values for [route placeholders](/walkthrough-slim/passing-values/#using-route-placeholders)
 
 The notation `Request $request` means that the argument `$request` is of type `Request`. 
 This is called a 
@@ -134,8 +134,8 @@ You probably feel that there is a lot of magic. How does it happen that when the
 some URL, your route callback gets executed? 
 
 When an end-user visits a page in the web browser, the web browser generates an 
-[HTTP request](todo) and sends it to the web server. The server receives it and processes it.
-This is the point where `.htaccess` and [mod rewrite](todo) kicks in. This causes that the 
+[HTTP request](/articles/http/) and sends it to the web server. The server receives it and processes it.
+This is the point where `.htaccess` and [mod rewrite](/course/technical-support/#configuration-of-modrewrite) kicks in. This causes that the 
 `index.php` script is executed regardless of what path was specified in the request. Once
 the `index.php` script is running, it starts the Slim Framework application (initializes the `$app`).
 It analyzes the HTTP request and picks the most important parts for your application --- the 
@@ -192,7 +192,7 @@ Fill it in and click the button. You should see an error:
 
 This means exactly what it says. Your application was able to recognize the URL
 and find a matching route, but that route does not allow the particular 
-[HTTP method](todo) you used in the request --- the *POST* method (as specified in
+[HTTP method](/articles/http/) you used in the request --- the *POST* method (as specified in
 `method='post` in the `<form>` field). This is expected, because we used
 `$app->get('/enter-name', ...` in our route.
 
@@ -280,7 +280,7 @@ I find them both ugly. Apart from that, they are both wrong, because they are
 **insecure**. This approach to generating a HTML response is prone to 
 [XSS attacks](/articles/security/xss) and should really be avoided. The right solution to this
 is to use [templates](../templates/). Using the `$response` object is also 
-necessary when you need to manipulate [HTTP headers](todo).
+necessary when you need to manipulate [HTTP headers](/articles/http/).
 
 ## Summary
 In this part of the walkthrough I have explained how routes work in the Slim Framework. Although

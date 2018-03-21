@@ -65,7 +65,7 @@ the content of the `$postData` array is only filled with what you have just ente
 
 The *GET* method behaves slightly different than the *POST* method in that it changes the URL of the script. This
 means that the state of the form is encoded in the address of the page and therefore remains there
-until changed again. It is quite important to decide on the [correct HTTP method to use](todo).
+until changed again. It is quite important to decide on the [correct HTTP method to use](/articles/http/#when-to-use-get-or-post-method).
 
 ### Connecting together
 Now let's make a page which lists the persons in the database and lets the user search within them.

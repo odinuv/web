@@ -75,7 +75,7 @@ There are [three ways how to do it](/articles/css/#connecting-styles-with-html),
 place the CSS definitions into a
 separate file(s). This way, you can easily swap CSS files if you want to apply a new design.
 Notice in the [developer console (F12)](todo) that after you link the HTML and CSS file together, a new
-[HTTP request](todo) is sent by the browser to retrieve that CSS file.
+[HTTP request](/articles/http/) is sent by the browser to retrieve that CSS file.
 
 {% highlight html %}
 <head>

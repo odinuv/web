@@ -48,7 +48,7 @@ similar to this:
 
 ![Screenshot - Browser Reload](/common/backend-delete/reload.png)
 
-In the form, I have used `method="post"` which means that the form is submitted using [HTTP POST method](todo).
+In the form, I have used `method="post"` which means that the form is submitted using [HTTP POST method](/articles/http/).
 The HTTP POST method should be used to represent user actions (e.g. deleting a person). Reloading the
 page will send the same HTTP request -- i.e. it will repeat the action (delete the person again), which is what the browser
 is asking about. To avoid this annoyance, you have to **redirect after POST**:
@@ -58,7 +58,7 @@ is asking about. To avoid this annoyance, you have to **redirect after POST**:
 {% endhighlight %}
 
 In the above script, I added the line `return $response->withHeader(...);`. This calls the internal PHP
-[`header()` function](http://php.net/manual/en/function.header.php) which sends a [HTTP header](todo).
+[`header()` function](http://php.net/manual/en/function.header.php) which sends a [HTTP header](/articles/http/).
 The [`Location` header](https://en.wikipedia.org/wiki/HTTP_location) is used to inform the browser
 that the page has moved (redirected) to a new location. In this case, the new location is the same as the old location
 (GET route called `deleteForm`), but the browser still moves to the new address. During this the POST data from the

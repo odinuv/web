@@ -325,7 +325,7 @@ Add the following CSS:
 
 In the above example, the body font color is set to blue. But for all `p` elements, it is set to
 black. The latter rule overrides the former rule and makes all paragraphs black. You can see the
-overriding in [developer tools](todo) where the overridden property value is crossed out.
+overriding in [developer tools](/course/not-a-student/#web-browser) where the overridden property value is crossed out.
 
 {: .image-popup}
 ![Screenshot - Sample page](/articles/html/sample-page-3.png)
@@ -349,7 +349,7 @@ is transparent, therefore you can see the parent element underneath. For example
 {% include /articles/html/style-4.css %}
 {% endhighlight %}
 
-If you look at the above page in [developer tools](todo), you will see the following:
+If you look at the above page in [developer tools](/course/not-a-student/#web-browser), you will see the following:
 
 {: .image-popup}
 ![Screenshot - Sample page](/articles/html/sample-page-4.png)
