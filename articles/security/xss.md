@@ -65,13 +65,12 @@ Remember that there are also different escaping rules for different contexts - e
 
 To fix the code add this function to the `echo` statement.
 
-{% highlight php %}
-<?php
+~~~ php?start_inline=1
     if(!empty($_GET['val'])) {
         echo 'You entered: ' . htmlspecialchars($_GET['val']);
     }
 ?>
-{% endhighlight %}
+~~~
 
 You were taught in the walkthrough section to use a [templating engine](/walkthrough-slim/templates/). Such templating
 engine removes the burden of remembering to use `htmlspecialchars()` function everywhere because it filters those

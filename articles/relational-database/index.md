@@ -391,7 +391,7 @@ An example of joining relations R1 and R2:
 If you would like to implement the above join operation in procedural code (e.g. PHP), it would look something
 like this:
 
-{% highlight php %}
+~~~ php?start_inline=1
 $result = [];
 foreach ($r1 as $row_r1) {
     foreach ($r2 as $row_r2) {
@@ -406,7 +406,7 @@ foreach ($r1 as $row_r1) {
         }
     }
 }
-{% endhighlight %}
+~~~
 
 ## Key
 Per the [relation definition](/articles/relational-database/#relational-algebra), it

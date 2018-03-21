@@ -8,8 +8,8 @@ redirect_from: /en/apv/articles/database-tech/
 {:toc}
 
 In previous articles you have learned about the common properties of
-[relational database systems](/en/apv/articles/relational-database/) and about the
-[basics of the SQL language](/en/apv/articles/sql-join/). Although all relational database systems (RDBS)
+[relational database systems](/articles/relational-database/) and about the
+[basics of the SQL language](/articles/sql-join/). Although all relational database systems (RDBS)
 share the same principles and the SQL language is standardized, there is
 a considerable amount of features which are specific for each database system.
 In this article I will describe some differences between various database systems
@@ -184,7 +184,7 @@ the names differ, it is usually possible to find an equivalent type.
 - text / ntext
     - "unlimited" string,
     -  allows to have cell size in gigabytes,
-    - cannot be [indexed](/en/apv/articles/database-tech/#index),
+    - cannot be [indexed](/articles/database-tech/#index),
     - use this type only if varchar does not suffice
 
 ### Whole Numbers
@@ -271,20 +271,20 @@ You may encounter using native application format in which the column data type 
 and the application stores the data in the timestamp of the application. In PHP this
 would be implemented like this (using [`time()`](http://php.net/manual/en/function.time.php) function):
 
-{% highlight php %}
+~~~ php?start_inline=1
 $db->execute(
     "UPDATE person SET birth_day = :birthDay",
     [':birthDay', time()]
 );
-{% endhighlight %}
+~~~
 
 The above approach is simple and works for one application without problems.
 However I would discourage you from using this approach. As the application
 grows, you will run into problems caused by the fact that it is non-atomic (
-[1NF](/en/apv/articles/database-design/#first-normal-form)), which
+[1NF](/articles/database-design/#first-normal-form)), which
 means that it is impossible to select a part of the date as well as impossible to 
 store or compute the interval. It brings back
-[application and database dependency](/en/apv/artcles/database-systems/#integrated-information-system).
+[application and database dependency](/artcles/database-systems/#integrated-information-system).
 And it is therefore unreliable when more applications use the database.
 
 ### Binary Data
@@ -305,7 +305,7 @@ send binary data to the database via special functions.
 
 ## Automatically Generated Key
 An automatically Generated key is the most commonly used type of
-the [primary key](/en/apv/articles/relational-database/#key-types). It
+the [primary key](/articles/relational-database/#key-types). It
 is an abstract record identifier independent on outside conditions. The automatically
 generated key is called **auto-increment** or **sequence**. It is simpler to use than
 compound keys (in which all parts must be used). For historical reasons
@@ -338,11 +338,11 @@ SELECT currval('relation_type_id_relation_type_seq')
 `currval` is a database function which obtains CURRent VALue of a database sequence.
 Or use the following code in PHP (using [PDO](http://php.net/manual/en/book.pdo.php)):
 
-{% highlight php %}
-<?php
+~~~ php?start_inline=1
 ...
 $db->lastInsertId('relation_type_id_relation_type_seq');
-{% endhighlight %}
+...
+~~~
 
 Which will essentially run the above SQL query.
 When you insert a row with an automatically generated key, you don't provide the column
@@ -407,10 +407,11 @@ CREATE TABLE relation_type (
 In the PHP application code, you can obtain the last value inserted to `id_relation_type` by
 calling:
 
-{% highlight php %}
-<?php
+~~~ php?start_inline=1
 ...
 $db->lastInsertId();
+...
+~~~
 {% endhighlight %}
 
 The PDO [`lastInsertId` function](http://php.net/manual/en/pdo.lastinsertid.php) takes
@@ -466,7 +467,7 @@ have two users are inserting persons and then meetings for those persons, the ab
 The graph below shows this scenario in more detail:
 
 {: .image-popup}
-![Request and insert concurrency](/en/apv/articles/database-tech/insert-concurrency.svg)
+![Request and insert concurrency](/articles/database-tech/insert-concurrency.svg)
 
 You may think that such a scenario is almost
 impossible --- the queries run in fraction of seconds. What is the chance that this might occur?
@@ -519,9 +520,7 @@ It makes the insert query return the value of the `id_person` for the inserted
 row. You therefore have to use the following code in PHP (assuming that `$db` is
 [PDO](http://php.net/manual/en/book.pdo.php) instance):
 
-{% highlight php %}
-<?php
-...
+~~~ php?start_inline=1
 $stmt = $db->prepare(
     "INSERT INTO person (first_name, last_name, nickname)
     VALUES (':first_name', ':last_name', ':nickname')"
@@ -532,7 +531,7 @@ $stmt->bindValue(':last_name', 'Doe');
 $stmt->bindValue(':nickname', 'Johnny');
 $stmt->execute();
 $id = $stmt->fetch()['id_person'];
-{% endhighlight %}
+~~~
 
 This approach can be used only on the PostgreSQL database server, however.
 Another alternative is to use another key of the table:
@@ -545,14 +544,14 @@ SELECT id_person WHERE first_name = 'John' AND last_name = 'Doe' AND
 {% endhighlight %}
 
 Because the combination of the `first_name`, `last_name` and `nickname` columns is a
-[key](/en/apv/articles/relational-database/#key), you can be sure that you
+[key](/articles/relational-database/#key), you can be sure that you
 select the `id_person` of the correct row.
 This approach is reliable, but can be used only on tables where
 another key besides the automatically generated one is present. Also it is
 quite annoying to have to repeat all the columns and their values.
 
 ## Integrity Constraints
-[Integrity constraints](/en/apv/articles/database-systems/#data-integrity) are a
+[Integrity constraints](/articles/database-systems/#data-integrity) are a
 crucial part of the database structure. There are
 many extensions on different database systems, but common integrity constrains are:
 
@@ -569,7 +568,7 @@ of a column is defined). You must understand, this does not prevent the user fro
 entering some *almost* empty values -- an empty string, zero, 00:00, etc. This means that there
 is very little difference in having `NOT NULL` on string columns. Using `NOT NULL` is
 important mainly for the number and the date/datetime columns, because of the
-[NULL arithmetic](/en/apv/articles/sql-join/#null). If you want to ensure that
+[NULL arithmetic](/articles/sql-join/#null). If you want to ensure that
 a column contains a specific value, you need to use the `CHECK` constraint.
 
 ### CHECK Constraint
@@ -606,10 +605,10 @@ You will get the following error:
 
 
 ### Foreign Key Constraint
-The foreign Key Constraint maintains [relationships](/en/apv/articles/database-design/#e-r-modeling)
+The foreign Key Constraint maintains [relationships](/articles/database-design/#e-r-modeling)
 between entities (rows) in tables. It means that it is not possible to UPDATE / DELETE a record in
-the [master table](/en/apv/articles/relational-database/#foreign-key) while ignoring the dependent records
-in the [child table](/en/apv/articles/relational-database/#foreign-key). In this case, `UPDATE` 
+the [master table](/articles/relational-database/#foreign-key) while ignoring the dependent records
+in the [child table](/articles/relational-database/#foreign-key). In this case, `UPDATE` 
 refers only to the link value change. Because this is usually a value of a primary key (which usually
 does not change) it is not very common.
 
@@ -683,7 +682,7 @@ CREATE TABLE contact (
 {% endhighlight %}
 
 When the foreign key is set to cascade and you delete a record in the
-[master table](/en/apv/articles/relational-database/#foreign-key),
+[master table](/articles/relational-database/#foreign-key),
 the database will automatically delete all child records.
 I.e. when deleting from `person` table `id_person=2`, contacts depending on
 that row (having `id_person=2`) will be deleted too.
@@ -766,14 +765,14 @@ that someone is always responsible for them. What if the responsible person
 leaves the company? If `SET DEFAULT` is not enough, a rule must exist to select a new person responsible
 for the machinery and this must be done programmatically in the application code.
 All the above situations are quite real and they present a challenge
-in good [database design](/en/apv/articles/database-design/). A good database design allows you to
+in good [database design](/articles/database-design/). A good database design allows you to
 [keep historical data](http://clarkdave.net/2015/02/historical-records-with-postgresql-and-temporal-tables-and-sql-2011/),
 but that is far beyond the scope of this book.
 
 ## Index
 By now, you should be familiar with several types of **database objects**:
 *database* and *schema*, *table* and *view*, *column*,
-[*sequence*](/en/apv/articles/database-tech/#auto-increment-in-postgresql). There
+[*sequence*](/articles/database-tech/#auto-increment-in-postgresql). There
 are other types of database objects - such as
 [*index*](https://en.wikipedia.org/wiki/Database_index), *function*
 (sometimes referred to as
@@ -875,8 +874,8 @@ the `EXPLAIN` command is non-trivial and falls to the complex problem of query o
 
 ### Execution Plan
 An **execution plan** describes the procedure
-generated by the SQL [interpreter](/en/apv/articles/programming/) to obtain the data you want to select.
-Remember that SQL is a [declarative language](/en/apv/articles/relational-database/#sql-language).
+generated by the SQL [interpreter](/articles/programming/) to obtain the data you want to select.
+Remember that SQL is a [declarative language](/articles/relational-database/#sql-language).
 Via SQL you tell the server **what** to do,
 but you don't tell it **how** to do it. That *how* is the *execution plan*.
 Different SQL queries (returning same results) may use different executions plans and therefore
@@ -911,7 +910,7 @@ the second parenthesis contains the actual result. E.g. in the first item:
     Hash Join  (cost=1.65..4.22 rows=7 width=66) (actual time=0.063..0.096 rows=5 loops=1)
 
 You can see that the database server expected that the result will have about 7 rows. **Hash Join**
-means that the join is using an [**index**](/en/apv/articles/database-tech/#index). The join took 0.063..0.096 milliseconds
+means that the join is using an [**index**](/articles/database-tech/#index). The join took 0.063..0.096 milliseconds
 and in fact yielded five rows. A *Seq scan** is a sequential scan which means that the database
 is looping over all the rows of the table (this is slower than hash scan, but is used here, because
 the table is tiny). Notice that the actual order of operations is swapped -- the join is the last operation --
@@ -940,8 +939,8 @@ Doctrine Query Language (DQL), Hibernate Query Language (HQL), Java Persistence 
 One area where this is often used is the **ORM layer** (Object-Relational Mapping). ORM layer is part
 of the application which is used in applications developed with
 [Object Oriented Approach](https://en.wikipedia.org/wiki/Object-oriented_analysis_and_design#Object-oriented_modeling)
-which use a [Relational database](/en/apv/articles/relational-database/). As
-I [described before](/en/apv/articles/database-systems/#data-model), the relational model and Object model are
+which use a [Relational database](/articles/relational-database/). As
+I [described before](/articles/database-systems/#data-model), the relational model and Object model are
 data (database) models, which are quite similar in some ways. This means that it is possible to
 create an ORM layer. The ORM layer is used inside an application instead of a database layer. The layer
 is responsible for communicating with the database.
@@ -953,8 +952,7 @@ which it returns to your application. Using ORM is great and saves a great deal 
 for some applications (or some parts of them). For other types of applications,
 it may get really annoying.
 
-{% highlight php %}
-<?php
+~~~ php?start_inline=1
 ...
 $query = $em->createQuery(
     'SELECT User FROM User
@@ -962,7 +960,8 @@ $query = $em->createQuery(
 );
 $query->setParameter(1, 'Berlin');
 $users = $query->getResult();
-{% endhighlight %}
+...
+~~~
 
 The above example shows a
 [DQL](http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/dql-doctrine-query-language.html)
@@ -979,15 +978,15 @@ can be used for SQL or DQL queries, or any other query language (if it supports 
 
 Example:
 
-{% highlight php %}
-<?php
+~~~ php?start_inline=1
 ...
 $query = qb->select('person.*');
 $query->orderBy('person.first_name', 'ASC');
 $query->from('person');
 $query->where('person.person_id = :id');
 $query->setParameter(':id', 42);
-{% endhighlight %}
+...
+~~~
 
 Using a query builder has the advantage that various parts of the query can be specified in any order
 and not necessarily the one used in the final query. This can have some advantages in code organization.
@@ -997,15 +996,15 @@ a database administration interface and run it (and vice versa) which makes it h
 A query builder is often used together
 with [**fluent interface**](https://en.wikipedia.org/wiki/Fluent_interface) which makes the syntax nicer:
 
-{% highlight php %}
-<?php
+~~~ php?start_inline=1
 ...
 $qb->select('person.*')
    ->orderBy('person.first_name', 'ASC')
    ->from('person')
    ->where('person.person_id = :id')
    ->setParameter(':id', 42);
-{% endhighlight %}
+...
+~~~
 
 There are some cases where using a query builder is almost necessary --- complex
 queries with many filtering conditions. It is important to note that unlike ORM, a

@@ -116,26 +116,28 @@ Most languages have the following language elements:
 Comments are part a of the programming language, but they are not interpreted in
 any way. They serve the purpose of writing your comments to the source code.
 
-{% highlight php %}
+~~~ php
+<?php
 // this is a comment, and does nothing
-{% endhighlight %}
+~~~
 
 Comments are either *single-line* or *multi-line*. A single-line comment (the above example) runs until the
 end of the line. A multi-line comment must be terminated by a sequence of characters.
 
-{% highlight php %}
+~~~ php
+<?php
 /* this is a comment, that
 does nothing and spans over more lines.
 */
-{% endhighlight %}
+~~~
 
 #### Literal
 These are values written directly in the code. For example, when you write in PHP:
 
-{% highlight php %}
+~~~ php
 <?php
 echo "Hello World!";
-{% endhighlight %}
+~~~
 
 The text `Hello World!` is a text *literal*. The `echo` part is command which makes sure, that the
 text is printed.
@@ -143,11 +145,11 @@ text is printed.
 #### Constant
 These are values also written in the code, but they are assigned a name. For example:
 
-{% highlight php %}
+~~~ php
 <?php
 define('MONTHS_IN_YEAR', 12);
 echo MONTHS_IN_YEAR;
-{% endhighlight %}
+~~~
 
 The `MONTHS_IN_YEAR` is a constant (value that does not change) and has a name `MONTHS_IN_YEAR`.
 In this case, the constant value was defined using a [`define()`](http://php.net/manual/en/function.define.php) function.
@@ -155,13 +157,13 @@ In this case, the constant value was defined using a [`define()`](http://php.net
 #### Variables
 Variables are one of the most important parts of a programming language. For example in PHP:
 
-{% highlight php %}
+~~~ php
 <?php
 $name = 'Jane';
 echo $name;
 $name = 'John';
 echo $name;
-{% endhighlight %}
+~~~
 
 The above will first print `Jane` and then `John`. Variables in PHP are marked with the `$` sign,
 so the `$name` is a variable. Technically, a variable is actually a space in computer memory.
@@ -170,10 +172,10 @@ The variable can contain different values in time.
 #### Operators
 Each language has operators for working with values. For example:
 
-{% highlight php %}
+~~~ php
 <?php
 echo 4 + 5;
-{% endhighlight %}
+~~~
 
 The above will print 9. `+` is an arithmetic operator. Each language has standard arithmetic
 operators such as `-`, `+`, `*`, `/`. Then there are other operators -- for example boolean operators for
@@ -185,10 +187,10 @@ case `4 + 5` is an expression, which yields a value `9`. Expressions can be
 *simple* or *compound*. Compound expressions should use parentheses to determine explicitly
 the order of evaluation. E.g.
 
-{% highlight php %}
+~~~ php
 <?php
 echo (4 + 5) * 10;
-{% endhighlight %}
+~~~
 
 The above will print `90`. The order of expression evaluation is particularly
 important for [boolean expressions](todo). Also note that `echo` is not part of the expression,
@@ -199,17 +201,17 @@ it is a command which prints a value to the screen. The value is obtained by eva
 **flow** of the program. These are mainly **conditions** and **loops**. They
 control what lines of the source code get executed:
 
-{% highlight php %}
+~~~ php
 <?php
 $what = 5
 if ($what > 0) {
     echo "5 is bigger than 0";
 }
-{% endhighlight %}
+~~~
 
 An `if` condition can have multiple **branches**:
 
-{% highlight php %}
+~~~ php
 <?php
 $what = 5
 if ($what > 0) {
@@ -217,7 +219,7 @@ if ($what > 0) {
 } else {
     echo "5 is smaller than 0";
 }
-{% endhighlight %}
+~~~
 
 
 #### Functions, classes and objects
@@ -249,19 +251,19 @@ to just that in a weakly typed language, the values of different types are conve
 In a strongly typed language, the values must be explicitly converted. Most languages used in
 web application development are weakly typed which means that you can write e.g.:
 
-{% highlight php %}
+~~~ php
 <?php
 echo 5 + '4';
-{% endhighlight %}
+~~~
 
 In the above example, the `'4'` gets automatically converted to an integer, so that
 it can be added to the integer `5`. Then the output `9` is converted to a string `'9'` which
 is printed to the screen. The following code will fail:
 
-{% highlight php %}
+~~~ php
 <?php
 echo 5 + 'four';
-{% endhighlight %}
+~~~
 
 The above would yield an error, because the language interpreter is stupid and does not know that
 the string `four` can be converted to the number 4.
@@ -286,13 +288,12 @@ For example the expression `not true`, negates the value `true` and results `fal
 That's why it's called boolean logic :). In PHP, the not operator is written using the exclamation mark `!`:
 
 Some examples:
-{% highlight php %}
-<?php
+~~~ php?start_inline=1
 !true; // -> yields false
 (true and true) or false; // -> yields true
 ((true or false) and true) and (!true); // -> yields false
 (!((!true) or false)) or false; // -> yields true
-{% endhighlight %}
+~~~
 
 Knowing how boolean operators work is essential for writing [conditional statements](/articles/programming/#control-flow).
 

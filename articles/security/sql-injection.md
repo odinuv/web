@@ -41,12 +41,11 @@ table (there are several types of bank accounts -- that is the purpose filter pa
 of an account is securely stored in session data storage and cannot be changed easily. Suppose that an attacker wants to
 see someone else's account balance.
 
-{% highlight php %}
-<?php
+~~~ php?start_inline=1
 $id = $_SESSION['user']['id'];
 $sql = "SELECT balance FROM bank_account " .
        "WHERE type = '" . $_GET['filter'] . "' AND owner = '" . $id . "'";
-{% endhighlight %}
+~~~
 
 Note that compared column values in `WHERE` are enclosed in apostrophes `'` which denote SQL strings. Contrary,
 from PHP's point of view, everything there is a string and variable containing string is being concatenated into
@@ -115,13 +114,13 @@ at lines where SQL statements are defined and check for direct concatenation wit
 everything goes smooth but try to pass `5 OR true` as POST's `id` parameter and you just deleted everything stored
 inside the `person` table.
 
-{% highlight php %}
+~~~ php
 <?php
 $db = new PDO('...', 'login', 'pass');
 if(!empty($_POST['id'])) {
     $db->query('DELETE FROM person WHERE id = ' . $_POST['id']);
 }
-{% endhighlight %}
+~~~
 
 The worst thing about SQL injection is that the code works OK when you pass "normal" values into the script.
 
@@ -148,7 +147,7 @@ Sometimes you need to build a query dynamically, for example when you need to bu
 in that case you have to build SQL query string and setup value placeholders and remember their order of appearence.
 PDO's separate [`quote()` method](http://php.net/manual/en/pdo.quote.php) may also be useful.
 
-{% highlight php %}
+~~~ php
 <?php
 $db = new PDO('pgsql:host=localhost;dbname=...', 'login', 'pass');
 $filters = ['first_name', 'last_name', 'nickname']; //allowed column names
@@ -165,7 +164,7 @@ foreach($_GET['filter'] as $k => $v) {
 $stmt = $db->prepare($sql);
 $stmt->execute($actualFilters);                      //pass ordered array to repalce '?'
 print_r($stmt->fetchAll());
-{% endhighlight %}
+~~~
 
 Try to pass these URL parameters: `script.php?filter[first_name]=ka&filter[last_name]=os`. The SQL string which
 is passed into `prepare()` method looks like this: `SELECT * FROM person WHERE first_name ILIKE ? AND last_name ILIKE ?`.

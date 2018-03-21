@@ -27,7 +27,7 @@ is some magic involved. HTML is also rendered using Latte Templates.
 
 Both Walkthroughs share some parts (e.g HTML, HTML forms, SQL), the difference is mainly in the way the PHP code on
 backend is organized.
-Note that for **[APV Course outline](/course/)**, the [**Slim Walkthrough**](/en/apv/walkthrough-slim/) is the current one.
+Note that for **[APV Course outline](/course/)**, the [**Slim Walkthrough**](/walkthrough-slim/) is the current one.
 
 ## Goals
 My goals are:
@@ -52,7 +52,7 @@ but this may be a good start).
 ## Who? Why?
 *Who is this for?* This book was originally written for students of
 [Application Software Programmes](http://ects-prog.mendelu.cz/en/plan6937/predmet88060) course
-at [Mendel University](https://is.mendelu.cz/). However it is suitable for [anyone](/en/apv/course/not-a-student)
+at [Mendel University](https://is.mendelu.cz/). However it is suitable for [anyone](/course/not-a-student)
 with interest in web application development.
 
 *Why web applications?* Because they are popular and they

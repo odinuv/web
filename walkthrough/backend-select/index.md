@@ -226,13 +226,13 @@ count the number of items in the array.
 </div>
 
 {: .solution}
-{% highlight php %}
+~~~ php
 <?php
 $keyword = 'John Do';
 $parts = explode(' ', $keyword);
 $first_name = $parts[0];
 $last_name = $parts[1];
-{% endhighlight %}
+~~~
 
 {: .solution}
 <div markdown='1'>

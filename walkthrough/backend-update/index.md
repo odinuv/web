@@ -47,11 +47,11 @@ File `person-update-2.php`:
 
 Note the use of the condition:
 
-{% highlight php %}
+~~~ php?start_inline=1
 if (!$tplVars['person']) {
     exit("Cannot find person with ID: $personId");
 }
-{% endhighlight %}
+~~~
 
 This is necessary, in case the person with the given ID would not exist. In that case
 the `fetch()` method returns false. Which means that querying for `$person['first_name']`

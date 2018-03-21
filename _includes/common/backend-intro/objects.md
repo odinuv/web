@@ -122,9 +122,9 @@ $object = new \MyNameSpace\MyClass();
 
 Built-in classes are in the root namespace:
 
-{% highlight php %}
+~~~ php?start_inline=1
 $object = new \PDO();
-{% endhighlight %}
+~~~
 
 Working with namespaces is a bit tricky, because it depends on whether and how your script
 uses them. At least you should be aware that namespaces exist and recognize namespaced classes.
