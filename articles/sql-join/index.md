@@ -1,5 +1,5 @@
 ---
-title: SQL – Joining data
+title: Selecting and joining data
 permalink: /articles/sql-join/
 redirect_from: /en/apv/articles/sql-join/
 ---
