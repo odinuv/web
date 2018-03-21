@@ -12,7 +12,7 @@ information in your project. To store contact info in your database you need a p
 actual contact value (e.g. the phone number).
 
 Meaningful interaction with web application is based on ability of the client (a web browser) to pass values from the
-visitor (a person) to the web server. HTTP protocol offers a few *communication styles*. These styles are called methods
+visitor (a person) to the web server. [HTTP protocol](/articles/http/) offers a few *communication styles*. These styles are called methods
 and you already encountered *GET* and *POST* method earlier. There are some other methods like *PUT*, *DELETE* and
 *OPTIONS* which are used for *APIs*. The combination of HTTP method and address is called a *route* in Slim -- you
 can take a look at previous walkthrough article about [named routes](/walkthrough-slim/named-routes).
@@ -20,6 +20,8 @@ can take a look at previous walkthrough article about [named routes](/walkthroug
 The main difference is that a request made with *GET* method should not have a body and **the only** way to pass values
 to the server is in the URL. Thus the parameters are visible and the visitor can copy the URL and store it as favourite
 or send it using e.g. email to another person which can click that link and view the site in exactly same state.
+
+See [HTTP article](/articles/http/) for detailed description of methods and when to use them. 
 
 {: .note}
 Of course the state of the page can also depend on values stored in [cookies or session](/articles/cookies-sessions/).
@@ -62,26 +64,6 @@ Form template in `templates/post-demo.latte`:
 {% highlight html %}
 {% include /walkthrough-slim/passing-values/post-demo.latte %}
 {% endhighlight %}
-
-## When to use *GET* or *POST* method?
-Use *GET* method for actions like:
-
-- general navigation from page to page
-- search or filtering
-- change of order
-- pagination
-- pass required parameters (such as ID of record) to **display** a form
-
-Use *POST* method for actions like:
-
-- register a user
-- send an email
-- insert or update of a record
-- deletion of a record
-- login and even logout to prevent [CSRF](/articles/security/csrf/)
-- generally, modifications of data in a database
-
-There can be exceptions, but they have to be justified.
 
 ## Anatomy of URL
 You know the URL from browser's address bar, but usually you see only required parts of the URL. The URL can contain
