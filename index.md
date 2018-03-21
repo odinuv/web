@@ -8,7 +8,7 @@ redirect_from: /en/apv/
 * TOC
 {:toc}
 
-**[APV Course outline](/en/apv/course/)**
+**[APV Course outline](/course/)**
 
 The [Old Czech website](https://akela.mendelu.cz/~xpopelka/cs/apv/) is still available.
 
