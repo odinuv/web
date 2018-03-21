@@ -50,7 +50,7 @@ interested whether your application works or not.
 Route is a combination of HTTP method (*GET*, *POST* or others) and a path, e.g. `GET /persons` or `POST /new-person`.
 Routing is a mechanism which is implemented in a framework to map routes on actual code.
 
-Check out this [article](/articles/web/#http-protocol) and this [walkthrough](/walkthrough-slim/passing-values/#when-to-use-get-or-post-method).
+Check out this [article](/articles/http/) and this [walkthrough](/articles/http/#when-to-use-get-or-post-method).
 Take a look at [named routes](/walkthrough-slim/named-routes/) too. 
 
 An important note is thar routes are *virtual*, the paths in your address bar are not paths to actual files or folders.
@@ -74,6 +74,14 @@ they all have similar core concepts.
 
 Never write your own framework (unless you have 10+ years of experience and a team of developers and really lot of time).
 
+### When to use *GET* and when to use *POST*?
+Generally, *POST* should be used to modify state (obviously to modify or remove record in database, less obviously for
+logout). Use *GET* whenever you want to let users revisit that same page in current state (e.g. save the link to
+favourites or share URL with others). You usually have one *GET* route and one *POST* route for forms -- *GET* renders
+empty form and *POST* stores the values.
+
+Take a look [here](/articles/http/#when-to-use-get-or-post-method).
+
 ## PHP questions
 
 ### My code is too long, how do I organise it?
@@ -88,13 +96,6 @@ You can read more detailed [description](/course/technical-support/#composer) or
 
 Before you can use it on your computer, you have to install [PHP](/course/technical-support/#php-as-command-line-script-interpreter)
 as command line tool.
-
-## When to use *GET* and when to use *POST*?
-Generally, *POST* should be used to modify state (obviously to modify or remove record in database, less obviously for
-logout). Use *GET* whenever you want to let users revisit that same page in current state (e.g. save the link to
-favourites or share URL with others).
-
-Take a look [here](/walkthrough-slim/passing-values/#when-to-use-get-or-post-method).
 
 ## Templating engine questions
 
