@@ -9,7 +9,7 @@ redirect_from: /en/apv/walkthrough/backend-insert/
 
 In previous chapters, you have learned how to [work with HTML forms](/walkthrough/html-forms/)
 and [how to organize your code](/walkthrough/organize/). Now we will add a little bit more of a code to insert data into the database.
-There is no new technology necessary for this, all you need is [SQL INSERT](/walkthrough/database/#insert) and
+There is no new technology necessary for this, all you need is [SQL INSERT](/walkthrough/database-intro/#insert) and
 [working with HTML forms](/walkthrough/html-forms/). Yet there are some things, which are worth deeper explanation.
 
 ## Getting started

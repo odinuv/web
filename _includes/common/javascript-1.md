@@ -2,11 +2,11 @@ Sometimes a quick popup alert or a confirmation dialog is the best solution to d
 to a website visitor. Imagine that you have to write a PHP script and a template to confirm deletion
 of a record -- it would be a lot of code. You probably saw a dialog with native look of the operating system
 on other websites. Such dialog can be displayed using a [JavaScript](/articles/javascript/) code and it
-is a built-int part of the browser ([frontend](todo)).
+is a built-int part of the browser ([frontend](/articles/web-applications/#frontend)).
 
 In this article I will not teach you how to build an application entirely with JavaScript. I will show you how to use
 very basic functions of this language to overcome the most common problems with the user interface -- quickly confirm some action or
-validate a form before it is send to the [backend](todo).
+validate a form before it is send to the [backend](/articles/web-applications/#backend).
 
 ## Linking JavaScript to your HTML
 [Similarly to CSS](../css/#linking-your-css-to-html-file), a JavaScript file is usually referenced in the `<head>`

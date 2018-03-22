@@ -1,7 +1,7 @@
 
 When you know the basics of [HTML](/articles/html/) and know how to
 create a [static HTML page](../html/) you
-can start with implementing a [server backend](todo). The server backend is 
+can start with implementing a [server backend](/articles/web-applications/#backend). The server backend is 
 an application which generates the HTML page dynamically (on the fly) depending on some external input (usually user input and content stored in a [database](../database-intro/)).
 For example, when you check your email on the web, the page you see contains your current emails (stored somewhere)
 and only those you want to see (e.g. in your inbox or another folder you have selected).
