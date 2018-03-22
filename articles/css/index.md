@@ -25,7 +25,7 @@ every web browser so that it renders an HTML page without styles in some sensibl
 
 ## Cascading Style Sheets
 Cascading Style Sheets (CSS) is standard defining the rendering **rules** for a HTML (or
-[XML](/articles/html#xml) or [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics)) documents
+[XML](/articles/html/#xml) or [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics)) documents
 and a language for writing those rules. CSS is not a programming language.
 
 CSS replaces obsolete HTML elements like `FONT`, `BASEFONT`, `BIG`, `CENTER`, `S`, `STRIKE`, `U`, ...
