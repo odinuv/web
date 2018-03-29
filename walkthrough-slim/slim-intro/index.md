@@ -46,7 +46,7 @@ Before you start this approach, you need to have Git installed. **Forking** a re
 that you create your own repository copy in which you can do anything you want. 
 
 Go to the [Slim Project page](https://bitbucket.org/apvmendelu/slim-based-project) 
-([https://bitbucket.org/apvmendelu/slim-based-project] (https://bitbucket.org/apvmendelu/slim-based-project))
+([https://bitbucket.org/apvmendelu/slim-based-project](https://bitbucket.org/apvmendelu/slim-based-project))
 and [login with a Bitbucket account](https://bitbucket.org/).
 When you login, you should see a plus button on the left:
 

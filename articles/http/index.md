@@ -31,7 +31,7 @@ HTTP request and response have given format:
 - body of response (optional)
 
 Imagine HTTP connection as a text file where two systems write characters. To avoid confusion, both systems must obey
-given rules. First, the client writes what he wants and than the server writes its response. The connection is closed
+given rules. First, the client writes what he wants and then the server writes its response. The connection is closed
 afterwards. The steps look like this: 
 
 - client opens connection (finds IP address using DNS)

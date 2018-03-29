@@ -37,7 +37,7 @@ Notice, that I used a `$message` variable in the template. It will come in handy
 
 ### Inserting Data
 It is important to use a correct [HTTP method](/articles/http/). Since inserting a person is a data changing action, I
-am using the POST method (`<form method='post'>`). This means that we will find the form data in
+am using the POST method (`<form method='post'>`). This means that we will find the form data
 with `$request->getParsedBody()` method when the user submits the form. In pure PHP it would be in `$_POST` variable.
 
 First we need to check that the user submitted the form. If yes, then we need to validate the input from the
