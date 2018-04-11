@@ -7,11 +7,11 @@ permalink: /course/faq/
 {:toc}
 
 This place should navigate you quickly to important sections and tries to gather answers for questions of typical
-beginner. If you have any other question and you think that it should be answered here, mail [me](mailto:jiri.lysek@mendelu.cz). 
+beginner. If you have any other question and you think that it should be answered here, mail [me](mailto:jiri.lysek@mendelu.cz).
 
 ## Questions (almost) impossible to answer
 
-### How does it all work together? I have written all the code, it works, but I do not know why!
+### How does it all work together? I have written (copied) all the code, it sort-of works, but I do not know why!
 Well, working web application is a complicated thing. Do not trust anybody who tells you opposite. You have to know
 quiet a lot of technologies (e.g. HTTP, HTML, CSS, PHP, SQL and a bit of JavaScript) to build one. The advantage of
 web technologies is that you only need a text-editor to code a HTML page or PHP script.
@@ -45,6 +45,46 @@ of other people, you can either enrich yourself with new knowledge or help someb
 interested whether your application works or not. 
 
 ## General questions
+
+### How to start working on the project?
+Simple answer is: have a plan! The more complicated answer follows. The [walkthrough](/walkthrough-slim/) section covers
+only one module of the application -- the person module (list, add, edit and delete actions). This module is obviously
+crucial but to fulfill the [project assignment](/course/#project-assignment) you have to do much more. A good idea is
+to write down all actions that you want to enable for users of your application before you start writing any
+code -- a list or nested list is OK, [UML Use-Case diagram](https://en.wikipedia.org/wiki/Use_case) is better. You can
+also identify user roles (like administrator, registered user or guest). Use-Case diagram includes user roles by its
+nature.
+
+{: .note}
+User in guest role can usually perform registration and login and optionally display public information.
+
+Here is an example of a Use-Case diagram made with [Visual Paradigm](https://www.visual-paradigm.com/) but a plain list
+is OK for this project:
+
+![Example Use-Case](/course/example-usecase.png)
+
+Once you know what a user can do, you can start designing user interface for that actions. Take a pencil and a piece of
+paper and start drawing forms and layout of individual screens. You should create so called [wireframe](https://en.wikipedia.org/wiki/Website_wireframe)
+model for each screen of your application and you can append some notes to it. You should be able to identify required
+form fields from the supplied [Entity-Relationship diagram](/walkthrough-slim/database-intro/#database-schema). If you
+want to use software to draw wireframes, try [Pencil project](https://pencil.evolus.vn/).
+
+You may end up with something like this:
+
+{: .image-popup}
+![Example wireframe](/course/example-wireframe.png)
+
+Once you have the wireframes with comments and list of actions, you can start coding: assign a route or filename to
+each action (depending on walkthrough version), prepare the template and display it -- you can start with static
+templates. Afterwards start coding logic -- retrieve data from database and display them (pass the data into template
+and show them to the visitor), prepare *POST* routes for data modifications when a page contains a form. Always think
+about what the user should see or where to redirect him after *POST* action.
+
+{: .note}
+I supplied the database structure for you so you do not have to bother designing it. In real world, you would have to
+analyse the assignment, find potential database entities and their attributes and create [Entity-Relationship diagram](/articles/database-design/)
+by yourself. It is a good idea to crosscheck ERD with wireframe models of user interface to be sure that all forms and
+inputs are mapped to entities and attributes and vice-versa.
 
 ### What is a route or routing?
 Route is a combination of HTTP method (*GET*, *POST* or others) and a path, e.g. `GET /persons` or `POST /new-person`.
