@@ -207,3 +207,11 @@ with conditionals and loops in Latte templates (either syntax).
 - Latte
 - Macros
 - Template Variables
+
+### Control question
+- Why use templates?
+- Are templates slower than plain PHP (using `echo`)?
+- Can you define yor own macro of filter?
+- What is the interface between template and PHP code?
+- How does a template obtain its variables?
+- What is the result of template rendering?

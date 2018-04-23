@@ -245,3 +245,9 @@ framework.
 - Named routes
 - `{link routeName}` macro
 - `{$basePath}` variable
+
+### Control question
+- Can you come up with some systematic way of route naming?
+- Should name of a route ever change during application lifetime?
+- Should URL of a route ever change during application lifetime?
+- Do we need to give a name to both POST and GET routes with same URL?

@@ -290,3 +290,8 @@ to see what else HTML can offer to you.
 - Name & Value
 - Control Label
 - Control Validation
+
+### Control question
+- Are `action` and `method` attributes mandatory?
+- What happens when you submit a form without `action` attribute?
+- How does browser transfer information from form to backend?

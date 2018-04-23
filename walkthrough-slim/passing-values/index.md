@@ -321,3 +321,8 @@ append query parameters to that URL very easily.
 - passing values via URL parameters
 - passing values via *POST* data
 - route placeholders
+
+### Control question
+- When to use POST or GET method?
+- What is the easiest way to check incoming data?
+- How to determine the source of error (e.g. missing ID)?

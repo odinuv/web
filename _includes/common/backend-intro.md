@@ -261,3 +261,8 @@ Before continuing further, make sure you are not confused by the quotes all arou
 - Variables
 - Dynamic Types
 - ``require`` command
+
+### Control question
+- What is the difference between `require` and `require_once`?
+- What is the difference between `require` and `include`?
+- How is the type of variable determined in PHP? How do you change the type?

@@ -33,3 +33,7 @@ involves [cloning of HTML elements](https://developer.mozilla.org/en-US/docs/Web
 
 ### New Concepts and Terms
 - passing arrays
+
+### Control question
+- Is there any limit for GET or POST request/URL size?
+- Is radio button with no selected option OK?

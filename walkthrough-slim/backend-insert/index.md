@@ -125,3 +125,7 @@ are gone. We will take care of it in the [next step](/walkthrough-slim/backend-u
 ### New Concepts and Terms
 - Optional values
 - NULL
+
+### Control question
+- Which SQL error codes are worth catching?
+- What are the possible reasons that an application fails to insert data?

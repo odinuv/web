@@ -204,3 +204,10 @@ is very important, otherwise the application will misbehave in case an error con
 - Prepared Statement
 - Query Parameters
 - Error Control
+
+### Control question
+- Is it possible to connect to more than one database server?
+- Why is it necessary to check for errors?
+- Why use parameter binding?
+- Is every query parametrized?
+- Does every query have to return rows?

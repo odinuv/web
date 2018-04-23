@@ -97,3 +97,7 @@ better in the upcoming [CSS](/walkthrough-slim/css/) or [Bootstrap](/walkthrough
 ### New Concepts and Terms
 - Current menu item/route highlight
 - Middleware
+
+### Control question
+- Is there a way to detect active route without route name?
+- Application logic is usually nested, how would you implement highlighting of nested routes?

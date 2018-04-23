@@ -108,3 +108,7 @@ you are able to separate the code into individual parts and test each part indiv
 
 ### New Concepts and Terms
 - Step by Step development
+
+### Control question
+- Describe how does content of database table (information from a column) get to visitor of web page?
+- What are possible weak spots of presented approach?

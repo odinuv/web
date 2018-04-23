@@ -334,3 +334,8 @@ so that you can save a lot of work designing a full page from scratch.
 - CSS units
 - CSS class
 - CSS colors
+
+### Control question
+- Where to put CSS files (separate CSS file, `<style>` tag, inline)?
+- Should you use element names in CSS selectors or just class names?
+- Is pixel (px) an absolute unit?

@@ -23,3 +23,9 @@ Remember that you are responsible for security of your application and also for 
 - $_SESSION
 - login
 - logout
+
+### Control question
+- Why store passwords as hash in database?
+- Why to use salt?
+- Which hashing functions you would not use today?
+- Is it better to use email instead of login?

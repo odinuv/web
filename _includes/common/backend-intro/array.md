@@ -250,3 +250,9 @@ of database queries are stored in them. This means that we will work with them a
 - Conditionals -- if, else, ifelse, switch, case
 - Loops -- for, while, do-while
 - Comparison vs. Assignment
+
+### Control question
+- What kinds of arrays does PHP support?
+- Can you use `for` cycle to iterate over *associative* array?
+- If an ordinal array has 10 items, what is the first and last index value?
+- Is there any similarity between strings and arrays?

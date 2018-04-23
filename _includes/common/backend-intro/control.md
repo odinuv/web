@@ -110,3 +110,8 @@ branching and loops.
 - Conditionals -- if, else, ifelse, switch, case
 - Loops -- for, while, do-while
 - Comparison vs. Assignment
+
+### Control question
+- Is it possible to use assignment operator inside control structure (e.g. `if($a = 5) {}`)?
+- Does every `if` has to have `else`?
+- What is considered to be non-true value?

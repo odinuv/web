@@ -307,3 +307,13 @@ Do not worry if you don't understand everything. Things will become more clear w
 - packages
 - Slim
 - environment file
+
+### Control question
+- Why use environment file?
+- What configurations should you put into environment file?
+- Does environment file get stored into VCS (Git)?
+- Where does Composer download the packages from?
+- How does Composer know which packages and their versions to download?
+- Should you keep vendor folder in VSC (Git)?
+- Is it meaningful to edit files in vendor directory?
+- Why use a framework?

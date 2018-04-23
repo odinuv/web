@@ -528,3 +528,10 @@ you can always delete it (and import it again) by using the SQL queries:
 - INSERT
 - UPDATE
 - DELETE
+
+### Control question
+- What does DELETE or UPDATE query without WHERE clause do?
+- Is it necessary to specify all attributes when inserting data?
+- How would you delete person's birth day?
+- Do you need to use uppercase for SQL keywords?
+- Is it common to change structure of a table (add/remove column) during application lifetime?

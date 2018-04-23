@@ -203,3 +203,8 @@ pages right now, you need to know the principles and be able to create simple pa
 ### New Concepts and Terms
 - HTML tables
 - HTML lists
+
+### Control question
+- What is the correct minimal content of HTML5 file?
+- What encoding do we use in HTML files nowadays?
+- Is static HTML file a web application?

@@ -17,3 +17,10 @@ expensive operation).
 - `Content-Type` header
 - `Content-Disposition` header
 - caching
+
+### Control question
+- Is it better to store large data objects in database or in file system?
+- How do you protect files from being accessible via web server?
+- Are there some limits for file uploads?
+- Who sets file upload limits?
+- Is it safe to store files in file system?

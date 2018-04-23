@@ -28,3 +28,6 @@ relationship like persons attending a meeting. This leads to [passing arrays cha
 
 ### New Concepts and Terms
 - optgroup
+
+### Control question
+- Is a multi-select any different to multiple checkboxes?

@@ -165,3 +165,7 @@ previous chapters. I have also demonstrated how to reuse code using templates.
 - supply values to form controls
 - pass values between scripts
 - include templates
+
+### Control question
+- What difference is between form input elements for update and add form?
+- What does UPDATE query do without WHERE clause?

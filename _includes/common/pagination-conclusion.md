@@ -18,3 +18,9 @@ support built in.
 
 ### New Concepts and Terms
 - pagination
+- LIMIT, OFFSET
+
+### Control question
+- Is pagination a good concept? What about really large lists?
+- Is it better to pass page number or raw offset value in URL?
+- How else you would deal with large amount of results?

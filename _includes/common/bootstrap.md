@@ -212,3 +212,9 @@ to adapt and sometimes a new idea may confuse them. Try to follow well known pat
 - Bootstrap CSS framework
 - Responsive design
 - Media query
+
+### Control question
+- How to apply custom CSS (override Bootstrap)?
+- Is Bootstrap a good solution for your company's website?
+- Is Bootstrap a good solution for your company's information system?
+- Are there any alternatives to Bootstrap?

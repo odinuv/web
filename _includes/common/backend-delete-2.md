@@ -66,3 +66,9 @@ take a look at the chapter about [login](../login/) to limit access to this func
 - Redirect
 - CASCADE
 - SET NULL
+
+### Control question
+- What does a DELETE query do without `WHERE` clause?
+- Should deletion of records be performed vie a *POST* or *GET* method?
+- Do we need to confirm delete action?
+- Is the redirect after deletion necessary, can you delete something twice?

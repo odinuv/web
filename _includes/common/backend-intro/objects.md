@@ -154,3 +154,9 @@ to create instances of classes and call methods.
 - Constructor
 - Visibility
 - Namespaces
+
+### Control question
+- Is PHP function global?
+- Are variables inside PHP function global?
+- What is the difference between *class* and *object*?
+- What is the difference between *method* and *function*?

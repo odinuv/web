@@ -299,3 +299,9 @@ is processed and a response to the end-user is generated.
 - Anonymous Function
 - Request
 - Response
+
+### Control question
+- What is a route, how do you define it?
+- What does `$request` and `$response` variable represent?
+- Can you have more routes with same URL?
+- Can you have more routes with same URL and method?

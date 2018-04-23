@@ -36,3 +36,7 @@ I described the importance of using transactions when inserting multiple rows.
 - Database session
 - `PDO::lastInsertId()`
 - Transaction
+
+### Control question
+- Why not use MAX() to obtain ID of last inserted row?
+- How to determine the order of record insertion (e.g. insert address or person first)?

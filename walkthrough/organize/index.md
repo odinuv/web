@@ -156,3 +156,5 @@ no *one true solution* to it.
 - PHP Global variables
 - Directory structure
 
+### Control question
+- What else could you possibly store in shared `start.php` file?

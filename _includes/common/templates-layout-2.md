@@ -20,3 +20,9 @@ concept of inheritance.
 - Layout Template
 - Block
 - Inheritance
+
+### Control question
+- Why use layout?
+- Is it OK to have more than one layout?
+- Is it possible to have deeper layout nesting?
+- How many `{block}` statements can you use in one layout?

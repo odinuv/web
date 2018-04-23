@@ -56,3 +56,9 @@ section of this book.
 - Callback
 - Anonymous function
 - Dynamic HTML
+
+### Control question
+- When does JavaScript code get executed?
+- How to debug JavaScript?
+- Is it safe to execute JavaScript from various sources (e.g. libraries from CDN)?
+- Is JavaScript really necessary?

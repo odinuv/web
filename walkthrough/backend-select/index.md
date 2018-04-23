@@ -289,3 +289,8 @@ exercises have a virtually unlimited number of solutions.
 - HTTP GET
 - HTTP POST
 - $\_GET and $\_POST magical variables
+
+### Control question
+- Can you use `LIKE` operator without `%`?
+- How to determine which attributes to use for searching/filtering?
+- Is a text search always a good option, what about dates?

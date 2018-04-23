@@ -204,3 +204,8 @@ There is also variable called `$_REQUEST` which gathers `$_GET`, `$_POST` and `$
 - POST data
 - $_GET
 - $_POST
+
+### Control question
+- When to use GET and when to use POST?
+- How do you check incoming data?
+- How does web browser build the POST or GET request from a form?
