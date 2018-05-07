@@ -33,7 +33,7 @@ Routes in `routes.php`:
 
 {: .solution}
 {% highlight php %}
-{% include /walkthrough/upload/upload-01.php %}
+{% include /walkthrough-slim/upload/upload-01.php %}
 {% endhighlight %}
 
 Notice that I used a configuration entry to store the path for uploaded files. Append this line to settings array in 

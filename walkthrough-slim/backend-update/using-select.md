@@ -68,7 +68,7 @@ Almost there -- preselect address of a person if he has one and tell the form wh
 {% endhighlight %}
 
 {: .note}
-You can also use Latte's [n:attr](https://latte.nette.org/en/macros#toc-n-attr) [macro](/walkthrough/templates/#macros).
+You can also use Latte's [n:attr](https://latte.nette.org/en/macros#toc-n-attr) [macro](/walkthrough-slim/templates/#macros).
 
 {% highlight html %}
 <option value="..." n:attr="selected => $person['id_location'] == $loc['id_location']">

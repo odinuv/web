@@ -9,8 +9,8 @@ permalink: /walkthrough-slim/backend-delete/
 {% include /common/backend-delete-1.md %}
 
 ## Getting started
-Deleting data from database is technically very similar to [inserting](/walkthrough/backend-insert/) or
-[updating](/walkthrough/backend-update/) data. You need to create a script which will
+Deleting data from database is technically very similar to [inserting](/walkthrough-slim/backend-insert/) or
+[updating](/walkthrough-slim/backend-update/) data. You need to create a script which will
 take some parameter with a value to identify the record (e.g. a person). The script will then
 execute a SQL `DELETE` query to remove that record from database.
 

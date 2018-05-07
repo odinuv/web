@@ -10,7 +10,7 @@ permalink: /walkthrough-slim/login/
 
 ### Task -- create a form for user registration
 It should have an input for login or email and two inputs for password verification (all inputs are required).
-You can use [Bootstrap](/walkthrough/css/bootstrap/) CSS styles. Prepare a place to display error message and
+You can use [Bootstrap](/walkthrough-slim/css/bootstrap/) CSS styles. Prepare a place to display error message and
 remember to prepare `form` data array to display values in case of failure.
 
 File `templates/register.latte`:

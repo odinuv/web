@@ -220,7 +220,7 @@ Template file `form-5.latte`:
 I have simplified the condition
 `if ($templateVariables['currentUser']['firstName'] != '')` to
 `if ($templateVariables['currentUser']['firstName'])` because the
-automatic [boolean conversion](/walkthrough/backend-intro/#boolean-conversions) allows us to do it.
+automatic [boolean conversion](/walkthrough-slim/backend-intro/#boolean-conversions) allows us to do it.
 
 {: .note}
 You need to convert the entities &amp;lt; and &amp;gt; in the message back to the characters `<` and `>`.
