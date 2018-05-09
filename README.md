@@ -3,7 +3,7 @@
 # Running in Docker
 
 ```
-cd _docker
+cd docker
 docker-compose up jekyll
 ```
 

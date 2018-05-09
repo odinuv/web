@@ -27,4 +27,4 @@ services:
     working_dir: /code
     ports:
       - "4000:4000"
-    command: /code/_docker/mdeploy.sh
+    command: /code/docker/mdeploy.sh
