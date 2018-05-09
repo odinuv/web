@@ -110,7 +110,7 @@ Contact form template:
 Layout template:
 
 {% highlight html %}
-{% include /walkthrough/templates-layout/layout-c1.latte %}
+{% include /walkthrough-slim/templates-layout/layout-c1.latte %}
 {% endhighlight %}
 
 ## Task -- Modify the layout
