@@ -9,6 +9,7 @@ filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
     echo "No files to update"
 else
+    echo "Start building LFTP command"
     COMMAND="set sftp:auto-confirm yes
 open -u $MFTP_USER,$MFTP_PASS $MFTP_TARGET"
     for f in $filesChanged
@@ -16,6 +17,7 @@ open -u $MFTP_USER,$MFTP_PASS $MFTP_TARGET"
         #do not upload these files that aren't necessary to the site
         if [ "$f" != ".travis.yml" ] && [ "$f" != "deploy.sh" ] && [ "$f" != "test.js" ] && [ "$f" != "package.json" ]
         then
+            echo "Appending file $f"
             COMMAND="$COMMAND
 mput -d $f"
             #echo "Uploading $f"
@@ -29,6 +31,7 @@ mput -d $f"
     COMMAND="$COMMAND
 close
 exit"
+    echo "Executing LFTP command"
     lftp -c "$COMMAND"
     if [ $? -ne 0 ]; then
         echo "File upload failed" >&2
