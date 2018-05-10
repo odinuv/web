@@ -95,6 +95,9 @@ items:
       - url: /walkthrough-slim/login/
         title: Login
 
+      - url: /walkthrough-slim/flash-messages/
+        title: Flash messages
+
       - url: /walkthrough-slim/pagination/
         title: Pagination
 
