@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+echo "Started mdeploy script"
+
 cd /code/_site/
 mkdir /code/tmp/
 mv /code/_site/~$MFTP_USER/$MFTP_PATH/* /code/tmp/
