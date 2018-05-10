@@ -179,6 +179,7 @@ template.
 Register middleware to pass flash messages into Latte templates in `middleware.php`, use
 [`addParam()` method](https://github.com/ujpef/latte-view#addparamname-param) described in *latte-view* documentation:
 
+{: .solution}
 ~~~ php?start_inline=1
 $app->add(function (Request $request, Response $response, callable $next) {
     $this->view->addParam('flash', $this->flash);
@@ -188,7 +189,8 @@ $app->add(function (Request $request, Response $response, callable $next) {
 
 Display messages in `layout.latte`:
 
-~~~ php?start_inline=1
+{: .solution}
+~~~ html
 {var $fm = $flash->getMessages()}
 {if !empty($fm['success'])}
     {foreach $fm['success'] as $m}
