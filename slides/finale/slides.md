@@ -1,6 +1,6 @@
 ---
 layout: slides
-title: Application development
+title: Finale
 description: 
 transition: slide
 permalink: /slides/finale/
