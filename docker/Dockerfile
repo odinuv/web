@@ -9,7 +9,7 @@ ENV LC_ALL C.UTF-8
 
 RUN apt-get update -q \
     && apt-get install -y --no-install-recommends \
-        libssh2-php \
+        php-ssh2 \
         lftp \
     && rm -r /var/lib/apt/lists/* \
     && gem install bundle \
