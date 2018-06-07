@@ -13,4 +13,5 @@ RUN apt-get update -q \
     && rm -r /var/lib/apt/lists/* \
     && gem install bundle \
     && gem install jekyll \
+    && bundle exec \
     && bundle install \
