@@ -10,6 +10,6 @@ cp -f ./_includes/analytics-x.html ./_includes/analytics.html
 echo "Executing docker"
 
 cd ./docker
-docker-compose run --rm -e JEKYLL_ENV=production jekyll jekyll build
+docker-compose run --rm -e JEKYLL_ENV=production jekyll bundle exec jekyll build
 
 docker-compose run --rm deploy
