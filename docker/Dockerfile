@@ -9,6 +9,7 @@ ENV LC_ALL C.UTF-8
 
 RUN apt-get update -q \
     && apt-get install -y --no-install-recommends \
+        lftp \
     && rm -r /var/lib/apt/lists/* \
     && gem install bundle \
     && gem install jekyll \
