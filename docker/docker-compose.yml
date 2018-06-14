@@ -2,8 +2,10 @@ version: '2'
 
 services:
   jekyll:
-    build: .
-    image: quay.io/odinuv/site-jekyll 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: quay.io/odinuv/site-jekyll
     tty: true
     stdin_open: true
     volumes:
@@ -14,7 +16,10 @@ services:
     command: jekyll serve --watch -H 0.0.0.0 --force_polling
   deploy:
     build: .
-    image: quay.io/odinuv/site-jekyll 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: quay.io/odinuv/site-jekyll
     tty: true
     stdin_open: true
     environment:
