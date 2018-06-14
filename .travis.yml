@@ -15,7 +15,7 @@ before_install:
   - curl --version
 
 script:
-  - cd docker && docker-compose run --rm -e JEKYLL_ENV=production jekyll jekyll build
+  - cd docker && docker-compose run --rm -e JEKYLL_ENV=production jekyll bundle exec jekyll build
 
 deploy:
 #  - provider: script
