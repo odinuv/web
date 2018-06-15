@@ -181,7 +181,7 @@ Register middleware to pass flash messages into Latte templates in `middleware.p
 
 {: .solution}
 ~~~ php?start_inline=1
-$app->add(function (Request $request, Response $response, callable $next) {
+$app->get(function (Request $request, Response $response, callable $next) {
     $this->view->addParam('flash', $this->flash);
     return $next($request, $response);
 });
