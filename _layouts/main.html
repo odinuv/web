@@ -83,7 +83,7 @@
 		}});
 
 	  	$('.solution').click(function(e) {
-	  		$(this).children('pre, img, p, ul').toggle()
+	  		$(this).find('pre, img, p, ul, div').toggle();
 	  	}).children().click(function(e) {
   			return false;
 		});

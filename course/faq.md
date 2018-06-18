@@ -88,9 +88,31 @@ inputs are mapped to entities and attributes and vice-versa.
 
 ### What is a route or routing?
 Route is a combination of HTTP method (*GET*, *POST* or others) and a path, e.g. `GET /persons` or `POST /new-person`.
-Routing is a mechanism which is implemented in a framework to map routes on actual code.
+Routing is a mechanism which is implemented in a framework to map routes on actual code. You can use constructions
+like `$app->get('/some/route', function($request, $response, $args) { ... })` to match a route and a piece of code
+which gets executed. If you are having difficulties to understand routing, think of a route as of *IF* statement:
 
-Check out this [article](/articles/http/) and this [walkthrough](/articles/http/#when-to-use-get-or-post-method).
+``` php?start_inline=1
+$app->get('/some/route', function($request, $response, $args) {
+    //code
+});
+```
+
+This code can be understood like the following one:
+
+``` php?start_inline=1
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/some/route') {
+    //code
+}
+```
+
+{: .note}
+The variable [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php) is an actual thing which contains
+some valuable information about the server where you execute PHP scripts and the request itself. Check out
+[`phpinfo()`](http://php.net/manual/en/function.phpinfo.php) function too.
+
+Basic routing is explained in the [walkthrough](/walkthrough-slim/slim-backend/#how-does-it-work). Then check out this
+[article](/articles/http/) and this [walkthrough](/articles/http/#when-to-use-get-or-post-method).
 Take a look at [named routes](/walkthrough-slim/named-routes/) too. 
 
 An important note is thar routes are *virtual*, the paths in your address bar are not paths to actual files or folders.
