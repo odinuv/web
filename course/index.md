@@ -18,7 +18,7 @@ To pass the course you have to:
 - get at least 90 points on [Codecademy](https://www.codecademy.com/) --- [**Verify**](http://odinuv.cz/course/codecademy.php)
 - finish the [course project](#project-assignment) --- [first evaluation](https://akela.mendelu.cz/~lysek/apv/vysledky.txt)
 - pass the final exam (minimum 50% points)
-  - you have to answer at least 2 SQL queries
+  - you have to answer at least 2 SQL queries somewhat correctly
 
 The grade from the final exam and the project evaluation make up for the final course grade.
 
@@ -124,3 +124,14 @@ application design, functionality and user interface. It is not an easy task, so
 The database schema defines what kind of data your application should store. You can change it
 if you want to do so, but please do so only after you understand
 the [database design process](/articles/database-design/).
+
+### Custom assignment
+It is possible to have a different assignment, but it has to be equally (or more) challenging as the default one.
+It has to use some database with more than one table and it should feature different types of cardinality.
+
+### Technologies
+You are free to choose what technologies you want to use to complete the project assignment, I will
+teach you how to use [PHP](/walkthrough-slim/backend-intro/) and [Slim framework](/walkthrough-slim/slim-intro/).
+The only condition is that you have to use up-to-date methods to build the project.
+
+Check the [FAQ section](/course/faq/) for more information.

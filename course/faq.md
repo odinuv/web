@@ -9,6 +9,35 @@ permalink: /course/faq/
 This place should navigate you quickly to important sections and tries to gather answers for questions of typical
 beginner. If you have any other question and you think that it should be answered here, mail [me](mailto:jiri.lysek@mendelu.cz).
 
+## Course related questions
+
+### Can I have custom project assignment?
+It is possible to have a different assignment, but it has to be equally (or more) challenging as the default one.
+It has to use some database and it has to be implemented as a web application. Always consult alternative assignment
+with me.
+
+### Can I use different programming language?
+Of course you can, but you have to write the project in a *modern* way. It means that you should use some framework,
+templating engine etc. 
+
+### I am stuck with something, can I use help from a friend?
+You are free to consult the project with anybody. Anyhow, the best bet is to ask me for help if you got really stuck.
+There is a chance that if you ask some of your more skilled friends who already solved the problem by "reinventing
+the wheel" that you will learn some bad habit. Some problems are very easy to solve but you have to be aware of certain
+methods -- a good example is the problem of [last insert ID value](/walkthrough-slim/backend-insert/advanced/).
+
+### I am stuck with something, can I use some piece of source code from a friend?
+Yes, but be careful. Your project will be considered as plagiarism if you copy more code than you wrote by yourself!
+Always remember to reference the original author!
+
+~~~ php?start_inline=1
+//this code is from student XYZ (xyz@mendelu.cz)
+function countRows(PDO $db, $table) {
+    $stmt = $db->query('SELECT COUNT(*) AS cnt FROM ' . $table);
+    return $stmt->fetch()['cnt'];
+}
+~~~
+
 ## Questions (almost) impossible to answer
 
 ### How does it all work together? I have written (copied) all the code, it sort-of works, but I do not know why!
