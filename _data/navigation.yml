@@ -236,6 +236,14 @@ items:
       - url: /articles/web-applications/
         title: Web Applications
 
+      - url: /articles/debugging/
+        title: Debugging
+        items:
+        - url: /articles/debugging/backend/
+          title: Backend debuging
+        - url: /articles/debugging/frontend/
+          title: Frontnd debuging
+
       - url: /articles/security/
         title: Security of Web Applications
         items:
