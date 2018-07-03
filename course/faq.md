@@ -115,39 +115,6 @@ analyse the assignment, find potential database entities and their attributes an
 by yourself. It is a good idea to crosscheck ERD with wireframe models of user interface to be sure that all forms and
 inputs are mapped to entities and attributes and vice-versa.
 
-### What is a route or routing?
-Route is a combination of HTTP method (*GET*, *POST* or others) and a path, e.g. `GET /persons` or `POST /new-person`.
-Routing is a mechanism which is implemented in a framework to map routes on actual code. You can use constructions
-like `$app->get('/some/route', function($request, $response, $args) { ... })` to match a route and a piece of code
-which gets executed. If you are having difficulties to understand routing, think of a route as of *IF* statement:
-
-``` php?start_inline=1
-$app->get('/some/route', function($request, $response, $args) {
-    //code
-});
-```
-
-This code can be understood like the following one:
-
-``` php?start_inline=1
-if($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/some/route') {
-    //code
-}
-```
-
-{: .note}
-The variable [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php) is an actual thing which contains
-some valuable information about the server where you execute PHP scripts and the request itself. Check out
-[`phpinfo()`](http://php.net/manual/en/function.phpinfo.php) function too.
-
-Basic routing is explained in the [walkthrough](/walkthrough-slim/slim-backend/#how-does-it-work). Then check out this
-[article](/articles/http/) and this [walkthrough](/articles/http/#when-to-use-get-or-post-method).
-Take a look at [named routes](/walkthrough-slim/named-routes/) too. 
-
-An important note is thar routes are *virtual*, the paths in your address bar are not paths to actual files or folders.
-This *magic* is enabled by [mod_rewrite](/course/technical-support/#configuration-of-modrewrite) plugin of
-[Apache web server](/course/technical-support/#apache-web-server). 
-
 ### Why do we use some "framework", how does it work?
 Framework is a software which defines skeleton of your project and provides some basic means to write an application
 (e.g. logging and routing in Slim). Check out this [walkthrough](/walkthrough-slim/slim-intro/#project-structure).
@@ -187,6 +154,57 @@ You can read more detailed [description](/course/technical-support/#composer) or
 
 Before you can use it on your computer, you have to install [PHP](/course/technical-support/#php-as-command-line-script-interpreter)
 as command line tool.
+
+## Framework related questions (Slim)
+
+### What is a route or routing?
+Route is a combination of HTTP method (*GET*, *POST* or others) and a path, e.g. `GET /persons` or `POST /new-person`.
+Routing is a mechanism which is implemented in a framework to map routes on actual code. You can use constructions
+like `$app->get('/some/route', function($request, $response, $args) { ... })` to match a route and a piece of code
+which gets executed. If you are having difficulties to understand routing, think of a route as of *IF* statement:
+
+``` php?start_inline=1
+$app->get('/some/route', function($request, $response, $args) {
+    //code
+});
+```
+
+This code can be understood like the following one:
+
+``` php?start_inline=1
+if($_SERVER['REQUEST_METHOD'] == 'GET' && $_SERVER['REQUEST_URI'] == '/some/route') {
+    //code
+}
+```
+
+{: .note}
+The variable [`$_SERVER`](http://php.net/manual/en/reserved.variables.server.php) is an actual thing which contains
+some valuable information about the server where you execute PHP scripts and the request itself. Check out
+[`phpinfo()`](http://php.net/manual/en/function.phpinfo.php) function too.
+
+Basic routing is explained in the [walkthrough](/walkthrough-slim/slim-backend/#how-does-it-work). Then check out this
+[article](/articles/http/) and this [walkthrough](/articles/http/#when-to-use-get-or-post-method).
+Take a look at [named routes](/walkthrough-slim/named-routes/) too. 
+
+An important note is thar routes are *virtual*, the paths in your address bar are not paths to actual files or folders.
+This *magic* is enabled by [mod_rewrite](/course/technical-support/#configuration-of-modrewrite) plugin of
+[Apache web server](/course/technical-support/#apache-web-server). 
+
+### When to use `getParsedBody()` and when to use `getQueryParam(...)`, what is the difference?
+Both methods are used to get access to script inputs. Method `getParsedBody()` reads data from [HTTP's](/articles/http/)
+body (hence the name of the method). The browser sends the information in the body when you use `<form method="post">`
+(it packs the input names and values into a string and puts that string into the request payload -- read that
+[HTTP article](/articles/http/)). Therefore this method is meaningful only in *POST* routes.
+
+Method `getQueryParam(...)` fetches one parameter (given by its name) from the *query*. The *query* is part of the
+URL and you can see it in the browser's address bar. You can pass query parameters in links
+(`<a href="/route?param=value&param2=value2">link</a>`) and also in form's `action` attribute. Therefore you can
+use this method in either *GET* or *POST* routes.
+
+Read more in walkthrough article about [passing values](/walkthrough-slim/passing-values/).
+
+{: .note}
+There is also `getQueryParams()` function which returns all query parameters as associative array.
 
 ## Templating engine questions
 
