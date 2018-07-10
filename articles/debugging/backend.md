@@ -53,7 +53,6 @@ stop -- always use `try-catch` block when you know that a function can throw exc
 handler for [unhandled exceptions](http://php.net/manual/en/function.set-exception-handler.php).
 
 ### Stack trace
-
 Sometimes you can encounter a *stack trace*. Usually when you use some kind of framework with enabled debugging.
 At first it might seem very odd and quiet bulky. Stack trace is a printout of executed functions from top to bottom.
 It shows the path of the interpreter in the code, including the code of the framework (which is not very useful).
@@ -63,12 +62,19 @@ following image of Slim framework generated stack trace:
 {: .image-popup}
 ![Error stack trace](/articles/debugging/stack-trace.png)
 
+Different frameworks have different stack trace printout tools. Some of them are more useful, some of them less.
+Do not be intimidated by the amount of information and try to find *your* PHP files in the stack trace and determine
+the problem. Read the error message too.
+
+The stack trace is often caused by uncaught exception, always use try-catch around SQL queries and disable debugging
+mode of the framework in production (use logs).
+
 ## Concrete error examples
-Now that I told you something about PHP error reporting system, I can proceed to concrete examples. There is usually
+Now that I told you something about PHP's error reporting system, I can proceed to concrete examples. There is usually
 two types of actions in the backend: retrieval and display of information and processing of inputs.
 
-You have to be aware of all the kinds of possible PHP script inputs, because the combination of input parameter values
-and environment conditions is crucial to trigger errors:
+You have to be aware of all the kinds of possible PHP script inputs and conditions of execution, because the combination
+of input parameter values and environment conditions is crucial to trigger errors:
 
 - query parameters (e.g. `/some-route?id=123`)
 - post data (from `<form method="post">`)
@@ -83,24 +89,24 @@ and environment conditions is crucial to trigger errors:
 - version and type of database (MySQL VS PostgreSQL VS SQLite VS ...)
 - ... 
 
-Easiest approach is to stop PHP script just anywhere and display contents of variables using `echo` or
-`print_r()` function and than calling `exit`. Another way is to use logger.
+Easiest approach to determine content of a variable is to stop PHP script just anywhere and display contents of
+variables using `echo` or `print_r()` function and than calling `exit`. Another way is to use logger.
 
 {: .note}
 You might seen using *breakpoints* and *stepping* through your code in another programming environments or just
 read about it in JavaScript section. It is not impossible to do this with PHP, but it is problematic
 because you code is not executed through your IDE. PHP is executed in a web server's context (and that also
-can be a different machine). To be able to set breakpoints you need to install PHP debugger like
-[Xdebug](https://xdebug.org/) and connect it with your IDE.
+can be on a different machine). To be able to set breakpoints you need to install PHP debugger like
+[Xdebug](https://xdebug.org/) and connect it with your IDE. This is very difficult for beginners.
 
-### Data processing errors
+## Input processing errors
 Input processing bugs are often caused by typos in variable naming -- check `name` attribute for each input element
 and array keys used to access request parameters (either query or body). Input processing is a bit more complicated,
 because the error can actually be caused by [previous rendering of another route](/walkthrough-slim/passing-values/#checking-incoming-data).
 
 ~~~ html
 <form action="/errorneous-route" method="post">
-    <input type="text" name="firstName">    //the error is either here...
+    <input type="text" name="firstName">    <!-- the error is either here... -->
     <input type="submit" value="OK">
 </form>
 ~~~
@@ -138,6 +144,20 @@ $app->post('/errorneous-route', function(Request $request, Response $response) {
     }
 });
 ~~~
+
+### HTTP protocol debugging
+Use developer tools (usually under F12 key) to display contents of *GET*, *POST* or cookie request parameters.
+Following image shows Chrome developer tools with network console opened. You can find posted values (red) and cookie
+values (green) in the details of the request. You should check the values and keys in HTTP request before you start
+debugging PHP script. 
+
+{: .image-popup}
+![POST variables in chrome developer tools](/articles/debugging/post-request.png)
+
+## Data retrieval errors
+Data retrieval is the process which extracts data from the database (using SQL query) and displays them to the user.
+This part is more straight forward because everything is done in single load of the page. If your script depends on
+query/post parameters, refer to previous section to check the incoming data.
 
 ### SQL related errors
 Bugs related to retrieval and presentation of information are often caused by wrong SQL queries. Stop your code
@@ -178,7 +198,7 @@ $app->post('/post-route', function(Request $request, Response $response) {
 });
 ~~~
 
-#### SQL query debugging
+### SQL query debugging
 Using PDO's prepared statements is great for security but very bad for debugging. There is actually no way to see
 the a query with placeholders replaced with actual values. It is because the query and parameters are passed
 into the database system separately and the replacement of placeholders is actually carried out by the database
@@ -197,6 +217,7 @@ confusing (it points to some cached files). PHP code which represents the templa
 template, you can open the compiled template from cache and look for the line which reported the error to determine
 the actual problem in the template.
 
+{: .image-popup}
 ![Template error](/articles/debugging/template-error.png)
 
 Let's see what is around line 68 in that file:
@@ -235,14 +256,6 @@ structure in the original template file:
 ~~~
 
 Those two files are not that different, you can easily see, that the problem was a typo in array key `nickname`.
-
-## HTTP protocol debugging
-Use developer tools (usually under F12 key) to display contents of *GET*, *POST* or cookie request parameters.
-Following image shows Chrome developer tools with network console opened. You can find posted values (red) and cookie
-values (green) in the details of the request. 
-
-{: .image-popup}
-![POST variables in chrome developer tools](/articles/debugging/post-request.png)
 
 ## Summary
 In comparison with frontend, the backend environment is much more determinate. You usually have only one server with

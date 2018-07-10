@@ -212,6 +212,9 @@ items:
       - url: /articles/javascript/
         title: JavaScript
         items:
+        - url: /articles/javascript/ajax/
+          title: AJAX
+
         - url: /articles/javascript/jquery/
           title: jQuery
 
@@ -241,8 +244,12 @@ items:
         items:
         - url: /articles/debugging/backend/
           title: Backend debuging
+
         - url: /articles/debugging/frontend/
           title: Frontnd debuging
+
+        - url: /articles/debugging/ajax-rest-api-and-spa/
+          title: AJAX, REST and SPA
 
       - url: /articles/security/
         title: Security of Web Applications
