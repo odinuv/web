@@ -175,7 +175,7 @@ now **runs until you close the browser's tab or window**. Everything the user do
 tells the browser what to do. It can send asynchronous HTTP request in the background and create or remove some HTML
 elements as response to user action. These applications use familiar templating with control structures and variable
 substitution, but templates are interpreted on the client. Thanks to this, templates can reflect changes of data and
-reflect them into DOM.
+propagate them into DOM.
 
 The backend of such application also contains business and security logic, but the style of communication is different:
 instead of sending HTML code, the client and server communicate with each other using JSON or XML data format.
