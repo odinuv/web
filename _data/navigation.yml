@@ -238,6 +238,9 @@ items:
 
       - url: /articles/web-applications/
         title: Web Applications
+        items:
+        - url: /articles/web-applications/rest-api/
+          title: REST API
 
       - url: /articles/debugging/
         title: Debugging
