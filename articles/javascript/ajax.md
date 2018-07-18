@@ -3,6 +3,9 @@ title: AJAX
 permalink: /articles/javascript/ajax/
 ---
 
+* TOC
+{:toc}
+
 AJAX stands for *asynchronous JavaScript and XML* although [JSON](http://json.org) format is currently much more
 common. The basic principle is that a browser calls some backend functionality using JavaScript HTTP client (the visitor
 does not have to be aware of this at all) and retrieves some data (originally XML but it can also be JSON, piece of
@@ -62,6 +65,53 @@ requests. It has higher-level syntax than previously described XMLHttpRequest an
 
 Check out this article for a simple [Fetch API example](/articles/debugging/ajax-rest-api-and-spa/) and also for AJAX
 debugging tips.
+
+## Cross origin requests and OPTIONS HTTP request
+You are probably very excited about reading any possible HTTP resource in your JavaScript page and displaying useful
+information on you site (such sites are called [mashups](https://en.wikipedia.org/wiki/Mashup_(web_application_hybrid))).
+It is not that simple. The HTTP request that is issued from website downloaded from http://myhost.com to
+http://notmyhost.org is called *cross origin request*. To protect web servers with popular information from stealing it
+or [DoS/DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) attacks, the browser first asks the server
+with [HTTP](/articles/http/) *OPTIONS* request (like GET but different method) before issuing real AJAX request.
+If the *OPTIONS* request is turned down by the http://notmyhost.org, the AJAX request fails.
+
+{: .note}
+To overcome this, you have to build backend *proxy* -- a simple script that performs the HTTP request on behalf of your
+frontend application (you JavaScript frontend then communicates with the proxy script). The consequence is that you use
+single IP address of the server, where the proxy script is uploaded, and the owner of target machine can block you
+easily. 
+
+### Configuring server to allow cross origin requests
+Cross origin requests are not allowed by default, to allow them, send these HTTP headers with the response to the
+*OPTIONS* request (or all HTTP requests).
+
+~~~
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: PUT, GET, POST, DELETE, PATCH, OPTIONS
+~~~
+
+There are more headers that start with `Access-Control-Allow-...`, they define allowed additional headers for example.
+In Slim framework, use [this code](https://www.slimframework.com/docs/v3/cookbook/enable-cors.html) as middleware
+of your application:
+
+~~~ php?start_inline=1
+$app->add(function ($req, $res, $next) {
+    $response = $next($req, $res);
+    return $response
+            ->withHeader('Access-Control-Allow-Origin', 'http://mysite')    //or * to allow everything
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+});
+~~~
+
+Some installations of Apache web server also need to be configured to allow alternative HTTP methods. This configuration
+is for Apache 2.2.x and should be present in your .htaccess file:
+
+~~~
+<Limit GET POST PUT DELETE PATCH OPTIONS>
+  Allow from all
+</Limit>
+~~~
 
 ## Summary
 AJAX is powerful technique which allows you to fetch or send data in the background. By doing this you can achieve much

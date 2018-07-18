@@ -7,7 +7,8 @@ permalink: /articles/debugging/ajax-rest-api-and-spa/
 {:toc}
 
 This article describes the debugging of [AJAX](/articles/javascript/#ajax) applications. These techniques also apply
-for debugging of SPAs with REST API.
+for debugging of SPAs with REST API. Before you start writing and debugging AJAX applications, be sure to have
+a good understanding of [HTTP protocol](/articles/http/).
 
 The problem with AJAX request is that you cannot see it. You have a JavaScript functionality which triggers it and
 you have some backend code which generates the response. But there is no change in the current URL displayed in
@@ -123,11 +124,15 @@ In such application, the problem can be in the JavaScript code that gets execute
 types some letters -- everything in the function defined as handler for `inp.onkeyup` util the `fetch()` function
 is called. After the request is send to the backend, the PHP code gets executed and creates the response containing
 JSON structure with records from database. Finally, when the backend sends the response to the frontend, the JavaScript
-code continues to execute one of the *Promise* handlers of the `fetch()` function. That is the last place where an
-error can occur. The order of execution is represented in following image.
+code continues to execute one of the [*Promise*](/articles/javascript/#promises) handlers of the `fetch()` function.
+That is the last place where an error can occur. The order of execution is represented in following image.
 
 {: .image-popup}
 ![AJAX comm](/articles/debugging/ajax-comm.png)
+
+{: .note}
+HTTP status code determines whether to execute [Promise's](/articles/javascript/#promises) fulfilled/positive
+(for 2xx codes) or rejection/negative (4xx or 5xx codes) callback.
 
 Use same technique to check request parameters with developer tools as described in the [backend debugging article](/articles/debugging/backend/#http-protocol-debugging).
 Additionally, use the *Preview* and *Response* tabs to check the contents of HTTP response. The *Preview* tab displays
@@ -166,7 +171,7 @@ web browsers.
 This article is an overview of AJAX debugging techniques. Remember that sending the HTTP request with JavaScript,
 processing it on the backend, receiving the response and doing something with it is too complex to debugged at once.
 You have to find the source of error first (frontend request dispatch, backend request processing or frontend response
-processing). To do this, developer tools or a tool like Rester is needed.
+processing). To do this, developer tools or a tools like Rester addon are needed.
 
 ### New Concepts and Terms
 - debugging AJAX

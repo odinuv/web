@@ -154,6 +154,12 @@ debugging PHP script.
 {: .image-popup}
 ![POST variables in chrome developer tools](/articles/debugging/post-request.png)
 
+Another thing to check, although not that important for classical web applications, is [HTTP status code](/articles/http/#response-status-codes)
+of the response. This is much more important for [AJAX](/articles/debugging/ajax-rest-api-and-spa/) applications.
+
+{: .note}
+Firefox has very similar tools for this.
+
 ## Data retrieval errors
 Data retrieval is the process which extracts data from the database (using SQL query) and displays them to the user.
 This part is more straight forward because everything is done in single load of the page. If your script depends on
