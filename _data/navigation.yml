@@ -188,6 +188,9 @@ items:
   - url: /articles/
     title: Articles
     items:
+      - url: /articles/problem-solving/
+        title: Solving a problem
+
       - url: /articles/programming/
         title: Inroduction to Programming
 

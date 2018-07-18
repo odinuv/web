@@ -115,6 +115,8 @@ analyse the assignment, find potential database entities and their attributes an
 by yourself. It is a good idea to crosscheck ERD with wireframe models of user interface to be sure that all forms and
 inputs are mapped to entities and attributes and vice-versa.
 
+Read [article about problem solving](/articles/problem-solving/).
+
 ### Why do we use some "framework", how does it work?
 Framework is a software which defines skeleton of your project and provides some basic means to write an application
 (e.g. logging and routing in Slim). Check out this [walkthrough](/walkthrough-slim/slim-intro/#project-structure).
