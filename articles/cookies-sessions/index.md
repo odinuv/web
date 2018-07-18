@@ -140,7 +140,7 @@ Associative array `$_SESSION` can be used both to read and write data into serve
 
 Here is and image which represents session initiation:
 
-![Session storage of multiple client's data](session-init.svg)
+![Session storage of multiple client's data](/articles/cookies-sessions/session-init.svg)
 
 {: .note}
 Session mechanism is an extension of cookies and you do not have to use it. You can also implement
@@ -152,7 +152,7 @@ The server can tell one client from another using the session ID. Remember that 
 among internet browsers -- that is why you can be logged into an application with Firefox and not logged in
 with Chrome. Same effect is provided by anonymous window mode of browser.
 
-![Session storage of multiple client's data](session-storage.svg)
+![Session storage of multiple client's data](/articles/cookies-sessions/session-storage.svg)
 
 The session cookie has same parameters as any other cookie, you can specify duration of cookie using
 [`session_set_cookie_params()`](http://php.net/manual/en/function.session-set-cookie-params.php) function.

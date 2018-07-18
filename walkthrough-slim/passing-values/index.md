@@ -224,9 +224,9 @@ from template engine's point of view. The error is visible while you hover mouse
 corner of your browser, directly in the input in some cases or in source code (especially for inputs with type
 set to *hidden*).
 
-![Link with unknown variable](bad-link.png)
+![Link with unknown variable](/walkthrough-slim/passing-values/bad-link.png)
 
-![Input with unknown variable](bad-input.png)
+![Input with unknown variable](/walkthrough-slim/passing-values/bad-input.png)
 
 ~~~ html
 <a href="{link routeName}?id={$di}"> <!-- misspelled $id variable -->
@@ -306,7 +306,7 @@ New *POST* route in `routes.php`:
 Here is an image that describes the journey of ID person value around the process (click to enlarge):
 
 {: .image-popup}
-![Journey of ID](journey-of-id.svg)
+![Journey of ID](/walkthrough-slim/passing-values/journey-of-id.svg)
 
 ## Summary
 This chapter of the book taught you how to build URLs and how to pass values using *GET* and *POST* HTTP methods.

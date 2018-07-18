@@ -253,7 +253,7 @@ console.log(document.body.childNodes);  //body's child nodes
 Try to type some of those lines mention above into console (in the very bottom of the console you can write actual
 JavaScript commands).
 
-![Interactive console](interactive-console.png)
+![Interactive console](/articles/javascript/interactive-console.png)
 
 Each node in DOM has [methods and attributes](https://developer.mozilla.org/en-US/docs/Web/API/Node), most important
 ones are:
@@ -341,7 +341,7 @@ Open [developer console (F12)](/course/not-a-student/#web-browser) and try to cl
 
 You should see something like this in developer console:
 
-![console.log() output](console-log.png)
+![console.log() output](/articles/javascript/console-log.png)
 
 That weird stuff which is logged along with 'Button clicked' text is an *event object* describing
 what happened. Event object also has methods: most used ones are `event.preventDefault()` to prevent

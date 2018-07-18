@@ -169,7 +169,7 @@ header. The server can host many presentations with different domains, it has so
 file system configured and the `Host` header is used to determine correct folder with presentation. This feature is
 called *vhosts* in [Apache HTTP server](https://httpd.apache.org/) and is a matter of configuration.
 
-![vhosts](vhosts.png)
+![vhosts](/articles/http/vhosts.png)
 
 ## When to use *GET* or *POST* method?
 Use *GET* method for actions like:

@@ -48,10 +48,10 @@ to `calculate.php` file (you can use XHR filter) and than select Parameters tab 
 browser but Chrome developers tools are very similar.
 
 {: .image-popup}
-![console.log() output](ajax-network-1.png)
+![console.log() output](/articles/javascript/ajax-network-1.png)
 
 {: .image-popup}
-![console.log() output](ajax-network-2.png)
+![console.log() output](/articles/javascript/ajax-network-2.png)
 
 {: .note}
 Timer functions are often used to poll backend when you need to deliver "continuous" updates. A better solution is to

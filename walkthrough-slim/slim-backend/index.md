@@ -155,7 +155,7 @@ receives the response, it processes the HTML code and [renders](/articles/css/) 
 end-user's screen.
 
 {: .image-popup}
-![Slim Flow diagram](slim-flow.svg)
+![Slim Flow diagram](/walkthrough-slim/slim-backend/slim-flow.svg)
 
 ## Working With the Request
 Working with request and response objects is important when you need to get some data from the end-user. 
