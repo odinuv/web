@@ -347,4 +347,4 @@ it transforms HTML code with macros to executable PHP code. The actual code that
 in cache and therefore the errors are so difficult to read.
 
 You can open the compiled template in cache and look for the line with error. You should be able to identify problem
-source by the surrounding HTML code.
+source by the surrounding HTML code. Read more in [debugging article](/articles/debugging/backend/).
