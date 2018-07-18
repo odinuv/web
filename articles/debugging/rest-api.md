@@ -14,7 +14,7 @@ you have some backend code which generates the response. But there is no change 
 address bar and there is also no reload of the page. Therefore you cannot see the response with reported error.
 
 Another problem is, that AJAX request often transmits information in specific data format like [XML](https://cs.wikipedia.org/wiki/Extensible_Markup_Language)
-or [JSON](https://www.json.org/) that has to be parsed by client-side JavaScript (e.g. [JSON.parse(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)]).
+or [JSON](https://www.json.org/) that has to be parsed by client-side JavaScript (e.g. [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)).
 When the backend generates some error reporting and prints this reporting into the response, the response parser gets
 confused and the error spreads into the JavaScript frontend.
 
