@@ -81,9 +81,13 @@ frontend application (your JavaScript frontend then communicates with the proxy 
 single IP address of the server, where the proxy script is uploaded, and the owner of target machine can block you
 easily (if he does not like you to download information from his site). 
 
+You do not have to worry about cross origin requests if you downloaded the web site from the same server where
+you send AJAX requests.
+
 ### Configuring server to allow cross origin requests
 Cross origin requests are not allowed by default, to allow them, send these HTTP headers with the response to the
-*OPTIONS* request (or all HTTP requests).
+*OPTIONS* request (or all HTTP requests). The `Access-Control-Allow-Origin` should contain hostname of the server,
+where the browser obtained the HTML a JS code which will communicate with your backend or `*` to allow everything.
 
 ~~~
 Access-Control-Allow-Origin: *
@@ -96,11 +100,14 @@ of your application:
 
 ~~~ php?start_inline=1
 $app->add(function ($req, $res, $next) {
-    $response = $next($req, $res);
-    return $response
-            ->withHeader('Access-Control-Allow-Origin', 'http://mysite')    //or * to allow everything
-            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
-            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  $response = $next($req, $res);
+  return $response
+    ->withHeader('Access-Control-Allow-Origin',
+                 'http://mysite')    //or * to allow everything
+    ->withHeader('Access-Control-Allow-Headers',
+                 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+    ->withHeader('Access-Control-Allow-Methods',
+                 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 });
 ~~~
 
