@@ -77,9 +77,9 @@ If the *OPTIONS* request is turned down by the http://notmyhost.org, the AJAX re
 
 {: .note}
 To overcome this, you have to build backend *proxy* -- a simple script that performs the HTTP request on behalf of your
-frontend application (you JavaScript frontend then communicates with the proxy script). The consequence is that you use
+frontend application (your JavaScript frontend then communicates with the proxy script). The consequence is that you use
 single IP address of the server, where the proxy script is uploaded, and the owner of target machine can block you
-easily. 
+easily (if he does not like you to download information from his site). 
 
 ### Configuring server to allow cross origin requests
 Cross origin requests are not allowed by default, to allow them, send these HTTP headers with the response to the
