@@ -26,6 +26,6 @@ Try to pass the person name into the confirmation message.
 
 {: .note}
 Remember that the actions representing modifications of the database records should be transmitted to
-the server using the [*POST* method](todo).
+the server using the [*POST* method](/articles/http/).
 
 {% include /common/javascript-2.md %}
