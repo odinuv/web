@@ -62,7 +62,7 @@ You have to download jQuery from its [website](http://jquery.com/download/). The
 - uncompressed version -- you can download this one if you want to study jQuery's code
 - 2.x or 3.x -- older versions support older browsers
 
-Than you can simply put jQuery file as first `<script>` tag in your `<head>` element -- it has to be first so you
+Then you can simply put jQuery file as first `<script>` tag in your `<head>` element -- it has to be first so you
 can use `$` function in your scripts.
 
 {: .note}

@@ -178,7 +178,7 @@ new visitor's browser to redirect either to `index` or `login` route.
 
 ### Tidy up your code
 If you think that your code is becoming a bit hard to read and maintain, and you are probably right, you can always
-distribute individual or semantically similar routes into separate PHP files. You can than
+distribute individual or semantically similar routes into separate PHP files. You can then
 [include](http://php.net/manual/en/function.include.php) these files -- this function simply reads and executes
 the contents of given PHP script. Check out file `public/index.php` which uses [require](http://php.net/manual/en/function.require.php)
 -- a more strict version of include.

@@ -173,7 +173,7 @@ length of `$actualFilters` array. Question marks in SQL query are replaced from 
 `$actualFilters` array.
 
 {: .note}
-Another way is to generate SQL query with ':something' kind of placeholders, than remeber the value and placeholder
+Another way is to generate SQL query with ':something' kind of placeholders, than remember the value and placeholder
 in an associative array and then call `bindValue()` inside a loop driven by that associative array.
 
 ## Summary

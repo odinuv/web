@@ -75,7 +75,7 @@ I also use it in this book.
 {: .note}
 Another option is to use embedded database system like [SQLite](https://sqlite.org/). PHP has a plugin to work
 with this type of database (just install it and/or enable it in PHP config file php.ini -- found in PHP's home directory).
-You can than use PDO interface to communicate with it in your scripts and Adminer supports it too (you
+You can then use PDO interface to communicate with it in your scripts and Adminer supports it too (you
 just type path to datafile instead of hostname and port). This kind of database can be used with pure PHP
 development server.
 

@@ -121,7 +121,7 @@ is valid and therefore something happens with the last listed value.
 ~~~
 
 ### Buttons around links or vice versa
-I know what you are trying to do. You want to have a hyperlink which looks like a button. Than use those
+I know what you are trying to do. You want to have a hyperlink which looks like a button. Then use those
 [Bootstrap](/walkthrough-slim/css/bootstrap/) classes directly on that `<a>` element. Same problem as with the forms,
 the browser does not know how to react, it registers a click, but button and `<a>` element are both clickable.
 

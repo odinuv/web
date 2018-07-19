@@ -301,7 +301,7 @@ Knowing how boolean operators work is essential for writing [conditional stateme
 A part of each high-level language is a *function library* (*library* or *standard library*).
 A library is a collection of generally
 usable functions and blocks which you can use in the source code of that language. The
-library provides even higher level functions than thos ethe language itself has. E.g. it could be
+library provides even higher level functions then those the language itself has. E.g. it could be
 functions for ciphering, sending data over network,
 [user interface](https://en.wikipedia.org/wiki/User_interface) controls, etc.
 The problem is that each programming language has its own library, and each library

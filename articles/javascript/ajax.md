@@ -44,7 +44,7 @@ to open `calculate.php` too and pass query parameters to observe JSON output.
 
 Take a look into network console (also under F12 but switch to *Network* tab) and observe what your browser sends
 and receives when you press Calculate button. To view request parameters and response body click the HTTP request
-to `calculate.php` file (you can use XHR filter) and than select Parameters tab and Response tab. I used Firefox
+to `calculate.php` file (you can use XHR filter) and then select Parameters tab and Response tab. I used Firefox
 browser but Chrome developers tools are very similar.
 
 {: .image-popup}
@@ -129,4 +129,5 @@ Most modern applications resigned on backend templates and moved to full-feature
 applications -- this is called [SPA](/articles/web-applications/#single-page-applications-ria-spa). 
 
 ### New Concepts and Terms
+- Cross origin requests
 - AJAX

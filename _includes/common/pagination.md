@@ -26,12 +26,12 @@ only with knowledge of **total record count**. This ultimately means that you ha
 with `COUNT(*)` function to fetch total count of **relevant** records.
 
 {: .note}
-In MySQL you can use `CALC_FOUND_ROWS` modifier right after `SELECT` clause. And than you can fetch
+In MySQL you can use `CALC_FOUND_ROWS` modifier right after `SELECT` clause. And then you can fetch
 amount of total rows which would be returned without `LIMIT` clause by subsequent `SELECT FOUND_ROWS()
 AS all_row_count` SQL query. It still means that you have to run two queries, but it is less complicated.
 
 When you know total amount of all possible results, you can calculate amount of pages according to
-chosen page count. Let's say that you want certain amount of records per page, than you have to divide
+chosen page count. Let's say that you want certain amount of records per page, then you have to divide
 total amount of records by page count and round the result up, using [ceil()](http://php.net/manual/en/function.ceil.php)
 function.
 

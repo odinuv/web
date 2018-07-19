@@ -183,7 +183,7 @@ label text is clickable.
 
 ### Radio Button
 Radiobutton is suitable for choosing between few mutually exclusive values.
-For few values, it is better than a [Select box](#select) because it saves the
+For few values, it is better than a [select box](#select) because it saves the
 end-user a click. There are a couple of exceptions to the radiobutton behavior.
 First, the `name` attribute of the radio button is used to define a **radio group**.
 Radio-buttons within the same *radio group* are mutually exclusive -- this means that the

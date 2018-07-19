@@ -90,7 +90,7 @@ of input parameter values and environment conditions is crucial to trigger error
 - ... 
 
 Easiest approach to determine content of a variable is to stop PHP script just anywhere and display contents of
-variables using `echo` or `print_r()` function and than calling `exit`. Another way is to use logger.
+variables using `echo` or `print_r()` function and then calling `exit`. Another way is to use logger.
 
 {: .note}
 You might seen using *breakpoints* and *stepping* through your code in another programming environments or just
