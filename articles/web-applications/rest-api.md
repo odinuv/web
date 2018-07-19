@@ -14,7 +14,7 @@ or modify data** or to perform some other actions. To be able to do this, the se
 [*application programming interface (API)*](https://en.wikipedia.org/wiki/Application_programming_interface).
 
 [HTTP](/articles/http/) is a communication protocol between web browser and web server. Most common usage is transfer
-of HTML (and other) files from server to the web browser (data format is HTML, CSS, binary data). The browser then
+of HTML (and other) files from server to the web browser (data format is HTML, CSS, binary data etc.). The browser then
 renders a website based on HTML code and CSS. When you need to send some data to the server, you usually use `<form>`
 element and POST method to [send form data](/articles/http/#value-passing-in-http-requests) -- another data format.
 HTML, CSS or *form-url-encoding* is not good format to transfer raw data, because it is bulky and the HTML parser
@@ -64,16 +64,16 @@ methods. In PHP use [`json_encode()`](http://php.net/manual/en/function.json-enc
 [`json_decode()`](http://php.net/manual/en/function.json-decode.php) to convert JSON data to associative array.
 
 ## REST API
-The REST API exploits the HTTP protocol to maps CRUD operations on HTTP methods. HTTP path is used as resource identifier
+The REST API exploits the HTTP protocol to map CRUD operations on HTTP methods. HTTP path is used as resource identifier
 (it maps SQL operations on a table/record on HTTP protocol, e.g.: path `/user` is stored in the table *users*).
 
-| CRUD   | HTTP   | Meaning                                | Note                          |
-|--------|--------|----------------------------------------|-------------------------------|
-| CREATE | POST   | Create new record.                     | Pass data in body.            |
-| READ   | GET    | Get listing of items or concrete item. | Request should not have body. |
-| UPDATE | PUT    | Update whole record.                   | Pass data in body.            |
-| DELETE | DELETE | Delete whole record.                   | Request should not have body. |
-| --     | PATCH  | Partially update record.               | Pass data in body.            |
+| CRUD   | HTTP   | Meaning                                                  | Note                                                                                            |
+|--------|--------|----------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| CREATE | POST   | Create new record.                                       | Pass data in body. Should return location of newly created resource (e.g. in `Location` header) |
+| READ   | GET    | Get listing of items or concrete item.                   | Request should not have body.                                                                   |
+| UPDATE | PUT    | Update whole record.                                     | Pass data in body.                                                                              |
+| DELETE | DELETE | Delete whole record.                                     | Request should not have body.                                                                   |
+| --     | PATCH  | Partially update record or trigger state chaning action. | Pass data in body.                                                                              |
 
 Example of *endpoints* -- the HTTP paths:
 
@@ -122,7 +122,16 @@ There are problems that are difficult to solve -- usually linked with the semant
 records that does not have explicit ID or how to map actions that are not CRUD on endpoints. This is due the nature
 of REST API which is designed to map CRUD operations. Some problems can be bypassed by "thinking bit differently", e.g.
 when you want to initiate payment for goods, you are actually creating new payment entity (so you should use *POST*
-method). Sometimes you just need to bend the REST API recommendations to suit your needs.
+method). Sometimes you just need to bend the REST recommendations to suit your needs.
+
+A typical problem is search with difficult filtering criteria. It is more convenient to pass complicated search
+parameters as JSON structure in request's body, but *GET* method discourages sending of body data (although it is not
+impossible). On the other hand, search does not create any entity and therefore it should not use *POST* method.
+You can justify usage of *POST* method by thinking of search action as of creation of new "result set".
+
+Another way is to treat actions as sub-resources (e.g. *PUT* `/user/123/deactivate` to deactivate user account -- use
+put because you are updating the state) or use *PATCH* method with base resource URL (e.g. *PATCH* `/user/123` +
+`{"active": false}`).
 
 ### Passing parameters
 REST API can use URL placeholders to pass parameters (see the `{id}` placeholder in previous table). Query parameters
@@ -133,7 +142,8 @@ You can easily nest related entities. If your users can reserve seats in your mo
 `/user/123/reservation` to list all existing reservations for particular user. To get details of actual reservation,
 use endpoint `/user/123/reservation/456` etc.
 
-The dilemma is where to stop the nesting, is it better to nest or to use query parameters for filtering:
+The dilemma is where to stop the nesting, is it better to nest or to use query parameters for filtering?
+
 - `/user/123/reservation`
 - `/reservation?user_id=123`
 
@@ -170,7 +180,7 @@ called e.g. `payload` and you can always extend the response with additional use
 ~~~
 
 {: .note}
-JSON envelope is especially useful for listings.
+JSON envelope is especially useful for listings. Envelope data can also contain [links for related resources](https://en.wikipedia.org/wiki/HATEOAS).
 
 ### Authentication of users
 Use HTTP header `Authorization` to pass a unique token (just a random, but unique set of letters -- the principle is
@@ -182,11 +192,17 @@ anybody can change the data and tokens cannot be trusted.
 {: .note}
 You can even use standard PHP's session, but it is against the stateless nature of REST API.
 
+Login is a good example of CRUD mapping problem: login performs some action, it does not modify the database. So how
+should the REST endpoint be named and which method should be used? Tokens can help us here -- logging in means that
+you create a new token. Instead of using `/user/login` endpoint, which is not a resource (word *login* is verb here),
+you can define e.g. `/jwt` endpoint and use *POST* method to create new JWT token. To retrieve new JWT token use
+*PUT* method on the same endpoint (JWT tokens are generated for given amount of time and then they expire).
+
 ### Versioning of API
 Serious APIs have usually version prefix in each endpoint: `/v1/user`. This is useful in situations, when you know
 that you will have multiple versions of client applications running concurrently (this can happen with mobile
 applications that are updated irregularly). It is easier and clearer for developers to create new version of endpoint
-than determining the version of the client.
+than determining the version of the client during the request.
 
 ## Documenting REST API
 An API needs a communication protocol so both applications understand each other. The documentation of this protocol
@@ -209,6 +225,10 @@ Documentation written in Blueprint or Swagger format can be used to generate a *
 documentation (a HTTP server) with active endpoints that react to described HTTP methods and return defined example
 data. Mock is useful when you develop the frontend (JavaScript functionality) before or in parallel with real backend.
 
+{: .note}
+Apiary service provides API mock out-of-the-box on their servers. For Swagger mock, you have to download a tool. You
+can also use API documentation to generate skeleton of your application.
+
 ## Summary
 The *REST API* is basically a web application without user interface that is used by other applications (like purely
 JavaScript clients or other backend applications) to store, retrieve or modify data or to perform some other actions.
@@ -218,6 +238,10 @@ format.
 Modern web applications are divided into "frontend" made of SPA (plus mobile application) and "backend" which provides
 REST API. You can specialize in either or both, that is up to you, but you should understand the reasons for such
 division. If you are going to design or just use REST API, you still need to understand its idea.
+
+REST API has many limitations and you saw that it is difficult to map many actions (other then CRUD) to endpoints.
+You have to make exceptions and break REST recommendations from time to time. Just make sure, that you are consistent
+through the whole API and that the API is well documented.
 
 ### New Concepts and Terms
 - REST API
