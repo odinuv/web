@@ -59,7 +59,8 @@ fetches and stores/modifies data on a server).
 
 {: .note}
 Do not be worried, the *DELETE* verb does not actually delete your files in a standard web server, those other verbs
-are mainly used by applications to build REST API. The *CONNECT* keyword is used by HTTP proxy servers to make tunnels.
+are mainly used by applications to build [REST API](/articles/web-applications/rest-api/). The *CONNECT* verb is used
+by HTTP proxy servers to make tunnels.
 
 ### Headers
 There are many HTTP headers, some of them are specific for the request, some of them are specific for the response and
