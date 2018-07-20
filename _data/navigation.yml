@@ -249,10 +249,10 @@ items:
         title: Debugging
         items:
         - url: /articles/debugging/backend/
-          title: Backend debuging
+          title: Backend debugging
 
         - url: /articles/debugging/frontend/
-          title: Frontnd debuging
+          title: Frontend debugging
 
         - url: /articles/debugging/ajax-rest-api-and-spa/
           title: AJAX, REST and SPA

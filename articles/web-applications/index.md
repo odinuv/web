@@ -180,7 +180,7 @@ propagate them into DOM.
 The backend of such application also contains business and security logic, but the style of communication is different:
 instead of sending HTML code, the client and server communicate with each other using JSON or XML data format.
 Such messages are interpreted and both application react somehow. This kind of communication interface is called
-[REST](https://cs.wikipedia.org/wiki/Representational_State_Transfer).
+[REST](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 You should see now that the backend and the frontend are **two standalone applications** that communicate with each
 other using a defined and documented interface. This is convenient for developers, because backend specialists do not

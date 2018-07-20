@@ -17,7 +17,7 @@ or modify data** or to perform some other actions. To be able to do this, the se
 of HTML (and other) files from server to the web browser (data format is HTML, CSS, binary data etc.). The browser then
 renders a website based on HTML code and CSS. When you need to send some data to the server, you usually use `<form>`
 element and POST method to [send form data](/articles/http/#value-passing-in-http-requests) -- another data format.
-HTML, CSS or *form-url-encoding* is not good format to transfer raw data, because it is bulky and the HTML parser
+HTML, CSS or *form-url-encoding* is not a good format to transfer raw data, because it is bulky and the HTML parser
 is very difficult to implement and it is not simple, because format of the data is different for each usage.
 
 Let's see an example of an API: suppose that you are building an e-commerce application -- you want to sell tickets for
@@ -33,9 +33,13 @@ and you used it to implement the billing functionality in your application.
 {: .image-popup}
 ![Billing API](/articles/web-applications/using-api.png)
 
-{: .note}
-In this example, you were not in the role of creator of the API. You were just a user and you **needed documentation**
-to work with provided API.
+In this example, you were not in the role of creator of the API. You were just a *consumer* and you **needed documentation**
+to work with provided API. You can find yourself in many roles as a developer in relation with an API:
+
+- you can be the *consumer* of someone else's API (you need to use some service in your application)
+- you can be the provider of tha API for your clients (you have a service and others want to use it)
+- you can be the provider and *consumer* at once because you are building a distributed application (separate backend
+  and multiple frontends -- web, mobile etc.)
 
 [HTTP](/articles/http/) is quiet simple protocol, it has request/response **headers**, request/response **body** and
 response **status codes** and it is **supported in the browser**. The problem is with data format and that there is no
@@ -44,16 +48,20 @@ Therefore the [*Representational state transfer (REST)*](https://en.wikipedia.or
 was designed. REST is not a standard, it is a set of recommendations and constraints of how to use HTTP protocol to
 build an API.
 
+Once you have server API built over HTTP protocol, you can call it from frontend [SPA](/articles/web-applications/#single-page-applications-ria-spa)
+(or just with ordinary JavaScript [AJAX](/articles/javascript/ajax/) call), native mobile application, from another
+server application through its backend or even from standard desktop application. Issuing HTTP call is easy and there
+are libraries for most programming languages to handle HTTP (or HTTPS) communication.
+
 Modern [single page applications (SPA)](/articles/web-applications/#single-page-applications-ria-spa) are built as
 separate [JavaScript](/articles/javascript/) applications and they definitely need to communicate with server backend
 to **store, retrieve or modify data**. Because they are built with JavaScript, they can use [*JSON*](http://json.org/)
-format to transfer data over HTTP protocol very easily.
+format to transfer data over HTTP protocol very easily. Another format for REST API is [*XML*](https://en.wikipedia.org/wiki/XML).
 
-Once you have server API, you can use it from frontend SPA, native mobile application or from another web application
-through its backend. It is very convenient to have same API for SPA and mobile application: it is cheaper and you have
-only one place where server functionality is defined. On the other hand, you are making the frontend application
-equivalent to mobile application by promoting it to standalone application and that makes it more difficult to develop
-and maintain and is more expensive.
+Idea of REST API is to offer semi-standardised way of CRUD operations mapping on HTTP protocol. If you already read
+[AJAX](/articles/javascript/ajax/) article, you know, that the possibilities of communication with HTTP backend are
+much richer than sending JSON or XML back and forth, but that is the point of REST. You can also find libraries for
+JSON or XML parsing for most programming languages.
 
 {: .note}
 JSON is JavaScript's native syntax of object/array representation (with some constraints -- basically, objects can only
@@ -62,6 +70,11 @@ to object) JSON data with [`JSON.stringify()`](https://developer.mozilla.org/en-
 and [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
 methods. In PHP use [`json_encode()`](http://php.net/manual/en/function.json-encode.php) and
 [`json_decode()`](http://php.net/manual/en/function.json-decode.php) to convert JSON data to associative array.
+
+It is very convenient to have same API for SPA, mobile application and for any other *consumer* of your API:
+it is cheaper and you have only one place where server functionality is defined. On the other hand, you are
+making the frontend application equivalent to mobile application by promoting it to standalone application
+and that makes it more difficult to develop and maintain and is more expensive.
 
 ## REST API
 The REST API exploits the HTTP protocol to map CRUD operations on HTTP methods. HTTP path is used as resource identifier

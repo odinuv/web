@@ -7,14 +7,14 @@ permalink: /articles/debugging/ajax-rest-api-and-spa/
 {:toc}
 
 This article describes the debugging of [AJAX](/articles/javascript/#ajax) applications. These techniques also apply
-for debugging of SPAs with REST API. Before you start writing and debugging AJAX applications, be sure to have
-a good understanding of [HTTP protocol](/articles/http/).
+for debugging of SPAs with [REST API](/articles/web-applications/rest-api/). Before you start writing and debugging
+AJAX applications, be sure to have a good understanding of [HTTP protocol](/articles/http/).
 
 The problem with AJAX request is that you cannot see it. You have a JavaScript functionality which triggers it and
 you have some backend code which generates the response. But there is no change in the current URL displayed in
 address bar and there is also no reload of the page. Therefore you cannot see the response with reported error.
 
-Another problem is, that AJAX request often transmits information in specific data format like [XML](https://cs.wikipedia.org/wiki/Extensible_Markup_Language)
+Another problem is, that AJAX request often transmits information in specific data format like [XML](https://en.wikipedia.org/wiki/XML)
 or [JSON](https://www.json.org/) that has to be parsed by client-side JavaScript (e.g. [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)).
 When the backend generates some error reporting and prints this reporting into the response, the response parser gets
 confused and the error spreads into the JavaScript frontend.
