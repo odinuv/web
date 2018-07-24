@@ -45,8 +45,8 @@ this:
 
 ~~~
 Some basic knowledge          Basic              A lot of things          Working
-   about internet      +     skills         +    you do not know    =       web
-  and web browser          programming                yet...            application
+   about internet      +   programming     +     you do not know    =       web
+  and web browser            skills                   yet...            application
 ~~~
 
 ## Forget the bad stuff! (optional)
