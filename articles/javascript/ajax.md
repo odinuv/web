@@ -69,20 +69,35 @@ debugging tips.
 ## Cross origin requests and OPTIONS HTTP request
 You are probably very excited about reading any possible HTTP resource in your JavaScript page and displaying useful
 information on you site (such sites are called [mashups](https://en.wikipedia.org/wiki/Mashup_(web_application_hybrid))).
-It is not that simple. The HTTP request that is issued from website downloaded from http://myhost.com to
-http://notmyhost.org is called *cross origin request*. To protect web servers with popular information from stealing it
-or [DoS/DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack) attacks, the browser first asks the server
-with [HTTP](/articles/http/) *OPTIONS* request (like GET but different method) before issuing real AJAX request.
-If the *OPTIONS* request is turned down by the http://notmyhost.org, the AJAX request fails.
+It is not that simple. The HTTP request that is issued from website downloaded from http://mysite.com to
+http://notmysite.org is called *cross origin request* and web browsers have special policy to handle them.
+To protect web servers with popular information from stealing it or [DoS/DDoS](https://en.wikipedia.org/wiki/Denial-of-service_attack)
+attacks, the browser first asks the server with [HTTP](/articles/http/) *OPTIONS* request (like GET but different
+method) before issuing real AJAX request. If the *OPTIONS* request is turned down by the http://notmyhost.org,
+the AJAX request fails.
+
+{: .image-popup}
+![AJAX and CORS](/articles/javascript/ajax-cors.png)
 
 {: .note}
+This applies mostly for AJAX requests made by JavaScript (when you use `XMLHttpRequest` or *fetch API*). You can freely
+download images `<img src="http://notmysite.org/..." alt="whatever">`, CSS `<link rel="stylesheet" href="http://notmysite.org/...">`
+(including fonts), JavaScripts `<script type="text/javascript" src="http://notmysite.org/...">` etc. defined in source
+code of your HTML.
+
 To overcome this, you have to build backend *proxy* -- a simple script that performs the HTTP request on behalf of your
 frontend application (your JavaScript frontend then communicates with the proxy script). The consequence is that you use
 single IP address of the server, where the proxy script is uploaded, and the owner of target machine can block you
 easily (if he does not like you to download information from his site). 
 
+{: .image-popup}
+![AJAX and CORS](/articles/javascript/ajax-proxy.png)
+
 You do not have to worry about cross origin requests if you downloaded the web site from the same server where
 you send AJAX requests.
+
+{: .note}
+You sometimes encounter *CORS* abbreviation in this context. It means [Cross origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
 ### Configuring server to allow cross origin requests
 Cross origin requests are not allowed by default, to allow them, send these HTTP headers with the response to the
@@ -96,14 +111,14 @@ Access-Control-Allow-Methods: PUT, GET, POST, DELETE, PATCH, OPTIONS
 
 There are more headers that start with `Access-Control-Allow-...`, they define allowed additional headers for example.
 In Slim framework, use [this code](https://www.slimframework.com/docs/v3/cookbook/enable-cors.html) as middleware
-of your application:
+of your application (usually defined in `src/middleware.php`):
 
 ~~~ php?start_inline=1
 $app->add(function ($req, $res, $next) {
   $response = $next($req, $res);
   return $response
     ->withHeader('Access-Control-Allow-Origin',
-                 'http://mysite')    //or * to allow everything
+                 'http://mysite.com')    //or * to allow everything
     ->withHeader('Access-Control-Allow-Headers',
                  'X-Requested-With, Content-Type, Accept, Origin, Authorization')
     ->withHeader('Access-Control-Allow-Methods',
