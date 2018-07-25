@@ -135,6 +135,10 @@ is for Apache 2.2.x and should be present in your .htaccess file:
 </Limit>
 ~~~
 
+{: .note}
+You obviously have to be the owner of the server to allow cross origin request. Sometimes you just have to use the
+proxy script to obtain data and hope to not get banned (use server cache to minimise amount of requests).
+
 ## Summary
 AJAX is powerful technique which allows you to fetch or send data in the background. By doing this you can achieve much
 smoother user experience. On the other hand, you have to learn JavaScript to use AJAX and you are definitely breaking
