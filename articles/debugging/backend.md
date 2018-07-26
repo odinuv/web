@@ -236,6 +236,7 @@ Let's see what is around line 68 in that file:
   <tr>
     <td><?php echo LR\Filters::escapeHtmlText($person['first_name']) /* line 15 */ ?></td>
     <td><?php echo LR\Filters::escapeHtmlText($person['last_name']) /* line 16 */ ?></td>
+    <!-- following line is number 68 in compiled template -->
     <td><?php echo LR\Filters::escapeHtmlText($person['nicknam']) /* line 17 */ ?></td>
     <td><a href="<?php
 		  echo $router->pathFor("addContact");
@@ -255,6 +256,7 @@ structure in the original template file:
 <tr>
   <td>{$person['first_name']}</td>
   <td>{$person['last_name']}</td>
+  <!-- following line is number 17 in latte file -->
   <td>{$person['nicknam']}</td>
   <td><a href="{link addContact}?id={$person['id_person']}">Add contact</a></td>
 </tr>
@@ -262,6 +264,10 @@ structure in the original template file:
 ~~~
 
 Those two files are not that different, you can easily see, that the problem was a typo in array key `nickname`.
+My example was a very simple error, many errors are hard to find because the template is messy -- use indentation,
+good editors have functions to format code automatically, and good editors also have macro pairs highlighting. Some
+templates are very long -- use inheritance and includes to avoid code repetition. Sometimes the problems is not with
+template syntax, but with rendered HTML structure, this is covered in [frontend debugging article](/articles/debugging/frontend/).
 
 ## Summary
 In comparison with frontend, the backend environment is much more determinate. You usually have only one server with
