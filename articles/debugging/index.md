@@ -8,7 +8,7 @@ permalink: /articles/debugging/
 
 Your application will definitely have bugs. All applications have bugs. You will encounter most of them during
 development and in early days or weeks of deployment. You may encounter a bug which was introduced many months or
-even years ago, but these situations are quiet rare. Sometimes you immediately know where the bug is -- the interpreter
+even years ago, but these situations are quite rare. Sometimes you immediately know where the bug is -- the interpreter
 says that there is an error on line X, in file Y. You open file Y, go to line X and fix that stupid typo.
 
 Sometimes the bugs are less easy to spot, sometimes the reason why the application does not work is even combination
@@ -68,7 +68,7 @@ Worst kind of bugs are those that happen randomly. Such bugs unfortunately exist
 happen in certain situations, it might seem random at first, but there is some parameter or combination of parameters
 that reliably trigger the bug.
 
-First thing that you need to do is to be able to replicate the problem. Sometimes you need to go through a quiet long
+First thing that you need to do is to be able to replicate the problem. Sometimes you need to go through a quite long
 sequence of steps. Once you definitely know, what to do to trigger the bug, you can continue to the next step.
 
 ### Isolate

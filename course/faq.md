@@ -42,7 +42,7 @@ function countRows(PDO $db, $table) {
 
 ### How does it all work together? I have written (copied) all the code, it sort-of works, but I do not know why!
 Well, working web application is a complicated thing. Do not trust anybody who tells you opposite. You have to know
-quiet a lot of technologies (e.g. HTTP, HTML, CSS, PHP, SQL and a bit of JavaScript) to build one. The advantage of
+quite a lot of technologies (e.g. HTTP, HTML, CSS, PHP, SQL and a bit of JavaScript) to build one. The advantage of
 web technologies is that you only need a text-editor to code a HTML page or PHP script.
 
 You have to study all building blocks separately and then connect all the ends together. Start with plain
@@ -65,7 +65,7 @@ used as parameters of route handlers are [well](https://www.slimframework.com/do
 mechanism is also very transparent.
 
 Latte has very convenient syntax and good support in various editors (compare with syntax of [Blade](https://laravel.com/docs/5.6/blade) --
-those `@` macros look weird to me). Latte is also very secure and quiet fast. Nevertheless the templating engines are
+those `@` macros look weird to me). Latte is also very secure and quite fast. Nevertheless the templating engines are
 all alike.
 
 ### My code is different than someone else's, how is that possible?

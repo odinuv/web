@@ -12,7 +12,7 @@ after update script:
 ![Select parameters](/common/backend-update/select-values.png)
 
 {: .note}
-Because this is quiet small piece of functionality, try to incorporate this script into person update module.
+Because this is quite small piece of functionality, try to incorporate this script into person update module.
 
 ## Optgroups
 Just to be complete: to group `select` element `option`s use `optgroup` tag:

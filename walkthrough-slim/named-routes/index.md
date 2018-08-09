@@ -192,7 +192,7 @@ variable is used to link Bootstrap and jQuery JS/CSS files:
 ~~~
 
 ## What would the code look like without named routes
-It is possible to work without named routes but it is quiet confusing. Imagine that you have following route
+It is possible to work without named routes but it is quite confusing. Imagine that you have following route
 structure in your application:
  
 ~~~ php?start_inline=1

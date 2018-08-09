@@ -683,7 +683,7 @@ really does not matter. Ratio of JavaScript executed inside visitor's browser an
 can vary from 99% to 0%. But without **some** backend code, you cannot create any useful web application.
 The main effect of this effort is to deliver to your users more dynamic page with better usability.
 
-As you probably noticed, browser's APIs are quiet bulky and not very convenient. Therefore there are
+As you probably noticed, browser's APIs are quite bulky and not very convenient. Therefore there are
 JavaScript libraries like [jQuery](/articles/javascript/jquery/) with more effective expression.
 
 Now you know that most visual effect or desktop-application-like behaviour of a website is caused

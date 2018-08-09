@@ -108,7 +108,7 @@ Fortunatelly PHP's database interfaces does not allow to send multiple SQL querr
 e.g. [`mysqli_multi_query()`](http://php.net/manual/es/mysqli.multi-query.php) for basic MySQL.
 
 ## How does a vulnerable code look like and behave?
-It is quiet easy to spot SQL injection vulnerability in ones code when you know what you are looking for. Have a look
+It is quite easy to spot SQL injection vulnerability in ones code when you know what you are looking for. Have a look
 at lines where SQL statements are defined and check for direct concatenation with variables (especially with `$_POST`,
 `$_GET` or `$_COOKIE`). Here is another example of SQL injection. When you just pass numbers into the script,
 everything goes smooth but try to pass `5 OR true` as POST's `id` parameter and you just deleted everything stored

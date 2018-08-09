@@ -36,7 +36,7 @@ with [phpMyAdmin](https://www.phpmyadmin.net/) as control interface.
 
 Better way is to rent a PHP hosting. These services are cheap -- not much more than a few dollars per month.
 But you will have to purchase also a second level domain (*yourname*.com). Prices of domains are different
-according to the top level domain (a domain with TLD .info is cheaper than .com). Domain price is also quiet
+according to the top level domain (a domain with TLD .info is cheaper than .com). Domain price is also quite
 low -- few dollars per a year. This environment is much more stable and obviously ad-free. You can also get
 support from your service provider.
 

@@ -149,7 +149,7 @@ of some unique content part.
 Common PHP script output should not be cached because there is a good chance that data in database or something else
 changed (e.g. user logged on/off) and you want to deliver new content as response for each request. On the other hand,
 PHP script which sends uploaded file which never (or very rarely) changes as response should employ HTTP caching.
-Plus the fact that files are commonly quiet large so you can save a lot of time and bandwidth.
+Plus the fact that files are commonly quite large so you can save a lot of time and bandwidth.
 
 In following script I use just very simple approach, first HTTP response is extended with `Last-Modified` header
 with current time (or you can use real file's [modification time](http://php.net/manual/en/function.filemtime.php)).

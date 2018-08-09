@@ -41,7 +41,7 @@ to work with provided API. You can find yourself in many roles as a developer in
 - you can be the provider and *consumer* at once because you are building a distributed application (separate backend
   and multiple frontends -- web, mobile etc.)
 
-[HTTP](/articles/http/) is quiet simple protocol, it has request/response **headers**, request/response **body** and
+[HTTP](/articles/http/) is quite simple protocol, it has request/response **headers**, request/response **body** and
 response **status codes** and it is **supported in the browser**. The problem is with data format and that there is no
 set of rules to map [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations on HTTP paths.
 Therefore the [*Representational state transfer (REST)*](https://en.wikipedia.org/wiki/Representational_state_transfer)

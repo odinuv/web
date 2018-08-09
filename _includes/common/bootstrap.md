@@ -170,7 +170,7 @@ installed on your phone with pure [HTML, CSS and (a lot of) JavaScript](https://
 This type of application is called *hybrid application* and its advantage is a shared codebase for web and all mobile platforms.
 
 ### Using Bootstrap to make your page responsive
-Again, to define all possible scenarios and write media queries by yourself can be quiet a challenge.
+Again, to define all possible scenarios and write media queries by yourself can be quite a challenge.
 Bootstrap comes with predefined responsive behavior: it divides the page to 12 vertical columns and you
 can define how many columns would an element occupy in 4 different screen size intervals (e.g. in a small
 screen resolution you can make a `<p>` element 6 columns wide and for larger resolutions you can save some

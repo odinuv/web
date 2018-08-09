@@ -131,7 +131,7 @@ Development tools are something, that you directly use almost everyday to produc
 ## Means to run the application
 You will need means to run the application. Each computer has internet browser installed nowadays. But PHP applications
 are not executed by "double-clicking the desktop icon". They have to be stored inside configured web server, which uses
-PHP interpreter to execute PHP files. It is quiet difficult to [install](/course/not-a-student/#installing-your-own-server-on-your-pc)
+PHP interpreter to execute PHP files. It is quite difficult to [install](/course/not-a-student/#installing-your-own-server-on-your-pc)
 everything on your own computer. The web server should also be public, so the web application is available for
 everybody. Therefore the university provided you with execution environment on university's servers.
 

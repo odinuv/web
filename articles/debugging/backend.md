@@ -14,8 +14,8 @@ related applications like database or Apache web server and operating system (ty
 
 ## PHP debugging
 
-PHP has quiet nice error reporting mechanism. It tells you the line number and the file where the error occurred.
-Following code produces quiet handy error message.
+PHP has quite nice error reporting mechanism. It tells you the line number and the file where the error occurred.
+Following code produces quite handy error message.
 
 ~~~ php?start_inline=1
 <?php
@@ -54,7 +54,7 @@ handler for [unhandled exceptions](http://php.net/manual/en/function.set-excepti
 
 ### Stack trace
 Sometimes you can encounter a *stack trace*. Usually when you use some kind of framework with enabled debugging.
-At first it might seem very odd and quiet bulky. Stack trace is a printout of executed functions from top to bottom.
+At first it might seem very odd and quite bulky. Stack trace is a printout of executed functions from top to bottom.
 It shows the path of the interpreter in the code, including the code of the framework (which is not very useful).
 Every line in the stack trace is a function call which brought the interpreter closer to the error. Take a look at
 following image of Slim framework generated stack trace:

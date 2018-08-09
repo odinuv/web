@@ -107,7 +107,7 @@ anywhere else online.
 
 ## Possible harm
 The principle of XSS attack is now clear. I will show you how a XSS vulnerability can be exploited for the benefit
-of the attacker. There is quiet a lot of possible ways to exploit XSS, once you can execute JavaScript code on
+of the attacker. There is quite a lot of possible ways to exploit XSS, once you can execute JavaScript code on
 arbitrary computer, you have same freedom as any web developer using JavaScript with the benefit that your code
 is "hosted" on affected website and therefore anonymous.
 
@@ -131,6 +131,6 @@ An attacker can use connectivity of visitors to overload any online service with
 visitors' web browsers.
 
 ## Summary
-XSS is a very dangerous vulnerability which you can introduce in you code. It is quiet easy to avoid it
+XSS is a very dangerous vulnerability which you can introduce in you code. It is quite easy to avoid it
 by usage of the right tools -- a templating engine. You can read detailed description of XSS attack and check
 out more examples on [OWASP page](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)).

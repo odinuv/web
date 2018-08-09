@@ -89,7 +89,7 @@ Typical response headers:
 - `Location` -- server commands the client to redirect to a new location
 
 You can see that server can tell you browser what to do (store cookies, redirect, to cache or not to cache a file).
-The browser is implemented in a way that it obeys server commands. The communication is quiet complicated and sometimes
+The browser is implemented in a way that it obeys server commands. The communication is quite complicated and sometimes
 one HTTP request leads immediately to another.
 
 ### Response status codes
