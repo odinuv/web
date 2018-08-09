@@ -13,6 +13,10 @@ HTML or just plain text). This data can be inserted into HTML page without its r
 technologies. Asynchronous means that the visitor is not blocked from other interaction with site during that HTTP
 request. There can even be multiple HTTP requests processed at once.
 
+You can entirely override default behaviour of the web browser using JavaScript and AJAX -- you can use it to submit
+forms, execute actions and retrieve results from backend. You can also use AJAX to collect information about the
+behaviour of the visitor.
+
 ### XMLHttpRequest
 This object is responsible for HTTP communication controlled by JavaScript. Its [API](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 allows you to open a HTTP connection and check its progress when it [changes](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState)
@@ -27,6 +31,11 @@ provide results. This file can read parameters from query and returns JSON objec
 {% include /articles/javascript/ajax/calculate.php %}
 {% endhighlight %}
 
+{: .note}
+You can check the functionality of this script by calling e.g. `http://host.com/calculate.php?a=5&b=8`. Of course you
+can add two numbers directly in JavaScript, just pretend that we are calling some super-special function that needs
+to be performed on the server.
+
 And we need a JavaScript to talk with backend and deliver results into HTML page. The JavaScript code simply opens
 HTTP connection using GET method to `calculate.php` script with correct query parameters and waits for its response.
 If everything goes smooth, PHP returns HTTP code 200 and JSON data that can be parsed by JavaScript's
@@ -40,12 +49,20 @@ If everything goes smooth, PHP returns HTTP code 200 and JSON data that can be p
 {% endhighlight %}
 
 Put both files into same directory and open `index.html` in your browser, fill the form and press button. You can try
-to open `calculate.php` too and pass query parameters to observe JSON output.
+to open `calculate.php` too and pass query parameters to observe JSON output. You should feel the difference between
+reloading the whole page and just replacing piece of HTML dynamically -- AJAX seems to be faster and it is unusual
+to see web page to change its content without reload.
 
-Take a look into network console (also under F12 but switch to *Network* tab) and observe what your browser sends
-and receives when you press Calculate button. To view request parameters and response body click the HTTP request
-to `calculate.php` file (you can use XHR filter) and then select Parameters tab and Response tab. I used Firefox
-browser but Chrome developers tools are very similar.
+{: .note}
+The JavaScript code is quite long, it is because I did not use any library or helper interface. In real applications
+you usually try to write as few lines of code as possible. You can use a library like [Axios](https://github.com/axios/axios),
+[jQuery](/articles/javascript/jquery/), HTTP interface embedded in a framework (Angular has one, React and Vue do not)
+or browser's [Fetch API](/articles/javascript/ajax/#fetch-api) to simplify the code.
+
+Take a look into network console (under F12 key and switch to *Network* tab) and observe what your browser sends
+and receives when you press Calculate button -- you can find more about [debugging AJAX in another article](/articles/debugging/ajax-rest-api-and-spa/).
+To view request parameters and response body click the HTTP request to `calculate.php` file (you can use XHR filter)
+and then select Parameters tab and Response tab. I used Firefox browser but Chrome developers tools are very similar.
 
 {: .image-popup}
 ![console.log() output](/articles/javascript/ajax-network-1.png)
@@ -60,11 +77,23 @@ requires support of backend (PHP script cannot run longer than certain amount of
 
 ### Fetch API
 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) is a modern wrapper for asynchronous HTTP
-requests. It has higher-level syntax than previously described XMLHttpRequest and is promise-based. You can read about
-*promises* in [JavaScript article](/articles/javascript/#promises).
+requests (it does not work in Internet Explorer). It has higher-level syntax than previously described XMLHttpRequest
+and is promise-based. You can read about *promises* in [JavaScript article](/articles/javascript/#promises). Here
+is the same calculator example with Fetch API:
 
-Check out this article for a simple [Fetch API example](/articles/debugging/ajax-rest-api-and-spa/) and also for AJAX
-debugging tips.
+`index-fetch.html` file:
+
+{: .solution}
+{% highlight html %}
+{% include /articles/javascript/ajax/index-fetch.html %}
+{% endhighlight %}
+
+Check out this article for another simple [Fetch API example](/articles/debugging/ajax-rest-api-and-spa/) and also
+for AJAX debugging tips.
+
+{: .note}
+Use [`init`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) parameter of `fetch()`
+function to specify HTTP method and additional HTTP headers etc.
 
 ## Cross origin requests and OPTIONS HTTP request
 You are probably very excited about reading any possible HTTP resource in your JavaScript page and displaying useful
@@ -110,6 +139,7 @@ Access-Control-Allow-Methods: PUT, GET, POST, DELETE, PATCH, OPTIONS
 ~~~
 
 There are more headers that start with `Access-Control-Allow-...`, they define allowed additional headers for example.
+You can send custom HTTP response headers with [`header()` function](http://php.net/manual/en/function.header.php).
 In Slim framework, use [this code](https://www.slimframework.com/docs/v3/cookbook/enable-cors.html) as middleware
 of your application (usually defined in `src/middleware.php`):
 
@@ -148,5 +178,6 @@ Most modern applications resigned on backend templates and moved to full-feature
 applications -- this is called [SPA](/articles/web-applications/#single-page-applications-ria-spa). 
 
 ### New Concepts and Terms
-- Cross origin requests
 - AJAX
+- Cross origin requests
+- Fetch API
