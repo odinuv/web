@@ -97,16 +97,21 @@ times and you won't have time to fine-tune the result.
 A more concrete description of how to start working on the project is in [FAQ section](/course/faq/#how-to-start-working-on-the-project).
 
 ## Do not reinvent the wheel
-Do not write code for everything. There are existing tools and practices that are uses in each discipline (you would
+Do not write code for everything. There are existing tools and practices that are used in each discipline (you would
 not start to build a house by planting a tree). I understand, that it can be overwhelming for beginners to learn about
 simple framework and templating engine, but these are tools that are used regularly and you can have them for free.
 
-A lot of people only learn the basics and start programming (including myself). They ignore the ecosystem and tools
-used in given field. There are good reasons to learn something new:
+A lot of people only learn the basics and start programming (including myself). They ignore the ecosystem
+(e.g. [Componser](/walkthrough-slim/slim-intro/#composer)) and tools
+used in given field. After some time, they spot the patterns and recurring tasks and they start to build "frameworks".
+The problem is, that usually others have already made better frameworks and they already have thousands of users.
+There are good reasons to use work of others and to learn how to use existing tools:
 
 - Highly productive professionals often benefit from wide variety of tools that they know.
-- By using the right tools, you can achieve the result faster, although you will study longer.
-- You are learning means to work with other programmers -- you will have some common knowledge and methods. 
+- By using the right tools, you can achieve the result faster, although you will study longer (but you only study
+  once, than you can produce many web applications more efficiently).
+- You are learning means to work with other programmers -- you will have some common knowledge of tools used in the
+  field. 
 - You are proving that you can do it -- your future employer might not use Slim framework and Latte templating engine,
   neither PHP, but you proved that you can learn and understand some technology so he can hire you and train you
   in something else. And you also learned a lot about web standards that are universal along the way.
@@ -138,6 +143,9 @@ everybody. Therefore the university provided you with execution environment on u
 Database is a bit special here, it is not needed for every web application and you can definitely store application's
 data somewhere else (e.g. filesystem), but it is convenient and safe to use it.
 
+If you continue to study web application development, you will gather knowledge to install your own web-server.
+Read more in [technical support section of this book](/course/technical-support/).
+
 ## The big picture
 See all the tools in their place playing their role. This is difficult and you will have to reshape the model of
 things in your head a few times. One example: many students believe, that database is installed *inside* Apache
@@ -149,7 +157,7 @@ processes.
 
 You should train yourself to see the flow of data through variables between modules and levels of your application.
 The variables in your source code are like pipes. They are under the ground most of the time, but they surface from
-time to time to make their value available or to change it. The variables are the connecting pieces, without them, your
+time to time to make their value available or to change it. Variables are the connecting pieces, without them, your
 code would not be able to pass information around and it would be impossible to work with user provided data.
 
 {: .image-popup}
@@ -177,6 +185,8 @@ And this is what you should do when you get stuck:
   beginner's problems have been solved online or in this book. Remember, that your friends are usually similarly
   skilled as you, before you implement some solution, try to ask at least two or three people to confirm the
   solution or start discussion with them to come up with better one.
+
+Take a look in the [FAQ section](/course/faq/) of this book for useful tips.
 
 ## Start building (good) habits
 Many things can be trained, you will gain experience and you will learn how to use PHP, some IDE, framework, templating

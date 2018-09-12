@@ -149,8 +149,9 @@ Use [include](http://php.net/manual/en/function.include.php) or [require](http:/
 functions. Take a look [here](/walkthrough-slim/login/#tidy-up-your-code).
 
 ### What is Composer and how do I install it?
-Composer is a tool for downloading PHP libraries. You usually find a command in form `composer require someting` on
-a web site of particular library which downloads the source code into `/vendor` folder.
+[Composer](https://getcomposer.org/) is a tool for downloading PHP libraries. You usually find a command in form
+`composer require someting` on a web site of particular library which downloads the source code into `/vendor` folder.
+The dependency is noted in `composer.json` file in the root of the project.
 
 You can read more detailed [description](/course/technical-support/#composer) or try to [use it](/walkthrough-slim/slim-intro/#task----play-with-composer).
 

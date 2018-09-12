@@ -110,7 +110,8 @@ written in PHP itself. It is used among developers to describe dependencies of t
 you send your application's source code to a colleague (by email, file sharing service or preferably through
 [VCS](https://en.wikipedia.org/wiki/Version_control) system like [Git](https://git-scm.com/)) you do not need to send
 large amounts of libraries (which are usually larger than your code itself). You just send a recipe which dependencies
-should be downloaded using Composer (stored in `composer.json` file).
+should be downloaded using Composer (stored in `composer.json` file). You can read more about [using Composer](/walkthrough-slim/slim-intro/#composer)
+in the walkthrough.
 
 For example: to download [Latte](https://packagist.org/packages/latte/latte) library execute `composer require latte/latte`
 in the root of your project. This action will create or modify a `composer.json` file which you can send along with your
@@ -125,16 +126,17 @@ ahead (`$tpl = new Latte\Engine();`) without including any other files.
 
 {: .note}
 You can either install Composer globally in your system and then call `composer` command in your command line
-interpreter directly or you can download file `composer.phar` which you can execute using `php` interpreter itself by
+interpreter directly or you can download file `composer.phar` which you can execute using `php` interpreter by
 calling `php composer.phar` (in the same folder). Other command line options and switches are identical. You have to
-install PHP itself before you can use Composer.
+install PHP itself to be available globally in your system (i.e. to be able to execute `php` in command line) before
+you can use Composer.
 
 ### Sending emails from web applications
 Sometimes it is useful to send an email with notification to a user about an event that took place. PHP uses simple
 [`mail()`](http://php.net/manual/en/function.mail.php) function to send plain-text emails. To send HTML emails
 or emails with attachments, use some PHP library such as [SwiftMailer](http://swiftmailer.org/). You can download it
-with Composer (`composer require swiftmailer/swiftmailer`). This library can be configured to send mail directly to
-given SMTP server (be careful with this).
+with [Composer](#composer) (`composer require swiftmailer/swiftmailer`). This library can be configured to send mail
+directly to given SMTP server (be careful with this).
 
 The trickier part is configuring your environment - you usually do not want to send real email messages to real people
 from your dev-server. On Windows OS use [Papercut](https://papercut.codeplex.com/) tool to open local SMTP server with
@@ -315,3 +317,103 @@ a special environment for database administration.
 
 A real production server should be configured by a database specialist. Important notes about technical issues with
 databases from the developer's perspective are in [another article of this book](/articles/database-tech/).
+
+## Docker
+[Docker](https://www.docker.com/) is a kind of virtualisation tool. It executes *images* of virtual machines in
+*containers*. In does not virtualise the whole computer with operating system like [VirtualBox](https://www.virtualbox.org/)
+or [VMware](https://www.vmware.com/) but only the application itself.
+
+You can use Docker to run whole virtual Linux web server with a database server on your PC.
+This course's project is ready to be executed in Docker thanks to [docker-compose.yml](https://bitbucket.org/apvmendelu/slim-based-project/src/master/docker-compose.yml)
+file in the root of the project. Just type `docker-compose up` in command line after you install docker.
+You can find instructions in the [project's readme](https://bitbucket.org/apvmendelu/slim-based-project/src/master/README.md).
+
+{: .note}
+Running Docker under Windows is a bit problematic. First of all use latest 64-bit Windows 10. Then you have to have
+a CPU with [virtualisation support](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows)
+and you have to enable Hyper-V feature in your operating system.
+
+## Markdown format
+You will encounter files with `md` filename extension in many projects -- GitHub or BitBucket displays formatted
+`readme.md` file as default content of repository homepage. These files are written in [Markdown format](https://en.wikipedia.org/wiki/Markdown).
+Similarly to HTML, Markdown is designed to format text. You should learn few basic Markdown macros to use it:
+
+<table>
+<tr>
+<th>Markdown code</th>
+<th>Rendering</th>
+</tr>
+<tr>
+<td style="width: 50%">
+<pre>
+# Heading 1
+## Heading 2
+### and so on...
+
+*italic*
+**bold**
+~~strikeout~~
+
+Unordered list:
+- first
+  - next level
+- second
+
+Ordered list:
+1. first
+  - next level
+2. second
+
+Paragraphs is divided by
+two new-line characters.
+
+A [link](http://google.com)
+
+An ![image](/course/ca/valid.png)
+
+A code: `callSomeFunction()`
+
+Block of code (syntax is optional):
+```php
+<?php
+    echo "Hello world!";
+```
+</pre>
+</td>
+<td style="width: 50%">
+<div markdown="1">
+# Heading 1
+## Heading 2
+### and so on...
+
+*italic*
+**bold**
+~~strikeout~~
+
+Unordered list:
+- first
+  - next level
+- second
+
+Ordered list:
+1. first
+  - next level
+2. second
+
+Paragraphs is divided by two new-line characters.
+
+A [link](http://google.com)
+
+An ![image](/course/ca/valid.png)
+
+A code: `callSomeFunction()`
+
+Block of code (syntax is optional):
+```php
+<?php
+    echo "Hello world!";
+```
+</div>
+</td>
+</tr>
+</table>

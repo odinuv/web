@@ -103,7 +103,7 @@ message implementation curated especially for Slim framework.
 
 ### Task -- install the library using composer
 Go to documentation page of [`slim/flash` package](https://www.slimframework.com/docs/v3/features/flash.html) and
-install it using `composer require` command. You have to have [Composer](/course/technical-support/#composer) installed on your PC.
+install it using `composer require` command. You have to have [Composer](/walkthrough-slim/slim-intro/#composer) installed on your PC.
 
 {: .solution}
 ~~~
