@@ -236,7 +236,7 @@ table {
 .content {
   background-color: #fff;
   .page {
-    padding: 1.8em 1em 2em;
+    padding: 1.8em 0.5em 2em;
     min-height: 100em;
     .breadcrumb {
       margin: 0 0 1em 0;
@@ -244,7 +244,7 @@ table {
       background-color: transparent;
     }
     @media (min-width: $screen-md-min) {
-      padding: 1.8em 2.5em 2em;
+      padding: 1.8em 1em 2em;
     }
   }
 }
@@ -278,19 +278,22 @@ table {
     float: right;
     display: inline-block;
     margin-left: 1.5em;
-    max-width: 40%;
+    max-width: 35%;
   }
 }
 
 // image popup
 .image-popup {
   img {
-    max-width: 480px;
+    max-width: 400px;
     max-height: 500px;
     cursor: pointer;
-    padding: 1em;
+    padding: 0.5em;
     border: thin solid $gray-lighter;
     border-radius: 3px;
+    @media (min-width: $screen-lg-min) {
+      max-width: 530px;
+    }
   }
 }
 
