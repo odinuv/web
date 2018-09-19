@@ -81,10 +81,22 @@ I prepared a small map for you, it might help you to see the main interconnectin
 ![Knowledge map](/articles/problem-solving/knowledge-map.png)
 
 ## Start small, start early, plan ahead
-Always start by learning and understanding the technology and by making a prototype or proof of concept. You can
-obviously skip this step once you know your *tools of trade*. Plan some "custom" deadlines and try to keep them.
-By gaining experience, you will be more and more accurate in time estimates. When you miss the deadline, you
-know, that you have a problem (the best way is to plan work on day-to-day basis).
+Always start by learning and understanding the technology and by making a prototype or proof of concept. Try to solve
+isolated problems and make a "library of examples". You can obviously skip this step once you know your *tools of
+trade*. Once you can solve isolated problems, you should be able to decompose the assignment to partial problems
+and map it on your library of examples.
+
+{: .note}
+That paragraph you just read is **super-important**. Nobody ever wrote a full working application from scratch without
+playing with and learning needed technologies. Isolated problem can be e.g. "defining a route in a framework and
+responding to it with a simple template", "passing data into templating engine and displaying a static text in
+visitor's browser", "storing a record into a database" and "submitting a from and retrieving data using *POST* method".
+Those last two examples can be later joined into more complicated example of "storing submitted form data into a
+database".
+
+Plan some "custom" deadlines and try to keep them. By gaining experience, you will be more and more accurate in time
+estimates. When you miss the deadline, you know, that you have a problem (the best way is to plan work on day-to-day
+basis).
 
 Take a look at following image, the bad scenario is a case of many students who do not self-study and do not test and
 practice what they are taught during lessons. Once you start programming without any idea of what you are doing and
@@ -159,6 +171,9 @@ You should train yourself to see the flow of data through variables between modu
 The variables in your source code are like pipes. They are under the ground most of the time, but they surface from
 time to time to make their value available or to change it. Variables are the connecting pieces, without them, your
 code would not be able to pass information around and it would be impossible to work with user provided data.
+
+You can use UML diagrams described in [FAQ section](/course/faq/#how-to-start-working-on-the-project) to make an
+overview of functions needed in your application.
 
 {: .image-popup}
 ![Data flow](/articles/problem-solving/data-flow.svg)

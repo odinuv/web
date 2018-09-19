@@ -94,9 +94,9 @@ variables using `echo` or `print_r()` function and then calling `exit`. Another 
 
 {: .note}
 You might seen using *breakpoints* and *stepping* through your code in another programming environments or just
-read about it in JavaScript section. It is not impossible to do this with PHP, but it is problematic
-because you code is not executed through your IDE. PHP is executed in a web server's context (and that also
-can be on a different machine). To be able to set breakpoints you need to install PHP debugger like
+read about it in [JavaScript](/articles/debugging/frontend/#javascript) section. It is not impossible to do this with
+PHP, but it is problematic because your code is not executed through the IDE. PHP is executed in a web server's context
+(and that also can be on a different machine). To be able to set breakpoints you need to install PHP debugger like
 [Xdebug](https://xdebug.org/) and connect it with your IDE. This is very difficult for beginners.
 
 ## Input processing errors

@@ -85,12 +85,118 @@ also identify user roles (like administrator, registered user or guest). Use-Cas
 nature.
 
 {: .note}
+You can use dedicated software to draw UML diagrams. Try [Visual Paradigm](https://www.visual-paradigm.com/)
+or [Dia](http://dia-installer.de/) or just pencil and paper.
+
+Here is an example of a Use-Case diagram made with [PlantUML](http://plantuml.com):
+
+{: .image-popup}
+{% plantuml %}
+@startuml
+skinparam backgroundColor Ivory
+skinparam handwritten true
+left to right direction
+
+title Person directory Use-Cases
+
+actor Guest as guest
+actor "Registered user" as user
+
+guest <|-- user
+
+usecase (Register)
+usecase (Login)
+usecase (Add a person)
+usecase (Show all persons)
+usecase (Update a person)
+usecase (Delete a person)
+usecase (Add person's address)
+
+guest ---> (Register)
+guest ---> (Login)
+user ---> (Add a person)
+user ---> (Show all persons)
+user ---> (Update a person)
+user ---> (Delete a person)
+(Add a person) .> (Add person's address) : <<include>>
+
+@enduml
+{% endplantuml %}
+
+{: .note}
 User in guest role can usually perform registration and login and optionally display public information.
 
-Here is an example of a Use-Case diagram made with [Visual Paradigm](https://www.visual-paradigm.com/) but a plain list
-is OK for this project:
+Those Use-Cases are OK for high level understanding of the application scope, if you can't see what particular bubble
+in that use case means, you can try [Sequence diagrams](https://en.wikipedia.org/wiki/Sequence_diagram). You should
+also specify initial conditions for each Use-Case - e.g. "user has to be logged in", "there has to be record XY in the
+database" etc. There can also be alternative scenarios for each Use-Case - e.g. add a person with or without an address.
+Try also [Activity diagram](https://en.wikipedia.org/wiki/Activity_diagram) which is an extension of well-known
+[flowchart](https://en.wikipedia.org/wiki/Flowchart?oldid=422892748) diagram which is taught in basic programming
+courses.
 
-![Example Use-Case](/course/example-usecase.png)
+{: .image-popup}
+{% plantuml %}
+@startuml
+skinparam backgroundColor Ivory
+skinparam handwritten true
+
+title Store person with address into database
+
+actor User as user
+participant "My application" as app
+database "Database" as db
+
+user -> app: Click the "Add person button"
+user <-- app: Display form with person and address inputs
+
+user -> app: Fill the form and submit
+note over app
+    Check whether user filled
+    all mandatory inputs.
+end note
+app -> db: Store the address record
+app <-- db: Confirm storage (no error)
+app -> db: Request ID of new address
+app <-- db: Return ID
+app -> db: Store the person record
+app <-- db: Confirm storage (no error)
+user <-- app: Display confirmation and redirect user to list of persons
+
+@enduml  
+{% endplantuml %}
+
+Sometimes you can choose between more suitable UML diagrams, here is the same process (just the important part of it)
+modelled with Activity diagram:
+
+{: .image-popup}
+{% plantuml %}
+@startuml
+skinparam backgroundColor Ivory
+skinparam handwritten true
+
+title Store person with address into database
+
+start
+if (User filled all required fields) then (yes)
+  if (User filled address fields) then (yes)
+    :Store address into database;
+    :Obtain address ID from database;
+  else (no)
+  endif
+  :Store person record into database;
+  :Redirect user to person list;
+else (no)
+  :Display the form again with error message;
+endif
+
+stop
+@enduml
+{% endplantuml %}
+
+{: .note}
+Some UML diagrams are less intuitive than Use-Case, Activity or Sequence diagrams -- they are focused on designing
+much more complicated systems than this application. Do not bother with Class or Object diagrams for now, you just
+need to be able to decompose the Use-Cases to individuals steps that can be rewritten as lines of your program.
 
 Once you know what a user can do, you can start designing user interface for that actions. Take a pencil and a piece of
 paper and start drawing forms and layout of individual screens. You should create so called [wireframe](https://en.wikipedia.org/wiki/Website_wireframe)
@@ -103,7 +209,11 @@ You may end up with something like this:
 {: .image-popup}
 ![Example wireframe](/course/example-wireframe.png)
 
-Once you have the wireframes with comments and list of actions, you can start coding: assign a route or filename to
+{: .note}
+Some people start with wireframing first -- it is up to you to decide whether you feel more confident drawing the
+user interface or thinking about all possible functions first.
+
+After you have the wireframes with comments and list of actions, you can start coding: assign a route or filename to
 each action (depending on walkthrough version), prepare the template and display it -- you can start with static
 templates. Afterwards start coding logic -- retrieve data from database and display them (pass the data into template
 and show them to the visitor), prepare *POST* routes for data modifications when a page contains a form. Always think
@@ -115,7 +225,10 @@ analyse the assignment, find potential database entities and their attributes an
 by yourself. It is a good idea to crosscheck ERD with wireframe models of user interface to be sure that all forms and
 inputs are mapped to entities and attributes and vice-versa.
 
-Read [article about problem solving](/articles/problem-solving/).
+UML diagrams are nice, another, more important thing to know is the **grasp of inner working of web applications,
+databases and related technologies** -- without this, you end up with Use-Case diagrams and superficial scenarios,
+sequence or activity diagrams and still no idea of how to start actually coding. To be able to write the code,
+**you have to learn how to solve isolated problems and make a lot of prototypes**. Read [article about problem solving](/articles/problem-solving/).
 
 ### Why do we use some "framework", how does it work?
 Framework is a software which defines skeleton of your project and provides some basic means to write an application
