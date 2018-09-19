@@ -284,6 +284,18 @@ table {
 
 // image popup
 .image-popup {
+  position: relative;
+  &:hover:after {
+    content: "Click to enlarge";
+    border: 1px solid #AAAAAA;
+    position: absolute;
+    background: #FFFFFF;
+    padding: 0.2rem;
+    display: inline-block;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    font-size: 1rem;
+  }
   img {
     max-width: 400px;
     max-height: 500px;
