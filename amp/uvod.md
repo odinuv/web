@@ -198,7 +198,7 @@ Jak se nesklouznout k bastardním metodikám.
 
 <section markdown='1'>
 ## AMP
-- do čtvrtka (29.9.2017) poslat strukturovaný odborný životopis
+- do čtvrtka dopoledne (27. 9. 2018) poslat strukturovaný odborný životopis
     - vynechte osobní údaje
     - **čím můžete přispět k řešení projektu**
     - jakou funkci můžete/chcete zastávat
@@ -207,6 +207,6 @@ Jak se nesklouznout k bastardním metodikám.
         - testování
         - překlad/dokumentace
         - ostatní?
-    - Zašlete na **ondrej.popelka@mendelu.cz**
-    - Účty
+    - Zašlete na **jiri.lysek@mendelu.cz**
+- Aktivovat účty ve Slacku a BitBucketu
 </section>
