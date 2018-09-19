@@ -1,0 +1,3 @@
+#!/bin/bash
+
+java -jar /tmp/plantuml.jar "$1" "$2"

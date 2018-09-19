@@ -24,6 +24,7 @@ exclude:
 sass:
   style: compressed
 
-gems:
+plugins:
   - jekyll-sitemap
+  - jekyll-plantuml
   - jekyll-redirect-from  

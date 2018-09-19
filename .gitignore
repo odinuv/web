@@ -3,3 +3,4 @@ _site
 .sass-cache
 .vscode
 /course/ca/config.php
+/uml
