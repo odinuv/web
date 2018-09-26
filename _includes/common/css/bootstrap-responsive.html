@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>My new page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
 <!-- always use .container or .container-fluid -->
 <div class="container">
 	<!-- to use responsive classes define a row -->
@@ -6,25 +15,57 @@
 			sum of columns occupied by elements for each
 			resolution should be <= 12
 		-->
-		<p class="col-xs-6 col-sm-2">
-			This paragraph is 6 columns wide for screens under 768px width.
+		<p class="col-6 col-md-2 border">
+			This paragraph is 6 columns wide for small screens and 2 columns wide for larger ones.
 		</p>
-		<p class="hidden-xs col-sm-10">
+		<p class="d-none d-sm-none d-md-block col-md-10 border">
 			This one is even hidden for small screens.
 		</p>
 	</div>
 	<div class="row">
-		<!-- do not apply col-*-* classes on styled elements -->
-		<div class="col-xs-4">
+		<!-- do not apply col-*-* classes on styled elements, always use spare <div> to define columns -->
+		<div class="col-4 border">
 			<label>A way to make inline form</label>
 		</div>
-		<div class="col-xs-4">
+		<div class="col-4 border">
 			<input class="form-control" />
 		</div>
-		<div class="col-xs-4">
+		<div class="col-4 border">
 			<button class="btn btn-primary btn-block">
 				A block button
 			</button>
 		</div>
 	</div>
+	Extra small:
+	<div class="row">
+		<div class="col-4 border">4 of 12</div>
+		<div class="col-4 border">4 of 12</div>
+		<div class="col-4 border">4 of 12</div>
+	</div>
+	Small:
+	<div class="row">
+		<div class="col-sm-4 border">4 of 12</div>
+		<div class="col-sm-4 border">4 of 12</div>
+		<div class="col-sm-4 border">4 of 12</div>
+	</div>
+	Medium:
+	<div class="row">
+		<div class="col-md-4 border">4 of 12</div>
+		<div class="col-md-4 border">4 of 12</div>
+		<div class="col-md-4 border">4 of 12</div>
+	</div>
+	Large:
+	<div class="row">
+		<div class="col-lg-4 border">4 of 12</div>
+		<div class="col-lg-4 border">4 of 12</div>
+		<div class="col-lg-4 border">4 of 12</div>
+	</div>
+	Extra large:
+	<div class="row">
+		<div class="col-xl-4 border">4 of 12</div>
+		<div class="col-xl-4 border">4 of 12</div>
+		<div class="col-xl-4 border">4 of 12</div>
+	</div>
 </div>
+</body>
+</html>

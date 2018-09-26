@@ -5,14 +5,18 @@ some work and use freely available predefined CSS styles. I strongly suggest tha
 styles, because making your own (good looking) styles requires a lot of work. I will also briefly introduce
 *responsive design*.
 
-**This text is strongly aimed at the Bootstrap software library at version 3.x. It is certain that in future trends will
-change as a new version of Bootstrap is released.**
+**This text is strongly aimed at the Bootstrap software library at version 4.x. It is certain that in future trends will
+change and/or a new version of Bootstrap will be released.**
 
 ## Bootstrap
 I recommend to use the CSS framework called [Bootstrap](http://getbootstrap.com). It can deliver a nice modern look
-for your application without having to worry about writing too much CSS code. Obtaining it is easy -- you just go online and select
-an appropriate widget from their [online library](http://getbootstrap.com/css/). Then you tweak that HTML
-code to suit your needs.
+for your application without having to worry about writing too much CSS code. 
+
+
+Obtaining it is easy -- you just download
+the whole package, unzip it, and link main Bootstrap CSS and JS files in your HTML headers. You should also download
+and link [jQuery library](/articles/javascript/jquery/) if you want to use modal windows or menu dropdowns and other
+effects.
 
 There are more CSS frameworks available online -- e.g.:
 
@@ -20,28 +24,28 @@ There are more CSS frameworks available online -- e.g.:
 - [HTML5 Boilerplate](https://html5boilerplate.com/),
 - [YUI](http://yuilibrary.com/).
 
-I will use the Bootstrap version 3.x here because it is best known and I like it.
+I will use the Bootstrap version 4.x here because it is best known and I like it.
 The above frameworks offer similar features to Bootstrap, so the choice is rather arbitrary.
 
-Linking Bootstrap to your application is simple. Go to [the download page](http://getbootstrap.com/getting-started/#download) and copy those
-few lines from the **Bootstrap [CDN](https://en.wikipedia.org/wiki/Content_delivery_network)** section. You can also download the whole Bootstrap
-in a zip archive if you want. You just need to link
-`bootstrap.min.css`, `bootstrap-theme.min.css` and `bootstrap.min.js` in your `<head>`. If you want to use Bootstrap locally,
-make sure not to break the Bootstrap
+Linking Bootstrap to your application is simple. Go to [the download page](https://getbootstrap.com/docs/4.1/getting-started/download/)
+and copy those few lines from the **Bootstrap [CDN](https://en.wikipedia.org/wiki/Content_delivery_network)** section.
+You can also download the whole Bootstrap in a zip archive if you want. You just need to link `bootstrap.min.css` and
+`bootstrap.bundle.min.js` in your `<head>`. If you want to use Bootstrap locally, make sure not to break the Bootstrap
 directory structure. If you want to use Bootstrap's [JavaScript](../../javascript/) features, you should also link
 the [jQuery](https://jquery.com) library (also available via [CDN](https://jquery.com/download/#using-jquery-with-a-cdn))
-before `bootstrap.min.js` (always use the latest compressed production version). With all this, the beginning of your HTML document should look like this:
+before `bootstrap.bundle.min.js` (always use the latest compressed production version). With all this, the beginning of
+your HTML document should look like this:
 
 {% highlight html %}
 {% include /common/css/head-skeleton.html %}
 {% endhighlight %}
 
 ### Tables, forms, inputs, pagination, navigation...
-A large part of the Bootstrap framework is a library of CSS definitions for basic HTML elements. You can find
-samples in the Bootstrap [CSS documentation section](http://getbootstrap.com/css/). Bootstrap has many classes
-and applying them on your HTML elements will make those elements look "the Bootstrap way".
+A large part of the Bootstrap framework is a library of CSS definitions for basic HTML elements. You can find samples
+in the [documentation section](https://getbootstrap.com/docs/4.1/getting-started/introduction/). Bootstrap has many
+classes and applying them on your HTML elements will make those elements look "the Bootstrap way".
 
-For example a button can be styled with the `btn` and `btn-primary` [class](http://getbootstrap.com/css/#buttons-options).
+For example a button can be styled with the `btn` and `btn-primary` [class](https://getbootstrap.com/docs/4.1/components/buttons/).
 
 {% highlight html %}
 <button class="btn btn-primary">
@@ -69,25 +73,19 @@ The class `table-striped` is for alternating white and grey rows in a table and 
 a row which is under the mouse cursor. This approach resembles the principle of inheritance/specialization of classes
 from [object oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming).
 
-The CSS classes for HTML forms are probably the most complicated because Bootstrap offers many layouts for your forms
-(horizontal, inline) and most forms are usually composed of many elements.
-In the [components section](http://getbootstrap.com/components/) you can find more complicated elements -- for example
-[navbars (navigation bar)](http://getbootstrap.com/components/#navbar),
-[wells](http://getbootstrap.com/components/#wells),
-[pagination](http://getbootstrap.com/components/#pagination) and
-[universal icons](http://getbootstrap.com/components/#glyphicons). The universal icons are usually used on buttons and links like this:
+The CSS classes for [HTML forms](https://getbootstrap.com/docs/4.1/components/buttons/) are probably the most
+complicated because Bootstrap offers many layouts for your forms (horizontal, inline) and most forms are usually
+composed of many elements. In the [components section](https://getbootstrap.com/docs/4.1/components/) you can find more
+complicated elements -- for example
+[navbars (navigation bar)](https://getbootstrap.com/docs/4.1/components/navbar/),
+[cards](https://getbootstrap.com/docs/4.1/components/card/),
+[pagination](https://getbootstrap.com/docs/4.1/components/pagination/),
+[badges](https://getbootstrap.com/docs/4.1/components/badge/) and
+[navigation elements](https://getbootstrap.com/docs/4.1/components/navs/).
 
-{% highlight html %}
-<!-- button with floppy disk icon -->
-<button class="btn btn-primary" type="button">
-    <span class="glyphicon glyphicon-disk"></span> Save
-</button>
-{% endhighlight %}
-
-Make sure to have a look at [navbar component](http://getbootstrap.com/components/#navbar). It has quite a complicated HTML code and uses
-many CSS classes, but if you work carefully and
-remove unwanted elements you can get a nice navigation in your application (you can use the `navbar-inverse` class to
-have a black one).
+Make sure to have a look at [navbar component](https://getbootstrap.com/docs/4.1/components/navbar/). It has quite
+a complicated HTML code and uses many CSS classes, but if you work carefully and remove unwanted elements you can
+get a nice navigation in your application (you can use `navbar-dark bg-dark` classes to have a black one).
 
 ### Task -- Use Bootstrap
 Try to apply Bootstrap CSS classes to your application HTML code and make it look modern. Hint: use the
@@ -118,14 +116,12 @@ red (`#db0808`).
 <div markdown='1'>
 Your HTML should look like this (custom CSS styles have to come last to overwrite Bootstrap styles):
 
-{: .solution}
 {% highlight html %}
 {% include /common/css/bootstrap-override.html %}
 {% endhighlight %}
 
 In the linked CSS file (`my-styles.css`), you simply define what you want to change:
 
-{: .solution}
 {% highlight css %}
 {% include /common/css/my-styles.css %}
 {% endhighlight %}
@@ -142,12 +138,16 @@ of the device using a [**media query**](/articles/css/#at-rules).
 
 You can use a *media query* to apply certain CSS properties only when some conditions are met.
 
+File `media-queries.css`:
+
 {% highlight css %}
 {% include /common/css/media-queries.css %}
 {% endhighlight %}
 
 In the above example, the padding of the page is changed with the browser window size. Try it for yourself
-on the following piece of HTML code:
+on the following piece of HTML code.
+
+File `media-queries.html`:
 
 {% highlight html %}
 {% include /common/css/media-queries.html %}
@@ -159,11 +159,11 @@ gets printed on web pages. For print output, you usually want to hide navigation
 and also background images (in this above style I set background to plain white and the `nav` element not to print).
 
 {: .note}
-CSS pixel -- some devices with very small screen pixels (high density displays) can be configured to count four,
-nine or even sixteen screen pixels as one CSS pixel. This makes CSS the unit *px* usable to measure screen size and set
-dimensions of elements.
+CSS pixel -- some devices with very small screen pixels (high density displays) can be configured to count four (2x2),
+nine (3x3) or even sixteen (4x4) screen pixels as one CSS pixel. This makes the CSS unit *px* usable to measure screen
+size and set dimensions of elements because the CSS pixel is approximately equally large on all devices (say ~0.5mm).
 
-Using media queries you can set different CSS rules for different situations and the HTML code can remain
+Using media queries, you can set different CSS rules for different situations and the HTML code can remain
 almost unchanged. This makes it possible to create pages with *responsive design*. Altogether this is a powerful tool,
 thanks to it you can even create a mobile application which can be
 installed on your phone with pure [HTML, CSS and (a lot of) JavaScript](https://cordova.apache.org).
@@ -172,7 +172,7 @@ This type of application is called *hybrid application* and its advantage is a s
 ### Using Bootstrap to make your page responsive
 Again, to define all possible scenarios and write media queries by yourself can be quite a challenge.
 Bootstrap comes with predefined responsive behavior: it divides the page to 12 vertical columns and you
-can define how many columns would an element occupy in 4 different screen size intervals (e.g. in a small
+can define how many columns would an element occupy in 5 different screen size intervals (e.g. in a small
 screen resolution you can make a `<p>` element 6 columns wide and for larger resolutions you can save some
 space and make it only 2 columns wide). The key is to use the Bootstrap responsive module correctly:
 
@@ -182,10 +182,11 @@ space and make it only 2 columns wide). The key is to use the Bootstrap responsi
 
 Screen size intervals for Bootstrap responsive classes:
 
-- **xs** -- extra small -- under 768px (excl.) -- `col-xs-*`
-- **sm** -- small -- from 768px to 992px (excl.) -- `col-sm-*`
-- **md** -- medium -- from 992px to 1200px (excl.) -- `col-md-*`
-- **lg** -- large -- over 1200px -- `col-lg-*`
+- **none** -- extra small -- under 576px (excl.) -- `col-*`
+- **sm** -- small -- from 576px to 768px (excl.) -- `col-sm-*`
+- **md** -- medium -- from 768px to 992px (excl.) -- `col-md-*`
+- **lg** -- large -- over 992px to 1199px -- `col-lg-*`
+- **xl** -- large -- over 1200px -- `col-xl-*`
 
 ## CSS Pre-processors
 If you feel that CSS with its flat structure and lack of variables can get out of hands after some time,
@@ -193,6 +194,29 @@ you are not alone! For this purpose CSS pre-processors were invented -- most pop
 [LESS](http://lesscss.org) and [Sass](http://sass-lang.com). This is too advanced to start with, just
 try to remember this information for your first big project. Also the Bootstrap library is
 written with Sass (it used to be written in LESS).
+
+{: .note}
+LESS/Sass is a kind of programming language that can be used to generate static CSS. You can use Sass to compile
+your own Bootstrap -- with your own colors and responsive breakpoints etc. thanks to variables which are used
+in Bootstrap's source code.
+
+## Icons
+Previous version of Bootstrap framework offered some basic icons. Bootstrap 4 removed all icons and it is up to you
+to obtain some icon set for you application. I recommend free version of [Font Awesome](https://fontawesome.com/).
+You can connect the stylesheet using [CDN](https://fontawesome.com/how-to-use/on-the-web/setup/getting-started?using=web-fonts-with-css)
+or download the whole package and link CSS file locally -- you only need `css` and `webfonts` folder. Be careful not to
+break directory structure. Link the `all.min.css` file in `<head>` of your document. Icons are accessed using `fa` and
+`fa-*` classes:
+
+{% highlight html %}
+<!-- button with floppy disk icon -->
+<button class="btn btn-primary" type="button">
+    <span class="fa fa-save"></span> Save
+</button>
+{% endhighlight %}
+
+{: .note}
+Be careful not to put text into the span element itself. It looks ugly.
 
 ## Summary
 In this chapter you have used Bootstrap CSS framework to make your application look modern. I have also introduced
@@ -207,7 +231,6 @@ Try to design usable layouts and controls first and then try to think how people
 to inspire yourself from the work of others. Each website is done by different team of designers and visitors have
 to adapt and sometimes a new idea may confuse them. Try to follow well known patterns and practices.
 
-
 ### New Concepts and Terms
 - Bootstrap CSS framework
 - Responsive design
@@ -215,6 +238,9 @@ to adapt and sometimes a new idea may confuse them. Try to follow well known pat
 
 ### Control question
 - How to apply custom CSS (override Bootstrap)?
-- Is Bootstrap a good solution for your company's website?
 - Is Bootstrap a good solution for your company's information system?
+- Is Bootstrap a good solution for your company's website?
+- Is Bootstrap a good solution for presentation of an graphician/artist?
+- How can you use Bootstrap or Font Awesome (or both) in your project?
 - Are there any alternatives to Bootstrap?
+- Are there any alternatives to Font Awesome?
