@@ -13,7 +13,7 @@ services:
     working_dir: /code
     ports:
       - "4000:4000"
-    command: jekyll serve --watch -H 0.0.0.0 --force_polling
+    command: bundle exec jekyll serve --watch -H 0.0.0.0 --force_polling
   deploy:
     build: .
     build:

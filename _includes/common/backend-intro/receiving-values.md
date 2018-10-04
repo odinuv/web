@@ -1,9 +1,9 @@
-One of previous chapter taught you how to build [HTML form](../../html-forms/). The interesting part is how to access
-and process this data in PHP script. The processing part is arbitrary and is covered in following chapters of this
+One of previous chapters taught you how to build [HTML form](../../html-forms/). The interesting part is how to access
+and process this data in a PHP script. The processing part is arbitrary and is covered in following chapters of this
 walkthrough. General knowledge of accessing to input data is crucial for development of web page.
 
 Remember, that [HTTP protocol](/articles/web/#http-protocol) can only transmit texts. Therefore everything you
-send or receive over it has to be converted into characters.
+send or receive over it has to be converted into sequence of characters.
 
 ## Accessing data in plain PHP
 There are generally two most used HTTP methods - *GET* and *POST*. For now, it is not important to know which method
@@ -41,7 +41,7 @@ name attributes of those inputs. Insert a PHP code right into this file and disp
 function to determine whether `$_POST['key']` is filled or not.
 
 {: .solution}
-{% highlight php %}
+~~~ php
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,15 +49,15 @@ function to determine whether `$_POST['key']` is filled or not.
         <title>POST method experiment</title>
     </head>
     <body>
-        <?php
-            if(!empty($_POST)) {
-                //print_r($_POST);
-                echo "Greetings ";
-                echo $_POST['name'];
-                echo $_POST['surname'];
-            }
-        ?>
-        <post method="POST">
+<?php
+    if(!empty($_POST)) {
+        //print_r($_POST);
+        echo "Greetings ";
+        echo $_POST['name'];
+        echo $_POST['surname'];
+    }
+?>
+        <form method="post">
             <label>First name</label>
             <input type="text" name="name">
             <br>
@@ -68,7 +68,7 @@ function to determine whether `$_POST['key']` is filled or not.
         </form>
     </body>
 </html>
-{% endhighlight %}
+~~~
 
 {: .note}
 Notice, that after you submit the form, the page reloads entirely -- it means that the script is re-executed with
@@ -80,7 +80,7 @@ Use `if(...) {...}` [control structure](../control/) to detect whether the form 
 `$_POST` is available or not).
 
 {: .solution}
-{% highlight php %}
+~~~ php
 <!DOCTYPE html>
 <html>
     <head>
@@ -88,16 +88,16 @@ Use `if(...) {...}` [control structure](../control/) to detect whether the form 
         <title>POST method experiment</title>
     </head>
     <body>
-        <?php
-            if(!empty($_POST)) {
-                //print_r($_POST);
-                echo "Greetings ";
-                echo $_POST['name'];
-                echo $_POST['surname'];
-            }
-            if(empty($_POST)) {
-        ?>
-        <post method="POST">
+<?php
+    if(!empty($_POST)) {
+        //print_r($_POST);
+        echo "Greetings ";
+        echo $_POST['name'];
+        echo $_POST['surname'];
+    }
+    if(empty($_POST)) {
+?>
+        <form method="post">
             <label>First name</label>
             <input type="text" name="name">
             <br>
@@ -106,12 +106,12 @@ Use `if(...) {...}` [control structure](../control/) to detect whether the form 
             <br>
             <input type="submit" value="Greet me">
         </form>
-        <?php
-            }
-        ?>
+<?php
+    }
+?>
     </body>
 </html>
-{% endhighlight %}
+~~~
 
 ### *GET* method
 Values send by *GET* method are visible in *URL* -- you can see and modify them in browser address bar. *GET* parameters
@@ -156,7 +156,7 @@ Create a PHP file and insert HTML code which renders as link to itself (I used `
 parameters using GET method.
 
 {: .solution}
-{% highlight php %}
+~~~ php
 <!DOCTYPE html>
 <html>
     <head>
@@ -164,19 +164,19 @@ parameters using GET method.
         <title>GET method experiment</title>
     </head>
     <body>
-        <?php
-            if(!empty($_GET)) {
-                //print_r($_GET);
-                //or
-                echo "Greetings ";
-                echo $_GET['name'];
-                echo $_GET['surname'];
-            }
-        ?>
+<?php
+    if(!empty($_GET)) {
+        //print_r($_GET);
+        //or
+        echo "Greetings ";
+        echo $_GET['name'];
+        echo $_GET['surname'];
+    }
+?>
         <a href="script.php?name=John&surname=Doe">Click to greet John Doe</a>
     </body>
 </html>
-{% endhighlight %}
+~~~
 
 {: .note}
 Notice, that after you click the link, the page reloads entirely -- it means that the script is re-executed with
@@ -189,8 +189,95 @@ Click the link so you can see the parameters passed in address bar. Try to chang
 `surname` are not available. Change the value part to `script.php?name=Your name&surname=Your surname` and try it.
 
 #### Task -- take *POST* example, change method to *GET* and observe behaviour
-Change the `method` attribute on form and use `$_GET` instead of `$_POST`. You should see values from input being
-passed in URL. 
+Change the `method="post"` attribute on form to `method="get"` and use `$_GET` variable instead of `$_POST`. You should
+see values from input being passed in URL. Otherwise the behaviour should be exactly the same.
+
+## Sanitization of input and output
+You expect that users of your application behave somewhat "normally", i.e. they input numbers where numbers should be
+present, they do not input HTML code into input meant for username etc. But not all visitors are nice, some of them
+want to cause trouble (or they use bots to do it for them).
+
+Take a look at following piece of code. You expect that those two fields are fed with numerical values and than you
+add them. What happens, when the user inputs some non-numeric string? What happens when user inputs HTML tag?
+
+~~~ php
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>POST method experiment</title>
+    </head>
+    <body>
+<?php
+    if(isset($_POST['a']) && isset($_POST['b'])) {
+        $a = $_POST['a'];
+        $b = $_POST['b'];
+        $c = $a + $b;           //perform addition
+        echo "$a + $b = $c";    //print formula and result
+    }
+?>
+        <form method="post">
+            <label>Value A</label>
+            <input type="text" name="a">
+            <br>
+            <label>Value B</label>
+            <input type="text" name="b">
+            <br>
+            <input type="submit" value="Add values">
+        </form>
+    </body>
+</html>
+~~~
+
+### Task -- try to break the form
+- Submit the form without any value.
+- Instead of entering numerical values, try to input strings, e.g. `abc` and `def`.
+- Enter HTML tag, e.g.: `<a href="http://mendelu.cz">MENDELU</a>`.
+
+{: .solution}
+<div markdown="1">
+- There should be warnings about using non-numeric values with + operator.
+- When you input `<a href="http://mendelu.cz">MENDELU</a>` it is rendered as actual HTML tag. 
+</div>
+
+{: .note}
+Think about this for a while. Do you want this? What would happen, if such HTML tag or tags are stored on the server
+and displayed to other visitors? What if it is not just one HTML tag (e.g. you can display an image with some
+advertisement)? It depends -- it OK for [CMS](https://en.wikipedia.org/wiki/Content_management_system) where an
+administrator needs to be able to modify content of particular page, it is not OK for public comments.  
+
+### Task -- try to protect the form
+Sanitize output first, use [`htmlspecialchars()`](http://php.net/manual/en/function.htmlspecialchars.php) function to
+convert `<` and `>` to HTML entities `&lt;` and `&gt;`, this should disable HTML tags from rendering:
+
+{: .solution}
+~~~ php
+<?php
+    if(isset($_POST['a']) && isset($_POST['b'])) {
+        $a = $_POST['a'];
+        $b = $_POST['b'];
+        $c = $a + $b;           //perform addition
+        echo htmlspecialchars("$a + $b = $c");    //print formula and result
+    }
+?>
+~~~
+
+Take a look into HTML source and observe what happened. Now try to sanitize input, use [`floatval()`](http://php.net/manual/en/function.floatval.php)
+function to convert any non-numeric values to zero.
+
+{: .solution}
+~~~ php
+<?php
+    if(isset($_POST['a']) && isset($_POST['b'])) {
+        $a = floatval($_POST['a']);
+        $b = floatval($_POST['b']);
+        $c = $a + $b;           //perform addition
+        echo htmlspecialchars("$a + $b = $c");    //print formula and result
+    }
+?>
+~~~
+
+Your form is now more robust for invalid input and is also secured from [XSS](/articles/security/xss/) vulnerability.
 
 ## Summary
 You should know how to read *GET* and *POST* input in plain PHP script. If you are going to use a framework to build
