@@ -35,6 +35,8 @@ permalink: /slides/web-technologies/
 
         GET / HTTP/1.0
         Host: mendelu.cz
+        
+`/` represents path from URL and `mendelu.cz` is hostname
 </section>
 
 <section markdown='1'>
@@ -42,7 +44,7 @@ permalink: /slides/web-technologies/
 - Request:
 	- **URL**, **Method**, Headers, (Body)
 - Response:
-	- **Code**, Headers, Body	
+	- **Status code**, Headers, Body	
 - Method
 	- **GET**, **POST**, PUT, DELETE, PATCH, ...
 </section>
@@ -69,21 +71,23 @@ permalink: /slides/web-technologies/
 <section markdown='1'>
 ## PHP - Simplistic Approach
 
-	GET /welcome.php
+	GET /welcome.php?name=John
+    Host: domain.tld
 
 welcome.php:	
 {% highlight php %}
 <?php 
 echo "<!DOCTYPE HTML><html>";
-echo "<body><h1>Hello</h1></body>";
-echo "</html>"
+echo "<body><h1>Hello" . $_GET['name'] . "</h1></body>";
+echo "</html>";
 {% endhighlight %}
 </section>
 
 <section markdown='1'>
-## PHP - Processing the REQUEST
+## PHP - Processing the request
 
 	POST /login.php?l=en
+    Host: domain.tld
 
 	username=John&password=NotTooSecret&action=login
 
@@ -91,15 +95,15 @@ welcome.php:
 {% highlight php %}
 <?php 
 echo "<!DOCTYPE HTML><html><body>";
-if (($_REQUEST['username'] == 'John') && 
-	($_REQUEST['password'] == 'NotTooSecret')) {
-  if ($_REQUEST['l'] == 'en') {
-    echo "<h1>Hello " . $_REQUEST['username'] . "</h1>";
+if (($_POST['username'] == 'John') && 
+	($_POST['password'] == 'NotTooSecret')) {
+  if ($_GET['l'] == 'en') {
+    echo "<h1>Hello " . $_POST['username'] . "</h1>";
   } else {
-    echo "<h1>Ciao " . $_REQUEST['username'] . "</h1>";
+    echo "<h1>Ciao " . $_POST['username'] . "</h1>";
   }
 }
-echo "</body></html>"
+echo "</body></html>";
 {% endhighlight %}
 </section>
 
@@ -135,11 +139,11 @@ echo "</body></html>"
 {% highlight php %}
 <?php
 $tpl = new Latte\Engine();
-if (($_REQUEST['username'] == 'John') && 
-	($_REQUEST['password'] == 'NotTooSecret')) {
-  $tpl->render("welcome.latte", ['username' => $_REQUEST['username'], 'language' => $_REQUEST['l']]);
+if (($_POST['username'] == 'John') && 
+	($_POST['password'] == 'NotTooSecret')) {
+  $tpl->render("welcome.latte", ['username' => $_POST['username'], 'language' => $_GET['l']]);
 } else {
-  $tpl->render("login.latte", 'language' => $_REQUEST['l']);
+  $tpl->render("login.latte", 'language' => $_GET['l']);
 }
 {% endhighlight %}
 </section>
@@ -149,15 +153,15 @@ if (($_REQUEST['username'] == 'John') &&
 {% highlight php %}
 <?php
 $tpl = new Latte\Engine();
-if (($_REQUEST['username'] == 'John') && 
-	($_REQUEST['password'] == 'NotTooSecret')) {
-  tplVars = [
-    'username' => $_REQUEST['username'], 
-    'language' => $_REQUEST['l']
+if (($_POST['username'] == 'John') && 
+	($_POST['password'] == 'NotTooSecret')) {
+  $tplVars = [
+    'username' => $_POST['username'], 
+    'language' => $_GET['l']
   ];
   $tpl->render("welcome.latte", $tplVars);
 } else {
-  $tplVars = ['language' => $_REQUEST['l']];
+  $tplVars = ['language' => $_GET['l']];
   $tpl->render("login.latte", $tplVars);
 }
 {% endhighlight %}
@@ -207,7 +211,6 @@ if (($_REQUEST['username'] == 'John') &&
 <html>
   <head></head>
   <body>
-    {extends 'layout.latte'}
     {include content}
   </body>
 </html>
@@ -232,16 +235,18 @@ Real layout is slightly bigger!
 - Mapping between HTTP requests and application code
 - Route takes **URI + Method** and executes as **Handler**
 
+HTTP request:
+
+        GET /welcome?name=John
+        Host: domain.tld
+
+Requeste handler:
 ~~~ php?start_inline=1
 $app->get('/welcome', function (Request $request, Response $response) {
+  $tplVars = ['username' => $request->getQueryParam('name')];
   return $this->view->render($response, 'welcome.latte', $tplVars);
 );
 ~~~
-
-HTTP request:
-
-        GET /welcome
-        
 </section>
 
 <section markdown='1'>
@@ -277,16 +282,19 @@ $app->get('/welcome', function (Request $request, Response $response) {
 		- also usable for SPA
 	- Laravel, Symfony, Nette, Yii
 - Which Template system?
-	- Latte, Smarty, Blade	
+	- Latte, Smarty, Blade
+- Boilerplate code
+    - The code that you need to write (or copy) before actually coding your own application.
+    - Pays off in long term.	
 </section>
 
 <section markdown='1'>
 ## HTTP Requests
 - Parameters:
 	- Request URL or Request body?
-	- Body = Data
-	- URL = Options
-- Method:
+    	- Body = Data
+	    - URL = Options
+- Method usage:
 	- GET = Read
 	- POST = Action (changes something)
 </section>
@@ -296,7 +304,18 @@ $app->get('/welcome', function (Request $request, Response $response) {
 - PHP and Slim is specific
 - Template language is specific
 - Concepts are general
-	- HTTP
-	- Routes
-	- Templates
+	- HTTP (methods, headers + body)
+	- Routes (method + URI)
+	- Templates (not just in PHP)
+</section>
+
+<section markdown='1'>
+## Checkpoint
+- URL VS URI VS URN?
+- Is response body same as "data"?
+- Can request made with POST method have body? Is the body mandatory? Can we also pass URL parameters with POST request?
+- Does every HTTP response have a body?
+- How much boilerplate code are you willing to accept?
+- Are all templating engines "the same"?
+- Does every framework come with templating engine?
 </section>

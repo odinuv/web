@@ -10,8 +10,6 @@ redirect_from: /en/apv/
 
 **[APV Course outline](/course/)**
 
-The [Old Czech website](https://akela.mendelu.cz/~xpopelka/cs/apv/) is still available.
-
 This web book is an introduction to the development of web applications. It consists of two
 walkthroughs --- [**Classic Walkthrough**](/walkthrough/) and [**Slim Walkthrough**](/walkthrough-slim/)
 which will guide you through making the web application step by step and [**Articles**](/articles/) explaining the
