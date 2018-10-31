@@ -235,6 +235,29 @@ change behaviour of an endpoint.
 Is is often OK to add non-mandatory attributes to incoming/outgoing JSON structure. Once you decide to change the
 structure more, older versions of client application may break down.
 
+### Uploading files
+It is sometimes necessary to upload a file into REST API backend. This is possible thanks to `mutlipart/form-data`
+content type of HTTP request. You can construct JavaScript request with file payload and even with additional JSON,
+XML or any other content type payload and send it to your backend. Here js JavaScript code to construct such request:
+
+``` javascript
+var data = {
+    someValue: 123    
+};
+
+var fileInput = document.getElementById('file-input');
+var file = fileInput.files[0];
+
+var fd = new FormData();
+fd.append('file', file, file.name);
+fd.append('json', JSON.stringify(data));
+fd.append('value', 456);
+
+var request = new XMLHttpRequest();
+request.open('post', '/url/for/upload');
+request.send(fd);
+```
+
 ## Documenting REST API
 An API needs a communication protocol so both applications understand each other. The documentation of this protocol
 is crucial. There are tools which can be used to document REST API. Documentation of API is a document written is some
