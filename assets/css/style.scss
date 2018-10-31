@@ -285,6 +285,7 @@ table {
 // image popup
 .image-popup {
   position: relative;
+  display: inline-block;
   &:hover:after {
     content: "Click to enlarge";
     border: 1px solid #AAAAAA;
