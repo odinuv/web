@@ -163,9 +163,9 @@ or a PHP application with `.htaccess` file and *mod_rewrite* enabled:
     +-/index.php
     +-/.htaccess
         
-Because the web browser cannot distinguish between routes and physical directories, it cannot simply determine
+Because the web browser cannot distinguish between virtual routes and physical directories, it cannot simply determine
 the root of your application and you cannot use relative paths. One would expect the relative path to append to
-application's real root directory, but unfortunately this does not work.
+application's real root directory, but unfortunately this does not work without additional effort.
 
 To use absolute URLs is also **not** a good remedy to this issue! You can never tell whether your application
 will be executed in the root of a domain directory tree and therefore you cannot simply use URL which starts
@@ -186,14 +186,67 @@ variable is used to link Bootstrap and jQuery JS/CSS files:
 
 ~~~ html
 <link rel="stylesheet" href="{$basePath}/css/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="{$basePath}/css/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{$basePath}/css/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="{$basePath}/css/custom.css">
 <script type="text/javascript" src="{$basePath}/js/jquery.js"></script>
-<script type="text/javascript" src="{$basePath}/css/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{$basePath}/css/bootstrap/js/bootstrap.bundle.min.js"></script>
 ~~~
 
-## What would the code look like without named routes
-It is possible to work without named routes but it is quite confusing. Imagine that you have following route
-structure in your application:
+### Using `<base>` tag
+There is one more option: you can use `<base>` tag with `href` attribute in `<head>` tag of your page. The value of
+`href` attribute from this tag is used as prefix for all relative paths (i.e. those paths that do *not* start
+with `/` or `http://`).
+
+~~~ html
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <!-- mind the last / -->
+    <base href="/~login/devel/public/">
+    <!-- you can also use this:
+        <base href="{$basePath}/">
+    -->
+    <!-- do NOT start the URL for CSS/JS file with / -->
+    <link rel="stylesheet" href="css/custom.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+    <img src="link/to/static/file.png" alt="Image">
+    <!-- resulting URL:
+            base tag href   +   actual src  
+        /~login/devel/public/link/to/static/file.png
+    -->
+    <br>
+    <a href="link/to/some/file.pdf">
+        This is a relative path, the result is:
+            base tag href   +   actual href  
+        /~login/devel/public/link/to/some/file.pdf
+    </a>
+    <br>
+    <a href="link/to/some/other/route">
+        This is a relative path, the result is:
+            base tag href   +   actual href  
+        /~login/devel/public/link/to/some/other/route
+        DO NOT USE THIS APPROACH!
+    </a>
+    <br>
+    <a href="{link routeName}">
+        Link macro generates absolute paths
+        USE THIS APPROACH!
+    </a>
+</body>
+</html>
+~~~
+
+Anyway, without the `{link}` macro, you still need to find all route references when you decide to change URL for that
+route. Base tag is fine, but you have to remember that you used it, I believe that it is more explicit to use
+`{$basePath}` template variable to link static files.
+
+## What would the code look like without named routes and `<base>` tag
+It is possible to work without named routes or `<base>` tag but it is quite confusing. Imagine that you have following
+route structure in your application:
  
 ~~~ php?start_inline=1
 $app->get('/moduleM1', function($request, $response, $args) { /*...*/ });
@@ -228,23 +281,24 @@ HTML code for `/moduleM1/actionA`:
 <a href="{$basePath}/moduleM2/actionC">Link to action C on module M2</a>
 ~~~
 
-When you use relative paths, you have to adjust **all** routes according to expected URL. Absolute paths are more
-persistent but still you have to hunt and modify too many links once you decide to change the route definition which
-is error prone.
+When you use relative paths, you have to adjust **all** routes according to expected URL of current page. Absolute paths
+are more persistent but still you have to hunt and modify too many links once you decide to change the route definition
+which is error prone.
 
 ## Summary
 It is important to understand the principle of relative and absolute paths because there are good use-cases for both
 path styles. I prepared the `{link}` macro for you in the project skeleton and you can use it along with named routes
-easily to avoid reasoning about correct URL for any `href` attribute.
+easily to avoid reasoning about correct URL for any `href` or `src` attribute.
 
 Both approaches stated in this chapter are inspired by [*Nette*](https://nette.org/) framework which uses `{link}` macro
-and `{$basePath}` variable in __similar__ manner. You may remember that *Latte* templating engine originates from this
+and `{$basePath}` variable in **similar** manner. You may remember that *Latte* templating engine originates from this
 framework.
 
 ### New Concepts and Terms
 - Named routes
 - `{link routeName}` macro
 - `{$basePath}` variable
+- `<base>` tag
 
 ### Control question
 - Can you come up with some systematic way of route naming?

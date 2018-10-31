@@ -128,8 +128,8 @@ ahead (`$tpl = new Latte\Engine();`) without including any other files.
 You can either install Composer globally in your system and then call `composer` command in your command line
 interpreter directly or you can download file `composer.phar` which you can execute using `php` interpreter by
 calling `php composer.phar` (in the same folder). Other command line options and switches are identical. You have to
-install PHP itself to be available globally in your system (i.e. to be able to execute `php` in command line) before
-you can use Composer.
+install [PHP](http://php.net/) itself to be available globally in your system (i.e. to be able to execute `php` in
+command line) before you can use Composer.
 
 ### Sending emails from web applications
 Sometimes it is useful to send an email with notification to a user about an event that took place. PHP uses simple
@@ -150,7 +150,8 @@ on Windows or system mail command on Linux. You can also try commercial services
 ### Adminer
 [Adminer](https://www.adminer.org) is a general database tool used in this book. Adminer handles different types of
 database engines. It is also a PHP application itself -- you download a single PHP script (do not download Adminer
-editor). Alternatives are [phpMyAdmin](https://www.phpmyadmin.net/) for MySQL/MariaDB databases and [phpPgAdmin](http://phppgadmin.sourceforge.net/)
+editor) and you can place it into your public webserver directory and execute this script in your browser. Alternatives
+are [phpMyAdmin](https://www.phpmyadmin.net/) for MySQL/MariaDB databases and [phpPgAdmin](http://phppgadmin.sourceforge.net/)
 for PostgreSQL. Adminer is more versatile but it has less functions than specific tools.
 
 {: .note}
@@ -286,6 +287,7 @@ that, you need to put a `<base href="http://my-cool-site.com/my-shop/">` tag wit
 `href` attribute value from `<base>` tag. Therefore the image will be loaded from `http://my-cool-site.com/my-shop/images/shop-logo.png`
 which should be OK. Another way is to store absolute path to root of your application and use it everywhere around
 in your code: `<img src="{$basePath}/images/shop-logo.png">` where `{$basePath}` contains the same URL as in `<base>` tag.
+Read more about this topic in [article about named routes](/walkthrough-slim/named-routes/).
 
 {: .note}
 If your application lives in a subdirectory, you usually need to add `RewriteBase path/to/subdirectory` into

@@ -302,8 +302,8 @@ Basic routing is explained in the [walkthrough](/walkthrough-slim/slim-backend/#
 [article](/articles/http/) and this [walkthrough](/articles/http/#when-to-use-get-or-post-method).
 Take a look at [named routes](/walkthrough-slim/named-routes/) too. 
 
-An important note is thar routes are *virtual*, the paths in your address bar are not paths to actual files or folders.
-This *magic* is enabled by [mod_rewrite](/course/technical-support/#configuration-of-modrewrite) plugin of
+An important note is that routes are *virtual*, the paths in your address bar are not paths to actual files or folders.
+This *magic* is enabled by [mod_rewrite](/course/technical-support/#configuration-of-mod_rewrite) plugin of
 [Apache web server](/course/technical-support/#apache-web-server). 
 
 ### When to use `getParsedBody()` and when to use `getQueryParam(...)`, what is the difference?
