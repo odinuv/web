@@ -244,6 +244,8 @@ items:
         items:
         - url: /articles/web-applications/rest-api/
           title: REST API
+        - url: /articles/web-applications/database-migrations/
+          title: Database migrations
 
       - url: /articles/debugging/
         title: Debugging
