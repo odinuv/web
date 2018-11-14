@@ -11,6 +11,9 @@ items:
       - url: /course/faq/
         title: FAQ
 
+      - url: /course/new/
+        title: New topics
+
   - url: /walkthrough-slim/
     title: Walktrough Slim
     items:
