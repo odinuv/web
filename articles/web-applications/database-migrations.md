@@ -151,7 +151,7 @@ Before creating your first migration, you have to create the `migrations` folder
 use your file manager to create this directory. To create a migration use following command:
 
 ~~~ bash
-vendor\bin\phinx create Account
+vendor/bin/phinx create Account
 ~~~
 
 This should create a file named like `20181114092000_account.php` in `migrations` folder. You will find a method called
