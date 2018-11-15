@@ -146,6 +146,46 @@ Another way is to treat actions as sub-resources (e.g. *PUT* `/user/123/deactiva
 put because you are updating the state) or use *PATCH* method with base resource URL (e.g. *PATCH* `/user/123` +
 `{"active": false}`).
 
+### Using HTTP status codes
+Each response has to have a status code. The default 200 status code is not suitable for every response. Server-side
+errors should use 5xx codes and errors caused by bad request should use 4xx codes. Try to return most appropriate
+status code (e.g. `201 Created` for *POST* route success or `204 No Content` for *DELETE* route success). In frontend
+JavaScript libraries the status code is often used to determine whether to fire *resolution* or *rejection* of
+[Promise](/articles/javascript/#promises) handler. Here is an example using [Axios library](https://github.com/axios/axios).
+
+PHP backend in Slim:
+ 
+~~~ php?start_inline=1
+$app->get('/some/endpoint', function(Request $request, Response $response, $args) {
+    try {
+        // uncomment following line to return status 500
+        //throw new Exception();
+        $payload = ['data' => 123];
+        return $response->withJson($payload, 201);
+    } catch(Exception $e) {
+        return $response->withStatus(500);
+    }
+});
+~~~
+
+Frontend code:
+
+~~~ html
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    var client = axios.create();
+    client.get('some/endpoint').then(function(response) {
+        //fires for 2xx statuses
+        console.log(response.data);
+    }, function(err) {
+        //fires for 5xx or 4xx statuses
+        console.error(err);
+    });
+</script>
+~~~ 
+
+Read more about [HTTP status codes](/articles/http/#response-status-codes).
+
 ### Passing parameters
 REST API can use URL placeholders to pass parameters (see the `{id}` placeholder in previous table). Query parameters
 are usually used for filtering or pagination.
