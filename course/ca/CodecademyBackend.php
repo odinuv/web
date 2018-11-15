@@ -205,9 +205,9 @@ class CodecademyBackend
         // send notification email
         @mail(
             $email,
-            'Potvrzeni CA',
-            "Zapsal jsem si, ze mate na Codecademy uzivatelske jmeno $userName, \r\nzatim mate $points bodu, pocet ".
-            "bodu se prubezne aktualizuje.\r\n\r\nS pozdravem\r\n\tJiri Lysek",
+            'APV Codecademy confirmation',
+            "I noted that your Codecademy username is $userName, \r\nyou have $points points, score ".
+            "is being updated periodically.\r\n\r\nS pozdravem\r\n\tJiri Lysek",
             "From: jiri.lysek@mendelu.cz\r\nBcc: jiri.lysek@mendelu.cz"
         );
 
@@ -284,22 +284,22 @@ class CodecademyBackend
             if ($data = curl_exec($ch)) {
                 phpQuery::newDocument($data);
                 if (preg_match('#<h1>\s*404\s*error\s*<\\\\*/h1>#is', $data)) {
-                    throw new \InvalidArgumentException('Uživatelské jméno na Codecademy neexistuje.');
+                    throw new \InvalidArgumentException('This Codecademy account does not exist.');
                 } elseif ($points = pq('.profile-time .grid-col-3:nth-child(2) h3')->html()) {
                     // check tag
                     if (!preg_match('#\[\s*apv\s*\]#is', $data)) {
-                        throw new \InvalidArgumentException('Účet sice existuje, ale neobsahuje v popisu tag [APV].');
+                        throw new \InvalidArgumentException('Account exists, but there is no [APV] text found in the profile page.');
                     }
                 } else {
                     throw new \InvalidArgumentException(
-                        'Chyba při načítání stránky. Ověřte, že je váš profil veřejný.'
+                        'Error loading page. Check whether your profile is public.'
                     );
                 }
             } else {
-                throw new \InvalidArgumentException('Chyba v komunikaci se serverem ' . curl_error($ch));
+                throw new \InvalidArgumentException('Server communication error ' . curl_error($ch));
             }
         } else {
-            throw new \InvalidArgumentException('Chyba v komunikaci.');
+            throw new \InvalidArgumentException('Communication error.');
         }
         return (int)$points;
     }

@@ -8,7 +8,7 @@
     <meta name="keywords" content="Web application, Tutorial, Development, PHP, Framework, Slim, Bootstrap, CSS, Javascript">
     <meta name="robots" content="index, follow">
     <meta name="description" content="Web application tutorial">
-    <title>Codecademy kontrola</title>
+    <title>Codecademy score verification</title>
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -54,69 +54,74 @@ require(__DIR__ . DIRECTORY_SEPARATOR . 'ca/CodecademyBackend.php');
                             <li>APV Course</li>
                         </ol>
 
-                        <h1>Kontrola splnění úkolu na Codecademy.com</h1>
+                        <h1>Verification of Codecademy.com goal</h1>
 <div class="formContainer">
     <p>
-        Pro úspěšné ukončení předmětu APV si musíte udělat několik cvičení podle vlastního výběru na
-        <a href='http://codecademy.com'>Codecademy.com</a>. Aktuálně jsou k dispozici cvičení na PHP, Javascript,
-        jQuery, HTML, CSS, Python, API.
-        Minimální požadovaný počet je <strong><?php echo CodecademyBackend::POINTS_REQUIRED ?></strong> cvičení
-        (dosažených bodů).
-        Do profilu na CA někam vložte text <strong>[APV]</strong>.
+        You have to finish some of <a href="https://www.codecademy.com/">Codecademy</a> courses to finish APV
+        successfully. You may select any Codecademy course you like. There are courses fot PHP, JavaScript,
+        jQuery, HTML, CSS, Python, API etc.
+        Minimal score is <strong><?php echo CodecademyBackend::POINTS_REQUIRED ?></strong> points.
+        Insert text <strong>[APV]</strong> (brackets included) somewhere into your profile (e.g "About Me" section
+        in "Account settings").
     </p>
     <p>
-        <label for="inputEmail">Zadejte <strong>školní email</strong> (email použitý pro registraci na CA
-            <strong>není</strong> důležitý):</label>
+        <label for="inputEmail">
+            Insert <strong>Mendel University email</strong> in format <em>xlogin@node.mendelu.cz</em> (email used for
+            Codecademy registration is <strong>not</strong> important):
+        </label>
     </p>
     <div id="loader"></div>
     <p>
         <input id="inputEmail" autofocus="autofocus" placeholder="xlogin@node.mendelu.cz" type="email"/>
-        <button type="button" id="verifyEmail" class="verify">Potvrdit</button>
+        <button type="button" id="verifyEmail" class="verify">Confirm</button>
     </p>
     <p id="requestResult"></p>
     <div id="profileResultSuccess" class="valid">
         <p>
-            <span id="fullNameContainer">Vaše jméno je <span id="fullName"></span>.</span>
-            Váš profil na Codecademy je <a id='urlDisplay' href='#'>#</a>.
+            <span id="fullNameContainer">Your name is <span id="fullName"></span>.</span>
+            Your Codecademy profile is <a id='urlDisplay' href='#'>#</a>.
         </p>
         <p>
-            <button type="button" id="changeUserName">Změnit uživatelské jméno</button>
+            <button type="button" id="changeUserName">Change username</button>
         </p>
     </div>
     <div id="profileResultFail" class="invalid">
         <p>
-            Ještě nemáte zadaný svůj profil na Codecademy. <strong><a href="http://www.codecademy.com/register/sign_up">Zaregistrujte
-                    se</a></strong>
-            a vložte sem své <strong>uživatelské jméno</strong> (adresu svého profilu). Na viditelné místo v profilu
-            (popis, jméno, umístění, &hellip;)
-            napište text <strong>[APV]</strong> (včetně závorek).
+            Your Codecademy profile is not yet available.
+            <strong>
+                <a href="http://www.codecademy.com/register/sign_up">Register Codecademy account</a>
+            </strong>
+            and insert your <strong>username</strong> (your profile URL).
+            Insert text <strong>[APV]</strong> (including brackets) into your profile page.
         </p>
         <p>
-            <label for="inputUserName">Zadejte uživatelské jméno:</label>
+            <label for="inputUserName">Insert username:</label>
         </p>
         <p>
             http://www.codecademy.com/<input id="inputUserName" type="text"/>
-            <button class="verify verifyPoints" type="button">Ověřit a uložit</button>
+            <button class="verify verifyPoints" type="button">Verify and save</button>
         </p>
     </div>
     <div id="changeUserNameContainer">
         <p>
-            <label for="inputNewUserName">Zadejte nové uživatelské jméno:</label>
+            <label for="inputNewUserName">Insert username:</label>
         </p>
         <p>
             http://www.codecademy.com/<input id="inputNewUserName" type="text"/>
-            <button class="verify verifyPoints" type="button">Ověřit a uložit</button>
+            <button class="verify verifyPoints" type="button">Verify and save</button>
         </p>
     </div>
     <p id="pointResultSuccess" class="valid">
-        Na účtu je <strong id="pointCount"></strong> bodů.
+        There is <strong id="pointCount"></strong> points for this account.
         <span id="pointsConclusion"></span><br/>
-        Stav zjištěný <span id="pointAcquired"></span>. Počet bodů se načítá automaticky zhruba jednou za týden.<br/>
-        <button class="verify verifyPoints" type="button">Načíst hned</button>
+        Score was acquired <span id="pointAcquired"></span>. Amount of points is automatically updated roughly once a week.
+        <br/>
+        <button class="verify verifyPoints" type="button">Fetch now</button>
     </p>
     <p id="pointResultFail" class="invalid">
-        V databázi zatím není uložen počet bodů. Počet bodů se načítá automaticky zhruba jednou za týden.<br/>
-        <button class="verify verifyPoints" type="button">Načíst hned</button>
+        There is no score record in database. Amount of points is automatically updated roughly once a week.
+        <br/>
+        <button class="verify verifyPoints" type="button">Fetch now</button>
     </p>
 </div>
 
