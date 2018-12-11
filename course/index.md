@@ -16,7 +16,7 @@ the development of web applications and database applications (relational databa
 To pass the course you have to:
 
 - get at least 90 points on [Codecademy](https://www.codecademy.com/) --- [**Verify**](http://odinuv.cz/course/codecademy.php)
-- finish the [course project](#project-assignment)
+- finish the [course project](#project-assignment) -- [**First evaluation**](https://akela.mendelu.cz/~lysek/apv/vysledky.txt)
 - pass the final exam (minimum 50% points)
   - you have to answer at least 2 of 3 SQL queries somewhat correctly
 
