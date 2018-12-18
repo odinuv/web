@@ -75,29 +75,6 @@ The grade from the final exam and the project evaluation make up for the final c
 - Week 13
     - Work on Project
 
-<!--
-## APVA Class
-
-- Week 2:
-    - [Basic HTML](/course/apva/basic-html.html)
-    - [Form Elements](/course/apva/form-elements.html)
-    - [Example Form](/course/apva/example-form.html)
-- Week 4:
-    - [Slim Framework](/course/apva/slim-framework.zip)
-    - [Updated routes.php](/course/apva/routes-1.phps)
-- Week 5:
-    - [Updated routes.php](/course/apva/routes-2.phps)
-    - [People list template](/course/apva/people.latte)
-- Week 6:
-    - [Updated routes.php](/course/apva/routes-6.phps)
-    - [People list template](/course/apva/people-6.latte)
-    - [New person template](/course/apva/new-person-6.latte)
-    - [Layout template](/course/apva/layout-6.latte)
-- Week 8:
-    - [Updated routes.php](/course/apva/routes-8.phps)
-    - [Person profile template](/course/apva/person-profile-8.latte)
--->
-
 ## Project Assignment
 To pass the course you need to create a project. The project assignment is
 described below:
