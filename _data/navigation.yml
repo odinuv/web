@@ -11,6 +11,9 @@ items:
       - url: /course/faq/
         title: FAQ
 
+      - url: /course/mendelu/
+        title: MENDELU environment
+
       - url: /course/new/
         title: New topics
 

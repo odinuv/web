@@ -5,6 +5,7 @@ permalink: /course/new/
 
 This is a list of fresh content:
 
+- [2018-12-18 MENDELU environment](/course/mendelu/)
 - [2018-11-14 Database migrations](/articles/web-applications/database-migrations/)
 - [2018-7-18 Solving a problem](/articles/problem-solving/)
 - [2018-7-18 REST API](/articles/web-applications/rest-api/)
