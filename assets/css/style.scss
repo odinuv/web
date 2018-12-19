@@ -298,12 +298,17 @@ table {
     font-size: 1rem;
   }
   img {
-    max-width: 400px;
     max-height: 500px;
     cursor: pointer;
     padding: 0.5em;
     border: thin solid $gray-lighter;
     border-radius: 3px;
+    @media (max-width: $screen-xs-max) {
+      max-width: 100%;
+    }
+    @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+      max-width: 400px;
+    }
     @media (min-width: $screen-lg-min) {
       max-width: 530px;
     }
