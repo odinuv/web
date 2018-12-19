@@ -28,12 +28,13 @@ you develop some JavaScript functionality. Therefore the above code would print 
 
 ![Screenshot - Browser Console](/common/javascript/console.png)
 
-## Working with Elements
+## Working with Elements and attributes
 The source code of the linked scripts is executed immediately in the order of the `<script>` tag appearances. Usually you want
-to *attach some [event handlers](/articles/javascript/#javascript-events)* ---   execute a piece of code after a visitor
+to *attach some [event handlers](/articles/javascript/#javascript-events)* --- execute a piece of code after a visitor
 performs some action (e.g. clicks a button). Event handlers can be attached to general events which take place globally
 (like loading the whole page or scrolling the window) or to events that take place on a particular HTML element (clicking on
-an element or focusing an element). To attach to an element event, you have to find the element first and then attach the handler in the JavaScript code.
+an element or focusing an element). To attach functionality to an element event, you have to find the element first
+and then attach the handler in the JavaScript code.
 
 There are multiple functions for locating HTML elements --- the easiest one is
 `document.getElementById("id_of_element")` which can find and return one element using its `id`
@@ -59,14 +60,15 @@ in the `element.dataset` object (e.g. `element.dataset.personid` for `data-perso
 {% endhighlight %}
 
 {: .note}
-Although it is possible, you should avoid changing particular CSS styles like in the above example. It is tedious and makes your code confusing. You should rather add or remove CSS classes (there is a [`classList`](https://developer.mozilla.org/cs/docs/Web/API/Element/classList)
+Although it is possible, you should avoid changing particular CSS styles like in the above example. It is tedious and
+makes your code confusing. You should rather add or remove CSS classes (there is a [`classList`](https://developer.mozilla.org/cs/docs/Web/API/Element/classList)
 field of the HTML element which allows efficient work with CSS classes).
 
 ## Working with Events
-As described above, various **events** occur on the web page, either automatically, or through user interaction.
+As described above, various *events* occur on the web page, either automatically, or through user interaction.
 To be able to respond to events, you need to **register a handler** (or **subscribe for an event**). A *handler*
 is a piece of code which *handles* the event (i.e. does something in response to that event).
-The event handler is also commonly called a **callback** (as a piece of code which is "called back" from
+The event handler is also commonly called a *callback* (as a piece of code which is "called back" from
 an event situation).
 
 Basic [event registration](/articles/javascript/#javascript-events) can be performed in the same manner
@@ -79,18 +81,29 @@ using the `addEventListener('event', handler)` method of the element object.
 {% include /common/javascript/basic-events.html %}
 {% endhighlight %}
 
-If you are new, to Javascript (or any programming), you may be confused by the line `window.onload = function() ...`. This is indeed something new as
-the `onload` property expects to be assigned a handler (which is a piece of code). An that is exactly what the line does, it assigns a function
-which has no name and no parameters to the `onload` property of `window`. A function which has no name is called **anonymous function**. The same applies to
-line `<button onclick="callMe()" ...` where I assign the code `callMe()` as the onclick handler. `callMe()` is a function which I have declared earlier.
-(It might help you to write `<button onclick="callMe();"` where the semicolon emphasizes that the attribute content is an actual Javascript line.)
-It is important that the function must be called in the handler, i.e. it is insufficient to write only `<button onclick="callMe"` as that will assign
-function name to the handler and it will not execute the function. Though both approaches are valid and often interchangeable, they do not behave the
-same (but that is rather complicated, so more on that later).
+If you are new to Javascript (or any programming) you may be confused by the line `window.onload = function() { ... }`.
+This is indeed something new. The `onload` property expects to be assigned a *handler* (which is a piece of code). And
+that is exactly what that line does, it assigns a function which has no name and no parameters to the `onload` property
+of `window` object. A function which has no name is called *anonymous function*. The same applies to line
+`<button onclick="callMe()">` where I assigned the code `callMe()` as the onclick handler body. Identifier *callMe*
+represents a function which I have declared earlier. The brackets are there to actually call that function once the
+event occurs and the handler is executed.
+
+It might help you to write `<button onclick="callMe();">` where the semicolon emphasizes that the attribute content
+is an actual line of JavaScript code. You can even put more function calls or other valid JavaScript expressions into
+the attribute body and divide them with semicolons. It is important that the function is called in the handler, i.e. it
+is insufficient to write only `<button onclick="callMe">` because `onclick` attribute contains the actual *code*
+of an anonymous function.
+
+Take a look on the line with `onclick="alert('Hello')"`. See how I mixed two kinds of quotes? I used double quotes to
+enclose the JavaScript code, which is just a attribute value (a string) from HTML's point of view. Inside the JavaScript
+code I used single quotes to enclose string parameter for the `alert(str)` function. I cannot use double quotes for both
+cases (`onclick="alert("Hello")"`) because HTML parser would stop at the second double quote and thus making the
+JavaScript code invalid (`alert(` only). You can swap the quotes if you want: `onclick='alert("Hello")'`.
 
 {: .note}
-The above is still an example. A cleaner approach is to divide the HTML and the JavaScript code and attach the events in JavaScript. Also imagine
-how ugly it looks if you write complex code inside the `onclick` attribute of an HTML element.
+The above is still an example. A cleaner approach is to divide the HTML and the JavaScript code and attach the events
+in JavaScript. Also imagine how ugly it looks if you write complex code inside the `onclick` attribute of an HTML element.
 
 ## Manipulating HTML
 The same way you can manipulate HTML attributes, you can also manipulate with the elements themselves. This means that
@@ -105,8 +118,13 @@ To create a new element you can use `document.createElement` method - e.g. `var 
 {% endhighlight %}
 
 In the above code, first I create a list `ul` element (`newList` variable). Then I pick an existing HTML element (with id `container`) and
-add the list as a child of the container. Then I add two items to the list. Notice the difference between assigning `innerHTML` and `textContent`.
+add the list as a child of the container. Then I add two items to the list. Notice the difference between assigning `innerHTML` and `textContent` (or `innerText`) attribute.
 The latter is much safer approach, not susceptible to [XSS attacks](/articles/security/xss/).
+
+{: .note}
+All of this is possible thanks to [*DHTML* (dynamic HTML)](https://en.wikipedia.org/wiki/Dynamic_HTML). It is an ability
+of the web browser that allows it to change actual rendering of a page after HTML structure change made with JavaScript
+takes place.
 
 ### Task -- Toggle Class Using a Button Click
 Make a button and some HTML element with an `id` attribute. Attach a click event to the button using an `onclick` attribute.
