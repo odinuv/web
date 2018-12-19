@@ -90,7 +90,7 @@ and map it on your library of examples.
 That paragraph you just read is **super-important**. Nobody ever wrote a full working application from scratch without
 playing with and learning needed technologies. Isolated problem can be e.g. "defining a route in a framework and
 responding to it with a simple template", "passing data into templating engine and displaying a static text in
-visitor's browser", "storing a record into a database" and "submitting a from and retrieving data using *POST* method".
+visitor's browser", "storing a record into a database" and "submitting a form and retrieving data using *POST* method".
 Those last two examples can be later joined into more complicated example of "storing submitted form data into a
 database".
 
