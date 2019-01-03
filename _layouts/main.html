@@ -85,7 +85,8 @@
 	  	$('.solution').click(function(e) {
 	  		$(this).find('pre, img, p, ul, div').toggle();
 	  	}).children().click(function(e) {
-  			return false;
+			e.stopPropagation();
+  			return true;
 		});
 	});
 	</script>
