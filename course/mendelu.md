@@ -65,7 +65,7 @@ Do **not** change the default password to UIS password because PHP files which c
 your classmates and other akela server users. Use **unique** password which you do not use anywhere else.
 
 ## Accessing database from PHP scripts
-The credentials and configurations are:
+The credentials and configurations are (for user `xsmith12` with database password `garfield`):
 
 ```
 DB_TYPE=pgsql
