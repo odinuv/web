@@ -253,7 +253,10 @@ combinations which make no sense at all! If you run the query, be patient for th
 it contains a lot of rows. Do you know how many?
 
 {: .solution}
-Number of rows in the `person` table times the number of rows in the `location` table. A few above 2400 in the sample database.
+<div markdown="1">
+Number of rows in the `person` table times the number of rows in the `location` table. A few above 2400
+in the sample database.
+</div>
 
 To obtain a sensible result -- list for each person only the location which is *assigned* to that person --
 you again need to add that condition:
@@ -261,7 +264,7 @@ you again need to add that condition:
 {% highlight sql %}
 SELECT * FROM
     person, location
-    WHERE person.id_location = location.id_person
+    WHERE person.id_location = location.id_location
 {% endhighlight %}
 
 Now the result is exactly the same as the one you have obtained with the `JOIN` operator.
