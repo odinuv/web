@@ -11,22 +11,25 @@ your application is running (e.g. your development machine, other programmers' d
 production server...). When a developer makes a change in the database structure, this change has to be propagated to
 other databases used by all instances of one application.
 
+Try to think in larger scale: an application installed on multiple machines, developed by many programmers during many
+months or even years and regularly updated/modified based on users' requirements.
+
 You can have a special discussion thread in your team's communication tool (e.g. [Slack](https://slack.com))
 or you can give a phone call to all other programmers and tell them concrete instructions to change their database
 tables. A better way is to write SQL queries into a file and commit these files into Git. It is a good idea to use
 current date as a name for such file, e.g. `2018-10-20_add-account-table.sql`.
 
 It definitely means that instead of clicking in a tool like Adminer or phpMyAdmin, you simply write a piece of
-code which describes the database changes you want.
+SQL code which describes the database changes you want.
 
 This is all very tedious and people tend to forget to propagate database changes or check for database changes
-periodically. Even the "SQL file with updates" is problematic as one has to copy&paste all SQL codes file by file when
-there are more changes or you are making a fresh install. Plus you do have to remember last SQL patch file you used.
-The answer to all these problems is: *use migrations*.
+periodically. Even the "SQL file with updates" approach is problematic as one has to copy&paste all SQL codes file
+by file when there are more changes or you are making a fresh install. Plus you do have to remember last SQL patch
+file you used. The answer to all these problems is: *use migrations*.
 
 A *database migration* is a programmatic way to describe database changes. It is very similar to "SQL file with updates"
 approach but it is managed by a software tool and you do not have to remember last migration used and installing new
-database or updating existing structure is a matter of **one single command**.
+database or updating existing structure is a matter of **one single command** in the console.
 
 ## How does it work
 In PHP word, a database migration is a simple PHP file where you can either use some kind of API to perform database
@@ -72,13 +75,25 @@ class Persons extends Migration
 ~~~
 
 You can see that the `up` method creates a new table called `person` with all columns, their data-types and keys. It
-even creates a foreign key to `location` table (that table has to be created beforehand).
+even creates a foreign key to `location` table (that table has to be created beforehand in another migration file).
+The `down` method is there to perform *undo* action -- it simply drops the table here.
+
+To execute the migration in Laravel based project, just type `php artisan migrate` to execute the `up` part or `php
+artisan migrate:rollback` to execute the `down` part. You can create multiple migration scripts and they are executed
+all at once (in a batch) when the *migrate* command is executed. File names of all migrated scripts are stored in
+a database table with same timestamp. The *rollback* command may also executes multiple scripts as they were migrated
+together -- the timestamp in DB is the same. Database records about migrated scripts are deleted after *rollback*.
 
 ### What happens when migration fails
-Sometimes the migrations fails during database structure changes. It may result in partial changes, it is sometimes
-needed to remove changes by hand or delete whole database and migrate everything from scratch after fixing the migration
-script. You should always test the migration script before commiting them into VCS. The rollback command is
-unfortunately useless in this situation because the migration or rollback only works in batches.
+Sometimes a migration fails during database structure changes. It may result in partial changes of database structure,
+it is sometimes needed to revert changes by hand or delete whole database and migrate everything from scratch after
+fixing the migration script. You should always test the migration script before committing them into Git. The rollback
+or undo command is unfortunately useless in this situation because the migration or rollback only works in batches.
+
+{: .note}
+This is actually the largest problem of programmatic migrations. You should be very careful when you design the
+migration because there can be side-effects especially with a database with real-world data. Always make a backup
+before executing migrations on production server!
 
 ## Writing migrations using Phinx
 The example presented above is specific for Laravel framework. I will use [Phinx](https://phinx.org/) migration system
@@ -106,7 +121,10 @@ Phinx will need database credentials to access your database. We can use `vendor
 initialize config and then open `phinx.yml` in your editor. The config file contains DB credentials for different
 environments. This file unfortunately duplicates values from `.env` file and is static (you will have to commit
 your database credentials into Git). I will therefore not use `phinx.yml` file to store database credentials.
-I will create a dynamic Phinx config using `phinx.php` file -- it will gather database credentials from our settings.
+I will rather create a dynamic Phinx config using `phinx.php` file -- it will gather database credentials from
+our settings in the `src/settings.php` file (which loads the `.env` file).
+
+The `phinx.php` file (place in the root directory of your project):
 
 ~~~ php
 <?php
@@ -186,7 +204,8 @@ class Account extends AbstractMigration
 Maybe you noticed that Phinx migration does not contain `up()` method for forward migration and `down()` methods for
 rollback by default. The `change()` method is used to define *reversible* migrations -- the system can figure out the
 rollback steps if you obey [specific](http://docs.phinx.org/en/latest/migrations.html?highlight=reversible) rules.
-You can specify custom `up()` and `down()` methods. Using the `change()` method is preferred though.
+You can specify custom `up()` and `down()` methods. Using the `change()` method is preferred though, but you cannot
+use direct SQL code.
 
 Finally, we can migrate the database changes described in migrations folder by using this command:
 
@@ -203,7 +222,12 @@ Check out the `migrations` table to see migrations log. To *undo* or *rollback* 
 
 ![Migrations](/articles/web-applications/migrations.png)
 
-For production server (or any other environment) use `-e` switch: `vendor/bin/phinx migrate -e production`.
+You might have noticed, that there are multiple *environments* in the `phinx.php` or `phinx.yml` file. To use settings
+for *production* environment (or any other environment) use `-e` switch, e.g.: `vendor/bin/phinx migrate -e production`.
+
+{: .note}
+We do not need to differentiate between environments in our case (note that the values used in `phinx.php` are same),
+because we have different `.env` file for each instance of the application.
 
 ## Database seeding
 Seeding is similar to migrations but it focuses on data, not on database structure. Sometimes you need to install your
@@ -250,9 +274,15 @@ You can use seeding only to setup development/testing environment and default va
 standard migrations.
 
 ## Summary
+It does not matter whether you use Phinx or other migration tool. The ides behind and workflow is very similar.
+
 The benefit of using database migrations is that the process can also be automated. You can create a simple bash script
 for each fresh install or database update and this script can be executed when you pull new code from main Git
 repository using hooks (use `post-merge` hook).
+
+Migrations are also very useful for [Docker](https://en.wikipedia.org/wiki/Docker_(software)) because
+you do not want to setup the database by hand each time you reset the container. Docker container can also execute
+migration script on start automatically. 
 
 ### New Concepts and Terms
 - Database migrations
