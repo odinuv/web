@@ -10,7 +10,7 @@ redirect_from: /en/apv/course/
 ## Course information
 The aim of the course is to teach students basic categories of application software. Emphasis is given on
 the development of web applications and database applications (relational database systems).
-[Official course information](http://ects-prog.mendelu.cz/cz/plan8594/predmet1099)
+[Official course information](http://ects-prog.mendelu.cz/en/plan8905/predmet1099?lang=en)
 
 ## Requirements
 To pass the course you have to:
