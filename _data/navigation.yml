@@ -199,6 +199,9 @@ items:
 
       - url: /articles/programming/
         title: Inroduction to Programming
+        items:
+        - url: /articles/programming/git/
+          title: Git
 
       - url: /articles/web/
         title: Web
