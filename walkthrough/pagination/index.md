@@ -33,7 +33,7 @@ listed database records depends on another parameter (i.e. search or sorting), y
 this additional parameter to keep consistent output.
 
 {: note}
-You can use Bootstrap's [pagination classes](http://getbootstrap.com/components/#pagination) to make
+You can use Bootstrap's [pagination classes](https://getbootstrap.com/docs/4.1/components/pagination/) to make
 your pagination buttons look good.
 
 ## Task - add previous/next and first/last page button
