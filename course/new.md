@@ -6,6 +6,8 @@ permalink: /course/new/
 This is a list of fresh content:
 
 - [2019-1-23 Git](/articles/programming/git/)
+- [2019-1-23 Environments](/articles/web-applications/environments/)
+- [2019-1-23 Internationalisation and localisation](/articles/web-applications/i18n-and-l10n/)
 - [2018-12-18 MENDELU environment](/course/mendelu/)
 - [2018-11-14 Database migrations](/articles/web-applications/database-migrations/)
 - [2018-7-18 Solving a problem](/articles/problem-solving/)
