@@ -38,6 +38,12 @@ function countRows(PDO $db, $table) {
 }
 ~~~
 
+### Do I need to complete the course project before attending exam?
+It is recommended but you can present the project after your exam. Be aware that most of your classmates will have
+similar reasoning and they will postpone the presentation date as late as possible. It can happen, that few last
+days before the submission deadline will be crowded with project presentations and you will not manage to present
+your work in time.
+
 ## Questions (almost) impossible to answer
 
 ### How does it all work together? I have written (copied) all the code, it sort-of works, but I do not know why!
