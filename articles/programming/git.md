@@ -30,11 +30,17 @@ can track changes (added and removed lines) in source code files and *commit* th
 a *repository*. *Git* is such system. But there are other systems ([SVN](https://subversion.apache.org/),
 [Mercurial](https://www.mercurial-scm.org/)) and they work similarly.
 
+Version control systems also allow *branching* of the code. It is useful for implementation of independent features.
+It means that from a certain point, you can have two (or more) alternative versions of your software. You can than
+choose to *merge* those branches into the main one or remove unused ones.
+
 Another reason to use Git is that after some time, the size of projects you are going to work on will grow out of the
 scope of one person. The need to share changes in source code made by many programmers in **parallel** will make any
 other type of file exchange chaotic.
 
 Advantage of using VCS:
+- sharing your source code among computers which you use (you can work from home and from your workplace and you do not
+  need to carry the files on a flash drive)
 - sharing source code in team
 - ability to branch source code and work on different features in parallel
 - tracking history of changes
@@ -44,16 +50,16 @@ Advantage of using VCS:
 - your code is backed up on a remote computer
 
 Disadvantages of using VCS:
-- you have to follow some workflow
-- you have to think about it
+- you have to follow some workflow guidelines
+- you have to think about it and not forget to use it
 
 Here is how Git GUI tool visualises changes in a source code:
 
 ![Git diff](/articles/programming/git-diff.png)
 
 {: .note}
-This article is not a deep Git guide. It is just a overview of most basic Git commands. If you want to go deeper,
-read the [Pro Git book](https://git-scm.com/book/en/).
+This article is not a deep Git guide. It is just a overview of most basic Git commands and reasons to use Git.
+If you want to go deeper, read the [Pro Git book](https://git-scm.com/book/en/).
 
 ## Difference between version and Version
 A *Version* is some planned release of your software: your team agreed to deliver 10 new features in 3 months and the
@@ -67,10 +73,12 @@ software. You will probably not use version numbers for your project in this cou
 
 ## Remote repository VS local repository VS working copy
 A repository in Git is a [graph](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) of changes made to your
-source code. Each node in that graph represents a state of your source code files and each vertex represent added or
-removed lines of code.  
+source code. Each node in that graph represents a state of your source code files and each edge represent added or
+removed lines of code (the transition between those states).
 
-You need a *remote repository* to share and backup your code. Your local repository has to be synchronised with remoter
+![Git repository](/articles/programming/git-repo.png)  
+
+You need a *remote repository* to share and backup your code. Your local repository has to be synchronised with remote
 repository to fetch changes made by others and to upload your changes. The *working copy* is the contents of your
 project folder. The easiest way to obtain a remote repository is to sign up for one of the freely available Git
 repository hosting:
@@ -89,9 +97,15 @@ But you will still be able to use branches and see history of changes.
 Git repository hosting services are popular with Open Source software community. Those programmers share their code and
 ideas with the world on GitHub. You can download (clone) any repository and start exploring or contributing right now.
 
+A *branch* is just a pointer to one of the graph's nodes.
+
+{: .note}
+The state of the graph in your local repository does not have to be identical to state of the graph in remote repository
+or in repositories of other programmers. You can synchronise changes in given branch between repositories.
+
 ## Command line VS GUI tool
 Git is a command line tool -- get used to it, many tools for programmers are only command line programs. You can
-download a [GUI tool](https://en.wikipedia.org/wiki/Graphical_user_interface), but you should know what each command
+download a [GUI tool](https://git-scm.com/downloads/guis), but you should know what each command
 does before you can start using it. Graphical tool is priceless when you start working with branches.
 
 ## Starting the project
@@ -174,7 +188,7 @@ When you work alone on a simple project, you will usually follow these steps:
 ```bash
 git init
 # OR
-git clone <urL> <target-path>
+git clone <url> <target-path>
 
 # synchronise your local repository wiht remote
 git pull
@@ -198,13 +212,13 @@ git status
 ![Git status](/articles/programming/git-status.png)
 
 {: .note}
-You can use `git diff` to actually see the changes lines.
+You can use `git diff` to actually see the changed lines.
 
 ### Add
 [Read documentation](https://git-scm.com/docs/git-add)
 
 Prepare your changed files to be committed. You do not have to commit everything. Each commit should have single scope.
-That does not mean that each commit has to contain changed from just one file, but these changes should be related.
+That does not mean that each commit has to contain changes from just one file, but these changes should be related.
 
 To *add* everything in current folder:
 
@@ -277,7 +291,13 @@ git checkout feature
 You should use branches wisely to distinguish between finished and unfinished work. Branches are used by teams to
 avoid incorporating of unfinished work. You only merge a branch when somebody else approved it (tested and reviewed
 your code for given feature). There are multiple strategies of using branches and merging (and rebasing) but it is
-not in the scope of this article. 
+not in the scope of this article.
+
+It is possible to switch between branches (using `git checkout <branch-name>` command), but you have to commit or stash
+changes before doing so. This command effectively changes the contents of your project directory -- working copy,
+some files will change their contents or they may be removed at all, because different branch is in different state.
+Do not worry, Git repository contains all committed work and when you switch back to previous branch, your files will
+reappear again.
 
 ### Merge
 [Read documentation](https://git-scm.com/docs/git-merge)
@@ -296,6 +316,11 @@ git branch -d feature
 ![Git after merge](/articles/programming/git-after-merge.png)
 
 ## Conflicts
+
+{: .alert}
+You will encounter conflicts in Git, you need to know how to resolve them. There is no way how to avoid this situation,
+there are only ways how to minimise their occurrence.
+
 A conflict happens when two programmers made changes into same file on same lines. One of them (the quicker one)
 already committed and pushed his changes and the other one needs to solve the conflict. Git will report a conflict with
 a message and you are required to resolve the conflict before you can continue. A conflict can occur when work was
@@ -303,7 +328,7 @@ done in same branch by two different people or when merging two branches into on
 
 ![Git confilict](/articles/programming/git-conflict.png)
 
-When this happens, use `git status` to see files with conflict. Use your editor to resolve conflict (make to code
+When this happens, use `git status` to see files with conflict. Use your editor to resolve conflict (make the code
 runnable again) and than use `git add <path>` and `git commit -m "resolve conflict message"` to continue.
 You can stop the merge by `git merge --abort`, this will revert both branches to previous state. Problematic
 pieces of code are highlighted by Git like this in your files:
@@ -333,6 +358,14 @@ This is actually a good idea: share a branch with minimal amount of other progra
 You can *stash* changes without committing them. This is particularly useful when you have to implement hotfix on
 another branch and you are not yet ready to create a clean commit in your current branch.
 
+```bash
+# stash uncommited changes and reset files to last commit
+git stash
+# show stashed changes
+git stash list
+# apply changes from stash
+git stash apply
+```
 ## Ignoring files
 [Read documentation](https://git-scm.com/docs/gitignore)
 
@@ -379,6 +412,10 @@ can achieve this by creating `.gitattributes` file and setting something like th
 This article is a quick overview of basic Git commands and reasons to use VCS. You probably need to read a lot more
 about Git to be able to use it *The Correct Way*™. There are also [GUI tools](https://en.wikipedia.org/wiki/Graphical_user_interface)
 like [SourceTree](https://www.sourcetreeapp.com/). You can list all available clients [here](https://git-scm.com/downloads/guis).
+
+Use Git, even for small projects, you will not learn how to use it properly without really working with it and solving
+different situations by yourself. It is hard sometimes and you will probably end up with messed repository many times.
+It will get better.
 
 ### New Concepts and Terms
 - Git
