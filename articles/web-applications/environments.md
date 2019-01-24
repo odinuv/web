@@ -22,6 +22,9 @@ What can be different:
 - network connectivity
 - hardware
 
+{: .note}
+If you can, try to have same versions of PHP and all libraries installed in every environment.
+
 ## Environments
 
 ### Development

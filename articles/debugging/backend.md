@@ -99,7 +99,7 @@ PHP, but it is problematic because your code is not executed through the IDE. PH
 (and that also can be on a different machine). To be able to set breakpoints you need to install PHP debugger like
 [Xdebug](https://xdebug.org/) and connect it with your IDE. This is very difficult for beginners.
 
-## Input processing errors
+### Input processing errors
 Input processing bugs are often caused by typos in variable naming -- check `name` attribute for each input element
 and array keys used to access request parameters (either query or body). Input processing is a bit more complicated,
 because the error can actually be caused by [previous rendering of another route](/walkthrough-slim/passing-values/#checking-incoming-data).
@@ -145,7 +145,7 @@ $app->post('/errorneous-route', function(Request $request, Response $response) {
 });
 ~~~
 
-### HTTP protocol debugging
+#### HTTP protocol debugging
 Use developer tools (usually under F12 key) to display contents of *GET*, *POST* or cookie request parameters.
 Following image shows Chrome developer tools with network console opened. You can find posted values (red) and cookie
 values (green) in the details of the request. You should check the values and keys in HTTP request before you start
@@ -160,12 +160,12 @@ of the response. This is much more important for [AJAX](/articles/debugging/ajax
 {: .note}
 Firefox has very similar tools for this.
 
-## Data retrieval errors
+### Data retrieval errors
 Data retrieval is the process which extracts data from the database (using SQL query) and displays them to the user.
 This part is more straight forward because everything is done in single load of the page. If your script depends on
 query/post parameters, refer to previous section to check the incoming data.
 
-### SQL related errors
+#### SQL related errors
 Bugs related to retrieval and presentation of information are often caused by wrong SQL queries. Stop your code
 right after the query is executed and print the result to be sure what came out of the database.
 
@@ -204,7 +204,7 @@ $app->post('/post-route', function(Request $request, Response $response) {
 });
 ~~~
 
-### SQL query debugging
+#### SQL query debugging
 Using PDO's prepared statements is great for security but very bad for debugging. There is actually no way to see
 the a query with placeholders replaced with actual values. It is because the query and parameters are passed
 into the database system separately and the replacement of placeholders is actually carried out by the database
@@ -268,6 +268,30 @@ My example was a very simple error, many errors are hard to find because the tem
 good editors have functions to format code automatically, and good editors also have macro pairs highlighting. Some
 templates are very long -- use inheritance and includes to avoid code repetition. Sometimes the problems is not with
 template syntax, but with rendered HTML structure, this is covered in [frontend debugging article](/articles/debugging/frontend/).
+
+### Environment related errors
+Sometimes the application works correctly on your machine, but runs into difficulties on the production or testing
+server.
+
+#### PHP version
+Newer frameworks or libraries require PHP 7 which added many new functions. Check the production environment, if you
+have no control over it, you have to adapt.
+
+#### Missing libraries or misconfiguration
+PHP uses system of plugins, sometimes the set of installed plugins on other machine is different that yours.
+Use [`phpinfo()`](http://php.net/manual/en/function.phpinfo.php) function to check installed plugins and their config.
+This function also shows important information about maximum execution time or script memory limit.
+
+#### Permission denied
+A very common error is the "Permission denied", it occurs when your application tries to write some data to
+a disk. The problem is, that the user who uploaded the script (i.e. *you*) is not the same user who executes the script
+to generate HTTP response (user who runs Apache web server). You have to allow that *other* user to write into *your*
+folders and files. Therefore when you plan to write files on disk (logs, cached templates, uploaded images etc.),
+you have to set *write* permission for others (e.g. *chmod 0777*) for that folder/file. You can read how to do
+this in [technical support section](/course/technical-support/#file-permissions-chmod).
+
+{: .image-popup}
+![Permission denied](/articles/debugging/permission-denied.png)
 
 ## Summary
 In comparison with frontend, the backend environment is much more determinate. You usually have only one server with

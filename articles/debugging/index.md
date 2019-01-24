@@ -82,6 +82,11 @@ lines of code.
 
 You can change your source code a little to stop the execution at some point or to lock some values.
 
+{: .note}
+You can have troubles to determine whether the problem is in the backend or in the frontend code, especially with
+JavaScript-heavy applications. Check the interface (HTTP communication) between those two components whether the
+expected payload arrived/was dispatched to/from the frontend. Than you should know where to aim your effort.
+
 ### Investigate
 Now it should be clear where the bug is. At least you have minimised responsible pieces of code to a minimal possible
 amount. Dive into your code and find the problem.
