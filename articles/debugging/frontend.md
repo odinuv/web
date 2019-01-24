@@ -146,7 +146,7 @@ It just looks ugly.
 
 ~~~ html
 <button class="btn btn-danger">
-  <span class="glyphicon glyphicon-thrash">Do not put text here</span> Put the text here
+  <span class="fa fa-thrash">Do not put text here</span> Put the text here
 </button>
 ~~~
 

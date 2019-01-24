@@ -29,7 +29,7 @@ way as anyone (with a little effort) can build a brick wall.
 *Software Engineering* (as any other engineering) deals with the question how the **programming code should be organized** and
 what development processes should be applied. Software development includes a great deal of
 [Project management](https://en.wikipedia.org/wiki/Project_management) and it is something you learn best by studying
-rules and standards and by learning from (preferably other people's) failed projects. Software engineering guides
+rules and standards and by learning from (preferably other peoples') failed projects. Software engineering guides
 programmers in writing their code in a similar manner in which architectural plans guide masons. Software
 engineering requires a broad understanding of many technologies and approaches so that you can choose
 the most suitable ones for the assignment.
