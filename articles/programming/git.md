@@ -190,7 +190,7 @@ git init
 # OR
 git clone <url> <target-path>
 
-# synchronise your local repository wiht remote
+# synchronise your local repository with remote
 git pull
 # do your work here
 git status
@@ -199,6 +199,8 @@ git commit -m "your message"
 git push
 # goto "gil pull", repeat forever
 ```
+
+Yeah, [just memorize these commands](https://xkcd.com/1597/).
 
 ### Status
 [Read documentation](https://git-scm.com/docs/git-status)
