@@ -182,6 +182,13 @@ git config --global user.name "Your Name"
 Git obviously has to be installed first, you can [download](https://git-scm.com/download) classic installer for
 Windows OS or use package manager on Linux.
 
+Here is a link to [Git cheatsheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf). 
+You can print it and look up Git commands when your memory fails you.
+
+{: .note}
+There is also a plenty of other "cheatsheets" online. Just type what you need plus "cheatsheet" keyword and select
+the one which fits your needs.
+
 ### Basic workflow
 When you work alone on a simple project, you will usually follow these steps:
 
