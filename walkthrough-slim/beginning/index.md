@@ -113,6 +113,7 @@ command line interpreter.
            //...
        ],
     ];
+    ~~~
    
 6.  Optional: configure `public/.htaccess` for Akela server. On [our development server](/course/mendelu/), we need to
     set the *rewrite base* directory to distinguish between physical part of URL path and virtual paths (handled by
