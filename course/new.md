@@ -5,6 +5,7 @@ permalink: /course/new/
 
 This is a list of fresh content:
 
+- [2019-2-7 Beginning](/walkthrough-slim/beginning/)
 - [2019-1-23 Git](/articles/programming/git/)
 - [2019-1-23 Environments](/articles/web-applications/environments/)
 - [2019-1-23 Internationalisation and localisation](/articles/web-applications/i18n-and-l10n/)

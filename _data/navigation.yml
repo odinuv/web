@@ -110,6 +110,9 @@ items:
       - url: /walkthrough-slim/upload/
         title: File upload
 
+      - url: /walkthrough-slim/beginning/
+        title: Beginning
+
   - url: /walkthrough/
     title: Walkthrough
     items:
