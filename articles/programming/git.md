@@ -409,7 +409,8 @@ can achieve this by creating `.gitattributes` file and setting something like th
 - some global config files (ideally customised for different environments)
 
 ## What does not belong to repository?
-- private config files (they would interfere with other programmers' environment)
+- private config files (they would interfere with other programmers' environment and they can contain secret passwords
+  which is not responsible when you use public repository)
 - large binary files (you can build your application from the sources)
 - large data files (you can include small examples)
 - log files
