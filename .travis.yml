@@ -21,6 +21,10 @@ deploy:
   - provider: script
     skip_cleanup: true
     script: $TRAVIS_BUILD_DIR/docker/deploy.sh
+    on:
+      all_branches: true
   - provider: script
     skip_cleanup: true
     script: $TRAVIS_BUILD_DIR/docker/mdeploy-run.sh
+    on:
+      all_branches: true
