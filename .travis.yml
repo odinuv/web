@@ -15,7 +15,7 @@ before_install:
   - curl --version
 
 script:
-  - cd docker && docker-compose run --rm -e JEKYLL_ENV=production jekyll bundle exec jekyll build
+  - cd docker && docker-compose run --rm -e JEKYLL_ENV=production site bundle exec jekyll build --source /code/
 
 deploy:
   - provider: script
@@ -24,9 +24,3 @@ deploy:
   - provider: script
     skip_cleanup: true
     script: $TRAVIS_BUILD_DIR/docker/mdeploy-run.sh
-#    on:
-#      tags: true
-#   on:
-#     tags: true
-#     all_branches: true
-#     condition: "$TRAVIS_TAG =~ ^[0-9]+\.[0-9]+\.[0-9]+$"
