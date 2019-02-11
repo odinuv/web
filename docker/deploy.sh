@@ -14,7 +14,7 @@ else
 fi
 echo ${lastCommit}
 
-cd $TRAVIS_BUILD_DIR/docker/_site
+cd /code/docker/_site
 filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
     echo "No files to update"
