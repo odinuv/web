@@ -35,22 +35,22 @@ jQuery basically interprets the input and returns DOM element (or elements) wrap
 various methods on this container e.g.: `$("div").empty()` would clear all children elements from all `<div>` elements.
 Let's try to break down method chaining to better understand what is written in previous example:
 
-{% highlight javascript %}
+~~~ javascript
 var allDivs = $("div"); //find all <div> elements using CSS selector
 console.log(allDivs);   //you should see a jQuery collection in console
 allDivs.empty();        //clear childNodes for each div
-{% endhighlight %}
+~~~
 
 And let's consider [vanilla JavaScript](http://vanilla-js.com/) code:
 
-{% highlight javascript %}
+~~~ javascript
 var allDivs = document.querySelectorAll("div");
 allDivs.forEach(function(d) {
     while(d.firstChild) {
         d.removeChild(d.firstChild);
     }
 });
-{% endhighlight %}
+~~~
 
 You have to use two nested loops to achieve same functionality (or `d.innerHTML = ""`). The code in jQuery is
 definitely shorter but you have to know functionality of particular methods.
@@ -91,10 +91,10 @@ To obtain matched elements (pure JavaScript objects) use `$("...").get()` method
 To work with HTML attributes use [`$("...").attr(attrName)` method](http://api.jquery.com/attr/) which is a getter (called with
 only one argument) and a setter (called with two arguments):
 
-{% highlight javascript %}
+~~~ javascript
 $("a.css.selector").attr("href");   //read href attribute from first matched element
 $("a.css.selector").attr("href", "..."); //set href attribute to all matched elements
-{% endhighlight %}
+~~~
 
 {: .note}
 This approach is common in jQuery, its methods have very variable behaviour based on input arguments. This will confuse
@@ -117,10 +117,10 @@ better but it is not so easy to attach handlers to it in pure JavaScript. That e
 to your HTML. For most JavaScript related tasks it is enough to wait just for HTML structure (DOM) to load. You will
 almost always encounter "DOM ready" event with jQuery code.
 
-{% highlight javascript %}
+~~~ javascript
 $(window).load(function() {...});      //like window.onload = function() {...}
 $(document).ready(function() {...});   //"DOM ready"
-{% endhighlight %}
+~~~
 
 ## AJAX
 jQuery has [multiple function](http://api.jquery.com/category/ajax/) to make asynchronous HTTP calls to the backend.
@@ -131,9 +131,9 @@ source code is much shorter, but you lost control over the HTTP request.
 `index.html` file:
 
 {: .solution}
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/ajax/index-jquery.html %}
-{% endhighlight %}
+~~~
 
 ## jQuery plugins
 As I said before, functions in JavaScript are also objects with methods and properties. Thanks to this, there is an
@@ -141,9 +141,9 @@ As I said before, functions in JavaScript are also objects with methods and prop
 you can easily divide your custom CSS selector and general plugin function.
 
 {: .solution}
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/jquery/plugin.html %}
-{% endhighlight %}
+~~~
 
 ## Summary
 This book is about building a web applications. JavaScript and jQuery have to be definitely mentioned because they

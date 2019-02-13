@@ -42,9 +42,9 @@ its output to browser's developer tools console (usually activated by F12 key).
 
 Here is a brief JavaScript demo and an overview of basic syntax and types:
 
-{% highlight javascript %}
+~~~ javascript
 {% include /articles/javascript/basics1.js %}
-{% endhighlight %}
+~~~
 
 {: .note}
 To try JavaScript code you do not have to write a custom HTML page, just paste this code into online
@@ -57,30 +57,30 @@ JavaScript is dynamically typed like PHP. We have basic types: *strings*, *numbe
 (only ordinal) and general *objects*. Unlike in PHP, even basic types are objects, for example you can call
 methods or access object's attributes on strings like this:
 
-{% highlight javascript %}
+~~~ javascript
 var chars = "a,b,c,d,e,f".split(',');   //divide string to array
 console.log(chars, chars.length);       //print array and its length
 var len = "some string".length;         //get length of string...
 console.log(len);                       //...and display it
-{% endhighlight %}
+~~~
 
 There is also not much difference between creating a string via String class constructor or string literal:
 
-{% highlight javascript %}
+~~~ javascript
 var s1 = "some string";
 var s2 = new String("continues here");
 console.log(s1 + s2);
-{% endhighlight %}
+~~~
 
 JavaScript is more strict with type conversions than PHP (or just different), sometimes you have to use
 `parseInt()` or `parseFloat()` functions to convert string variable into number:
 
-{% highlight javascript %}
+~~~ javascript
 var a = "5";
 var b = 8;
 console.log(a + b);             //string 58
 console.log(parseInt(a) + b);   //number 13
-{% endhighlight %}
+~~~
 
 {: .note}
 There is no special operator to concatenate string like in PHP (the `.` operator). Maybe it is not a very good idea
@@ -90,28 +90,28 @@ to develop web pages.
 ### Declaring functions
 Basic declaration of a function is straightforward.
 
-{% highlight javascript %}
+~~~ javascript
 function something() {
 }
 something();    //call that function
-{% endhighlight %}
+~~~
 
 But then you can notice, that such declaration can interfere with a variable declaration if you use same name
 (variables' and functions' identifiers are stored together although variables have higher priority):
 
-{% highlight javascript %}
+~~~ javascript
 var fun = "a string";
 function fun() {
 }
 fun();                  //error, fun is already a string!
 console.log(fun);       //outputs 'a string'
-{% endhighlight %}
+~~~
 
 In JavaScript, you can store functions into variables and also work with them in such way. Function is also an
 object with methods in JavaScript. This is called *first-class functions*. Next example shows even an anonymous
 function passed into another function as argument's value.
 
-{% highlight javascript %}
+~~~ javascript
 //store function into a variable
 var fun1 = function(fun2) {
     fun2();
@@ -120,15 +120,15 @@ var fun1 = function(fun2) {
 fun1(function() {
     console.log('this gets also called');
 });
-{% endhighlight %}
+~~~
 
 ### Control structures
 In following example you can see basic control structures `if` and `for`. There is also a `while` loop and a `switch`
 statement.
 
-{% highlight javascript %}
+~~~ javascript
 {% include /articles/javascript/basics2.js %}
-{% endhighlight %}
+~~~
 
 There was no PHP's `foreach` equivalent in JavaScript for a long time -- you would have to use plain `for` cycle
 and obtain array's length. There is a new [`for...of` loop](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/for...of)
@@ -136,9 +136,9 @@ in ES 2015 and array [method `forEach()`](https://developer.mozilla.org/en-US/do
 to iterate over all array items (this one was standardized earlier). You can use [`for...in` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
 to iterate over all object's properties.
 
-{% highlight javascript %}
+~~~ javascript
 {% include /articles/javascript/basics3.js %}
-{% endhighlight %}
+~~~
 
 {: .note}
 It is possible to iterate array items with `for...in` cycle, but it is wrong and should be avoided (it treats
@@ -153,7 +153,7 @@ is just a shortcut to declare an anonymous function. There is one important diff
 In older JavaScript versions you could have used only `var` keyword to denote a new variable. A variable declared
 using `var` is local in functions and global outside of them.
 
-{% highlight javascript %}
+~~~ javascript
 var global = "this is a global variable";
 function something() {
     var local = "this is a local variable";
@@ -162,7 +162,7 @@ function something() {
 something();
 console.log(global);    //OK
 console.log(local);     //error
-{% endhighlight %}
+~~~
 
 {: .note}
 In fact, JavaScript scans the function body and moves all variable declarations to the beginning.
@@ -170,30 +170,30 @@ In fact, JavaScript scans the function body and moves all variable declarations 
 New JavaScript version ES 2015 introduced also `const` and `let` keywords. The `let` keyword is interesting because
 it can create variable which scope is only inside curly brackets, observe difference between these two pieces of code:
 
-{% highlight javascript %}
+~~~ javascript
 //using var
 for(var i = 1; i < 5; i++) {
     console.log(i); //1,2,3,4
 }
 console.log(i); //5
-{% endhighlight %}
+~~~
 
-{% highlight javascript %}
+~~~ javascript
 //using let
 for(let j = 1; j < 5; j++) {
     console.log(j); //1,2,3,4
 }
 console.log(j); //error
-{% endhighlight %}
+~~~
 
 ## Linking JavaScript to your HTML
 Similarly to CSS, a JavaScript file is usually referred in `<head>` tag using a `<script>` tag. But you can generally
 place the `<script>` tag anywhere inside the `<body>` element. The `<script>` tag can contain a `src` attribute with
 an URL to download some JavaScript source code or the tag can contain some JavaScript code directly:
 
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/attach.html %}
-{% endhighlight %}
+~~~
 
 ### Order and time of execution
 When you add `<script>` tags to your HTML, you might wonder when is JavaScript code executed.
@@ -204,9 +204,9 @@ tags inside the `<body>` element have access to HTML elements in markup above it
 
 Therefore there is a big difference in placement of `<script>` tags within your HTML code:
 
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/order-of-execution.html %}
-{% endhighlight %}
+~~~
 
 Web developers often want their JavaScript to execute when all HTML tags are loaded into browser.
 To achieve this an *event* called `onload` is used and most JavaScript code is executed in it.
@@ -243,12 +243,12 @@ manipulate them. It contains a key called `body` which is a reference to HTML `<
 attribute, but that is not used often). The `document` contains nested HTML elements in `childNodes` attribute
 collection. Every other child has `childNodes` attribute too -- they form a tree. DOM is standardized by [W3C](https://www.w3.org/standards/techs/dom).
 
-{% highlight javascript %}
+~~~ javascript
 console.log(document.head);
 console.log(document.body);
 console.log(document.childNodes);       //only <html> node
 console.log(document.body.childNodes);  //body's child nodes
-{% endhighlight %}
+~~~
 
 Try to type some of those lines mention above into console (in the very bottom of the console you can write actual
 JavaScript commands).
@@ -287,16 +287,16 @@ The [`window` variable](https://developer.mozilla.org/en-US/docs/Web/API/Window)
 or tab. It is the main variable in JavaScript, when a JavaScript interpret encounters unknown variable, it looks
 for it in set of `window` object's properties.
 
-{% highlight javascript %}
+~~~ javascript
 console.log(window);
 console.log('This is same...', document);
 console.log('...as this', window.document);
-{% endhighlight %}
+~~~
 
-{% highlight javascript %}
+~~~ javascript
 window.anything = "can be used as global variable";
 console.log(anything);
-{% endhighlight %}
+~~~
 
 Be careful with names of global variables -- you can easily overwrite some predefined global variables like `console`,
 `screen` (information about screen size), `document` (the DOM), `history` (window history), `location` (current URL in
@@ -306,12 +306,12 @@ Following example nicely demonstrates that JavaScript scans for `var` declaratio
 expect to output `document` object on first line but JavaScript outputs `undefined` because the variable has not
 been assigned a value yet.
 
-{% highlight javascript %}
+~~~ javascript
 console.log('No content', document);    //strange!
 var document = "not a document anymore";
 console.log('Still works', window.document);
 console.log('New content', document);
-{% endhighlight %}
+~~~
 
 ### JavaScript events
 Events are type of signals which are broadcasted to JavaScript event listeners (functions)
@@ -319,7 +319,7 @@ when some action takes place. For example a user can click a button, press a key
 to another site or move a mouse. There are also events that are not associated directly with user actions, it can be
 timer ticks or when the browser finishes loading of the page or particular image:
 
-{% highlight html %}
+~~~ html
 <script type="text/javascript">
     function clickButtonHandler(event) {
         console.log('Button clicked', event);
@@ -327,7 +327,7 @@ timer ticks or when the browser finishes loading of the page or particular image
 </script>
 <button onclick="clickButtonHandler(event)">Click me - console.log()!</button>
 <button onclick="alert('Hello!')">Click me - alert()!</button>
-{% endhighlight %}
+~~~
 
 Open [developer console (F12)](/course/not-a-student/#web-browser) and try to click this button or the other:
 
@@ -353,9 +353,9 @@ particular `<img>` elements).
 You can attach events as an HTML attributes like in example above or you can use programmatic approach
 which is much cleaner because it won't complicate your HTML code:
 
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/events.html %}
-{% endhighlight %}
+~~~
 
 {: .note}
 The reason why we used Latte templates was to divide program logic and view logic. It is the same with JavaScript:
@@ -364,13 +364,13 @@ event handlers.
 
 A good example which shows how to completely divide HTML and JavaScript code follows.
 
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/prevent-nav-form-divided.html %}
-{% endhighlight %}
+~~~
 
-{% highlight javascript %}
+~~~ javascript
 {% include /articles/javascript/prevent-nav-form-divided.js %}
-{% endhighlight %}
+~~~
 
 {: .note}
 When you use `formElement.addEventListener('submit', ...)` to register an event, you have to prevent the browser from
@@ -381,9 +381,9 @@ It is possible to work with special variable called `this` inside event handlers
 HTML element which fired event.
 
 {: .solution}
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/using-this-events.html %}
-{% endhighlight %}
+~~~
 
 The `this` variable has different meanings in different situations:
 
@@ -400,7 +400,7 @@ Sometimes you need to detach an event in JavaScript code. You can simply do that
 [`element.removeEventListener(eventHandler)`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
 method in your code. You cannot use anonymous function in this case because you need a reference to `eventHandler`.
 
-{% highlight javascript %}
+~~~ javascript
 var element = document.getElementById("...");
 var eventHandler = function() {
     console.log("click");
@@ -408,13 +408,13 @@ var eventHandler = function() {
     this.removeEventListener("click", eventHandler);
 };
 element.addEventListener("click", eventHandler);
-{% endhighlight %}
+~~~
 
 ## Variable scope
 It is not unusual to see a function declared inside another function in JavaScript code. It can happen when you need to
 pass callbacks or event handlers. In such case, function declared inside another has access to variables from outer scope.
 
-{% highlight javascript %}
+~~~ javascript
 window.addEventHandler("load", function() {
     //variable is declared here (it is local for onload handler)
     var a = "variable a";
@@ -424,12 +424,12 @@ window.addEventHandler("load", function() {
         console.log(a); //outputs 'variable a'
     });
 });
-{% endhighlight %}
+~~~
 
 This is useful, but be careful when you want to attach same event to multiple HTML elements with a variable
 which changes its content in outer scope -- weird stuff starts to happen.
 
-{% highlight javascript %}
+~~~ javascript
 window.addEventListener("load", function() {
     //find multiple buttons...
     var allButtons = document.getElementsByTagName("button");
@@ -441,14 +441,14 @@ window.addEventListener("load", function() {
         });
     }
 });
-{% endhighlight %}
+~~~
 
 It does not matter on whichever `<button>` element you click, you always get last value of variable `i` in console
 because the handler is executed after the `for` loop and variable `i` already changed its value to `allLinks.length`.
 In another words, there is only one variable `i` with one value in computer's memory and all event handlers
 refer to it. You either have to use the `let` keyword or construct a *closure*.
 
-{% highlight javascript %}
+~~~ javascript
 window.addEventListener("load", function() {
     function makeEventHandler(val) {
         /*
@@ -465,11 +465,11 @@ window.addEventListener("load", function() {
         allLinks[i].addEventListener("click", makeEventHandler(i));
     }
 });
-{% endhighlight %}
+~~~
 
 Thanks to `let` keyword we can use almost same code as originally intended:
 
-{% highlight javascript %}
+~~~ javascript
 window.addEventListener("load", function() {
     var allButtons = document.getElementsByTagName("button");
     for(let i = 0; i < allButtons.length; i++) {
@@ -479,7 +479,7 @@ window.addEventListener("load", function() {
         });
     }
 });
-{% endhighlight %}
+~~~
 
 Lets return a bit and talk about `this` variable again. Put yourself into a situation when you need to register event
 handlers based on user action (inside another event handler). Perhaps you need a `<button>` which generates new HTML
@@ -488,17 +488,17 @@ action. It means, that you need to pass reference for the first `<button>` into 
 newly created one. You know that you can use `this` in first click event handler
 
 {: .solution}
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/passing-this-events.html %}
-{% endhighlight %}
+~~~
 
 This can also be achieved with *arrow expression* `() => {}` mentioned before. This kind of function declaration
 does not introduce its own `this` variable and you can use `this` from parent scope.
 
 {: .solution}
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/passing-this-events-arrow.html %}
-{% endhighlight %}
+~~~
 
 ## Timers
 There are two types of timers in JavaScript -- an interval and a timeout. The difference is that interval timer ticks
@@ -506,7 +506,7 @@ permanently. The functions which are used to setup interval are similar: `setInt
 `setTimeout(callback, delay)`. They both return a reference to cancel timer by `clearTimeout(ref)` or
 `clearInterval(ref)` functions. The delay is specified in milliseconds.
 
-{% highlight javascript %}
+~~~ javascript
 var ref;
 function startTimer() {
     var c = 0;
@@ -517,7 +517,7 @@ function startTimer() {
 function stopTimer() {
     clearInterval(ref);
 }
-{% endhighlight %}
+~~~
 
 Open developers console and try to click following buttons you should be able to see a number to increment every second:
 
@@ -544,7 +544,7 @@ This approach is not very universal. It is useful to define a *class* and derive
 Traditional JavaScript (i.e. that one which is executable in all browsers) has unfamiliar class definition based
 on prototypes:
 
-{% highlight javascript %}
+~~~ javascript
 //a function which will be used as a constructor
 var SomeClass = function(value) {
     this.value = value;
@@ -557,7 +557,7 @@ SomeClass.prototype.getValue = function() {
 var instanceOfSomeClass = new SomeClass(5);
 //and call some method
 console.log(instanceOfSomeClass.getValue());
-{% endhighlight %}
+~~~
 
 {: .note}
 Use [CamelCase](https://en.wikipedia.org/wiki/Camel_case) variable names to emphasize that a variable is intended to
@@ -572,7 +572,7 @@ create unwanted global variables because `this` variable points to `window` obje
 
 Inheritance is achieved by chaining of prototypes, here is a simple example:
 
-{% highlight javascript %}
+~~~ javascript
 //general class
 var Rectangle = function(w, h) {
     this.w = w;
@@ -600,7 +600,7 @@ console.log('Rectangle area:', rt.getArea());
 sq.enlarge(2);
 console.log('Larger square area:', sq.getArea());
 rt.enlarge(2);  //error
-{% endhighlight %}
+~~~
 
 The line with `Square.prototype = new Rectangle();` is crucial. It simply creates an instance of a Rectangle and assigns
 it as prototype of a Square class. This basically makes all Rectangle methods accessible in Square's prototype. Next
@@ -626,9 +626,9 @@ Here is an example.
 `index.html` file of AJAX calculator using a *Promise*:
 
 {: .solution}
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/ajax/index-promises.html %}
-{% endhighlight %}
+~~~
 
 Promises can be chained or they can be stored in an array and treated as one job by usage of method
 [`.all()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all).
@@ -663,9 +663,9 @@ is not much shorter than in clean JavaScript but in some cases jQuery can shorte
 up to one half of original.
 
 {: .solution}
-{% highlight html %}
+~~~ html
 {% include /articles/javascript/form-validation-jquery.html %}
-{% endhighlight %}
+~~~
 
 There are also many other JS libraries or frameworks. jQuery is used in most cases and sometimes other
 libraries (like [Bootstrap](/walkthrough-slim/css/bootstrap/)) require you to include it as well.
