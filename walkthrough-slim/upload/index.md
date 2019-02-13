@@ -52,8 +52,10 @@ return [
 {: .note}
 Remember to set [permissions](/course/technical-support/#file-permissions-chmod) for target directory to 0777.
 Otherwise you won't be able to store files on Linux systems. You can set the `uploadDir` configuration to a path which
-is outside the scope of HTTP server. For example: when your public folder is `/home/username/public_html/devel/public`
-set `uploadDir` to `__DIR__ . "/../uploads"` to put uploaded files next to `public` directory.
+is outside the scope of HTTP server. For example: when your public folder is `/var/www/html/public`
+set `uploadDir` to `__DIR__ . "/../uploads"` to put uploaded files next to `public` directory. You can also
+use `.htaccess` file to [configure](/course/technical-support/#set-a-directory-as-inaccessible-from-the-internet)
+access rules.
 
 ### Create a database table
 Now you know that files are being stored in a directory of your choice but you need to store other information to access
