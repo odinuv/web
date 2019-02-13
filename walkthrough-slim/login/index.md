@@ -184,6 +184,11 @@ the contents of given PHP script. Check out file `public/index.php` which uses [
 -- a more strict version of include.
 
 ~~~ php?start_inline=1
+$app->get('/', function(Request $request, Response $response, $args) {
+    //redirect to actual index
+    return $response->withHeader('Location', $this->router->pathFor('index'));
+});
+
 $app->group('/auth', function() use($app) {
     include('routes-person.php');
     include('routes-contact.php');
