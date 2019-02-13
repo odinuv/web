@@ -154,15 +154,12 @@ server where PHP and database is already working.
     
     ~~~ php
     <?php
-    
     //this loads the .env file from upper level directory
     $env = Dotenv\Dotenv::create(__DIR__ . DIRECTORY_SEPARATOR . '..');
     $env->load();
-    
     //older version of Dotenv library:
     //$env = new Dotenv\Dotenv(__DIR__ . DIRECTORY_SEPARATOR . '..');
     //$env->load();
-    
     return [
        'settings' => [
             //...
@@ -184,10 +181,8 @@ server where PHP and database is already working.
     
     ~~~ php?start_inline=1
     <?php
-    
-    $env = new Dotenv\Dotenv(__DIR__ . DIRECTORY_SEPARATOR . '..');
+    $env = Dotenv\Dotenv::create(__DIR__ . DIRECTORY_SEPARATOR . '..');
     $env->load();
-    
     return [
        'settings' => [
            //...
