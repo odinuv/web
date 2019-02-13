@@ -18,7 +18,8 @@ Following steps may change in the future, this tutorial is for Slim framework ve
 
 You do not have to install [Postgre database](https://www.postgresql.org/) or [Apache web server](https://httpd.apache.org/)
 because you only need local PHP to execute Composer. You should be able to run `php` and `composer` commands in your
-command line interpreter.
+command line interpreter. I will discuss deployment of the application later, I suppose that you have a remote
+server where PHP and database is already working.
 
 ## Actual project
 1.  Create a directory and open command line in this new folder.
@@ -108,7 +109,7 @@ command line interpreter.
                'dbhost' => 'localhost',
                'dbname' => 'xuser',
                'dbuser' => 'xuser',
-               'dbpass' => 'pwxuser'
+               'dbpass' => 'password'
            ],
            //...
        ],
@@ -124,8 +125,8 @@ command line interpreter.
     
     The `.htaccess` file configures [*mod_rewrite*](https://httpd.apache.org/docs/current/mod/mod_rewrite.html) Apache
     module which allows virtual URLs to be handled by PHP script. E.g. `/~xuser/devel/public/path/to/route` is a virtual
-    path (no such file exists) -- we want to subtract the real path part (`/~xuser/devel/public`) and pass the rest
-    (`/path/to/route`) into Slim to select route handler.
+    path (no such file exists) -- we want to subtract the real path part (`/~xuser/devel/public` defined by
+    `RewriteBase`) and pass the rest (`/path/to/route`) into Slim to select route handler.
     
     ~~~
     # enable the mod_rewrite plugin
@@ -175,7 +176,7 @@ command line interpreter.
     DB_TYPE=pgsql
     DB_HOST=localhost
     DB_USER=xuser
-    DB_PASS=pwxuser
+    DB_PASS=password
     DB_NAME=xuser
     ~~~
     
@@ -268,8 +269,93 @@ command line interpreter.
     {: .note}
     You can use Bootstrap without jQuery, but some dynamic components like *navbar* would stop working.
 
+## Deploying the application
+Besides the [Akela](/course/mendelu/) server, you can upload your application to (almost) any PHP hosting (use Google
+to to find one -- you can even get a free one -- without second level domain, e.g. `your-app.their-hosting.com`). You
+basically need a hosting with PHP and a database. Be careful about PHP version -- check out requirements of all
+libraries and used framework. Database is more likely going to be MySQL or MariaDB than PostgreSQL, but the difference
+in basic SQL queries is minimal (find a hosting with suitable PHP version and choose database system before you start
+coding). There is some more reading about this in the chapter [for external readers](/course/not-a-student/).
+
+You usually want to have your application accessible after entering `http://www.your-app.com` into address bar.
+For this, you need a second level domain and you have to pay for it. You also do not want to type anything else after
+the domain name, e.g.: `http://www.your-app.com/public/login` -- that would be cryptic and tedious for users.
+The application should start right away after typing the domain name. 
+
+After successful registration (and payment), you usually will receive an email with FTP or SSH and database credentials.
+Almost all hosting services have a tool for database administration, some use [Adminer](https://www.adminer.org/),
+others use [phpMyAdmin](https://www.phpmyadmin.net/), they are similar. You can set up database structure through such
+tool or [import](/walkthrough-slim/database-intro/#import-database) it. Than you can create `.env` file
+for your hosting with proper credentials. Finally you can upload the application using [FTP or SSH client](/course/technical-support/#ftp--ssh).
+
+{: .note}
+Beginners often use PHP hosting as development environment because installing own PHP stack with database is a bit
+[problematic](/course/not-a-student/). Sometimes you need to configure the hosting to display PHP errors to be able
+to reasonably develop an application.
+
+The `public` folder should be set as the only one visible folder through HTTP protocol. Some hosting services allow you
+to choose the path to *public* folder through administration panel, other PHP hosting services are configured to create
+third level domains from top-level folders, e.g. a folder called `logs` in the root of your hosting disk space would
+cause a third level domain `http://logs.your-app.com` to exist. In this case, you need to rename the `public` folder
+to `www`. Some hosting services just publish all your files -- in this case, you need to move contents of `public`
+folder up one level to have the `index.php` file in the root.
+
+Be very careful about the `.env` file (especially in the last scenario), check whether there is no way to access it
+from the internet, e.g.: `http://logs.your-app.com/.env`. You can hide this file using
+[configuration directives in `.htaccess`](/articles/web-applications/environments/#the-env-file).
+
+Folder structure and files on general PHP hosting:
+
++ cache -- set chmod 0777 to this folder and all files in it
+  + .htaccess -- disallow access into this folder
+  + *.php -- cached templates
++ logs -- set chmod 0777 to this folder and all files in it
+  + .htaccess -- disallow access into this folder
+  + app.log -- log file
++ public -- or www
+  + css -- public CSS assets
+    + *.css
+  + images -- public images
+    + *.jpg
+  + js -- public JS assets
+    + *.js
+  + .htaccess -- configure `mod_rewrite`
+  + index.php -- entry-point of the application
++ src
+  + .htaccess -- disallow access into this folder
+  + dependencies.php
+  + middleware.php
+  + routes.php 
+  + settings.php
+  + ...
++ templates
+  + .htaccess -- disallow access into this folder
+  + *.latte -- original templates
++ vendor
+  + .htaccess -- disallow access into this folder
+  + ...
++ .env -- configuration file
+
+Everything under the `public` or `www` folder is available on the internet and can be accessed using HTTP protocol.
+Read about uploading user files and hiding them from internet in [previous chapter](/walkthrough-slim/upload/).
+
+{: .note}
+Do not upload the `.git` or `.idea` folder and `composer.*` files. They are useless on the hosting.
+
+Those `.htaccess` files should [prevent accessing contents](/course/technical-support/#set-a-directory-as-inaccessible-from-the-internet)
+of other folders than `public` or `www` through HTTP although these folders do not contain anything very secret and
+the contents of PHP files is never disclosed because the source code is executed and only the result (if any) is
+printed out. The `.htaccess` file in `public` or `www` folder is used to configure [`mod_rewrite`](/course/technical-support/#configuration-of-mod_rewrite).
+
+{: .note}
+The support of `.htaccess` files sometimes has to be enabled in configuration of hosting service manually. Some hosting
+services are not based on Apache or they do not allow usage of `.htaccess` files (check this out before subscribing).
+You can run PHP on [NGINX](https://www.nginx.com/) or other HTTP server, but they are configured differently.
+
 ## Summary
 Now you should have a project in similar state as in my BitBucket repository. The selection of libraries and framework
 is arbitrary. I could have chosen [Lumen](https://lumen.laravel.com/) over Slim and [Twig](https://twig.symfony.com/)
 over Latte. The process of selection of right libraries is tedious because you have to learn how to use them at least
 a bit and test them for your scenario.
+
+You should also have at leas a basic understanding of deploying the application on a real web server.
