@@ -62,12 +62,20 @@ to avoid opening URL such as `http://your-site.com/.env`.
 
 Hiding `.env` files in `.htaccess`:
 
-```
+~~~
+# for Apache 2.2 and lower
 <Files .env>
     Order allow,deny
     Deny from all
 </Files>
-```
+~~~
+
+~~~
+# for Apache 2.4
+<FilesMatch .env>
+    Require all denied
+</FilesMatch>
+~~~
 
 There are [libraries](https://github.com/vlucas/phpdotenv) which implement parsing `.env` file and reading values
 from it. In your code you just use a function (e.g. `env()`) which can read out a value from `.env` file and return
