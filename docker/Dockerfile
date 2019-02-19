@@ -28,4 +28,3 @@ ENV GRAPHVIZ_DOT="/usr/bin/dot"
 
 RUN echo Europe/Prague > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
- 
