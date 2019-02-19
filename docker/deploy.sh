@@ -10,32 +10,34 @@ date +%Y%m%d%H%M%S
 #  COMMAND="$COMMAND\n mput -d $entry"
 #done
 
-COMMAND=$(find . -type f)
+#find . -type f -exec echo "Uploading {}" \; -exec curl -v --disable-epsv --ftp-method nocwd --ftp-pasv --ftp-create-dirs -T "{}" -u "${FTP_USER}":"${FTP_PASS}" "${FTP_TARGET}/html/{}" \;
 
-COMMAND="set sftp:auto-confirm yes
-open -u $FTP_USER,$FTP_PASS $FTP_TARGET
-$COMMAND
-close
-exit"
+# COMMAND=$(find . -type f)
 
-#sed '#\.\/#mput ./#' $COMMAND)
-COMMAND=${COMMAND//.\//mput ./}
-echo "executing commands"
-#echo $COMMAND
-lftp -vvv -c "$COMMAND"
+# COMMAND="set sftp:auto-confirm yes
+# open -u $FTP_USER,$FTP_PASS $FTP_TARGET
+# $COMMAND
+# close
+# exit"
+
+# #sed '#\.\/#mput ./#' $COMMAND)
+# COMMAND=${COMMAND//.\//mput ./}
+# echo "executing commands"
+# #echo $COMMAND
+# lftp -vvv -c "$COMMAND"
 
 date +%Y%m%d%H%M%S
 
 
-# COMMAND="set sftp:auto-confirm yes
-# open -u $FTP_USER,$FTP_PASS $FTP_TARGET
-# mirror --reverse --use-cache --overwrite --no-perms --no-umask --transfer-all --parallel=4 -vvv /code/docker/_site/ /html/
-# close
-# exit"
+COMMAND="set sftp:auto-confirm yes
+open -u $FTP_USER,$FTP_PASS $FTP_TARGET
+mirror --reverse --use-cache --overwrite --no-perms --no-umask --transfer-all --parallel=4 -vvv /code/docker/_site/ /html/
+close
+exit"
 
-# lftp -c "$COMMAND"
+lftp -c "$COMMAND"
 
-# date +%Y%m%d%H%M%S
+date +%Y%m%d%H%M%S
 
 # upload_file() {
 #     if [ "$1" != ".travis.yml" ] && [ "$1" != "deploy.sh" ] && [ "$1" != "test.js" ] && [ "$1" != "package.json" ]
