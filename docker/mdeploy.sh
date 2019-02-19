@@ -3,10 +3,10 @@ set -e
 
 echo "Started mdeploy script"
 
-cd /code/_site/
-mkdir /code/tmp/
-mv /code/_site/~$MFTP_USER/$MFTP_PATH/* /code/tmp/
-cp -r /code/tmp/* /code/_site/
+cd /code/docker/_site/
+mkdir /code/docker/tmp/
+mv /code/docker/_site/~$MFTP_USER/$MFTP_PATH/* /code/docker/tmp/
+cp -r /code/docker/tmp/* /code/docker/_site/
 filesChanged=$(find . -type f)
 if [ ${#filesChanged[@]} -eq 0 ]; then
     echo "No files to update"

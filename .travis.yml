@@ -1,32 +1,16 @@
-sudo: required
-
 language: bash
 
 services:
   - docker
 
-addons:
-  apt:
-    packages:
-    - lftp
-
-before_install:
-  - docker-compose -v
-  - curl --version
-
 script:
-  - cd docker && docker-compose run --rm -e JEKYLL_ENV=production jekyll bundle exec jekyll build
+  - docker-compose -v
+  - cd docker && docker-compose run --rm -e JEKYLL_ENV=production site bundle exec jekyll build --source /code/
 
 deploy:
   - provider: script
     skip_cleanup: true
-    script: $TRAVIS_BUILD_DIR/docker/deploy.sh
+    script: docker-compose run --rm -e FTP_PASS -e FTP_TARGET -e FTP_USER site /code/docker/deploy.sh
   - provider: script
     skip_cleanup: true
     script: $TRAVIS_BUILD_DIR/docker/mdeploy-run.sh
-#    on:
-#      tags: true
-#   on:
-#     tags: true
-#     all_branches: true
-#     condition: "$TRAVIS_TAG =~ ^[0-9]+\.[0-9]+\.[0-9]+$"

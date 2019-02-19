@@ -1,35 +1,15 @@
 version: '2'
 
 services:
-  jekyll:
+  site:
     build:
       context: .
       dockerfile: Dockerfile
-    # image: quay.io/odinuv/site-jekyll
     tty: true
     stdin_open: true
     volumes:
-      - ../:/code
-    working_dir: /code
+      - ../:/code/
+    working_dir: /code/docker/
     ports:
       - "4000:4000"
-    command: bundle exec jekyll serve --watch -H 0.0.0.0 --force_polling
-  deploy:
-    build: .
-    build:
-      context: .
-      dockerfile: Dockerfile
-    # image: quay.io/odinuv/site-jekyll
-    tty: true
-    stdin_open: true
-    environment:
-      - MFTP_USER
-      - MFTP_PASS
-      - MFTP_TARGET
-      - MFTP_PATH
-    volumes:
-      - ../:/code
-    working_dir: /code
-    ports:
-      - "4000:4000"
-    command: /code/docker/mdeploy.sh
+    command: bundle exec jekyll serve --source /code/ --watch -H 0.0.0.0 --force_polling
