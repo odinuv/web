@@ -11,10 +11,6 @@ deploy:
   - provider: script
     skip_cleanup: true
     script: docker-compose run --rm -e FTP_PASS -e FTP_TARGET -e FTP_USER site /code/docker/deploy.sh
-    on:
-      all_branches: true
   - provider: script
     skip_cleanup: true
     script: $TRAVIS_BUILD_DIR/docker/mdeploy-run.sh
-    on:
-      all_branches: true
