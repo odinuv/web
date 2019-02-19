@@ -26,7 +26,7 @@ export -f upload_file
 cd /code/docker/_site/
 #find . -type f -exec echo "Uploading {}" \;
 #find . -type f -exec echo "Uploading $1" --exec curl --ftp-create-dirs -T "${1}" -u "${FTP_USER}":"${FTP_PASS}" "${FTP_TARGET}/html/${1}" {} \;
-find . -type f -exec echo "Uploading {}" \; -exec curl --disable-epsv --ftp-method nocwd --ftp-pasv --ftp-create-dirs -T "{}" -u "${FTP_USER}":"${FTP_PASS}" "${FTP_TARGET}/html/{}" \;
+find . -type f -exec echo "Uploading {}" \; -exec curl -v --disable-epsv --ftp-method nocwd --ftp-pasv --ftp-create-dirs -T "{}" -u "${FTP_USER}":"${FTP_PASS}" "${FTP_TARGET}/html/{}" \;
 
 #allFiles=$(find . -type f)
 #for f in ${allFiles}
