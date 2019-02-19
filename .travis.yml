@@ -1,20 +1,10 @@
-sudo: required
-
 language: bash
 
 services:
   - docker
 
-addons:
-  apt:
-    packages:
-    - lftp
-
-before_install:
-  - docker-compose -v
-  - curl --version
-
 script:
+  - docker-compose -v
   - cd docker && docker-compose run --rm -e JEKYLL_ENV=production site bundle exec jekyll build --source /code/
 
 deploy:
