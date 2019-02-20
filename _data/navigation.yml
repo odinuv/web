@@ -256,10 +256,13 @@ items:
         items:
         - url: /articles/web-applications/rest-api/
           title: REST API
+
         - url: /articles/web-applications/database-migrations/
           title: Database migrations
+
         - url: /articles/web-applications/environments/
           title: Environments
+
         - url: /articles/web-applications/i18n-and-l10n/
           title: Internationalisation and localisation
 
@@ -286,6 +289,9 @@ items:
 
         - url: /articles/security/csrf/
           title: Cross Site Request Forgery
+
+        - url: /articles/security/validation/
+          title: Input validation
 
   - url: /slides/
     title: Slides
