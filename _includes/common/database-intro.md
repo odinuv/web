@@ -174,7 +174,7 @@ to understand what gets inserted where. It is better to be **explicit and verbos
 
 #### DEFAULT and NULL
 They keyword `DEFAULT` means that a default value of the column should be used (in the above case,
-it is a [sequence](todo) value -- `nextval('location_id_location_seq'::regclass)`). The keyword
+it is a [sequence](/articles/database-tech/#automatically-generated-key) value -- `nextval('location_id_location_seq'::regclass)`). The keyword
 `NULL` means that no value will be inserted into that column.
 
 If you don't list a column in the

@@ -19,7 +19,8 @@ the [name-value pairs](/walkthrough/html-forms/#name-and-value) for controls.
 
 ### POST Values
 The name-value pairs of form controls accessible in PHP in either `$_GET` or `$_POST` variable. The `$_GET`
-and `$_POST` variables are one of [PHP magical variables](todo). They are magical because they are automatically
+and `$_POST` variables are one of [PHP magical variables](http://php.net/manual/en/language.variables.superglobals.php).
+They are magical because they are automatically
 (magically) filled with values from the HTTP request. Whether the form controls are available in the
 `$_GET` or `$_POST` variable is determined by what `method` attribute is assigned to the HTML form. Therefore
 having `<form method='post'>` does an [HTTP POST](/articles/web/#http-protocol) method and
@@ -61,7 +62,7 @@ the content of the `$_POST` array is only filled with what you have just entered
 
 The *GET* method behaves slightly different than the *POST* method in that it changes the URL of the script. This
 means that the state of the form is encoded in the address of the page and therefore remains there
-until changed again. It is quite important to decide on the [correct HTTP method to use](todo).
+until changed again. It is quite important to decide on the [correct HTTP method to use](/articles/http/#when-to-use-get-or-post-method).
 
 ### Connecting together
 Now let's make a page which lists the persons in the database and lets the user search within them.
@@ -208,7 +209,7 @@ and printing of the results.
 Perhaps you have got the idea that I could have added the `required` attribute to the keyword
 form control to prevent the form from being submitted empty and could have simplified the PHP script. Yes, we
 can do that, but it won't simplify the PHP script, because the validation in form is
-only on the client side (web browser) and is [unreliable](todo).
+only on the client side (web browser) and is [unreliable](/articles/security/validation/).
 
 ## Task -- Precise the search
 One can object that the search form as it is now is too relaxed. What if the user wants to

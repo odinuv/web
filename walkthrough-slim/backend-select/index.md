@@ -216,7 +216,7 @@ and printing of the results.
 Perhaps you have got the idea that I could have added the `required` attribute to the keyword
 form control to prevent the form from being submitted empty and could have simplified the PHP script. Yes, we
 can do that, but it won't simplify the PHP script, because the validation in form is
-only on the client side (web browser) and is [unreliable](todo).
+only on the client side (web browser) and is [unreliable](/articles/security/validation/).
 
 ## Task -- Precise the search
 One can object that the search form as it is now is too relaxed. What if the user wants to

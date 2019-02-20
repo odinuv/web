@@ -266,11 +266,12 @@ server where PHP and database is already working.
 
 ## Deploying the application
 Besides the [Akela](/course/mendelu/) server, you can upload your application to (almost) any PHP hosting (use Google
-to to find one -- you can even get a free one -- without second level domain, e.g. `your-app.their-hosting.com`). You
+to to find one -- you can even get a free one, without second level domain, e.g. `your-app.their-hosting.com`). You
 basically need a hosting with PHP and a database. Be careful about PHP version -- check out requirements of all
 libraries and used framework. Database is more likely going to be MySQL or MariaDB than PostgreSQL, but the difference
 in basic SQL queries is minimal (find a hosting with suitable PHP version and choose database system before you start
-coding). There is some more reading about this in the chapter [for external readers](/course/not-a-student/).
+coding). Unfortunately, [SQL error codes](/walkthrough-slim/backend-insert/) which can be used to detect e.g. duplicate
+entries are different for MySQL or MariaDB. There is some more reading about this in the chapter [for external readers](/course/not-a-student/).
 
 You usually want to have your application accessible after entering `http://www.your-app.com` into address bar.
 For this, you need a second level domain and you have to pay for it. You also do not want to type anything else after

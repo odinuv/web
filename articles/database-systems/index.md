@@ -183,7 +183,7 @@ To avoid having isolated systems there are two main options:
 - a network of distributed systems with defined interfaces
 
 I will concentrate on the first approach as it is much simpler. I will get into more details
-about the [second approach later](todo). A centralized data storage ensures that data has
+about the [second approach later](/articles/web-applications/rest-api/). A centralized data storage ensures that data has
 one true master version. All applications then connect to a single database. This does not need
 to be physically a single machine, but logically it must be one point of (write) access.
 

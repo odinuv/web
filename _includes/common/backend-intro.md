@@ -27,7 +27,7 @@ and [extensions](https://pecl.php.net/). A single file with the PHP code (and `.
 An application is composed of many scripts usually.
 
 ## Getting Started
-Before you start, you need to have a [web server ready](todo). Test that your setup is working by
+Before you start, you need to have a [web server ready](/course/mendelu/). Test that your setup is working by
 creating this PHP script file:
 
 {% highlight php %}

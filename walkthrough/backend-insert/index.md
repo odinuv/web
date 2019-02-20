@@ -41,7 +41,7 @@ the bellow PHP script regardless of what your form looks like!
 Notice, that I used a `$message` variable in the template. It will come in handy.
 
 ### Inserting Data
-It is important to use a correct [HTTP method](todo). Since inserting a person is a data changing action, I
+It is important to use a correct [HTTP method](/articles/http/#when-to-use-get-or-post-method). Since inserting a person is a data changing action, I
 am using the POST method (`<form method='post'>`). This means that we will find the form data in
 `$_POST` variable when the user submits the form.
 
@@ -117,7 +117,7 @@ The condition `(empty($_POST['height']) || empty(intval($_POST['height'])))` fir
 `$_POST['height']` is defined and non-empty. Then it checks if the value converted to an integer
 (using the [`intval` function](http://php.net/manual/en/function.intval.php)) is still not empty (i.e. non-zero).
 In both conditions the order of conditional expressions is important. It must always start with the check
-for an empty `$_POST` field due to [partial boolean evaluation](todo).
+for an empty `$_POST` field due to [partial boolean evaluation](http://php.net/manual/en/language.operators.logical.php).
 
 ## Summary
 In this chapter you have learned how to inset data from a HTML form into a database table. As usual there are multiple

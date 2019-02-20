@@ -193,7 +193,7 @@ echo (4 + 5) * 10;
 ~~~
 
 The above will print `90`. The order of expression evaluation is particularly
-important for [boolean expressions](todo). Also note that `echo` is not part of the expression,
+important for [boolean expressions](http://php.net/manual/en/language.operators.logical.php). Also note that `echo` is not part of the expression,
 it is a command which prints a value to the screen. The value is obtained by evaluating the expression.
 
 #### Control Flow

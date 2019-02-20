@@ -57,8 +57,10 @@ So I have simply assigned the error to the `$message` variable and then passed t
 `$tplVars['message'] = $message;`.
 
 {: .note}
-There are actually different types of SQL errors, you can check the value returned by `$e->getCode()` method.
-For example the duplicate record error is 23505 (unique violation) and the error in date format has code 22007. 
+There are actually different types of SQL errors, you can check the value returned by `$e->getCode()` method
+and display appropriate error message. For example the duplicate record error is 23505 (unique violation) and
+the error in date format has code 22007. Check out the list of error codes for [PostgreSQL](https://www.postgresql.org/docs/9.6/errcodes-appendix.html)
+or [MariaDB/MySQL](https://mariadb.com/kb/en/library/mariadb-error-codes/).
 
 Try the above script and verify that the form validation works fine. If you put the `required` attribute to
 the form controls, either remove it for the test, or use [developer tools](/course/not-a-student/#web-browser)
@@ -111,7 +113,7 @@ The condition `(empty($data['height']) || empty(intval($data['height'])))` first
 `$data['height']` is defined and non-empty. Then it checks if the value converted to an integer
 (using the [`intval` function](http://php.net/manual/en/function.intval.php)) is still not empty (i.e. non-zero).
 In both conditions the order of conditional expressions is important. It must always start with the check
-for an empty `$data` field due to [partial boolean evaluation](todo).
+for an empty `$data` field due to [partial boolean evaluation](http://php.net/manual/en/language.operators.logical.php).
 
 ## Summary
 In this chapter you have learned how to inset data from a HTML form into a database table. As usual there are multiple

@@ -332,7 +332,7 @@ To prevent this, make sure that your HTML pages are valid by checking them with
 the [HTML Validator](https://validator.w3.org/). This checks the document against all the
 rules outlined in the [HTML specification](https://www.w3.org/html/). A valid HTML document has
 a really good chance that it will display the same way in all available web browsers.
-To ease the validation process, you should probably install some [browser extension](todo).
+To ease the validation process, you should probably install some [browser extension](https://addons.mozilla.org/).
 
 ## HTML Standards
 The standardization organization for all web related standards is [W3C -- WWW Consortium](https://www.w3.org/).
