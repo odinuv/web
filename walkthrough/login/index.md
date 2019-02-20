@@ -47,44 +47,6 @@ same passwords (not even salt can solve this situation). There are also online i
 is compromised and used by someone else to harm original person. You can add another tier of user authentication,
 e.g. send an SMS to his cell phone to retype a verification code or distribute user [certificates](todo).
 
-### Task -- create a form for user registration
-It should have an input for login or email and two inputs for password verification (all inputs are required).
-You can use [Bootstrap](/walkthrough/css/bootstrap/) CSS styles.
-
-File `templates/register.latte`:
-
-{: .solution}
-{% highlight html %}
-{% include /walkthrough/login/templates/register.latte %}
-{% endhighlight %}
-
-### Task -- process registration with PHP script
-Use [password_hash()](http://php.net/manual/en/function.password-hash.php) function. Read the documentation
-because this function requires actually two input parameters. Second one is the algorithm which is used for
-password hash calculation.
-
-File `register.php`:
-
-{: .solution}
-{% highlight php %}
-{% include /walkthrough/login/register.php %}
-{% endhighlight %}
-
-After successful registration, a record representing user account in the database should look like this:
-
-![User account in database](../../common/login/account-in-db.png)
-
-## User verification and login
-User verification is also not a big problem -- a person who wishes to log-in into your application has to visit
-login page with a simple two-input form. After he fills and submits the form, he is verified against the database.
-If an existing account is found and passwords match, your application can trust this user.
-
-{: .note}
-Actually there were cases when a user logged into another user's account by a mistake -- two different accounts had
-same passwords (not even salt can solve this situation). There are also online identity thefts when user's password
-is compromised and used by someone else to harm original person. You can add another tier of user authentication,
-e.g. send an SMS to his cell phone to retype a verification code or distribute user [certificates](todo).
-
 ### Task -- create a form for user login with PHP script
 Create a login form and a PHP script to process login information. You can make error message a bit confusing to
 obfuscate existence of user accounts (sometimes you do not wish to easily reveal users of your app -- especially when
