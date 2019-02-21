@@ -37,6 +37,7 @@ Read about web application security and risks:
 - [SQL injection](/articles/security/sql-injection/)
 - [Cross site scripting](/articles/security/xss/)
 - [Cross site request forgery](/articles/security/csrf/)
+- [Input validation guidelines](/articles/security/validation/)
 - Storing passwords and user authentication - walkthrough article in [Slim](/walkthrough-slim/login/) or
   [plain PHP](/walkthrough-slim/login/)
   
