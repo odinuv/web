@@ -75,7 +75,8 @@ server where PHP and database is already working.
     Keys of `$container` array will be accessible as `$this->key` in your routes.
 
 4.  Create `cache` and `logs` folders (if not present). Remember to set *write* permission for *others* and *group* on
-    Akela server.
+    your server (`chmod 0777`). Delete any log or cache files uploaded from your local computer to allow the application
+    to generate new ones.
 
 5.  Prepare database connection as dependency in `src/dependencies.php`. [PDO](http://php.net/manual/en/book.pdo.php) is
     usually enabled as PHP module on your server. It is the same approach as with Latte templates. The difference is
@@ -116,7 +117,7 @@ server where PHP and database is already working.
     ];
     ~~~
    
-6.  Optional: configure `public/.htaccess` for Akela server. On [our development server](/course/mendelu/), we need to
+6.  Optional: configure `public/.htaccess` for your server. On [our development server](/course/mendelu/), we need to
     set the *rewrite base* directory to distinguish between physical part of URL path and virtual paths (handled by
     router). This basically says, that Slim's router should only be supplied with part of path **after**
     `/~xuser/devel/public` to determine current route. It is because the entry point (`index.php` file) of the
@@ -271,7 +272,8 @@ basically need a hosting with PHP and a database. Be careful about PHP version -
 libraries and used framework. Database is more likely going to be MySQL or MariaDB than PostgreSQL, but the difference
 in basic SQL queries is minimal (find a hosting with suitable PHP version and choose database system before you start
 coding). Unfortunately, [SQL error codes](/walkthrough-slim/backend-insert/) which can be used to detect e.g. duplicate
-entries are different for MySQL or MariaDB. There is some more reading about this in the chapter [for external readers](/course/not-a-student/).
+entries are different for MySQL or MariaDB. There is some more reading about free web hosting services in the chapter
+[for external readers](/course/not-a-student/).
 
 You usually want to have your application accessible after entering `http://www.your-app.com` into address bar.
 For this, you need a second level domain and you have to pay for it. You also do not want to type anything else after
@@ -297,8 +299,9 @@ to `www`. Some hosting services just publish all your files -- in this case, you
 folder up one level to have the `index.php` file in the root.
 
 Be very careful about the `.env` file (especially in the last scenario), check whether there is no way to access it
-from the internet, e.g.: `http://logs.your-app.com/.env`. You can hide this file using
-[configuration directives in `.htaccess`](/articles/web-applications/environments/#the-env-file).
+from the internet, e.g.: `http://www.your-app.com/.env`. You can hide this file using
+[configuration directives in `.htaccess`](/articles/web-applications/environments/#the-env-file) or not use it at all
+(put credentials into PHP config file).
 
 Folder structure and files on general PHP hosting:
 
@@ -330,7 +333,7 @@ Folder structure and files on general PHP hosting:
 + vendor
   + .htaccess -- disallow access into this folder
   + ...
-+ .env -- configuration file
++ .env -- configuration file with database credentials
 
 Everything under the `public` or `www` folder is available on the internet and can be accessed using HTTP protocol.
 Read about uploading user files and hiding them from internet in [previous chapter](/walkthrough-slim/upload/).
@@ -346,7 +349,7 @@ printed out. The `.htaccess` file in `public` or `www` folder is used to configu
 {: .note}
 The support of `.htaccess` files sometimes has to be enabled in configuration of hosting service manually. Some hosting
 services are not based on Apache or they do not allow usage of `.htaccess` files (check this out before subscribing).
-You can run PHP on [NGINX](https://www.nginx.com/) or other HTTP server, but they are configured differently.
+You can run PHP on [NGINX](https://www.nginx.com/) or other HTTP servers, but they are configured differently.
 
 ## Summary
 Now you should have a project in similar state as in my BitBucket repository. The selection of libraries and framework
@@ -354,4 +357,4 @@ is arbitrary. I could have chosen [Lumen](https://lumen.laravel.com/) over Slim 
 over Latte. The process of selection of right libraries is tedious because you have to learn how to use them at least
 a bit and test them for your scenario.
 
-You should also have at leas a basic understanding of deploying the application on a real web server.
+You should also have at least a basic understanding of deploying the application on a real web server.

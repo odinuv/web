@@ -40,6 +40,8 @@ according to the top level domain (a domain with TLD .info is cheaper than .com)
 low -- few dollars per a year. This environment is much more stable and obviously ad-free. You can also get
 support from your service provider.
 
+Read more about deploying the application in [walkthrough](/walkthrough-slim/beginning/).
+
 ### Installing your own server on your PC
 You can use [PHP development server](http://php.net/manual/en/features.commandline.webserver.php). This means that
 you install PHP interpreter on your system, call `php -S localhost:8000` command in a terminal which opens specified
@@ -76,7 +78,7 @@ I also use it in this book.
 Another option is to use embedded database system like [SQLite](https://sqlite.org/). PHP has a plugin to work
 with this type of database (just install it and/or enable it in PHP config file php.ini -- found in PHP's home directory).
 You can then use PDO interface to communicate with it in your scripts and Adminer supports it too (you
-just type path to datafile instead of hostname and port). This kind of database can be used with pure PHP
+just type relative path to datafile instead of hostname and port). This kind of database can be used with pure PHP
 development server.
 
 ## Web browser
