@@ -10,18 +10,18 @@ code get executed. Important control flow constructs:
 In PHP conditional statements are written using **if** -- **else**
 [reserved words](/articles/programming/#keywords).
 
-{% highlight php %}
+~~~ php
 {% include /common/backend-intro/ifelse-1.php %}
-{% endhighlight %}
+~~~
 
 The condition itself must be always in parentheses. Multiple conditions
 can be joined using [boolean](/articles/programming/#type-system) operators `&&` (and)
 and `||` (or) (there are [other confusing boolean operators](http://php.net/manual/en/language.operators.logical.php) in PHP), negation is
 written using `!`. Do not confuse boolean logical operators with [bitwise operators](http://php.net/manual/en/language.operators.bitwise.php).
 
-{% highlight php %}
+~~~ php
 {% include /common/backend-intro/ifelse-2.php %}
-{% endhighlight %}
+~~~
 
 {: .note}
 You can write either `elseif` or `else if`, there is no difference.
@@ -29,9 +29,9 @@ You can write either `elseif` or `else if`, there is no difference.
 ### Switch -- Case
 The above example can be rewritten using `switch` -- `case` statements:
 
-{% highlight php %}
+~~~ php
 {% include /common/backend-intro/ifelse-3.php %}
-{% endhighlight %}
+~~~
 
 Note that it is important to put `break` in each branch, which terminates the
 `switch` execution (otherwise all consecutive branches will get executed too).
@@ -42,11 +42,11 @@ When comparing two values, you must use the comparison operator `==`.
 If you use the assignment operator, you might run into an unexpected behavior.
 If you write:
 
-{% highlight php %}
-if ($numberOfWheels = 4) {
+~~~ php?start_inline=1
+if ($numberOfWheels = 4) {  //assigns 4 into variable and evaluates the variable as truthy
     echo "It's a car.";
 }
-{% endhighlight %}
+~~~
 
 The above condition is **always true** (regardless of the actual value of $numberOfWheels).
 This is because the value of assignment is the assigned value, so the condition
@@ -64,9 +64,9 @@ anything to the constant number 4). Personally I find this way of writing weird.
 A loop executes a piece of a code multiple times in so called **iterations**. An iteration
 is one single execution of the loop body. There are three basic loops in PHP as in C:
 
-{% highlight php %}
+~~~ php
 {% include /common/backend-intro/loop-1.php %}
-{% endhighlight %}
+~~~
 
 All three loops are equivalent, so the above will output '012345678901234567890123456789'.
 `for` is used when the number of iterations is known beforehand (like in the above example),
@@ -74,6 +74,34 @@ as it is the simplest of the three. `while` is used when the terminating conditi
 evaluated before the iteration is executed. `do-while` is used when the termination condition
 can be evaluated only after the iteration is executed. PHP also has a special `foreach` loop
 which we'll [attend to later](../array/#traversing-arrays).
+
+### Using `break` and `continue`
+You can *break* the loop using `break` keyword. Once used, the iteration is stopped and code execution skips
+to the next line after the loop:
+
+~~~ php?start_inline=1
+//this code will print 012345end of script
+for($i = 0; $i < 10; $i++) {
+    if($i == 6) {
+        break;
+    }
+    echo $i;
+}
+echo 'end of script';
+~~~
+
+There is also `continue` keyword which skips just one iteration of the loop:
+
+~~~ php?start_inline=1
+//this code will print 012345789end of script
+for($i = 0; $i < 10; $i++) {
+    if($i == 6) {
+        continue;
+    }
+    echo $i;
+}
+echo 'end of script';
+~~~
 
 ## Task
 Take the [contact form from the previous chapter](../#task-1----contact-form) and:
@@ -94,9 +122,9 @@ And with `$currentUser = '';` the form should look like this:
 ![Screenshot -- Introduction page](/common/backend-intro/form-4b.png)
 
 {: .solution}
-{% highlight php %}
+~~~ php
 {% include /common/backend-intro/form-4.php %}
-{% endhighlight %}
+~~~
 
 As you can see, the script is getting rather complicated -- especially the concatenation of
 the strings. From now on, we will be working on simplifying the code. Again, there are
