@@ -38,6 +38,9 @@ items:
           - url: /walkthrough-slim/backend-intro/objects/
             title: Functions & Classes & Objects
 
+          - url: /walkthrough-slim/backend-intro/exceptions/
+            title: Exceptions
+
           - url: /walkthrough-slim/backend-intro/receiving-values/
             title: Receiving values
 
@@ -133,6 +136,9 @@ items:
 
           - url: /walkthrough/backend-intro/objects/
             title: Functions & Classes & Objects
+
+          - url: /walkthrough/backend-intro/exceptions/
+            title: Exceptions
 
           - url: /walkthrough/backend-intro/receiving-values/
             title: Receiving values

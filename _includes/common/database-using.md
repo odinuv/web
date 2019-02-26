@@ -124,7 +124,7 @@ error handling.
 {% endhighlight %}
 
 The first important part is the line `$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);`
-which makes the database driver switch into the mode in which it [*throws*](todo) an exception
+which makes the database driver switch into the mode in which it [*throws*](../backend-intro/exceptions/) an exception
 whenever an error occurs in operations.
 
 Second, I wrapped the whole code in a `try - catch` statement. As the name suggests, the code
