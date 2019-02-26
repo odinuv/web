@@ -26,7 +26,7 @@ Template engine is a library which processes a HTML page with **macros**
 (snippets of a template language) and produces a valid HTML page.
 There are many templating engines available for PHP, some of the popular engines
 are: *Smarty*, *Latte*, *Twig*. All of them (and many others) can be used as
-parts of their respective [frameworks](todo) or standalone. In the following
+parts of their respective [frameworks](https://en.wikipedia.org/wiki/Comparison_of_web_frameworks#PHP) or standalone. In the following
 examples I will stick to using the standalone *Latte* templating engine. The
 choice is rather arbitrary, as all templating engines work in a very similar way, have
 almost the same features and they even have a somewhat similar syntax.
@@ -188,7 +188,7 @@ Template file `person-form.latte`:
 
 ## Summary
 Using a template engine requires you to learn its macro language. However it
-does lead to a cleaner [and safer](todo) HTML and PHP code. You don't need to struggle so much
+does lead to a cleaner [and safer](/articles/security/xss/) HTML and PHP code. You don't need to struggle so much
 with using [proper quotes](/walkthrough/backend-intro/#working-with-strings).
 When using templates, don't forget that
 the variables defined inside a template are only those passed in an array to the

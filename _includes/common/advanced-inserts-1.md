@@ -26,7 +26,7 @@ the column `id_location` of the table `location`. This also means that multiple 
 they live in one household as a family).
 
 Because te person links to the address, you have to insert information about the address first. Then
-somehow find the ID assigned to that new row (remember that it is [auto-generated](todo)), store the ID in local variable of the script.
+somehow find the ID assigned to that new row (remember that it is [auto-generated](/articles/database-tech/#automatically-generated-key)), store the ID in local variable of the script.
 Then you can insert the the row with person information which will include the ID of the new address.
 The only problem is how to find the auto-generated ID.
 

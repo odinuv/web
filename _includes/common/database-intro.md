@@ -104,8 +104,8 @@ the structure of the `person` table in your database:
 Here you can see for example that:
 
 - the column `id_person` has the data type `integer`,
-- the column `id_person` is an [automatically generated key](todo) (Auto Increment),
-- the column `id_person` has the default value `nextval('person_id_person_seq')` (next value of a [sequence](todo)),
+- the column `id_person` is an [automatically generated key](/articles/database-tech/#automatically-generated-key) (Auto Increment),
+- the column `id_person` has the default value `nextval('person_id_person_seq')` (next value of a [sequence](/articles/database-tech/#automatically-generated-key)),
 - the column `birth_day` has the data type `date`,
 - the column `birth_day` allows inserting `NULL`,
 - the column `gender` has the type `gender` (a special type defined in your database),
@@ -132,7 +132,7 @@ the type of `id_location` and `street_number` is `integer`. All other columns ha
 is another name for a `string`. All of the columns except `id_location` allow
 [`NULL`s](/articles/sql-join/#null) and
 the column `id_location` has a default value, which means that the all of the columns are optional.
-Columns with [automatically generated IDs](todo) -- such as `id_location` in this table -- are
+Columns with [automatically generated IDs](/articles/database-tech/#automatically-generated-key) -- such as `id_location` in this table -- are
 almost never inserted.
 
 Let's insert some data into the `location` table:
@@ -189,7 +189,7 @@ Then it depends on the definition of the column:
 
 #### Working with Dates
 Although dates are printed as strings, the database server stores them in a
-[timestamp format](todo). When inserting a date, you must make sure
+[timestamp format](/articles/database-tech/#date-and-time). When inserting a date, you must make sure
 that the server understands it correctly by either:
 
 - supplying the date in the format expected by the server (usually `YYYY-MM-DD`),
@@ -234,7 +234,7 @@ UPDATE table_name SET list_of_modifications WHERE search_condition
 
 The UPDATE command updates existing values in existing *rows* in the table. The *list_of_modifications*
 is a list of assignments to be made. The *search_condition* is an expression which is evaluated for
-each row and should yield a [boolean](todo) value. If the *search_condition* is true, the corresponding row
+each row and should yield a boolean value. If the *search_condition* is true, the corresponding row
 is updated, otherwise it is skipped.
 
 Let's update a row in the `location` table:

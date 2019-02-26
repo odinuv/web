@@ -43,7 +43,7 @@ something like this:
 The above example is a simple PHP script, which does only one thing, it prints out (using the
 command `echo`) a string of characters `<h1>Fant&#244;mas was here!</h1>`. As you can see
 the script starts with the mark `<?php` which is required (there is also an end mark,
-[which should not be used](todo)). Each PHP statement is terminated by a semicolon `;`.
+[which should not be used](http://php.net/manual/en/language.basic-syntax.phptags.php)). Each PHP statement is terminated by a semicolon `;`.
 Comments in the code are marked by `//` or `#`, and multi-line comments start with `/*` and end with `*/`.
 
 The main objective of a PHP application is to generate a HTML page, which gets sent to the web browser,
@@ -77,10 +77,9 @@ echo 'Hello John O\'Reilly'; // VALID again - single quote is contained inside t
 In `echo "Hello John!";`, the `"Hello John!"` is a [string literal](/articles/programming/#literal).
 
 ### Variables
-Variables contain values which can be changed (as opposed to
-[constants](/articles/programming/#constant)). Variables begin with
-the dollar character `$`, should be [safe names](todo) and case sensitive (not always, but sometimes yes -- so,
-to simplify things let's pretend that they always are).
+Variables contain values which can be changed (as opposed to [constants](/articles/programming/#constant)). Variables
+begin with the dollar character `$`, should be [safe names](http://php.net/manual/en/language.variables.variable.php)
+and case sensitive (not always, but sometimes yes -- so, to simplify things let's pretend that they always are).
 
 You can do standard operations with
 [C-like operators](/articles/programming/#operators) - `+`, `-`, `*`, `/`, `=`, `==`.
@@ -140,7 +139,7 @@ With direct variable use, you can then simply rewrite the above example into:
 {% include /common/backend-intro/variables-3.php %}
 {% endhighlight %}
 
-[Special characters](todo) e.g. `\n` for a new line and `\t` for a tab character, can be used to
+[Special characters](http://php.net/manual/en/regexp.reference.escape.php) e.g. `\n` for a new line and `\t` for a tab character, can be used to
 put whitespace into the string. So `echo "Hi,\nJohn"` would actually print:
 
     Hi,

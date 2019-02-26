@@ -220,7 +220,7 @@ but still is a web resource and communication is transported using the textual H
 
 Web application is a collection of (obviously) dynamic web pages, which together give the
 impression of a single coherent and compact application. Historically WWW service was
-never designed for this which yields to some [technical drawbacks](todo).
+never designed for this which yields to some [technical drawbacks](/articles/cookies-sessions/).
 
 ## HTTP Protocol
 An [HTTP protocol](https://www.w3.org/Protocols/) splits communication into transactions. A HTTP Transaction consists of:

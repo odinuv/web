@@ -16,8 +16,8 @@ In PHP conditional statements are written using **if** -- **else**
 
 The condition itself must be always in parentheses. Multiple conditions
 can be joined using [boolean](/articles/programming/#type-system) operators `&&` (and)
-and `||` (or) (there are [other confusing boolean operators](todo) in PHP), negation is
-written using `!`.
+and `||` (or) (there are [other confusing boolean operators](http://php.net/manual/en/language.operators.logical.php) in PHP), negation is
+written using `!`. Do not confuse boolean logical operators with [bitwise operators](http://php.net/manual/en/language.operators.bitwise.php).
 
 {% highlight php %}
 {% include /common/backend-intro/ifelse-2.php %}
@@ -54,7 +54,7 @@ This is because the value of assignment is the assigned value, so the condition
 the [boolean type conversion](../#boolean-conversions)
 kicks in and converts `4` to boolean, and according to
 the [rules](../#boolean-conversions) `4` is not false, so it is true.
-That's unexpected and somewhat dangerous, good [development tools](todo) will warn you about this.
+That's unexpected and somewhat dangerous, good [development tools](/course/not-a-student/#text-editor-or-ide) will warn you about this.
 
 Sometimes this is prevented by writing conditions in reverse order `if (4 == $numberOfWheels)`. Because in
 this case, using a single `=` -- i.e. `if (4 = $numberOfWheels)` will cause a compilation error (you cannot assign

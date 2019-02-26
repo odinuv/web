@@ -98,8 +98,7 @@ To center the `.inner` div, add `display: flex; justify-content: center` to the 
 What happens if you make the content smaller? I also made padding smaller, so that the behavior is more visible:
 
 {: .image-popup}
-{% comment %}TODO? stejny obrazek jak predtim{% endcomment %}
-![Screenshot - Block layout - smaller width](/articles/css/sample-page-10c.png)
+![Screenshot - Block layout - smaller width](/articles/css/sample-page-10d.png)
 
 As you can see, the `.inner` element width remained 50px wide and it **overflowed** the designated space
 in `.outer` div. By default, the overflow is visible. You can control what happens with the overflow

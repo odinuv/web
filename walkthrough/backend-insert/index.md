@@ -47,7 +47,7 @@ am using the POST method (`<form method='post'>`). This means that we will find 
 
 First we need to check that the user submitted the form. If yes, then we need to validate the input from the
 user. All three fields are required (they are mandatory in the `person` table) and must be validated on the
-server (in the PHP script) because the [client side validation is insufficient](todo).
+server (in the PHP script) because the [client side validation is insufficient](/articles/security/validation/).
 If the user input is valid, then we can send an `INSERT` query to the database, to insert the data. We
 will need a [prepared statement](/walkthrough/database-using/#selecting-data-with-parameters)
 to pass in the values.

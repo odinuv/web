@@ -239,7 +239,7 @@ styles for libraries -- e.g. [jQuery UI](https://jqueryui.com/))
 
 The only disadvantage of this approach is that it means that the browser has to
 sent another HTTP request for each linked style. This may cause a performance
-hit on the page loading which in turn may be avoided by setting up [HTTP caching](todo).
+hit on the page loading which in turn may be avoided by setting up [HTTP caching](/walkthrough-slim/upload/#caching).
 
 ### Inside Page
 {% highlight html %}
@@ -269,7 +269,7 @@ The `<style>` element is therefore used in cases where it does not make sense to
 styles with the rest of the application. Alternatively it can be used to lower the
 number of HTTP requests. Note that it *is not* a good idea to include CSS files in the page
 (e.g. using PHP [`require`](/walkthrough#/backend-intro/divide-and-conquer)) because the HTML page will
-get unnecessarily large, it is better to set up [HTTP caching](todo).
+get unnecessarily large, it is better to set up [HTTP caching](/walkthrough-slim/upload/#caching).
 
 ### Inline
 Third (quick & dirty) option is to include styles in the `style` attribute:

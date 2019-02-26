@@ -4,7 +4,7 @@ in the latest chapter also how to
 [work with a database using the SQL language](../database-intro/).
 In this chapter, you'll learn how to work with the database from within a
 PHP script. This is a very important step in connecting all the
-[technologies in the stack](todo) together.
+technologies in the stack together.
 
 ## Getting Started
 Before you start, you need to have working credentials to a database, and
@@ -114,8 +114,8 @@ are totally unrelated. However, it reduces a lot of confusion to use consistent 
 new names).
 
 ### Error Control
-An important part of communicating with the database is [handling errors](todo). There are
-[multiple options](todo), but the easiest way is to use [exceptions](todo).
+An important part of communicating with the database is handling errors. There are
+[multiple options](http://php.net/manual/en/pdo.error-handling.php), but the easiest way is to use [exceptions](http://php.net/manual/en/language.exceptions.php).
 The following example extends the previous `INSERT` example with
 error handling.
 

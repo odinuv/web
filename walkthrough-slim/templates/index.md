@@ -42,7 +42,7 @@ almost the same features and they even have a somewhat similar syntax.
 
 ### Getting Started with Latte
 If you followed the previous steps --- if you used the 
-[prepared skeleton](todo) --- I have good news for you. Latte is ready to use in your project.
+[prepared skeleton](https://bitbucket.org/apvmendelu/slim-based-project/src/master/) --- I have good news for you. Latte is ready to use in your project.
 Actually, you should already have a route in you `routes.php` file similar to one below:
 
 ~~~ php?start_inline=1
@@ -75,7 +75,7 @@ The template code is HTML document with placeholders or [macros] enclosed in
 curly braces `{}`. Everything in curly braces is Latte, everything else is 
 plain old HTML. In the above template, there are the following pieces of Latte code:
 
-- `{extends layout.latte}` --- a reference to [**layout template** (see below)](todo)
+- `{extends layout.latte}` --- a reference to **layout template** (see below)
 - `{block title}...{/block}` and `{block body}...{/block}` --- code which defines contents of a template block, the block itself is defined in the layout template
 - `{link sample-process}` --- a `link` [macro](/walkthrough-slim/named-routes/)
 
@@ -88,7 +88,7 @@ in `layout.latte` file:
 
 The above is also a latte template, it contains only two pieces of Latte code
 `{include title}` and `{include body}`. Otherwise it is a valid HTML page
-(though rather empty). Both blocks of code use the [`include` macro](todo) which
+(though rather empty). Both blocks of code use the [`include` macro](https://latte.nette.org/en/macros#toc-file-including) which
 defines a block of the given name (`title` and `body`) and expects some other
 template to fill in their contents. And that is exactly what the `sample.latte`
 template does. It takes the `layout.latte` template and then fills in the

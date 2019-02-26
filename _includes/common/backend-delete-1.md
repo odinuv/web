@@ -1,7 +1,7 @@
 This section is dedicated to teach you how to delete database records.
 Deleting something from a database is permanent and cannot be undone unless you have a database
 backup. Be careful about what you delete, though do not be afraid to experiment with
-your project since [you do have a backup for it](todo).
+your project since [you do have a backup for it](../database-intro/).
 
 ## Uniquness
 The [SQL `DELETE`](../database-intro/#delete) command is already familiar to you.
