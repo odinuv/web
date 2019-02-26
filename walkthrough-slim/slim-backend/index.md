@@ -97,7 +97,7 @@ code is used much more often.
 In the above simple request handler, you don't have to worry about the
  `Request $request, Response $response, $args` stuff in the handler. Now let's see what 
  it is good for. Every request handler (regardless of the URL and HTTP method) has the
- same [*signature*](todo):
+ same *signature* (name + arguments):
 
 ~~~ php?start_inline=1
 function (Request $request, Response $response, $args) {}
