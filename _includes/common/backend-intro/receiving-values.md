@@ -243,7 +243,7 @@ add them. What happens, when the user inputs some non-numeric string? What happe
 {: .note}
 Think about this for a while. Do you want this? What would happen, if such HTML tag or tags are stored on the server
 and displayed to other visitors? What if it is not just one HTML tag (e.g. you can display an image with some
-advertisement)? It depends -- it OK for [CMS](https://en.wikipedia.org/wiki/Content_management_system) where an
+advertisement)? It depends -- it is OK for [CMS](https://en.wikipedia.org/wiki/Content_management_system) where an
 administrator needs to be able to modify content of particular page, it is not OK for public comments.  
 
 ### Task -- try to protect the form
@@ -278,6 +278,7 @@ function to convert any non-numeric values to zero.
 ~~~
 
 Your form is now more robust for invalid input and is also secured from [XSS](/articles/security/xss/) vulnerability.
+There is some more reading related to this topic in [article about input validation](/articles/security/validation/).
 
 ## Summary
 You should know how to read *GET* and *POST* input in plain PHP script. If you are going to use a framework to build

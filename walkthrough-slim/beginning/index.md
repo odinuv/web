@@ -19,7 +19,7 @@ Following steps may change in the future, this tutorial is for Slim framework ve
 You do not have to install [Postgre database](https://www.postgresql.org/) or [Apache web server](https://httpd.apache.org/)
 because you only need local PHP to execute Composer. You should be able to run `php` and `composer` commands in your
 command line interpreter. I will discuss deployment of the application later, I suppose that you have a remote
-server where PHP and database is already working.
+server where PHP and database is already working. You can also try to run Composer on [Akela](/course/mendelu/#running-composer-on-akela-server).
 
 ## Actual project
 1.  Create a directory and open command line in this new folder.

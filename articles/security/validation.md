@@ -63,7 +63,7 @@ end visual effect.
 The client-side validations are still a good thing for 99.9% of users because they can be quickly informed about
 an error without submitting the form.
 
-The same thing also applies for data stored in [cookies](/articles/cookies-sessions/) as they can also be accessed
+The same rules also applies for data stored in [cookies](/articles/cookies-sessions/) as they can also be accessed
 and modified with developer tools (in *storage* tab).
 
 ## Summary

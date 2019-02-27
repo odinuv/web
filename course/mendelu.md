@@ -90,6 +90,10 @@ DB_NAME=xsmith12
 The database name is same as your login.
 
 ## Running Composer on Akela server
+
+{: .alert}
+This is currently impossible as Akela server has some problem with accessing HTTPs resources. 
+
 If you do not have [Composer](https://getcomposer.org/) [installed on your own PC](https://getcomposer.org/doc/00-intro.md)
 (you also need to install [PHP](http://php.net/downloads.php) as command line script interpreter and it can be a bit
 difficult for beginners), you can execute Composer on Akela server:
@@ -105,4 +109,4 @@ difficult for beginners), you can execute Composer on Akela server:
 
 {: .note}
 The *phar* file extension stands for ["PHP archive"](http://php.net/manual/en/book.phar.php) and is actually a bundle
-of multiple PHP scripts executable with PHP interpreter. It means, that Composer itself is written in PHP. 
+of multiple PHP scripts executable with PHP interpreter. It means, that Composer itself is written in PHP.

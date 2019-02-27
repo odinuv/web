@@ -3,8 +3,9 @@ title: New topics
 permalink: /course/new/
 ---
 
-This is a list of fresh content:
+This is a list of fresh content in this book:
 
+- [2019-2-26 Exceptions](/walkthrough-slim/backend-intro/exceptions/)
 - [2019-2-20 Input validation](/articles/security/validation/)
 - [2019-2-7 Beginning](/walkthrough-slim/beginning/)
 - [2019-1-23 Git](/articles/programming/git/)
