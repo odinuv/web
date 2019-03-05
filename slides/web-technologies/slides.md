@@ -33,8 +33,9 @@ permalink: /slides/web-technologies/
 - Example of simple HTTP request and response
 
 
-        GET / HTTP/1.0
-        Host: mendelu.cz
+        GET / HTTP/1.1⏎
+        Host: mendelu.cz⏎
+        ⏎
         
 `/` represents path from URL and `mendelu.cz` is hostname
 </section>
@@ -71,8 +72,9 @@ permalink: /slides/web-technologies/
 <section markdown='1'>
 ## PHP - Simplistic Approach
 
-	GET /welcome.php?name=John
-    Host: domain.tld
+	GET /welcome.php?name=John HTTP/1.1⏎
+    Host: domain.tld⏎
+    ⏎
 
 welcome.php:	
 {% highlight php %}
@@ -86,10 +88,13 @@ echo "</html>";
 <section markdown='1'>
 ## PHP - Processing the request
 
-	POST /login.php?l=en
-    Host: domain.tld
-
-	username=John&password=NotTooSecret&action=login
+	POST /login.php?l=en HTTP/1.1⏎
+    Host: domain.tld⏎
+    Content-Type: application/x-www-form-urlencoded⏎
+    Content-Length: 48⏎
+    ⏎
+	username=John&password=NotTooSecret&action=login⏎
+	⏎
 
 welcome.php:	
 {% highlight php %}
@@ -237,8 +242,9 @@ Real layout is slightly bigger!
 
 HTTP request:
 
-        GET /welcome?name=John
-        Host: domain.tld
+        GET /welcome?name=John HTTP/1.1⏎
+        Host: domain.tld⏎
+        ⏎
 
 Requeste handler:
 ~~~ php?start_inline=1
@@ -289,7 +295,7 @@ $app->get('/welcome', function (Request $request, Response $response) {
 </section>
 
 <section markdown='1'>
-## HTTP Requests
+## HTTP Requests on previous slided
 - Parameters:
 	- Request URL or Request body?
     	- Body = Data
