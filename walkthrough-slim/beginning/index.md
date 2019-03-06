@@ -43,6 +43,14 @@ server where PHP and database is already working. You can also try to run Compos
     composer require ujpef/latte-view
     ~~~
     
+    If you use [Akela](/course/mendelu/#running-composer-on-akela-server) as your development server, you have to
+    manually install older version of Latte templating engine using following command, because latest Latte version
+    requires PHP 7.x which is not installed on Akela:
+    
+    ~~~ bash
+    composer require latte/latte:2.4
+    ~~~
+    
     Than open `src/dependencies.php` and add following lines and delete original *renderer* dependency (if present):
     
     ~~~ php?start_inline=1
@@ -50,7 +58,7 @@ server where PHP and database is already working. You can also try to run Compos
     use Latte\PhpWriter;
     use Latte\Loaders\FileLoader;
     
-    $container['view'] = function ($container) use ($settings) {
+    $container['view'] = function ($container) {
        //Create instance of Latte engine and configure path to cache files
        $engine = new Engine();
        $engine->setLoader(new FileLoader(__DIR__ . '/../templates/'));
