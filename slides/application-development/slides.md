@@ -70,6 +70,21 @@ permalink: /slides/application-development/
 </section>
 
 <section markdown='1'>
+## Step 1 - analysis of requirements
+- General (non-functional)
+    - Web/desktop/console application
+    - Operating system and technologies
+- What the appliction should do (functional)
+    - List of use-cases + scenarios
+- Who will use the application
+    - User roles and other actors (time, other apps)
+- How the user interface should work
+    - Graphical design / wireframes / no UI at all
+- What kinds information will be stored (if any)
+- Interfaces for other applications (if any)
+</section>
+
+<section markdown='1'>
 ## Step 2 - architecture
 - Structure and distribution of application's services
     - presentation layer
