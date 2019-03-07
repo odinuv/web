@@ -93,8 +93,7 @@ echo "</html>";
     Content-Type: application/x-www-form-urlencoded⏎
     Content-Length: 48⏎
     ⏎
-	username=John&password=NotTooSecret&action=login⏎
-	⏎
+	username=John&password=NotTooSecret&action=login
 
 welcome.php:	
 {% highlight php %}
