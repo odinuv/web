@@ -407,6 +407,8 @@ can achieve this by creating `.gitattributes` file and setting something like th
 - all source code files
 - graphics used by your application (small images)
 - some global config files (ideally customised for different environments)
+- `composer.json` (PHP), `package.json` (JS), `Gemfile` (Ruby), `requirements.txt` (Python) and similar files which
+  are used to download required libraries for given programming language
 
 ## What does not belong to repository?
 - private config files (they would interfere with other programmers' environment and they can contain secret passwords
@@ -417,6 +419,9 @@ can achieve this by creating `.gitattributes` file and setting something like th
 - your notes and test files
 - shared libraries (you can download them using e.g. [Composer](https://getcomposer.org/) on [NPM](https://www.npmjs.com/))
   - you never change files from libraries
+
+{: .note}
+Use `.gitignore` file to define ignored paths (see [this](/articles/programming/git/#ignoring-files) section).
 
 ## Summary
 This article is a quick overview of basic Git commands and reasons to use VCS. You probably need to read a lot more
