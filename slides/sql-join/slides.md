@@ -328,7 +328,7 @@ FROM <em>table_expression</em>
 WHERE  {
 <em>column_expression</em>
     [NOT] { = | <> | < | <= | > | >= } <em>column_expression</em> |
-	{ ALL | ANY | SOME } pod-dotaz |
+	{ ALL | ANY | SOME } sub-query |
 <em>column_expression</em>
     [NOT] IN ( { <em>set_of_values</em> | <em>sub-query</em> } ) |
 <em>column_expression</em> [NOT] LIKE <em>pattern</em> |
