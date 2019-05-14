@@ -126,7 +126,7 @@ CREATE TABLE contact (
 The commands for defining the database structure do depend on many proprietary implementation details
 of the given database system -- for example data types or different approaches
 to an automatically generated key. Also even within one database system, there
-may be complex changes in behavior -- e.g [MyISAM](http://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html) ×
+may be complex changes in behavior -- e.g. [MyISAM](http://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html) ×
 [InnoDB](http://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html) storage
 engines on the [MySQL database server](http://dev.mysql.com/doc/refman/5.7/en/).
 It is therefore the best to use a [good tool](/course/not-a-student/#text-editor-or-ide) for designing the database,

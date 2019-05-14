@@ -320,7 +320,7 @@ The positioning (`position` property) can be:
 - `absolute` -- the element is positioned relative to its closest positioned parent,
 - `fixed` -- the element is positioned relative to browser window,
 - `static` -- default positioning, the element is positioned after its preceeding sibling
-(i.e elements are positioned as they are written down in the HTML document -- hence `static`).
+(i.e. elements are positioned as they are written down in the HTML document -- hence `static`).
 
 #### Relative position
 You can see how relative positioning works on the [example with floats](#float-layout):

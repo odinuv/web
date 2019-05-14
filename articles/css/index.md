@@ -372,7 +372,7 @@ following simplified rules are applied in the cascade:
 less specific selectors. For basic selectors this means that
 id selector (e.g. `#someId`) overrides class selector (e.g. `.someClass`) which overrides type selector (e.g. `ul`).
 This gets more complicated in complex selectors but the rule of thumb is that a more specific rule wins
-over a generic one. I.e `p.firstParagraph` is more specific than `.firstParagraph` which is more specific than `p` selector.
+over a generic one. I.e. `p.firstParagraph` is more specific than `.firstParagraph` which is more specific than `p` selector.
 There is an [exact formula](https://www.w3.org/TR/selectors/#specificity) for computing selector specificity.
 - origin and importance -- author styles (provided in the page source by you) override the user-agent
 styles (provided by the web browser). This can also be modified by the
@@ -388,7 +388,7 @@ shorthand properties.
 A shorthand property allows you to define values for multiple properties at once. Common examples are:
 `background`, `margin`, `border`, `padding`...
 
-E.g setting:
+E.g. setting:
 {% highlight css %}
 border: 1px solid black;
 {% endhighlight %}
@@ -740,7 +740,7 @@ immediately define a style for some HTML elements. Some common at rules are:
 [character encoding](https://en.wikipedia.org/wiki/Character_encoding) e.g. `@charset "UTF-8";`, important when using the
 [`content` property](https://developer.mozilla.org/en-US/docs/aWeb/CSS/content).
 - [`@media`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media) -- allows to defined **nested rules** for different media types (`screen`, `print`, `speech`). This is very useful to
-create styles for pages that print nicely -- e.g `@media print { body { font-size: 10pt } }`.
+create styles for pages that print nicely -- e.g. `@media print { body { font-size: 10pt } }`.
 - [`@font-face`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face) -- Allows you to define a font, which is not installed on the end-user computer. The font will be downloaded
 with the web page.
 - [`@import`](https://developer.mozilla.org/en-US/docs/Web/CSS/@import) -- Allows importing other CSS file. This can be

@@ -359,7 +359,7 @@ SELECT * FROM location ORDER BY city
 {% endhighlight %}
 
 Compare the result of the above query with the result of the below query. Look at multiple
-rows with the same city - e.g Brno.
+rows with the same city - e.g. Brno.
 
 {% highlight sql %}
 SELECT * FROM location ORDER BY city, street_name

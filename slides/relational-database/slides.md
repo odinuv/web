@@ -345,7 +345,7 @@ the attribute).
 <section markdown='1'>
 ## Key
 - Relation is a **set** of tuples -- tuples must be **unique**.
-- **Key** is a minimal set of attributes which uniquely identify every entity (tuple) - e.g person:
+- **Key** is a minimal set of attributes which uniquely identify every entity (tuple) - e.g. person:
     - first name + last name + date of birth (compound key);
     - SSN (social security number) (simple key);
     - person number (simple key).

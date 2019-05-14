@@ -386,7 +386,7 @@ It is used when you are not interested in all details:
 
 Aggregation typically contains a **what** and a **how**. When a **what** can be
 measured, it is called a **metric**. An example of aggregation function, which is not a
-metric is e.g [string_agg](https://www.postgresql.org/docs/devel/static/functions-aggregate.html).
+metric is e.g. [string_agg](https://www.postgresql.org/docs/devel/static/functions-aggregate.html).
 A **how** defines how that metric should be computed.
 
 - What is the average age of our customer? (**metric**: average age, **how**: none)

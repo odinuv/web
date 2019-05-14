@@ -114,7 +114,7 @@ If you have looked at the list of built-in [PHP functions and classes](http://ph
 you may have wondered
 what happens when you define a function or class which already exists. Well, a
 conflict happens and it becomes unclear what function you're calling. To solve this problem, PHP has
-**namespaces**. Referring to classes in namespaces is done using the backslash `\` character, e.g:
+**namespaces**. Referring to classes in namespaces is done using the backslash `\` character, e.g.:
 
 {% highlight php %}
 $object = new \MyNameSpace\MyClass();

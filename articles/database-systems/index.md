@@ -158,7 +158,7 @@ But in that case, the accountant would be e.g. allowed to set specific *access p
 
 ### Data Integrity
 **Integrity** is the *state* of data (database) when all data is complete and correct. What
-*correct* means is determined by **integrity constraints**, e.g:
+*correct* means is determined by **integrity constraints**, e.g.:
 
 - Age is a positive integer.
 - Every person is of some age (age cannot be empty).
@@ -261,7 +261,7 @@ cyclic relations nicely. It is very universal and flexible, but it has hardly an
 
 The network model is probably superseded by [Graph databases](https://en.wikipedia.org/wiki/Graph_database) which
 are based on [Graph Theory](https://en.wikipedia.org/wiki/Graph_(abstract_data_type)) (not to be confused with charts).
-Graph databases are being actively developed and are very suitable for some special databases -- e.g timetables
+Graph databases are being actively developed and are very suitable for some special databases -- e.g. timetables
 and connections.
 
 ### Relational Model

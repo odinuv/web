@@ -19,7 +19,6 @@ $app->post('/register', function(Request $request, Response $response, $args) {
                 $stmt->execute();
                 //redirect to login page
                 return $response->withHeader('Location', $this->router->pathFor('login'));
-                exit;
             } catch (PDOException $e) {
                 $this->logger->error($e->getMessage());
                 $tplVars['message'] = 'Database error.';

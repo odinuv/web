@@ -101,7 +101,7 @@ Entities begin with an ampersand `&` and end with a semicolon `;`, they may be e
     (decimal) or `&#x3E;` ([hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal)).
 
 There are two primary reasons for using entities. One reason is that you need to write a character
-which has a special meaning in HTML. e.g writing this is incorrect:
+which has a special meaning in HTML. e.g. writing this is incorrect:
 
 {% highlight html %}
 <p>Three is smaller than five: 3 < 5</p>

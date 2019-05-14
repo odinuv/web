@@ -16,7 +16,7 @@ be of a different type. There are two types of arrays in PHP:
 - non-ordinal -- **associative** (indexes are e.g. strings)
 
 An ordinal array has *only* indexes of an [ordinal type](https://en.wikipedia.org/wiki/Ordinal_data_type) --
-a type which has a clear sequence of values (e.g integer). `for` loop can be used only with ordinal
+a type which has a clear sequence of values (e.g. integer). `for` loop can be used only with ordinal
 arrays. Other types of loops (`foreach`, `while`, `do-while`) can be used with both types of arrays.
 `foreach` loop is especially useful for non-ordinal arrays. There is no other difference in
 working with ordinal and associative arrays.

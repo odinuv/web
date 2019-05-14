@@ -23,7 +23,7 @@ raw mostly procedural PHP and no PHP framework. HTML is rendered using Latte Tem
 -  The [**Slim Walkthrough**](/walkthrough-slim/) uses the Slim PHP framework. It represents a quicker way to the goal, but there
 is some magic involved. HTML is also rendered using Latte Templates.
 
-Both Walkthroughs share some parts (e.g HTML, HTML forms, SQL), the difference is mainly in the way the PHP code on
+Both Walkthroughs share some parts (e.g. HTML, HTML forms, SQL), the difference is mainly in the way the PHP code on
 backend is organized.
 Note that for **[APV Course outline](/course/)**, the [**Slim Walkthrough**](/walkthrough-slim/) is the current one.
 

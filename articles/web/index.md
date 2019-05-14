@@ -101,7 +101,7 @@ If you want an introduction to an internet structure, you can read
 Standards of the Internet Network are published as
 [RFC (Request for Comments)](https://en.wikipedia.org/wiki/Request_for_Comments). As the name suggests
 not all of RFCs are actually used as standards, but if you are unsure about something, do it
-as some RFC says. RFC standards are industrial standards -- i.e there is no law enforcing them, but
+as some RFC says. RFC standards are industrial standards -- i.e. there is no law enforcing them, but
 every sane programmer follows them.
 
 ### Internet protocols

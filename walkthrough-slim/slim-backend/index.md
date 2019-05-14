@@ -86,7 +86,7 @@ $app->get('/hello', 'handleGetHello');
 {: .note}
 There function `handleGetHello` in the `$app->get` line is passed as a string. If you write 
 `handleGetHello()`, you immediatelly call the function. However, in this case we want to call 
-the function only when something happens (i.e when a particular HTTP request is encountered). 
+the function only when something happens (i.e. when a particular HTTP request is encountered). 
 So we only tell the `$app->get` function what function it should call when it needs to.
 
 The above code is also acceptable, but is unnecessarily verbose, because the function

@@ -60,7 +60,7 @@ redirect_from: /en/apv/slides/database-systems/
 <section markdown='1'>
 ## Data integrity
 - Integrity -- the state of the data (database) when all data is complete and correct.
-- What is correct is determined by **integrity constraints**, e.g:
+- What is correct is determined by **integrity constraints**, e.g.:
     - Age is a positive integer.
     - Every person is of some age (her age cannot be empty).
     - Every person has an address (his address cannot be empty).

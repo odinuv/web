@@ -185,7 +185,7 @@ SELECT AVG(height) FROM person
 
 will return `7.5`. This means that for example for person height, you cannot replace
 an unknown value with 0. As you can see in the above example, doing so will return wrong
-results for e.g *average person height*. Therefore it is very important to use NULL values
+results for e.g. *average person height*. Therefore it is very important to use NULL values
 where needed.
 
 ## Joining Tables
