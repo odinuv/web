@@ -269,6 +269,36 @@ good editors have functions to format code automatically, and good editors also 
 templates are very long -- use inheritance and includes to avoid code repetition. Sometimes the problems is not with
 template syntax, but with rendered HTML structure, this is covered in [frontend debugging article](/articles/debugging/frontend/).
 
+#### Template syntax errors
+Another type of issue related to templates is error in the syntax of template itself. Sometimes the error report is
+somewhat useful, in this case, it at least says which file is wrong (but not the line).
+
+{: .image-popup}
+![Template syntax error](/articles/debugging/template-syntax-error-1.png)
+
+The cause of this error is missing `{/if}` block:
+
+~~~ html
+{extends layout.latte}
+{block body}
+  <!-- some html -->
+  {if $message}
+     <!-- nested html -->
+  <!-- missing {/if} -->
+  <!-- more html -->
+{/block} <!-- line 24 -->
+~~~
+
+In some cases, the template error report is useless or the template itself is too complicated and it is hard to spot
+the error. Try to remove pieces of template code until the page starts rendering something. This way you can locate
+the problem and focus on that part of code. Following error report shows Latte error without specified template file
+(the error is raised from FileLoader.php which is part of Latte engine).
+
+{: .image-popup}
+![Template syntax error](/articles/debugging/template-syntax-error-2.png)
+
+In this case, the error is in `{include ...}` macro which was specified without the file name or block name parameter.
+
 ### Environment related errors
 Sometimes the application works correctly on your machine, but runs into difficulties on the production or testing
 server.
