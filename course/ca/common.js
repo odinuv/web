@@ -25,7 +25,7 @@ function handleGetUser(userData)
     resultElm.show();
     if (userData.valid) {
         resultElm.
-            text('E-mail je v pořádku.').
+            text('E-mail is OK.').
             addClass('valid');
         $('#inputEmail').
             data('userId', userData.idUser).
@@ -45,10 +45,10 @@ function handleGetUser(userData)
                 var cont = $('#pointResultSuccess');
                 cont.show();
                 if (userData.pointsSufficient) {
-                    $('#pointsConclusion').html('To je dostatečný počet, takže máte <strong>splněno</strong>.');
+                    $('#pointsConclusion').html('That is enough, you <strong>passed</strong> the requirement.');
                     cont.addClass('valid').removeClass('invalid');
                 } else {
-                    $('#pointsConclusion').html('To zatím ještě <strong>nestačí</strong>.');
+                    $('#pointsConclusion').html('That is not <strong>enough</strong> yet.');
                     cont.addClass('invalid').removeClass('valid');
                 }
             } else {
@@ -60,7 +60,7 @@ function handleGetUser(userData)
         }
     } else {
         resultElm.
-            text('Zadaný E-mail nemám v databázi studentů, pokud opravdu studujete APV v tomto semestru, pošlete mi zprávu (ICQ, e-mail).').
+            text('Your email is not in database of students, if you really study APV course, send me a message (email).').
             addClass('invalid');
     }
     $('#loader').hide();
@@ -77,7 +77,7 @@ function handleError(response)
         msg = response.statusText;
     }
     $('#requestResult').
-        text('Došlo k chybě: ' + response.status + ': ' + msg).
+        text('Error occurred: ' + response.status + ': ' + msg).
         addClass('invalid').
         show();
 }
