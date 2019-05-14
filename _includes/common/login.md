@@ -34,6 +34,17 @@ function.
 You can also use a salt with the md5 or sha1 but you have to handle it by yourself (you will need another column in
 your database table to store it).
 
+It is impossible to show/send user his original forgotten password due to hashing (but the security benefits of hashing
+are more significant). If you need to have the ability of self managed passwords restoring in your application, you
+should send a new password to email specified during registration process. You can use [PHP's `mail()` function](https://www.php.net/manual/en/function.mail.php).
+Even better way is to send unique password reset request link to his email, so the password is in fact restored
+only when the user clicks this link from his email account.
+
+{: .note}
+This makes the email address of a user also a very sensitive information. Change of an email address should only be
+possible after confirmation of ownership of current email address -- send unique token to his current email address
+to authorize changes. 
+
 ### Task -- try to calculate hash with random salt and verify it
 To store a password during registration process:
 
