@@ -26,7 +26,7 @@ To pass the course you have to:
   -- [**First evaluation**](https://akela.mendelu.cz/~lysek/apv/vysledky.txt)
   -->
 - pass the final exam (minimum 50% points)
-  - you have to answer at least 2 of 3 SQL queries somewhat correctly
+  - you have to answer at least 2 of 3 SQL queries somewhat correctly (get at least 12 points out of 24)
 
 The grade from the final exam and the project evaluation make up for the final course grade.
 

@@ -9,7 +9,7 @@ permalink: /course/faq/
 This place should navigate you quickly to important sections and tries to gather answers for questions of typical
 beginner. If you have any other question and you think that it should be answered here, mail [me](mailto:jiri.lysek@mendelu.cz).
 
-## Course related questions
+## Course and project related questions
 
 ### Can I have custom project assignment?
 It is possible to have a different assignment, but it has to be equally (or more) challenging as the default one.
@@ -43,6 +43,53 @@ It is recommended but you can present the project after your exam. Be aware that
 similar reasoning and they will postpone the presentation date as late as possible. It can happen, that few last
 days before the submission deadline will be crowded with project presentations and you will not manage to present
 your work in time.
+
+### How do I know that my project is OK?
+First of all, try to use it. Every application has to be tested by a user (you or somebody else). Write down some
+scenarios (create a person with/without location, add multiple contacts to that person, move a person to another
+location, create a meeting and invite people, ...) and try to perform them. You will see whether the app allows such
+actions to be executed and how smoothly they are carried out.
+
+Keep in mind these key points when you design the application:
+- somebody will use it from scratch (almost empty database).
+- somebody will use it for two, three, four ... or even more years.
+- you want to install (sell) as many copies as possible to different users. They will have different
+  requirement on contact/relation types.
+
+### Dial tables
+Those tables called `contact_type` and `relation_type` are *dial tables*. They are there to customize the application
+for different users (different instances of the same application). You should load records from them whenever you need
+to specify contact or relation type in a form. Do not retype values from these tables into templates. If you do not
+like that records in these tables are in English, change them to any other language in Adminer.
+
+Wrong - this code does not reflect potential changes in dial table:
+
+~~~ html
+<select name="idct">
+    <option value="1">Facebook</option>
+    <option value="2">Skype</option>
+    <option value="...">...</option>
+</select>
+~~~
+
+Correct:
+
+~~~ php?start_inline=1
+try {
+    $stmt = $this->db->query('SELECT * FROM contact_type ORDER BY name');
+    $tplVars['types'] = $stmt->fetchAll();
+} catch (Exception $e) {
+    //log or show
+}
+~~~
+
+~~~ html
+<select name="idct">
+    {foreach $types as $t}
+    <option value="{$t['id_contact_type']}">{$t['name']}</option>
+    {/foreach}
+</select>
+~~~
 
 ## Questions (almost) impossible to answer
 
