@@ -90,12 +90,21 @@ that can activate or deactivate various functions of your application.
 {: .note}
 The `.env` file is usually given and user of the application cannot do anything with predefined values.
 
-## Dials and user config
+## Lookup tables and user config
 Do you remember those two tables called `contact_type` and `relation_type` from your course project? They are typical
-dial tables. They are there to store possible types of something. The reason to use such dials is to allow certain
+lookup tables. They are there to store possible types of something. The reason to use such lists is to allow certain
 customisations for different instances of your application. When you install a new instance of your application,
 you can add or remove values from these tables according to requirements of particular user. You can also translate
-those values.
+those values to a different language.
+
+It is not a good idea to harcode such values into your source code. At least try to put the values into config
+file so they can be modified at once.
+
+{: .note}
+You can decide whether to put list values into config file or into the database depending on the relationship between
+entities: if you can store the value into a text column and you do not plan to use the value much in SQL querries
+(e.g. for filtering) of related record, you can put it into config file otherwise you better use lookup table with
+foreign key (try to avoid `SELECT DISTINCT column FROM table`).
 
 {: .image-popup}
 ![Database Schema](/common/schema.svg)
@@ -105,7 +114,7 @@ of customisation and complexity of source code. You should try to allow as much 
 relatively small complexity increase of source code to cover most user requirements.
 
 {: .note}
-It is a good practice to allow users of the application to modify values in dial tables. The ability to modify
+It is a good practice to allow users of the application to modify values in lookup tables. The ability to modify
 these values can be conditionally dependent on user privileges (e.g. admin user).
 
 ## Summary

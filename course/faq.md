@@ -56,13 +56,13 @@ Keep in mind these key points when you design the application:
 - you want to install (sell) as many copies as possible to different users. They will have different
   requirement on contact/relation types.
 
-### Dial tables
-Those tables called `contact_type` and `relation_type` are *dial tables*. They are there to customize the application
+### Lookup tables
+Those tables called `contact_type` and `relation_type` are *lookup tables*. They are there to customize the application
 for different users (different instances of the same application). You should load records from them whenever you need
 to specify contact or relation type in a form. Do not retype values from these tables into templates. If you do not
 like that records in these tables are in English, change them to any other language in Adminer.
 
-Wrong - this code does not reflect potential changes in dial table:
+Wrong - this code does not reflect potential changes in lookup table:
 
 ~~~ html
 <select name="idct">
