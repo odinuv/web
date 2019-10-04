@@ -15,7 +15,7 @@ the development of web applications and database applications (relational databa
 ## Requirements
 To pass the course you have to:
 
-- get at least 90 points on [Codecademy](https://www.codecademy.com/) -- send [me](mailto:jiri.lysek@mendelu.cz) an
+- get at least 90 points on [Codecademy](https://www.codecademy.com/) -- send [me](mailto:jan.kolomaznik@mendelu.cz) an
   email with link to your CA profile with text `[APV]` (brackets included) somewhere in that page. 
   E.g. use "About Me" section in "Account settings". 
   <!--

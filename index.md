@@ -69,13 +69,13 @@ you to [google them](http://lmgtfy.com/) for yourself. Many of the technical det
 along the way, but they are not really important. Also this book concentrates on showing you how things
 should be done properly, so that you produce professional and reliable applications.
 
-*Who am I?* Main authors of this are [Odin](https://github.com/odinuv), [still teaching](http://is.mendelu.cz/lide/clovek.pl?id=22586)
-at [Mendel University in Brno](http://mendelu.cz/en/) and [working elsewhere](https://linkedin.com/in/odinuv)
-and [Jiri Lysek](http://is.mendelu.cz/lide/clovek.pl?id=54010).
+*Who am I?* Main authors of this book are [Ondrej Popelka](https://www.linkedin.com/in/odinuv/) and [Jiri Lysek](https://www.linkedin.com/in/jiri-lysek/).
+We were teachers of APV course at [Mendel University in Brno](http://mendelu.cz/en/)
+in the past years. This course is currently maintaind by [Jan Kolomaznik](https://www.linkedin.com/in/jan-kolomazn%C3%ADk-137925160/).
 
 ## Contributing
 If you find errors or weak spots in the book, please open an issue on [Github repository](https://github.com/ujpef/site/issues). If you feel
 confident that you can correct the issue as well, please send a
 [pull request](https://help.github.com/articles/using-pull-requests/). If you feel for
-a larger contribution, or you want to discuss something about the book, contact us using an [email](mailto:jiri.lysek@mendelu.cz).
+a larger contribution, or you want to discuss something about the book, contact us using an [email](mailto:jan.kolomaznik@mendelu.cz).
 

@@ -7,7 +7,7 @@ permalink: /course/faq/
 {:toc}
 
 This place should navigate you quickly to important sections and tries to gather answers for questions of typical
-beginner. If you have any other question and you think that it should be answered here, mail [me](mailto:jiri.lysek@mendelu.cz).
+beginner. If you have any other question and you think that it should be answered here, mail [me](mailto:jan.kolomaznik@mendelu.cz).
 
 ## Course and project related questions
 
