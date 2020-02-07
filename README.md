@@ -2,6 +2,8 @@
 
 An online book about web application development with tutorial.
 
+You can find the book here: [odinuv.cz](http://odinuv.cz)
+
 # Running in Docker
 
 ```
