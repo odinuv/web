@@ -2,7 +2,7 @@
 
 An online book about web application development with tutorial. We use [PHP](http://php.net/) programming language and [Slim framework](http://www.slimframework.com/) with [Latte](https://github.com/nette/latte) templating engine to guide students through the process of building working web application which can be used to manage persons witch contacts, relationships and their meetings. The book also covers a lot of topics related to web development like SQL language and relational databases, CSS styles with [Bootstrap](https://getbootstrap.com/), security, REST API, Git etc.
 
-You can find the book here: [odinuv.cz](http://odinuv.cz/)
+You can find the book here: [odinuv.cz](https://odinuv.cz/)
 
 # Contributing
 
