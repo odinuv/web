@@ -71,7 +71,7 @@ should be done properly, so that you produce professional and reliable applicati
 
 *Who am I?* Main authors of this book are [Ondrej Popelka](https://www.linkedin.com/in/odinuv/) and [Jiri Lysek](https://www.linkedin.com/in/jiri-lysek/).
 We were teachers of APV course at [Mendel University in Brno](http://mendelu.cz/en/)
-in the past years. This course is currently maintaind by [Jan Kolomaznik](https://www.linkedin.com/in/jan-kolomazn%C3%ADk-137925160/).
+in the past years. This course is currently maintained by [Jan Kolomaznik](https://www.linkedin.com/in/jan-kolomazn%C3%ADk-137925160/).
 
 ## Contributing
 If you find errors or weak spots in the book, please open an issue on [Github repository](https://github.com/ujpef/site/issues). If you feel
