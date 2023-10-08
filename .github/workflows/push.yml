@@ -1,0 +1,22 @@
+name: GitHub Actions
+on: [ push ]
+concurrency: ci
+
+env:
+  FTP_USER:
+  FTP_TARGET:
+  FTP_PASS: projects/kbc-ci-platform-services/locations/global/keyRings/ci-object-encryptor/cryptoKeys/ci-object-encryptor
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Build
+        run: |
+          docker-compose run --rm -e JEKYLL_ENV=production site bundle exec jekyll build
+
+      - name: Publish
+        run: |
+          docker-compose run --rm -e FTP_PASS -e FTP_TARGET -e FTP_USER site /code/provisioning/deploy.sh
