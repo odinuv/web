@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/code/
+    ports:
+      - "4000:4000"
+    command: bundle exec jekyll serve --source /code/ --watch -H 0.0.0.0 --force_polling
