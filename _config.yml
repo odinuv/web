@@ -7,24 +7,24 @@ defaults:
       pdf: true
 
 url: "https://odinuv.com"
-#url: "https://akela.mendelu.cz"
-#baseurl: "/~xpopelka/"
 
 exclude:
-  - docker-compose.yml
-  - Dockerfile
+  - .sass-cache/
+  - .jekyll-cache/
+  - .git/
+  - .gitignore
+  - .dockerignore
+  - .idea/
+  - README.md
   - Gemfile
   - Gemfile.lock
-  - README.md
-  - deploy.sh
-  - mdeploy.sh
-  - .travis.yml
-  - replace.sh
+  - Dockerfile
+  - docker-compose.yml
+  - provisioning/
 
 sass:
   style: compressed
 
 plugins:
   - jekyll-sitemap
-  - jekyll-plantuml
-  - jekyll-redirect-from  
+  - jekyll-redirect-from

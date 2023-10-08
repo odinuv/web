@@ -2,12 +2,8 @@ name: GitHub Actions
 on: [ push ]
 concurrency: ci
 
-env:
-  FTP_USER:
-  FTP_TARGET:
-  FTP_PASS: projects/kbc-ci-platform-services/locations/global/keyRings/ci-object-encryptor/cryptoKeys/ci-object-encryptor
 jobs:
-  Build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -18,5 +14,12 @@ jobs:
           docker-compose run --rm -e JEKYLL_ENV=production site bundle exec jekyll build
 
       - name: Publish
+        # if: ${{ $GITHUB_REF_NAME == 'main' }}
         run: |
+          printf $FTP_TARGET
+          printf "${{ vars.FTP_USER }}"
           docker-compose run --rm -e FTP_PASS -e FTP_TARGET -e FTP_USER site /code/provisioning/deploy.sh
+        env:
+          FTP_USER: ${{ vars.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+          FTP_TARGET: ${{ vars.FTP_TARGET }}
