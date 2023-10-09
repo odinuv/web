@@ -20,7 +20,7 @@ done < "$TMP_FILE"
 printf "quit \n" >> "$CMD_FILE"
 
 # cat "$CMD_FILE"
-SSHPASS=$FTP_PASS
+export SSHPASS=$FTP_PASS
 sshpass -e sftp -oBatchMode=no -v -b "$CMD_FILE" -P 22 "$FTP_USER@$FTP_TARGET"
 
 rm "$CMD_FILE"
