@@ -14,7 +14,7 @@ jobs:
           docker-compose run --rm -e JEKYLL_ENV=production site bundle exec jekyll build
 
       - name: Publish
-        if: ${{ $GITHUB_REF_NAME == 'main' }}
+        if: github.ref == 'refs/heads/main'
         run: |
           printf $FTP_TARGET
           printf "${{ vars.FTP_USER }}"
