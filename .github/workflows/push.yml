@@ -18,7 +18,7 @@ jobs:
         run: |
           printf $FTP_TARGET
           printf "${{ vars.FTP_USER }}"
-          docker-compose run --rm -e FTP_PASS -e FTP_TARGET -e FTP_USER site /code/provisioning/deploy.sh
+          docker-compose run --rm -e FTP_PASS -e FTP_TARGET -e FTP_USER site /code/provisioning/deploy.sh partial
         env:
           FTP_USER: ${{ vars.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
