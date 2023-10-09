@@ -16,11 +16,13 @@ exclude:
   - .dockerignore
   - .idea/
   - README.md
+  - LICENSE.txt
   - Gemfile
   - Gemfile.lock
   - Dockerfile
   - docker-compose.yml
   - provisioning/
+
 
 sass:
   style: compressed
