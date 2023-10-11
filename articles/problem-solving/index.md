@@ -139,7 +139,7 @@ learn functions available in the standard library and the [usage context](/walkt
 [ecosystem](/walkthrough-slim/slim-intro/) of that language.  
 
 The choice of programming language is linked with the choice of editor or [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment).
-There are free IDEs like [NetBeans](https://netbeans.org/) or [Eclipse](http://www.eclipse.org/) and there are
+There are free IDEs like [NetBeans](https://netbeans.apache.org/download/index.html) or [Eclipse](http://www.eclipse.org/) and there are
 paid ones like [PHPStorm](https://www.jetbrains.com/phpstorm/) -- it is free for students. You can use just about
 anything from Notepad to PHPStorm, but a good IDE boosts productivity.
 

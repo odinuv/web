@@ -430,7 +430,7 @@ to -20 would not bring it behind its parent. This is because stacking order (`z-
 simply a single global `height`. In fact, stacking of elements is one of the most complicated parts of CSS
 If you are interested more in it, here are some resources:
 
-- [Walkthrough article](http://mdn.beonex.com/en/CSS/Understanding_z-index.1.html),
+- [Walkthrough article](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index),
 - [Another article](http://vanseodesign.com/css/css-stack-z-index/),
 - [CSS wiki](https://www.w3.org/wiki/CSS_absolute_and_fixed_positioning#The_third_dimension.E2.80.94z-index),
 - [the CSS specification](https://www.w3.org/TR/CSS2/visuren.html#propdef-z-index),

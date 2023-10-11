@@ -148,7 +148,7 @@ only in a part of the application.
 
 In this chapter I have shown an example of how the source code can be organized. This allows you
 to create non-trivial web applications without getting completely lost in the files and source code.
-Organizing the source code is a very important aspect of [software development](todo), though there is
+Organizing the source code is a very important aspect of software development, though there is
 no *one true solution* to it.
 
 ### New Concepts and Terms

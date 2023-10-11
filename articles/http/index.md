@@ -93,7 +93,7 @@ The browser is implemented in a way that it obeys server commands. The communica
 one HTTP request leads immediately to another.
 
 ### Response status codes
-[Status codes](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) are used to quickly identify what the server
+[Status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) are used to quickly identify what the server
 did or did not. Each HTTP request is responded with one status code. Status codes are numbers from 100 to 5xx. They
 are semantically divided into groups:
 

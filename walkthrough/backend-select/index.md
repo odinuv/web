@@ -276,7 +276,7 @@ possible states. This is however a more practical approach.
 ## Summary
 There are many more options (probably thousands!) how the above search form can be implemented.
 For example you can add searching by a nickname, day of birth, height etc. There are many possibilities
-how all those criteria can be combined, which leads us to an [application design](todo).
+how all those criteria can be combined, which leads us to an application design.
 
 In this chapter you have learned how to process HTML forms in the PHP script.
 You should be familiar with the structure of the `$_GET` and `$_POST` variables.

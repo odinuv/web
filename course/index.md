@@ -10,12 +10,11 @@ redirect_from: /en/apv/course/
 ## Course information
 The aim of the course is to teach students basic categories of application software. Emphasis is given on
 the development of web applications and database applications (relational database systems).
-[Official course information](http://ects-prog.mendelu.cz/en/plan8905/predmet1099?lang=en)
 
 ## Requirements
 To pass the course you have to:
 
-- get at least 90 points on [Codecademy](https://www.codecademy.com/) -- send [me](mailto:jan.kolomaznik@mendelu.cz) an
+- get at least 90 points on [Codecademy](https://www.codecademy.com/) -- send me an
   email with link to your CA profile with text `[APV]` (brackets included) somewhere in that page. 
   E.g. use "About Me" section in "Account settings". 
   <!--

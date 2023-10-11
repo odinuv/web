@@ -49,7 +49,7 @@ port (8000) and you can run your application directly from this small developmen
 You will still need to install database server to work with a database.
 
 #### Apache based stack and a database (advanced)
-You can try to install [WAMP Server](http://www.wampserver.com) package or [XAMPP](https://www.apachefriends.org)
+You can try to install [WAMP Server](https://www.wampserver.com/en/) package or [XAMPP](https://www.apachefriends.org)
 on Windows. PHP is configured as Apache module in this case and you do not have to execute it separately.
 
 These packages contain [MySQL](https://www.mysql.com/) database instead of [PostgreSQL](https://www.postgresql.org/)
@@ -103,7 +103,7 @@ for Linux. Another choice can be [Atom](https://atom.io/) editor which is multi-
 ![Geany](/course/geany.png)
 
 I recommend to install full *IDE* (Integrated Development Environment) -- a free IDE called
-[NetBeans](https://netbeans.org/) can be downloaded -- select PHP stack on download page.
+[NetBeans](https://netbeans.apache.org/download/index.html) can be downloaded -- select PHP stack on download page.
 [Eclipse](http://www.eclipse.org) IDE is also free but not much popular for PHP development
 nowadays. There are also commercial IDEs like [PHP storm](https://www.jetbrains.com/phpstorm/).
 In NetBeans you also get support for [Latte templates](/walkthrough/templates/).

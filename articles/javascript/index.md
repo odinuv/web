@@ -23,7 +23,7 @@ you can deliver desktop-app experience to your users. This architecture is calle
 [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application) (SPA).
 
 JavaScript itself is more than a language -- it is a package of browser interface functions, HTML manipulation
-functions and the language itself is called [ECMAScript](https://www.ecma-international.org/memento/TC39.htm).
+functions and the language itself is called [ECMAScript](https://www.ecma-international.org/publications-and-standards/standards/?order=category).
 It has versions such as HTML or CSS and it evolves. Current version is 6 (published in 2015) often
 labeled as ES 2015 (ECMAScript 2015 -- 6th Edition). Be careful when using ES 2015 features as they might
 not be supported in all browsers (even in recent versions like IE 10/11).
@@ -619,7 +619,7 @@ where code execution usually flows from top to bottom. In JavaScript you have to
 events are fired in random order according to user's actions. It means that reading the code from top to bottom
 does not necessarily end with its understanding.
 
-You can encounter another popular pattern for asynchronous processing called [*Promise*](https://developer.mozilla.org/cs/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+You can encounter another popular pattern for asynchronous processing called [*Promise*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 Implementation of this interface is used to handle asynchronous processes and readability of such code is better.
 Here is an example.
 
@@ -654,7 +654,7 @@ like jQuery is not always needed). The importance of jQuery and similar
 browsers improved/united their APIs (e.g.: to find elements using CSS selector you can
 use `document.querySelector()` method instead of jQuery, event binding can be done by
 `element.addEventListener()` in all modern browsers instead of jQuery's `$('.selector').click(fn)`).
-Moreover, new libraries and frameworks like [React](https://facebook.github.io/react/) or
+Moreover, new libraries and frameworks like [React](https://react.dev/) or
 [Angular](https://angularjs.org/) emerged since jQuery's best times.
 
 Here is the same example of flight reservation form with jQuery style code -- notice completely
@@ -678,7 +678,7 @@ compatibility of modern web pages with older browsers.
 ## Summary
 Remember that JavaScript is executed inside a browser. Therefore it cannot store any data on a server --
 you always need some kind of backend which can communicate securely with your database.
-It is possible to write JavaScript backend scripts with [Node.js](https://nodejs.org/) but it
+It is possible to write JavaScript backend scripts with [Node.js](https://nodejs.org/en) but it
 really does not matter. Ratio of JavaScript executed inside visitor's browser and backend code
 can vary from 99% to 0%. But without **some** backend code, you cannot create any useful web application.
 The main effect of this effort is to deliver to your users more dynamic page with better usability.

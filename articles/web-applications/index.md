@@ -206,7 +206,7 @@ unless you want to rewrite whole application.
 Most used frameworks for frontend:
 
 - [Angular](https://angular.io/) and in past [AngularJS](https://angularjs.org/)
-- [React](https://reactjs.org/)
+- [React](https://react.dev/)
 - [Vue](https://vuejs.org/)
 
 You can use any modern framework capable of handling JSON or XML requests and GET, POST, PUT and DELETE routes to
@@ -229,7 +229,6 @@ functions of the cellphone.
 Tools to wrap your SPA into native package:
 
 - [Cordova](https://cordova.apache.org/)
-- [PhoneGap](https://phonegap.com/)
 
 Hybrid application frameworks:
 

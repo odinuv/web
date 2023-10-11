@@ -89,7 +89,7 @@ Unfortunately, the developer is:
 - **You should have secured the form with a unique token.**
 
 ## Protection from CSRF
-[OWASP](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29_Prevention_Cheat_Sheet) mentions
+[OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html) mentions
 two basic means to protect users from CSRF attacks. First one is to check origin of the request and the second
 is to generate unique tokens for each action.
 

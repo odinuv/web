@@ -182,7 +182,7 @@ git config --global user.name "Your Name"
 Git obviously has to be installed first, you can [download](https://git-scm.com/download) classic installer for
 Windows OS or use package manager on Linux.
 
-Here is a link to [Git cheatsheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf). 
+Here is a link to [Git cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf). 
 You can print it and look up Git commands when your memory fails you.
 
 {: .note}
@@ -362,7 +362,7 @@ programmer who wants to merge his changes into the codebase is responsible for s
 This is actually a good idea: share a branch with minimal amount of other programmers.
 
 ## Stashing
-[Read documentation](https://git-scm.com/book/en/v1/Git-Tools-Stashing)
+[Read documentation](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning)
 
 You can *stash* changes without committing them. This is particularly useful when you have to implement hotfix on
 another branch and you are not yet ready to create a clean commit in your current branch.

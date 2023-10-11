@@ -146,7 +146,7 @@ Here is and image which represents session initiation:
 Session mechanism is an extension of cookies and you do not have to use it. You can also implement
 very similar functionality by yourself. If you use JavaScript frontend framework, you can send custom
 HTTP headers with every request to identify a client -- sessions are not recommended in [REST](https://en.wikipedia.org/wiki/Representational_state_transfer).
-You can also use another kind of client-side storage with JavaScript called [local storage](https://developer.mozilla.org/cs/docs/Web/API/Window/localStorage).
+You can also use another kind of client-side storage with JavaScript called [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).
 
 The server can tell one client from another using the session ID. Remember that cookies are not shared
 among internet browsers -- that is why you can be logged into an application with Firefox and not logged in

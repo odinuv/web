@@ -54,7 +54,7 @@ If an existing account is found and passwords match, your application can trust 
 Actually there were cases when a user logged into another user's account by a mistake -- two different accounts had
 same passwords (not even salt can solve this situation). There are also online identity thefts when user's password
 is compromised and used by someone else to harm original person. You can add another tier of user authentication,
-e.g. send an SMS to his cell phone to retype a verification code or distribute user [certificates](todo).
+e.g. send an SMS to his cell phone to retype a verification code or distribute user certificates.
 
 ### Task -- create a form for user login and Slim routes to handle it
 Create a login form and a Slim routes to process login information. You can make error message a bit confusing to
