@@ -7,7 +7,7 @@ permalink: /course/faq/
 {:toc}
 
 This place should navigate you quickly to important sections and tries to gather answers for questions of typical
-beginner. If you have any other question and you think that it should be answered here, mail [me](mailto:jan.kolomaznik@mendelu.cz).
+beginner.
 
 ## Course and project related questions
 
@@ -741,7 +741,7 @@ There are many frameworks for PHP, some of them provide more functionality and s
 is a micro-framework and does not provide much functions, but it is very easy to use.
 
 Framework is usually created by community of developers who share similar opinions about implementation of common
-functions. Each framework has [documentation](https://www.slimframework.com/docs/).
+functions. Each framework has [documentation](https://www.slimframework.com/docs/v3/).
 
 In reality, you always want to use some framework as you do not want to write your own solution for everything and you
 need to deliver results in reasonable time. Great advantage is that bugs in framework's code are fixed by others (you

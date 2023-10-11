@@ -1,5 +1,5 @@
 ## Next Steps
-Take a look at the [JavaScript](javascript/#using-javascript-to-confirm-user-actions)
+Take a look at the [JavaScript](../javascript/#confirm-user-actions)
 article to extend your form with a confirmation popup. It is a good idea to let the user confirm
 important information deletion because this action cannot be undone.
 

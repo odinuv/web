@@ -174,8 +174,8 @@ vendor/bin/phinx create Account
 
 This should create a file named like `20181114092000_account.php` in `migrations` folder. You will find a method called
 `change` in this file. You should specify the modifications you want to make in your database. Take a look at
-[Phinx table documentation](http://docs.phinx.org/en/latest/migrations.html#the-table-object) and
-[Phinx column documentation](http://docs.phinx.org/en/latest/migrations.html#working-with-columns) to understand the API
+[Phinx table documentation](https://book.cakephp.org/phinx/0/en/migrations.html#working-with-tables) and
+[Phinx column documentation](https://book.cakephp.org/phinx/0/en/migrations.html#working-with-columns) to understand the API
 and see allowed column types. Our migration can look like this:
 
 ~~~ php
@@ -203,7 +203,7 @@ class Account extends AbstractMigration
 {: .note}
 Maybe you noticed that Phinx migration does not contain `up()` method for forward migration and `down()` methods for
 rollback by default. The `change()` method is used to define *reversible* migrations -- the system can figure out the
-rollback steps if you obey [specific](http://docs.phinx.org/en/latest/migrations.html?highlight=reversible) rules.
+rollback steps if you obey [specific](https://book.cakephp.org/phinx/0/en/migrations.html) rules.
 You can specify custom `up()` and `down()` methods. Using the `change()` method is preferred though, but you cannot
 use direct SQL code.
 

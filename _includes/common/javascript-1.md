@@ -61,7 +61,7 @@ in the `element.dataset` object (e.g. `element.dataset.personid` for `data-perso
 
 {: .note}
 Although it is possible, you should avoid changing particular CSS styles like in the above example. It is tedious and
-makes your code confusing. You should rather add or remove CSS classes (there is a [`classList`](https://developer.mozilla.org/cs/docs/Web/API/Element/classList)
+makes your code confusing. You should rather add or remove CSS classes (there is a [`classList`](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
 field of the HTML element which allows efficient work with CSS classes).
 
 ## Working with Events

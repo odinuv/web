@@ -216,7 +216,7 @@ table td>a:hover {
 
 ### CSS properties
 There are [too many CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) to list here,
-you can find them [in a great Cheat sheet](https://www.onblastblog.com/css3-cheat-sheet/) or using Google just by typing what
+you can find them [in a great Cheat sheet](https://htmlcheatsheet.com/css/) or using Google just by typing what
 you want to achieve. As the HTML language evolves, CSS (currently in version 3) also expands the list of available properties.
 You can check current support of the different web technologies among internet browsers on [http://caniuse.com/](http://caniuse.com/).
 

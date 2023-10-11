@@ -156,7 +156,7 @@ HTML elements may be nested and combined. Now try to create an entire page like 
 I used:
 
 - The text from Wikipedia article at [https://en.wikipedia.org/wiki/John_Doe](https://en.wikipedia.org/wiki/John_Doe)
-- The Image from [http://www.johndoe.pro/img/John_Doe.jpg](http://www.johndoe.pro/img/John_Doe.jpg)
+- The Image from [https://www.lifeofthepartystore.com/guy-fawkes-mask/](https://www.lifeofthepartystore.com/guy-fawkes-mask/)
 - The HTML elements: `h1`, `h2`, `table`, `ul`, `src`, `a`, `nav` (as a container for navigation)
 
 {: .solution}

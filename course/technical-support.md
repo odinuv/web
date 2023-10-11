@@ -139,11 +139,9 @@ with [Composer](#composer) (`composer require swiftmailer/swiftmailer`). This li
 directly to given SMTP server (be careful with this).
 
 The trickier part is configuring your environment - you usually do not want to send real email messages to real people
-from your dev-server. On Windows OS use [Papercut](https://papercut.codeplex.com/) tool to open local SMTP server with
-simple user interface to view generated messages. On Linux OS you can try to install full mail stack and configure it
-to deliver messages only locally or use [ssmpt](https://packages.debian.org/wheezy/ssmtp) and
-[MailDev](http://danfarrelly.nyc/MailDev/) -- you have to install [Node.js](https://nodejs.org/en/) and NPM.
-
+from your dev-server. On Windows OS use [Smtp4dev](https://github.com/rnwood/smtp4dev) tool to open local SMTP server with
+simple user interface to view generated messages.
+    
 Check PHP settings in [php.ini](/course/technical-support/#php-configuration) file to configure SMTP server and port
 on Windows or system mail command on Linux. You can also try commercial services like [Mailtrap](https://mailtrap.io/). 
 
@@ -308,7 +306,7 @@ Contents of the `.htpasswd` file can look like this:
     user:$apr1$Ywno0KCc$/R75cky8xEvL5DpWuTLEy.
 
 The above line defines an account called `user` with a password `pass`. Use some online `.htpasswd`
-[generator](http://www.htaccesstools.com/htpasswd-generator/) to obtain yours. There can be more users defined
+[generator](https://hostingcanada.org/htpasswd-generator/) to obtain yours. There can be more users defined
  in `.htpasswd` file.
 
 ## Database systems
@@ -371,7 +369,7 @@ two new-line characters.
 
 A [link](http://google.com)
 
-An ![image](/course/ca/valid.png)
+An ![image](/course/developer-tools.png)
 
 A code: `callSomeFunction()`
 
@@ -406,7 +404,7 @@ Paragraphs is divided by two new-line characters.
 
 A [link](http://google.com)
 
-An ![image](/course/ca/valid.png)
+An ![image](/course/developer-tools.png)
 
 A code: `callSomeFunction()`
 

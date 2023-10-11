@@ -42,7 +42,7 @@ CSS version 2 (2.1) is almost fully supported among all common browsers. Startin
 standard is split into **modules** with various degrees of standardization (earliest 2007). There are
 dozens of modules: font properties, color, box properties, box model, border, color, margin, background,
 size and even effects like shadows, transparency,
-rounded corners or mouse cursor and [many more](https://www.onblastblog.com/css3-cheat-sheet/)
+rounded corners or mouse cursor and [many more](https://htmlcheatsheet.com/css/)
 (See [CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)).
 
 ### Page Layout
@@ -703,7 +703,7 @@ You may also encounter unit-less values. A typical example would be `margin: 0`,
 this because it makes no difference where it is zero points or zero pixels. Another example is e.g. the
 `line-height` property which can be specified as multiplier. I.e. `line-height: 1.2` means 1.2 &times; bigger
 then the base line height defined by the font. You can read more about various units in the
-[documentation](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units).
+[documentation](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units).
 
 {: .note}
 Do you remember [CSS Box Model](/articles/css/layout/#css-box-model)? Think of it a bit. You cannot simply use
@@ -738,7 +738,7 @@ immediately define a style for some HTML elements. Some common at rules are:
 
 - [`@charset`](https://developer.mozilla.org/en-US/docs/Web/CSS/@charset) -- used to specify the
 [character encoding](https://en.wikipedia.org/wiki/Character_encoding) e.g. `@charset "UTF-8";`, important when using the
-[`content` property](https://developer.mozilla.org/en-US/docs/aWeb/CSS/content).
+[`content` property](https://developer.mozilla.org/en-US/docs/Web/CSS/content).
 - [`@media`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media) -- allows to defined **nested rules** for different media types (`screen`, `print`, `speech`). This is very useful to
 create styles for pages that print nicely -- e.g. `@media print { body { font-size: 10pt } }`.
 - [`@font-face`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face) -- Allows you to define a font, which is not installed on the end-user computer. The font will be downloaded

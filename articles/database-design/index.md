@@ -499,7 +499,7 @@ can be created (a **physical model**):
 
 The above diagram is also an ERD in so called **Crow's foot notation**. This
 notation displays relations (tables) and their definitions directly. With
-proper [design software](todo), the SQL queries to create tables in the database can be
+proper design software, the SQL queries to create tables in the database can be
 generated automatically. You can then start using the database.
 
 ## Naming conventions

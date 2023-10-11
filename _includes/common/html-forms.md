@@ -52,10 +52,7 @@ There are two methods to associate a label with an input. Either the `input` ele
 When [processing HTML forms](../backend-intro/), the browser only
 sends the server **name** and **value** pairs for
 each form control. This means that is quite important to know what is the `name` and `value` of each
-element and how they produce the **name** -- **value** pairs. To test what is received on a server for each
-form, you can submit any of the below forms and a [simple script](/form_test.php)
-will print to you what the server sees. In your own script, you can achieve that by
-setting the `action=http://odinuv.cz/form_test.php` attribute.
+element and how they produce the **name** -- **value** pairs. 
 
 For most form controls, the `name` of the control must be unique within the `form` element. This means that
 across different forms, the form elements may be the same, but inside a single form you must not use the same name twice,
@@ -247,8 +244,7 @@ Inside `textarea` whitespace matters, therefore the line `You certainly want to 
 
 ### Task -- Form in a list
 Now try to create the following form. I used a [list](/common/html/#task----lists) for arranging the
-form controls in rows. Also make sure to verify the form by using
-`<form method='post' action='http://odinuv.cz/form_test.php'>` and submitting the form.
+form controls in rows. 
 
 ![Screenshot - Form](/common/html-forms/form-2.png)
 
@@ -260,8 +256,7 @@ form controls in rows. Also make sure to verify the form by using
 ### Task -- Form in a table
 Now try to create the following form. Here I used a [table](../html/#task----tables)
 for arranging the
-form controls in rows. Also make sure to verify the form by using
-`<form method='post' action='http://odinuv.cz/form_test.php'>` and submitting the form.
+form controls in rows.
 
 ![Screenshot - Form](/common/html-forms/form-1.png)
 

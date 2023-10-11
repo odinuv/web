@@ -49,7 +49,7 @@ database cannot be used in another way. For example MySQL database has an
 therefore many applications on portable devices use SQLite.
 Also for example [Facebook uses MySQL](https://code.facebook.com/posts/mysql/)
 even though its database is far beyond what MySQL is commonly used for. And some
-companies switch [back and forth](https://eng.uber.com/mysql-migration/).
+companies switch [back and forth](https://www.uber.com/en-CZ/blog/postgres-to-mysql-migration/).
 
 From the "middle guys" MySQL and PostgreSQL are very popular systems. MySQL is
 notable for its easy setup and great performance for writing data and simple
@@ -58,7 +58,7 @@ compatible with it and it is [even developed by the same people](https://mariadb
 PostgreSQL has a different approach, apart from being a database system it is
 also a framework for creating database systems, which means that many other
 databases are built upon its core
-(e.g. [HP Vertica](http://www8.hp.com/us/en/software-solutions/advanced-sql-big-data-analytics/),
+(e.g. [HP Vertica](https://docs.vertica.com/23.4.x/en/architecture/),
 [Redshift](http://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html)).
 PostgreSQL also has very advanced extensions for [geographical databases](http://www.postgis.net/)
 so it is often used in applications working with maps. PostgreSQL also has a pretty good

@@ -1,5 +1,5 @@
 A very special control structure is the *try-catch* statement. This structure is used to catch
-[*Exceptions*](http://php.net/manual/en/language.exceptions.php) which are [*thrown*](http://php.net/manual/en/internals2.opcodes.throw.php)
+[*Exceptions*](http://php.net/manual/en/language.exceptions.php) which are [*thrown*](https://www.php.net/manual/en/language.exceptions.php)
 from a code inside the *try* block. *Throwing an exception* means that the code execution is stopped in the *try* block
 and an error object is created and passed into the *catch* block. The *exception* is simple [object](../objects/) which
 inherits from or is instance of *Exception* class, the advantage of exception object is that the programmer can create
