@@ -29,3 +29,10 @@ sass:
 plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
+  - jekyll_html_truncatewords
+
+collections:
+  medium_posts_json:
+    output: false
+  sections:
+    output: true
