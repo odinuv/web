@@ -9,7 +9,14 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- /Favicon -->
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,15 +28,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <!--
+    <link href="/new-assets/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/new-assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    -->
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/new-assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/new-assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -66,102 +74,105 @@
 
             <!-- Articles -->
             <div class="container-xxl bg-primary hero-header" id="articles">
+                {% for article in site.medium_posts_json %}
                 <div class="row g-5 justify-content-center align-items-center">
                     <div class="col-lg-6 text-white">
                         <div class="py-5 px-2">
-                            <h1 class="text-white">MySQL + SSL + Doctrine</h1>
-                            <p class="mb-4">
-                                Enabling and enforcing SSL connection on MySQL is easy: Just generate the certificates and configure the server to require secure transport. And it’s even easier on the Azure Database for MySQL.
-                            </p>
-                            <p class="mb-4">
-                                Just go to the Azure portal and enable “Enforce SSL connection” in the “Connection security” of the database server. Then, download the certificates and stuff them in your application. No problem — just two simple steps.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                            <a href="{{ article.link | absolute_url }}">
+                                <h2 class="text-white">{{ article.title | strip_html }}</h2>
+                            </a>
 
-                <div class="row g-5 justify-content-center align-items-center">
-                    <div class="col-lg-6 text-white">
-                        <div class="py-5">
-                            <h1 class="text-white">MySQL + SSL + Doctrine</h1>
-                            <p class="mb-4">
-                                Enabling and enforcing SSL connection on MySQL is easy: Just generate the certificates and configure the server to require secure transport. And it’s even easier on the Azure Database for MySQL.
-                            </p>
-                            <p class="mb-4">
-                                Just go to the Azure portal and enable “Enforce SSL connection” in the “Connection security” of the database server. Then, download the certificates and stuff them in your application. No problem — just two simple steps.
-                            </p>
+                            <div class="post-image">
+                                <a href="{{ article.link | absolute_url }}" aria-label="Thumbnail">
+                                    <img src="{{ article.image | absolute_url }}" alt="Post thumbnail">
+                                </a>
+                            </div>
+
+                            <div class="mb-4">
+                                {% assign excerpt_length = site.excerpt_length | default: 100 %}
+                                {{ article.description | html_truncatewords: excerpt_length }}
+                            </div>
+                            <div>
+                                <span class="btn">
+                                    <a href="{{ article.link | absolute_url }}" class="btn-link">Read&nbsp;More</a>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
             <!-- Articles End -->
         </div>
         <!-- Navbar & Articles End -->
 
-
         <!-- About Start -->
-        <div class="container-xxl py-5" id="about">
-            <div class="container py-5 px-lg-5">
-                <div class="row g-5 justify-content-center align-items-center wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="col-lg-2">
-                        <a href="https://gravatar.com/odinuv"><img class="profile-image" src="img/avatar.jpg" alt="Profile image"></a>
-                    </div>
-                    <div class="col-lg-6">
-                        <h1 class="mb-5">About me</h1>
+       <div class="container-xxl py-5" id="about">
+        <div class="container py-5 px-lg-5">
+            <div class="row g-5 justify-content-center align-items-center wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-2">
+                    <a href="https://gravatar.com/odinuv"><img class="profile-image" src="img/avatar.jpg" alt="Profile image"></a>
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="mb-5">About me</h1>
 
-                        <p class="mb-4">
-                            I'm a senior software engineer currently working at <a href="https://www.keboola.com/">Keboola</a>.
-                        </p>
-                        <p>
-                            I'm currently mostly a backend developer, but in 15+ years experience of software development,
-                            I've done a lot of different things. See <a href="https://www.linkedin.com/in/odinuv">LinkedIn</a> for
-                            the official biography.
-                        </p>
-                        <p>
-                            Nowadays, I'm mostly working mostly with PHP and Python. I design and implement scalable,
-                            maintainable and testable APIs. My daily work ranges from setting up the infrastructure
-                            via Terraform and setting up the CI pipelines, via writing the code and tests to designing
-                            interfaces and entire system architecture.
-                        </p>
-                        <p>
-                            I'm a big fan of automation and testing. As such, our team of 4 engineers is able to work and maintain
-                            2 mono-repositories and 95 repositories, which altogether contain 16 domain services, about 100 shared libraries, all
-                            totalling to more than <a href="/new-index/cloc2023-10-15.png">500k lines of code</a> in different languages.
-                            Yeah, so automation and <b>testing is a must</b>.
-                        </p>
+                    <p class="mb-4">
+                        I'm a senior software engineer currently working at <a href="https://www.keboola.com/">Keboola</a>.
+                    </p>
+                    <p>
+                        I'm currently mostly a backend developer, but in 15+ years experience of software development,
+                        I've done a lot of different things. See <a href="https://www.linkedin.com/in/odinuv">LinkedIn</a> for
+                        the official biography.
+                    </p>
+                    <p>
+                        Nowadays, I'm mostly working mostly with PHP and Python. I design and implement scalable,
+                        maintainable and testable APIs. My daily work ranges from setting up the infrastructure
+                        via Terraform and setting up the CI pipelines, via writing the code and tests to designing
+                        interfaces and entire system architecture.
+                    </p>
+                    <p>
+                        I'm a big fan of automation and testing. As such, our team of 4 engineers is able to work and maintain
+                        2 mono-repositories and 95 repositories, which altogether contain 16 domain services, about 100 shared libraries, all
+                        totalling to more than <a href="/new-index/cloc2023-10-15.png">500k lines of code</a> in different languages.
+                        Yeah, so automation and <b>testing is a must</b>.
+                    </p>
 
-                        <p>
-                            Some superlatives I encountered during my Journey:
-                        </p>
-                        <ul>
-                            <li>The language in which I wrote the least amount of code that still made sense &mdash; <b>8086 Assembler</b> &mdash; I created one or two levels of a Sokoban game in just a few hundred bytes of code, but unfortunately, I lost it long ago.</li>
-                            <li>The language that brings back the best memories &mdash; <b>C#</b> &mdash; “You fell asleep with your head on the keyboard, and you wake up to find the app is written.” It really felt like that, but then I moved to web development.</li>
-                            <li>The language in which I wrote the longest function name &mdash; <b>C++</b> &mdash; It was about 300 characters long and ended with an evacuation of the building. Don’t ask for details.</li>
-                            <li>The language in which I completed my first paid work &mdash; <b>Delphi</b> &mdash; It was my first real job, and they let me choose the tools since the licensing was permissive at the time.</li>
-                            <li>The language I’ve had to relearn the most times &mdash; <b>Javascript</b> &mdash; It started off pure, then came JQuery, followed by Node.js, ECMAScript 6, and now TypeScript&mldr;</li>
-                            <li>The language I abandoned the quickest &mdash; <b>Julia</b> &mdash; Once the task was completed, I simply had no further use for it. It’s nothing personal.</li>
-                            <li>The language in which I’ve written the least code overall &mdash; <b>Lisp</b> &mdash; I only wrote one function.</li>
-                            <li>The language in which I’ve written the most code &mdash; <b>PHP</b> &mdash; By an order of magnitude.</li>
-                            <li>The most ambivalent language &mdash; <b>Python</b> &mdash; While the language itself is impressive, there’s an overwhelming amount of poorly written code in it.</li>
-                            <li>The most exasperating language &mdash; <b>R</b> &mdash; Have a vector with one number and ten nulls? It will return the number as an integer. Were you expecting a vector? Too bad.</li>
-                            <li>The first language I ever coded in &mdash; <b>Sinclair Basic</b> &mdash; I was too young to remember what it was, and thankfully, it’s long gone (my code, not Sinclair).</li>
-                            <li>The most eccentric language &mdash; <b>Squirrel</b> &mdash; It’s akin to Lua, but bears a closer resemblance to PHP, except for certain aspects that are more Python-like.</li>
-                            <li>The language I was happiest to forget &mdash; <b>Visual Basic for Applications</b> &mdash; Until I had to learn it again&mldr; and again&mldr; and again&mldr;</li>
-                        </ul>
-                    </div>
+                    <p>
+                        Some superlatives I encountered during my Journey:
+                    </p>
+                    <ul>
+                        <li>The language in which I wrote the least amount of code that still made sense &mdash; <b>8086 Assembler</b> &mdash; I created one or two levels of a Sokoban game in just a few hundred bytes of code, but unfortunately, I lost it long ago.</li>
+                        <li>The language that brings back the best memories &mdash; <b>C#</b> &mdash; â€œYou fell asleep with your head on the keyboard, and you wake up to find the app is written.â€ It really felt like that, but then I moved to web development.</li>
+                        <li>The language in which I wrote the longest function name &mdash; <b>C++</b> &mdash; It was about 300 characters long and ended with an evacuation of the building. Donâ€™t ask for details.</li>
+                        <li>The language in which I completed my first paid work &mdash; <b>Delphi</b> &mdash; It was my first real job, and they let me choose the tools since the licensing was permissive at the time.</li>
+                        <li>The language Iâ€™ve had to relearn the most times &mdash; <b>Javascript</b> &mdash; It started off pure, then came JQuery, followed by Node.js, ECMAScript 6, and now TypeScript&mldr;</li>
+                        <li>The language I abandoned the quickest &mdash; <b>Julia</b> &mdash; Once the task was completed, I simply had no further use for it. Itâ€™s nothing personal.</li>
+                        <li>The language in which Iâ€™ve written the least code overall &mdash; <b>Lisp</b> &mdash; I only wrote one function.</li>
+                        <li>The language in which Iâ€™ve written the most code &mdash; <b>PHP</b> &mdash; By an order of magnitude.</li>
+                        <li>The most ambivalent language &mdash; <b>Python</b> &mdash; While the language itself is impressive, thereâ€™s an overwhelming amount of poorly written code in it.</li>
+                        <li>The most exasperating language &mdash; <b>R</b> &mdash; Have a vector with one number and ten nulls? It will return the number as an integer. Were you expecting a vector? Too bad.</li>
+                        <li>The first language I ever coded in &mdash; <b>Sinclair Basic</b> &mdash; I was too young to remember what it was, and thankfully, itâ€™s long gone (my code, not Sinclair).</li>
+                        <li>The most eccentric language &mdash; <b>Squirrel</b> &mdash; Itâ€™s akin to Lua, but bears a closer resemblance to PHP, except for certain aspects that are more Python-like.</li>
+                        <li>The language I was happiest to forget &mdash; <b>Visual Basic for Applications</b> &mdash; Until I had to learn it again&mldr; and again&mldr; and again&mldr;</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- About End -->
+    </div>
+    <!-- About End -->
 
         <!-- What I Do Start -->
+        <!--
         <div class="container-xxl py-5" id="what-i-do">
         </div>
+        -->
         <!-- What I do End -->
 
         <!-- Pet Projects Start -->
+        <!--
         <div class="container-xxl py-5" id="pet-projects">
         </div>
+        -->
         <!-- Pet Projects End -->
 
         <!-- Footer Start -->
@@ -170,9 +181,9 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-10 text-center text-md-start mb-3 mb-md-0">
-                            <span>&copy; <a class="border-bottom" href="#">Odinuv web</a>, All Right Reserved.
+                            <span><a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>, <a class="border-bottom" href="#">Odinuv web</a>, {{ site.time | date: '%Y' }}.
 
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+							    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                                 Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>.
                             </span>
                             <span>Not using Cookies</span>
@@ -198,16 +209,16 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/new-assets/lib/wow/wow.min.js"></script>
+    <script src="/new-assets/lib/easing/easing.min.js"></script>
+    <script src="/new-assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="/new-assets/lib/counterup/counterup.min.js"></script>
+    <script src="/new-assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/new-assets/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="/new-assets/lib/lightbox/js/lightbox.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="/new-assets/js/main.js"></script>
 </body>
 
 </html>
