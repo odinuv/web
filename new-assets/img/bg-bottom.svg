@@ -1,0 +1,8 @@
+<svg viewBox="0 0 1300 200" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <title>Main Layer</title>
+        <path stroke="#fff" id="path-1"
+              d="M0,200 C 50,150 120,200 220,110 C 310,20 410,50 460,90 C 520,140 670,160 740,100 C 820,30 930,30 1000,100 C 1100,180 1200,120 1300,50 L 1300,200"
+              opacity="1" fill="#fff"/>
+   </g>
+</svg>
