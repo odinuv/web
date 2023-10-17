@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Odinuv web",
+    "short_name": "odinuv",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
