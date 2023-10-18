@@ -1,11 +1,9 @@
 ---
-layout: new_main
+layout: new-main
 title: Odinuv Web
-permalink: /new/
+permalink: /new-site/
 ---
 
-* TOC
-{:toc}
-
-Ground control to Major Tom
-[Old site](/old_site/)
+{% comment %}
+This is a stub main page, the actual content is generated from _sections
+{% endcomment %}
