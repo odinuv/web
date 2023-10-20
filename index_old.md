@@ -1,7 +1,6 @@
 ---
 title: The Making of a Web Application
-permalink: /
-redirect_from: /old-site/
+permalink: /old-site/
 ---
 
 * TOC

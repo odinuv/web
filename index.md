@@ -1,7 +1,8 @@
 ---
 layout: new-main
 title: Odinuv Web
-permalink: /new-site/
+permalink: /
+redirect_from: /new-site/
 ---
 
 {% comment %}
