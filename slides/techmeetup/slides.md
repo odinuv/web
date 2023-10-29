@@ -1,7 +1,7 @@
 ---
 layout: slides
-title: Techmeetup
-description: Techmeetup todo 
+title: Techmeetup Conference 2023
+description: Application Observability from the developers' point of view 
 transition: slide
 permalink: /slides/techmeetup/
 ---
