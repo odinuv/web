@@ -1,6 +1,6 @@
 ---
 layout: slides
-title: Techmeetup Conference 2023
+title: TechMeetup Conference 2023
 description: Application Observability from the developers' point of view 
 transition: slide
 permalink: /slides/techmeetup/
@@ -10,6 +10,10 @@ permalink: /slides/techmeetup/
 Application Observability: A Developer’s Perspective
 
 Odin (Ondřej Popelka)
+
+--- 
+TechMeetup Conference 2023
+
 </section>
 {% comment %}
 Application Observability from the developers' point of view
