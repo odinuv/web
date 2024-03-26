@@ -25,11 +25,11 @@ def generate(site)
         puts "====== #{title} ======"
         puts "#{item['link']}"
         doc.data['title'] = title;
-        doc.data['image'] = item['thumbnail'];
         doc.data['link'] = item['link'];
         doc.data['date'] = item['pubDate'];
         doc.data['categories'] = item['categories'];
         html_document = Nokogiri::HTML(item['description']);
+        doc.data['image'] = html_document.search('img')[1]['src'];
         doc.data['description'] = html_document.search('p').to_html;
         jekyll_coll.docs << doc
       end
