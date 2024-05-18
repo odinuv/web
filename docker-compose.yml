@@ -12,3 +12,10 @@ services:
     ports:
       - "4000:4000"
     command: bundle exec jekyll serve --source /code/ --watch -H 0.0.0.0 --force_polling
+
+  dev-update:
+    build:
+      context: .
+    command: ["sh", "-c", "cd /code/ && gem install bundler && bundler update"]
+    volumes:
+      - .:/code
