@@ -3,6 +3,7 @@ FROM ruby:3.2
 RUN apt-get update -q \
     && apt-get install -y --no-install-recommends \
         locales \
+        openssh-client \
         sshpass \
     && rm -r /var/lib/apt/lists/* \
 	&& echo "en_US UTF-8" > /etc/locale.gen \
